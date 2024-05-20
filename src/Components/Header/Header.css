@@ -1,0 +1,22 @@
+.main_header_css {
+    padding: 20px;
+    background-color: lightcyan;
+}
+
+.button_login_css { 
+border-radius: 8px !important;
+background-color: var(--Primary-color-3, #129393) !important;
+font-family: Lato !important;
+font-size: 16px !important;
+font-weight: 400 !important;
+line-height: 24px !important;
+text-align: left !important;
+text-transform: inherit !important;
+}
+
+.second_grid_css{
+    display: flex;
+    gap:20px;
+    width: 100%;
+    justify-content: end;
+}

@@ -2,10 +2,10 @@ import React from "react";
 import './login.css';
 import Typography from '@mui/material/Typography';
 
-const config=require("./config.js")
+const config=require("../../config.js")
 function Login (){
     return <Typography>
-{config.login_heading_name}
+{config.login_button_name}
     </Typography>
 }
 export default Login;
