@@ -1,0 +1,36 @@
+.icon_css {
+  font-size: 44px !important;
+  width: 44px;
+}
+.title_css {
+  font-family: Lato !important;
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  line-height: 22px !important;
+}
+.box_css {
+  border-radius: 8px;
+  cursor: pointer;
+  background: #fff;
+  box-shadow: 0px 4.534px 9.067px 0px rgba(0, 0, 0, 0.03),
+    0px 9.067px 36.269px 0px rgba(0, 0, 0, 0.06);
+  width: 320px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+  gap: 20px;
+  align-items: center;
+  height: 44px !important;
+}
+.content_css{
+    padding-inline: 40px !important;
+          padding-top: 10px !important;
+          display: flex !important;
+          gap: 15px !important;
+          flex-direction: column !important;
+          justify-content: center !important;
+          align-items: center !important;
+}
+@media(max-width:400px){
+
+}
