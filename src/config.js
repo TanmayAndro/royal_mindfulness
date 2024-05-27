@@ -15,7 +15,7 @@ exports.loginAPiEndPoint = "login/login";
 exports.loginAPiMethod = "POST";
 exports.loginApiContentType = "application/json";
 
-// Customizable Area Start
+
 exports.errorEmailNotValid = "Email not valid.";
 exports.errorPasswordNotValid = "Password not valid.";
 exports.placeHolderEmail = "Your Email";
@@ -29,3 +29,16 @@ exports.labelTitleSignUp = "Sign up";
 exports.forgotPassword="Forgot password?"
 exports.haveAccount="Don't have an account?"
 exports.btnTxtSocialLogin = "LOGIN WITH SOCIAL MEDIA";
+exports.signHeadingName='Sign up to Royal Mindfulness';
+exports.welcomeHeading='Welcome to Royal Mindfulness!'
+exports.email='Email';
+exports.first_name='First Name';
+exports.last_name='Last Name';
+exports.last_name_placeholder='Your last Name';
+exports.first_name_placeholder='Your first Name';
+exports.error_msg='enter a value';
+exports.password='Password';
+exports.confirm_password='Confirm Password';
+exports.phone_no='Phone Number';
+exports.lable_already_signup='Already have an account?'
+exports.main_heading_login='Login to Royal Mindfulness'

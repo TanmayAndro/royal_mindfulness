@@ -40,7 +40,7 @@ const Register = () => {
         ...data,
         emailError: true,
         email: value,
-        emailErrorMessage: "enter a value",
+        emailErrorMessage:config.error_msg,
       });
       return true;
     } else if (!value.match(emailPattern)) {
@@ -76,19 +76,19 @@ const Register = () => {
       </span>
     );
   };
-  const handleConfirmPassword = (value: string,password:string) => {
+  const handleConfirmPassword = (value: string, password: string) => {
     const isLengthValid = value.length >= 8;
-    const passwordsMatch =password === value;
-  
+    const passwordsMatch = password === value;
+
     setData((prevData) => ({
       ...prevData,
       setPassword: value,
       setPasswordError: !isLengthValid || !passwordsMatch,
     }));
-  
+
     return !isLengthValid || !passwordsMatch;
   };
-  
+
   const handlePhoneNumber = (e: any) => {
     if (e && isValidPhoneNumber(e.toString())) {
       setData({ ...data, mobileNo: e, mobileNoError: false });
@@ -129,28 +129,37 @@ const Register = () => {
     return errorMessage !== "";
   };
   const handlePassword = (value: string, fields: string) => {
-
     setData({ ...data, [fields]: value });
 
     if (value.trim() == "" || value.length < 8) {
-        setData({ ...data, [fields]: value, [`${[fields]}Error`]: true });
-        handleConfirmPassword(data.setPassword,value)
+      setData({ ...data, [fields]: value, [`${[fields]}Error`]: true });
+      handleConfirmPassword(data.setPassword, value);
       return true;
     } else {
-        
-        setData({ ...data, [fields]: value, [`${[fields]}Error`]: false });
-        handleConfirmPassword(data.setPassword,value)
+      setData({ ...data, [fields]: value, [`${[fields]}Error`]: false });
+      handleConfirmPassword(data.setPassword, value);
       return false;
     }
   };
   const handleValidation = () => {
     const emailError = handleEmail(data.email);
-    const firstNameError = handleValidationFirstLast("firstName", data.firstName, 20);
-    const lastNameError = handleValidationFirstLast("lastName", data.lastName, 20);
+    const firstNameError = handleValidationFirstLast(
+      "firstName",
+      data.firstName,
+      20
+    );
+    const lastNameError = handleValidationFirstLast(
+      "lastName",
+      data.lastName,
+      20
+    );
     const mobileNoError = handlePhoneNumber(data.mobileNo);
     const passwordError = handlePassword(data.password, "password");
-    const setPasswordError = handleConfirmPassword(data.setPassword,data.password);
-  
+    const setPasswordError = handleConfirmPassword(
+      data.setPassword,
+      data.password
+    );
+
     const errors = {
       emailError,
       firstNameError,
@@ -159,7 +168,7 @@ const Register = () => {
       passwordError,
       setPasswordError,
     };
-  
+
     // Set the errors in the state
     setData({
       ...data,
@@ -170,11 +179,11 @@ const Register = () => {
       passwordError,
       setPasswordError,
     });
-  
+
     // Log errors for debugging
     console.log(errors);
   };
-  
+
   return (
     <MainGrid container>
       <SecondGrid
@@ -187,29 +196,39 @@ const Register = () => {
       >
         <MainBox>
           <Typography style={AllStyle.heading}>
-            Sign up to Royal Mindfulness
+            {config.signHeadingName}
           </Typography>
           <SecondBox style={AllStyle.secondBox}>
             <Typography style={AllStyle.smallHeading}>
-              Welcome to Royal Mindfulness!
+              {config.welcomeHeading}
             </Typography>
 
-          <Box style={{    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '10px',marginBottom:'10px'}}>
-  <img src={google_logo} style={{width:76}}/>
-  <img src={facebook_logo}style={{width:50}}/>
-</Box>
-<Box style={{width:'100%',height:'1px',backgroundColor:"#CBD5E1",marginBlock:"20px"}}>
+            <Box
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "10px",
+                marginBottom: "10px",
+              }}
+            >
+              <img src={google_logo} style={{ width: 76 }} />
+              <img src={facebook_logo} style={{ width: 50 }} />
+            </Box>
+            <Box
+              style={{
+                width: "100%",
+                height: "1px",
+                backgroundColor: "#CBD5E1",
+                marginBlock: "16px",
+              }}
+            ></Box>
 
-</Box>
-   
             <Typography style={AllStyle.textStyle}>
-              Email {importantField()}
+              {config.email} {importantField()}
             </Typography>
             <InputField
-              placeholder="Your Email"
+              placeholder={config.placeHolderEmail}
               variant="outlined"
               data-test-id="emailtest"
               value={data.email}
@@ -220,10 +239,10 @@ const Register = () => {
               helperText={data.emailError && data.emailErrorMessage}
             />
             <Typography style={AllStyle.textStyle}>
-              First Name {importantField()}
+              {config.first_name} {importantField()}
             </Typography>
             <InputField
-              placeholder="Your First Name"
+              placeholder={config.first_name_placeholder}
               value={data.firstName}
               variant="outlined"
               data-test-id="1stame"
@@ -231,30 +250,30 @@ const Register = () => {
                 handleValidationFirstLast("firstName", e.target.value, 20);
               }}
               error={data.firstNameError}
-              helperText={data.firstNameError && "enter a value"}
+              helperText={data.firstNameError &&config.error_msg}
             />
 
             <Typography style={AllStyle.textStyle}>
-              Last Name {importantField()}
+              {config.last_name} {importantField()}
             </Typography>
             <InputField
-              placeholder="Your Last Name"
+              placeholder={config.last_name_placeholder}
               onChange={(e: any) => {
                 handleValidationFirstLast("lastName", e.target.value, 20);
               }}
               variant="outlined"
               error={data.lastNameError}
               value={data.lastName}
-              helperText={data.lastNameError && "enter a value"}
+              helperText={data.lastNameError &&config.error_msg}
               data-test-id="lstname"
             />
 
             <Typography style={AllStyle.textStyle}>
-              Password {importantField()}
+              {config.password} {importantField()}
             </Typography>
             <InputField
               error={data.passwordError}
-              helperText={data.passwordError && "enter a value"}
+              helperText={data.passwordError &&config.error_msg}
               style={{ marginBottom: "12px" }}
               placeholder={config.placeHolderPassword}
               data-test-id="txtInputPassword"
@@ -280,11 +299,15 @@ const Register = () => {
               }}
             />
             <Typography style={AllStyle.textStyle}>
-              Confirm Password {importantField()}
+            {config.confirm_password} {importantField()}
             </Typography>
             <InputField
               error={data.setPasswordError}
-              helperText={data.setPasswordError ? "Passwords do not match or too short" : ""}
+              helperText={
+                data.setPasswordError
+                  ? "Passwords do not match or too short"
+                  : ""
+              }
               style={{ marginBottom: "12px" }}
               placeholder={config.placeHolderPassword}
               data-test-id="txtInputPassword"
@@ -293,7 +316,7 @@ const Register = () => {
               value={data.setPassword}
               variant="outlined"
               onChange={(e: any) => {
-                handleConfirmPassword(e.target.value,data.password);
+                handleConfirmPassword(e.target.value, data.password);
               }}
               InputProps={{
                 endAdornment: (
@@ -310,10 +333,10 @@ const Register = () => {
               }}
             />
             <Typography style={AllStyle.textStyle}>
-              Phone Number {importantField()}
+            {config.phone_no} {importantField()}
             </Typography>
             <PhoneStyle
-            style={{marginBottom:!data.mobileNoError?  "16px":0}}
+              style={{ marginBottom: !data.mobileNoError ? "16px" : 0 }}
               data-test-id="txtInputPhonenumber2"
               borderColor={handleColorPhone()}
               className="custominput"
@@ -325,23 +348,23 @@ const Register = () => {
               countries={[]}
               international
             />
- {           data.mobileNoError&& (
-        <Typography
-          style={{ ...AllStyle.errorTextStyle, marginBottom: "16px" }}
-        >
-          {"Please enter a valid phone number"}
-        </Typography>
-      )}
+            {data.mobileNoError && (
+              <Typography
+                style={{ ...AllStyle.errorTextStyle, marginBottom: "16px" }}
+              >
+                {"Please enter a valid phone number"}
+              </Typography>
+            )}
 
             <ButtonStyle
               variant="contained"
               data-test-id="button"
               style={AllStyle.btnStyle}
               onClick={() => {
-                  handleValidation()
+                handleValidation();
               }}
             >
-              Sign up
+         {config.labelTitleSignUp}
             </ButtonStyle>
             <Typography
               data-test-id="button1"
@@ -353,7 +376,7 @@ const Register = () => {
                 color: "#0A2239",
               }}
             >
-              Already have an account?{" "}
+              {config.lable_already_signup}{" "}
               <Link
                 to="/login"
                 style={{
@@ -362,11 +385,10 @@ const Register = () => {
                   textDecoration: "none",
                 }}
               >
-                Log in
+               {config.labelTitle}
               </Link>
             </Typography>
           </SecondBox>
-
         </MainBox>
       </SecondGrid>
     </MainGrid>
@@ -375,7 +397,7 @@ const Register = () => {
 export const PhoneStyle = styled(PhoneInput)(({ borderColor }: any) => ({
   border: `1px solid ${borderColor || "#F87171"}`,
   borderRadius: 8,
- 
+
   height: 41,
   zIndex: 1,
   position: "relative",

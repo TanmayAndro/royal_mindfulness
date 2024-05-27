@@ -3,6 +3,7 @@ import React, { useReducer } from "react";
 import "./Header.css";
 import Login from "../../Pages/Login/login";
 import { Link } from "react-router-dom";
+import { logo } from "../../assests";
 const config = require("../../config");
 
 interface State {
@@ -15,6 +16,7 @@ const Header: React.FC = () => {
     <>
       <Grid container className="main_header_css">
         <Grid item xs={12} md={6} sm={12} lg={6}>
+          <img src={logo} style={{width:'100px'}}/>
         </Grid>
         <Grid item xs={12} md={6} sm={12} lg={6}>
           <Box className="second_grid_css">
