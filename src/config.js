@@ -49,3 +49,87 @@ exports.droplable = "None"
 exports.dropHeading = ['Location', 'Session']
 exports.location = ['NewYork', 'California']
 exports.session = ['1 Session','7 Sessions', '20 Sessions']
+exports.main_heading_login='Login to Royal Mindfulness';
+exports.pricingPlans=[{
+  id:1,title:'Vital Essential',price:"19",month:'Every month',valid:'Valid for 12 months',
+  plans:[
+    {
+      id:1,title:"I'm a Benefit",check:true
+    },
+    {
+      id:1,title:"I'm a Benefit",check:true
+    }
+    ,
+    {
+      id:1,title:"I'm a Benefit",check:true
+    },
+    {
+      id:1,title:"I'm a Benefit",check:false
+    },
+    {
+      id:1,title:"I'm a Benefit",check:true
+    },
+    {
+      id:1,title:"I'm a Benefit",check:true
+    }
+
+  ]
+},
+{
+  id:2,title:'Vital Professional',price:"19",month:'Every month',valid:'Valid for 12 months',
+  plans:[
+    {
+      id:1,title:"I'm a Benefit",check:true
+    },
+    {
+      id:1,title:"I'm a Benefit",check:false
+    }
+    ,
+    {
+      id:1,title:"I'm a Benefit",check:false
+    },
+    {
+      id:1,title:"I'm a Benefit",check:false
+    },
+    {
+      id:1,title:"I'm a Benefit",check:true
+    },
+    {
+      id:1,title:"I'm a Benefit",check:true
+    }
+
+  ]
+},
+
+{
+  id:3,title:'Vital Essential',price:"19",month:'Every month',valid:'Valid for 12 months',
+  plans:[
+    {
+      id:1,title:"I'm a Benefit",check:true
+    },
+    {
+      id:1,title:"I'm a Benefit",check:false
+    }
+    ,
+    {
+      id:1,title:"I'm a Benefit",check:true
+    },
+    {
+      id:1,title:"I'm a Benefit",check:false
+    },
+    {
+      id:1,title:"I'm a Benefit",check:true
+    },
+    {
+      id:1,title:"I'm a Benefit",check:true
+    }
+
+  ]
+}
+]
+
+
+
+//pricing plan label
+exports.pricingPlansLabel='Become a Vital member'
+exports.btn_name='Select'

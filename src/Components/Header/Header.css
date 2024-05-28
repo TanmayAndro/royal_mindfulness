@@ -1,6 +1,6 @@
 .main_header_css {
     padding: 15px;
-    background-color: rgba(7, 79, 87, 1);
+    background-color: #050A44;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,12 +11,17 @@
 font-family: Lato !important;
 font-size: 20px !important;
 font-weight: 600 !important;
-color:white;
+color:rgb(12, 11, 11);
 line-height: 24px !important;
 text-align: left !important;
 text-decoration: none !important;
 text-transform: inherit !important;
 cursor: pointer;
+padding: 10px;
+    width: 130px;
+    border-radius: 8px;
+background-color: #B3B4BD;
+
 }
 
 .second_grid_css{

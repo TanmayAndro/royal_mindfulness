@@ -72,7 +72,7 @@ export const AllStyle = {
     borderRadius: "8px",
     height: "56px",
     lineHeight: "24px",
-    background: "rgba(7, 79, 87, 1)",
+    background: "#050A44",
     textTransform: "inherit" as "inherit",
     color: "white",
     fontFamily: "Lato",
