@@ -1,10 +1,10 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
-import {  MainGrid } from "../Login/login";
+import { MainGrid } from "../Login/login";
 import "../../fonts.css";
 import "./PricingPlans.css";
-import CloseIcon from '@mui/icons-material/Close';
-import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from "@mui/icons-material/Close";
+import CheckIcon from "@mui/icons-material/Check";
 
 const config = require("../../config");
 
@@ -18,7 +18,7 @@ const PricingPlans = () => {
         justifyContent: "center",
         alignItems: "center",
         flexWrap: "wrap",
-        paddingInline:20
+        paddingInline: 20,
       }}
     >
       <Typography
@@ -51,9 +51,7 @@ const PricingPlans = () => {
             price: string;
             valid: string;
             month: string;
-            plans:{id:number;title:string;check:boolean}[
-
-            ]
+            plans: { id: number; title: string; check: boolean }[];
           }) => {
             return (
               <Grid
@@ -91,20 +89,30 @@ const PricingPlans = () => {
                   className="pricing_plan_typography_btn"
                 >
                   {config.btn_name}
-                  
                 </Button>
-                <hr  className="border_color"/>
-                <Box style={{display:'flex',flexDirection:'column',width:'100%',gap:"12px"}}>
-                  {
-                    item.plans.map((item:{title:string;id:number;check:boolean})=>{
-                      const {title,id,check}=item;
-                      return <Typography key={`${id}${check}`} className="subHeadingValid_css">
-{check?<CheckIcon/>:<CloseIcon/>}
-{title}
+                <hr className="border_color" />
+                <Box
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "100%",
+                    gap: "12px",
+                  }}
+                >
+                  {item.plans.map(
+                    (item: { title: string; id: number; check: boolean }) => {
+                      const { title, id, check } = item;
+                      return (
+                        <Typography
+                          key={`${id}${check}`}
+                          className="subHeadingValid_css"
+                        >
+                          {check ? <CheckIcon /> : <CloseIcon />}
+                          {title}
                         </Typography>
-                    })
-                  }
-                  
+                      );
+                    }
+                  )}
                 </Box>
               </Grid>
             );
