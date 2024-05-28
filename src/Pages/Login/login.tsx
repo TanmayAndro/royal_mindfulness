@@ -11,7 +11,7 @@ import {
   Grid,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { email_logo, facebook_logo, google_logo } from "../../assests";
+import {  facebook_logo, google_logo } from "../../assests";
 import { Link } from "react-router-dom";
 const config = require("../../config");
 
@@ -129,7 +129,7 @@ const Login = () => {
   };
   const handlePassword = (value: string) => {
     setData({ ...data, password: value });
-    if (value.trim() == "" || value.length < 8) {
+    if (value.trim() === "" || value.length < 8) {
       setData({ ...data, password: value, passwordError: true });
       return false;
     } else {
@@ -200,8 +200,8 @@ const Login = () => {
                 marginBottom: "10px",
               }}
             >
-              <img src={google_logo} style={{ width: 76 }} />
-              <img src={facebook_logo} style={{ width: 50 }} />
+              <img src={google_logo} style={{ width: 76,cursor:'pointer' }} alt="logo"/>
+              <img src={facebook_logo} style={{ width: 50 ,cursor:'pointer'}} alt="logo"/>
             </Box>
             <Box
               style={{

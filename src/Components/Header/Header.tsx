@@ -1,22 +1,17 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
-import React, { useReducer } from "react";
+import { Box, Grid, Typography } from "@mui/material";
+import React from "react";
 import "./Header.css";
-import Login from "../../Pages/Login/login";
 import { Link } from "react-router-dom";
 import { logo } from "../../assests";
 const config = require("../../config");
 
-interface State {
-  loginOpen: boolean;
-  registerOpen: boolean;
-}
 
 const Header: React.FC = () => {
   return (
     <>
       <Grid container className="main_header_css">
         <Grid item xs={12} md={6} sm={12} lg={6}>
-          <img src={logo} style={{width:'100px'}}/>
+          <img src={logo} style={{width:'80px'}} className="logo_css" alt="logo"/>
         </Grid>
         <Grid item xs={12} md={6} sm={12} lg={6}>
           <Box className="second_grid_css">

@@ -131,7 +131,7 @@ const Register = () => {
   const handlePassword = (value: string, fields: string) => {
     setData({ ...data, [fields]: value });
 
-    if (value.trim() == "" || value.length < 8) {
+    if (value.trim() === "" || value.length < 8) {
       setData({ ...data, [fields]: value, [`${[fields]}Error`]: true });
       handleConfirmPassword(data.setPassword, value);
       return true;
@@ -212,8 +212,8 @@ const Register = () => {
                 marginBottom: "10px",
               }}
             >
-              <img src={google_logo} style={{ width: 76 }} />
-              <img src={facebook_logo} style={{ width: 50 }} />
+              <img src={google_logo} style={{ width: 76 ,cursor:'pointer'}} alt="logo"/>
+              <img src={facebook_logo} style={{ width: 50 ,cursor:'pointer'}} alt="logo" />
             </Box>
             <Box
               style={{
