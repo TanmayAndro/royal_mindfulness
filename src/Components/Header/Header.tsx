@@ -25,6 +25,11 @@ const Header: React.FC = () => {
               {config.register_button_name}
             </Typography>
             </Link>
+            <Link to="/session" className="button_login_css">
+            <Typography className="button_login_css">
+              {config.dropHeading[1]}
+            </Typography>
+            </Link>
           </Box>
         </Grid>
       </Grid>

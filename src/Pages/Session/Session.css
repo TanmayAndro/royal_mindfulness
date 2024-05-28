@@ -1,0 +1,19 @@
+.heading-container{
+    padding-top: 10px;
+    margin-left: 30px;
+}
+
+.divider{
+    width: 95%;
+}
+.filter-container{
+    margin-top: 10px;
+    margin-left: 30px;
+    display: flex;
+}
+.calander-container{
+  display: flex;
+  justify-content: flex-start; 
+  padding: 10px;
+
+}
