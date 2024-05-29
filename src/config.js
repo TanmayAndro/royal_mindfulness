@@ -42,13 +42,7 @@ exports.confirm_password='Confirm Password';
 exports.phone_no='Phone Number';
 exports.lable_already_signup='Already have an account?'
 exports.main_heading_login='Login to Royal Mindfulness'
-exports.heading="Service Name"
-exports.subHeading = "Checkout our availability and book the date and time that works for you."
-exports.filterHeading = "Filter By"
-exports.droplable = "None"
-exports.dropHeading = ['Location', 'Session']
-exports.location = ['NewYork', 'California']
-exports.session = ['1 Session','7 Sessions', '20 Sessions']
+
 exports.main_heading_login='Login to Royal Mindfulness';
 exports.pricingPlans=[{
   id:1,title:'Vital Essential',price:"19",month:'Every month',valid:'Valid for 12 months',
@@ -129,6 +123,23 @@ exports.pricingPlans=[{
 ]
 
 
+//session 
+exports.heading="Service Name"
+exports.subHeading = "Checkout our availability and book the date and time that works for you."
+exports.filterHeading = "Filter By"
+exports.droplable = "None"
+exports.dropHeading = ['Location', 'Session']
+exports.location = ['NewYork', 'California']
+exports.session = ['1 Session','7 Sessions', '20 Sessions']
+exports.buttonTime = [
+  {start:'10 AM',end:'11 AM'},
+  {start:'12 AM',end:'1 AM'},
+  {start:'2 AM',end:'3 AM'},
+  {start:'4 AM',end:'5 AM'},
+  {start:'6 AM',end:'7 AM'},
+  {start:'8 AM',end:'9 AM'},
+ 
+]
 
 //pricing plan label
 exports.pricingPlansLabel='Become a Vital member'

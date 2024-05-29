@@ -26,9 +26,9 @@ const Header: React.FC = () => {
             </Button>
             </Link>
             <Link to="/session" className="button_login_css">
-            <Typography className="button_login_css">
+            <Button className="button_login_css" color="inherit">
               {config.dropHeading[1]}
-            </Typography>
+            </Button>
             </Link>
           </Box>
         </Grid>

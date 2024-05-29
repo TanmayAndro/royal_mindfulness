@@ -10,10 +10,21 @@
     margin-top: 10px;
     margin-left: 30px;
     display: flex;
+    margin-bottom: 10px;
 }
 .calander-container{
   display: flex;
-  justify-content: flex-start; 
+  margin-top: 10px;
   padding: 10px;
 
+}
+.calander{
+    padding: 5px;
+}
+.time-comtainer{
+    display: flex;
+    justify-content: space-around;
+}
+:focus-visible {
+    outline: none;
 }

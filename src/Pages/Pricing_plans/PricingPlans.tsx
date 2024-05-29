@@ -24,11 +24,12 @@ const PricingPlans = () => {
       <Typography
         style={{
           fontFamily: "Inter",
-          fontSize: "60px",
+          fontSize: "40px",
           fontWeight: 700,
           lineHeight: "44px",
           letterSpacing: "0.02em",
           color: "#050A44",
+          marginTop:"30px"
         }}
       >
         {config.pricingPlansLabel}
@@ -41,7 +42,7 @@ const PricingPlans = () => {
           justifyContent: "center",
           alignItems: "center",
           flexWrap: "wrap",
-          marginTop: "20px",
+          marginTop: "23px",
         }}
       >
         {config.pricingPlans.map(
