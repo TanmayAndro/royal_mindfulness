@@ -42,6 +42,7 @@ exports.confirm_password='Confirm Password';
 exports.phone_no='Phone Number';
 exports.lable_already_signup='Already have an account?'
 exports.main_heading_login='Login to Royal Mindfulness';
+exports.main_heading='Royal Mindfulness';
 exports.pricingPlans=[{
   id:1,title:'Vital Essential',price:"19",month:'Every month',valid:'Valid for 12 months',
   plans:[

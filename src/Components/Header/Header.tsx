@@ -3,6 +3,7 @@ import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { logo } from "../../assests";
+import Logo_part from "../Logo_part";
 const config = require("../../config");
 
 
@@ -10,10 +11,8 @@ const Header: React.FC = () => {
   return (
     <>
       <Grid container className="main_header_css">
-        <Grid item xs={12} md={6} sm={12} lg={6}>
-          <img src={logo} style={{width:'80px'}} alt="logo"/>
-        </Grid>
-        <Grid item xs={12} md={6} sm={12} lg={6}>
+       <Logo_part/>
+        <Grid item xs={12} md={8} sm={12} lg={8}>
           <Box className="second_grid_css">
             <Link to="/login"  className="button_login_css">
             <Button className="button_login_css" color="inherit">

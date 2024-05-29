@@ -3,6 +3,7 @@ import React from "react";
 import { MainGrid } from "../Login/login";
 import "../../fonts.css";
 import "./PricingPlans.css";
+import { AllStyle } from "../Login/login";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
 
@@ -18,19 +19,15 @@ const PricingPlans = () => {
         justifyContent: "center",
         alignItems: "center",
         flexWrap: "wrap",
+        height:'100%',
         paddingInline: 20,
+        paddingBlock:60,
+  maxHeight:'unset',
+
       }}
     >
       <Typography
-        style={{
-          fontFamily: "Inter",
-          fontSize: "40px",
-          fontWeight: 700,
-          lineHeight: "44px",
-          letterSpacing: "0.02em",
-          color: "#050A44",
-          marginTop:"30px"
-        }}
+        style={{...AllStyle.heading,marginBottom:'50px'}}
       >
         {config.pricingPlansLabel}
       </Typography>
@@ -68,7 +65,7 @@ const PricingPlans = () => {
                   alignItems: "center",
                   display: "flex",
                   flexDirection: "column",
-                  gap: 30,
+                  gap: 20,
                 }}
               >
                 <Typography className="pricing_plan_typography_css">
@@ -97,7 +94,7 @@ const PricingPlans = () => {
                     display: "flex",
                     flexDirection: "column",
                     width: "100%",
-                    gap: "12px",
+                    gap: "10px",
                   }}
                 >
                   {item.plans.map(

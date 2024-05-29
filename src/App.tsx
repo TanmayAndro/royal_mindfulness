@@ -5,6 +5,7 @@ import Login from './Pages/Login/login';
 import Register from './Pages/Register/Register';
 import PricingPlans from './Pages/Pricing_plans/PricingPlans';
 import './fonts.css'; 
+import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/pricing-plans" element={<PricingPlans />} />
       </Routes>
+      <Footer/>
     </Router>
     
   );
