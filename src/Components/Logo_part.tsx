@@ -6,7 +6,7 @@ const config=require('../config')
 
 const Logo_part = () => {
   return (
-    <Grid item xs={4} md={4} sm={4} lg={4}>
+    <Grid item xs={12} md={3} sm={12} lg={2}>
 
       <Link to='/login' style={{textDecoration:'none'}}>
       <Box style={{display:'flex',flexDirection:'row',alignItems:'center'}} className='main_heading_css'>
