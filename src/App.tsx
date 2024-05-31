@@ -6,6 +6,7 @@ import Register from './Pages/Register/Register';
 import PricingPlans from './Pages/Pricing_plans/PricingPlans';
 import './fonts.css'; 
 import Footer from './Components/Footer';
+import FAQ from './Pages/FAQ/faq';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/pricing-plans" element={<PricingPlans />} />
+        <Route path="/faq" element={<FAQ />} />
       </Routes>
       <Footer/>
     </Router>
