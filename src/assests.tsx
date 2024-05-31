@@ -1,5 +1,9 @@
 export const facebook_logo=require("./Assests/facebook1.png");
 export const google_logo=require("./Assests/google1.png");
 export const email_logo=require("./Assests/email.png");
-export const logo=require('./Assests/logo.jpeg')
-export const royal_logo=require('./Assests/royal_logo.png')
+export const logo=require('./Assests/logo.png')
+export const royal_logo=require('./Assests/login_img.jpg')
+export const facebook_item=require('./Assests/facebook_item.png')
+export const insta=require('./Assests/image_Insta.png')
+export const linkdin =require('./Assests/linkdin.png')
+export const gmail =require('./Assests/Email.png')

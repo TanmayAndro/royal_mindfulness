@@ -8,12 +8,14 @@ import {
   ButtonStyle,
   AllStyle,
   SecondBox,
+  FirstBOx,
 } from "../Login/login";
 import { Link } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import "react-phone-number-input/style.css";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
-import { facebook_logo, google_logo } from "../../assests";
+import { facebook_logo, google_logo, royal_logo } from "../../assests";
+import Login_register_firstPart from "../../Components/login_register_firstPart";
 const config = require("../../config");
 const Register = () => {
   const [data, setData] = useState({
@@ -186,12 +188,13 @@ const Register = () => {
 
   return (
     <MainGrid container>
+         <Login_register_firstPart/>
       <SecondGrid
         item
         xs={12}
         sm={12}
-        md={12}
-        lg={12}
+        md={6}
+        lg={6}
         style={{ display: "flex", justifyContent: "center" }}
       >
         <MainBox>

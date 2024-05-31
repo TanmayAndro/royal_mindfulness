@@ -11,8 +11,9 @@ import {
   Grid,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import {  facebook_logo, google_logo } from "../../assests";
+import { facebook_logo, google_logo, logo, royal_logo } from "../../assests";
 import { Link } from "react-router-dom";
+import Login_register_firstPart from "../../Components/login_register_firstPart";
 const config = require("../../config");
 
 export const SecondBox = styled(Box)({
@@ -31,6 +32,13 @@ export const ButtonStyle = styled(Button)({
   minWidth: "360px",
   "@media (max-width:380px)": {
     minWidth: "200px",
+  },
+});
+export const FirstBOx = styled(Grid)({
+  display: "flex",
+
+  "@media (max-width:899px)": {
+    display: "none",
   },
 });
 
@@ -139,52 +147,55 @@ const Login = () => {
   };
   const handleEmail = (value: string) => {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (value === "") {
-      setData({
-        ...data,
-        emailError: true,
+    if (!value) {
+      setData((prev) => ({
+        ...prev,
         email: value,
-        emailErrorMessage: "enter a value",
-      });
+        emailError: true,
+        emailErrorMessage: "Enter a value",
+      }));
       return false;
-    } else if (!value.match(emailPattern)) {
-      setData({
-        ...data,
-        emailError: true,
+    } else if (!emailPattern.test(value)) {
+      setData((prev) => ({
+        ...prev,
         email: value,
+        emailError: true,
         emailErrorMessage: "Email does not exist",
-      });
+      }));
       return false;
     } else {
-      setData({
-        ...data,
-        emailError: false,
+      setData((prev) => ({
+        ...prev,
         email: value,
+        emailError: false,
         emailErrorMessage: "",
-      });
+      }));
       return true;
     }
   };
   const handleValidtion = () => {
-    const resultEmail = handleEmail(data.email);
     const resultPassword = handlePassword(data.password);
+    const resultEmail = handleEmail(data.email);
+    console.log(resultEmail, resultPassword);
+
     if (resultEmail && resultPassword) {
       //  this.getLoginApiFunction()
     }
   };
   return (
     <MainGrid container>
+    <Login_register_firstPart/>
       <SecondGrid
         item
         xs={12}
         sm={12}
-        md={12}
-        lg={12}
+        md={6}
+        lg={6}
         style={{ display: "flex", justifyContent: "center" }}
       >
         <MainBox>
           <Typography style={AllStyle.heading}>
-          {config.main_heading_login}
+            {config.main_heading_login}
           </Typography>
           <SecondBox style={AllStyle.secondBox}>
             <Typography style={AllStyle.smallHeading}>
@@ -200,8 +211,16 @@ const Login = () => {
                 marginBottom: "10px",
               }}
             >
-              <img src={google_logo} style={{ width: 76,cursor:'pointer' }} alt="logo"/>
-              <img src={facebook_logo} style={{ width: 50 ,cursor:'pointer'}} alt="logo"/>
+              <img
+                src={google_logo}
+                style={{ width: 76, cursor: "pointer" }}
+                alt="logo"
+              />
+              <img
+                src={facebook_logo}
+                style={{ width: 50, cursor: "pointer" }}
+                alt="logo"
+              />
             </Box>
             <Box
               style={{
@@ -219,15 +238,17 @@ const Login = () => {
               variant="outlined"
               data-test-id="emailtest"
               value={data.email}
-              onChange={(e: any) => {
+              onChange={(e) => {
                 handleEmail(e.target.value);
               }}
               helperText={data.emailError && data.emailErrorMessage}
             />
-            <Typography style={AllStyle.textStyle}>{config.passowrd}</Typography>
+            <Typography style={AllStyle.textStyle}>
+              {config.password}
+            </Typography>
             <InputField
               error={data.passwordError}
-              helperText={data.passwordError &&config.error_msg}
+              helperText={data.passwordError && config.error_msg}
               style={{ marginBottom: "12px" }}
               placeholder={config.placeHolderPassword}
               data-test-id="txtInputPassword"
@@ -306,8 +327,13 @@ export const DiologStyle = styled(Dialog)({
   },
 });
 export const MainGrid = styled(Grid)({
-  minHeight: "calc(100vh - 287px)",
-
+  minHeight: "calc(100vh - 180px)",
+  maxHeight: "calc(100vh - 180px)",
+height:'100vh',
+"@media (max-width:899px)": {
+  maxHeight:'unset',
+  height:'100%'
+},
   "@media (max-width:722px)": {
     marginTop: "20px",
   },
@@ -328,8 +354,9 @@ export const MainBox = styled(Box)({
   },
 });
 export const SecondGrid = styled(Grid)({
+  overflowY:'scroll',height: 'calc(100vh - 180px)',
   "&::-webkit-scrollbar": {
-    width: "2px",
+    width: "4px",
   },
   "&::-webkit-scrollbar-track": {
     "-webkit-box-shadow": "inset 0 0 6px rgba(0,0,0,0.00)",
@@ -339,7 +366,7 @@ export const SecondGrid = styled(Grid)({
     backgroundColor: "#848FAC80",
     borderRadius: "10px",
   },
-  "@media (max-width:959px)": {
+  "@media (max-width:899px)": {
     height: "unset",
     overflowY: "unset",
   },

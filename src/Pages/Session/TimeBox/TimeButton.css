@@ -1,6 +1,6 @@
 .button {
   font-family: Lato !important;
-  font-size: 20px !important;
+  font-size: 16px !important;
   font-weight: 600 !important;
   line-height: 24px !important;
   text-align: left !important;
@@ -12,17 +12,24 @@
   width: 170px;
   height: 45px;
   border-radius: 8px;
-  border-color:  #050A44 ;
-  background-color: white !;
+  background-color: white !important;
   margin: 5px 5px; 
 }
-.button-outer{
-  display:flex;
-  gap : 10px;
-  flex-direction:column;
+.button:hover {
+  background-color: #050A44 !important;
+  color: white !important;
 }
-.button-inner{
-  display:flex;
-  flex-direction:row;
-  gap:10px;
+.selected {
+  background-color: #050A44 !important;
+  color: white !important;
+}
+.button-outer {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+.button-inner {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }

@@ -1,32 +1,44 @@
-import React from 'react';
-import '../../../Components/Header/Header.css'
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
-import './TimeButton.css'
-import { Box } from '@mui/material';
+import './TimeButton.css';
+import { Box, Typography } from '@mui/material';
 const config = require("../../../config");
 
 const TimeButton = () => {
+  const [selectedButtonValue, setSelectedButtonValue] = useState<string | null>(null);
+
+  const handleClick = (value: string) => {
+    setSelectedButtonValue(value);
+    console.log(value);
+  };
+
   return (
     <div className='time-button'>
-       <h4>Select Time</h4>
-       <Box  className="button-outer">
-      {config.buttonTime.map((item : {start:string,end:string},index :number)=>{
-       return( 
-        <Box className='button-inner' >
-          <Button variant='contained' className="button" color="inherit">
-       {item.start}
-     </Button>
-     <Button variant='contained' className="button" color="inherit">
-       {item.end}
-     </Button>
+      <Typography sx={{padding: '5px',fontSize:'22px', fontWeight:'bold'}}> Select Time </Typography>
+      <Box className="button-outer">
+        {config.buttonTime.map((item : any, index : any) => (
+          <Box className='button-inner' key={index}>
+            <Button
+              variant='contained'
+              className={`button ${selectedButtonValue === item.start ? 'selected' : ''}`}
+              color="inherit"
+              onClick={() => handleClick(item.start)}
+            >
+              {item.start}
+            </Button>
+            <Button
+              variant='contained'
+              className={`button ${selectedButtonValue === item.end ? 'selected' : ''}`}
+              color="inherit"
+              onClick={() => handleClick(item.end)}
+            >
+              {item.end}
+            </Button>
           </Box>
-       );
-      })}
-       </Box>
-      
-      
+        ))}
+      </Box>
     </div>
-  )
-}
+  );
+};
 
-export default TimeButton
+export default TimeButton;

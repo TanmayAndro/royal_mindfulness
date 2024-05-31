@@ -1,5 +1,17 @@
+.main{
+    min-height: calc(100vh - 180px);
+}
+@media(max-width:900px){
+    .main{
+        min-height: unset
+    }
+}
+
 .heading-container{
-    padding-top: 10px;
+    padding-top: 50px;
+    display :flex;
+    flex-direction: column;
+    gap:20px;
     margin-left: 30px;
 }
 
@@ -16,15 +28,11 @@
   display: flex;
   margin-top: 10px;
   padding: 10px;
-
 }
 .calander{
     padding: 5px;
 }
-.time-comtainer{
-    display: flex;
-    justify-content: space-around;
-}
+
 :focus-visible {
     outline: none;
 }
