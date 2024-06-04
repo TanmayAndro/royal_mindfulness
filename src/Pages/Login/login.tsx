@@ -244,7 +244,7 @@ const Login = () => {
               helperText={data.emailError && data.emailErrorMessage}
             />
             <Typography style={AllStyle.textStyle}>
-              {config.passowrd}
+              {config.password}
             </Typography>
             <InputField
               error={data.passwordError}

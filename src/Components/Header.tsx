@@ -41,6 +41,11 @@ return <Link to={link} style={{textDecoration:'none'}} key={`${index}`}>
               {config.register_button_name}
             </Button>
             </Link>
+            {/* <Link to="/session" className="button_login_css">
+            <Button className="button_login_css" color="inherit">
+              {config.dropHeading[1]}
+            </Button>
+            </Link> */}
           </Box>
         </Grid>
       </Grid>
