@@ -29,19 +29,28 @@ const Session = () => {
   const [session, setSession] = React.useState("");
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedOption, setSelectedOption] = useState("");
-  const buttonRef = useRef(null);
 
-  const options = ["New York", "California"];
+
+const buttonRef = useRef<HTMLButtonElement>(null);
+
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
+  const handleSessionClick = (event: any) => {
+    setAnchorEl(event.currentTarget);
+  };
+
 
   const handleClose = () => {
     setAnchorEl(null);
   };
 
   const handleSelect = (option: any) => {
+    setSelectedOption(option);
+    setAnchorEl(null);
+  };
+  const handleSessionTIme =(option: any) => {
     setSelectedOption(option);
     setAnchorEl(null);
   };
@@ -67,8 +76,8 @@ const Session = () => {
           </Typography>
           <Divider className="divider" />
         </div>
-        {/* <div className="calander-container">
-          <div style={{ position: "relative" }}>
+         <div className="filter-container">
+        
             <Button
               variant="contained"
               ref={buttonRef}
@@ -79,28 +88,66 @@ const Session = () => {
                 color: selectedOption ? "white" : undefined,
                 width:'200px',
                 height: '55px',
-                backgroundColor: "red !important"
+                backgroundColor: "green !important"
               }}
               onClick={handleClick}
             >
-              {selectedOption || "Animal Type"}
+              {selectedOption || "Location"}
             </Button>
             <Menu
               id="menu-list-grow"
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
               onClose={handleClose}
-             
+              MenuListProps={{
+                style: {
+                  width: buttonRef.current ? buttonRef.current.offsetWidth : undefined
+                }
+              }}
             >
-              {options.map((option) => (
+              {config.options.map((option : any) => (
                 <MenuItem key={option} onClick={() => handleSelect(option)}>
                   {option}
                 </MenuItem>
               ))}
             </Menu>
-          </div>
-        </div> */}
-     
+            {/* Second Button */}
+            <Button
+              variant="contained"
+              ref={buttonRef}
+              aria-haspopup="true"
+              aria-controls={Boolean(anchorEl) ? "menu-list-grow" : undefined}
+              style={{
+                background: selectedOption ? "#050A44 !important" : undefined,
+                color: selectedOption ? "white" : undefined,
+                width:'200px',
+                height: '55px',
+                backgroundColor: "green !important"
+              }}
+              onClick={handleSessionClick}
+            >
+              {selectedOption || "Session"}
+            </Button>
+            <Menu
+              id="menu-list-grow"
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+              MenuListProps={{
+                style: {
+                  width: buttonRef.current ? buttonRef.current.offsetWidth : undefined
+                }
+              }}
+            >
+               {config.sessionsTime.map((option : any) => (
+                <MenuItem key={option} onClick={() => handleSessionTIme(option)}>
+                  {option}
+                </MenuItem>
+              ))}
+            </Menu>
+        
+        </div> 
+      
         <Grid container spacing={10}>
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <Box

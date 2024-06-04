@@ -147,8 +147,9 @@ exports.buttonTime = [
   {start:'4 AM',end:'5 AM'},
   {start:'6 AM',end:'7 AM'},
   {start:'8 AM',end:'9 AM'},
- 
 ]
+exports.options = ["New York", "California"];
+exports.sessionsTime = ['1 Session','7 Session','20 Session',]
 
 //pricing plan label
 exports.pricingPlansLabel='Become a Vital member'
