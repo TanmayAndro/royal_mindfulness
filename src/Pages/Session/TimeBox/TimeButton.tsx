@@ -20,17 +20,17 @@ const TimeButton = () => {
           <Box className='button-inner' key={index}>
             <Button
               variant='contained'
-              className={`button ${selectedButtonValue === item.start ? 'selected' : ''}`}
+              className={`button ${selectedButtonValue === index ? 'selected' : ''}`}
               color="inherit"
-              onClick={() => handleClick(item.start)}
+              onClick={() => handleClick(index)}
             >
               {item.start}
             </Button>
             <Button
               variant='contained'
-              className={`button ${selectedButtonValue === item.end ? 'selected' : ''}`}
+              className={`button ${selectedButtonValue === index ? 'selected' : ''}`}
               color="inherit"
-              onClick={() => handleClick(item.end)}
+              onClick={() => handleClick(index)}
             >
               {item.end}
             </Button>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./login.css";
 import Typography from "@mui/material/Typography";
 import {
@@ -11,9 +11,11 @@ import {
   Grid,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { facebook_logo, google_logo, logo, royal_logo } from "../../assests";
+import { facebook_logo, google_logo } from "../../assests";
 import { Link } from "react-router-dom";
 import Login_register_firstPart from "../../Components/login_register_firstPart";
+import { APIcontext } from "../../API/createContext";
+
 const config = require("../../config");
 
 export const SecondBox = styled(Box)({
@@ -34,6 +36,7 @@ export const ButtonStyle = styled(Button)({
     minWidth: "200px",
   },
 });
+
 export const FirstBOx = styled(Grid)({
   display: "flex",
 
@@ -124,6 +127,8 @@ export const AllStyle = {
 };
 
 const Login = () => {
+  const loginAPI = useContext(APIcontext);
+  console.log("api function...", loginAPI);
   const [data, setData] = useState({
     email: "",
     emailError: false,
@@ -179,12 +184,12 @@ const Login = () => {
     console.log(resultEmail, resultPassword);
 
     if (resultEmail && resultPassword) {
-      //  this.getLoginApiFunction()
+      loginAPI.fetchLogin(data.email, data.password);
     }
   };
   return (
     <MainGrid container>
-    <Login_register_firstPart/>
+      <Login_register_firstPart />
       <SecondGrid
         item
         xs={12}
@@ -329,11 +334,11 @@ export const DiologStyle = styled(Dialog)({
 export const MainGrid = styled(Grid)({
   minHeight: "calc(100vh - 180px)",
   maxHeight: "calc(100vh - 180px)",
-height:'100vh',
-"@media (max-width:899px)": {
-  maxHeight:'unset',
-  height:'100%'
-},
+  height: "100vh",
+  "@media (max-width:899px)": {
+    maxHeight: "unset",
+    height: "100%",
+  },
   "@media (max-width:722px)": {
     marginTop: "20px",
   },
@@ -354,7 +359,8 @@ export const MainBox = styled(Box)({
   },
 });
 export const SecondGrid = styled(Grid)({
-  overflowY:'scroll',height: 'calc(100vh - 180px)',
+  overflowY: "scroll",
+  height: "calc(100vh - 180px)",
   "&::-webkit-scrollbar": {
     width: "4px",
   },
