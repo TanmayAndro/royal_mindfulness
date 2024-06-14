@@ -55,17 +55,17 @@ const buttonRef = useRef<HTMLButtonElement>(null);
     setAnchorEl(null);
   };
 
-  // const handleChange = (event: SelectChangeEvent) => {
-  //   setLocation(event.target.value);
-  // };
+  const handleChange = (event: SelectChangeEvent) => {
+    setLocation(event.target.value);
+  };
 
-  // const handleSessionChange = (event: SelectChangeEvent) => {
-  //   setSession(event.target.value);
-  // };
+  const handleSessionChange = (event: SelectChangeEvent) => {
+    setSession(event.target.value);
+  };
 
-  // const disablePastDates = (date: Dayjs) => {
-  //   return dayjs(date).isBefore(dayjs(), "day");
-  // };
+  const disablePastDates = (date: Dayjs) => {
+    return dayjs(date).isBefore(dayjs(), "day");
+  };
 
   return (
     <div className="main"> 
