@@ -1,6 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import "./login.css";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Dialog,
@@ -14,7 +15,9 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { facebook_logo, google_logo } from "../../assests";
 import { Link } from "react-router-dom";
 import Login_register_firstPart from "../../Components/login_register_firstPart";
-import { APIcontext } from "../../API/createContext";
+import axios from "axios";
+import { loginApi } from "../../API/ApiConfig";
+import AlertComponent from "../../Components/alert";
 
 const config = require("../../config");
 
@@ -127,8 +130,26 @@ export const AllStyle = {
 };
 
 const Login = () => {
-  const loginAPI = useContext(APIcontext);
-  console.log("api function...", loginAPI);
+  const navigate = useNavigate();
+  const [errorData, setErrorData] = useState("");
+  const fetchLogin = async (email:string, password:string) => {
+    const data = {
+      user: {
+        email: email,
+        password: password,
+      },
+    };
+
+    try {
+      console.log(process.env.REACT_APP_BASE_URL);
+      
+      const response = await axios.post(process.env.REACT_APP_BASE_URL + loginApi,data);
+      navigate("pricing-plans")
+    } catch (err:any) {
+      setErrorData(err?.response?.data?.message);
+    }
+  };
+
   const [data, setData] = useState({
     email: "",
     emailError: false,
@@ -184,11 +205,15 @@ const Login = () => {
     console.log(resultEmail, resultPassword);
 
     if (resultEmail && resultPassword) {
-      loginAPI.fetchLogin(data.email, data.password);
+      fetchLogin(data.email, data.password);
     }
   };
+  const handleClose=()=>{
+    setErrorData("")
+  }
   return (
     <MainGrid container>
+      {errorData!="" && <AlertComponent errorData={errorData} handleClose={handleClose} type={"error"}/>}
       <Login_register_firstPart />
       <SecondGrid
         item

@@ -1,5 +1,5 @@
 import { Typography, Box, IconButton, styled } from "@mui/material";
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   MainGrid,
   SecondGrid,
@@ -8,16 +8,52 @@ import {
   ButtonStyle,
   AllStyle,
   SecondBox,
-  FirstBOx,
 } from "../Login/login";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import "react-phone-number-input/style.css";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
-import { facebook_logo, google_logo, royal_logo } from "../../assests";
+import { facebook_logo, google_logo } from "../../assests";
 import Login_register_firstPart from "../../Components/login_register_firstPart";
+import axios from "axios";
+import { signupApi } from "../../API/ApiConfig";
+import AlertComponent from "../../Components/alert";
 const config = require("../../config");
+
+
+
 const Register = () => {
+  const navigate = useNavigate();
+  const [errorData, setErrorData] = useState("");
+  const fetchSignup = async (
+    email: string,
+    password: string,
+    newPassword: string,
+    mobileNO: string,
+    firstName: string,
+    lastName: string
+  ) => {
+    console.log("API CALLING.....");
+
+    const data = {
+      user: {
+        first_name: firstName,
+        last_name: lastName,
+        phone_number: mobileNO,
+        email: email,
+        password: password,
+        password_confirmation: newPassword,
+      },
+    };
+
+    try {
+      const response = await axios.post(process.env.BASE_URL + signupApi, data);
+      navigate("pricing-plans");
+    } catch (err: any) {
+      console.log(err?.response?.data?.errors[0].account);
+      setErrorData(err?.response?.data?.errors[0].account);
+    }
+  };
   const [data, setData] = useState({
     email: "",
     firstName: "",
@@ -42,7 +78,7 @@ const Register = () => {
         ...data,
         emailError: true,
         email: value,
-        emailErrorMessage:config.error_msg,
+        emailErrorMessage: config.error_msg,
       });
       return true;
     } else if (!value.match(emailPattern)) {
@@ -131,9 +167,12 @@ const Register = () => {
     return errorMessage !== "";
   };
   const handlePassword = (value: string, fields: string) => {
+    const passwordPattern =
+      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
     setData({ ...data, [fields]: value });
 
-    if (value.trim() === "" || value.length < 8) {
+    if (value.trim() === "" || !passwordPattern.test(value)) {
       setData({ ...data, [fields]: value, [`${[fields]}Error`]: true });
       handleConfirmPassword(data.setPassword, value);
       return true;
@@ -143,6 +182,7 @@ const Register = () => {
       return false;
     }
   };
+
   const handleValidation = () => {
     const emailError = handleEmail(data.email);
     const firstNameError = handleValidationFirstLast(
@@ -171,7 +211,6 @@ const Register = () => {
       setPasswordError,
     };
 
-    // Set the errors in the state
     setData({
       ...data,
       emailError,
@@ -181,14 +220,39 @@ const Register = () => {
       passwordError,
       setPasswordError,
     });
-
-    // Log errors for debugging
     console.log(errors);
+    if (
+      !errors.emailError &&
+      !errors.firstNameError &&
+      !errors.lastNameError &&
+      !errors.mobileNoError &&
+      !errors.passwordError &&
+      !errors.setPasswordError
+    ) {
+      fetchSignup(
+        data.email,
+        data.password,
+        data.setPassword,
+        data.mobileNo,
+        data.firstName,
+        data.lastName
+      );
+    }
   };
-
+  const handleClose = () => {
+    setErrorData("");
+  };
   return (
     <MainGrid container>
-         <Login_register_firstPart/>
+      <Login_register_firstPart />
+      {errorData != "" && (
+        <AlertComponent
+          errorData={errorData}
+          handleClose={handleClose}
+          type={"error"}
+        />
+      )}
+
       <SecondGrid
         item
         xs={12}
@@ -215,8 +279,16 @@ const Register = () => {
                 marginBottom: "10px",
               }}
             >
-              <img src={google_logo} style={{ width: 76 ,cursor:'pointer'}} alt="logo"/>
-              <img src={facebook_logo} style={{ width: 50 ,cursor:'pointer'}} alt="logo" />
+              <img
+                src={google_logo}
+                style={{ width: 76, cursor: "pointer" }}
+                alt="logo"
+              />
+              <img
+                src={facebook_logo}
+                style={{ width: 50, cursor: "pointer" }}
+                alt="logo"
+              />
             </Box>
             <Box
               style={{
@@ -253,7 +325,7 @@ const Register = () => {
                 handleValidationFirstLast("firstName", e.target.value, 20);
               }}
               error={data.firstNameError}
-              helperText={data.firstNameError &&config.error_msg}
+              helperText={data.firstNameError && config.error_msg}
             />
 
             <Typography style={AllStyle.textStyle}>
@@ -267,7 +339,7 @@ const Register = () => {
               variant="outlined"
               error={data.lastNameError}
               value={data.lastName}
-              helperText={data.lastNameError &&config.error_msg}
+              helperText={data.lastNameError && config.error_msg}
               data-test-id="lstname"
             />
 
@@ -276,7 +348,7 @@ const Register = () => {
             </Typography>
             <InputField
               error={data.passwordError}
-              helperText={data.passwordError &&config.error_msg}
+              helperText={data.passwordError && config.error_msg}
               style={{ marginBottom: "12px" }}
               placeholder={config.placeHolderPassword}
               data-test-id="txtInputPassword"
@@ -302,7 +374,7 @@ const Register = () => {
               }}
             />
             <Typography style={AllStyle.textStyle}>
-            {config.confirm_password} {importantField()}
+              {config.confirm_password} {importantField()}
             </Typography>
             <InputField
               error={data.setPasswordError}
@@ -336,7 +408,7 @@ const Register = () => {
               }}
             />
             <Typography style={AllStyle.textStyle}>
-            {config.phone_no} {importantField()}
+              {config.phone_no} {importantField()}
             </Typography>
             <PhoneStyle
               style={{ marginBottom: !data.mobileNoError ? "16px" : 0 }}
@@ -367,7 +439,7 @@ const Register = () => {
                 handleValidation();
               }}
             >
-         {config.labelTitleSignUp}
+              {config.labelTitleSignUp}
             </ButtonStyle>
             <Typography
               data-test-id="button1"
@@ -388,7 +460,7 @@ const Register = () => {
                   textDecoration: "none",
                 }}
               >
-               {config.labelTitle}
+                {config.labelTitle}
               </Link>
             </Typography>
           </SecondBox>
