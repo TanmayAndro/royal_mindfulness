@@ -48,7 +48,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(process.env.BASE_URL + signupApi, data);
-      navigate("pricing-plans");
+      navigate("/pricing-plans");
     } catch (err: any) {
       console.log(err?.response?.data?.errors[0].account);
       setErrorData(err?.response?.data?.errors[0].account);

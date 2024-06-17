@@ -144,7 +144,7 @@ const Login = () => {
       console.log(process.env.REACT_APP_BASE_URL);
       
       const response = await axios.post(process.env.REACT_APP_BASE_URL + loginApi,data);
-      navigate("pricing-plans")
+      navigate("/pricing-plans")
     } catch (err:any) {
       setErrorData(err?.response?.data?.message);
     }
