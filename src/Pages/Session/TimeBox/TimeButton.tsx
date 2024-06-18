@@ -5,8 +5,6 @@ import { Box, Typography } from '@mui/material';
 const config = require("../../../config");
 
 const TimeButton = ({selectedTime,onTimeSelect}:any) => {
-  const [selectedButtonValue, setSelectedButtonValue] = useState<string | null>(null);
-
 
   return (
     <div className='time-button'>
@@ -16,7 +14,7 @@ const TimeButton = ({selectedTime,onTimeSelect}:any) => {
           <Box className='button-inner' key={index}>
             <Button
               variant='contained'
-              className={`button ${selectedButtonValue === index ? 'selected' : ''}`}
+              className={`button ${selectedTime === index ? 'selected' : ''}`}
               color="inherit"
               onClick={() => onTimeSelect(index)}
             >
@@ -24,7 +22,7 @@ const TimeButton = ({selectedTime,onTimeSelect}:any) => {
             </Button>
             <Button
               variant='contained'
-              className={`button ${selectedButtonValue === index ? 'selected' : ''}`}
+              className={`button ${selectedTime === index ? 'selected' : ''}`}
               color="inherit"
               onClick={() => onTimeSelect(index)}
             >
