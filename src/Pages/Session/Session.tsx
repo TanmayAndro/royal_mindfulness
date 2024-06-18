@@ -3,189 +3,227 @@ import "./Session.css";
 import { LocalizationProvider } from "@mui/x-date-pickers-pro/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
-
 import {
   Box,
   Button,
   Divider,
-  FormControl,
   Grid,
-  InputLabel,
   Menu,
   MenuItem,
-  Select,
-  SelectChangeEvent,
-  ThemeProvider,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
   Typography,
-  createTheme,
 } from "@mui/material";
 import { DateCalendar } from "@mui/x-date-pickers-pro";
 import TimeButton from "./TimeBox/TimeButton";
 import { AllStyle } from "../Login/login";
+
 const config = require("../../config");
 
 const Session = () => {
-  const [location, setLocation] = React.useState("");
-  const [session, setSession] = React.useState("");
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState("");
+  const [selectedSession, setSelectedSession] = useState("");
+  const [locationAnchorEl, setLocationAnchorEl] = useState<null | HTMLElement>(null);
+  const [sessionAnchorEl, setSessionAnchorEl] = useState<null | HTMLElement>(null);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
 
+  const locationButtonRef = useRef<HTMLButtonElement>(null);
+  const sessionButtonRef = useRef<HTMLButtonElement>(null);
 
-const buttonRef = useRef<HTMLButtonElement>(null);
+  const locations = ["New York", "California"];
+  const sessionsTime = ["1 Session", "7 Session", "20 Session"];
 
-
-  const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
+  const handleDateSelect = (date: any) => {
+    const formattedDate = date.format('DD/MM/YY');
+    setSelectedDate(formattedDate);
   };
-  const handleSessionClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
+
+  const handleLocationClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setLocationAnchorEl(event.currentTarget);
   };
 
+  const handleSessionClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setSessionAnchorEl(event.currentTarget);
+  };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    setLocationAnchorEl(null);
+    setSessionAnchorEl(null);
   };
 
-  const handleSelect = (option: any) => {
-    setSelectedOption(option);
-    setAnchorEl(null);
-  };
-  const handleSessionTIme =(option: any) => {
-    setSelectedOption(option);
-    setAnchorEl(null);
+  const handleLocationSelect = (option: string) => {
+    setSelectedLocation(option);
+    setLocationAnchorEl(null);
   };
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setLocation(event.target.value);
-  };
-
-  const handleSessionChange = (event: SelectChangeEvent) => {
-    setSession(event.target.value);
+  const handleSessionSelect = (option: string) => {
+    setSelectedSession(option);
+    setSessionAnchorEl(null);
   };
 
   const disablePastDates = (date: Dayjs) => {
     return dayjs(date).isBefore(dayjs(), "day");
   };
 
+  const handleTimeSelect = (value: string) => {
+    setSelectedTime(value);
+  };
+
   return (
-    <div className="main"> 
-        <div className="heading-container">
-          <Typography style={AllStyle.heading}>{config.heading}</Typography>
-          <Typography style={AllStyle.smallHeading}>
-            {config.subHeading}
-          </Typography>
-          <Divider className="divider" />
+    <div className="main">
+      <div className="heading-container">
+        <Typography style={AllStyle.heading} sx={{fontSize:'26px !important'}}>{config.heading}</Typography>
+        <Typography style={AllStyle.smallHeading} sx={{fontSize:'18px !important'}}>
+          {config.subHeading}
+        </Typography>
+        <Divider className="divider" />
+      </div>
+      <div className="filter-container">
+        <Button
+          variant="outlined"
+          ref={locationButtonRef}
+          aria-haspopup="true"
+          aria-controls={Boolean(locationAnchorEl) ? "location-menu-list-grow" : undefined}
+          style={{
+            color: selectedLocation ? "white" : "black",
+            width: "170px",
+            height: "50px",
+            backgroundColor: selectedLocation ? "#050A44" : "white",
+            borderColor: "#050A44",
+            border: "1px solid !important",
+          }}
+          onClick={handleLocationClick}
+        >
+          {selectedLocation || "Location"}
+        </Button>
+        <Menu
+          id="location-menu-list-grow"
+          anchorEl={locationAnchorEl}
+          open={Boolean(locationAnchorEl)}
+          onClose={handleClose}
+          MenuListProps={{
+            style: {
+              width: locationButtonRef.current ? locationButtonRef.current.offsetWidth : undefined,
+            },
+          }}
+        >
+          {locations.map((option: string) => (
+            <MenuItem key={option} onClick={() => handleLocationSelect(option)}>
+              {option}
+            </MenuItem>
+          ))}
+        </Menu>
+
+    <Button
+      variant="outlined"
+      ref={sessionButtonRef}
+      aria-haspopup="true"
+      aria-controls={Boolean(sessionAnchorEl) ? "session-menu-list-grow" : undefined}
+      style={{
+        color: selectedSession ? "white" : "black",
+        width: "170px",
+        height: "50px",
+        backgroundColor: selectedSession ? "#050A44" : "white",
+        borderColor: "#050A44",
+        border: "1px solid !important",
+      }}
+      onClick={handleSessionClick}
+    >
+      {selectedSession || "Sessions"}
+    </Button>
+    <Menu
+      id="session-menu-list-grow"
+      anchorEl={sessionAnchorEl}
+      open={Boolean(sessionAnchorEl)}
+      onClose={handleClose}
+      MenuListProps={{
+        style: {
+          width: sessionButtonRef.current ? sessionButtonRef.current.offsetWidth : undefined,
+        },
+      }}
+    >
+      {sessionsTime.map((option: string) => (
+        <MenuItem key={option} onClick={() => handleSessionSelect(option)}>
+          {option}
+        </MenuItem>
+      ))}
+    </Menu>
+  </div>
+
+  <Grid container spacing={10}>
+    <Grid item xs={12} sm={12} md={6} lg={6}>
+      <Box
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          marginBottom: "50px",
+        }}
+      >
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="de">
+          <DateCalendar
+            shouldDisableDate={(date: any) => dayjs(date).isBefore(dayjs(), "day")}
+            onChange={handleDateSelect}
+            sx={{ "& .Mui-selected": { backgroundColor: "#050A44 !important" } }}
+          />
+        </LocalizationProvider>
+
+        <div className="time-comtainer">
+          <TimeButton
+          //@ts-ignore
+          selectedTime={selectedTime} onTimeSelect={handleTimeSelect} />
         </div>
-         <div className="filter-container">
+      </Box>
+    </Grid>
+
+    <Grid item xs={12} sm={12} md={6} lg={6} sx={{ padding: "5px" }}>
+      <Typography sx={{ fontSize: "26px", fontWeight: "bold" }}>
+        Service Details
+      </Typography>
+      <Box  sx={{ display: "flex", flexDirection: "column", width: { xs: "100%", sm: "100%" }}}>
+        <TableContainer>
+          <Table sx={{ maxWidth: 550, "& td, & th": { fontSize: "16px" } }} aria-label="simple table">
+            <TableBody>
+              <TableRow>
+                <TableCell component="th" scope="row">Date</TableCell>
+                <TableCell align="right">{selectedDate}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell component="th" scope="row">Time</TableCell>
+                <TableCell align="right">{selectedTime}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell component="th" scope="row">Location</TableCell>
+                <TableCell align="right">{selectedLocation}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell component="th" scope="row">Number of Sessions</TableCell>
+                <TableCell align="right">{selectedSession}</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
         
-            <Button
-              variant="contained"
-              ref={buttonRef}
-              aria-haspopup="true"
-              aria-controls={Boolean(anchorEl) ? "menu-list-grow" : undefined}
-              style={{
-                background: selectedOption ? "#050A44 !important" : undefined,
-                color: selectedOption ? "white" : undefined,
-                width:'200px',
-                height: '55px',
-                backgroundColor: "green !important"
-              }}
-              onClick={handleClick}
-            >
-              {selectedOption || "Location"}
-            </Button>
-            <Menu
-              id="menu-list-grow"
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-              MenuListProps={{
-                style: {
-                  width: buttonRef.current ? buttonRef.current.offsetWidth : undefined
-                }
-              }}
-            >
-              {config.options.map((option : any) => (
-                <MenuItem key={option} onClick={() => handleSelect(option)}>
-                  {option}
-                </MenuItem>
-              ))}
-            </Menu>
-            {/* Second Button */}
-            <Button
-              variant="contained"
-              ref={buttonRef}
-              aria-haspopup="true"
-              aria-controls={Boolean(anchorEl) ? "menu-list-grow" : undefined}
-              style={{
-                background: selectedOption ? "#050A44 !important" : undefined,
-                color: selectedOption ? "white" : undefined,
-                width:'200px',
-                height: '55px',
-                backgroundColor: "green !important"
-              }}
-              onClick={handleSessionClick}
-            >
-              {selectedOption || "Session"}
-            </Button>
-            <Menu
-              id="menu-list-grow"
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-              MenuListProps={{
-                style: {
-                  width: buttonRef.current ? buttonRef.current.offsetWidth : undefined
-                }
-              }}
-            >
-               {config.sessionsTime.map((option : any) => (
-                <MenuItem key={option} onClick={() => handleSessionTIme(option)}>
-                  {option}
-                </MenuItem>
-              ))}
-            </Menu>
-        
-        </div> 
+      </Box>
       
-        <Grid container spacing={10}>
-          <Grid item xs={12} sm={12} md={6} lg={6}>
-            <Box
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                flexWrap: "wrap",
-                justifyContent: "center",
-                marginBottom:'50px'
-              }}
-            >
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DateCalendar
-                  shouldDisableDate={(date: any) =>
-                    dayjs(date).isBefore(dayjs(), "day")
-                  }
-                  sx={{ "& .Mui-selected": { backgroundColor: "#050A44 !important" } }} 
-                />
-              </LocalizationProvider>
-
-              <div className="time-comtainer">
-                <TimeButton />
-              </div>
-            </Box>
-          </Grid>
-
-          <Grid item  xs={12} sm={12} md={6} lg={6}>
-            <Typography sx={{padding: '5px',fontSize:'22px', fontWeight:'bold'}}> Service Details</Typography>
-            <Box sx={{display:'flex', flexDirection:'column'}}>
-              <Typography>Time</Typography>
-              <Typography>Location</Typography>
-              <Typography>Number of Sessions</Typography>
-            </Box>
-          </Grid>
-        </Grid>
-        
-    </div>
+    </Grid>
+    <Grid item sx={{width :'100%', display: 'flex', justifyContent: 'flex-end', paddingRight: '20px' }}>
+      <Button variant="contained" className="button1" color="inherit">
+        Next
+      </Button>
+  </Grid>
+    
+ 
+  </Grid>
+  
+</div>
   );
 };
 
