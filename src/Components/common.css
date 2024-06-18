@@ -44,6 +44,7 @@ background-color: white;
 .second_grid_css{
     display: flex;
     gap:20px;
+    align-items: center;
     flex-wrap: wrap !important;
     width: 100%;
     justify-content: end;

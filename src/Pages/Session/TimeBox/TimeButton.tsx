@@ -9,7 +9,6 @@ const TimeButton = () => {
 
   const handleClick = (value: string) => {
     setSelectedButtonValue(value);
-    console.log(value);
   };
 
   return (

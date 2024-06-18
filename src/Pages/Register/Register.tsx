@@ -25,6 +25,7 @@ const config = require("../../config");
 const Register = () => {
   const navigate = useNavigate();
   const [errorData, setErrorData] = useState("");
+  const [successData, setSuccessData] = useState("");
   const fetchSignup = async (
     email: string,
     password: string,
@@ -33,8 +34,6 @@ const Register = () => {
     firstName: string,
     lastName: string
   ) => {
-    console.log("API CALLING.....");
-
     const data = {
       user: {
         first_name: firstName,
@@ -47,10 +46,12 @@ const Register = () => {
     };
 
     try {
-      const response = await axios.post(process.env.BASE_URL + signupApi, data);
-      navigate("/pricing-plans");
+      const response = await axios.post(process.env.REACT_APP_BASE_URL + signupApi, data);
+      setSuccessData("Your account created successfully !!!")
+      setTimeout(()=>{
+        navigate("/login");
+      },3000)
     } catch (err: any) {
-      console.log(err?.response?.data?.errors[0].account);
       setErrorData(err?.response?.data?.errors[0].account);
     }
   };
@@ -220,7 +221,6 @@ const Register = () => {
       passwordError,
       setPasswordError,
     });
-    console.log(errors);
     if (
       !errors.emailError &&
       !errors.firstNameError &&
@@ -242,6 +242,7 @@ const Register = () => {
   const handleClose = () => {
     setErrorData("");
   };
+  
   return (
     <MainGrid container>
       <Login_register_firstPart />
@@ -250,6 +251,13 @@ const Register = () => {
           errorData={errorData}
           handleClose={handleClose}
           type={"error"}
+        />
+      )}
+  {successData != "" && (
+        <AlertComponent
+          errorData={successData}
+          handleClose={handleClose}
+          type={"success"}
         />
       )}
 

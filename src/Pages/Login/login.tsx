@@ -131,7 +131,9 @@ export const AllStyle = {
 
 const Login = () => {
   const navigate = useNavigate();
+  
   const [errorData, setErrorData] = useState("");
+
   const fetchLogin = async (email:string, password:string) => {
     const data = {
       user: {
@@ -141,9 +143,9 @@ const Login = () => {
     };
 
     try {
-      console.log(process.env.REACT_APP_BASE_URL);
-      
       const response = await axios.post(process.env.REACT_APP_BASE_URL + loginApi,data);
+      localStorage.setItem("user_token",response.data.meta.token)
+      localStorage.setItem("first_name",response.data.data.attributes.first_name)
       navigate("/pricing-plans")
     } catch (err:any) {
       setErrorData(err?.response?.data?.message);
@@ -202,7 +204,6 @@ const Login = () => {
   const handleValidtion = () => {
     const resultPassword = handlePassword(data.password);
     const resultEmail = handleEmail(data.email);
-    console.log(resultEmail, resultPassword);
 
     if (resultEmail && resultPassword) {
       fetchLogin(data.email, data.password);
