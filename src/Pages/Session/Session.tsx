@@ -30,7 +30,7 @@ const Session = () => {
   const [locationAnchorEl, setLocationAnchorEl] = useState<null | HTMLElement>(null);
   const [sessionAnchorEl, setSessionAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [selectedTime, setSelectedTime] = useState<number | null>(null);
 
   const locationButtonRef = useRef<HTMLButtonElement>(null);
   const sessionButtonRef = useRef<HTMLButtonElement>(null);
@@ -70,7 +70,7 @@ const Session = () => {
     return dayjs(date).isBefore(dayjs(), "day");
   };
 
-  const handleTimeSelect = (value: string) => {
+  const handleTimeSelect = (value: number) => {
     setSelectedTime(value);
   };
 
@@ -176,9 +176,7 @@ const Session = () => {
         </LocalizationProvider>
 
         <div className="time-comtainer">
-          <TimeButton
-          //@ts-ignore
-          selectedTime={selectedTime} onTimeSelect={handleTimeSelect} />
+          <TimeButton selectedTime={selectedTime} onTimeSelect={handleTimeSelect} />
         </div>
       </Box>
     </Grid>
@@ -197,7 +195,7 @@ const Session = () => {
               </TableRow>
               <TableRow>
                 <TableCell component="th" scope="row">Time</TableCell>
-                <TableCell align="right">{selectedTime}</TableCell>
+               {selectedTime!=null && <TableCell align="right">{config.buttonTime[selectedTime].start} - {config.buttonTime[selectedTime].end}</TableCell>}
               </TableRow>
               <TableRow>
                 <TableCell component="th" scope="row">Location</TableCell>

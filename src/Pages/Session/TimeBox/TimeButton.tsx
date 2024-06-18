@@ -4,12 +4,9 @@ import './TimeButton.css';
 import { Box, Typography } from '@mui/material';
 const config = require("../../../config");
 
-const TimeButton = () => {
+const TimeButton = ({selectedTime,onTimeSelect}:any) => {
   const [selectedButtonValue, setSelectedButtonValue] = useState<string | null>(null);
 
-  const handleClick = (value: string) => {
-    setSelectedButtonValue(value);
-  };
 
   return (
     <div className='time-button'>
@@ -21,7 +18,7 @@ const TimeButton = () => {
               variant='contained'
               className={`button ${selectedButtonValue === index ? 'selected' : ''}`}
               color="inherit"
-              onClick={() => handleClick(index)}
+              onClick={() => onTimeSelect(index)}
             >
               {item.start}
             </Button>
@@ -29,7 +26,7 @@ const TimeButton = () => {
               variant='contained'
               className={`button ${selectedButtonValue === index ? 'selected' : ''}`}
               color="inherit"
-              onClick={() => handleClick(index)}
+              onClick={() => onTimeSelect(index)}
             >
               {item.end}
             </Button>
