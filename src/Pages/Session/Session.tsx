@@ -190,7 +190,7 @@ const Session = () => {
           <Table sx={{ maxWidth: 550, "& td, & th": { fontSize: "16px" } }} aria-label="simple table">
             <TableBody>
               <TableRow>
-                <TableCell component="th" scope="row">Date</TableCell>
+                <TableCell component="th" scope="row">Start date</TableCell>
                 <TableCell align="right">{selectedDate}</TableCell>
               </TableRow>
               <TableRow>
