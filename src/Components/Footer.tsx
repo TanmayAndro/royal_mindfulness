@@ -25,7 +25,9 @@ return <Link to={link} style={{textDecoration:'none'}} key={`${index}`}>
 }
       </Grid>
       <Grid item xs={12} md={4} sm={12} lg={4} className='footer_item_second_box_item'>
-        <img src={insta} className='logo_style'/>
+        <img src={insta} className='logo_style' onClick={()=>{
+          window.open('https://www.instagram.com/royalmindfulness/', '_blank'); 
+        }}/>
         <img src={facebook_item} className='logo_style'/>
         <img src={linkdin} className='logo_style'/>
         <img src={gmail} className='logo_style'/>

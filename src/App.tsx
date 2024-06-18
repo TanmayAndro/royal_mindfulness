@@ -9,6 +9,9 @@ import './fonts.css';
 import Footer from './Components/Footer';
 import FAQ from './Pages/FAQ/faq';
 import ProtectedRoute from './API/protectedRoute';
+import TermsCondition from './Pages/Terms&Conditon/Terms&Condition';
+import PrivacyPolicyPage from './Pages/PrivacyPolicy/PrivacyPolicyPage';
+import LandingPage from './Pages/LandingPage/LandingPage';
 
 function App() {
   return (
@@ -19,7 +22,10 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/session" element={<ProtectedRoute element={Session}  />} />
         <Route path="/pricing-plans" element={<ProtectedRoute element={PricingPlans} />} />
-        <Route path="/faq" element={<ProtectedRoute element={FAQ}  />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/term-condition" element={<TermsCondition />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/" element={<LandingPage />} />
       </Routes>
       <Footer/>
     </Router>

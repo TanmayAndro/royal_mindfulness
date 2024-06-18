@@ -80,7 +80,7 @@ background-color: white;
 .logo_style{
     object-fit:contain;
     width:50px;
-    cursor:pointer;
+    cursor:pointer !important;
 }
 /*
 media query

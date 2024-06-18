@@ -124,12 +124,12 @@ exports.pricingPlans=[{
 ]
 
 exports.headerItem = [
-  { name: 'Home', link: '/login' },
+  { name: 'Home', link: '/' },
   { name: 'Pricing plans', link: '/pricing-plans' },
-  { name: 'Purpose', link: '/login' },
-  { name: 'Founders', link: '/login' },
+  { name: 'Purpose', link: '/' },
+  { name: 'Founders', link: '/' },
   { name: 'Session', link: '/session' },
-  { name: 'Overview', link: '/login' },
+  { name: 'Overview', link: '/' },
 ]
 
 //session 
@@ -155,11 +155,11 @@ exports.sessionsTime = ['1 Session','7 Session','20 Session',]
 exports.pricingPlansLabel='Become a Vital member'
 exports.btn_name='Select'
 exports.footerItem = [
-  { name: 'About us', link: '/login' },
-  { name: 'Contact us', link: '/login' },
+  { name: 'About us', link: '/' },
+  { name: 'Contact us', link: '/' },
   { name: "FAQ's", link: '/faq' },
-  { name: 'Privacy Policy', link: '/login' },
-  { name: 'Terms & Conditions', link: '/login' },
+  { name: 'Privacy Policy', link: '/privacy-policy' },
+  { name: 'Terms & Conditions', link: '/term-condition' },
 ]
 
 //pricing plan label
