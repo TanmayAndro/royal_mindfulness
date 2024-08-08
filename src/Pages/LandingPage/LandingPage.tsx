@@ -1,12 +1,14 @@
 import React from 'react'
-
+import Slider from './Slider'
 const LandingPage = () => {
   return (
       <div style={{
         minHeight: "calc(100vh - 180px)",
 
-    }}>LandingPage</div>
+    }}>
+      <Slider/>
+    </div>
   )
 }
 
-export default LandingPage
+export default LandingPage;

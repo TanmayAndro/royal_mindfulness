@@ -1,5 +1,5 @@
 import { Alert, AlertTitle, Collapse, Snackbar } from "@mui/material";
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 
 interface AlertComponentProps {
   errorData?: string;

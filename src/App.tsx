@@ -12,6 +12,8 @@ import ProtectedRoute from './API/protectedRoute';
 import TermsCondition from './Pages/Terms&Conditon/Terms&Condition';
 import PrivacyPolicyPage from './Pages/PrivacyPolicy/PrivacyPolicyPage';
 import LandingPage from './Pages/LandingPage/LandingPage';
+import Dashboard from './Pages/Dashoard/Dashboard';
+import NotFound from './Pages/NotFound/NoteFound';
 
 function App() {
   return (
@@ -20,12 +22,14 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/session" element={<ProtectedRoute element={Session}  />} />
-        <Route path="/pricing-plans" element={<ProtectedRoute element={PricingPlans} />} />
+        <Route path="/session" element={<ProtectedRoute element={Session} />}/>
+        <Route path="/pricing-plans" element={<ProtectedRoute element={PricingPlans} />}/>
         <Route path="/faq" element={<FAQ />} />
         <Route path="/term-condition" element={<TermsCondition />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/dashboard" element={<ProtectedRoute element={Dashboard}/>}/>
         <Route path="/" element={<LandingPage />} />
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
       <Footer/>
     </Router>

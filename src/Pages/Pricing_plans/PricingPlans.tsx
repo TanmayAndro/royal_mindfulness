@@ -22,7 +22,7 @@ const PricingPlans = () => {
         height:'100%',
         paddingInline: 20,
         paddingBlock:60,
-  maxHeight:'unset',
+        maxHeight:'unset',
 
       }}
     >

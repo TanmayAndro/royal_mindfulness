@@ -8,7 +8,7 @@ const TimeButton = ({selectedTime,onTimeSelect}:any) => {
 
   return (
     <div className='time-button'>
-      <Typography sx={{padding: '5px',fontSize:'22px', fontWeight:'bold'}}> Select Time </Typography>
+      <Typography sx={{padding: '5px',fontSize:'22px', fontWeight:'bold'}}> {config.Select_Time} </Typography>
       <Box className="button-outer">
         {config.buttonTime.map((item : any, index : any) => (
           <Box className='button-inner' key={index}>

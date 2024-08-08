@@ -135,13 +135,14 @@ const Login = () => {
   const [errorData, setErrorData] = useState("");
 
   const fetchLogin = async (email:string, password:string) => {
+   
     const data = {
       user: {
         email: email,
         password: password,
       },
     };
-
+    // console.log("userData.........",data);
     try {
       const response = await axios.post(process.env.REACT_APP_BASE_URL + loginApi,data);
       localStorage.setItem("user_token",response.data.meta.token)
