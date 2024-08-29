@@ -158,7 +158,8 @@ function Header() {
         <ThirdBox >
           <IMG className='header-profile' src={profile_img} alt='img' />
           <Box>
-            <Name>{config.Alex_Meian}</Name>
+            {/* <Name>{config.Alex_Meian}</Name> */}
+            <Name>{localStorage.getItem("first_name")}</Name>
             <SubHeading>{config.Product_Manager}</SubHeading>
           </Box>
           <FaAngleDown style={{

@@ -10,9 +10,11 @@ const Header: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const token = localStorage.getItem("user_token");
   const first_name = localStorage.getItem("first_name");
+  const user_id = localStorage.getItem("user_id");
 
   const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
+   
   };
 
   const handleMenuClose = () => {
@@ -20,7 +22,7 @@ const Header: React.FC = () => {
   };
 
   const handleDashboard = () => {
-    navigate('/dashboard');
+    navigate(`/dashboard/${user_id}`);
     handleMenuClose();
   };
 
@@ -98,13 +100,12 @@ const Header: React.FC = () => {
               <Menu
                 anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
-                onClose={handleMenuClose}
+                onClose={handleMenuClose} 
                 MenuListProps={{
                   'aria-labelledby': 'basic-button',
                 }}
               >
                 <MenuItem onClick={handleDashboard}>Dashboard</MenuItem>
-               
               </Menu>
             </Box>
           )}

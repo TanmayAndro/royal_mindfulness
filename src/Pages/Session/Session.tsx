@@ -25,7 +25,7 @@ import { DateCalendar } from "@mui/x-date-pickers-pro";
 import TimeButton from "./TimeBox/TimeButton";
 import { AllStyle } from "../Login/login";
 import axios from "axios";
-import { sessionApi } from "../../API/ApiConfig";
+import { bookings } from "../../API/ApiConfig";
 import AlertComponent from "../../Components/alert";
 
 const config = require("../../config");
@@ -33,12 +33,8 @@ const config = require("../../config");
 const Session = () => {
   const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedSession, setSelectedSession] = useState("");
-  const [locationAnchorEl, setLocationAnchorEl] = useState<null | HTMLElement>(
-    null
-  );
-  const [sessionAnchorEl, setSessionAnchorEl] = useState<null | HTMLElement>(
-    null
-  );
+  const [locationAnchorEl, setLocationAnchorEl] = useState<null | HTMLElement>(null);
+  const [sessionAnchorEl, setSessionAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState<number | null>(null);
   const [formError, setFormError] = useState("");
@@ -61,7 +57,6 @@ const Session = () => {
   const sessionsTime = ["1 Session", "7 Session", "20 Session"];
 
   const handleDateSelect = (date: any) => {
-    // console.log(date);
     setSelectedDate(date.format("YYYY/MM/DD"));
     setDateError("");
   };
@@ -132,10 +127,10 @@ const Session = () => {
         time_of_session: timeselect,
       },
     };
-    console.log(data);
+   
     try {
       const response = await axios.post(
-        process.env.REACT_APP_BASE_URL + sessionApi,
+        process.env.REACT_APP_BASE_URL + bookings,
         data,
         {
           headers: {
@@ -143,8 +138,8 @@ const Session = () => {
           },
         }
       );
-      console.log(response);
-      navigate("/pricing-plans");
+     
+      navigate("/");
     } catch (err: any) {
       setErrorData(err?.response?.data?.message);
     }
@@ -193,13 +188,13 @@ const Session = () => {
               Boolean(locationAnchorEl) ? "location-menu-list-grow" : undefined
             }
             sx={{
-              color: selectedSession ? "white" : "black",
+              color: selectedLocation ? "white" : "black",
               width: {
                 xs: "155px",
                 sm: "170px",
               },
               height: "50px",
-              backgroundColor: selectedSession ? "#050A44" : "white",
+              backgroundColor: selectedLocation ? "#050A44" : "white",
               border: "1px solid #050A44",
             }}
             onClick={handleLocationClick}

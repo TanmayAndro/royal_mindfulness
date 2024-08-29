@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 import moment from 'moment';
 
-import { FaFilter } from "react-icons/fa";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -55,7 +54,8 @@ const PaymentHistory = () => {
     // setSelectedDate(date);
     setShowCalendar(false);
   };
-//   console.log(selectedDate);
+  
+
 
   return (
     <MainCard>
@@ -63,7 +63,7 @@ const PaymentHistory = () => {
         <Box>
           <PaymentText>{config.Payment_History_List}</PaymentText>
         </Box>
-
+        
         <SortByDateBox onClick={() => setShowCalendar(!showCalendar)}>
           <SortByText>{config.Sort_By_Dates}</SortByText>
           <KeyboardArrowDownIcon

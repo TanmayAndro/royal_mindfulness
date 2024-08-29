@@ -66,14 +66,17 @@ const PrivacyPolicy = () => {
   };
 
   return (
-    <Box>
-      <Container style={{ minHeight: "100vh", display: "block" }}>
+    <Box >
+      <Container style={{ minHeight: "100vh", display: "block"}} 
+      >
         <Box
+       
           style={{
             ...AllStyle.heading,
             justifyContent: "center",
             marginTop: "65px",
             marginBottom: "30px",
+            
           }}
         >
           <Typography
@@ -120,7 +123,7 @@ const PrivacyPolicy = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <div
+           <div
             style={{
               color: "#334155",
               fontFamily: "Lato",

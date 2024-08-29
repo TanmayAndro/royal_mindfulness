@@ -6,10 +6,16 @@ import "./PricingPlans.css";
 import { AllStyle } from "../Login/login";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
+import { useNavigate } from "react-router-dom";
 
 const config = require("../../config");
 
 const PricingPlans = () => {
+  const navigate = useNavigate()
+  const getprice =(price:string)=>{
+    console.log(price);
+    navigate("/session");
+  }
   return (
     <MainGrid
       container
@@ -71,7 +77,6 @@ const PricingPlans = () => {
                 <Typography className="pricing_plan_typography_css">
                   {item.title}
                 </Typography>
-
                 <Typography className="pricing_plan_price_css">
                   <sup className="pricing_plan_typography_css">$</sup>
                   {item.price}
@@ -83,8 +88,10 @@ const PricingPlans = () => {
                   {item.valid}
                 </Typography>
                 <Button
+                onClick={()=>getprice(item.price)}
                   variant="contained"
                   className="pricing_plan_typography_btn"
+
                 >
                   {config.btn_name}
                 </Button>
@@ -106,7 +113,8 @@ const PricingPlans = () => {
                           className="subHeadingValid_css"
                         >
                           {check ? <CheckIcon /> : <CloseIcon />}
-                          {title}
+                          {title}i
+                          
                         </Typography>
                       );
                     }

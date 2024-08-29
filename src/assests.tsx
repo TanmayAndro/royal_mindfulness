@@ -16,3 +16,6 @@ export const slider4 = require('./Assests/sliderimg4.webp');
 export const slider5 = require('./Assests/sliderimg5.webp');
 export const slider6 = require('./Assests/sliderimg6.webp');
 export const slider7 = require('./Assests/sliderimg7.webp');
+export const thankyouimage = require('./Assests/thankyou.jpg');
+export const warningimage = require('./Assests/warning.jpg');
+export const PaymentFailed = require('./Assests/paymentFailed.png');

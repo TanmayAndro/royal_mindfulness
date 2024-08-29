@@ -14,6 +14,8 @@ import PrivacyPolicyPage from './Pages/PrivacyPolicy/PrivacyPolicyPage';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import Dashboard from './Pages/Dashoard/Dashboard';
 import NotFound from './Pages/NotFound/NoteFound';
+import ThankYouPage from './Pages/Dashoard/ThankYouPage';
+import PaymentFailedPage from './Pages/Dashoard/PaymentFailedPage';
 
 function App() {
   return (
@@ -27,7 +29,9 @@ function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/term-condition" element={<TermsCondition />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-        <Route path="/dashboard" element={<ProtectedRoute element={Dashboard}/>}/>
+        <Route path="/dashboard/:id" element={<ProtectedRoute element={Dashboard}/>}/>
+        <Route path='/success' element={<ProtectedRoute element={ThankYouPage}/>}/>
+        <Route path='/error' element={<ProtectedRoute element={PaymentFailedPage}/>}/>
         <Route path="/" element={<LandingPage />} />
         <Route path="*" element={<NotFound/>}/>
       </Routes>

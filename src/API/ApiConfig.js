@@ -1,3 +1,4 @@
 exports.loginApi='user/login'
 exports.signupApi='users'
-exports.sessionApi='bookings'
+exports.bookings='bookings'
+exports.userprofile='users'
