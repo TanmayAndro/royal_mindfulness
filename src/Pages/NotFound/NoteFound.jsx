@@ -1,14 +1,15 @@
-// src/Components/NotFound.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 const NotFound = () => {
+  const token = localStorage.getItem("user_token");
+  const first_name = localStorage.getItem("first_name");
   return (
     <div style={styles.container}>
       <div style={styles.content}>
         <h1 style={styles.heading}>404</h1>
         <p style={styles.message}>Oops! Page not found.</p>
-        <Link to="/" style={styles.link}>Go to Home</Link>
+        {token && first_name ? <Link to="/" style={styles.link}>Go to Home</Link>: <Link to="/login" style={styles.link}>Go to Home</Link>} 
       </div>
     </div>
   );

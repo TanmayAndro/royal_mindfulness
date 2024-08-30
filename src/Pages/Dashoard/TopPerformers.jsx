@@ -1,6 +1,5 @@
 import React from 'react';
 import { Paper, Typography, Grid, Box, Avatar, styled } from '@mui/material';
-// const img = require('../assets/img.png')
 import { profile_img } from '../../assests';
 
 const performers = [
@@ -36,7 +35,6 @@ const TypoContent = styled(Typography)({
     fontWeight: 'semiblod',
     marginBottom: '28px',
     "@media (max-width:1100px)": {
-        // marginBottom: '2px',
     },
 })
 const GridContainer = styled(Grid)({

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import {Box, styled, colors } from '@mui/material';
 import FullCalendar from '@fullcalendar/react';
@@ -7,7 +6,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction'; 
 import axios from 'axios';
 import dayjs from 'dayjs';
-import { bookings } from '../../API/ApiConfig';
+
 
 const CalendarBox = styled(Box)({
   height: '38rem',
@@ -55,7 +54,7 @@ const Calendar = () => {
       }
     )
       .then((response) => {
-        // console.log(response);
+       
         const bookings = response.data.data.map((booking) => {
           const { date_of_booking, time_of_session } = booking.attributes;
 
@@ -64,15 +63,13 @@ const Calendar = () => {
             timeZone: 'Europe/Berlin',  
             hour: '2-digit',
             minute: '2-digit',
-            // second: '2-digit',
             hour12: true,  
           });
-          // console.log("time of session......",(time_of_session))
+         
 
 
           return {
-            // title: `SesionAt ${new Date(time_of_session).toLocaleTimeString()}`,
-            title: `Sesn ${sessionTimeIST}`,
+            title: `SesionAt ${sessionTimeIST}`,
             date: date_of_booking,
             color: getColorByDate(date_of_booking)  
           };
@@ -80,7 +77,7 @@ const Calendar = () => {
         setEvents(bookings);
       })
       .catch((error) => {
-        // console.error("Error fetching bookings: ", error);
+        
       });
   };
 
@@ -106,21 +103,16 @@ const Calendar = () => {
       end: info.event.endStr,
     };
     
-    // Update the event on your backend
+    
     updateEventOnServer(updatedEvent);
   
-    // Optionally, update the local state if necessary
     const updatedEvents = events.map((event) =>
       event.id === updatedEvent.id ? updatedEvent : event
     );
     setEvents(updatedEvents);
   };
   const updateEventOnServer = async (event) => {
-    // try {
-    //   await axios.post('/api/update-event', event); // Adjust the API endpoint as needed
-    // } catch (error) {
-    //   console.error('Error updating event:', error);
-    // }
+    
   };
   
   return (
@@ -133,8 +125,8 @@ const Calendar = () => {
           const newMonth = dayjs(dateInfo.start).format('MM');
           fetchEventsForMonth(newMonth); 
         }}
-        editable={true} // Enable dragging and dropping
-        eventDrop={handleEventDrop} // Handle event drop
+        editable={true} 
+        eventDrop={handleEventDrop} 
         fixedWeekCount={false}
       />
     </CalendarBox>

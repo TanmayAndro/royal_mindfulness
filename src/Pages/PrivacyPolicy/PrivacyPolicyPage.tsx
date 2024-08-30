@@ -23,7 +23,6 @@ const PrivacyPolicy = () => {
     const logoPattern = /logo/gi;
 
     const parts = text.split(
-      // /(“[^”]+”|https?:\/\/[^\s]+|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/gi
        /(“[^”]+”|https?:\/\/[^\s]+|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|logo)/gi
     );
 

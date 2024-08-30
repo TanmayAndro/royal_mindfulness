@@ -59,15 +59,6 @@ const Profile = () => {
   const handleClose = () => {
     setOpen(false);
   };
-
-  // const handleInputChange = (e) => {
-  //   // validateProfileData([e.target.name]);
-  //   setEditableData({
-  //     ...editableData,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-
   const validateProfileData = () => {
     const errors = {};
     if (
@@ -85,18 +76,6 @@ const Profile = () => {
       errors.email = "Email is required.";
     }
 
-    // const passwordPattern =
-    //   /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    // if (!editableData.password) {
-    //   errors.password = "Password is required.";
-    // } else if (!passwordPattern.test(editableData.password)) {
-    //   errors.password =
-    //     "Password must be strong or at least 8 characters long.";
-    // }
-
-    // if (editableData.password !== editableData.password_confirmation) {
-    //   errors.password_confirmation = "Passwords must match.";
-    // }
 
     setErrors(errors);
 
@@ -158,37 +137,12 @@ const handleInputChange = (e) => {
 
   const handleSave = () => {
     if (validateProfileData()) {
-      // delete editableData.email;
       delete editableData.unique_id;
-      // console.log("data............",editableData);
       const formattedData = {
         user: {
           ...editableData,
         },
       };
-     
-      // axios
-      //   .put(
-      //     `${process.env.REACT_APP_BASE_URL}/${userprofile}/${id}`,
-      //     formattedData,
-      //     {
-      //       headers: { token: localStorage.getItem("user_token") },
-      //     }
-      //   )
-      //   .then((response) => {
-      //     setSuccessData("Your profile updated successfully !!!");
-      //     localStorage.removeItem("user_token");
-      //     setTimeout(() => {
-      //       navigate("/login");
-      //     }, 1000);
-      //     // setUserData(editableData);
-      //     setOpen(false);
-      //   })
-      //   .catch((error) => {
-      //     console.log("error.....................");
-      //     setErrorData(error?.response?.data?.errors[0].account);
-      //     console.error("Error saving user data:", error);
-      //   });
     }
   };
   const handleAlertClose = () => {

@@ -38,7 +38,7 @@ padding: 2px;
 background-color: white;
 }
 
-.second_grid_css{
+.second_grid_css {
     display: flex;
     gap:20px;
     align-items: center;
@@ -78,6 +78,38 @@ background-color: white;
     width:50px;
     cursor:pointer !important;
 }
+.drawerparent{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    font-family: Lato;
+    
+}
+
+.drawer{
+    position: absolute;
+    top: 25px;
+    right: 20px;
+   
+}
+.drawerbtn{
+font-family: Lato !important;
+font-size: 16px !important;
+font-weight: 400 !important;
+color:rgb(12, 11, 11);
+line-height: 24px !important;
+text-align: left !important;
+text-decoration: none !important;
+text-transform: inherit !important;
+cursor: pointer;
+padding: 2px ;
+    width: 100%;
+    border-radius: 6px;
+background-color: rgb(209, 209, 209) !important;
+}
 /*
 media query
 */
@@ -94,8 +126,28 @@ media query
     .header_item_box_css{
         display: flex;
         flex-wrap: wrap;
-      gap:12px;
+        gap:12px;
         justify-content: center;
         align-items: center;
+    }
+}
+@media(max-width:430px){
+    .main_heading_css{
+        font-size: 20px !important;
+        font-weight: 650 !important;
+    }
+}
+
+@media (max-width:430px) {
+    .header_item_box_css{
+        display: none !important;
+    }
+    .hidebutton{
+        display: none !important;
+    }
+}
+@media(min-width:431px){
+    .drawer{
+       display: none !important;
     }
 }

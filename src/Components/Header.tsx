@@ -82,7 +82,7 @@ const Header: React.FC = () => {
             </Box>
           )}
           {token && first_name && (
-            <Box className="second_grid_css">
+            <Box className="second_grid_css hidebutton">
               <Avatar
                 onClick={handleMenuClick}
                 style={{ cursor: 'pointer' }}

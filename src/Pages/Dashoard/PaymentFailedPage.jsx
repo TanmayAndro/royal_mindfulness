@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { styled } from '@mui/system';
-import { PaymentFailed } from '../../assests';// Import your payment failed image here
+import { PaymentFailed } from '../../assests';
 import { useNavigate } from 'react-router-dom';
 
 const PaymentFailedPage = () => {

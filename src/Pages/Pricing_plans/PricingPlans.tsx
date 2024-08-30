@@ -13,7 +13,6 @@ const config = require("../../config");
 const PricingPlans = () => {
   const navigate = useNavigate()
   const getprice =(price:string)=>{
-    console.log(price);
     navigate("/session");
   }
   return (

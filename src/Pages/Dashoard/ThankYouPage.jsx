@@ -41,7 +41,6 @@ const Container = styled(Box)(({ theme }) => ({
     height: '75vh',
     backgroundColor: '#f5f5f5',
     textAlign: 'center',
-    // padding: '20px',
 }));
 
 const ImageBox = styled(Box)(({ theme }) => ({

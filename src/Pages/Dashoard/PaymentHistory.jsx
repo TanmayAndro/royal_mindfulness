@@ -51,7 +51,6 @@ const PaymentHistory = () => {
   const handleDateChange = (date) => {
     const formattedDate = moment(date).format('YYYY-MM-DD');
     setSelectedDate(formattedDate);
-    // setSelectedDate(date);
     setShowCalendar(false);
   };
   
@@ -79,11 +78,6 @@ const PaymentHistory = () => {
             />
           </CalendarWrapper>
         )}
-
-        {/* <Box>
-          <FilterText>Filter</FilterText>
-          <FilterIcon />
-        </Box> */}
       </CardContent>
       <DividerLine color="#E5E7EB" />
       <CardContent style={{ float: "left", margin: "0px", padding: "0px" }}>
@@ -200,42 +194,7 @@ const PaymentText = styled(Typography)({
     fontWeight: 500,
   },
 });
-// const FilterText = styled(Typography)({
-//   fontFamily: "Poppins",
-//   fontSize: "12px",
-//   fontWeight: 500,
-//   lineHeight: "16px",
-//   float: "right",
-//   cursor: "pointer",
-//   "@media (max-width:900px)": {
-//     fontSize: "11px",
-//     fontWeight: 450,
-//     lineHeight: "15px",
-//   },
-// });
-// const SortByDateBox = styled(Box)({
-//   display: "flex",
-//   alignItems: "center",
-//   cursor: "pointer",
-//   position: "relative",
-// });
-// const SortByText = styled(Typography)({
-//   fontFamily: "Poppins",
-//   fontSize: "12px",
-//   fontWeight: 500,
-//   lineHeight: "16px",
-// });
-// const FilterIcon = styled(FaFilter)({
-//   height: "16px",
-//   float: "right",
-//   marginTop: "0px",
-//   fontSize: "12px",
-//   marginRight: "4px",
-//   cursor: "pointer",
-//   "@media (max-width:900px)": {
-//     height: "14px",
-//   },
-// });
+
 const DividerLine = styled(Divider)({
   width: "100%",
   height: "5px",
