@@ -93,7 +93,8 @@ const Header: React.FC = () => {
                 style={{ color: "white", cursor: "pointer" }}
                 onClick={() => {
                   localStorage.removeItem("user_token");
-                  localStorage.removeItem("first_name");
+                  localStorage.removeItem("first_name");   
+                  localStorage.removeItem("user_id");
                   navigate("/login");
                 }}
               />

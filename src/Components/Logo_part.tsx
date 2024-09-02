@@ -23,6 +23,7 @@ const Logo_part: React.FC = () => {
   const handleLogout = () => {
     localStorage.removeItem("user_token");
     localStorage.removeItem("first_name");
+    localStorage.removeItem("user_id");
     navigate("/login");
   };
 
@@ -65,7 +66,7 @@ const Logo_part: React.FC = () => {
         >
           <List>
             {config.headerItem.map((item: { name: string; link: string }, index: number) => (
-              <ListItem button key={index} onClick={toggleDrawer(false)}>
+              <ListItem key={index} onClick={toggleDrawer(false)}>
                 <Link to={item.link} style={{ textDecoration: "none", color: "inherit", fontFamily: "lato" }}>
                   <ListItemText primary={item.name} />
                 </Link>

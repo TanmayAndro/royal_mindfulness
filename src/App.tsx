@@ -32,7 +32,7 @@ function App() {
         <Route path="/dashboard/:id" element={<ProtectedRoute element={Dashboard}/>}/>
         <Route path='/success' element={<ProtectedRoute element={ThankYouPage}/>}/>
         <Route path='/error' element={<ProtectedRoute element={PaymentFailedPage}/>}/>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<ProtectedRoute element={LandingPage} />}/>
         <Route path="*" element={<NotFound/>}/>
       </Routes>
       <Footer/>
