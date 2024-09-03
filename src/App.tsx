@@ -15,6 +15,7 @@ import LandingPage from './Pages/LandingPage/LandingPage';
 import Dashboard from './Pages/Dashoard/Dashboard';
 import NotFound from './Pages/NotFound/NoteFound';
 import ThankYouPage from './Pages/Dashoard/ThankYouPage';
+import ContactUs from './Pages/Contact/ContactUs';
 import PaymentFailedPage from './Pages/Dashoard/PaymentFailedPage';
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
         <Route path='/error' element={<ProtectedRoute element={PaymentFailedPage}/>}/>
         <Route path="/" element={<ProtectedRoute element={LandingPage} />}/>
         <Route path="*" element={<NotFound/>}/>
+        <Route path="/contact" element={<ContactUs/>}/>
+
       </Routes>
       <Footer/>
     </Router>

@@ -230,10 +230,11 @@ exports.pricingPlansLabel = "Become a Vital member";
 exports.btn_name = "Select";
 exports.footerItem = [
   { name: "About us", link: "/" },
-  { name: "Contact us", link: "/" },
+  { name: "Contact us", link: "/contact" },
   { name: "FAQ's", link: "/faq" },
   { name: "Privacy Policy", link: "/privacy-policy" },
   { name: "Terms & Conditions", link: "/term-condition" },
+
 ];
 
 
