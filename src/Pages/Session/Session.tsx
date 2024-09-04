@@ -138,6 +138,7 @@ const Session = () => {
           },
         }
       );
+      
      
       navigate("/");
     } catch (err: any) {
