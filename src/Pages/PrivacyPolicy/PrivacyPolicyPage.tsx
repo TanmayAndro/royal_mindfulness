@@ -23,7 +23,6 @@ const PrivacyPolicy = () => {
     const logoPattern = /logo/gi;
 
     const parts = text.split(
-      // /(“[^”]+”|https?:\/\/[^\s]+|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/gi
        /(“[^”]+”|https?:\/\/[^\s]+|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|logo)/gi
     );
 
@@ -66,14 +65,17 @@ const PrivacyPolicy = () => {
   };
 
   return (
-    <Box>
-      <Container style={{ minHeight: "100vh", display: "block" }}>
+    <Box >
+      <Container style={{ minHeight: "100vh", display: "block"}} 
+      >
         <Box
+       
           style={{
             ...AllStyle.heading,
             justifyContent: "center",
             marginTop: "65px",
             marginBottom: "30px",
+            
           }}
         >
           <Typography
@@ -120,7 +122,7 @@ const PrivacyPolicy = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <div
+           <div
             style={{
               color: "#334155",
               fontFamily: "Lato",

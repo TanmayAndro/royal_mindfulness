@@ -11,23 +11,17 @@ import Calendar from './Calendar';
 const CalenderMain = styled(Box)({
     "@media (max-width:1199px)": {
         display: 'flex', justifyContent: 'center', alignItems: 'center',
-        // marginLeft: '120px'
     }
 })
 
 const GridContainer = styled(Grid)({
     "@media (max-width:1050px)": {
         paddingLeft: '1px',
-        // paddingTop: '0px',
-
     }
 })
 const ProfilePaymentGrid = styled(Grid)({
     "@media (max-width:1270px)": {
-        // marginLeft: '-10px'
         marginRLeft: 'auto',
-        // justifyContent: 'center',
-
     },
     "@media (max-width:1199px)": {
         display: 'flex',
@@ -42,8 +36,6 @@ const BoxGrid = styled(Grid)({
         PaddingBottom: '0px'
     },
     "@media (max-width:899px)": {
-        // display:"flex",
-        // marginLeft: '1px',
         justifyContent:"center",
         alignItems:"center"
     }
@@ -52,11 +44,8 @@ const BoxGrid = styled(Grid)({
 
 const Dashboard = () => {
     return (
-        // <Container sx={{}}>
+      
         <Grid container spacing={2} mt='auto' sx={{ backgroundColor: '#ebdfd7', display:'flex' , justifyContent:"center"  }} >
-            {/* <Grid item xs={12} sm={12} md={2}>
-                {/* <Sidebar /> 
-            </Grid> */}
             <GridContainer item xs={12} md={10} sm={12} >
                 <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
                     <Header />
@@ -86,7 +75,6 @@ const Dashboard = () => {
                 </BoxGrid> 
             </GridContainer> 
         </Grid>
-        // </Container>
     );
 };
 

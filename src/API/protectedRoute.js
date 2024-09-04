@@ -7,5 +7,5 @@ const ProtectedRoute = ({ element: Component, ...rest }) => {
   window.scrollTo(0,0)
   return userToken ? <Component {...rest} /> : <Navigate to="/login" />;
 };
-
+  
 export default ProtectedRoute;

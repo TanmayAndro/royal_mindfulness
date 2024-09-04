@@ -1,5 +1,5 @@
-import { Box } from '@mui/material'
 import React from 'react'
+import { Box } from '@mui/material'
 import { FirstBOx } from '../Pages/Login/login'
 import { royal_logo } from '../assests'
 

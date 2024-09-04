@@ -1,14 +1,6 @@
 import { Typography, Box, IconButton, styled } from "@mui/material";
 import { useState } from "react";
-import {
-  MainGrid,
-  SecondGrid,
-  MainBox,
-  InputField,
-  ButtonStyle,
-  AllStyle,
-  SecondBox,
-} from "../Login/login";
+import { MainGrid,SecondGrid,MainBox,InputField,ButtonStyle,AllStyle,SecondBox} from "../Login/login";
 import { Link, useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import "react-phone-number-input/style.css";
@@ -20,12 +12,27 @@ import { signupApi } from "../../API/ApiConfig";
 import AlertComponent from "../../Components/alert";
 const config = require("../../config");
 
-
-
 const Register = () => {
   const navigate = useNavigate();
   const [errorData, setErrorData] = useState("");
   const [successData, setSuccessData] = useState("");
+  const [data, setData] = useState({
+    email: "",
+    firstName: "",
+    lastName: "",
+    password: "",
+    mobileNo: "",
+    setPassword: "",
+    emailError: false,
+    firstNameError: false,
+    lastNameError: false,
+    passwordError: false,
+    mobileNoError: false,
+    setPasswordError: false,
+    emailErrorMessage: "",
+  });
+  const [enablePasswordField, setenablePasswordField] = useState(true);
+  const [enablePasswordField2, setenablePasswordField2] = useState(true);
   const fetchSignup = async (
     email: string,
     password: string,
@@ -55,23 +62,7 @@ const Register = () => {
       setErrorData(err?.response?.data?.errors[0].account);
     }
   };
-  const [data, setData] = useState({
-    email: "",
-    firstName: "",
-    lastName: "",
-    password: "",
-    mobileNo: "",
-    setPassword: "",
-    emailError: false,
-    firstNameError: false,
-    lastNameError: false,
-    passwordError: false,
-    mobileNoError: false,
-    setPasswordError: false,
-    emailErrorMessage: "",
-  });
-  const [enablePasswordField, setenablePasswordField] = useState(true);
-  const [enablePasswordField2, setenablePasswordField2] = useState(true);
+
   const handleEmail = (value: string) => {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (value === "") {
@@ -184,7 +175,7 @@ const Register = () => {
     }
   };
 
-  const handleValidation = () => {
+   const handleValidation = () => {
     const emailError = handleEmail(data.email);
     const firstNameError = handleValidationFirstLast(
       "firstName",
@@ -253,7 +244,7 @@ const Register = () => {
           type={"error"}
         />
       )}
-  {successData != "" && (
+     {successData != "" && (
         <AlertComponent
           errorData={successData}
           handleClose={handleClose}
@@ -509,4 +500,6 @@ export const PhoneStyle = styled(PhoneInput)(({ borderColor }: any) => ({
   },
 }));
 
+
 export default Register;
+

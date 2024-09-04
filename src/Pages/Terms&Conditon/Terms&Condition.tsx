@@ -41,8 +41,7 @@ const TermsCondition = () => {
               width: "100%",
               hight:"300px",
               marginTop: "0px",
-              marginBottom: "30px",
-              
+              marginBottom: "30px"
             }}
           >
             <img

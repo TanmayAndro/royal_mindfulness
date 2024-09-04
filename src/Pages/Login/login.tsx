@@ -2,15 +2,7 @@ import React, { useState } from "react";
 import "./login.css";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from 'react-router-dom';
-import {
-  Box,
-  Dialog,
-  IconButton,
-  styled,
-  Button,
-  TextField,
-  Grid,
-} from "@mui/material";
+import {Box,Dialog,IconButton,styled,Button,TextField,Grid,} from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { facebook_logo, google_logo } from "../../assests";
 import { Link } from "react-router-dom";
@@ -18,116 +10,7 @@ import Login_register_firstPart from "../../Components/login_register_firstPart"
 import axios from "axios";
 import { loginApi } from "../../API/ApiConfig";
 import AlertComponent from "../../Components/alert";
-
 const config = require("../../config");
-
-export const SecondBox = styled(Box)({
-  maxWidth: "360px",
-
-  marginTop: "40px",
-  "@media (max-width:390px)": {
-    paddingInline: "10px",
-  },
-  "@media (max-width:320px)": {
-    justifyContent: "center",
-  },
-});
-
-export const ButtonStyle = styled(Button)({
-  minWidth: "360px",
-  "@media (max-width:380px)": {
-    minWidth: "200px",
-  },
-});
-
-export const FirstBOx = styled(Grid)({
-  display: "flex",
-
-  "@media (max-width:899px)": {
-    display: "none",
-  },
-});
-
-export const AllStyle = {
-  smallHeading: {
-    color: "#0A2239",
-    marginBottom: "30px",
-    fontWeight: 500,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    fontSize: "16px",
-    lineHeight: "24px",
-    fontFamily: "Lato",
-  },
-  errorTextStyle: {
-    color: "#DC2626",
-    fontSize: "12px",
-    fontFamily: "Lato",
-    fontWeight: 400,
-    lineHeight: "18px",
-  },
-  textStyle: {
-    fontSize: "14px",
-    fontWeight: 700,
-    marginBottom: "4px",
-    color: "#0A2239",
-    fontFamily: "Lato",
-    lineHeight: "22px",
-  },
-
-  boldStyle: {
-    color: "00bdab",
-    fontSize: "16px",
-    fontFamily: "Lato",
-    fontWeight: 700,
-  },
-  btnStyle: {
-    borderRadius: "8px",
-    height: "56px",
-    lineHeight: "24px",
-    background: "#050A44",
-    textTransform: "inherit" as "inherit",
-    color: "white",
-    fontFamily: "Lato",
-    fontSize: "16px",
-    fontWeight: 700,
-    marginBottom: "30px",
-  },
-  popup: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#ffffff",
-    color: "#0F172A",
-    borderRadius: "4px",
-    width: "362px",
-    height: "42px",
-    fontWeight: 400,
-    textAlign: "center",
-    fontFamily: "Lato",
-    fontSize: "16px",
-    lineHeight: "24px",
-    paddingLeft: "10px",
-    paddingRight: "10px",
-  },
-  heading: {
-    color: "#0A2239",
-    textAlign: "center" as "center",
-    fontWeight: 700,
-    fontSize: "24px",
-    lineHeight: "32px",
-    marginBottom: "8px",
-    fontFamily: "Lato",
-    letterSpacing: "-0.12px",
-  },
-
-  secondBox: {
-    flexDirection: "column" as "column",
-    display: "flex",
-    flexWrap: "Wrap" as "wrap",
-  },
-};
 
 const Login = () => {
   const navigate = useNavigate();
@@ -142,14 +25,15 @@ const Login = () => {
         password: password,
       },
     };
-    // console.log("userData.........",data);
+   
     try {
       const response = await axios.post(process.env.REACT_APP_BASE_URL + loginApi,data);
-      localStorage.setItem("user_token",response.data.meta.token)
-      localStorage.setItem("first_name",response.data.data.attributes.first_name)
-      navigate("/pricing-plans")
+      localStorage.setItem("user_token",response.data.meta.token);
+      localStorage.setItem("first_name",response.data.data.attributes.first_name);
+      localStorage.setItem("user_id",response.data.data.id);
+      navigate("/")
     } catch (err:any) {
-      setErrorData(err?.response?.data?.message);
+      setErrorData(err?.response?.data?.message); 
     }
   };
 
@@ -343,6 +227,114 @@ const Login = () => {
       </SecondGrid>
     </MainGrid>
   );
+};
+
+export const SecondBox = styled(Box)({
+  maxWidth: "360px",
+
+  marginTop: "40px",
+  "@media (max-width:390px)": {
+    paddingInline: "10px",
+  },
+  "@media (max-width:320px)": {
+    justifyContent: "center",
+  },
+});
+
+export const ButtonStyle = styled(Button)({
+  minWidth: "360px",
+  "@media (max-width:380px)": {
+    minWidth: "200px",
+  },
+});
+
+export const FirstBOx = styled(Grid)({
+  display: "flex",
+
+  "@media (max-width:899px)": {
+    display: "none",
+  },
+});
+
+export const AllStyle = {
+  smallHeading: {
+    color: "#0A2239",
+    marginBottom: "30px",
+    fontWeight: 500,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: "16px",
+    lineHeight: "24px",
+    fontFamily: "Lato",
+  },
+  errorTextStyle: {
+    color: "#DC2626",
+    fontSize: "12px",
+    fontFamily: "Lato",
+    fontWeight: 400,
+    lineHeight: "18px",
+  },
+  textStyle: {
+    fontSize: "14px",
+    fontWeight: 700,
+    marginBottom: "4px",
+    color: "#0A2239",
+    fontFamily: "Lato",
+    lineHeight: "22px",
+  },
+
+  boldStyle: {
+    color: "00bdab",
+    fontSize: "16px",
+    fontFamily: "Lato",
+    fontWeight: 700,
+  },
+  btnStyle: {
+    borderRadius: "8px",
+    height: "56px",
+    lineHeight: "24px",
+    background: "#050A44",
+    textTransform: "inherit" as "inherit",
+    color: "white",
+    fontFamily: "Lato",
+    fontSize: "16px",
+    fontWeight: 700,
+    marginBottom: "30px",
+  },
+  popup: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#ffffff",
+    color: "#0F172A",
+    borderRadius: "4px",
+    width: "362px",
+    height: "42px",
+    fontWeight: 400,
+    textAlign: "center",
+    fontFamily: "Lato",
+    fontSize: "16px",
+    lineHeight: "24px",
+    paddingLeft: "10px",
+    paddingRight: "10px",
+  },
+  heading: {
+    color: "#0A2239",
+    textAlign: "center" as "center",
+    fontWeight: 700,
+    fontSize: "24px",
+    lineHeight: "32px",
+    marginBottom: "8px",
+    fontFamily: "Lato",
+    letterSpacing: "-0.12px",
+  },
+
+  secondBox: {
+    flexDirection: "column" as "column",
+    display: "flex",
+    flexWrap: "Wrap" as "wrap",
+  },
 };
 
 export const DiologStyle = styled(Dialog)({

@@ -10,9 +10,11 @@ const Header: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const token = localStorage.getItem("user_token");
   const first_name = localStorage.getItem("first_name");
+  const user_id = localStorage.getItem("user_id");
 
   const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
+   
   };
 
   const handleMenuClose = () => {
@@ -20,7 +22,7 @@ const Header: React.FC = () => {
   };
 
   const handleDashboard = () => {
-    navigate('/dashboard');
+    navigate(`/dashboard/${user_id}`);
     handleMenuClose();
   };
 
@@ -80,7 +82,7 @@ const Header: React.FC = () => {
             </Box>
           )}
           {token && first_name && (
-            <Box className="second_grid_css">
+            <Box className="second_grid_css hidebutton">
               <Avatar
                 onClick={handleMenuClick}
                 style={{ cursor: 'pointer' }}
@@ -91,20 +93,20 @@ const Header: React.FC = () => {
                 style={{ color: "white", cursor: "pointer" }}
                 onClick={() => {
                   localStorage.removeItem("user_token");
-                  localStorage.removeItem("first_name");
+                  localStorage.removeItem("first_name");   
+                  localStorage.removeItem("user_id");
                   navigate("/login");
                 }}
               />
               <Menu
                 anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
-                onClose={handleMenuClose}
+                onClose={handleMenuClose} 
                 MenuListProps={{
                   'aria-labelledby': 'basic-button',
                 }}
               >
                 <MenuItem onClick={handleDashboard}>Dashboard</MenuItem>
-               
               </Menu>
             </Box>
           )}
