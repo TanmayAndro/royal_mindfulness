@@ -10,6 +10,9 @@ import { useNavigate } from "react-router-dom";
 
 const config = require("../../config");
 
+
+
+
 const PricingPlans = () => {
   const navigate = useNavigate()
   const getprice =(price:string)=>{
