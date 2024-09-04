@@ -17,6 +17,7 @@ import NotFound from './Pages/NotFound/NoteFound';
 import ThankYouPage from './Pages/Dashoard/ThankYouPage';
 import ContactUs from './Pages/Contact/ContactUs';
 import PaymentFailedPage from './Pages/Dashoard/PaymentFailedPage';
+import { AboutUs } from './Pages/AboutUs/AboutUs';
 
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
         <Route path="/" element={<ProtectedRoute element={LandingPage} />}/>
         <Route path="*" element={<NotFound/>}/>
         <Route path="/contact" element={<ContactUs/>}/>
+        <Route path="/aboutus" element={<AboutUs/>}/>
+
 
       </Routes>
       <Footer/>

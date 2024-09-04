@@ -229,7 +229,7 @@ exports.sessionsTime = ["1 Session", "7 Session", "20 Session"];
 exports.pricingPlansLabel = "Become a Vital member";
 exports.btn_name = "Select";
 exports.footerItem = [
-  { name: "About us", link: "/" },
+  { name: "About us", link: "/aboutus" },
   { name: "Contact us", link: "/contact" },
   { name: "FAQ's", link: "/faq" },
   { name: "Privacy Policy", link: "/privacy-policy" },
