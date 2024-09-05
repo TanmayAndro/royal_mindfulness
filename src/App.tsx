@@ -18,6 +18,8 @@ import ThankYouPage from './Pages/Dashoard/ThankYouPage';
 import ContactUs from './Pages/Contact/ContactUs';
 import PaymentFailedPage from './Pages/Dashoard/PaymentFailedPage';
 import { AboutUs } from './Pages/AboutUs/AboutUs';
+import Overview from './Pages/Overview/Overview';
+import Purpose from './Pages/Purpose/Purpose';
 
 function App() {
   return (
@@ -38,6 +40,10 @@ function App() {
         <Route path="*" element={<NotFound/>}/>
         <Route path="/contact" element={<ContactUs/>}/>
         <Route path="/aboutus" element={<AboutUs/>}/>
+        <Route path="/overview" element={<Overview/>}/>
+        <Route path="/purpose" element={<Purpose/>}/>
+
+
 
 
       </Routes>
