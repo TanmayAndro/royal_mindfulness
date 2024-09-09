@@ -65,7 +65,7 @@ const Logo_part: React.FC = () => {
           onKeyDown={toggleDrawer(false)}
         >
           <List>
-            {config.headerItem.map((item: { name: string; link: string }, index: number) => (
+            {config.drawerItems.map((item: { name: string; link: string }, index: number) => (
               <ListItem key={index} onClick={toggleDrawer(false)}>
                 <Link to={item.link} style={{ textDecoration: "none", color: "inherit", fontFamily: "lato" }}>
                   <ListItemText primary={item.name} />

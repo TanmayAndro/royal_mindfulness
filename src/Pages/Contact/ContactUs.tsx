@@ -1,5 +1,7 @@
 import { Box, Button, Grid, TextField, Typography } from '@mui/material'
 import React from 'react'
+import bgImg from '../../Assests/Contact.jpg'
+
 
 const ContactUs = () => {
   return (
@@ -9,7 +11,9 @@ const ContactUs = () => {
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '100vh',
-        backgroundColor: 'rgba(46, 82, 82, 1)', 
+        backgroundImage: `url(${bgImg})`, 
+        backgroundSize: 'center', 
+        backgroundPosition: 'center', 
       }}
     >
       <Box
