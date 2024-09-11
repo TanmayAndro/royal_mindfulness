@@ -6,7 +6,6 @@ import Img from '../../Assests/p1.js.webp'
 const Overview = () => {
   return (
     <>
-    
       <Grid container>
         <Grid item xs={12} padding="1rem">
           <Box className="imagebox">
