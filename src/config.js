@@ -206,6 +206,21 @@ exports.headerItem = [
   
 ];
 
+
+exports.drawerItems = [
+  { name: "Home", link: "/" },
+  { name: "Purpose", link: "/" },
+  { name: "Founders", link: "/" },
+  { name: "Pricing_Plans", link: "/pricing-plans" },
+  { name: "Overview", link: "/" },
+  { name: "About us", link: "/" },
+  { name: "Contact us", link: "/contact" },
+  { name: "FAQ's", link: "/faq" },
+  { name: "Privacy Policy", link: "/privacy-policy" },
+  { name: "Terms & Conditions", link: "/term-condition" },
+
+];
+
 //session
 exports.heading = "Service Name";
 exports.subHeading = "Checkout our availability and book the date and time that works for you.";
