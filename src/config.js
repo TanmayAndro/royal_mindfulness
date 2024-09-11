@@ -199,10 +199,10 @@ exports.pricingPlans = [
 
 exports.headerItem = [
   { name: "Home", link: "/" },
-  { name: "Purpose", link: "/" },
+  { name: "Purpose", link: "/purpose" },
   { name: "Founders", link: "/" },
   { name: "Pricing_Plans", link: "/pricing-plans" },
-  { name: "Overview", link: "/" },
+  { name: "Overview", link: "/overview" },
   
 ];
 
@@ -244,7 +244,7 @@ exports.sessionsTime = ["1 Session", "7 Session", "20 Session"];
 exports.pricingPlansLabel = "Become a Vital member";
 exports.btn_name = "Select";
 exports.footerItem = [
-  { name: "About us", link: "/" },
+  { name: "About us", link: "/aboutus" },
   { name: "Contact us", link: "/contact" },
   { name: "FAQ's", link: "/faq" },
   { name: "Privacy Policy", link: "/privacy-policy" },
@@ -749,4 +749,46 @@ exports.tableData = [
 
 exports.privacyPolicyTextRemaining = [
   "California residents also have the rights described below. We will not discriminate against any California resident who exercises these rights. Right to access/know your information. You may request from us a list of (i) the personal information that we have collected about you, and (ii) the categories of third parties to whom we have disclosed your personal information. You have the right to up to two (2) access requests each twelve (12) months. Right to delete your information. You may request, at any time, that we delete your information and direct our service providers to delete your information from their records. You may contact us to exercise these rights at support@royalmindfulness.com. To ensure the privacy and protection of individuals, we are required to verify your identity (or that of your authorized agent) or otherwise authenticate your request(s), which we will do in accordance with the CCPA regulations. Please note that, under the CCPA, we are not required to grant a request to access/know or a request to delete with respect to personal information obtained from you in your role as an employee, owner, director, officer or contractor of a company and within the context of Royalmindfulness providing its services to such company.Your European and UK Privacy RightsIf you are a resident of the European Union or the UK, you are entitled to certain information and have certain rights under the GDPR. Those rights include: (i) the right of access to your information.(ii) the right to rectify your information if it is incorrect or incomplete.(ii) the right to have your information erased (“right to be forgotten”) if certain grounds are met.(iv) the right to withdraw your consent to our processing of your information at any time (if our processing is based on consent).(v) the right to object to our processing of your information (if processing is based on legitimate interests).(vi) the right to object to our processing of your information for direct marketing purposes.(vii) the right to receive your information from us in a structured, commonly used and machine-readable format, and the right to transmit your information to another controller without hindrance from us (data portability).(viii) If you are located in the European Union or the UK and you are or have been a user of our services (including the Service), we may send you marketing communications based on our legitimate interests, subject always to your right to opt out of such communications. Further, if you are located in the European Union, we will never share your information with a third party for such third party’s marketing purposes, unless you have specifically consented to us doing so. You may contact us at support@royalmindfulness.com to exercise any of the above rights. We may request specific information from you to confirm your identity, and in some circumstances, we may charge a reasonable fee for access to your information.Furthermore, if you believe that our processing of your information is inconsistent with your data protection rights under the GDPR and we have not adequately addressed your concerns, you have the right to lodge a complaint with the data protection supervisory authority of your country.For purposes of the GDPR, we are a “controller” and you are a “data subject.”Updates to our privacy policy Royalmindfulness reserves the right to change this Privacy Policy at any time. If we make a material change to this Privacy Policy, we will make an effort to communicate these changes to you via email or by posting a notification on the Site. The date this Privacy Policy was last revised is at the top of this page. We encourage you to review this Privacy Policy periodically to check for any updates or changes.Contact us If you have questions about the privacy aspects of our Site or Services or would like to make a complaint, please contact us at support@royalmindfulness.com or write to us at: Royalmindfulness, Inc. RH15, Treasure Town, Indore(M.P), India-452012 logo",
+]
+
+
+// purpose
+exports.purposeHeading = "Purpose of Royal Mindfulness";
+exports.purposeDetail = "At Royal Mindfulness, our purpose is deeply rooted in the belief that true well-being is a harmonious balance of the mind, body, and spirit. In a world where stress, anxiety, and the demands of modern life are ever-present, we aim to provide a sanctuary where individuals can reconnect with themselves, find inner peace, and cultivate a healthier, more balanced lifestyle. Below, we outline the key aspects of our purpose";
+exports.purposeData = [
+  {
+    question: "Promoting Holistic Wellness",
+    answer:
+    "Our primary purpose is to promote holistic wellness by integrating traditional yoga and meditation practices into the lives of our students. We recognize that wellness is not just about physical health but also encompasses mental clarity, emotional stability, and spiritual growth. By offering practices like Raja Yoga, Antar Mouna (Inner Silence), and daily relaxation sessions, we provide a comprehensive approach to well-being that addresses the full spectrum of human experience."
+  },
+  {
+    question: "Making Mindfulness Accessible",
+    answer:
+      "We believe that mindfulness and the benefits it brings should be accessible to everyone, regardless of their background, experience level, or location. One of our core missions is to bring traditional meditation practices to the West, introducing these time-honored techniques to a broader audience. Our online platform is designed to be user-friendly, allowing people from all walks of life to easily access our services from the comfort of their homes. We strive to remove barriers to mindfulness practice, making it simple and convenient for individuals to incorporate these practices into their daily routines.",
+  },
+  {
+    question: "Providing Personalized Care",
+    answer:
+      "Understanding that each person’s journey to wellness is unique, Royal Mindfulness is dedicated to offering personalized care that meets the specific needs of each individual. Our sessions are designed to be adaptable, allowing students to progress at their own pace and choose practices that resonate with them. Whether you are a beginner seeking relaxation or an experienced practitioner looking to deepen your meditation practice, we provide the guidance and support you need to achieve your wellness goals.",
+  },
+  {
+    question: "Fostering a Supportive Community",
+    answer:
+      "We are more than just a yoga and meditation platform; we are a community of like-minded individuals who are on a shared journey toward greater well-being. Our purpose includes fostering a supportive and inclusive environment where students can connect, share experiences, and grow together. By creating a sense of community, we aim to make the practice of mindfulness a collaborative and enriching experience."
+  },
+  {
+    question: "Empowering Through Education ",
+    answer:
+      "Education is a cornerstone of our purpose at Royal Mindfulness. We are committed to empowering our students with knowledge and understanding of traditional mindfulness practices. Our experienced instructors not only guide students through sessions but also educate them on the principles and philosophies behind these practices. This educational approach ensures that our students are equipped with the tools and insights needed to continue their wellness journey independently."
+  },
+  {
+    question: "Ensuring Affordability",
+    answer:
+      "We believe that everyone should have access to high-quality mindfulness practices without financial strain. Part of our purpose is to ensure that our services are affordable and accessible to as many people as possible. By offering competitive pricing, we make it easier for individuals to invest in their well-being without breaking the bank."
+  },
+  {
+    question: "Enhancing Quality of Life",
+    answer:
+      "Ultimately, the purpose of Royal Mindfulness is to enhance the quality of life for our students. By providing effective mindfulness practices, personalized care, and a supportive community, we help individuals manage stress, improve mental clarity, and cultivate a sense of inner peace. Our goal is to empower our students to live more balanced, fulfilling lives, where they can face life’s challenges with grace and resilience.In conclusion, the purpose of Royal Mindfulness is to be a guiding force in your journey toward holistic wellness. We are here to help you cultivate a deeper connection with yourself, find inner peace, and live a life of balance and harmony. Whether you are seeking to reduce stress, enhance your spiritual growth, or simply find a moment of calm in your day, Royal Mindfulness is dedicated to supporting you every step of the way."
+  }
 ]

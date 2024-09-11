@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './Components/Header';
 import Login from './Pages/Login/login';
@@ -17,10 +17,17 @@ import NotFound from './Pages/NotFound/NoteFound';
 import ThankYouPage from './Pages/Dashoard/ThankYouPage';
 import ContactUs from './Pages/Contact/ContactUs';
 import PaymentFailedPage from './Pages/Dashoard/PaymentFailedPage';
+import { AboutUs } from './Pages/AboutUs/AboutUs';
+import Overview from './Pages/Overview/Overview';
+import Purpose from './Pages/Purpose/Purpose';
+import ScrollToTop from './Components/ScrollToTop';
 
 function App() {
+ 
+  
   return (
     <Router>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/login" element={<Login />} />
@@ -36,6 +43,12 @@ function App() {
         <Route path="/" element={<ProtectedRoute element={LandingPage} />}/>
         <Route path="*" element={<NotFound/>}/>
         <Route path="/contact" element={<ContactUs/>}/>
+        <Route path="/aboutus" element={<AboutUs/>}/>
+        <Route path="/overview" element={<Overview/>}/>
+        <Route path="/purpose" element={<Purpose/>}/>
+
+
+
 
       </Routes>
       <Footer/>

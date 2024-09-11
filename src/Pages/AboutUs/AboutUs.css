@@ -28,14 +28,13 @@
     
     #box2 {
       color: black;
-      font-size: 40px;
+      font-size: 50px;
     }
     
     #subbox {
       padding: 0 6rem ;
       color: black;
-      font-size: 16px;
-      
+      font-size: 18px;
     }
     
     @media (min-width:0px) and (max-width:500px) {
@@ -50,33 +49,5 @@
     
     .subheading {
       text-align: justify;
+      margin-bottom: 30px;
     }
-
-    @media (max-width:430px) {
-      .image {
-        height: 20vh !important;   
-      }
-      #typo{
-        font-size: 50px !important;
-        margin-top: 45px !important;
-      }
-      #box2 {
-        font-size: 35px !important;
-       }
-       #subbox {
-         font-size: 22px !important;
-        }
-    }
-
-    @media (max-width:1024px) {
-      .image {
-        height: 35vh;   
-      }
-      #box2 {
-        font-size: 50px ;
-       }
-       #subbox {
-        font-size: 28px ;
-       }
-    }
-
