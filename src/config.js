@@ -202,7 +202,7 @@ exports.headerItem = [
   { name: "Purpose", link: "/purpose" },
   { name: "Founders", link: "/" },
   { name: "Pricing plans", link: "/pricing-plans" },
-  { name: "Overview", link: "/" },
+  { name: "Overview", link: "/overview" },
   
 ];
 
@@ -212,7 +212,7 @@ exports.drawerItems = [
   { name: "Purpose", link: "/" },
   { name: "Founders", link: "/" },
   { name: "Pricing plans", link: "/pricing-plans" },
-  { name: "Overview", link: "/" },
+  { name: "Overview", link: "/overview" },
   { name: "About us", link: "/" },
   { name: "Contact us", link: "/contact" },
   { name: "FAQ's", link: "/faq" },
