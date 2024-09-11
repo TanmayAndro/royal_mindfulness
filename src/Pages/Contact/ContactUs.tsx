@@ -1,6 +1,7 @@
-import { Box, Button, Grid, TextField, Typography } from '@mui/material'
+import { Box, Button, Grid, Typography } from '@mui/material'
 import React from 'react'
 import bgImg from '../../Assests/Contact.jpg'
+import { AllStyle, InputField } from '../Login/login'
 
 
 const ContactUs = () => {
@@ -11,7 +12,6 @@ const ContactUs = () => {
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '100vh',
-        backgroundImage: `url(${bgImg})`, 
         backgroundSize: 'center', 
         backgroundPosition: 'center', 
       }}
@@ -27,55 +27,51 @@ const ContactUs = () => {
         }}
       >
       <Typography
-      variant="h5"
-      component="h1"
-      gutterBottom
-      sx={{ textAlign: 'center', marginBottom: 3 }}
+      style={{...AllStyle.heading,marginBottom:"20px"}}
     >
-      BOOK A FREE CALL WITH US
+      Book a free call with us
     </Typography>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
-            <TextField
+            <InputField
               fullWidth
-              label="First Name"
+              placeholder="First Name"
               variant="outlined"
               required
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField
+            <InputField
               fullWidth
-              label="Last Name"
+              placeholder="Last Name"
               variant="outlined"
               required
             />
           </Grid>
           <Grid item xs={12}>
-            <TextField
+            <InputField
               fullWidth
-              label="Email"
+              placeholder="Email"
               type="email"
               variant="outlined"
               required
             />
           </Grid>
           <Grid item xs={12}>
-            <TextField
+            <InputField
               fullWidth
-              label="Phone"
+              placeholder="Phone"
               type="tel"
               variant="outlined"
             />
           </Grid>
           <Grid item xs={12}>
-            <TextField
+            <InputField
               fullWidth
-              label="Message"
+              placeholder="Message"
               multiline
               rows={4}
               variant="outlined"
-              required
             />
           </Grid>
           <Grid item xs={12}>

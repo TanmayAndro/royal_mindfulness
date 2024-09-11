@@ -201,8 +201,8 @@ exports.headerItem = [
   { name: "Home", link: "/" },
   { name: "Purpose", link: "/purpose" },
   { name: "Founders", link: "/" },
-  { name: "Pricing_Plans", link: "/pricing-plans" },
-  { name: "Overview", link: "/overview" },
+  { name: "Pricing plans", link: "/pricing-plans" },
+  { name: "Overview", link: "/" },
   
 ];
 
@@ -211,12 +211,12 @@ exports.drawerItems = [
   { name: "Home", link: "/" },
   { name: "Purpose", link: "/" },
   { name: "Founders", link: "/" },
-  { name: "Pricing_Plans", link: "/pricing-plans" },
+  { name: "Pricing plans", link: "/pricing-plans" },
   { name: "Overview", link: "/" },
   { name: "About us", link: "/" },
   { name: "Contact us", link: "/contact" },
   { name: "FAQ's", link: "/faq" },
-  { name: "Privacy Policy", link: "/privacy-policy" },
+  { name: "Privacy policy", link: "/privacy-policy" },
   { name: "Terms & Conditions", link: "/term-condition" },
 
 ];
@@ -247,7 +247,7 @@ exports.footerItem = [
   { name: "About us", link: "/aboutus" },
   { name: "Contact us", link: "/contact" },
   { name: "FAQ's", link: "/faq" },
-  { name: "Privacy Policy", link: "/privacy-policy" },
+  { name: "Privacy policy", link: "/privacy-policy" },
   { name: "Terms & Conditions", link: "/term-condition" },
 
 ];

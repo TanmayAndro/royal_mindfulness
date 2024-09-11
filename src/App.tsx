@@ -33,7 +33,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/session" element={<ProtectedRoute element={Session} />}/>
-        <Route path="/pricing-plans" element={<ProtectedRoute element={PricingPlans} />}/>
+        <Route path="/pricing-plans" element={<PricingPlans />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/term-condition" element={<TermsCondition />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
