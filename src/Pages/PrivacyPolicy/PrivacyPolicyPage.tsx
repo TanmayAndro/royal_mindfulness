@@ -1,147 +1,172 @@
-import React from "react";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
   Container,
   Typography,
+  styled,
 } from "@mui/material";
-import { AllStyle } from "../Login/login";
-import "./PrivacyPolicy.css"
+import React, { useState } from "react";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import PrivacyImg  from "../../Assests/privacy.jpg";
+
 const config = require("../../config");
 
 const PrivacyPolicy = () => {
-  const makeTextBoldAndLink = (text: string) => {
-    const boldPattern = /“([^”]+)”/gi;
-    const urlPattern = /(https?:\/\/[^\s]+)/gi;
-    const emailPattern = /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/gi;
-    const logoPattern = /logo/gi;
+  const [expanded, setExpanded] = useState<string | false>(false);
 
-    const parts = text.split(
-       /(“[^”]+”|https?:\/\/[^\s]+|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|logo)/gi
-    );
-
-    return (
-      <>
-        {parts.map((part, index) => {
-          if (boldPattern.test(part)) {
-            return <strong key={index}>{part}</strong>;
-          }
-          if (urlPattern.test(part)) {
-            return (
-              <a
-                key={index}
-                href={part}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {part}
-              </a>
-            );
-          }
-          if (emailPattern.test(part)) {
-            return (
-              <a key={index} href={`mailto:${part}`} rel="noopener noreferrer">
-                {part}
-              </a>
-            );
-          }
-          if (logoPattern.test(part)) {
-            return (
-              <a href="https://your-logo-link.com" key={index} target="_blank" rel="noopener noreferrer">
-                {part}
-              </a>
-            );
-          }
-          return <span key={index}>{part}</span>;
-        })}
-      </>
-    );
-  };
+  const handleChange =
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };
 
   return (
-    <Box >
-      <Container style={{ minHeight: "100vh", display: "block"}} 
-      >
+    <Box>
+      <Container style={{ minHeight: "100vh", display: "block"}}>
         <Box
-       
           style={{
-            ...AllStyle.heading,
-            justifyContent: "center",
-            marginTop: "65px",
+            position: "relative",
+            textAlign: "center",
+            color: "white",
+            marginTop: "0px",
             marginBottom: "30px",
-            
+            width: "100%",
           }}
         >
-          <Typography
-            style={{ ...AllStyle.heading, color: "rgba(30, 41, 59, 1)" }}
-          >
-            Privacy Policy
-          </Typography>
-        </Box>
-        <Box style={{ marginBottom: "120px" }}>
-          <div
-            style={{
-              color: "#334155",
-              fontFamily: "Lato",
-              fontSize: "16px",
-              fontWeight: "400",
-              lineHeight: "30px",
+            <Box
+            sx={{
+              position: "relative",
+              overflow:'hidden',
+              width: "100%",
+              hight:"300px",
+              marginTop: "10px",
+              marginBottom: "30px",
+              borderRadius:'10px',
+              "@media (max-width:900px)": {
+                img: {
+                  display: "none",
+                },
+              },
             }}
           >
-            {config.privacyPolicyText.map(
-              (paragraph: string, index: number) => (
-                <p key={index}>{makeTextBoldAndLink(paragraph)}</p>
-              )
-            )}
-          </div>
-          <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell className="table_head">Category</TableCell>
-                <TableCell className="table_head">Sources of Collection</TableCell>
-                <TableCell className="table_head">Purposes of Collection</TableCell>
-                <TableCell className="table_head">Disclosures for a Business Purpose</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {config.tableData.map((row: any, index: number) => (
-                <TableRow key={index} >
-                  <TableCell className="table_data">{row.category}</TableCell>
-                  <TableCell className="table_data">{row.sources}</TableCell>
-                  <TableCell className="table_data">{row.purposes}</TableCell>
-                  <TableCell className="table_data">{row.disclosures}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-           <div
-            style={{
-              color: "#334155",
-              fontFamily: "Lato",
-              fontSize: "16px",
-              fontWeight: "400",
-              lineHeight: "30px",
-            }}
-          >
-            {config.privacyPolicyTextRemaining.map(
-              (paragraph: string, index: number) => (
-                <p key={index}>{makeTextBoldAndLink(paragraph)}</p>
-              )
-            )}
-          </div>
+            <img
+              src={PrivacyImg}
+              alt="image"
+              style={{
+                width:"-webkit-fill-available", height: "500px"}}
+            />
+          </Box>
+          <MainHeading sx={{
+              "@media (max-width:500px)": {
+               marginTop:'3rem',
+               color:'black',
+               marginBottom:'4rem',
+               fontSize:'25px',
+               width:'80%'
+              },
+            }}>Privacy and Policy</MainHeading>
         </Box>
-       
+
+        <Box sx={{
+           marginBottom: "120px", 
+           marginTop: "10px" ,
+           "@media (max-width:500px)": {
+               marginTop:'6rem',
+              },
+              "@media (min-width:500px) and (max-width:900px)": {
+                marginTop:'10rem',
+               },
+            }}
+            >
+
+          {config.privacy.map(
+            (faq: { summary: string; details: string }, i: number) => (
+              <AccordionStyle
+                key={i}
+                expanded={expanded === `panel${i}`}
+                onChange={handleChange(`panel${i}`)}
+              >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls={`panel${i}bh-content`}
+                  id={`panel${i}bh-header`}
+                >
+                  <Typography
+                    style={{
+                      fontFamily: "Inter",
+                      color: "#1e293b",
+                      fontSize: "16px",
+                      fontWeight: "700",
+                      lineHeight: "21px",
+                    }}
+                  >
+                    {faq.summary}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography
+                    style={{
+                      color: "#334155",
+                      fontFamily: "Inter",
+                      fontSize: "16px",
+                      fontWeight: "400",
+                      lineHeight: "30px",
+                    }}
+                  >
+                    {faq.details.split("\n").map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+                  </Typography>
+                </AccordionDetails>
+              </AccordionStyle>
+            )
+          )}
+        </Box>
       </Container>
     </Box>
   );
 };
+
+const MainHeading = styled(Typography)({
+  position: "absolute",
+  top: "10%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  fontSize: "52px",
+  color: "white",
+  fontWeight: "bold",
+  "@media (max-width: 1172px)": {
+    fontSize: "42px",
+   
+  },
+  "@media (max-width: 900px)": {
+    fontSize: "35px",
+    color:'black',
+    marginTop:'5rem'
+  },
+});
+
+const AccordionStyle = styled(Accordion)({
+  "&.MuiAccordion-root": {
+    boxShadow: "-1px 3px 10px 0px rgba(0, 0, 0, 0.10)",
+    marginBottom: "26px",
+    borderColor: "transparent",
+    padding: "10px 24px",
+    maxWidth: "971px",
+    marginLeft: "auto",
+    marginRight: "auto",
+    "&.MuiAccordion-rounded": {
+      borderRadius: "8px",
+    },
+    "&::before": {
+      backgroundColor: "#fff",
+      boxShadow: "-1px 3px 10px 0px rgba(0, 0, 0, 0.10)",
+    },
+  },
+});
 
 export default PrivacyPolicy;

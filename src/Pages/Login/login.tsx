@@ -48,6 +48,7 @@ const Login = () => {
   const handleVisiblPassword = () => {
     return enablePasswordField ? "password" : "text";
   };
+  
   const handlePassword = (value: string) => {
     setData({ ...data, password: value });
     if (value.trim() === "" || value.length < 8) {

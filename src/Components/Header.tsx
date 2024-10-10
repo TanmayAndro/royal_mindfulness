@@ -14,7 +14,6 @@ const Header: React.FC = () => {
 
   const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
-   
   };
 
   const handleMenuClose = () => {
@@ -68,7 +67,10 @@ const Header: React.FC = () => {
         </Grid>
         <Grid item xs={12} md={3} sm={12} lg={2}>
           {!token && (
-            <Box className="second_grid_css">
+            <Box className="second_grid_css"  sx={{
+              // Hide on small screens
+              '@media (max-width:500px)': { display: 'none' } // Show on screens larger than 500px
+            }}>
               <Link to="/login" className="button_login_css">
                 <Button className="button_login_css" color="inherit">
                   {config.login_button_name}

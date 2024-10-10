@@ -1,3 +1,5 @@
+
+
 import {
   Accordion,
   AccordionDetails,
@@ -9,7 +11,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { term_condition } from "../../assests";
+import Terms  from "../../Assests/Terms.jpg";
 
 const config = require("../../config");
 
@@ -23,7 +25,7 @@ const TermsCondition = () => {
 
   return (
     <Box>
-      <Container style={{ minHeight: "100vh", display: "block" }}>
+      <Container style={{ minHeight: "100vh", display: "block"}}>
         <Box
           style={{
             position: "relative",
@@ -40,20 +42,46 @@ const TermsCondition = () => {
               overflow:'hidden',
               width: "100%",
               hight:"300px",
-              marginTop: "0px",
-              marginBottom: "30px"
+              marginTop: "10px",
+              marginBottom: "30px",
+              borderRadius:'10px',
+              "@media (max-width:900px)": {
+                img: {
+                  display: "none",
+                },
+              },
             }}
           >
             <img
-              src={term_condition}
+              src={Terms}
               alt="image"
-              style={{width:"-webkit-fill-available", height: "600px" }}
+              style={{
+                width:"-webkit-fill-available", height: "500px"}}
             />
           </Box>
-          <MainHeading>Terms And Conditions</MainHeading>
+          <MainHeading sx={{
+              "@media (max-width:500px)": {
+               marginTop:'3rem',
+               color:'black',
+               marginBottom:'4rem',
+               fontSize:'25px',
+               width:'100%'
+              },
+            }}>Terms and Condition</MainHeading>
         </Box>
 
-        <Box style={{ marginBottom: "120px", marginTop: "10px" }}>
+        <Box sx={{
+           marginBottom: "120px", 
+           marginTop: "10px" ,
+           "@media (max-width:500px)": {
+               marginTop:'6rem',
+              },
+              "@media (min-width:500px) and (max-width:900px)": {
+                marginTop:'10rem',
+               },
+            }}
+            >
+
           {config.tacs.map(
             (faq: { summary: string; details: string }, i: number) => (
               <AccordionStyle
@@ -88,7 +116,12 @@ const TermsCondition = () => {
                       lineHeight: "30px",
                     }}
                   >
-                    {faq.details}
+                    {faq.details.split("\n").map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
                   </Typography>
                 </AccordionDetails>
               </AccordionStyle>
@@ -110,11 +143,13 @@ const MainHeading = styled(Typography)({
   fontWeight: "bold",
   "@media (max-width: 1172px)": {
     fontSize: "42px",
-    top: "8%",
+   
   },
-  "@media (max-width: 955px)": {
+  "@media (max-width: 900px)": {
     fontSize: "35px",
-    top: "8%",
+    color:'black',
+    marginTop:'5rem',
+    width:'100%'
   },
 });
 

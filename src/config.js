@@ -47,10 +47,8 @@ exports.Select_Time = "Select Time";
 //Dashboard Header
 exports.Dashboard_Main_Heading = " Dashboard";
 exports.Alex_Meian = "Alex Meian";
-exports.Input_Placholder = 'Search for anything......';
+exports.Input_Placholder = "Search for anything......";
 exports.Product_Manager = "Product Manager";
-
-
 
 //Dashboard Profile
 exports.profile_email = "john.doe@example.com";
@@ -59,11 +57,10 @@ exports.Phone_Number = "(123) 456-7890";
 exports.Address = "Address";
 exports.Profile_Address = "123 Main Street, Apt 4B, Springfield, IL 62701";
 
-
 //Dashboard Payment history
 exports.Payment_History_List = "Payment History List";
 exports.Sort_By_Dates = "Sort By : Dates";
-exports.Payment_Dates=  "2024-06-24";
+exports.Payment_Dates = "2024-06-24";
 exports.Amount_Heading = "Amount";
 exports.Amount = "50.00";
 exports.Payment_Method = "Payment Method";
@@ -72,9 +69,6 @@ exports.Transaction_Id = "Transaction ID";
 exports.User_Transaction_Id = "TX123456";
 exports.Status = "Status";
 exports.Success = "Successful";
-
-
-
 
 exports.pricingPlans = [
   {
@@ -200,30 +194,26 @@ exports.pricingPlans = [
 exports.headerItem = [
   { name: "Home", link: "/" },
   { name: "Purpose", link: "/purpose" },
-  { name: "Founders", link: "/" },
   { name: "Pricing plans", link: "/pricing-plans" },
   { name: "Overview", link: "/overview" },
-  
 ];
-
 
 exports.drawerItems = [
   { name: "Home", link: "/" },
-  { name: "Purpose", link: "/" },
-  { name: "Founders", link: "/" },
+  { name: "Purpose", link: "/purpose" },
   { name: "Pricing plans", link: "/pricing-plans" },
   { name: "Overview", link: "/overview" },
-  { name: "About us", link: "/" },
+  { name: "About us", link: "/aboutus" },
   { name: "Contact us", link: "/contact" },
   { name: "FAQ's", link: "/faq" },
   { name: "Privacy policy", link: "/privacy-policy" },
   { name: "Terms & Conditions", link: "/term-condition" },
-
 ];
 
 //session
 exports.heading = "Service Name";
-exports.subHeading = "Checkout our availability and book the date and time that works for you.";
+exports.subHeading =
+  "Checkout our availability and book the date and time that works for you.";
 exports.filterHeading = "Filter By";
 exports.droplable = "None";
 exports.dropHeading = ["Location", "Session"];
@@ -235,7 +225,7 @@ exports.buttonTime = [
   { start: "2 PM", end: "3 PM" },
   { start: "4 PM", end: "5 PM" },
   { start: "6 PM", end: "7 PM" },
-  { start: "8 PM", end: "9 PM" }
+  { start: "8 PM", end: "9 PM" },
 ];
 exports.options = ["New York", "California"];
 exports.sessionsTime = ["1 Session", "7 Session", "20 Session"];
@@ -249,10 +239,7 @@ exports.footerItem = [
   { name: "FAQ's", link: "/faq" },
   { name: "Privacy policy", link: "/privacy-policy" },
   { name: "Terms & Conditions", link: "/term-condition" },
-
 ];
-
-
 
 //FAQ's
 exports.faqs = [
@@ -403,8 +390,251 @@ exports.faqs = [
 ];
 
 
-
-
+exports.privacy = [
+  {
+    summary: "Privacy of children",
+    details:
+      "This Privacy Policy explains our information practices in connection with information provided by any Children, which are defined as individuals residing in the United States under the age of 13, individuals residing in the UK or European Economic Area that are under the age of 16, or individuals in other jurisdictions that are regarded as “children” and afforded special privacy protections under the laws of those jurisdictions (“Children” or “Child”).",
+  },
+  {
+    summary: "Parental Consent",
+    details:
+      "We require that the parent or legal guardian (“Parent”) of any Child desiring to use the Site or Service provide consent before that Child uses the Site or Service. Such consent may be revoked at any time, after which that Child is prohibited from further use of the Site or Service. Further, Children that have Parental Consent may only use the Site or Service if they are under direct supervision of an adult.",
+  },
+  {
+    summary: "Children are Protected",
+    details:
+      "We are committed to protecting children's privacy. We support the Children's Online Privacy Protection Act (“COPPA”) and other frameworks like the General Data Protection Regulation (Regulation (EU) 2016/679) (the “GDPR”) or the UK GDPR adopted post Brexit (also referred to herein for convenience as simply the “GDPR”). Our goal is to minimize the information gathered from and disseminated about Children while permitting them active participation in the Site and Service for which we are known. Children and their Parents may contact us at any time regarding our Child privacy practices at support@royalmindfulness.com.",
+  },
+  {
+    summary: "Information we collect about you",
+    details: `When you access the Site or use the Service, whether as one of  Royalmindfulness.com’s professional yoga teacher (a “Teacher User”), as a user accessing yoga instruction via the Service as a purchaser of a Royal mindfulness membership or other paid access to the Service (a “Student Member”), as a user accessing Meditation instruction via the Service on a trial basis (a “Trial User”), as an enterprise that purchases or otherwise registers for access to the Service on behalf of or for the benefit of that enterprise’s employees or representatives (an “Enterprise User”), or as an individual employee or representative of an Enterprise Purchaser who accesses or uses the Service as an authorized recipient of Service benefits purchased by an Enterprise Purchaser (an “Employee User” and, collectively with Student Member, Trial User, Enterprise User, and Employee User, a “Student User”), we may collect some personal information about you.
+    This includes :
+    your name;
+    your postal address;
+    your e-mail address;
+    your phone number;
+    recordings and/or images of you; and;
+    medical history.
+    This also includes information that relates to you but may not specifically identify you, such as:
+    information about your gender and/or age;
+    information about your internet connection;
+    information about the equipment you use to access the Site or Service;
+    your usage details;
+    your IP addresses; and
+    information collected through cookies and other tracking technologies.
+    `,
+  },
+  {
+    summary: "Information We Collect Directly From You",
+    details: `We collect personal information from various sources, such as directly from you when you access or use the Site or Service. This may include:
+    information that you provide by filling in forms on the Site or through the Service. This includes information provided at the time of registering to use the Site, subscribing to the Service, posting material, or requesting further services or, if you are a Teacher User, providing services to royal mindfulness. We may also ask you for information when you enter a contest or promotion sponsored by us, and when you report a problem with the Site or Service.
+    information you provide when providing comments or reviews on, or communicating with others through, the Service including, without limitation, by posting User Contributions (as defined below).
+    records and copies of your correspondence (including email addresses), if you contact us.
+    your responses to surveys that we might ask you to complete for research purposes.
+    if you are a Student User, details of transactions you carry out through the Site or Service and of the fulfillment of your orders. If you are a Student Member or Enterprise User, you may be required to provide financial information before placing an order or making a purchase through the Site.
+    your search queries on the Site.
+    You also may provide information, comments, reviews, images, and other content to be published or displayed (hereinafter, "posted") on public areas of the Site, or transmitted to other users of the Site or third parties (collectively, "User Contributions"). Your User Contributions are posted on and transmitted to others at your own risk. Although you may have the option to set certain permission settings through your account, please be aware that no security measures are perfect or impenetrable. Additionally, we cannot control the actions of other users of the Site with whom you may choose to share your User Contributions. Therefore, we cannot and do not guarantee that your User Contributions will not be viewed by unauthorized persons.`,
+  },
+  {
+    summary: "Information We Collect by Automatic Means",
+    details: `When you navigate through and interact with the Site, we may use automatic data collection technologies to collect certain information about your equipment, browsing, actions, and patterns, including:
+    information about the devices you use to access the Site (such as the IP address and the type of the device, operating system, and web browser);
+    dates, times, and duration of use of the Site (including whether you are a repeat or first time visitor);
+    information on actions taken when using the Service (such as page views and website navigation patterns);
+    information about your network provider, mobile carrier, mobile browser type, and your click-sequence and tap-sequence when using your device or the App;
+    click-sequence and tap-sequence when using your device or the App; information about your online activities over time and across third-party websites or other online services (behavioral tracking);
+    certain geolocational information, such as your time zone and information about the speed, bearing, orientation, and altitude of your mobile device when using the App; and
+    audio, video, or other digital information gather during and with respect to group and/or personalized yoga instruction conducted through the Service (“Trainings”), whether you participate as a Teacher User or Student User, and including, without limitation, chat messages, chat logs, and video and audio recordings of Trainings (as more specifically described in ”Recordings of Training Sessions,” below).
+    In addition, we use third-party web analytics services to help us understand your use of the Site and the popularity of certain content so we can improve your experience. For more information on our use of third-party analytics services, see ”Third Party Providers” below.
+    Information we collect automatically may be statistical data that does not include personal information. We may maintain or associate any such statistical data with personal information we collect in other ways or receive from third parties. It helps us to estimate our audience size and usage patterns, speed up user experience, and to improve and personalize the Service, including enabling us to identify and authenticate users. To the extent that we associate any of this non-personal information with your personal information, we will treat it as personal information under the terms of this Privacy Policy.
+    Technologies we use for automatic data collection may include cookies. A cookie is a small file placed on the hard drive of your computer. There are two types of cookies: session and persistent cookies:
+    Session Cookies. Session cookies exist only during an online session. They disappear from your computer when you close your browser or turn off your computer. We use session cookies to allow our systems to uniquely identify you during a session or while you are logged into the Site. This allows us to process your online transactions and requests and verify your identity, after you have logged in, as you move through our Site.
+    Persistent Cookies. Persistent cookies remain on your computer after you have closed your browser or turned off your computer. We use persistent cookies to track aggregate and statistical information about user activity.
+    Pages of our Site and our emails may also contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags, and single-pixel gifs) that permit us, for example, to count users who have visited those pages or opened an email and for other related website statistics (for example, recording the popularity of certain website content and verifying system and server integrity).`,
+  },
+  {
+    summary: "Recordings of Training Sessions",
+    details: `The Service is interactive, in that it enables Student Users to connect in real-time to Teacher Users and for Teacher Users to connect with Student Users to provide the Training sessions. These Training sessions, whether one-on-one (“Private Sessions ”), group training (“Workshops”), group classes (“Classes”), or group classes offered through Yoga with Friends (“YWF Classes”), are recorded for the limited purposes set forth herein (“Session Recordings”). You expressly consent to be recorded in connection with the Training sessions that you participate in through the Service, and to the use and disclosure of such Session Recordings as detailed herein.
+    Private Sessions. Session Recordings of Private Sessions are recorded for both the applicable Student User and Teacher User to refer to in developing future Training session plans and yoga training, and for the Student User’s personal yoga practice. Subject to the limitations, restrictions, and licenses set forth in the Royal mindfulness Terms of Use, Session Recordings of Private Sessions are owned and viewable by the participating Student User. Notwithstanding the foregoing, Royalmindfulness, its teachers, employees and other personnel may access, store, view, disclose, and otherwise use the Session Recordings of any Private Sessions in which you participate for the purposes of (i) planning and providing meditation training to you, (ii) conducting teacher training and improvement and other quality assurance and customer service and support programs, and (iii) such other purposes to which you may consent. Royal mindfulness will not, however, disclose Session Recordings of Private Sessions (without your consent) to other Student Users or teachers other than (a) the teacher that conducted the Private Session, and (b) other teachers with whom you work (including, without limitation, substitute and replacement teachers). In addition, where royalmindfulness’s internal staff view or otherwise use Session Recordings in connection with conducting teacher training and improvement and other quality assurance and customer service and support programs, actual clips of the Session Recordings will not be shown to other teachers without your permission. If you do not want a teacher to view the Session Recording of any Private Session you participate in, or if you want us to delete the Session Recordings of your Private Sessions, please contact us atsupport@royalmindfulness.com.
+    Classes and Workshops. Session Recordings of Classes and Workshops are recorded for conducting teacher training and improvement and other quality assurance and customer service and support programs. All Class Sessions and Workshops Recordings are owned by Royal mindfulness and viewable by royal mindfulness, its teachers and internal staff. Where you participate in a Class or Workshop as a Student User, you may view the Session Recording of such Class or Workshop in connection with your personal meditation practice. Any other use, publication, or distribution of any Class Session or Workshop Recording is prohibited.
+    YWF Classes. Session Recordings of YWF Classes are recorded for both the applicable Student Users and Teacher User to refer to in developing future Session plans and yoga training and for the participating Students’ personal yoga practice. Subject to the limitations, restrictions, and licenses set forth in the royal mindfulness Terms of Use, Session Recordings of YWF Classes are owned by the Student User designated as “host” with respect to the YWF Class (the “Host”), and are viewable by all participating Student Users. Notwithstanding the foregoing, royal mindfulness, its teachers, employees and other personnel may access, store, view, disclose, and otherwise use the Session Recordings of any YWF Class for the purposes of (i) planning and providing yoga training to participating Student Users, (ii) conducting teacher training and improvement and other quality assurance and customer service and support programs, and (iii) such other purposes to which the Host may consent. Royal mindfulness will not, however, disclose Session Recordings of YWF Classes (without the Host’s consent) to non-participant Student Users or to teachers other than (a) the teacher that conducted the YWF Class, and (b) other teachers with whom participating Student Users work (including, without limitation, substitute and replacement teachers). In addition, where our internal staff view or otherwise use Session Recordings in connection with conducting teacher training and improvement and other quality assurance and customer service and support programs, actual clips of the Session Recordings will not be shown to other teachers without the Host’s permission. If you do not want a teacher to view the Session Recording of any YWF Class for which you are Host, or if you want us to delete the Session Recording of any YWF Class for which you are Host, please contact us at support@royalmindfulness.com.
+    Please note that you are responsible for ensuring that the camera on your device that is used for Session Recordings does not show any other persons besides yourself (such as your children). We are not responsible for any video, audio, or other personal information collected through Session Recordings of any other persons (other than participating Teacher Users and Student Users) that are located in your vicinity when participating in a Training session. You are solely responsible for obtaining, and hereby represent and warrant to Royal mindfulness that you have obtained, all required permissions and consent from any such person (including any minor) that might be shown or recorded (audibly or visually) through any device used by you when participating in a Training session.
+    Third Party Use of Cookies and Other Tracking Technologies Some content or applications on the Site are served by third-parties, including content and application providers. These third parties may use cookies alone or in conjunction with web beacons or other tracking technologies to collect information about you when you use our Site. The information they collect may be associated with your personal information or they may collect information, including personal information, about your online activities over time and across different websites and other online services. They may use this information to provide you with interest-based (behavioral) advertising or other targeted content.We do not control these third parties' tracking technologies or how they may be used. If you have any questions about any targeted content, you should contact the responsible provider directly.`,
+  },
+  {
+    summary: "Chat Functionality",
+    details: `This agreement governs your access and use of the Royal mindfulness Chat Functionality within the Royal mindfulness application and website. By using the Chat Functionality, you agree to be bound by the terms of this policy.
+    Functionality: The Chat Functionality allows you to:
+    Initiate one-on-one conversations ("P2P") with your Teacher or other Students.
+    Create private groups by inviting a Teacher and other Students.
+    Join public community groups.
+    User Conduct: You agree to use the Chat Functionality in a respectful and appropriate manner. You will not:
+    Transmit any content that is unlawful, harmful, threatening, abusive, harassing, defamatory, obscene, hateful, or racially or ethnically offensive.
+    Share personal information of others without their consent.
+    Engage in spam or commercial solicitation.
+    Disrupt the flow of conversation or prevent others from using the Chat Functionality.
+    Disclaimer: Royal mindfulness does not monitor the content of private communications. We are not responsible for the content of communications or the actions of users.
+    Reporting: You can report inappropriate content or user behavior to Royal mindfulness support desk. We will investigate reports and take appropriate action, which may include suspending or terminating a user's account.
+    Privacy: Royal mindfulness respects your privacy. Please refer to our Privacy Policy for information on how we collect, use, and disclose your personal information.
+    Changes to the EULA: Royal mindfulness may update this EULA from time to time. We will notify you of any changes by posting the revised EULA within the Application. Your continued use of the Chat Functionality after the revised EULA becomes effective will constitute your acceptance of the changes.
+    Termination: Royal mindfulness may terminate your access to the Chat Functionality for any reason, with or without notice.
+    Governing Law: This EULA will be governed by and construed in accordance with the laws of India and USA
+    Entire Agreement: This EULA constitutes the entire agreement between you and Royal mindfulness regarding the Chat Functionality and supersedes all prior or contemporaneous communications and proposals, whether oral or written.
+    Severability: If any provision of this EULA is held to be invalid or unenforceable, such provision shall be struck and the remaining provisions shall remain in full force and effect.
+    Contact Us: If you have any questions about this EULA, please contact us at support@royalmindfulness.com How we use your information We use your information, including your personal information, for the following purposes:\n
+    if you are a Student User, to process orders you place and complete other transactions you have requested using the Site or the Service, and provide you with products and services you request;
+to facilitate Trainings conducted through the Service;
+to facilitate the exchange of in-App or in-Service messages sent or received by you (“User Messages”);
+to send you information or materials you request;
+if you are a Member User, to maintain a record of your purchases and other transactions using the Site or the Service;
+to market and advertise our products and services, including the Service;
+to respond to your questions and comments and provide customer support;
+to communicate with you about our products, services, offers, and promotions;
+to operate, evaluate, and improve our business and the products and services we offer;
+to analyse trends and statistics regarding use of the Service and transactions conducted using the Service;
+to protect against and prevent fraud, unauthorized transactions, claims, and other liabilities, and manage risk exposure, including by identifying potential hackers and other unauthorized users;
+to enforce our Terms of Use and other agreements;
+to comply with applicable legal requirements and industry standards; and
+for any other purpose for which you provide your consent.We may also use your information to contact you about our own and third-parties’ goods and services that may be of interest to you. If you do not want us to use your information in this way, please email support@royalmindfulness.com. For more information, see ”Your Choices.”How we share your informationWe may share your information, including personal information, as follows:
+to our subsidiaries and affiliates;
+to contractors, service providers, and other third parties we use to support our business including, without limitation, Teacher Users from whom you receive Trainings (if you are a Student User) (see ”Third Party Providers,” below);
+to comply with any court order, law, or legal process, including to respond to any government or regulatory request;
+to enforce or apply our Terms of Use and other agreements;
+if we believe disclosure is necessary or appropriate to protect the rights, property, or safety of Royal Mindfulness, users of the Site or Service, and/or others;
+to facilitate the exchange of User Messages between you and other users of the Site;
+for any other purpose which is incidental to the normal use of the Service; and
+for any other purpose for which you provide your consent.We also reserve the right to transfer your personal and other information to a buyer or other transferee in the event of a merger, divestiture, restructuring, reorganization, dissolution, sale, or other transfer of some or all of our assets. Should such a sale, merger, or transfer occur, we will use reasonable efforts to direct the transferee to use your information in a manner that is consistent with our Privacy Policy.Third party providers Without limiting the foregoing, we may also employ third party companies and individuals to assist in providing the Service and to facilitate our Site and to process data, perform Site-related services, or to assist us in analyzing how the Service is used (collectively, “Third Party Providers”). These Third Party Providers may have access to your personal information for purposes of performing these tasks on our behalf, and may have the right to retain and use personal information or other information through performance of these tasks on an aggregated and de-identified basis in accordance with the terms of the applicable Third Party Provider’s privacy policy. We advise you to review the privacy policies of the Third Party Providers, but note that we have no control over and assume no responsibility for the content, privacy policies or practices of any Third Party Providers, their sites or services.Third Party Providers may include, but are not limited to, the following:Chat Functionality This agreement governs your access and use of the Royal mindfulness Chat Functionality within the Royal mindfulness application and website. By using the Chat Functionality, you agree to be bound by the terms of this policy.
+Functionality: The Chat Functionality allows you to:
+Initiate one-on-one conversations ("P2P") with your Teacher or other Students.
+Create private groups by inviting a Teacher and other Students.
+Join public community groups.
+User Conduct: You agree to use the Chat Functionality in a respectful and appropriate manner. You will not:
+Transmit any content that is unlawful, harmful, threatening, abusive, harassing, defamatory, obscene, hateful, or racially or ethnically offensive.
+Share personal information of others without their consent.
+Engage in spam or commercial solicitation.
+Disrupt the flow of conversation or prevent others from using the Chat Functionality.
+Disclaimer: Royal mindfulness does not monitor the content of private communications. We are not responsible for the content of communications or the actions of users.
+Reporting: You can report inappropriate content or user behavior to Royal mindfulness support desk. We will investigate reports and take appropriate action, which may include suspending or terminating a user's account.
+Privacy: Royal mindfulness respects your privacy. Please refer to our Privacy Policy for information on how we collect, use, and disclose your personal information.
+Changes to the EULA: Royal mindfulness may update this EULA from time to time. We will notify you of any changes by posting the revised EULA within the Application. Your continued use of the Chat Functionality after the revised EULA becomes effective will constitute your acceptance of the changes.
+Termination: Royal mindfulness may terminate your access to the Chat Functionality for any reason, with or without notice.
+Governing Law: This EULA will be governed by and construed in accordance with the laws of India and USA
+Entire Agreement: This EULA constitutes the entire agreement between you and Royal mindfulness regarding the Chat Functionality and supersedes all prior or contemporaneous communications and proposals, whether oral or written.
+Severability: If any provision of this EULA is held to be invalid or unenforceable, such provision shall be struck and the remaining provisions shall remain in full force and effect.
+Contact Us: If you have any questions about this EULA, please contact us at support@royalmindfulness.com How we use your information We use your information, including your personal information, for the following purposes:
+if you are a Student User, to process orders you place and complete other transactions you have requested using the Site or the Service, and provide you with products and services you request;
+to facilitate Trainings conducted through the Service;
+to facilitate the exchange of in-App or in-Service messages sent or received by you (“User Messages”);
+to send you information or materials you request;
+if you are a Member User, to maintain a record of your purchases and other transactions using the Site or the Service;
+to market and advertise our products and services, including the Service;
+to respond to your questions and comments and provide customer support;
+to communicate with you about our products, services, offers, and promotions;
+to operate, evaluate, and improve our business and the products and services we offer;
+to analyse trends and statistics regarding use of the Service and transactions conducted using the Service;
+to protect against and prevent fraud, unauthorized transactions, claims, and other liabilities, and manage risk exposure, including by identifying potential hackers and other unauthorized users;
+to enforce our Terms of Use and other agreements;
+to comply with applicable legal requirements and industry standards; and
+for any other purpose for which you provide your consent.We may also use your information to contact you about our own and third-parties’ goods and services that may be of interest to you. If you do not want us to use your information in this way, please email support@royalmindfulness.com. For more information, see ”Your Choices.”How we share your informationWe may share your information, including personal information, as follows:
+to our subsidiaries and affiliates;
+to contractors, service providers, and other third parties we use to support our business including, without limitation, Teacher Users from whom you receive Trainings (if you are a Student User) (see ”Third Party Providers,” below);
+to comply with any court order, law, or legal process, including to respond to any government or regulatory request;
+to enforce or apply our Terms of Use and other agreements;
+if we believe disclosure is necessary or appropriate to protect the rights, property, or safety of Royal Mindfulness, users of the Site or Service, and/or others;
+to facilitate the exchange of User Messages between you and other users of the Site;
+for any other purpose which is incidental to the normal use of the Service; and
+for any other purpose for which you provide your consent.We also reserve the right to transfer your personal and other information to a buyer or other transferee in the event of a merger, divestiture, restructuring, reorganization, dissolution, sale, or other transfer of some or all of our assets. Should such a sale, merger, or transfer occur, we will use reasonable efforts to direct the transferee to use your information in a manner that is consistent with our Privacy Policy.Third party providers Without limiting the foregoing, we may also employ third party companies and individuals to assist in providing the Service and to facilitate our Site and to process data, perform Site-related services, or to assist us in analyzing how the Service is used (collectively, “Third Party Providers”). These Third Party Providers may have access to your personal information for purposes of performing these tasks on our behalf, and may have the right to retain and use personal information or other information through performance of these tasks on an aggregated and de-identified basis in accordance with the terms of the applicable Third Party Provider’s privacy policy. We advise you to review the privacy policies of the Third Party Providers, but note that we have no control over and assume no responsibility for the content, privacy policies or practices of any Third Party Providers, their sites or services.Third Party Providers may include, but are not limited to, the following:
+Payment Processors. We use Third Party Providers (currently Razorpay) to process certain payment transactions initiated via the Site. Your payment card details are not stored by the Site. If you provide payment information to Razorpay in order to facilitate payment processing, your payment card details are encrypted and securely stored by our third party payment processors. You can learn more about Razorpay’s privacy practices at https://razorpay.com/s/pos-machine-privacy-policy/.
+Analytics. We may use Third Party Providers to monitor and analyze the use of our Site.
+Mixpanel. Mixpanel may be used to track and analyze traffic to and from the Site. You can learn about Mixpanel’s privacy practices at https://mixpanel.com/legal/privacy-policy/. For information on how you may opt out of tracking by Mixpanel, please visit https://docs.mixpanel.com/docs/privacy/protecting-user-data.
+Google Tag Manager. Google Tag Manager is a tag management service that may be used to manage and control marketing tags. You can learn about Google’s privacy practices at https://www.google.com/intl/en/policies/privacy. For information on disabling Google Tag Manager, please visit https://support.google.com/analytics/answer/9050852?hl=en.
+Hotjar. Hotjar may be used to track, capture, and analyze how users interact with our Website. You can learn about Hotjar’s privacy practices at https://www.hotjar.com/legal/policies/privacy/. For information on how you may opt out of the capture and analysis of your Site usage data by Hotjar, please visit https://www.hotjar.com/legal/policies/do-not-track/.
+Other Service Providers. We also use Third Party Providers for marketing, technical, operational, and other services, including as follows:
+Teacher Users. We use third party yoga professionals to provide the Trainings available through the Service. Royal mindfulness requires that any personal information provided to or collected by Teacher Users in connection with their performance of services for Royal mindfulness is subject to and used in accordance with the terms and conditions of this Privacy Policy.
+Zoom. We use Zoom to facilitate the conducting of Trainings via video conferencing and the initial storage of Session recordings. You can learn about Zoom’s privacy practices at https://zoom.us/privacy.
+ClickCease. Firebase may be used to detect and prevent click-fraud. You can learn about ClickCease’s privacy practices at https://www.clickcease.com/privacy.html.
+Google Ads. Google Ads may be used to develop and enhance our online advertising. You can learn about Google’s privacy practices at https://www.google.com/intl/en/policies/privacy.
+Facebook. We may use Facebook Ads to enhance and customize our online advertising. You can learn about Facebook’s privacy practices at https://www.facebook.com/privacy/explanation. You can also view your Facebook Ad Preferences under your Facebook settings.
+Amazon Web Services. When you visit the Site, we may provide certain of your information, as a part of our customer database, to Amazon Web Services in order to facilitate Amazon Web Services’ hosting of the Site and its provisioning of certain infrastructure on which we store our data. You can learn about Amazon Web Services’ privacy practices at https://aws.amazon.com/privacy/?nc1=f_pr.
+Tableau. Tableau may be used to help us understand data relating to our Site and Service. You can learn about Tableau’s privacy practices at https://www.tableau.com/privacy.
+Active Campaign. We may use Active Campaign to enhance and customize our Site and Service. You can learn about Active Campaign’s privacy practices at https://www.activecampaign.com/legal/privacy-policy.`,
+  },
+  {
+    summary: "Use of Anonymized data",
+    details: `Not with standing anything else in this Privacy Policy, we may generate anonymized and/or aggregated data (“Anonymized Data”) that does not identify you using your information and may process, use, disclose and share any such Anonymized Data with third parties without restriction. You hereby provide your consent to our ownership, generation, processing, use, sharing, and/or disclosure of any such Anonymized Data. `,
+  },
+  {
+    summary: "Security",
+    details: `Royal mindfulness takes protecting your information seriously, and implements reasonable measures to secure your personal information from accidental loss and from unauthorized access, use, alteration, and disclosure. However, the safety and security of your information also depends on you. Where we have given you (or where you have chosen) a password for access to the Service or certain parts of the Site, you are responsible for keeping this password confidential. We ask you not to share your password with anyone. We urge you to be careful about giving out information in public areas of the Site, such as during Sessions, when using message or comment boards, and when using the User Messaging functions. The information you share in public areas may be viewed by any user of the Site (or, in the case of User Messages, by the user that you are messaging). Please use caution in determining what personal information to disclose. Please note that the electronic transmission of information is not completely secure. We cannot guarantee that the security measures we have in place to safeguard information will never be defeated or fail, or that such measures will always be sufficient or effective. Any transmission of information is at your own risk.`,
+  },
+  {
+    summary: "Information and data transfers",
+    details: `The Service is administered by Royal mindfulness in the United States. When we obtain information about you through your access to or use of the Site or Service or when you input or import information to the Service from somewhere other than the United States, we may transfer, process, and store such information in the United States. If you access the Site and/or Service from outside the United States, you do so on your own initiative, at your sole risk, and you are responsible for compliance with all applicable laws. If you are a non-United States resident and provide us with your personal information, or if you use the Service, you consent to the transfer to and processing of such information in the United States, which may have data protection laws less stringent than those in the country in which you reside.`,
+  },
+  {
+    summary: "Your choices",
+    details: `We strive to provide you with choices regarding the personal information you provide to us. We have created mechanisms to provide you with the following control over your information:
+    Cookies You can set your browser to refuse all or some browser cookies, or to alert you when cookies are being sent. If you disable or refuse cookies, please note that some parts of the Site and the Service may then be inaccessible or not function properly.
+    Notifications. The Service may deliver notifications to your mobile device from time to time. You can disable these notifications by changing notification settings on your mobile device.
+    Emails. Royal mindfulness may send Service updates, Service notifications, promotional information and other communications to you via email. Promotional email communications will contain instructions describing how you can opt out of receiving future promotional emails from us. If you opt out of promotional emails, you may continue to receive non-promotional, transactional emails from us.
+    Limiting Provided Information. You can choose not to provide us with certain information. If you decline to provide certain information, however, please note that some features of the Site and/or Service may then be inaccessible.`,
+  },
+  {
+    summary: "Do Not Track Request",
+    details: `We adhere to the standards set out in this Privacy Policy and do not monitor or respond to Do Not Track browser requests.`,
+  },
+  {
+    summary: "Third party applications and websites",
+    details: `The Site and/or Service may contain links enabling the electronic transfer of data from third-party applications to the Site or Service, as well as links to third-party websites. Royal mindfulness is not responsible for the privacy practices or content of these applications or websites, and linking to an application or website does not constitute endorsement by us of that application or website. You should review the privacy policy and terms and conditions of any such third-party application or website prior to using or providing information to the same.`,
+  },
+  {
+    summary: "Access to my personal information",
+    details: `You may request modification of personal information that you have submitted to us by contacting us at support@royalmindfulness.com or by updating your profile in your user account. Please note that any deletion of your personal information may impact your ability to access and use the Service. We may not accommodate a request to change information if we believe the change would violate any law or legal requirement or cause the information to be incorrect. If you delete your User Contributions, copies of your User Contributions or correspondence may remain viewable in cached and archived pages, or might have been copied or stored by other users. Proper access and use of information provided on the Site and Service, including User Contributions and correspondence, is governed by our Terms of Use.`,
+  },
+  {
+    summary: "Categories",
+    details: `1. Identifiers \n 2. Personal information categories listed in the California Customer Records statute \n 3. Protected classification characteristics under California or federal law  \n 4.Commercial information \n 5. Internet or other electronic network activity \n 6. Sensory data. \n 7. Geolocation data. \n 8. Inferences drawn from other personal information. \n 
+    `,
+  },
+  {
+    summary: "Sources of Collection",
+    details: `1. Site visits, creation of accounts and registration for Royal mindfulness products and services.\n 
+    2. Creation of accounts and registration to receive Royal mindfulness products and services, submission of payment information.\n 
+    3. Creation of accounts and registration to receive Royal mindfulness products and services;specific submission by Student Users. \n 
+    4.Registration for Royal mindfulness products and services .\n 
+    5. Your browsing and search history on our Site and Service and other interactions with our Site or Service. \n 
+    6. Your interactions with our Site and Service, including, without limitation, in connection with your participation in Trainings; recordings of the same. \n 
+    7. IP address and device data. \n 
+    8. Your browsing and search history on our Site and other interactions with our Site and Service. 
+    `,
+  },
+  {
+    summary: "Purposes of Collection",
+    details: `1. For user registration, to enable Royal mindfulness to provide its products and services and to allow Royal mindfulness to communicate with you . \n 
+    2. For user registration, to enable Royal mindfulness to provide its products and services and to allow Royal mindfulness to communicate with you.
+    \n 3. To provide Royal mindfulness products and services to users and maintain purchase history.     
+    \n 4. To improve the user experience on the Site, diagnose server problems and administer the Site, and to improve Service function.
+    \n 5. To provide, analyze and improve Royal mindfulness products and services. 
+    \n 6 . To provide Royal mindfulness products and services and to improve the visitor experience on our Site. 
+    \n 7. To improve the visitor experience on our Site. 
+    `,
+  },
+  {
+    summary: "Disclosures for a Business Purpose",
+    details: `
+    1. To Third Party Providers to assist in providing Royal mindfulness products and services and processing associated payments .    
+    \n 2. To Third Party Providers to assist in providing Royal mindfulness products and services and processing payments.
+    \n 3. To Third Party Providers to assist in providing Royal mindfulness products and services.     
+    \n 4. To Third Party Providers to facilitate delivery of products and services.
+    \n 5. To Third Party Providers for the purpose of enhancing the Site and improving the effectiveness of our advertising. 
+    \n 6 . To Third Party Providers to assist in providing and improving Royal mindfulness products and services. 
+    \n 7. To Third Party Providers to assist in providing and improving Royal mindfulness products and services. 
+    \n 8. To Third Party Providers for the purpose of enhancing our Site and improving the effectiveness of our advertising. 
+    \n 
+    `,
+  },
+];
 
 exports.tacs = [
   {
@@ -435,11 +665,11 @@ Please also note that these Terms may be superseded by expressly-designated lega
 in addition, we may need to update the app from time to time. by downloading the app, you agree that we can notify you and send such updates to your mobile device.
 `,
   },
- 
+
   {
     summary: "Assumption of Risk Release",
     details: `You understand and acknowledge that your use of the service (or, if you are an enterprise purchaser, your employee users’ use) could result in injury to you (or, if you are an enterprise purchaser, to your employee users). Some of these risks cannot be eliminated regardless of the care taken to avoid injuries. Without limiting the generality of the foregoing, you recognize and acknowledge, on your own behalf and, if you are an enterprise purchaser, on behalf of your employee users, that strenuous physical activity such as yoga, including where practiced in connection with a training, may increase the risk of various potential injuries, including but not limited to: (i) minor injuries such as scratches, bruises, and sprains; (ii) major injuries such as joint or back injuries, heart attacks, rhabdomyolysis, seizures, and concussions; and (iii) catastrophic injuries including paralysis and death. All teachers, students, and employee users should seek the advice of a physician prior to beginning any physical exercise program, including participating in any training. Do not participate in any training if you have any physical or medical condition that would prevent you from participating in the training or that creates a risk of injury to you. As between Royal Mindfulness and any participant in a training, the participant is solely responsible for determining the appropriateness of any training to the participant’s physical capabilities. If you, as a participant, feel that any training (or any portion thereof) is not safe, is not appropriate to your skill level and fitness capabilities, or otherwise poses a risk of harm to you, please do not participate in the training. If you experience faintness, dizziness, pain, or shortness of breath at any time while participating in any training, you should stop immediately. If you are in the United States and think you are having a medical or health emergency, call your health care professional or 911 immediately. You acknowledge and agree, on your own behalf and, if you are an enterprise purchaser, on behalf of your employee users, that any instruction or directions provided by a teacher during a training (including, without limitation, any poses or movements) are optional and provided by way of suggestion only, that such instruction and directions do not constitute health advice, and that if any participant follows any such instruction or directions, the participant does so at the participant’s own election and at the participant’s own risk. The service may offer, through your participation in trainings or otherwise, general health and fitness information which is designed for informational purposes only. Nothing stated or posted on the app or website, stated by any teacher, or otherwise available through the service is intended to be, and must not be taken to be, the practice of medical or professional care. You should not rely on any information available via the service as a substitute for, nor does it replace, professional medical advice, diagnosis, or treatment. If you have any concerns or questions about your health, you should always consult a physician or other health-care professional. Do not ever disregard, avoid, or delay obtaining medical or health-related advice from your health-care professional because of something you may have read on the site or received via the service. The use of any information provided on the service is solely at your own risk. You shall comply (and if you are an enterprise purchaser, you shall require that your employee users comply) at all times with any safety rules and guidelines given by Royal Mindfulness or an applicable teacher. If you are a participant in a training, you should share with your teacher details relating to your level of fitness and any medical conditions or physical limitations that may impact your ability to participate in any training. If Royal Mindfulness or any teacher determines, in its sole discretion and subjective opinion, that your participation in any training or other use of the service may pose a risk of physical harm to you, we may deny you access to the training or service until you furnish to us an opinion letter from a licensed physician, obtained at your sole cost and expense, confirming your physical fitness to undertake the training and service and addressing any specific health or safety concerns raised by Royal Mindfulness or your teacher. Notwithstanding the foregoing, however, you understand and acknowledge, on your own behalf and, if you are an enterprise purchaser, on behalf of your employee users, that any permission granted to you (or any employee user) to access the service and any training does not constitute an endorsement by Royal Mindfulness of your (or any employee user’s) fitness to participate in the service or any training and should not be interpreted as indicating an absence of risk. By accessing or using the service in any manner, including, without limitation, by purchasing access to and/or attending or viewing any class, event, activity, or other training (or, if you are an enterprise purchaser, by permitting your employee users to do any of the foregoing), you hereby acknowledge on behalf of yourself, your heirs, personal representatives and/or assigns and, if you are an enterprise purchaser, on behalf of your employee users, that there are certain inherent risks and dangers in participating in yoga, the trainings, and service. In partial consideration of your access to and participation in the service and trainings (or, if you are an enterprise purchaser, your employee users’ access to and participation in the service and trainings), you hereby (i) assume full responsibility for any and all injuries or damage suffered by you (or if you are an enterprise purchaser, to your employee users) or any third party and which are sustained, aggravated, or caused in connection with your (or, if you are an enterprise purchaser, your employee users’) use of or participation in the service or any training, (ii) release and agree to indemnify and hold harmless Royal Mindfulness, its direct and indirect parents, subsidiaries, and affiliates, and each of their respective officers, directors, members, employees, representatives, and agents, and all teachers, and each of their respective successors and assigns, from any and all responsibility, claims, actions, suits, procedures, costs, expenses, damages, and liabilities, to the fullest extent permitted by law, arising out of or in any way related to your (or if you are an enterprise purchaser, your employee users’) participation in the training or use of the service, and (iii) represent and warrant that you and, if you are an enterprise purchaser, your employee users (a) understand that participating in the training and service involves strenuous physical activity, and that you (or if you are an enterprise purchaser, your employee users) are in good health and able to engage in such activity, (b) have no medical or physical condition that may prevent you (or if you are an enterprise purchaser, any employee user) from properly using the service or participating in any training, or that would put you (or if you are an enterprise purchaser, any employee user) or anyone else in physical or medical danger, (c) have not been instructed by a physician to not participate in physical exercise or in the type or intensity of activity contemplated by the training and service, and that your physician has specifically approved of your participation in the training and service, and (d) are physically and mentally capable of participating in the training and using the service as contemplated hereunder. If you are a California resident, you hereby waive California Civil Code Section 1542, which states, “A general release does not extend to claims that the creditor or releasing party does not know or suspect to exist in his or her favor at the time of executing the release and that, if known by him or her, would have materially affected his or her settlement with the debtor or released party.” If you are an enterprise purchaser, you understand and acknowledge that, as between you and Royal Mindfulness, you are solely responsible and liable for any access to or participation in the service, including any training, by any employee user, and for ensuring that any such employee user is aware of all relevant terms, conditions, restrictions, and risks set forth or disclosed hereunder.`,
-},
+  },
   {
     summary: "Access to the service",
     details: `Subject to your compliance with these Terms, Royal mindfulness hereby grants you a personal, limited, non-exclusive, non-transferable, revocable license, solely for your personal, non-commercial use, to: (i) download and use the App only on an approved Apple or Android device owned by you (“Device”) as permitted by the applicable App Store Terms (as defined below) and in accordance with these Terms; (ii) access the Service through the App or Website on your Device or personal computer; and (iii) if you are a Student or Enterprise Purchaser, download and use, solely in connection with your (or if you are an Enterprise Purchaser, your Employee Users’) participation in an applicable Training and personal yoga practice, one copy of any written instructional materials (“Instructional Materials”) provided through the Service. All other use or disclosure of the Instructional Materials, whether by you are any other person, is strictly prohibited without the prior written consent of Royal mindfulness.
@@ -502,7 +732,7 @@ You acknowledge and agree that Royal mindfulness does not, nor is it obligated t
   },
   {
     summary: "Restrictions",
-    details: `You agree to use the Service solely for your personal, non-commercial use (except where you are an Enterprise Purchaser purchasing the Service for the benefit of your Employee Users in accordance with the terms and conditions hereof), in accordance with all documentation relating to the Service made available by Royal Mindfulness (as the same may be updated from time to time), and in accordance with all applicable law. You shall not and, if you are an Enterprise Purchaser, you shall ensure that your Employee Users do not: (i) copy, reproduce, frame, mirror, modify, decompile, disassemble, create derivative works based on, or reverse engineer the Service or any associated software or materials (except to the extent that applicable law prohibits or restricts reverse engineering restrictions); (ii) copy, modify, create derivative works of, retransmit, sell, license, exploit, reuse, repost, broadcast, or otherwise distribute any content made available to you through the Service, including without limitation, Participant Content or Session Recordings; (iii) except where you are an Enterprise Purchaser providing your Employee Users access to the Service in compliance with the terms hereof, provide any third parties with access to any of the Service, or use any of the Service for time sharing or similar purposes for the benefit of any third party; (iv) sell, resell, rent or lease the Service; (v) remove any copyright or proprietary notices contained in the Service or any output thereof; (vi) breach, disable or tamper with, or develop or use (or attempt) any workaround for, any security measure provided or used by the Service; (vii) scrape or access the Service via any bot, web crawler or non-human user; (viii) access or use (or permit a third party to access or use) the Service for any unlawful purpose or for purposes of monitoring the availability, performance or functionality of the Service or for any other benchmarking or competitive purposes; (ix) misrepresent your identity, including, without limitation, by creating or attempting to create multiple Accounts for a single user or from a single IP address; (x) stalk or harass any other user of the Service; (xi) attempt to gain unauthorized access to the Service or any related systems, software or networks; (xii) access the Service in order to build a competitive product or service, or copy any features, functions or graphics of the Service; (xiii) use the Service to transmit viruses or malicious code; or (xiv) make any use of, or take any other action with respect to, the App, the Website, or the Service or any component thereof in a manner that violates applicable law or any provision of these Terms.`
+    details: `You agree to use the Service solely for your personal, non-commercial use (except where you are an Enterprise Purchaser purchasing the Service for the benefit of your Employee Users in accordance with the terms and conditions hereof), in accordance with all documentation relating to the Service made available by Royal Mindfulness (as the same may be updated from time to time), and in accordance with all applicable law. You shall not and, if you are an Enterprise Purchaser, you shall ensure that your Employee Users do not: (i) copy, reproduce, frame, mirror, modify, decompile, disassemble, create derivative works based on, or reverse engineer the Service or any associated software or materials (except to the extent that applicable law prohibits or restricts reverse engineering restrictions); (ii) copy, modify, create derivative works of, retransmit, sell, license, exploit, reuse, repost, broadcast, or otherwise distribute any content made available to you through the Service, including without limitation, Participant Content or Session Recordings; (iii) except where you are an Enterprise Purchaser providing your Employee Users access to the Service in compliance with the terms hereof, provide any third parties with access to any of the Service, or use any of the Service for time sharing or similar purposes for the benefit of any third party; (iv) sell, resell, rent or lease the Service; (v) remove any copyright or proprietary notices contained in the Service or any output thereof; (vi) breach, disable or tamper with, or develop or use (or attempt) any workaround for, any security measure provided or used by the Service; (vii) scrape or access the Service via any bot, web crawler or non-human user; (viii) access or use (or permit a third party to access or use) the Service for any unlawful purpose or for purposes of monitoring the availability, performance or functionality of the Service or for any other benchmarking or competitive purposes; (ix) misrepresent your identity, including, without limitation, by creating or attempting to create multiple Accounts for a single user or from a single IP address; (x) stalk or harass any other user of the Service; (xi) attempt to gain unauthorized access to the Service or any related systems, software or networks; (xii) access the Service in order to build a competitive product or service, or copy any features, functions or graphics of the Service; (xiii) use the Service to transmit viruses or malicious code; or (xiv) make any use of, or take any other action with respect to, the App, the Website, or the Service or any component thereof in a manner that violates applicable law or any provision of these Terms.`,
   },
   {
     summary: "Your conduct",
@@ -659,11 +889,8 @@ If any part or provision of these Terms is held by a court of competent jurisdic
 Entire Agreement
 
 These Terms, together with the Privacy Policy and, if you are a Teacher, your Teacher Agreement, constitute the sole and entire agreement between you and Royal mindfulness with respect to the subject matter hereof, and supersede and extinguish all prior agreements, representations (whether oral or written), and understandings regarding such subject matter. Any provision of these Terms that should, by their nature, survive termination of these Terms shall so survive termination. Without limiting the generality of the foregoing, the following Sections shall survive any termination of these Terms: “Assumption of Risk; Release”; “Your Submissions”; “Content from other Users”; “Content Transmitted through the Service”; “Restrictions”; “Accessibility”; “Privacy”; “Intellectual Property”; “Third Party Applications”; “Disclaimer of Warranties”; “Indemnity”; “Limitation of Liability”; “Arbitration; Jury Waiver; Class Action Waiver”; and “General”.`,
-  }
+  },
 ];
-
-
-
 
 exports.privacyPolicyText = [
   "RoyalMindfulness.com, Inc. (“Royalmindfulness.com,” “we,” or “us”) recognizes the importance of protecting your privacy and is committed to communicating transparently regarding our privacy practices. This Privacy Policy describes the types of information we collect when you visit our website at https://royalmindfulness.com/ or any subdomain thereof (the “Website”), or visit or use our mobile software application (the “App”) or any related mobile or desktop applications, including any content or functionality offered on or through any of the foregoing (collectively with the Website and the App, the “Site”), or when you access or use the online services we make available through the Site, including certain virtual classes that may be made available by Royalmindfulness.com via third party vendors (such as Zoom or such other video conferencing platforms or services as royalmindfulness.com may elect to use from time to time) (collectively, the “Service”). This Privacy Policy also describes our practices for using, maintaining, protecting, and disclosing such information.",
@@ -679,7 +906,7 @@ exports.privacyPolicyText = [
   "Information we collect about you",
   "When you access the Site or use the Service, whether as one of  Royalmindfulness.com’s professional yoga teacher (a “Teacher User”), as a user accessing yoga instruction via the Service as a purchaser of a royalmindfulness membership or other paid access to the Service (a “Student Member”), as a user accessing Meditation instruction via the Service on a trial basis (a “Trial User”), as an enterprise that purchases or otherwise registers for access to the Service on behalf of or for the benefit of that enterprise’s employees or representatives (an “Enterprise User”), or as an individual employee or representative of an Enterprise Purchaser who accesses or uses the Service as an authorized recipient of Service benefits purchased by an Enterprise Purchaser (an “Employee User” and, collectively with Student Member, Trial User, Enterprise User, and Employee User, a “Student User”), we may collect some “personal information” about you. This includes :",
   "your name, your postal address, your e-mail address, your phone number, recordings and/or images of you; and, medical history. This also includes information that relates to you but may not specifically identify you, such as:",
- 
+
   "information about your gender and/or age, information about your internet connection, information about the equipment you use to access the Site or Service, your usage details, your IP addresses and information collected through cookies and other tracking technologies.",
   "Information We Collect Directly From You We collect personal information from various sources, such as directly from you when you access or use the Site or Service. This may include:",
   "information that you provide by filling in forms on the Site or through the Service. This includes information provided at the time of registering to use the Site, subscribing to the Service, posting material, or requesting further services or, if you are a Teacher User, providing services to royalmindfulness. We may also ask you for information when you enter a contest or promotion sponsored by us, and when you report a problem with the Site or Service.information you provide when providing comments or reviews on, or communicating with others through, the Service including, without limitation, by posting User Contributions (as defined below).records and copies of your correspondence (including email addresses), if you contact us.your responses to surveys that we might ask you to complete for research purposes.if you are a Student User, details of transactions you carry out through the Site or Service and of the fulfillment of your orders. If you are a Student Member or Enterprise User, you may be required to provide financial information before placing an order or making a purchase through the Site.your search queries on the Site.You also may provide information, comments, reviews, images, and other content to be published or displayed (hereinafter, 'posted') on public areas of the Site, or transmitted to other users of the Site or third parties (collectively, 'User Contributions'). Your User Contributions are posted on and transmitted to others at your own risk. Although you may have the option to set certain permission settings through your account, please be aware that no security measures are perfect or impenetrable. Additionally, we cannot control the actions of other users of the Site with whom you may choose to share your User Contributions. Therefore, we cannot and do not guarantee that your User Contributions will not be viewed by unauthorized persons.",
@@ -694,72 +921,95 @@ exports.privacyPolicyText = [
   " “Analytics:-”. We may use Third Party Providers to monitor and analyze the use of our Site.Mixpanel. Mixpanel may be used to track and analyze traffic to and from the Site. You can learn about Mixpanel’s privacy practices at https://mixpanel.com/legal/privacy-policy/. For information on how you may opt out of tracking by Mixpanel, please visit https://docs.mixpanel.com/docs/privacy/protecting-user-data. Google Tag Manager. Google Tag Manager is a tag management service that may be used to manage and control marketing tags. You can learn about Google’s privacy practices at https://www.google.com/intl/en/policies/privacy. For information on disabling Google Tag Manager, please visit https://support.google.com/analytics/answer/9050852?hl=en.Hotjar. Hotjar may be used to track, capture, and analyze how users interact with our Website. You can learn about Hotjar’s privacy practices at https://www.hotjar.com/legal/policies/privacy/. For information on how you may opt out of the capture and analysis of your Site usage data by Hotjar, please visit https://www.hotjar.com/legal/policies/do-not-track/.",
   " “Other Service Providers:-”. We also use Third Party Providers for marketing, technical, operational, and other services, including as follows: Teacher Users. We use third party yoga professionals to provide the Trainings available through the Service. Royalmindfulness requires that any personal information provided to or collected by Teacher Users in connection with their performance of services for Royalmindfulness is subject to and used in accordance with the terms and conditions of this Privacy Policy.Zoom. We use Zoom to facilitate the conducting of Trainings via video conferencing and the initial storage of Session recordings. You can learn about Zoom’s privacy practices at https://zoom.us/privacy.ClickCease. Firebase may be used to detect and prevent click-fraud. You can learn about ClickCease’s privacy practices at https://www.clickcease.com/privacy.html.Google Ads. Google Ads may be used to develop and enhance our online advertising. You can learn about Google’s privacy practices at https://www.google.com/intl/en/policies/privacy.Facebook. We may use Facebook Ads to enhance and customize our online advertising. You can learn about Facebook’s privacy practices at https://www.facebook.com/privacy/explanation. You can also view your Facebook Ad Preferences under your Facebook settings.Amazon Web Services. When you visit the Site, we may provide certain of your information, as a part of our customer database, to Amazon Web Services in order to facilitate Amazon Web Services’ hosting of the Site and its provisioning of certain infrastructure on which we store our data. You can learn about Amazon Web Services’ privacy practices at https://aws.amazon.com/privacy/?nc1=f_pr.Tableau. Tableau may be used to help us understand data relating to our Site and Service. You can learn about Tableau’s privacy practices at https://www.tableau.com/privacy.Active Campaign. We may use Active Campaign to enhance and customize our Site and Service. You can learn about Active Campaign’s privacy practices at https://www.activecampaign.com/legal/privacy-policy.Use of Anonymized dataNotwithstanding anything else in this Privacy Policy, we may generate anonymized and/or aggregated data (“Anonymized Data”) that does not identify you using your information and may process, use, disclose and share any such Anonymized Data with third parties without restriction. You hereby provide your consent to our ownership, generation, processing, use, sharing, and/or disclosure of any such Anonymized Data.SecurityRoyalmindfulness takes protecting your information seriously, and implements reasonable measures to secure your personal information from accidental loss and from unauthorized access, use, alteration, and disclosure. However, the safety and security of your information also depends on you. Where we have given you (or where you have chosen) a password for access to the Service or certain parts of the Site, you are responsible for keeping this password confidential. We ask you not to share your password with anyone. We urge you to be careful about giving out information in public areas of the Site, such as during Sessions, when using message or comment boards, and when using the User Messaging functions. The information you share in public areas may be viewed by any user of the Site (or, in the case of User Messages, by the user that you are messaging). Please use caution in determining what personal information to disclose. Please note that the electronic transmission of information is not completely secure. We cannot guarantee that the security measures we have in place to safeguard information will never be defeated or fail, or that such measures will always be sufficient or effective. Any transmission of information is at your own risk.Information and data transfersThe Service is administered by Royalmindfulness in the United States. When we obtain information about you through your access to or use of the Site or Service or when you input or import information to the Service from somewhere other than the United States, we may transfer, process, and store such information in the United States. If you access the Site and/or Service from outside the United States, you do so on your own initiative, at your sole risk, and you are responsible for compliance with all applicable laws. If you are a non-United States resident and provide us with your personal information, or if you use the Service, you consent to the transfer to and processing of such information in the United States, which may have data protection laws less stringent than those in the country in which you reside.Your choicesWe strive to provide you with choices regarding the personal information you provide to us. We have created mechanisms to provide you with the following control over your information:",
   "(1)Cookies You can set your browser to refuse all or some browser cookies, or to alert you when cookies are being sent. If you disable or refuse cookies, please note that some parts of the Site and the Service may then be inaccessible or not function properly. (2)Notifications. The Service may deliver notifications to your mobile device from time to time. You can disable these notifications by changing notification settings on your mobile device.(3)Emails. Royalmindfulness may send Service updates, Service notifications, promotional information and other communications to you via email. Promotional email communications will contain instructions describing how you can opt out of receiving future promotional emails from us. If you opt out of promotional emails, you may continue to receive non-promotional, transactional emails from us.(4)Limiting Provided Information. You can choose not to provide us with certain information. If you decline to provide certain information, however, please note that some features of the Site and/or Service may then be inaccessible.“DO NOT TRACK” RequestsWe adhere to the standards set out in this Privacy Policy and do not monitor or respond to Do Not Track browser requests.Third party applications and websitesThe Site and/or Service may contain links enabling the electronic transfer of data from third-party applications to the Site or Service, as well as links to third-party websites. Royalmindfulness is not responsible for the privacy practices or content of these applications or websites, and linking to an application or website does not constitute endorsement by us of that application or website. You should review the privacy policy and terms and conditions of any such third-party application or website prior to using or providing information to the same.Access to my personal information You may request modification of personal information that you have submitted to us by contacting us at support@royalmindfulness.com or by updating your profile in your user account. Please note that any deletion of your personal information may impact your ability to access and use the Service. We may not accommodate a request to change information if we believe the change would violate any law or legal requirement or cause the information to be incorrect. If you delete your User Contributions, copies of your User Contributions or correspondence may remain viewable in cached and archived pages, or might have been copied or stored by other users. Proper access and use of information provided on the Site and Service, including User Contributions and correspondence, is governed by our Terms of Use.Your California privacy rights California law grants additional privacy rights to California residents. In particular, the California Consumer Privacy Act (CCPA) requires businesses to disclose, for the past 12 months, (i) the categories of personal information collected, (ii) the sources of the collected personal information, (iii) the purposes for which the collected personal information is used, (iv) the categories of personal information disclosed for a business purpose, and (v) the categories of any personal information sold. Royalmindfulness provides these disclosures in the following table. (Note that Royalmindfulness does not sell any personal information, even under the broad CCPA definition of a “sale.”)",
-]
+];
 
 exports.tableData = [
   {
-    category: 'Identifiers',
-    sources: 'Site visits, creation of accounts and registration for Royalmindfulness products and services',
-    purposes: 'For user registration, to enable Royalmindfulness to provide its products and services and to allow Royalmindfulness to communicate with you',
-    disclosures: 'To Third Party Providers to assist in providing Royalmindfulness products and services and processing associated payments'
+    category: "Identifiers",
+    sources:
+      "Site visits, creation of accounts and registration for Royalmindfulness products and services",
+    purposes:
+      "For user registration, to enable Royalmindfulness to provide its products and services and to allow Royalmindfulness to communicate with you",
+    disclosures:
+      "To Third Party Providers to assist in providing Royalmindfulness products and services and processing associated payments",
   },
   {
-    category: 'Personal information categories listed in the California Customer Records statute',
-    sources: 'Creation of accounts and registration to receive Royalmindfulness products and services, submission of payment information ',
-    purposes: 'For user registration, to enable Royalmindfulness to provide its products and services and to allow Royalmindfulness to communicate with you',
-    disclosures: 'To Third Party Providers to assist in providing Royalmindfulness products and services and processing payments'
+    category:
+      "Personal information categories listed in the California Customer Records statute",
+    sources:
+      "Creation of accounts and registration to receive Royalmindfulness products and services, submission of payment information ",
+    purposes:
+      "For user registration, to enable Royalmindfulness to provide its products and services and to allow Royalmindfulness to communicate with you",
+    disclosures:
+      "To Third Party Providers to assist in providing Royalmindfulness products and services and processing payments",
   },
   {
-    category: 'Protected classification characteristics under California or federal law',
-    sources: 'Creation of accounts and registration to receive Royalmindfulness products and services;specific submission by Student Users',
-    purposes: 'For user registration, to enable Royalmindfulness to provide its products and services and to allow Royalmindfulness to communicate with you',
-    disclosures: 'To Third Party Providers to assist in providing Royalmindfulness products and services'
+    category:
+      "Protected classification characteristics under California or federal law",
+    sources:
+      "Creation of accounts and registration to receive Royalmindfulness products and services;specific submission by Student Users",
+    purposes:
+      "For user registration, to enable Royalmindfulness to provide its products and services and to allow Royalmindfulness to communicate with you",
+    disclosures:
+      "To Third Party Providers to assist in providing Royalmindfulness products and services",
   },
   {
-    category:'Commercial information',
-    sources: 'Registration for Royalmindfulness products and services',
-    purposes: 'To provide Royalmindfulness products and services to users and maintain purchase history',
-    disclosures: 'To Third Party Providers to facilitate delivery of products and services'
+    category: "Commercial information",
+    sources: "Registration for Royalmindfulness products and services",
+    purposes:
+      "To provide Royalmindfulness products and services to users and maintain purchase history",
+    disclosures:
+      "To Third Party Providers to facilitate delivery of products and services",
   },
   {
-    category:'Internet or other electronic network activity',
-    sources: 'Your browsing and search history on our Site and Service and other interactions with our Site or Service',
-    purposes: 'To improve the user experience on the Site, diagnose server problems and administer the Site, and to improve Service function',
-    disclosures: 'To Third Party Providers for the purpose of enhancing the Site and improving the effectiveness of our advertising'
+    category: "Internet or other electronic network activity",
+    sources:
+      "Your browsing and search history on our Site and Service and other interactions with our Site or Service",
+    purposes:
+      "To improve the user experience on the Site, diagnose server problems and administer the Site, and to improve Service function",
+    disclosures:
+      "To Third Party Providers for the purpose of enhancing the Site and improving the effectiveness of our advertising",
   },
   {
-    category:'Sensory data',
-    sources: 'Your interactions with our Site and Service, including, without limitation, in connection with your participation in Trainings; recordings of the same',
-    purposes: 'To provide, analyze and improve Royalmindfulness products and services',
-    disclosures: 'To Third Party Providers to assist in providing and improving Royalmindfulness products and services'
+    category: "Sensory data",
+    sources:
+      "Your interactions with our Site and Service, including, without limitation, in connection with your participation in Trainings; recordings of the same",
+    purposes:
+      "To provide, analyze and improve Royalmindfulness products and services",
+    disclosures:
+      "To Third Party Providers to assist in providing and improving Royalmindfulness products and services",
   },
   {
-    category:'Geolocation data',
-    sources: 'IP address and device data',
-    purposes: 'To provide Royalmindfulness products and services and to improve the visitor experience on our Site',
-    disclosures: 'To Third Party Providers for the purpose of enhancing our Site and improving the effectiveness of our advertising'
+    category: "Geolocation data",
+    sources: "IP address and device data",
+    purposes:
+      "To provide Royalmindfulness products and services and to improve the visitor experience on our Site",
+    disclosures:
+      "To Third Party Providers for the purpose of enhancing our Site and improving the effectiveness of our advertising",
   },
   {
-    category:'Inferences drawn from other personal information',
-    sources: 'Your browsing and search history on our Site and other interactions with our Site and Service',
-    purposes: 'To improve the visitor experience on our Site',
-    disclosures: 'To Third Party Providers for the purpose of enhancing our Site and improving the effectiveness of our advertising'
-  }
-]; 
+    category: "Inferences drawn from other personal information",
+    sources:
+      "Your browsing and search history on our Site and other interactions with our Site and Service",
+    purposes: "To improve the visitor experience on our Site",
+    disclosures:
+      "To Third Party Providers for the purpose of enhancing our Site and improving the effectiveness of our advertising",
+  },
+];
 
 exports.privacyPolicyTextRemaining = [
   "California residents also have the rights described below. We will not discriminate against any California resident who exercises these rights. Right to access/know your information. You may request from us a list of (i) the personal information that we have collected about you, and (ii) the categories of third parties to whom we have disclosed your personal information. You have the right to up to two (2) access requests each twelve (12) months. Right to delete your information. You may request, at any time, that we delete your information and direct our service providers to delete your information from their records. You may contact us to exercise these rights at support@royalmindfulness.com. To ensure the privacy and protection of individuals, we are required to verify your identity (or that of your authorized agent) or otherwise authenticate your request(s), which we will do in accordance with the CCPA regulations. Please note that, under the CCPA, we are not required to grant a request to access/know or a request to delete with respect to personal information obtained from you in your role as an employee, owner, director, officer or contractor of a company and within the context of Royalmindfulness providing its services to such company.Your European and UK Privacy RightsIf you are a resident of the European Union or the UK, you are entitled to certain information and have certain rights under the GDPR. Those rights include: (i) the right of access to your information.(ii) the right to rectify your information if it is incorrect or incomplete.(ii) the right to have your information erased (“right to be forgotten”) if certain grounds are met.(iv) the right to withdraw your consent to our processing of your information at any time (if our processing is based on consent).(v) the right to object to our processing of your information (if processing is based on legitimate interests).(vi) the right to object to our processing of your information for direct marketing purposes.(vii) the right to receive your information from us in a structured, commonly used and machine-readable format, and the right to transmit your information to another controller without hindrance from us (data portability).(viii) If you are located in the European Union or the UK and you are or have been a user of our services (including the Service), we may send you marketing communications based on our legitimate interests, subject always to your right to opt out of such communications. Further, if you are located in the European Union, we will never share your information with a third party for such third party’s marketing purposes, unless you have specifically consented to us doing so. You may contact us at support@royalmindfulness.com to exercise any of the above rights. We may request specific information from you to confirm your identity, and in some circumstances, we may charge a reasonable fee for access to your information.Furthermore, if you believe that our processing of your information is inconsistent with your data protection rights under the GDPR and we have not adequately addressed your concerns, you have the right to lodge a complaint with the data protection supervisory authority of your country.For purposes of the GDPR, we are a “controller” and you are a “data subject.”Updates to our privacy policy Royalmindfulness reserves the right to change this Privacy Policy at any time. If we make a material change to this Privacy Policy, we will make an effort to communicate these changes to you via email or by posting a notification on the Site. The date this Privacy Policy was last revised is at the top of this page. We encourage you to review this Privacy Policy periodically to check for any updates or changes.Contact us If you have questions about the privacy aspects of our Site or Services or would like to make a complaint, please contact us at support@royalmindfulness.com or write to us at: Royalmindfulness, Inc. RH15, Treasure Town, Indore(M.P), India-452012 logo",
-]
-
+];
 
 // purpose
 exports.purposeHeading = "Purpose of Royal Mindfulness";
-exports.purposeDetail = "At Royal Mindfulness, our purpose is deeply rooted in the belief that true well-being is a harmonious balance of the mind, body, and spirit. In a world where stress, anxiety, and the demands of modern life are ever-present, we aim to provide a sanctuary where individuals can reconnect with themselves, find inner peace, and cultivate a healthier, more balanced lifestyle. Below, we outline the key aspects of our purpose";
+exports.purposeDetail =
+  "At Royal Mindfulness, our purpose is deeply rooted in the belief that true well-being is a harmonious balance of the mind, body, and spirit. In a world where stress, anxiety, and the demands of modern life are ever-present, we aim to provide a sanctuary where individuals can reconnect with themselves, find inner peace, and cultivate a healthier, more balanced lifestyle. Below, we outline the key aspects of our purpose";
 exports.purposeData = [
   {
     question: "Promoting Holistic Wellness",
     answer:
-    "Our primary purpose is to promote holistic wellness by integrating traditional yoga and meditation practices into the lives of our students. We recognize that wellness is not just about physical health but also encompasses mental clarity, emotional stability, and spiritual growth. By offering practices like Raja Yoga, Antar Mouna (Inner Silence), and daily relaxation sessions, we provide a comprehensive approach to well-being that addresses the full spectrum of human experience."
+      "Our primary purpose is to promote holistic wellness by integrating traditional yoga and meditation practices into the lives of our students. We recognize that wellness is not just about physical health but also encompasses mental clarity, emotional stability, and spiritual growth. By offering practices like Raja Yoga, Antar Mouna (Inner Silence), and daily relaxation sessions, we provide a comprehensive approach to well-being that addresses the full spectrum of human experience.",
   },
   {
     question: "Making Mindfulness Accessible",
@@ -774,21 +1024,21 @@ exports.purposeData = [
   {
     question: "Fostering a Supportive Community",
     answer:
-      "We are more than just a yoga and meditation platform; we are a community of like-minded individuals who are on a shared journey toward greater well-being. Our purpose includes fostering a supportive and inclusive environment where students can connect, share experiences, and grow together. By creating a sense of community, we aim to make the practice of mindfulness a collaborative and enriching experience."
+      "We are more than just a yoga and meditation platform; we are a community of like-minded individuals who are on a shared journey toward greater well-being. Our purpose includes fostering a supportive and inclusive environment where students can connect, share experiences, and grow together. By creating a sense of community, we aim to make the practice of mindfulness a collaborative and enriching experience.",
   },
   {
     question: "Empowering Through Education ",
     answer:
-      "Education is a cornerstone of our purpose at Royal Mindfulness. We are committed to empowering our students with knowledge and understanding of traditional mindfulness practices. Our experienced instructors not only guide students through sessions but also educate them on the principles and philosophies behind these practices. This educational approach ensures that our students are equipped with the tools and insights needed to continue their wellness journey independently."
+      "Education is a cornerstone of our purpose at Royal Mindfulness. We are committed to empowering our students with knowledge and understanding of traditional mindfulness practices. Our experienced instructors not only guide students through sessions but also educate them on the principles and philosophies behind these practices. This educational approach ensures that our students are equipped with the tools and insights needed to continue their wellness journey independently.",
   },
   {
     question: "Ensuring Affordability",
     answer:
-      "We believe that everyone should have access to high-quality mindfulness practices without financial strain. Part of our purpose is to ensure that our services are affordable and accessible to as many people as possible. By offering competitive pricing, we make it easier for individuals to invest in their well-being without breaking the bank."
+      "We believe that everyone should have access to high-quality mindfulness practices without financial strain. Part of our purpose is to ensure that our services are affordable and accessible to as many people as possible. By offering competitive pricing, we make it easier for individuals to invest in their well-being without breaking the bank.",
   },
   {
     question: "Enhancing Quality of Life",
     answer:
-      "Ultimately, the purpose of Royal Mindfulness is to enhance the quality of life for our students. By providing effective mindfulness practices, personalized care, and a supportive community, we help individuals manage stress, improve mental clarity, and cultivate a sense of inner peace. Our goal is to empower our students to live more balanced, fulfilling lives, where they can face life’s challenges with grace and resilience.In conclusion, the purpose of Royal Mindfulness is to be a guiding force in your journey toward holistic wellness. We are here to help you cultivate a deeper connection with yourself, find inner peace, and live a life of balance and harmony. Whether you are seeking to reduce stress, enhance your spiritual growth, or simply find a moment of calm in your day, Royal Mindfulness is dedicated to supporting you every step of the way."
-  }
-]
+      "Ultimately, the purpose of Royal Mindfulness is to enhance the quality of life for our students. By providing effective mindfulness practices, personalized care, and a supportive community, we help individuals manage stress, improve mental clarity, and cultivate a sense of inner peace. Our goal is to empower our students to live more balanced, fulfilling lives, where they can face life’s challenges with grace and resilience.In conclusion, the purpose of Royal Mindfulness is to be a guiding force in your journey toward holistic wellness. We are here to help you cultivate a deeper connection with yourself, find inner peace, and live a life of balance and harmony. Whether you are seeking to reduce stress, enhance your spiritual growth, or simply find a moment of calm in your day, Royal Mindfulness is dedicated to supporting you every step of the way.",
+  },
+];
