@@ -23,7 +23,6 @@ import Purpose from './Pages/Purpose/Purpose';
 import ScrollToTop from './Components/ScrollToTop';
 
 function App() {
- 
   
   return (
     <Router>
