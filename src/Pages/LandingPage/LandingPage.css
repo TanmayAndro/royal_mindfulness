@@ -1,0 +1,23 @@
+@media (max-width: 600px) {
+  .responsive-container {
+    flex-direction: column; /* Stack the boxes vertically */
+  }
+
+  .responsive-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Full width for each box */
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+
+  .responsive-image {
+    width: 80%; /* Decrease image width */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .responsive-button {
+    bottom: 30px; /* Adjust button position */
+    right: 30px; /* Adjust button position */
+    left: auto; /* Reset left position */
+  }
+}

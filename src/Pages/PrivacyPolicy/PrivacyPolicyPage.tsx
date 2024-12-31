@@ -68,11 +68,16 @@ const PrivacyPolicy = () => {
             }}>Privacy and Policy</MainHeading>
         </Box>
 
+        <Box sx={mainStyle.content}>
+          <Typography sx={mainStyle.boxtypo}>{config.privacyHeading}</Typography>{" "}
+          <Typography sx={{ fontSize:'17px', marginTop:'2rem'}}>{config.privacyDetail}</Typography>
+        </Box>
+
         <Box sx={{
            marginBottom: "120px", 
            marginTop: "10px" ,
            "@media (max-width:500px)": {
-               marginTop:'6rem',
+               marginTop:'4rem',
               },
               "@media (min-width:500px) and (max-width:900px)": {
                 marginTop:'10rem',
@@ -168,5 +173,47 @@ const AccordionStyle = styled(Accordion)({
     },
   },
 });
+
+
+const mainStyle = {
+  content: {
+    dispaly: "flex",
+    justifyContent: "center",
+    marginBottom: "40px",
+    marginTop: "40px",
+  },
+
+  boxtypo: {
+    textAlign: "center" as "center",
+    fontWeight: 700,
+    fontSize: "24px",
+    lineHeight: "32px",
+    marginBottom: "8px",
+    fontFamily: "Lato",
+    letterSpacing: "-0.12px",
+    color: "rgba(30, 41, 59, 1)",
+    "@media (max-width:1024px)": {
+      fontSize: "40px",
+    },
+    "@media (max-width:900px)": {
+      display:'none'
+    },
+  },
+  typodetail: {
+    marginTop: "3rem",
+    textAlign: "justify",
+    fontSize:"24px",
+    color: "rgba(30, 41, 59, 1)",
+    "@media (max-width:1024px)": {
+      fontSize: "20px",
+      marginTop:'10rem'
+    },
+    "@media (max-width:500px)": {
+      fontSize: "18px",
+      marginTop:'7rem'
+    },
+  
+  },
+};
 
 export default PrivacyPolicy;
