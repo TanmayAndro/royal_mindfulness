@@ -31,7 +31,6 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/session" element={<ProtectedRoute element={Session} />} />
         <Route path="/pricing-plans" element={<PricingPlans />} />
@@ -51,6 +50,12 @@ function App() {
           element={<ProtectedRoute element={PaymentFailedPage} />}
         />
         <Route path="/" element={<ProtectedRoute element={LandingPage} />} />
+
+        <Route path="*" element={<NotFound />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/overview" element={<Overview />} />
+        <Route path="/purpose" element={<Purpose />} />
       </Routes>
       <Footer />
     </Router>
