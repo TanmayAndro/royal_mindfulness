@@ -21,12 +21,12 @@ import {
   Typography,
 } from "@mui/material";
 import { DateCalendar } from "@mui/x-date-pickers-pro";
-
 import TimeButton from "./TimeBox/TimeButton";
 import { AllStyle } from "../Login/login";
 import axios from "axios";
 import { bookings } from "../../API/ApiConfig";
 import AlertComponent from "../../Components/alert";
+import { useParams } from 'react-router-dom';
 
 const config = require("../../config");
 
@@ -52,6 +52,12 @@ const Session = () => {
 
   const locationButtonRef = useRef<HTMLButtonElement>(null);
   const sessionButtonRef = useRef<HTMLButtonElement>(null);
+  const params = useParams();
+  console.log(params)
+  const price = params.value;
+
+    // Now you can use the price variable
+    console.log("Pricing and plans",price);
 
   const locations = ["New York", "California"];
   const sessionsTime = ["1 Session", "7 Session", "20 Session"];
@@ -127,23 +133,24 @@ const Session = () => {
         time_of_session: timeselect,
       },
     };
+    navigate("/payment");
    
-    try {
-      const response = await axios.post(
-        process.env.REACT_APP_BASE_URL + bookings,
-        data,
-        {
-          headers: {
-            token: token,
-          },
-        }
-      );
+    // try {
+    //   const response = await axios.post(
+    //     process.env.REACT_APP_BASE_URL + bookings,
+    //     data,
+    //     {
+    //       headers: {
+    //         token: token,
+    //       },
+    //     }
+    //   );
       
      
-      navigate("/");
-    } catch (err: any) {
-      setErrorData(err?.response?.data?.message);
-    }
+    //   navigate("/payment");
+    // } catch (err: any) {
+    //   setErrorData(err?.response?.data?.message);
+    // }
   };
   const handleCloseAlert = () => {
     setErrorData("");
