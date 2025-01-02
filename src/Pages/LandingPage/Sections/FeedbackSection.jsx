@@ -238,13 +238,13 @@ export const FeedbackSection = () => {
         alignItems: "center",
         justifyContent: "center",
         "@media (max-width: 600px)": {
-          height: showForm ? "750px" : "650px",
+          height: showForm ? "850px" : "650px",
+          marginBottom: "2rem",
         },
       }}
     >
       <Grid
         container
-        
         sx={{
           width: "90%",
           borderRadius: "14px",
@@ -266,7 +266,7 @@ export const FeedbackSection = () => {
           }}
         >
           {!showForm ? (
-            <Box sx={{ color: "white", textAlign: "center", height: "450px" }}>
+            <Box sx={{ color: "white", textAlign: "center", height: "550px" }}>
               <Typography
                 variant="h4"
                 sx={{
