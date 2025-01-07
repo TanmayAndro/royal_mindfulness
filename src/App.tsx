@@ -44,14 +44,16 @@ function App() {
             path="/dashboard/:id"
             element={<ProtectedRoute element={Dashboard} />}
           />
-          <Route
+          {/* <Route
             path="/success"
             element={<ProtectedRoute element={ThankYouPage} />}
           />
           <Route
             path="/error"
             element={<ProtectedRoute element={PaymentFailedPage} />}
-          />
+          /> */}
+          <Route path="/success" element={<ThankYouPage />} />
+          <Route path="/error" element={<PaymentFailedPage />} />
           <Route path="/" element={<ProtectedRoute element={LandingPage} />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="*" element={<NotFound />} />
