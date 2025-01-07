@@ -130,18 +130,23 @@ const Footer = () => {
         <Typography variant="subtitle1" gutterBottom>
           Quick Links
         </Typography>
-        <List sx={{ listStyleType: "disc", paddingLeft: 2 }}>
+        <List sx={{ listStyleType: "disc", paddingLeft: 2, cursor: "pointer" }}>
           {[
-            "About Us",
-            "Terms & Condition",
-            "Privacy Policy",
-            "Pricing",
-            "Login",
-            "Contact Us",
-            "Refund/Cancellation",
-          ].map((text) => (
-            <ListItem key={text} sx={{ display: "list-item", padding: 0 }}>
-              <ListItemText primary={text} sx={{ color: "#fff" }} />
+            { name: "About Us", link: "/aboutus" },
+            { name: "Terms & Condition", link: "/term-condition" },
+            { name: "Privacy Policy", link: "/privacy-policy" },
+            { name: "Pricing", link: "/pricing-plans" },
+            { name: "Contact Us", link: "/contact" },
+            { name: "Refund/Cancellation", link: "/refund-cancellation" },
+          ].map((item) => (
+            <ListItem
+              key={item.name}
+              sx={{ display: "list-item", padding: 0 }}
+              onClick={() => {
+                window.location.href = item.link;
+              }}
+            >
+              <ListItemText primary={item.name} sx={{ color: "#fff" }} />
             </ListItem>
           ))}
         </List>
@@ -152,14 +157,35 @@ const Footer = () => {
           Follow Us
         </Typography>
         <List>
-          <ListItem sx={{ padding: 0 }}>
+          <ListItem
+            sx={{ padding: 0, cursor: "pointer" }}
+            onClick={() => {
+              window.open(
+                "https://www.facebook.com/royalmindfulness/",
+                "_blank"
+              );
+            }}
+          >
             <FacebookIcon sx={{ marginRight: 1 }} /> Facebook
           </ListItem>
-          <ListItem sx={{ padding: 0 }}>
+          <ListItem
+            sx={{ padding: 0, cursor: "pointer" }}
+            onClick={() => {
+              window.open(
+                "https://www.instagram.com/royalmindfulness/",
+                "_blank"
+              );
+            }}
+          >
             <InstagramIcon sx={{ marginRight: 1 }} /> Instagram
           </ListItem>
-          <ListItem sx={{ padding: 0 }}>
-            <LinkedInIcon sx={{ marginRight: 1 }} /> LinkedIn
+          <ListItem
+            sx={{ padding: 0, cursor: "pointer" }}
+            onClick={() => {
+              window.open("https://www.gmail.com/royalmindfulness/", "_blank");
+            }}
+          >
+            <LinkedInIcon sx={{ marginRight: 1 }} /> Gmail
           </ListItem>
         </List>
       </Box>

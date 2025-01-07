@@ -25,6 +25,7 @@ import { Payment } from "./Pages/Payments/Payment";
 
 function App() {
   return (
+    <div style={{ overflow:"hidden"}}>
     <Router>
       <ScrollToTop />
       <Header />
@@ -41,7 +42,7 @@ function App() {
           path="/dashboard/:id"
           element={<ProtectedRoute element={Dashboard} />}
         />
-        <Route
+                <Route
           path="/success"
           element={<ProtectedRoute element={ThankYouPage} />}
         />
@@ -50,7 +51,7 @@ function App() {
           element={<ProtectedRoute element={PaymentFailedPage} />}
         />
         <Route path="/" element={<ProtectedRoute element={LandingPage} />} />
-
+        <Route path="/payment" element={<Payment />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/aboutus" element={<AboutUs />} />
@@ -59,6 +60,7 @@ function App() {
       </Routes>
       <Footer />
     </Router>
+    </div>
   );
 }
 

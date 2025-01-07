@@ -2,15 +2,7 @@ import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Paper, Typography } from "@mui/material";
 import { styled } from "@mui/system";
-import {
-  slider1,
-  slider2,
-  slider3,
-  slider4,
-  slider5,
-  slider6,
-  slider7,
-} from "../../assests";
+
 import bg1 from "../../Assests/b1.png";
 import bg2 from "../../Assests/b2.png";
 import bg3 from "../../Assests/b3.png";
@@ -36,10 +28,16 @@ const items = [
 const Item = ({ item }) => {
   return (
     <Paper>
-      <img sx={{ boxShadow:' none'}}
+      <img
+        sx={{ boxShadow: " none" }}
         src={item.image}
         alt={item.name}
-        style={{ width: "100%", height: "500px", objectFit: "cover",aspectRatio: "16/9" }}
+        style={{
+          width: "100%",
+          height: "500px",
+          objectFit: "cover",
+          aspectRatio: "16/9",
+        }}
       />
       <Overlay>
         <Typography

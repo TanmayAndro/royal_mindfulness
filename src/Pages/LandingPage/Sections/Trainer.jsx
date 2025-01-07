@@ -100,8 +100,14 @@ const TrainerCard = () => {
                   >
                     <Box
                       sx={{
-                        width: "150px",
-                        height: "150px",
+                        width: {
+                          xs: "110px", // Width for screens smaller than 600px
+                          sm: "150px", // Width for screens 600px and larger
+                        },
+                        height: {
+                          xs: "110px", // Width for screens smaller than 600px
+                          sm: "150px", // Width for screens 600px and larger
+                        },
                         borderRadius: "400px",
                         overflow: "hidden",
                         flexShrink: 0,

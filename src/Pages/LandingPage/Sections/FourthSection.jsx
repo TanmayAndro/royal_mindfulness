@@ -104,10 +104,10 @@ export const FourthSection = () => {
             width: { xs: "100%", sm: "50%" },
             padding: { xs: "1.5rem", sm: "3rem" },
             display: "flex",
-            justifyContent: 'center',
-            alignItems:{xs:'center'},
+            justifyContent: "center",
+            alignItems: { xs: "center", sm: "baseline" },
             flexDirection: { xs: "column" },
-          }}    
+          }}
         >
           <Typography
             variant="h4"

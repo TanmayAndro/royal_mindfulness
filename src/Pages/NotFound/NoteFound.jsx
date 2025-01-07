@@ -9,7 +9,7 @@ const NotFound = () => {
       <div style={styles.content}>
         <h1 style={styles.heading}>404</h1>
         <p style={styles.message}>Oops! Page not found.</p>
-        {token && first_name ? <Link to="/" style={styles.link}>Go to Home</Link>: <Link to="/login" style={styles.link}>Go to Home</Link>} 
+        {token && first_name ? <Link to="/" style={styles.link}>Go to Home</Link>: <Link to="/" style={styles.link}>Go to Home</Link>} 
       </div>
     </div>
   );
