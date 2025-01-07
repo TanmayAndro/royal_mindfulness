@@ -1,6 +1,5 @@
 import { Box, Button, Grid, Typography } from '@mui/material'
 import React from 'react'
-import bgImg from '../../Assests/Contact.jpg'
 import { AllStyle, InputField } from '../Login/login'
 
 
