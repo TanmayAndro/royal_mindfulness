@@ -139,40 +139,40 @@ const Logo_part: React.FC = () => {
               flexDirection: "column",
             }}
           >
-             {/* {!token && ()} */}
+            {/* {!token && ()} */}
             <Link to={"/login"}>
-            <Button
-              variant="outlined"
-              sx={{
-                borderRadius: "20px",
-                backgroundColor: "#050a44",
-                color: "white",
-                marginBottom: "10px",
-                fontFamily: "lato",
-                fontSize: "14px",
-                width: "150px",
-                height: "45px",
-              }}
-            >
-              Login
-            </Button>
+              <Button
+                variant="outlined"
+                sx={{
+                  borderRadius: "20px",
+                  backgroundColor: "#0F2E15",
+                  color: "white",
+                  marginBottom: "10px",
+                  fontFamily: "lato",
+                  fontSize: "14px",
+                  width: "150px",
+                  height: "45px",
+                }}
+              >
+                Login
+              </Button>
             </Link>
             <Link to={"/register"}>
-            <Button
-              variant="outlined"
-              sx={{
-                borderRadius: "20px",
-                backgroundColor: "#050a44",
-                color: "white",
-                marginBottom: "10px",
-                fontFamily: "lato",
-                fontSize: "14px",
-                width: "150px",
-                height: "45px",
-              }}
-            >
-              Register
-            </Button>
+              <Button
+                variant="outlined"
+                sx={{
+                  borderRadius: "20px",
+                  backgroundColor: "#0F2E15",
+                  color: "white",
+                  marginBottom: "10px",
+                  fontFamily: "lato",
+                  fontSize: "14px",
+                  width: "150px",
+                  height: "45px",
+                }}
+              >
+                Register
+              </Button>
             </Link>
           </Box>
         </Box>

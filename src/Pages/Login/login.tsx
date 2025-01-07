@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import "./login.css";
 import Typography from "@mui/material/Typography";
-import { useNavigate } from 'react-router-dom';
-import {Box,Dialog,IconButton,styled,Button,TextField,Grid,} from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import {
+  Box,
+  Dialog,
+  IconButton,
+  styled,
+  Button,
+  TextField,
+  Grid,
+} from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { facebook_logo, google_logo } from "../../assests";
 import { Link } from "react-router-dom";
@@ -14,26 +22,31 @@ const config = require("../../config");
 
 const Login = () => {
   const navigate = useNavigate();
-  
+
   const [errorData, setErrorData] = useState("");
 
-  const fetchLogin = async (email:string, password:string) => {
-   
+  const fetchLogin = async (email: string, password: string) => {
     const data = {
       user: {
         email: email,
         password: password,
       },
     };
-   
+
     try {
-      const response = await axios.post(process.env.REACT_APP_BASE_URL + loginApi,data);
-      localStorage.setItem("user_token",response.data.meta.token);
-      localStorage.setItem("first_name",response.data.data.attributes.first_name);
-      localStorage.setItem("user_id",response.data.data.id);
-      navigate("/")
-    } catch (err:any) {
-      setErrorData(err?.response?.data?.message); 
+      const response = await axios.post(
+        process.env.REACT_APP_BASE_URL + loginApi,
+        data
+      );
+      localStorage.setItem("user_token", response.data.meta.token);
+      localStorage.setItem(
+        "first_name",
+        response.data.data.attributes.first_name
+      );
+      localStorage.setItem("user_id", response.data.data.id);
+      navigate("/");
+    } catch (err: any) {
+      setErrorData(err?.response?.data?.message);
     }
   };
 
@@ -48,7 +61,7 @@ const Login = () => {
   const handleVisiblPassword = () => {
     return enablePasswordField ? "password" : "text";
   };
-  
+
   const handlePassword = (value: string) => {
     setData({ ...data, password: value });
     if (value.trim() === "" || value.length < 8) {
@@ -95,12 +108,18 @@ const Login = () => {
       fetchLogin(data.email, data.password);
     }
   };
-  const handleClose=()=>{
-    setErrorData("")
-  }
+  const handleClose = () => {
+    setErrorData("");
+  };
   return (
     <MainGrid container>
-      {errorData!="" && <AlertComponent errorData={errorData} handleClose={handleClose} type={"error"}/>}
+      {errorData != "" && (
+        <AlertComponent
+          errorData={errorData}
+          handleClose={handleClose}
+          type={"error"}
+        />
+      )}
       <Login_register_firstPart />
       <SecondGrid
         item
@@ -295,7 +314,7 @@ export const AllStyle = {
     borderRadius: "8px",
     height: "56px",
     lineHeight: "24px",
-    background: "#050A44",
+    background: "#0F2E15",
     textTransform: "inherit" as "inherit",
     color: "white",
     fontFamily: "Lato",

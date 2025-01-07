@@ -125,10 +125,19 @@ const TrainerCard = () => {
                     </Box>
 
                     <Box>
-                      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          fontWeight: "bold",
+                          fontSize: {
+                            xs: "1rem",
+                            sm: "1.5rem",
+                          },
+                        }}
+                      >
                         {trainer.name}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: "gray" }}>
+                      <Typography variant="body2" sx={{ color: "gray", }}>
                         {trainer.title}
                       </Typography>
                     </Box>

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const NotFound = () => {
   const token = localStorage.getItem("user_token");
@@ -9,7 +9,15 @@ const NotFound = () => {
       <div style={styles.content}>
         <h1 style={styles.heading}>404</h1>
         <p style={styles.message}>Oops! Page not found.</p>
-        {token && first_name ? <Link to="/" style={styles.link}>Go to Home</Link>: <Link to="/" style={styles.link}>Go to Home</Link>} 
+        {token && first_name ? (
+          <Link to="/" style={styles.link}>
+            Go to Home
+          </Link>
+        ) : (
+          <Link to="/" style={styles.link}>
+            Go to Home
+          </Link>
+        )}
       </div>
     </div>
   );
@@ -17,38 +25,38 @@ const NotFound = () => {
 
 const styles = {
   container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-    minHeight: 'calc(100vh - 210px)',
-    textAlign: 'center',
-    padding: '20px',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    minHeight: "calc(100vh - 210px)",
+    textAlign: "center",
+    padding: "20px",
   },
   content: {
-    padding: '20px',
-    border: '1px solid #ddd',
-    borderRadius: '8px',
-    backgroundColor: '#f9f9f9',
+    padding: "20px",
+    border: "1px solid #ddd",
+    borderRadius: "8px",
+    backgroundColor: "#f9f9f9",
   },
   heading: {
-    fontSize: '4rem',
-    margin: '0',
-    color: '#ff6f6f',
+    fontSize: "4rem",
+    margin: "0",
+    color: "#0F2E15",
   },
   message: {
-    fontSize: '1.5rem',
-    color: '#333',
+    fontSize: "1.5rem",
+    color: "#333",
   },
   link: {
-    display: 'inline-block',
-    marginTop: '20px',
-    padding: '10px 20px',
-    fontSize: '1rem',
-    textDecoration: 'none',
-    color: '#fff',
-    backgroundColor: '#007bff',
-    borderRadius: '4px',
+    display: "inline-block",
+    marginTop: "20px",
+    padding: "10px 20px",
+    fontSize: "1rem",
+    textDecoration: "none",
+    color: "#fff",
+    backgroundColor: "#0F2E15",
+    borderRadius: "4px",
   },
 };
 
