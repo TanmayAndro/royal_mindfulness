@@ -1,6 +1,6 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
-import fifthImg from '../../../Assests/fifthImg.png'
+import fifthImg from "../../../Assests/fifthImg.png";
 
 export const FifthSection = () => {
   return (
@@ -59,6 +59,10 @@ export const FifthSection = () => {
                 color: "white",
                 width: "130px",
                 marginBottom: "2rem",
+              }}
+              onClick={() => {
+                window.location.href =
+                  "https://www.royalmindfulness.com/service-page/antar-mouna-inner-silence";
               }}
             >
               Join Now

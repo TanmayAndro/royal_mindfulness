@@ -1,13 +1,13 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
-import rightImg from '../../../Assests/iStock.png'
+import rightImg from "../../../Assests/iStock.png";
 
 const SecondSection = () => {
   return (
     <Box
       sx={{
         display: "flex",
-        flexDirection: { xs:'column', sm: "column", md: "row" },
+        flexDirection: { xs: "column", sm: "column", md: "row" },
         alignItems: "center",
         justifyContent: "space-between",
         margin: "auto",
@@ -16,7 +16,13 @@ const SecondSection = () => {
       }}
     >
       {/* Text Content */}
-      <Box sx={{ padding: "3rem", display: "flex", flexDirection: { xs:'column', sm: "column", md: "row" }  }}>
+      <Box
+        sx={{
+          padding: "3rem",
+          display: "flex",
+          flexDirection: { xs: "column", sm: "column", md: "row" },
+        }}
+      >
         <Box
           sx={{ flex: 1.5, paddingRight: { md: "2rem" }, textAlign: "left" }}
         >
@@ -25,7 +31,7 @@ const SecondSection = () => {
             gutterBottom
             sx={{ fontSize: "40px", fontWeight: "bold" }}
           >
-            The Joy of Relaxation from the Comfort of Your Home
+            Discover Our Story: Experience the Joy of Relaxation
           </Typography>
           <Typography
             variant="body1"
@@ -35,7 +41,7 @@ const SecondSection = () => {
               fontSize: "16px",
               fontWeight: "400",
               marginTop: "2rem",
-              textAlign:'justify'
+              textAlign: "justify",
             }}
           >
             At Royal Mindfulness, our mission is to assist individuals in
@@ -47,7 +53,7 @@ const SecondSection = () => {
           <Typography
             variant="body1"
             sx={{
-              color: "#0F2E15",
+              color: "#8EB6DC",
               fontStyle: "italic",
               fontSize: "22px",
               fontWeight: "700",
@@ -60,7 +66,12 @@ const SecondSection = () => {
           <Typography
             variant="body1"
             paragraph
-            sx={{ color: "#000000", fontSize: "16px", fontWeight: "400", textAlign:'justify' }}
+            sx={{
+              color: "#000000",
+              fontSize: "16px",
+              fontWeight: "400",
+              textAlign: "justify",
+            }}
           >
             Join us on a journey where affordable well-being meets regal
             serenity, and discover the transformative power of mindfulness at
@@ -73,14 +84,17 @@ const SecondSection = () => {
               marginTop: "2rem",
               textTransform: "none",
               fontWeight: "bold",
-              width: "160px",
+              width: { xs: "100%", sm: "250px" },
               height: "48px",
-              backgroundColor: "#0F2E15",
+              backgroundColor: "#1470AF",
               borderRadius: "34px",
-              "&:hover": { backgroundColor: "#0F2E15" },
+              "&:hover": { backgroundColor: "#1470AF" },
+            }}
+            onClick={() => {
+              window.location.href = "/aboutus"; // Update URL to your about us page
             }}
           >
-            Book Now
+            Learn More About us...
           </Button>
         </Box>
         <Box
@@ -90,7 +104,7 @@ const SecondSection = () => {
             justifyContent: "center",
             alignItems: "center",
             maxWidth: "100%",
-            marginTop:{xs:'2rem', sm: '2rem', md:'0px'}
+            marginTop: { xs: "2rem", sm: "2rem", md: "0px" },
           }}
         >
           <img

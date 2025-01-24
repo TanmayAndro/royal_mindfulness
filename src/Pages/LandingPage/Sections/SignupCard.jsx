@@ -9,27 +9,59 @@ import {
 } from "@mui/material";
 import signUp from "../../../Assests/signUpImg.png";
 import React, { useState } from "react";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const SignupCard = () => {
   const [formData, setFormData] = useState({
-    fullName: "",
-    phoneNumber: "",
+    full_name: "",
+    phone_number: "",
     email: "",
-    interest: "Yoga Nidra",
-    message: "",
+    interested_in: "",
+    anything_to_say: "",
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-  };
+    try {
+      const response = await axios.post(
+        "https://be-royal-mindfulness.onrender.com/customer_supports",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
+      if (response.data) {
+        // Show success message
+        toast.success("Form submitted successfully!");
+
+        // Reset the form
+        setFormData({
+          full_name: "",
+          phone_number: "",
+          email: "",
+          interested_in: "",
+          anything_to_say: "",
+        });
+      }
+    } catch (error) {
+      // Show error message
+      toast.error(
+        error.response?.data?.message || "Failed to submit the form. Try again!"
+      );
+    }
+  };
   return (
     <Box sx={{ width: "100%", height: "100%" }}>
+      <ToastContainer />
       <Grid container>
         {/* Form Section */}
         <Grid item xs={12} md={6}>
@@ -51,7 +83,7 @@ export const SignupCard = () => {
                 fontFamily: "Instrument sans",
               }}
             >
-              Sign up
+              Customer Support
             </Typography>
             <Typography
               variant="body1"
@@ -72,11 +104,11 @@ export const SignupCard = () => {
                   <Typography>Full Name</Typography>
                   <TextField
                     required
-                    id="fullName"
-                    name="fullName"
+                    id="full_name"
+                    name="full_name"
                     autoComplete="family-name"
                     variant="outlined"
-                    value={formData.fullName}
+                    value={formData.full_name}
                     onChange={handleChange}
                     sx={{
                       width: "100%",
@@ -101,11 +133,11 @@ export const SignupCard = () => {
                   <Typography>Phone Number</Typography>
                   <TextField
                     required
-                    id="phoneNumber"
-                    name="phoneNumber"
+                    id="phone_number"
+                    name="phone_number"
                     autoComplete="tel"
                     variant="outlined"
-                    value={formData.phoneNumber}
+                    value={formData.phone_number}
                     onChange={handleChange}
                     sx={{
                       width: "100%",
@@ -161,9 +193,9 @@ export const SignupCard = () => {
                   <Typography>What are you interested in?</Typography>
                   <Select
                     fullWidth
-                    id="interest"
-                    name="interest"
-                    value={formData.interest}
+                    id="interested_in"
+                    name="interested_in"
+                    value={formData.interested_in}
                     onChange={handleChange}
                     sx={{
                       width: "100%",
@@ -193,11 +225,11 @@ export const SignupCard = () => {
                   <Typography>Anything to say!</Typography>
                   <TextField
                     fullWidth
-                    name="message"
+                    name="anything_to_say"
                     multiline
                     rows={4}
                     variant="outlined"
-                    value={formData.message}
+                    value={formData.anything_to_say}
                     onChange={handleChange}
                     sx={{
                       borderRadius: "8px",
@@ -228,9 +260,9 @@ export const SignupCard = () => {
                       marginTop: "5rem",
                       borderRadius: "8px",
                       width: "100%",
-                      backgroundColor: "#0F2E15",
+                      backgroundColor: "#1470AF",
                       "&:hover": {
-                        backgroundColor: "#0F2E15",
+                        backgroundColor: "#1470AF",
                         "& .MuiInputLabel-root": {
                           position: "static",
                           transform: "none",

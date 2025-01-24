@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Avatar, Box, Button, Grid, Typography, Menu, MenuItem } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  Grid,
+  Typography,
+  Menu,
+  MenuItem,
+} from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import Logo_part from "./Logo_part";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -65,12 +73,15 @@ const Header: React.FC = () => {
             }
           )}
         </Grid>
-        <Grid item xs={12} md={3} sm={12} lg={2}>
+        <Grid item xs={12} md={3} sm={12} lg={2} display={"none"}>
           {!token && (
-            <Box className="second_grid_css"  sx={{
-              // Hide on small screens
-              '@media (max-width:500px)': { display: 'none' } // Show on screens larger than 500px
-            }}>
+            <Box
+              className="second_grid_css"
+              sx={{
+                // Hide on small screens
+                "@media (max-width:500px)": { display: "none" }, // Show on screens larger than 500px
+              }}
+            >
               <Link to="/login" className="button_login_css">
                 <Button className="button_login_css" color="inherit">
                   {config.login_button_name}
@@ -85,17 +96,14 @@ const Header: React.FC = () => {
           )}
           {token && first_name && (
             <Box className="second_grid_css hidebutton">
-              <Avatar
-                onClick={handleMenuClick}
-                style={{ cursor: 'pointer' }}
-              >
+              <Avatar onClick={handleMenuClick} style={{ cursor: "pointer" }}>
                 {first_name[0]}
               </Avatar>
               <LogoutIcon
                 style={{ color: "white", cursor: "pointer" }}
                 onClick={() => {
                   localStorage.removeItem("user_token");
-                  localStorage.removeItem("first_name");   
+                  localStorage.removeItem("first_name");
                   localStorage.removeItem("user_id");
                   navigate("/login");
                 }}
@@ -103,9 +111,9 @@ const Header: React.FC = () => {
               <Menu
                 anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
-                onClose={handleMenuClose} 
+                onClose={handleMenuClose}
                 MenuListProps={{
-                  'aria-labelledby': 'basic-button',
+                  "aria-labelledby": "basic-button",
                 }}
               >
                 <MenuItem onClick={handleDashboard}>Dashboard</MenuItem>

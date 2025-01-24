@@ -9,10 +9,15 @@ import moment from "moment";
 import {
   Box,
   Button,
+  Card,
+  CardContent,
+  CardMedia,
   Divider,
   Grid,
+  IconButton,
   Menu,
   MenuItem,
+  Select,
   Table,
   TableBody,
   TableCell,
@@ -26,15 +31,23 @@ import { AllStyle } from "../Login/login";
 import axios from "axios";
 import { bookings } from "../../API/ApiConfig";
 import AlertComponent from "../../Components/alert";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import AntraMounaImg from "../../Assests/Sessionimg.png";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import SEO from "../../Components/Seo";
 
 const config = require("../../config");
 
 const Session = () => {
   const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedSession, setSelectedSession] = useState("");
-  const [locationAnchorEl, setLocationAnchorEl] = useState<null | HTMLElement>(null);
-  const [sessionAnchorEl, setSessionAnchorEl] = useState<null | HTMLElement>(null);
+  const [locationAnchorEl, setLocationAnchorEl] = useState<null | HTMLElement>(
+    null
+  );
+  const [sessionAnchorEl, setSessionAnchorEl] = useState<null | HTMLElement>(
+    null
+  );
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState<number | null>(null);
   const [formError, setFormError] = useState("");
@@ -53,18 +66,16 @@ const Session = () => {
   const locationButtonRef = useRef<HTMLButtonElement>(null);
   const sessionButtonRef = useRef<HTMLButtonElement>(null);
   const params = useParams();
-  console.log(params)
+  console.log(params);
   const price = params.value;
 
-    // Now you can use the price variable
-    console.log("Pricing and plans",price);
-
-  const locations = ["New York", "California"];
-  const sessionsTime = ["1 Session", "7 Session", "20 Session"];
+  // Now you can use the price variable
+  console.log("Pricing and plans", price);
 
   const handleDateSelect = (date: any) => {
     setSelectedDate(date.format("YYYY/MM/DD"));
     setDateError("");
+    console.log("Selected Date:", date?.format("YYYY-MM-DD")); // Log the date
   };
 
   const handleLocationClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -134,7 +145,7 @@ const Session = () => {
       },
     };
     navigate("/payment");
-   
+
     // try {
     //   const response = await axios.post(
     //     process.env.REACT_APP_BASE_URL + bookings,
@@ -145,8 +156,7 @@ const Session = () => {
     //       },
     //     }
     //   );
-      
-     
+
     //   navigate("/payment");
     // } catch (err: any) {
     //   setErrorData(err?.response?.data?.message);
@@ -157,287 +167,288 @@ const Session = () => {
   };
 
   return (
-    <div className="main">
-      {errorData && (
-        <AlertComponent
-          errorData={errorData}
-          handleClose={handleCloseAlert}
-          type={"error"}
-        />
-      )}
-      <div className="heading-container">
-        <Typography
-          style={AllStyle.heading}
-          sx={{ fontSize: "26px !important" }}
-        >
-          {config.heading}
-        </Typography>
-        <Typography
-          style={AllStyle.smallHeading}
-          sx={{ fontSize: "18px !important" }}
-        >
-          {config.subHeading}
-        </Typography>
-        <Divider className="divider" />
-      </div>
-      <div className="filter-container">
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Button
-            variant="outlined"
-            ref={locationButtonRef}
-            aria-haspopup="true"
-            aria-controls={
-              Boolean(locationAnchorEl) ? "location-menu-list-grow" : undefined
-            }
-            sx={{
-              color: selectedLocation ? "white" : "black",
-              width: {
-                xs: "155px",
-                sm: "170px",
-              },
-              height: "50px",
-              backgroundColor: selectedLocation ? "#050A44" : "white",
-              border: "1px solid #050A44",
-            }}
-            onClick={handleLocationClick}
-          >
-            {selectedLocation || "Location"}
-          </Button>
-          <Menu
-            id="location-menu-list-grow"
-            anchorEl={locationAnchorEl}
-            open={Boolean(locationAnchorEl)}
-            onClose={handleClose}
-            MenuListProps={{
-              style: {
-                width: locationButtonRef.current
-                  ? locationButtonRef.current.offsetWidth
-                  : undefined,
-              },
-            }}
-          >
-            {locations.map((option: string) => (
-              <MenuItem
-                key={option}
-                onClick={() => handleLocationSelect(option)}
-              >
-                {option}
-              </MenuItem>
-            ))}
-          </Menu>
-          {locationError && (
-            <Typography component="span" color="error" fontSize={15}>
-              {locationError}
-            </Typography>
-          )}
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Button
-            variant="outlined"
-            ref={sessionButtonRef}
-            aria-haspopup="true"
-            aria-controls={
-              Boolean(sessionAnchorEl) ? "session-menu-list-grow" : undefined
-            }
-            sx={{
-              color: selectedSession ? "white" : "black",
-              width: {
-                xs: "155px",
-                sm: "170px",
-              },
-              height: "50px",
-              backgroundColor: selectedSession ? "#050A44" : "white",
-              border: "1px solid #050A44",
-            }}
-            onClick={handleSessionClick}
-          >
-            {selectedSession || "Sessions"}
-          </Button>
-          <Menu
-            id="session-menu-list-grow"
-            anchorEl={sessionAnchorEl}
-            open={Boolean(sessionAnchorEl)}
-            onClose={handleClose}
-            MenuListProps={{
-              style: {
-                width: sessionButtonRef.current
-                  ? sessionButtonRef.current.offsetWidth
-                  : undefined,
-              },
-            }}
-          >
-            {sessionsTime.map((option: string) => (
-              <MenuItem
-                key={option}
-                onClick={() => handleSessionSelect(option)}
-              >
-                {option}
-              </MenuItem>
-            ))}
-          </Menu>
-          {sessionError && (
-            <Typography color="error" fontSize={15}>
-              {sessionError}
-            </Typography>
-          )}
-        </div>
-      </div>
-
-      <Grid container spacing={10}>
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-          <Box
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              flexWrap: "wrap",
-              justifyContent: "center",
-              marginBottom: "50px",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <LocalizationProvider
-                dateAdapter={AdapterDayjs}
-                adapterLocale="de"
-              >
-                <DateCalendar
-                  shouldDisableDate={(date: any) =>
-                    dayjs(date).isBefore(dayjs(), "day")
-                  }
-                  onChange={handleDateSelect}
-                  sx={{
-                    "& .Mui-selected": {
-                      backgroundColor: "#050A44 !important",
-                    },
-                  }}
-                />
-              </LocalizationProvider>
-              {dateError && (
-                <Typography color="error" fontSize={15}>
-                  {dateError}
-                </Typography>
-              )}
-            </div>
-
-            <div className="time-comtainer">
-              <TimeButton
-                selectedTime={selectedTime}
-                onTimeSelect={handleTimeSelect}
-              />
-              {timeError && (
-                <Typography color="error" fontSize={15}>
-                  {timeError}
-                </Typography>
-              )}
-            </div>
-          </Box>
-        </Grid>
-
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={6}
-          lg={6}
-          sx={{
-            padding: "5px",
-            "@media (max-width:899px)": {
-              display: "grid",
-              justifyContent: "center",
-              paddingTop: "0px !important",
-            },
-          }}
-        >
-          <Typography sx={{ fontSize: "26px", fontWeight: "bold" }}>
-            Service Details
-          </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              width: { xs: "100%", sm: "100%" },
-            }}
-          >
-            <TableContainer>
-              <Table
-                sx={{ maxWidth: 550, "& td, & th": { fontSize: "16px" } }}
-                aria-label="simple table"
-              >
-                <TableBody>
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      Start date
-                    </TableCell>
-                    <TableCell align="right">{selectedDate}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      Time
-                    </TableCell>
-                    {selectedTime != null && (
-                      <TableCell align="right">
-                        {config.buttonTime[selectedTime].start} -{" "}
-                        {config.buttonTime[selectedTime].end}
-                      </TableCell>
-                    )}
-                  </TableRow>
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      Location
-                    </TableCell>
-                    <TableCell align="right">{selectedLocation}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      Number of Sessions
-                    </TableCell>
-                    <TableCell align="right">{selectedSession}</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Box>
-        </Grid>
-
-        <Grid
-          item
+    <>
+      <SEO
+        title="Session Page | Royal MindFulness"
+        description="Session page to book your Yoga Sessions"
+        keywords={["session", "your", "app", "keywords"]}
+        image="https://example.com/session-page-image.jpg"
+        url="https://www.royalmindfulness.in/session"
+      />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#8eb6dc",
+          height: "100%",
+          padding: { xs: "1rem", sm: "3rem" },
+        }}
+      >
+        <Box
           sx={{
             width: "100%",
-            display: "flex",
-            justifyContent: "flex-end",
-            paddingRight: "20px",
+            height: "100%",
+            backgroundColor: "#eaeaee",
+            borderRadius: "30px",
+            overflow: "hidden",
+            padding: { xs: "1rem", sm: "2rem", md: "2rem" },
+            boxSizing: "border-box",
           }}
         >
-          <Button
-            onClick={sessionSubmit}
-            variant="contained"
-            className="button1"
-            color="inherit"
+          <Grid container spacing={2} p={2}>
+            {/* Header Section */}
+            <Grid item xs={12} display="flex" alignItems="center">
+              <IconButton>
+                <ArrowBackIcon />
+              </IconButton>
+              <Typography
+                component="h2"
+                sx={{
+                  marginLeft: 1,
+                  fontSize: "26px",
+                  fontWeight: 700,
+                  fontFamily: "Instrument sans",
+                  color: "#0F2E15",
+                }}
+              >
+                Private Session
+              </Typography>
+            </Grid>
+
+            {/* Content Section */}
+            <Grid item container spacing={2} ml={4} alignItems="flex-start">
+              {/* Text Section */}
+              <Grid item xs={12} sm={8}>
+                <Typography variant="h6" component="h3" gutterBottom>
+                  Antar Mouna (Inner Silence)
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                  Antar Mouna is a meditative practice in yoga, originating from
+                  the teachings of Swami Satyananda Saraswati, often translated
+                  as "Inner Silence" or "Inner Silence Meditation." It is part
+                  of the Raja Yoga tradition and emphasizes the gradual process
+                  of observing and managing one's thoughts and emotions, leading
+                  toward a deeper inner peace and heightened awareness.
+                </Typography>
+              </Grid>
+
+              {/* Image Section */}
+              <Grid item xs={12} sm={4}>
+                <CardMedia
+                  component="img"
+                  image={AntraMounaImg}
+                  alt="Yoga Session"
+                  sx={{
+                    borderRadius: 2,
+                    width: "100%",
+                    height: "auto",
+                  }}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Box
+            sx={{
+              width: "100%",
+            }}
           >
-            Next
-          </Button>
-        </Grid>
-      </Grid>
-    </div>
+            <Grid container>
+              {/* Left Box */}
+              <Grid item xs={12} md={4} lg={4} xl={4}>
+                <Box
+                  sx={{
+                    marginTop: { xs: "2rem", sm: "5rem" },
+                    padding: 2,
+                    borderRadius: 2,
+                    boxShadow: 2,
+                    border: "1px solid #8eb6dc",
+                    backgroundColor: "#f9f9f9",
+                  }}
+                >
+                  <Typography
+                    gutterBottom
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 1,
+                      fontFamily: "Instrument Sans",
+                      fontWeight: 700,
+                      fontSize: "25px",
+                    }}
+                  >
+                    <AccessTimeIcon /> Service Details
+                  </Typography>
+                  <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+                    Antar Mouna (Inner Silence)
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    November 18, 2024 at 10:00pm
+                  </Typography>
+                  <Typography variant="body2" sx={{ marginTop: "1rem" }}>
+                    Tamanna Srichandani
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    1hr
+                  </Typography>
+                  <Typography variant="body2" sx={{ marginTop: "1rem" }}>
+                    Amount For Month
+                  </Typography>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "#1470af",
+                      color: "#fff",
+                      marginTop: "1rem",
+                      width: "100%",
+                    }}
+                  >
+                    $49
+                  </Button>
+                </Box>
+              </Grid>
+
+              {/* Right Box */}
+              <Grid item xs={12} md={8} lg={8} xl={8}>
+                <Box sx={{ padding: 4 }}>
+                  {/* Top Section - Heading and Timezone */}
+                  <Grid
+                    container
+                    spacing={2}
+                    justifyContent="space-between"
+                    alignItems="center"
+                  >
+                    <Grid item>
+                      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                        Start Date and Time
+                      </Typography>
+                    </Grid>
+                    <Grid item>
+                      <Typography
+                        variant="body1"
+                        sx={{ textAlign: "right", fontWeight: "bold" }}
+                      >
+                        Timezone: India Standard Time (GMT+5:30)
+                      </Typography>
+                    </Grid>
+                  </Grid>
+
+                  <Divider sx={{ my: 2, borderColor: "rgba(0, 0, 0, 0.1)" }} />
+
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Grid container>
+                      {/* Left Section - Calendar */}
+                      <Grid
+                        item
+                        xs={12}
+                        sm={8}
+                        md={8}
+                        lg={8}
+                        sx={{ width: "100%" }}
+                      >
+                        <Box
+                          sx={{
+                            borderRadius: "12px",
+                            height: "300px",
+                            // border: "1px solid #8eb6dc",
+                            width: { xs: "100%", md: "320px" },
+                          }}
+                        >
+                          <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DateCalendar
+                              shouldDisableDate={(date: any) =>
+                                dayjs(date).isBefore(dayjs(), "day")
+                              }
+                              onChange={handleDateSelect}
+                              sx={{
+                                margin: 0,
+                                padding: 0,
+                                height: "100%",
+                                width: "100%",
+                                border: "1px solid #8eb6dc",
+                                borderRadius: "10px",
+                                "& .MuiDayCalendar-root": {
+                                  backgroundColor: "white",
+                                  borderRadius: "5px",
+                                  color: "white",
+                                },
+                              }}
+                            />
+                          </LocalizationProvider>
+
+                          {dateError && (
+                            <Typography color="error" fontSize={15}>
+                              {dateError}
+                            </Typography>
+                          )}
+                        </Box>
+                        {/* Bottom Section - Button */}
+                        <Box sx={{ textAlign: "left", marginTop: 4 }}>
+                          <Button
+                            fullWidth
+                            sx={{
+                              backgroundColor: "#1470af",
+                              width: { xs: "100%", sm: "320px" },
+                              color: "#FFFFFF",
+                              padding: "10px 20px",
+                              borderRadius: 2,
+                              fontWeight: "bold",
+                              "&:hover": {
+                                backgroundColor: "#1470af", // Maintain the same background color on hover
+                              },
+                            }}
+                          >
+                            NEXT
+                          </Button>
+                        </Box>
+                      </Grid>
+
+                      {/* Right Section - Time and Selected Info */}
+                      <Grid item xs={12} sm={4} md={4} lg={4}>
+                        <Typography
+                          variant="body1"
+                          sx={{ fontWeight: "bold", marginTop: "1rem" }}
+                        >
+                          Monday, November 18
+                        </Typography>
+
+                        <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            textAlign: "center",
+                            backgroundColor: "#8eb6dc",
+                            borderRadius: 2,
+                            boxShadow: 2,
+                            width: "160px",
+                            marginTop: "1rem",
+                            height: "50px",
+                          }}
+                        >
+                          <Typography
+                            variant="h6"
+                            sx={{ marginTop: 1, fontWeight: "bold" }}
+                          >
+                            10:00 PM
+                          </Typography>
+                        </Box>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </Box>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+      </Box>
+    </>
   );
 };
 

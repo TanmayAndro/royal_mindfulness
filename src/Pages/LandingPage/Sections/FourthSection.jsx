@@ -82,9 +82,9 @@ export const FourthSection = () => {
           sx={{
             width: { xs: "100%", sm: "50%" },
             display: "flex",
-            height: { xs: "250px", sm: "430px" },
+            height: { xs: "250px", sm: "400px" },
             position: "relative",
-            padding: { xs: "1.5rem", sm: "3rem" },
+            padding: { xs: "1.5rem", sm: "3rem 3rem 0rem 3rem" },
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -152,6 +152,26 @@ export const FourthSection = () => {
               </ListItem>
             ))}
           </List>
+          <Button
+            sx={{
+              backgroundColor: "#FAFD87", // Example color
+              color: "#0F2E15",
+              fontWeight: "bold",
+              borderRadius: "20px",
+              padding: "0.5rem 1rem",
+              marginTop: "2rem",
+              width: "200px",
+              "&:hover": {
+                backgroundColor: "#F9E76F",
+              },
+            }}
+            onClick={() => {
+              window.location.href =
+                "https://www.royalmindfulness.com/service-page/antar-mouna-inner-silence";
+            }}
+          >
+            Book now
+          </Button>
         </Box>
       </Box>
       <Box
@@ -212,6 +232,26 @@ export const FourthSection = () => {
               </ListItem>
             ))}
           </List>
+          <Button
+            sx={{
+              backgroundColor: "#FAFD87", // Example color
+              color: "#0F2E15",
+              fontWeight: "bold",
+              borderRadius: "20px",
+              padding: "0.5rem 1rem",
+              width: "200px",
+              marginTop: "2rem",
+              "&:hover": {
+                backgroundColor: "#F9E76F",
+              },
+            }}
+            onClick={() => {
+              window.location.href =
+                "https://www.royalmindfulness.com/service-page/daily-yogic-relaxation";
+            }}
+          >
+            Book now
+          </Button>
         </Box>
         <Box
           sx={{
@@ -219,7 +259,7 @@ export const FourthSection = () => {
             display: "flex",
             height: { xs: "250px", sm: "450px" },
             position: "relative",
-            padding: { xs: "1.5rem", sm: "3rem" },
+            padding: { xs: "1.5rem", sm: "3rem 3rem 0rem 3rem" },
             justifyContent: "center",
             alignItems: "center",
           }}

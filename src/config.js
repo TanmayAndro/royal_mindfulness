@@ -194,7 +194,11 @@ exports.pricingPlans = [
 exports.headerItem = [
   { name: "Home", link: "/" },
   { name: "Purpose", link: "/purpose" },
-  { name: "Pricing plans", link: "/pricing-plans" },
+  // { name: "Pricing plans", link: "/pricing-plans" },
+  {
+    name: "Book Now",
+    link: "https://www.royalmindfulness.com/service-page/antar-mouna-inner-silence",
+  },
   { name: "Overview", link: "/overview" },
 ];
 
@@ -202,6 +206,7 @@ exports.drawerItems = [
   { name: "Home", link: "/" },
   { name: "Purpose", link: "/purpose" },
   { name: "Pricing plans", link: "/pricing-plans" },
+  { name: "Book now", link: "/pricing-plans" },
   { name: "Overview", link: "/overview" },
   { name: "About us", link: "/aboutus" },
   { name: "Contact us", link: "/contact" },
@@ -388,7 +393,6 @@ exports.faqs = [
       "While having a teacher or guide can be beneficial, especially for beginners, there are many high-quality audio and video recordings available that can guide you through a session.",
   },
 ];
-
 
 exports.privacy = [
   {
@@ -637,8 +641,7 @@ Active Campaign. We may use Active Campaign to enhance and customize our Site an
 ];
 
 exports.privacyHeading = "Privacy of Royal Mindfulness";
-exports.privacyDetail =
-`RoyalMindfulness.com, Inc. (Royalmindfulness.com) recognizes the importance of protecting your privacy and is committed to communicating transparently regarding our privacy practices. This Privacy Policy describes the types of information we collect when you visit our website at https://royalmindfulness.com/ or any subdomain thereof (the Website), or visit or use our mobile software application (the App) or any related mobile or desktop applications, including any content or functionality offered on or through any of the foregoing (collectively with the Website and the App, the Site), or when you access or use the online services we make available through the Site, including certain virtual classes that may be made available by Royalmindfulness.com via third party vendors (such as Zoom or such other video conferencing platforms or services as royalmindfulness.com may elect to use from time to time) (collectively, the Service). This Privacy Policy also describes our practices for using, maintaining, protecting, and disclosing such information. \n
+exports.privacyDetail = `RoyalMindfulness.com, Inc. (Royalmindfulness.com) recognizes the importance of protecting your privacy and is committed to communicating transparently regarding our privacy practices. This Privacy Policy describes the types of information we collect when you visit our website at https://royalmindfulness.com/ or any subdomain thereof (the Website), or visit or use our mobile software application (the App) or any related mobile or desktop applications, including any content or functionality offered on or through any of the foregoing (collectively with the Website and the App, the Site), or when you access or use the online services we make available through the Site, including certain virtual classes that may be made available by Royalmindfulness.com via third party vendors (such as Zoom or such other video conferencing platforms or services as royalmindfulness.com may elect to use from time to time) (collectively, the Service). This Privacy Policy also describes our practices for using, maintaining, protecting, and disclosing such information. \n
 Please read this Privacy Policy carefully before you start to use the Site or Service to understand our policies and practices regarding how we treat your information. By accessing or using the Site or Service in any manner, you accept and agree to be bound by this Privacy Policy. “If you do not agree with any terms of this Privacy Policy, you may not access or use the Site or Service for any purpose, /n
 This Privacy Policy applies to information we collect on the Site, in email, text, or other electronic messages between you and the Site, and through your access to or use of the Service through the Site. Except as otherwise expressly set forth herein, it does not apply to information collected by us offline or through any other means, including on any other website operated by us or any third party, nor to information collected by any other third party, including through any application or content (including advertising) that may link to or be accessible from or on the Site or Service. \n
 This Privacy Policy may change from time to time (see Updates to Our Privacy Policy below). Your continued use of the Site or Service after we make changes is deemed to be acceptance of those changes, so please check the policy periodically for updates.`;
@@ -898,8 +901,6 @@ Entire Agreement
 These Terms, together with the Privacy Policy and, if you are a Teacher, your Teacher Agreement, constitute the sole and entire agreement between you and Royal mindfulness with respect to the subject matter hereof, and supersede and extinguish all prior agreements, representations (whether oral or written), and understandings regarding such subject matter. Any provision of these Terms that should, by their nature, survive termination of these Terms shall so survive termination. Without limiting the generality of the foregoing, the following Sections shall survive any termination of these Terms: “Assumption of Risk; Release”; “Your Submissions”; “Content from other Users”; “Content Transmitted through the Service”; “Restrictions”; “Accessibility”; “Privacy”; “Intellectual Property”; “Third Party Applications”; “Disclaimer of Warranties”; “Indemnity”; “Limitation of Liability”; “Arbitration; Jury Waiver; Class Action Waiver”; and “General”.`,
   },
 ];
-
-
 
 exports.tableData = [
   {

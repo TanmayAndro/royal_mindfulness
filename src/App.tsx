@@ -13,14 +13,17 @@ import PrivacyPolicyPage from "./Pages/PrivacyPolicy/PrivacyPolicyPage";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import Dashboard from "./Pages/Dashoard/Dashboard";
 import NotFound from "./Pages/NotFound/NoteFound";
-import ThankYouPage from "./Pages/Payments/ThankYouPage";
+
 import ContactUs from "./Pages/Contact/ContactUs";
-import PaymentFailedPage from "./Pages/Payments/PaymentFailedPage";
+
 import { AboutUs } from "./Pages/AboutUs/AboutUs";
 import Overview from "./Pages/Overview/Overview";
 import Purpose from "./Pages/Purpose/Purpose";
 import ScrollToTop from "./Components/ScrollToTop";
 import { Payment } from "./Pages/Payments/Payment";
+import ThankYouPage from "./Pages/Payments/ThankYouPage";
+import PaymentFailedPage from "./Pages/Payments/PaymentFailedPage";
+import { Blogs } from "./Pages/Blogs/Blogs";
 
 function App() {
   return (
@@ -30,12 +33,12 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route
+          {/* <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} /> */}
+          {/* <Route
             path="/session"
             element={<ProtectedRoute element={Session} />}
-          />
+          /> */}
           <Route path="/pricing-plans" element={<PricingPlans />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/term-condition" element={<TermsCondition />} />
@@ -44,6 +47,7 @@ function App() {
             path="/dashboard/:id"
             element={<ProtectedRoute element={Dashboard} />}
           />
+          <Route path="/session" element={<Session />} />
           {/* <Route
             path="/success"
             element={<ProtectedRoute element={ThankYouPage} />}
@@ -52,6 +56,7 @@ function App() {
             path="/error"
             element={<ProtectedRoute element={PaymentFailedPage} />}
           /> */}
+          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
           <Route path="/success" element={<ThankYouPage />} />
           <Route path="/error" element={<PaymentFailedPage />} />
           <Route path="/" element={<ProtectedRoute element={LandingPage} />} />
@@ -61,6 +66,7 @@ function App() {
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/overview" element={<Overview />} />
           <Route path="/purpose" element={<Purpose />} />
+          <Route path="/blogs" element={<Blogs />} />
         </Routes>
         <Footer />
       </Router>

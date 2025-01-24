@@ -9,6 +9,8 @@ import { FourthSection } from "./Sections/FourthSection";
 import { SixthSection } from "./Sections/SixthSection";
 import { FifthSection } from "./Sections/FifthSection";
 import { SeventhSection } from "./Sections/SeventhSection";
+import { Hero } from "./Sections/Hero";
+import SEO from "../../Components/Seo";
 
 const LandingPage = () => {
   return (
@@ -17,7 +19,21 @@ const LandingPage = () => {
         minHeight: "calc(100vh - 180px)",
       }}
     >
-      <Slider />
+      <SEO
+        title="Landing Page | Royal MindFulness"
+        description="Landing page where user can see about Out website"
+        keywords={[
+          "Best Raja Yoga classes online in US",
+          "Raja Yoga online classes",
+          "Learn Antar Mouna meditation",
+          "Learn Antar Mouna techniques for mindfulness",
+          "Yoga for reducing stress and anxiety online",
+        ]}
+        image="https://example.com/session-page-image.jpg"
+        url="https://www.royalmindfulness.in"
+      />
+      {/* <Slider /> */}
+      <Hero />
 
       {/*  Second Section */}
       <SecondSection />
@@ -29,16 +45,16 @@ const LandingPage = () => {
       <FourthSection />
 
       {/* Fifth Section */}
-      <FifthSection />
+      {/* <FifthSection /> */}
 
       {/* Sixth */}
-      <SixthSection />
-
-      {/* Seventh */}
-      <SeventhSection />
+      {/* <SixthSection /> */}
 
       {/* Eighth */}
       <TrainerCard />
+        
+      {/* Seventh */}
+      <SeventhSection />
 
       {/*9 signup */}
       <SignupCard />
