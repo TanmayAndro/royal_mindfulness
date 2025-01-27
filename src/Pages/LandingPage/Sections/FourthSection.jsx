@@ -52,7 +52,7 @@ export const FourthSection = () => {
         <Typography
           sx={{
             color: "white",
-            fontSize: { xs: "16px", sm: "20px" },
+            fontSize: { xs: "16px", sm: "18px" },
             fontWeight: "400",
             padding: { xs: "1.5rem", sm: "3rem" },
             textAlign: "justify",
