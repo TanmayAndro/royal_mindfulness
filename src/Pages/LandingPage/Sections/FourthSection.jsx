@@ -13,13 +13,14 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import leftImg from "../../../Assests/twoSectionsLeft.png";
 import rightImg2 from "../../../Assests/twoSectionsRight.png";
 import whatBG from "../../../Assests/whatWeOffer.png";
+import styled from "styled-components";
 
 export const FourthSection = () => {
   return (
     <Box
       sx={{
         width: "100%",
-        backgroundImage: `url(${whatBG})`,
+        backgroundColor: "#8EB6DC",
         backgroundSize: "cover",
         backgroundPosition: "center",
         height: "100%",
@@ -43,6 +44,7 @@ export const FourthSection = () => {
             fontSize: { xs: "32px", sm: "46px" },
             fontWeight: "700",
             textAlign: "center",
+            marginTop: "3rem",
           }}
         >
           What we offer
@@ -50,7 +52,7 @@ export const FourthSection = () => {
         <Typography
           sx={{
             color: "white",
-            fontSize: { xs: "16px", sm: "18px" },
+            fontSize: { xs: "16px", sm: "20px" },
             fontWeight: "400",
             padding: { xs: "1.5rem", sm: "3rem" },
             textAlign: "justify",
@@ -124,6 +126,7 @@ export const FourthSection = () => {
               color: "rgba(255,255,255,0.8)",
               fontStyle: "italic",
               marginBottom: "1rem",
+              fontSize: "25px",
             }}
           >
             You Need Daily Relaxation sessions if:
@@ -142,27 +145,32 @@ export const FourthSection = () => {
                   <img
                     src={checkedIcon}
                     alt="Checked Icon"
-                    style={{ width: "24px", height: "24px", color: "#F1C40F" }}
+                    style={{
+                      width: "24px",
+                      height: "24px",
+                      color: "#1470AF",
+                    }}
                   />
                 </ListItemIcon>
-                <ListItemText
+                <StyledListItemText primary={text} />
+                {/* <ListItemText
                   primary={text}
-                  sx={{ color: "white", fontSize: "48px" }}
-                />
+                  sx={{ color: "white", fontSize: "1.5rem" }}
+                /> */}
               </ListItem>
             ))}
           </List>
           <Button
             sx={{
-              backgroundColor: "#FAFD87", // Example color
-              color: "#0F2E15",
+              backgroundColor: "#1470AF", // Example color
+              color: "white",
               fontWeight: "bold",
               borderRadius: "20px",
               padding: "0.5rem 1rem",
               marginTop: "2rem",
               width: "200px",
               "&:hover": {
-                backgroundColor: "#F9E76F",
+                backgroundColor: "#1470AF",
               },
             }}
             onClick={() => {
@@ -207,6 +215,7 @@ export const FourthSection = () => {
               color: "rgba(255,255,255,0.8)",
               fontStyle: "italic",
               marginBottom: "1rem",
+              fontSize: "25px",
             }}
           >
             You Need Daily Relaxation sessions if:
@@ -228,21 +237,21 @@ export const FourthSection = () => {
                     style={{ width: "24px", height: "24px", color: "#F1C40F" }}
                   />
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ color: "white" }} />
+                <StyledListItemText primary={text} />
               </ListItem>
             ))}
           </List>
           <Button
             sx={{
-              backgroundColor: "#FAFD87", // Example color
-              color: "#0F2E15",
+              backgroundColor: "#1470AF", // Example color
+              color: "white",
               fontWeight: "bold",
               borderRadius: "20px",
               padding: "0.5rem 1rem",
-              width: "200px",
               marginTop: "2rem",
+              width: "200px",
               "&:hover": {
-                backgroundColor: "#F9E76F",
+                backgroundColor: "#1470AF",
               },
             }}
             onClick={() => {
@@ -278,3 +287,10 @@ export const FourthSection = () => {
     </Box>
   );
 };
+
+const StyledListItemText = styled(ListItemText)(({ theme }) => ({
+  "& .MuiListItemText-primary": {
+    fontSize: "22px",
+    color: "#ffffff",
+  },
+}));

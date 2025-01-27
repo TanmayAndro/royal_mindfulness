@@ -154,7 +154,7 @@ export const SeventhSection = () => {
                 <Box
                   sx={{
                     flex: 1,
-                    backgroundColor: "#0F2E15",
+                    backgroundColor: "#8EB6DC",
                     display: "flex",
                     justifyContent: "center",
                   }}
@@ -217,7 +217,7 @@ export const SeventhSection = () => {
                           width: 130,
                           height: 125,
                           textAlign: "center",
-                          backgroundColor: "#DAE2CB",
+                          backgroundColor: "#EAEAEE",
                           borderRadius: "17px",
                           border: "1px solid black",
                         }}
@@ -238,7 +238,7 @@ export const SeventhSection = () => {
                           height: 125,
                           textAlign: "center",
                           borderRadius: "17px",
-                          backgroundColor: "#DAE2CB",
+                          backgroundColor: "#EAEAEE",
                         }}
                       >
                         <img src={lock} height={50} width={50} alt="Lock" />
@@ -257,7 +257,7 @@ export const SeventhSection = () => {
                           textAlign: "center",
                           border: "1px solid black",
                           borderRadius: "17px",
-                          backgroundColor: "#DAE2CB",
+                          backgroundColor: "#EAEAEE",
                         }}
                       >
                         <img src={comp} height={50} width={50} alt="Computer" />
@@ -311,7 +311,7 @@ export const SeventhSection = () => {
                   sx={{
                     width: "100%",
                     flex: 1,
-                    backgroundColor: "#0F2E15",
+                    backgroundColor: "#8EB6DC",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",

@@ -42,6 +42,7 @@ export const Hero = () => {
               fontFamily: "Instrument sans",
               fontWeight: 700,
               fontSize: "20px",
+              color: "#8EB6DC",
             }}
           >
             Translate to Inner Silence

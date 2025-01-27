@@ -29,7 +29,7 @@ const SecondSection = () => {
           <Typography
             variant="h4"
             gutterBottom
-            sx={{ fontSize: "40px", fontWeight: "bold" }}
+            sx={{ fontSize: "40px", fontWeight: "bold", color: "#1470AF" }}
           >
             Discover Our Story: Experience the Joy of Relaxation
           </Typography>

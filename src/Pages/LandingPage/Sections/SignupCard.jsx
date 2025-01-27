@@ -79,7 +79,7 @@ export const SignupCard = () => {
               sx={{
                 fontSize: { xs: "30px", md: "40px" },
                 fontWeight: "700",
-                color: "#0F2E15",
+                color: "#1470AF",
                 fontFamily: "Instrument sans",
               }}
             >
@@ -90,7 +90,7 @@ export const SignupCard = () => {
               sx={{
                 fontSize: { xs: "16px", md: "20px" },
                 fontWeight: "600",
-                color: "#0F2E15",
+                color: "black",
                 fontFamily: "Instrument sans",
                 textAlign: "center",
               }}
@@ -113,7 +113,7 @@ export const SignupCard = () => {
                     sx={{
                       width: "100%",
                       borderRadius: "8px",
-                      backgroundColor: "#DAE2CB",
+                      backgroundColor: "#EAEAEE",
                       "& .MuiInputLabel-root": {
                         position: "static",
                         transform: "none",
@@ -142,7 +142,8 @@ export const SignupCard = () => {
                     sx={{
                       width: "100%",
                       borderRadius: "8px",
-                      backgroundColor: "#DAE2CB",
+                      backgroundColor: "#EAEAEE",
+
                       "& .MuiInputLabel-root": {
                         position: "static",
                         transform: "none",
@@ -173,7 +174,8 @@ export const SignupCard = () => {
                     sx={{
                       width: "100%",
                       borderRadius: "8px",
-                      backgroundColor: "#DAE2CB",
+                      backgroundColor: "#EAEAEE",
+
                       "& .MuiInputLabel-root": {
                         position: "static",
                         transform: "none",
@@ -200,7 +202,8 @@ export const SignupCard = () => {
                     sx={{
                       width: "100%",
                       borderRadius: "8px",
-                      backgroundColor: "#DAE2CB",
+                      backgroundColor: "#EAEAEE",
+
                       "& .MuiInputLabel-root": {
                         position: "static",
                         transform: "none",
@@ -233,7 +236,8 @@ export const SignupCard = () => {
                     onChange={handleChange}
                     sx={{
                       borderRadius: "8px",
-                      backgroundColor: "#DAE2CB",
+                      backgroundColor: "#EAEAEE",
+
                       "& .MuiInputLabel-root": {
                         position: "static",
                         transform: "none",

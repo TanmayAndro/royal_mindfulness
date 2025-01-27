@@ -68,7 +68,7 @@ export const FeedbackSection = () => {
         alignItems: "center",
         justifyContent: "center",
         "@media (max-width: 600px)": {
-          height: showForm ? "850px" : "650px",
+          height: showForm ? "750px" : "650px",
           marginBottom: "2rem",
         },
       }}
@@ -79,7 +79,7 @@ export const FeedbackSection = () => {
         sx={{
           width: "90%",
           borderRadius: "14px",
-          backgroundImage: `url(${feedbackImg})`,
+          backgroundColor: "#8EB6DC",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -120,7 +120,7 @@ export const FeedbackSection = () => {
                 sx={{
                   fontSize: "20px",
                   fontWeight: "400",
-                  color: "#FAFD87",
+                  color: "#1470AF",
                   textDecoration: "underline",
                   cursor: "pointer",
                 }}

@@ -25,7 +25,7 @@ const trainers = [
 const TrainerCard = () => {
   return (
     <>
-      <Box sx={{ width: "100%", height: "100%", backgroundColor: "#DAE2CB" }}>
+      <Box sx={{ width: "100%", height: "100%", backgroundColor: "#EAEAEE" }}>
         <Grid container>
           <Grid item xs={12} sm={6}>
             <Box
@@ -137,7 +137,7 @@ const TrainerCard = () => {
                       >
                         {trainer.name}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: "gray", }}>
+                      <Typography variant="body2" sx={{ color: "gray" }}>
                         {trainer.title}
                       </Typography>
                     </Box>

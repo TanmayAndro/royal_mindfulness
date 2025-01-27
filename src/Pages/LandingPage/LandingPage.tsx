@@ -11,6 +11,7 @@ import { FifthSection } from "./Sections/FifthSection";
 import { SeventhSection } from "./Sections/SeventhSection";
 import { Hero } from "./Sections/Hero";
 import SEO from "../../Components/Seo";
+import { Offerings } from "./Sections/Offerings";
 
 const LandingPage = () => {
   return (
@@ -38,6 +39,8 @@ const LandingPage = () => {
       {/*  Second Section */}
       <SecondSection />
 
+      <Offerings />
+
       {/* Third Section */}
       <ThirdSection />
 
@@ -52,7 +55,7 @@ const LandingPage = () => {
 
       {/* Eighth */}
       <TrainerCard />
-        
+
       {/* Seventh */}
       <SeventhSection />
 

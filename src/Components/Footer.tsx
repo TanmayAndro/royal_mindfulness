@@ -92,7 +92,7 @@ const Footer = () => {
     <Box
       sx={{
         padding: "3rem",
-        backgroundImage: `url(${footerImg})`, // Use backgroundImage
+        backgroundColor: "#1470AF", // Use backgroundImage
         backgroundSize: "cover", // Adjust backgroundSize as needed
         backgroundPosition: "center", // Adjust backgroundPosition as needed
         color: "#fff",
@@ -119,7 +119,7 @@ const Footer = () => {
         <Typography
           variant="body2"
           fontStyle="italic"
-          sx={{ marginTop: "2rem", color: "#FAFD87" }}
+          sx={{ marginTop: "2rem", color: "#EAEAEE" }}
         >
           "Experience deep relaxation at home with our<br></br> Online Yoga
           Classes—your journey to inner <br></br> peace starts here!"
@@ -135,7 +135,7 @@ const Footer = () => {
             { name: "About Us", link: "/aboutus" },
             { name: "Terms & Condition", link: "/term-condition" },
             { name: "Privacy Policy", link: "/privacy-policy" },
-            { name: "Pricing", link: "/pricing-plans" },
+            // { name: "Pricing", link: "/pricing-plans" },
             { name: "Contact Us", link: "/contact" },
             { name: "Refund/Cancellation", link: "/refund-cancellation" },
           ].map((item) => (

@@ -72,7 +72,7 @@ const ContactUs = () => {
           </Grid>
           <Grid item xs={12}>
             <Button
-              style={{ background: "#0F2E15" }}
+              style={{ background: "#1470AF" }}
               fullWidth
               variant="contained"
               color="primary"
