@@ -8,7 +8,7 @@ export const Payment = () => {
   useEffect(() => {
     const loadRazorpay = () => {
       const options = {
-        key: "rzp_test_DvWTm5aBJqDqJc",
+        key: "rzp_test_FRJjPt3hhMIY1I",
         amount: 1000,
         currency: "INR",
         name: "RoyalMindFulness",

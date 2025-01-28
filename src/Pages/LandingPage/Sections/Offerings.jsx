@@ -2,17 +2,17 @@ import React from "react";
 import { Box, Grid, Typography, Divider } from "@mui/material";
 
 const statsData = [
-  { value: "Overall 100k+", label: "lives impacted" },
   { value: "Services in 50+ ", label: "Countries" },
-  { value: "Available 24/7", label: "Sessions" },
+  { value: "Overall 100k+", label: "lives impacted" },
   { value: "Over 95% ", label: "Positive feedback" },
+  { value: "Available 24/7", label: "Sessions" },
 ];
 
 export const Offerings = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#1470AF", // Dark blue background
+        backgroundColor: "#1470AF",
         color: "white", // White text color
         padding: "3rem",
         height: "100%",

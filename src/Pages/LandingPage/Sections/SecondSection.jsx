@@ -60,8 +60,7 @@ const SecondSection = () => {
               marginBottom: "1rem",
             }}
           >
-            *Peace emanates from within, Relaxation comes from Royal
-            Mindfulness.*
+            Peace emanates from within, Relaxation comes from Royal Mindfulness.
           </Typography>
           <Typography
             variant="body1"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./login.css";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +18,16 @@ import Login_register_firstPart from "../../Components/login_register_firstPart"
 import axios from "axios";
 import { loginApi } from "../../API/ApiConfig";
 import AlertComponent from "../../Components/alert";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 const config = require("../../config");
+
+interface GoogleUserData {
+  email: string;
+  familyName: string;
+  givenName: string;
+  emailVerified: boolean;
+}
 
 const Login = () => {
   const navigate = useNavigate();
@@ -57,6 +66,14 @@ const Login = () => {
     passwordError: false,
     emailErrorMessage: "",
   });
+
+  const [userGoogleData, setUserGoogleData] = useState({
+    email: "",
+    familyName: "",
+    givenName: "",
+    emailVerified: false,
+  });
+
   const [enablePasswordField, setenablePasswordField] = useState(true);
   const handleVisiblPassword = () => {
     return enablePasswordField ? "password" : "text";
@@ -111,6 +128,7 @@ const Login = () => {
   const handleClose = () => {
     setErrorData("");
   };
+
   return (
     <MainGrid container>
       {errorData != "" && (
@@ -147,10 +165,38 @@ const Login = () => {
                 marginBottom: "10px",
               }}
             >
+              <Box>
+                <GoogleLogin
+                  onSuccess={(credentialResponse: any) => {
+                    const credentialResponseDecode = jwtDecode(
+                      credentialResponse.credential
+                    );
+
+                    console.log(credentialResponseDecode);
+
+                    setUserGoogleData((prev) => {
+                      const updatedData = {
+                        ...prev, // spread the previous state
+                        email: (credentialResponseDecode as any).email,
+                        familyName: (credentialResponseDecode as any)
+                          .family_name,
+                        givenName: (credentialResponseDecode as any).given_name,
+                        emailVerified: (credentialResponseDecode as any)
+                          .email_verified,
+                      };
+                      console.log("User Google Data Updated:", updatedData); // Log updated state here
+                      return updatedData; // return the updated state
+                    });
+                  }}
+                  onError={() => {
+                    console.log("Login Failed");
+                  }}
+                />
+              </Box>
               <img
                 src={google_logo}
                 style={{ width: 76, cursor: "pointer" }}
-                alt="logo"
+                alt="Google logo"
               />
               <img
                 src={facebook_logo}
@@ -305,7 +351,7 @@ export const AllStyle = {
   },
 
   boldStyle: {
-    color: "00bdab",
+    color: "#1470AF",
     fontSize: "16px",
     fontFamily: "Lato",
     fontWeight: 700,
@@ -314,7 +360,7 @@ export const AllStyle = {
     borderRadius: "8px",
     height: "56px",
     lineHeight: "24px",
-    background: "#0F2E15",
+    background: "#1470AF",
     textTransform: "inherit" as "inherit",
     color: "white",
     fontFamily: "Lato",

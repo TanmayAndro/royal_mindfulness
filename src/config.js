@@ -197,7 +197,7 @@ exports.headerItem = [
   // { name: "Pricing plans", link: "/pricing-plans" },
   {
     name: "Book Now",
-    link: "https://www.royalmindfulness.com/service-page/antar-mouna-inner-silence",
+    link: "https://tanmaysmarty.wixsite.com/my-site-1/service-page/daily-yogic-relaxation",
   },
   { name: "Overview", link: "/overview" },
 ];

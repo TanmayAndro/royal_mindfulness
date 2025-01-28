@@ -8,18 +8,19 @@ export const Hero = () => {
       sx={{
         position: "relative", // Make the Box a relative container
         width: "100%", // Make the image full width
-        overflow: "hidden", // Hide any overflow
+        overflow: "hidden",
+        height: "100%",
       }}
     >
       <img
         src={HeroImg}
         alt="Hero Image"
-        style={{ width: "100%", height: "600px" }}
+        style={{ width: "100%", height: "100%" }}
       />
       <Box
         sx={{
           position: "absolute", // Position the text absolutely within the Box
-          top: "40%", // Center vertically
+          top: "30%", // Center vertically
           left: "50%", // Center horizontally
           transform: "translate(-50%, -50%)", // Translate to center
           color: "white", // Set text color (adjust as needed)
@@ -31,18 +32,18 @@ export const Hero = () => {
             sx={{
               fontFamily: "Instrument sans",
               fontWeight: 700,
-              fontSize: "70px",
-              color: "#1470AF",
+              fontSize: { xs: "30px", md: "70px" },
+              color: "white",
             }}
           >
-            Antra Mouna
+            Antra Shanti
           </Typography>
           <Typography
             sx={{
               fontFamily: "Instrument sans",
               fontWeight: 700,
               fontSize: "20px",
-              color: "#8EB6DC",
+              color: "#EAEAEE",
             }}
           >
             Translate to Inner Silence

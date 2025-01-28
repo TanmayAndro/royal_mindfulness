@@ -127,6 +127,7 @@ export const FourthSection = () => {
               fontStyle: "italic",
               marginBottom: "1rem",
               fontSize: "25px",
+              fontFamily: "Instrument Sans",
             }}
           >
             You Need Daily Relaxation sessions if:
@@ -175,7 +176,7 @@ export const FourthSection = () => {
             }}
             onClick={() => {
               window.location.href =
-                "https://www.royalmindfulness.com/service-page/antar-mouna-inner-silence";
+                "https://tanmaysmarty.wixsite.com/my-site-1/service-page/daily-yogic-relaxation";
             }}
           >
             Book now
@@ -207,7 +208,7 @@ export const FourthSection = () => {
             fontWeight="bold"
             gutterBottom
           >
-            Antra Mouna
+            Antra Shanti
           </Typography>
           <Typography
             variant="subtitle1"
@@ -216,6 +217,7 @@ export const FourthSection = () => {
               fontStyle: "italic",
               marginBottom: "1rem",
               fontSize: "25px",
+              fontFamily: "Instrument Sans",
             }}
           >
             You Need Daily Relaxation sessions if:
@@ -256,7 +258,7 @@ export const FourthSection = () => {
             }}
             onClick={() => {
               window.location.href =
-                "https://www.royalmindfulness.com/service-page/daily-yogic-relaxation";
+                "https://tanmaysmarty.wixsite.com/my-site-1/service-page/antar-mouna-inner-silence";
             }}
           >
             Book now
@@ -275,7 +277,7 @@ export const FourthSection = () => {
         >
           <img
             src={rightImg2}
-            alt="Antra Mouna"
+            alt="Antra Shanti"
             style={{
               maxWidth: "100%",
               maxHeight: "100%",
@@ -290,7 +292,8 @@ export const FourthSection = () => {
 
 const StyledListItemText = styled(ListItemText)(({ theme }) => ({
   "& .MuiListItemText-primary": {
-    fontSize: "22px",
+    fontSize: "18px",
     color: "#ffffff",
+    fontFamily: "Instrument Sans",
   },
 }));

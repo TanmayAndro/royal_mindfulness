@@ -22,7 +22,7 @@ const blogs = [
       {
         subheading: "Addressing Modern Challenges",
         content:
-          "In today's fast-paced world, anxiety and stress have become prevalent. Before embarking on deeper Raja Yoga practices, it's crucial to address these challenges. Techniques like Yoga Nidra (yogic sleep) and Antra Mouna (inner silence) help calm the mind and create a space for inner peace. Yoga Nidra, a deeply relaxing guided meditation, allows us to systematically relax the body and mind, releasing accumulated stress and tension. Antra Mouna, a period of inner silence, provides an opportunity to turn inward and connect with our deeper selves. These practices help to quiet the incessant chatter of the mind, creating a space for inner peace and allowing us to reconnect with our true nature.",
+          "In today's fast-paced world, anxiety and stress have become prevalent. Before embarking on deeper Raja Yoga practices, it's crucial to address these challenges. Techniques like Yoga Nidra (yogic sleep) and Antra Shanti (inner silence) help calm the mind and create a space for inner peace. Yoga Nidra, a deeply relaxing guided meditation, allows us to systematically relax the body and mind, releasing accumulated stress and tension. Antra Shanti, a period of inner silence, provides an opportunity to turn inward and connect with our deeper selves. These practices help to quiet the incessant chatter of the mind, creating a space for inner peace and allowing us to reconnect with our true nature.",
       },
       {
         subheading: "Cultivating Inner Seeds",
@@ -85,7 +85,7 @@ const blogs = [
       {
         subheading: "The Ripple Effect of Letting Go",
         content:
-          "In today's fast-paced world, anxiety and stress have become prevalent. Before embarking on deeper Raja Yoga practices, it's crucial to address these challenges. Techniques like Yoga Nidra (yogic sleep) and Antra Mouna (inner silence) help calm the mind and create a space for inner peace. Yoga Nidra, a deeply relaxing guided meditation, allows us to systematically relax the body and mind, releasing accumulated stress and tension. Antra Mouna, a period of inner silence, provides an opportunity to turn inward and connect with our deeper selves. These practices help to quiet the incessant chatter of the mind, creating a space for inner peace and allowing us to reconnect with our true nature.",
+          "In today's fast-paced world, anxiety and stress have become prevalent. Before embarking on deeper Raja Yoga practices, it's crucial to address these challenges. Techniques like Yoga Nidra (yogic sleep) and Antra Shanti (inner silence) help calm the mind and create a space for inner peace. Yoga Nidra, a deeply relaxing guided meditation, allows us to systematically relax the body and mind, releasing accumulated stress and tension. Antra Shanti, a period of inner silence, provides an opportunity to turn inward and connect with our deeper selves. These practices help to quiet the incessant chatter of the mind, creating a space for inner peace and allowing us to reconnect with our true nature.",
       },
       {
         subheading: "Ready to Let Go?",

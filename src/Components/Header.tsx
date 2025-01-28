@@ -78,8 +78,7 @@ const Header: React.FC = () => {
             <Box
               className="second_grid_css"
               sx={{
-                // Hide on small screens
-                "@media (max-width:500px)": { display: "none" }, // Show on screens larger than 500px
+                "@media (max-width:500px)": { display: "none" },
               }}
             >
               <Link to="/login" className="button_login_css">

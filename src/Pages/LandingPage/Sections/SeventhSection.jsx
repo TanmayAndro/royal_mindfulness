@@ -30,7 +30,7 @@ export const SeventhSection = () => {
             display: "flex",
             flexDirection: "column",
             height: "100%",
-            backgroundColor: "#0F2E15",
+            backgroundColor: "#8EB6DC",
           }}
         >
           <Box sx={{ marginTop: "3rem" }}>
@@ -58,7 +58,7 @@ export const SeventhSection = () => {
               sx={{
                 marginTop: "2rem",
                 marginBottom: "2rem",
-                backgroundColor: "#0F2E15",
+                backgroundColor: "#8EB6DC",
                 display: "flex",
                 flexDirection: "row", // Ensure this is set to "row"
                 justifyContent: "center", // Center the content horizontally
@@ -79,7 +79,7 @@ export const SeventhSection = () => {
                       width: 130,
                       height: 125,
                       textAlign: "center",
-                      backgroundColor: "#DAE2CB",
+                      backgroundColor: "#EAEAEE",
                       borderRadius: "17px",
                       border: "1px solid black",
                     }}
@@ -100,7 +100,7 @@ export const SeventhSection = () => {
                       height: 125,
                       textAlign: "center",
                       borderRadius: "17px",
-                      backgroundColor: "#DAE2CB",
+                      backgroundColor: "#EAEAEE",
                     }}
                   >
                     <img src={lock} height={50} width={50} alt="Lock" />
@@ -119,7 +119,7 @@ export const SeventhSection = () => {
                       textAlign: "center",
                       border: "1px solid black",
                       borderRadius: "17px",
-                      backgroundColor: "#DAE2CB",
+                      backgroundColor: "#EAEAEE",
                     }}
                   >
                     <img src={comp} height={50} width={50} alt="Computer" />
