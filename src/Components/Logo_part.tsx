@@ -133,7 +133,7 @@ const Logo_part: React.FC = () => {
           )}
           <Box
             sx={{
-              display: "flex",
+              display: { xs: "none", sm: "flex" },
               justifyContent: "center",
               marginBottom: 2,
               flexDirection: "column",

@@ -14,6 +14,7 @@ import leftImg from "../../../Assests/twoSectionsLeft.png";
 import rightImg2 from "../../../Assests/twoSectionsRight.png";
 import whatBG from "../../../Assests/whatWeOffer.png";
 import styled from "styled-components";
+import AddTaskIcon from "@mui/icons-material/AddTask";
 
 export const FourthSection = () => {
   return (
@@ -40,22 +41,24 @@ export const FourthSection = () => {
           sx={{
             display: "flex",
             justifyContent: "center",
-            color: "white",
+            color: "black",
             fontSize: { xs: "32px", sm: "46px" },
             fontWeight: "700",
             textAlign: "center",
             marginTop: "3rem",
+            fontFamily: "Instrument sans",
           }}
         >
           What we offer
         </Typography>
         <Typography
           sx={{
-            color: "white",
+            color: "#353839",
             fontSize: { xs: "16px", sm: "18px" },
             fontWeight: "400",
-            padding: { xs: "1.5rem", sm: "3rem" },
-            textAlign: "justify",
+            padding: { xs: "1.5rem", sm: "1rem 3rem 3rem 3rem" },
+            textAlign: "center",
+            fontFamily: "Instrument sans",
           }}
         >
           We are introducing two distinctive pathways to enhance your
@@ -104,8 +107,9 @@ export const FourthSection = () => {
         <Box
           sx={{
             width: { xs: "100%", sm: "50%" },
-            padding: { xs: "1.5rem", sm: "3rem" },
+            padding: { xs: "1.5rem", sm: "1rem 3rem 3rem 3rem" },
             display: "flex",
+            marginTop: "2rem",
             justifyContent: "center",
             alignItems: { xs: "center", sm: "baseline" },
             flexDirection: { xs: "column" },
@@ -113,20 +117,21 @@ export const FourthSection = () => {
         >
           <Typography
             variant="h4"
-            fontSize={{ xs: "28px", sm: "50px" }}
-            color="white"
+            fontSize={{ xs: "28px", sm: "46px" }}
+            color="black"
             fontWeight="bold"
             gutterBottom
+            fontFamily={"Instrument sans"}
           >
             Daily Relaxation
           </Typography>
           <Typography
             variant="subtitle1"
             sx={{
-              color: "rgba(255,255,255,0.8)",
+              color: "#353839",
               fontStyle: "italic",
               marginBottom: "1rem",
-              fontSize: "25px",
+              fontSize: "23px",
               fontFamily: "Instrument Sans",
             }}
           >
@@ -203,20 +208,22 @@ export const FourthSection = () => {
         >
           <Typography
             variant="h4"
-            fontSize={{ xs: "28px", sm: "50px" }}
-            color="white"
+            fontSize={{ xs: "28px", sm: "46px" }}
+            color="black"
             fontWeight="bold"
             gutterBottom
+            fontFamily={"Instrument sans"}
+            //alignSelf={"baseline"}
           >
             Antra Shanti
           </Typography>
           <Typography
             variant="subtitle1"
             sx={{
-              color: "rgba(255,255,255,0.8)",
+              color: "black",
               fontStyle: "italic",
               marginBottom: "1rem",
-              fontSize: "25px",
+              fontSize: "23px",
               fontFamily: "Instrument Sans",
             }}
           >
@@ -236,7 +243,7 @@ export const FourthSection = () => {
                   <img
                     src={checkedIcon}
                     alt="Checked Icon"
-                    style={{ width: "24px", height: "24px", color: "#F1C40F" }}
+                    style={{ width: "24px", height: "24px" }}
                   />
                 </ListItemIcon>
                 <StyledListItemText primary={text} />
@@ -293,7 +300,7 @@ export const FourthSection = () => {
 const StyledListItemText = styled(ListItemText)(({ theme }) => ({
   "& .MuiListItemText-primary": {
     fontSize: "18px",
-    color: "#ffffff",
+    color: "#353839",
     fontFamily: "Instrument Sans",
   },
 }));

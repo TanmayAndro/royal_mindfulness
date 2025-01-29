@@ -86,8 +86,14 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import logo from "../Assests/footerLogo.png";
 import footerImg from "../Assests/footerLast.png";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/");
+  };
   return (
     <Box
       sx={{
@@ -103,7 +109,15 @@ const Footer = () => {
       }}
     >
       <Box sx={{ flex: 1, minWidth: 200, zIndex: 1 }}>
-        <Box sx={{ display: "flex", alignItems: "center", marginBottom: 2 }}>
+        <Box
+          onClick={handleClick}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            marginBottom: 2,
+            cursor: "pointer",
+          }}
+        >
           <img
             src={logo}
             alt="Logo"
@@ -137,6 +151,8 @@ const Footer = () => {
             { name: "Privacy Policy", link: "/privacy-policy" },
             // { name: "Pricing", link: "/pricing-plans" },
             { name: "Contact Us", link: "/contact" },
+            { name: "Blogs", link: "/blogs" },
+
             { name: "Refund/Cancellation", link: "/refund-cancellation" },
           ].map((item) => (
             <ListItem
@@ -185,7 +201,7 @@ const Footer = () => {
               window.open("https://www.gmail.com/royalmindfulness/", "_blank");
             }}
           >
-            <LinkedInIcon sx={{ marginRight: 1 }} /> Gmail
+            <LinkedInIcon sx={{ marginRight: 1 }} /> LinkedIn
           </ListItem>
         </List>
       </Box>

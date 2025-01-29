@@ -183,6 +183,7 @@ export const SeventhSection = () => {
                       align="center"
                       fontSize="16px"
                       fontStyle="italic"
+                      fontFamily={"Instrument sans"}
                     >
                       Depression, Anxiety, Anger, all have one <br />
                       common enemy

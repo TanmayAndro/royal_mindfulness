@@ -197,7 +197,7 @@ exports.headerItem = [
   // { name: "Pricing plans", link: "/pricing-plans" },
   {
     name: "Book Now",
-    link: "https://tanmaysmarty.wixsite.com/my-site-1/service-page/daily-yogic-relaxation",
+    link: "",
   },
   { name: "Overview", link: "/overview" },
 ];

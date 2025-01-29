@@ -12,7 +12,6 @@ root.render(
     <GoogleOAuthProvider clientId="1075318005884-terq8titeaf9frr5lfu8c1g4qo1sia0p.apps.googleusercontent.com">
       <App />
     </GoogleOAuthProvider>
-    ;
   </>
 );
 

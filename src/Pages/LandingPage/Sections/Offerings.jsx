@@ -2,18 +2,18 @@ import React from "react";
 import { Box, Grid, Typography, Divider } from "@mui/material";
 
 const statsData = [
-  { value: "Services in 50+ ", label: "Countries" },
-  { value: "Overall 100k+", label: "lives impacted" },
-  { value: "Over 95% ", label: "Positive feedback" },
-  { value: "Available 24/7", label: "Sessions" },
+  { value: "100k+ ", label: "Lives Impacted" },
+  { value: "50+", label: "Countries Participating " },
+  { value: "95%+ ", label: "Positive Feedback" },
+  //   { value: "Available 24/7", label: "Sessions" },
 ];
 
 export const Offerings = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#1470AF",
-        color: "white", // White text color
+        backgroundColor: "white",
+        color: "#1470AF", // White text color
         padding: "3rem",
         height: "100%",
       }}
@@ -58,7 +58,7 @@ export const Offerings = () => {
                 orientation="vertical"
                 flexItem
                 sx={{
-                  borderColor: "rgba(255, 255, 255, 0.5)",
+                  borderColor: "#1470AF",
                   marginX: 2,
                   display: { xs: "none", sm: "none", md: "block" },
                 }}

@@ -136,7 +136,7 @@ const Purpose = () => {
 
 const MainHeading = styled(Typography)({
   position: "absolute",
-  top: "10%",
+  top: "40%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   fontSize: "52px",

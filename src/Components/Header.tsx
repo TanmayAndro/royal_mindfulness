@@ -7,15 +7,20 @@ import {
   Typography,
   Menu,
   MenuItem,
+  Divider,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import Logo_part from "./Logo_part";
 import LogoutIcon from "@mui/icons-material/Logout";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 const config = require("../config");
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [bookNowMenuAnchorEl, setBookNowMenuAnchorEl] =
+    useState<null | HTMLElement>(null);
+
   const token = localStorage.getItem("user_token");
   const first_name = localStorage.getItem("first_name");
   const user_id = localStorage.getItem("user_id");
@@ -24,8 +29,16 @@ const Header: React.FC = () => {
     setAnchorEl(event.currentTarget);
   };
 
+  const handleBookNowMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+    setBookNowMenuAnchorEl(event.currentTarget);
+  };
+
   const handleMenuClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleBookNowMenuClose = () => {
+    setBookNowMenuAnchorEl(null);
   };
 
   const handleDashboard = () => {
@@ -46,29 +59,104 @@ const Header: React.FC = () => {
           className="header_item_box_css"
         >
           {config.headerItem.map(
-            (
-              item: {
-                name: string;
-                link: string;
-              },
-              index: number
-            ) => {
+            (item: { name: string; link: string }, index: number) => {
               const { name, link } = item;
+
               return (
-                <Link
-                  to={link}
-                  style={{ textDecoration: "none" }}
-                  key={`${index}`}
-                >
-                  <Typography
-                    className="item_heading_css"
-                    style={{
-                      fontFamily: "lato",
-                    }}
-                  >
-                    {name}
-                  </Typography>
-                </Link>
+                <div key={`${index}`}>
+                  {name === "Book Now" ? (
+                    <div
+                      onMouseEnter={handleBookNowMenuClick}
+                      onMouseLeave={handleBookNowMenuClose} // Close when leaving "Book Now"
+                    >
+                      <Typography
+                        className="item_heading_css"
+                        style={{ fontFamily: "lato", cursor: "pointer" }}
+                      >
+                        {name}
+                      </Typography>
+                      <Menu
+                        anchorEl={bookNowMenuAnchorEl}
+                        open={Boolean(bookNowMenuAnchorEl)}
+                        onClose={handleBookNowMenuClose}
+                        autoFocus={false}
+                        MenuListProps={{
+                          onMouseLeave: handleBookNowMenuClose,
+                        }}
+                      >
+                        <MenuItem
+                          onClick={() => {
+                            window.location.href =
+                              "https://tanmaysmarty.wixsite.com/my-site-1/service-page/antar-mouna-inner-silence";
+                          }}
+                          sx={{
+                            padding: "2rem",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            transition: "all 0.3s ease-in-out",
+                            backgroundColor: "transparent",
+                            "&:hover": {
+                              backgroundColor: "transparent",
+                              color: "#1470AF",
+                              transform: "scale(1.05)",
+                              "& svg": {
+                                color: "#1470AF",
+                                transform: "translateX(5px)", // Moves icon slightly right on hover
+                              },
+                            },
+                          }}
+                        >
+                          Antar Mouna
+                          <ChevronRightIcon
+                            sx={{
+                              transition: "all 0.3s ease-in-out",
+                              color: "inherit",
+                            }}
+                          />
+                        </MenuItem>
+                        <Divider />
+                        <MenuItem
+                          onClick={() => {
+                            window.location.href =
+                              "https://tanmaysmarty.wixsite.com/my-site-1/service-page/daily-yogic-relaxation";
+                          }}
+                          sx={{
+                            padding: "2rem",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            transition: "all 0.3s ease-in-out",
+                            "&:hover": {
+                              backgroundColor: "transparent",
+                              color: "#1470AF",
+                              transform: "scale(1.05)",
+                              "& svg": {
+                                color: "#1470AF",
+                                transform: "translateX(5px)", // Moves icon slightly right on hover
+                              },
+                            },
+                          }}
+                        >
+                          Daily Relaxation
+                          <ChevronRightIcon
+                            sx={{
+                              transition: "all 0.3s ease-in-out",
+                              color: "inherit",
+                            }}
+                          />
+                        </MenuItem>
+                      </Menu>
+                    </div>
+                  ) : (
+                    <Link to={link} style={{ textDecoration: "none" }}>
+                      <Typography
+                        className="item_heading_css"
+                        style={{ fontFamily: "lato" }}
+                      >
+                        {name}
+                      </Typography>
+                    </Link>
+                  )}
+                </div>
               );
             }
           )}

@@ -42,6 +42,8 @@ const TrainerCard = () => {
                   fontWeight: "700",
                   fontSize: "48px",
                   lineHeight: "50px",
+                  fontFamily: "Instrument sans",
+                  color: "#1470AF",
                 }}
               >
                 About Our <br></br> Instructors
@@ -74,6 +76,7 @@ const TrainerCard = () => {
                   fontStyle: "italic",
                   marginTop: "2rem",
                   fontFamily: "Instrument sans",
+                  color: "#1470AF",
                 }}
               >
                 "The teacher is one who shows you the way, but you must walk the
@@ -128,6 +131,7 @@ const TrainerCard = () => {
                       <Typography
                         variant="h6"
                         sx={{
+                          color: "#1470AF",
                           fontWeight: "bold",
                           fontSize: {
                             xs: "1rem",

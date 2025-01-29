@@ -30,10 +30,15 @@ export const Hero = () => {
         <Box>
           <Typography
             sx={{
-              fontFamily: "Instrument sans",
+              fontFamily: "'Instrument Sans', sans-serif",
               fontWeight: 700,
               fontSize: { xs: "30px", md: "70px" },
-              color: "white",
+              textShadow: `
+              0 0 6px rgba(255, 255, 255, 0.8),
+              0 0 6px rgba(255, 255, 255, 0.6),
+              0 0 6px rgba(255, 255, 255, 0.4)
+            `,
+              color: "#ffffff",
             }}
           >
             Antra Shanti

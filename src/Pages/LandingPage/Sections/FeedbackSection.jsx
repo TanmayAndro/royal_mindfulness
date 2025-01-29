@@ -25,10 +25,15 @@ export const FeedbackSection = () => {
   };
 
   const handleSubmit = async () => {
-    console.log("Teacher Rating:", teacherRating);
-    console.log("Experience Rating:", experienceRating);
-    console.log("Improvement Suggestion:", improvementSuggestion);
-    console.log("Specific Improvement:", specificImprovement);
+    if (
+      !teacherRating ||
+      !experienceRating ||
+      !improvementSuggestion ||
+      !specificImprovement
+    ) {
+      toast.error("Please fill out all fields before submitting.");
+      return; // Exit the function if any field is empty
+    }
 
     try {
       const response = await axios.post(
@@ -93,15 +98,15 @@ export const FeedbackSection = () => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            padding: "2rem",
+            padding: "3rem",
           }}
         >
           {!showForm ? (
-            <Box sx={{ color: "white", textAlign: "center", height: "550px" }}>
+            <Box sx={{ color: "white", textAlign: "center", height: "100%" }}>
               <Typography
                 variant="h4"
                 sx={{
-                  marginTop: "5rem",
+                  marginTop: "3rem",
                   fontSize: "40px",
                   fontWeight: "700",
                   fontFamily: "Instrument sans",
@@ -118,6 +123,7 @@ export const FeedbackSection = () => {
               <Typography
                 variant="contained"
                 sx={{
+                  marginBottom: "3rem",
                   fontSize: "20px",
                   fontWeight: "400",
                   color: "#1470AF",
@@ -130,11 +136,7 @@ export const FeedbackSection = () => {
               </Typography>
             </Box>
           ) : (
-            <Grid
-              container
-              spacing={2}
-              sx={{ padding: "2rem", color: "white" }}
-            >
+            <Grid container sx={{ padding: "2rem", color: "white" }}>
               <Grid item xs={12}>
                 <Typography
                   variant="h4"
@@ -210,12 +212,12 @@ export const FeedbackSection = () => {
                     variant="contained"
                     sx={{
                       width: "130px",
-                      backgroundColor: "#FAFD87",
-                      color: "#0F2E15",
+                      backgroundColor: "#1470AF",
+                      color: "white",
                       fontWeight: "bold",
                       borderRadius: "20px",
                       "&:hover": {
-                        backgroundColor: "#FAFD87",
+                        backgroundColor: "#1470AF",
                       },
                     }}
                     onClick={handleSubmit}

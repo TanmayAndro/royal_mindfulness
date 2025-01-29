@@ -39,10 +39,10 @@ const LandingPage = () => {
       {/*  Second Section */}
       <SecondSection />
 
-      <Offerings />
-
       {/* Third Section */}
       <ThirdSection />
+
+      <Offerings />
 
       {/* Fourth Section */}
       <FourthSection />
