@@ -205,7 +205,7 @@ exports.headerItem = [
 exports.drawerItems = [
   { name: "Home", link: "/" },
   { name: "Purpose", link: "/purpose" },
-  { name: "Pricing plans", link: "/pricing-plans" },
+  { name: "Blogs", link: "/blogs" },
   { name: "Book now", link: "/pricing-plans" },
   { name: "Overview", link: "/overview" },
   { name: "About us", link: "/aboutus" },

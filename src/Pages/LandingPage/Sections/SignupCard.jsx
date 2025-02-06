@@ -59,9 +59,10 @@ export const SignupCard = () => {
       );
     }
   };
+
   return (
     <Box sx={{ width: "100%", height: "100%" }}>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       <Grid container>
         {/* Form Section */}
         <Grid item xs={12} md={6}>

@@ -100,7 +100,7 @@ export const Blogs = () => {
   return (
     <>
       <Box>
-        <Container style={{ minHeight: "100vh", display: "block" }}>
+        <Container style={{ display: "block" }}>
           <Box
             style={{
               position: "relative",
@@ -120,11 +120,8 @@ export const Blogs = () => {
                 marginTop: "10px",
                 marginBottom: "30px",
                 borderRadius: "10px",
-                "@media (max-width:900px)": {
-                  img: {
-                    display: "none",
-                    height: "40px",
-                  },
+                "@media (max-width:600px)": {
+                  display: "none", // Hide the entire Box containing the image below sm breakpoint
                 },
               }}
             >
@@ -146,7 +143,7 @@ export const Blogs = () => {
                   width: "80%",
                 },
                 "@media (max-width:900px)": {
-                  marginTop: "3rem",
+                  marginTop: { xs: "-1rem", sm: "3rem" },
                   color: "black",
                   fontSize: "40px",
                   width: "80%",

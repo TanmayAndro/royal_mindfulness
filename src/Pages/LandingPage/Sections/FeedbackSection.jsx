@@ -7,11 +7,10 @@ import {
   TextField,
   Rating,
 } from "@mui/material";
-import feedbackImg from "../../../Assests/feedbackImg.png";
-import StarBorderIcon from "@mui/icons-material/StarBorder";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import FeedbackImg from "../../../Assests/Feedback.png";
 
 export const FeedbackSection = () => {
   const [showForm, setShowForm] = useState(false);
@@ -32,7 +31,7 @@ export const FeedbackSection = () => {
       !specificImprovement
     ) {
       toast.error("Please fill out all fields before submitting.");
-      return; // Exit the function if any field is empty
+      return;
     }
 
     try {
@@ -51,10 +50,10 @@ export const FeedbackSection = () => {
         }
       );
 
-      if ((response.success = 200)) {
+      if (response.status === 200) {
         toast.success("Form submitted successfully!");
-        setTeacherRating("");
-        setExperienceRating("");
+        setTeacherRating(null);
+        setExperienceRating(null);
         setImprovementSuggestion("");
         setSpecificImprovement("");
       }
@@ -68,17 +67,18 @@ export const FeedbackSection = () => {
   return (
     <Box
       sx={{
-        height: "650px",
+        height: "100%",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        padding: { xs: "1rem", sm: "3rem" },
         "@media (max-width: 600px)": {
-          height: showForm ? "750px" : "650px",
+          // height: showForm ? "750px" : "650px",
           marginBottom: "2rem",
         },
       }}
     >
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       <Grid
         container
         sx={{
@@ -89,6 +89,7 @@ export const FeedbackSection = () => {
           backgroundPosition: "center",
         }}
       >
+        {/* Left Grid (Text/Link or Form) */}
         <Grid
           item
           xs={12}
@@ -102,6 +103,7 @@ export const FeedbackSection = () => {
           }}
         >
           {!showForm ? (
+            // Initial Text and Link
             <Box sx={{ color: "white", textAlign: "center", height: "100%" }}>
               <Typography
                 variant="h4"
@@ -136,7 +138,8 @@ export const FeedbackSection = () => {
               </Typography>
             </Box>
           ) : (
-            <Grid container sx={{ padding: "2rem", color: "white" }}>
+            // Feedback Form
+            <Grid container sx={{ color: "white" }}>
               <Grid item xs={12}>
                 <Typography
                   variant="h4"
@@ -228,6 +231,30 @@ export const FeedbackSection = () => {
               </Grid>
             </Grid>
           )}
+        </Grid>
+
+        {/* Right Grid (Image) */}
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "2rem",
+          }}
+        >
+          <img
+            src={FeedbackImg}
+            alt="Feedback"
+            style={{
+              width: "100%",
+              height: "auto",
+              maxWidth: "500px",
+              borderRadius: "14px",
+            }}
+          />
         </Grid>
       </Grid>
     </Box>

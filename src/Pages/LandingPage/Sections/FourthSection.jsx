@@ -15,8 +15,35 @@ import rightImg2 from "../../../Assests/twoSectionsRight.png";
 import whatBG from "../../../Assests/whatWeOffer.png";
 import styled from "styled-components";
 import AddTaskIcon from "@mui/icons-material/AddTask";
+import { useState } from "react";
 
 export const FourthSection = () => {
+  const [userLocation, setUserLocation] = useState(null);
+
+  const captureLocation = (redirectUrl) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setUserLocation({ latitude, longitude }); // Store location in state
+          console.log("User Location:", { latitude, longitude }); // Log location (optional)
+
+          // Redirect to the provided URL after capturing location
+          window.location.href = redirectUrl;
+        },
+        (error) => {
+          console.error("Error fetching location:", error);
+          // Redirect even if location capture fails
+          window.location.href = redirectUrl;
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+      // Redirect if geolocation is not supported
+      window.location.href = redirectUrl;
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -56,7 +83,7 @@ export const FourthSection = () => {
             color: "#353839",
             fontSize: { xs: "16px", sm: "18px" },
             fontWeight: "400",
-            padding: { xs: "1.5rem", sm: "1rem 3rem 3rem 3rem" },
+            padding: { xs: "1.5rem", sm: "1rem 3rem 0rem 3rem" },
             textAlign: "center",
             fontFamily: "Instrument sans",
           }}
@@ -109,7 +136,7 @@ export const FourthSection = () => {
             width: { xs: "100%", sm: "50%" },
             padding: { xs: "1.5rem", sm: "1rem 3rem 3rem 3rem" },
             display: "flex",
-            marginTop: "2rem",
+            marginTop: "1rem",
             justifyContent: "center",
             alignItems: { xs: "center", sm: "baseline" },
             flexDirection: { xs: "column" },
@@ -168,7 +195,7 @@ export const FourthSection = () => {
           </List>
           <Button
             sx={{
-              backgroundColor: "#1470AF", // Example color
+              backgroundColor: "#1470AF",
               color: "white",
               fontWeight: "bold",
               borderRadius: "20px",
@@ -179,10 +206,11 @@ export const FourthSection = () => {
                 backgroundColor: "#1470AF",
               },
             }}
-            onClick={() => {
-              window.location.href =
-                "https://tanmaysmarty.wixsite.com/my-site-1/service-page/daily-yogic-relaxation";
-            }}
+            onClick={() =>
+              captureLocation(
+                "https://tanmaysmarty.wixsite.com/my-site-1/service-page/daily-yogic-relaxation"
+              )
+            }
           >
             Book now
           </Button>
@@ -252,7 +280,7 @@ export const FourthSection = () => {
           </List>
           <Button
             sx={{
-              backgroundColor: "#1470AF", // Example color
+              backgroundColor: "#1470AF",
               color: "white",
               fontWeight: "bold",
               borderRadius: "20px",
@@ -263,10 +291,11 @@ export const FourthSection = () => {
                 backgroundColor: "#1470AF",
               },
             }}
-            onClick={() => {
-              window.location.href =
-                "https://tanmaysmarty.wixsite.com/my-site-1/service-page/antar-mouna-inner-silence";
-            }}
+            onClick={() =>
+              captureLocation(
+                "https://tanmaysmarty.wixsite.com/my-site-1/service-page/antar-mouna-inner-silence"
+              )
+            }
           >
             Book now
           </Button>

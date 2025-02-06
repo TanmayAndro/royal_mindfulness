@@ -1,23 +1,24 @@
 import { Box, Typography, Grid, Rating } from "@mui/material";
 import test1 from "../../../Assests/BG (1).png";
 import test2 from "../../../Assests/BG.png";
+import defaultImg from "../../../Assests/default.webp";
 
 const testimonials = [
   {
     id: 1,
-    name: "Jenny Wilson",
-    role: "Growco.io",
-    avatar: test2,
+    name: "Nirmala",
+    role: "Vietnam",
+    avatar: defaultImg,
     rating: 5,
-    text: "We love Landingfolio! Our designers were using it for their projects, so we already knew what kind of design they want.",
+    text: "I started practicing yoga in 2007 as per my doctor's advice for my health condition. After six months of practice, my sinus problem went away, and my health improved. I could control my emotions better than before. Yoga Nidra is also a very special practice. I experienced it today, and I believe in the healing power of Yoga Nidra.Yoga Nidra is helpful for many conditions—mind, body, and even spiritual well-being. I have had many experiences and benefits from Yoga Nidra, both for myself and my students.",
   },
   {
     id: 2,
-    name: "Devon Lane",
-    role: "DLDesign.co",
+    name: "Hari Om",
+    role: "Munger",
     avatar: test1,
     rating: 5,
-    text: "We love Landingfolio! Our designers were using it for their projects, so we already knew what kind of design they want.",
+    text: "It was a tool, a divine practice that I could lean on comfortably. It helped me come out of a major illness I had suffered from for two decades. My physical and mental strength increased, enthusiasm and self-belief grew, and I overcame negative thinking, insomnia, and concentration issues. Harmony entered my life, and my overall efficiency improved.",
   },
 ];
 

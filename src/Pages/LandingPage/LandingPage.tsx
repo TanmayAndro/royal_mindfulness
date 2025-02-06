@@ -12,6 +12,8 @@ import { SeventhSection } from "./Sections/SeventhSection";
 import { Hero } from "./Sections/Hero";
 import SEO from "../../Components/Seo";
 import { Offerings } from "./Sections/Offerings";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LandingPage = () => {
   return (
@@ -33,6 +35,7 @@ const LandingPage = () => {
         image="https://example.com/session-page-image.jpg"
         url="https://www.royalmindfulness.in"
       />
+       <ToastContainer />
       {/* <Slider /> */}
       <Hero />
 

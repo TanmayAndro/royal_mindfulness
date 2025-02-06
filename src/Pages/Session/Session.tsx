@@ -451,31 +451,21 @@
 //   },
 // };
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Session.css";
 import { LocalizationProvider } from "@mui/x-date-pickers-pro/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
 import dayjs from "dayjs";
-import moment from "moment";
-// import { convertTo24HourFormat } from "./ChangTimeFormate";
 import {
   Box,
   Button,
-  Card,
-  CardContent,
   CardMedia,
   Divider,
   Grid,
   IconButton,
-  Menu,
   MenuItem,
   Select,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
   Typography,
 } from "@mui/material";
 import { DateCalendar } from "@mui/x-date-pickers-pro";
@@ -486,22 +476,62 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import AntraMounaImg from "../../Assests/Sessionimg.png";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import SEO from "../../Components/Seo";
+import Calendar from "./TimeBox/CalanderTime";
 
 const config = require("../../config");
 
 const Session = () => {
   const [selectedDate, setSelectedDate] = useState(null);
+  const [sessionData, setSessionData] = useState([]);
+  const [sessionParticipants, setSessionParticipants] = useState(0);
+  const [sessionDuration, setSessionDuration] = useState("");
+  const [sessionDescription, setSessionDescription] = useState("");
+  const [sessionName, setSessionName] = useState("");
+  const [sessionId, setSessionId] = useState(0);
+  const [sessionDates, setSessionDates] = useState([]);
+
   // Error state
   const [dateError, setDateError] = useState("");
+  const [selectedOption, setSelectedOption] = useState("month");
+  const priceMap: Record<string, string> = {
+    month: "$49",
+    week: "$19",
+    year: "$99",
+  };
 
   const token = localStorage.getItem("user_token");
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/sessions/3"); // Replace with your actual API endpoint
+        setSessionData(response.data);
+        console.log("API Response:", response.data.data);
+        const firstSessionDate = response.data.data.attributes.session_dates;
+
+        //setting api data in States
+        setSessionId(response.data.data.id);
+        setSessionParticipants(
+          response.data.data.attributes.max_no_of_participants
+        );
+        setSessionDuration(response.data.data.attributes.duration);
+        setSessionDescription(response.data.data.attributes.session_details);
+        setSessionName(response.data.data.attributes.session_name);
+        setSessionDates(firstSessionDate);
+      } catch (err: any) {
+        setSessionData(err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const handleDateSelect = (date: any) => {
     setSelectedDate(date.format("YYYY/MM/DD"));
     setDateError("");
-    console.log("Selected Date:", date?.format("YYYY-MM-DD")); // Log the date
+    console.log("Selected Date:", date?.format("YYYY-MM-DD"));
   };
 
   return (
@@ -521,30 +551,31 @@ const Session = () => {
               <IconButton>
                 <ArrowBackIcon />
               </IconButton>
+
               <Typography component="h2" sx={styles.headerText}>
-                Private Session
+                {sessionParticipants < 2 ? "Private Session" : "Public Session"}
               </Typography>
             </Grid>
 
             {/* Content Section */}
             <Grid item container spacing={2} ml={4} alignItems="flex-start">
               {/* Text Section */}
-              <Grid item xs={12} sm={8}>
-                <Typography variant="h6" component="h3" gutterBottom>
-                  Antar Mouna (Inner Silence)
+              <Grid item xs={12} md={8} sm={12}>
+                <Typography
+                  variant="h6"
+                  component="h3"
+                  gutterBottom
+                  // color={"#8eb6dc"}
+                >
+                  {sessionName}
                 </Typography>
                 <Typography variant="body1" color="text.secondary">
-                  Antar Mouna is a meditative practice in yoga, originating from
-                  the teachings of Swami Satyananda Saraswati, often translated
-                  as "Inner Silence" or "Inner Silence Meditation." It is part
-                  of the Raja Yoga tradition and emphasizes the gradual process
-                  of observing and managing one's thoughts and emotions, leading
-                  toward a deeper inner peace and heightened awareness.
+                  {sessionDescription}
                 </Typography>
               </Grid>
 
               {/* Image Section */}
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} md={4} sm={12}>
                 <CardMedia
                   component="img"
                   image={AntraMounaImg}
@@ -561,101 +592,53 @@ const Session = () => {
               <Grid item xs={12} md={4} lg={4} xl={4}>
                 <Box sx={styles.serviceDetailsBox}>
                   <Typography gutterBottom sx={styles.serviceDetailsHeader}>
-                    <AccessTimeIcon /> Service Details
+                    <AccessTimeIcon /> Session Details
                   </Typography>
                   <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-                    Antar Mouna (Inner Silence)
+                    {sessionName}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    November 18, 2024 at 10:00pm
+                  {/* <Typography variant="body2" sx={{ marginTop: "1rem" }}>
+                    Starting Date
                   </Typography>
+                  <Typography variant="body2" mt={"5px"} color="text.secondary">
+                     {sessionDates} 
+                  </Typography> */}
                   <Typography variant="body2" sx={{ marginTop: "1rem" }}>
                     Duration
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    1hr
+                  <Typography variant="body2" mt={"5px"} color="text.secondary">
+                    {sessionDuration}
                   </Typography>
-                  <Typography variant="body2" sx={{ marginTop: "1rem" }}>
-                    Amount For Month
-                  </Typography>
-                  <Button variant="contained" sx={styles.bookButton}>
-                    $49
-                  </Button>
+                  <Box sx={{ display: "flex", flexDirection: "column" }}>
+                    <Typography variant="body2" sx={{ marginTop: "1rem" }}>
+                      Amount For
+                    </Typography>
+                    <Select
+                      value={selectedOption}
+                      onChange={(e) => setSelectedOption(e.target.value)}
+                      sx={{ marginBottom: "1rem", minWidth: 150 }}
+                    >
+                      <MenuItem value="month">Month</MenuItem>
+                      <MenuItem value="week">Week</MenuItem>
+                      <MenuItem value="year">Year</MenuItem>
+                    </Select>
+                    <Box
+                      sx={{
+                        marginTop: "1rem",
+                        backgroundColor: "#1470af",
+                        color: "white",
+                        padding: "1rem",
+                        borderRadius: "6px",
+                      }}
+                    >
+                      {priceMap[selectedOption]}
+                    </Box>
+                  </Box>
                 </Box>
               </Grid>
 
               {/* Right Box */}
-              <Grid item xs={12} md={8} lg={8} xl={8}>
-                <Box sx={{ padding: 4 }}>
-                  {/* Top Section - Heading and Timezone */}
-                  <Grid
-                    container
-                    spacing={2}
-                    justifyContent="space-between"
-                    alignItems="center"
-                  >
-                    <Grid item>
-                      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                        Start Date and Time
-                      </Typography>
-                    </Grid>
-                    <Grid item>
-                      <Typography variant="body1" sx={styles.timezoneText}>
-                        Timezone: India Standard Time (GMT+5:30)
-                      </Typography>
-                    </Grid>
-                  </Grid>
-
-                  <Divider sx={styles.divider} />
-
-                  <Box sx={styles.calendarContainer}>
-                    <Grid container>
-                      {/* Left Section - Calendar */}
-                      <Grid item xs={12} sm={12} md={8} lg={8}>
-                        <Box sx={styles.calendarBox}>
-                          <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DateCalendar
-                              shouldDisableDate={(date) =>
-                                dayjs(date).isBefore(dayjs(), "day")
-                              }
-                              onChange={handleDateSelect}
-                              sx={styles.dateCalendar}
-                            />
-                          </LocalizationProvider>
-
-                          {dateError && (
-                            <Typography color="error" fontSize={15}>
-                              {dateError}
-                            </Typography>
-                          )}
-                        </Box>
-                        {/* Bottom Section - Button */}
-                        <Box sx={styles.nextButtonContainer}>
-                          <Button fullWidth sx={styles.nextButton}>
-                            NEXT
-                          </Button>
-                        </Box>
-                      </Grid>
-
-                      {/* Right Section - Time and Selected Info */}
-                      <Grid item xs={12} sm={12} md={4} lg={4}>
-                        <Typography
-                          variant="body1"
-                          sx={styles.selectedDateText}
-                        >
-                          Monday, November 18
-                        </Typography>
-
-                        <Box sx={styles.timeBox}>
-                          <Typography variant="h6" sx={styles.timeText}>
-                            10:00 PM
-                          </Typography>
-                        </Box>
-                      </Grid>
-                    </Grid>
-                  </Box>
-                </Box>
-              </Grid>
+              <Calendar sessionId={sessionId} sessionDates={sessionDates} />
             </Grid>
           </Box>
         </Box>
@@ -690,7 +673,7 @@ const styles = {
     fontSize: "26px",
     fontWeight: 700,
     fontFamily: "Instrument sans",
-    color: "#0F2E15",
+    color: "#1470af",
   },
   cardMedia: {
     borderRadius: 2,

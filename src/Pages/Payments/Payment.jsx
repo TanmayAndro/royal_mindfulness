@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Grid, Box } from "@mui/material";
 
 export const Payment = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const { sessionId, sessionTime, sessionDate } = location.state || {};
 
   useEffect(() => {
     const loadRazorpay = () => {
@@ -53,6 +56,7 @@ export const Payment = () => {
           alignitems: " center",
           FontSize: "24px",
           fontFamily: "lato",
+          height: "100vh",
         }}
       >
         Please Wait while we redirect you to Payment Gateway.....

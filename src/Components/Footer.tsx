@@ -198,7 +198,10 @@ const Footer = () => {
           <ListItem
             sx={{ padding: 0, cursor: "pointer" }}
             onClick={() => {
-              window.open("https://www.gmail.com/royalmindfulness/", "_blank");
+              window.open(
+                "https://www.linkedin.com/company/royalmindfulness/",
+                "_blank"
+              );
             }}
           >
             <LinkedInIcon sx={{ marginRight: 1 }} /> LinkedIn
