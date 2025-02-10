@@ -51,7 +51,7 @@ export const Hero = () => {
               color: "#EAEAEE",
             }}
           >
-            Translate to Inner Silence
+            Peace Beyond Sleep
           </Typography>
         </Box>
       </Box>

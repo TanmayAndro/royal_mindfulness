@@ -151,7 +151,9 @@ const Footer = () => {
             { name: "Privacy Policy", link: "/privacy-policy" },
             // { name: "Pricing", link: "/pricing-plans" },
             { name: "Contact Us", link: "/contact" },
-            { name: "Blogs", link: "/blogs" },
+            // { name: "Blogs", link: "/blogs" },
+
+            { name: "Blogs", link: "https://tanmaysmarty.wixsite.com/my-site-1/blog" },
 
             { name: "Refund/Cancellation", link: "/refund-cancellation" },
           ].map((item) => (

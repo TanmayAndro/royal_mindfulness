@@ -33,12 +33,17 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          {/* <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} /> */}
-          {/* <Route
-            path="/session"
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/session/:id"
             element={<ProtectedRoute element={Session} />}
-          /> */}
+          />
+          <Route
+            path="/payment"
+            element={<ProtectedRoute element={Payment} />}
+          />
+
           <Route path="/pricing-plans" element={<PricingPlans />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/term-condition" element={<TermsCondition />} />
@@ -47,7 +52,7 @@ function App() {
             path="/dashboard/:id"
             element={<ProtectedRoute element={Dashboard} />}
           />
-          <Route path="/session" element={<Session />} />
+          {/* <Route path="/session" element={<Session />} /> */}
           {/* <Route
             path="/success"
             element={<ProtectedRoute element={ThankYouPage} />}

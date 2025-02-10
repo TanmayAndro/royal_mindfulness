@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Avatar,
   Box,
@@ -13,10 +13,13 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo_part from "./Logo_part";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import axios from "axios";
 const config = require("../config");
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
+  const [data, setData] = useState([]);
+  const [sessions, setSessions] = useState([]);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [bookNowMenuAnchorEl, setBookNowMenuAnchorEl] =
     useState<null | HTMLElement>(null);
@@ -24,6 +27,27 @@ const Header: React.FC = () => {
   const token = localStorage.getItem("user_token");
   const first_name = localStorage.getItem("first_name");
   const user_id = localStorage.getItem("user_id");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://be-royal-mindfulness.onrender.com/sessions"
+        );
+        const processedSessions = response.data.data.map((session: any) => ({
+          id: session.id,
+          sessionName: session.attributes.session_name,
+        }));
+        console.log("helllllo", processedSessions);
+        setSessions(processedSessions);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        // Handle error, e.g., display an error message to the user
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -44,6 +68,11 @@ const Header: React.FC = () => {
   const handleDashboard = () => {
     navigate(`/dashboard/${user_id}`);
     handleMenuClose();
+  };
+
+  const handleSessionClick = (sessionId: any, sessionName: any) => {
+    console.log("Clicked Session:", { id: sessionId, name: sessionName });
+    navigate(`/session/${sessionId}`);
   };
 
   return (
@@ -144,6 +173,45 @@ const Header: React.FC = () => {
                             }}
                           />
                         </MenuItem>
+
+                        {/* {sessions.map((session: any) => (
+                          <>
+                            <MenuItem
+                              key={session.id}
+                              onClick={() =>
+                                handleSessionClick(
+                                  session.id,
+                                  session.sessionName
+                                )
+                              }
+                              sx={{
+                                padding: "1.5rem",
+                                display: "flex",
+                                justifyContent: "space-between",
+                                transition: "all 0.3s ease-in-out",
+                                backgroundColor: "transparent",
+                                "&:hover": {
+                                  backgroundColor: "transparent",
+                                  color: "#1470AF",
+                                  transform: "scale(1.05)",
+                                  "& svg": {
+                                    color: "#1470AF",
+                                    transform: "translateX(5px)", // Moves icon slightly right on hover
+                                  },
+                                },
+                              }}
+                            >
+                              {session.sessionName}
+                              <ChevronRightIcon
+                                sx={{
+                                  transition: "all 0.3s ease-in-out",
+                                  color: "inherit",
+                                }}
+                              />
+                            </MenuItem>
+                            
+                          </>
+                        ))} */}
                       </Menu>
                     </div>
                   ) : (
