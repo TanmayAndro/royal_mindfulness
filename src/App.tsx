@@ -24,6 +24,7 @@ import { Payment } from "./Pages/Payments/Payment";
 import ThankYouPage from "./Pages/Payments/ThankYouPage";
 import PaymentFailedPage from "./Pages/Payments/PaymentFailedPage";
 import { Blogs } from "./Pages/Blogs/Blogs";
+import { Refund } from "./Pages/Refund/Refund";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           />
 
           <Route path="/pricing-plans" element={<PricingPlans />} />
+          <Route path="/refund-cancellation" element={<Refund />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/term-condition" element={<TermsCondition />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
