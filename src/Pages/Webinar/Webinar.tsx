@@ -1,0 +1,320 @@
+import {
+  Box,
+  Button,
+  Grid,
+  TextField,
+  Typography,
+  MenuItem,
+  Select,
+} from "@mui/material";
+import signUp from "../../Assests/signUpImg.png";
+import React, { useState } from "react";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+export const Webinar = () => {
+  const [formData, setFormData] = useState({
+    full_name: "",
+    phone_number: "",
+    email: "",
+    interested_in: "",
+    anything_to_say: "",
+  });
+
+  const handleChange = (e: any) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://be-royal-mindfulness.onrender.com/customer_supports",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data) {
+        // Show success message
+        toast.success("We've recieved your request we'll get back to you soon");
+
+        // Reset the form
+        setFormData({
+          full_name: "",
+          phone_number: "",
+          email: "",
+          interested_in: "",
+          anything_to_say: "",
+        });
+      }
+    } catch (error: any) {
+      // Show error message
+      toast.error(
+        error.response?.data?.message || "Failed to submit the form. Try again!"
+      );
+    }
+  };
+
+  return (
+    <Box sx={{ width: "100%", height: "100%" }}>
+      <ToastContainer />
+      <Grid container>
+        {/* Form Section */}
+        <Grid item xs={12} md={6}>
+          <Box
+            sx={{
+              padding: { xs: "1rem", md: "2rem" },
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "1.5rem",
+            }}
+          >
+            <Typography
+              variant="h4"
+              sx={{
+                fontSize: { xs: "30px", md: "40px" },
+                fontWeight: "700",
+                color: "#1470AF",
+                fontFamily: "Instrument sans",
+              }}
+            >
+              Book a Free Webinar
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                fontSize: { xs: "16px", md: "20px" },
+                fontWeight: "600",
+                color: "black",
+                fontFamily: "Instrument sans",
+                textAlign: "center",
+              }}
+            >
+              {""}
+            </Typography>
+            <form onSubmit={handleSubmit}>
+              <Grid container spacing={2}>
+                {/* Full Name and Phone Number */}
+                <Grid item xs={12} sm={6}>
+                  <Typography>Full Name</Typography>
+                  <TextField
+                    required
+                    id="full_name"
+                    name="full_name"
+                    autoComplete="family-name"
+                    variant="outlined"
+                    value={formData.full_name}
+                    onChange={handleChange}
+                    sx={{
+                      width: "100%",
+                      borderRadius: "8px",
+                      backgroundColor: "#EAEAEE",
+                      "& .MuiInputLabel-root": {
+                        position: "static",
+                        transform: "none",
+                        color: "#000",
+                      },
+                      "& .MuiOutlinedInput-root": {
+                        borderRadius: "8px",
+                      },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Typography>Phone Number</Typography>
+                  <TextField
+                    required
+                    id="phone_number"
+                    name="phone_number"
+                    autoComplete="tel"
+                    variant="outlined"
+                    value={formData.phone_number}
+                    onChange={handleChange}
+                    sx={{
+                      width: "100%",
+                      borderRadius: "8px",
+                      backgroundColor: "#EAEAEE",
+
+                      "& .MuiInputLabel-root": {
+                        position: "static",
+                        transform: "none",
+                        color: "#000",
+                      },
+                      "& .MuiOutlinedInput-root": {
+                        borderRadius: "8px",
+                      },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
+                  />
+                </Grid>
+
+                {/* Email and Interest */}
+                <Grid item xs={12} sm={6}>
+                  <Typography>Email</Typography>
+                  <TextField
+                    required
+                    id="email"
+                    name="email"
+                    autoComplete="email"
+                    variant="outlined"
+                    value={formData.email}
+                    onChange={handleChange}
+                    sx={{
+                      width: "100%",
+                      borderRadius: "8px",
+                      backgroundColor: "#EAEAEE",
+
+                      "& .MuiInputLabel-root": {
+                        position: "static",
+                        transform: "none",
+                        color: "#000",
+                      },
+                      "& .MuiOutlinedInput-root": {
+                        borderRadius: "8px",
+                      },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Typography>What are you interested in?</Typography>
+                  <Select
+                    fullWidth
+                    id="interested_in"
+                    name="interested_in"
+                    value={formData.interested_in}
+                    onChange={handleChange}
+                    sx={{
+                      width: "100%",
+                      borderRadius: "8px",
+                      backgroundColor: "#EAEAEE",
+
+                      "& .MuiInputLabel-root": {
+                        position: "static",
+                        transform: "none",
+                        color: "#000",
+                      },
+                      "& .MuiOutlinedInput-root": {
+                        borderRadius: "8px",
+                      },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
+                  >
+                    <MenuItem value="Refund Amount">Refund Amount</MenuItem>
+                    <MenuItem value="Cancel Session">Cancel Session</MenuItem>
+                  </Select>
+                </Grid>
+
+                {/* Message */}
+                <Grid item xs={12}>
+                  <Typography>Message</Typography>
+                  <TextField
+                    fullWidth
+                    name="anything_to_say"
+                    multiline
+                    rows={4}
+                    variant="outlined"
+                    value={formData.anything_to_say}
+                    onChange={handleChange}
+                    sx={{
+                      borderRadius: "8px",
+                      backgroundColor: "#EAEAEE",
+
+                      "& .MuiInputLabel-root": {
+                        position: "static",
+                        transform: "none",
+                        color: "#000",
+                      },
+                      "& .MuiOutlinedInput-root": {
+                        borderRadius: "8px",
+                      },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
+                  />
+                </Grid>
+
+                {/* Submit Button */}
+                <Grid item xs={12}>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    sx={{
+                      marginTop: "5rem",
+                      borderRadius: "8px",
+                      width: "100%",
+                      backgroundColor: "#1470AF",
+                      "&:hover": {
+                        backgroundColor: "#1470AF",
+                        "& .MuiInputLabel-root": {
+                          position: "static",
+                          transform: "none",
+                          color: "#000",
+                        },
+                        "& .MuiOutlinedInput-root": {
+                          borderRadius: "8px",
+                        },
+                        "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                          {
+                            borderColor: "transparent",
+                          },
+                      },
+                    }}
+                  >
+                    Submit
+                  </Button>
+                </Grid>
+              </Grid>
+            </form>
+          </Box>
+        </Grid>
+
+        {/* Image Section */}
+        <Grid item xs={12} md={6} sx={{ display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: { xs: "1rem", md: "0" },
+            }}
+          >
+            <img
+              src={signUp}
+              alt="Sign Up"
+              style={{
+                objectFit: "contain",
+                maxWidth: "100%",
+                height: "auto",
+              }}
+            />
+          </Box>
+        </Grid>
+      </Grid>
+    </Box>
+  );
+};

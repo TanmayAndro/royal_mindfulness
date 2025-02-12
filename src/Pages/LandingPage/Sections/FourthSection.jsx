@@ -255,7 +255,7 @@ export const FourthSection = () => {
               fontFamily: "Instrument Sans",
             }}
           >
-            You Need Daily Relaxation sessions if:
+            You Need Antra Shanti sessions if:
           </Typography>
           <List dense sx={{ textAlign: "center" }}>
             {[

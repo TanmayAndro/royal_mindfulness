@@ -25,6 +25,7 @@ import ThankYouPage from "./Pages/Payments/ThankYouPage";
 import PaymentFailedPage from "./Pages/Payments/PaymentFailedPage";
 import { Blogs } from "./Pages/Blogs/Blogs";
 import { Refund } from "./Pages/Refund/Refund";
+import { Webinar } from "./Pages/Webinar/Webinar";
 
 function App() {
   return (
@@ -74,6 +75,7 @@ function App() {
           <Route path="/overview" element={<Overview />} />
           <Route path="/purpose" element={<Purpose />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/webinar" element={<Webinar />} />
         </Routes>
         <Footer />
       </Router>

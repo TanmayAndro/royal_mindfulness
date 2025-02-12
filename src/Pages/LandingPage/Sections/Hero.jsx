@@ -47,7 +47,7 @@ export const Hero = () => {
             sx={{
               fontFamily: "Instrument sans",
               fontWeight: 700,
-              fontSize: "20px",
+              fontSize: { xs: "13px", sm: "20px" },
               color: "#EAEAEE",
             }}
           >
