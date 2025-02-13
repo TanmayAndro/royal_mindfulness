@@ -24,10 +24,18 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import ReactGA from "react-ga";
 
 const LandingPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
   const [location, setLocation] = useState(""); // State to store selected location
+  const [userLocation, setUserLocation] = useState<{
+    lat: number | null;
+    lng: number | null;
+  }>({
+    lat: null,
+    lng: null,
+  });
 
   // Use useEffect to show the modal after 7 seconds
   useEffect(() => {
@@ -39,10 +47,25 @@ const LandingPage = () => {
   }, []);
 
   const handleClose = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+
+          console.log("User Location:", { lat, lng });
+
+          setUserLocation({ lat, lng });
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+
     setIsModalOpen(false);
-    // Save the location to localStorage or send it to your backend
-    console.log("Selected Location:", location);
-    localStorage.setItem("userLocation", location); // Save to localStorage
   };
 
   const handleLocationChange = (event: any) => {
@@ -171,7 +194,19 @@ const LandingPage = () => {
             </Select>
           </FormControl>
           <Box sx={{ mt: 2, display: "flex", justifyContent: "flex-end" }}>
-            <Button onClick={handleClose} variant="contained" color="primary">
+            <Button
+              onClick={handleClose}
+              sx={{
+                textTransform: "none",
+                fontWeight: "bold",
+                width: { xs: "100%", sm: "150px" },
+                height: "48px",
+                color: "white",
+                backgroundColor: "#1470AF",
+                borderRadius: "34px",
+                "&:hover": { backgroundColor: "#1470AF" },
+              }}
+            >
               Submit
             </Button>
           </Box>
