@@ -6,12 +6,14 @@ import {
   Typography,
   MenuItem,
   Select,
+  Modal,
 } from "@mui/material";
 import signUp from "../../Assests/signUpImg.png";
 import React, { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 export const Webinar = () => {
   const [formData, setFormData] = useState({
@@ -21,6 +23,8 @@ export const Webinar = () => {
     interested_in: "",
     anything_to_say: "",
   });
+  const [openModal, setOpenModal] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -41,7 +45,9 @@ export const Webinar = () => {
 
       if (response.data) {
         // Show success message
-        toast.success("We've recieved your request we'll get back to you soon");
+        // toast.success("We've recieved your request we'll get back to you soon");
+
+        setOpenModal(true);
 
         // Reset the form
         setFormData({
@@ -58,6 +64,11 @@ export const Webinar = () => {
         error.response?.data?.message || "Failed to submit the form. Try again!"
       );
     }
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    navigate("/");
   };
 
   return (
@@ -194,7 +205,34 @@ export const Webinar = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Typography>What are you interested in?</Typography>
-                  <Select
+                  <TextField
+                    required
+                    id="interested_in"
+                    name="interested_in"
+                    value={formData.interested_in}
+                    onChange={handleChange}
+                    autoComplete="intrestedIn"
+                    variant="outlined"
+                    sx={{
+                      width: "100%",
+                      borderRadius: "8px",
+                      backgroundColor: "#EAEAEE",
+
+                      "& .MuiInputLabel-root": {
+                        position: "static",
+                        transform: "none",
+                        color: "#000",
+                      },
+                      "& .MuiOutlinedInput-root": {
+                        borderRadius: "8px",
+                      },
+                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          borderColor: "transparent",
+                        },
+                    }}
+                  />
+                  {/* <Select
                     fullWidth
                     id="interested_in"
                     name="interested_in"
@@ -219,9 +257,8 @@ export const Webinar = () => {
                         },
                     }}
                   >
-                    <MenuItem value="Refund Amount">Refund Amount</MenuItem>
-                    <MenuItem value="Cancel Session">Cancel Session</MenuItem>
-                  </Select>
+                    <MenuItem value="Refund Amount">Webinar</MenuItem>
+                  </Select> */}
                 </Grid>
 
                 {/* Message */}
@@ -315,6 +352,55 @@ export const Webinar = () => {
           </Box>
         </Grid>
       </Grid>
+
+      {/* Success Modal */}
+      <Modal
+        open={openModal}
+        onClose={handleCloseModal}
+        aria-labelledby="success-modal-title"
+        aria-describedby="success-modal-description"
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: { xs: "90%", md: "500px" },
+            bgcolor: "background.paper",
+            borderRadius: "8px",
+            boxShadow: 24,
+            p: 4,
+            textAlign: "center",
+          }}
+        >
+          <Typography id="success-modal-title" variant="h6" component="h2">
+            Thank You!
+          </Typography>
+          <Typography id="success-modal-description" sx={{ mt: 2 }}>
+            Your submission has been received. We appreciate your time and will
+            share you the meeting link at the given emailId. In the meantime,
+            feel free to explore more about what we offer.
+          </Typography>
+          <Typography sx={{ mt: 2 }}>Have a great day!</Typography>
+          <Button
+            onClick={handleCloseModal}
+            variant="contained"
+            sx={{
+              mt: 3,
+              textTransform: "none",
+              fontWeight: "bold",
+              width: { xs: "100%", sm: "150px" },
+              height: "48px",
+              backgroundColor: "#1470AF",
+              borderRadius: "34px",
+              "&:hover": { backgroundColor: "#1470AF" },
+            }}
+          >
+            Okay
+          </Button>
+        </Box>
+      </Modal>
     </Box>
   );
 };
