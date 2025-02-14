@@ -6,6 +6,7 @@ import {
   Typography,
   MenuItem,
   Select,
+  Modal,
 } from "@mui/material";
 import signUp from "../../../Assests/signUpImg.png";
 import React, { useState } from "react";
@@ -21,6 +22,8 @@ export const SignupCard = () => {
     interested_in: "",
     anything_to_say: "",
   });
+
+  const [openModal, setOpenModal] = useState(false); // State to control modal visibility
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -41,7 +44,10 @@ export const SignupCard = () => {
 
       if (response.data) {
         // Show success message
-        toast.success("Form submitted successfully!");
+        // toast.success("Form submitted successfully!");
+
+        // Open the modal
+        setOpenModal(true);
 
         // Reset the form
         setFormData({
@@ -60,9 +66,13 @@ export const SignupCard = () => {
     }
   };
 
+  const handleCloseModal = () => {
+    setOpenModal(false); // Close the modal
+  };
+
   return (
     <Box sx={{ width: "100%", height: "100%" }}>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
       <Grid container>
         {/* Form Section */}
         <Grid item xs={12} md={6}>
@@ -315,6 +325,55 @@ export const SignupCard = () => {
           </Box>
         </Grid>
       </Grid>
+
+      {/* Success Modal */}
+      <Modal
+        open={openModal}
+        onClose={handleCloseModal}
+        aria-labelledby="success-modal-title"
+        aria-describedby="success-modal-description"
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: { xs: "90%", md: "500px" },
+            bgcolor: "background.paper",
+            borderRadius: "8px",
+            boxShadow: 24,
+            p: 4,
+            textAlign: "center",
+          }}
+        >
+          <Typography id="success-modal-title" variant="h6" component="h2">
+            Thank You!
+          </Typography>
+          <Typography id="success-modal-description" sx={{ mt: 2 }}>
+            Your submission has been received. We appreciate your time and will
+            share you the meeting link at the given emailId. In the meantime,
+            feel free to explore more about what we offer.
+          </Typography>
+          <Typography sx={{ mt: 2 }}>Have a great day!</Typography>
+          <Button
+            onClick={handleCloseModal}
+            variant="contained"
+            sx={{
+              mt: 3,
+              textTransform: "none",
+              fontWeight: "bold",
+              width: { xs: "100%", sm: "150px" },
+              height: "48px",
+              backgroundColor: "#1470AF",
+              borderRadius: "34px",
+              "&:hover": { backgroundColor: "#1470AF" },
+            }}
+          >
+            Okay
+          </Button>
+        </Box>
+      </Modal>
     </Box>
   );
 };
