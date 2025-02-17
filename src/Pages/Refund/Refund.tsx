@@ -18,7 +18,7 @@ export const Refund = () => {
     full_name: "",
     phone_number: "",
     email: "",
-    interested_in: "",
+    interested_in: "Refund and cancellation",
     anything_to_say: "",
   });
 
@@ -192,7 +192,7 @@ export const Refund = () => {
                     }}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={6} display={"none"}>
                   <Typography>What are you interested in?</Typography>
                   <Select
                     fullWidth

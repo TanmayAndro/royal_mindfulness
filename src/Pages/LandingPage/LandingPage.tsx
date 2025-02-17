@@ -38,13 +38,13 @@ const LandingPage = () => {
   });
 
   // Use useEffect to show the modal after 7 seconds
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsModalOpen(true);
-    }, 7000); // 7 seconds delay
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setIsModalOpen(true);
+  //   }, 7000); // 7 seconds delay
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   const handleClose = () => {
     if (navigator.geolocation) {

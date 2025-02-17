@@ -20,7 +20,7 @@ export const Webinar = () => {
     full_name: "",
     phone_number: "",
     email: "",
-    interested_in: "",
+    interested_in: "Webinar",
     anything_to_say: "",
   });
   const [openModal, setOpenModal] = useState(false);
@@ -203,7 +203,7 @@ export const Webinar = () => {
                     }}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={6} display={"none"}>
                   <Typography>What are you interested in?</Typography>
                   <TextField
                     required

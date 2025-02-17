@@ -193,19 +193,23 @@ exports.pricingPlans = [
 
 exports.headerItem = [
   { name: "Home", link: "/" },
+  { name: "About us", link: "/aboutus" },
   { name: "Purpose", link: "/purpose" },
   // { name: "Pricing plans", link: "/pricing-plans" },
   {
     name: "Book Now",
     link: "",
   },
-  { name: "Overview", link: "/overview" },
+  { name: "Contact Us", link: "/contact" },
+  { name: "Blogs", link: "https://tanmaysmarty.wixsite.com/my-site-1/blog" },
+  { name: "Webinar", link: "/webinar" },
+  // { name: "Overview", link: "/overview" },
 ];
 
 exports.drawerItems = [
   { name: "Home", link: "/" },
   { name: "Purpose", link: "/purpose" },
-   // { name: "Blogs", link: "/blogs" },
+  // { name: "Blogs", link: "/blogs" },
   { name: "Blogs", link: "https://tanmaysmarty.wixsite.com/my-site-1/blog" },
   { name: "Book now", link: "/pricing-plans" },
   { name: "Overview", link: "/overview" },

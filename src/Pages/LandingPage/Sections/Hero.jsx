@@ -39,6 +39,7 @@ export const Hero = () => {
               0 0 6px rgba(255, 255, 255, 0.4)
             `,
               color: "#ffffff",
+              userSelect: "none",
             }}
           >
             Antra Shanti
