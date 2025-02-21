@@ -79,8 +79,8 @@ const LandingPage = () => {
       }}
     >
       <SEO
-        title="Landing Page | Royal MindFulness"
-        description="Landing page where user can see about Out website"
+        title="Home Page | Royal MindFulness"
+        description="Home page where user can see about Our website"
         keywords={[
           "Best Raja Yoga classes online in US",
           "Raja Yoga online classes",

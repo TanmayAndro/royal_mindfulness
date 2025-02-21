@@ -42,7 +42,7 @@ const styles = {
   heading: {
     fontSize: "4rem",
     margin: "0",
-    color: "#0F2E15",
+    color: "#1470AF",
   },
   message: {
     fontSize: "1.5rem",
@@ -55,7 +55,7 @@ const styles = {
     fontSize: "1rem",
     textDecoration: "none",
     color: "#fff",
-    backgroundColor: "#0F2E15",
+    backgroundColor: "#1470AF",
     borderRadius: "4px",
   },
 };

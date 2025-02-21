@@ -12,6 +12,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import leftImg from "../../../Assests/twoSectionsLeft.png";
 import rightImg2 from "../../../Assests/twoSectionsRight.png";
+import RajaYoga from "../../../Assests/RajaYoga.jpeg";
 import whatBG from "../../../Assests/whatWeOffer.png";
 import styled from "styled-components";
 import AddTaskIcon from "@mui/icons-material/AddTask";
@@ -320,6 +321,122 @@ export const FourthSection = () => {
               objectFit: "contain",
             }}
           />
+        </Box>
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", sm: "row" },
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Box
+          sx={{
+            width: { xs: "100%", sm: "50%" },
+            display: "flex",
+            height: { xs: "250px", sm: "400px" },
+            position: "relative",
+            padding: { xs: "1.5rem", sm: "3rem 3rem 0rem 3rem" },
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img
+            src={RajaYoga}
+            alt="Daily Relaxation"
+            style={{
+              maxWidth: "100%",
+              maxHeight: "100%",
+              objectFit: "contain",
+              borderRadius: "10px",
+            }}
+          />
+        </Box>
+        <Box
+          sx={{
+            width: { xs: "100%", sm: "50%" },
+            padding: { xs: "1.5rem", sm: "1rem 3rem 3rem 3rem" },
+            display: "flex",
+            marginTop: "1rem",
+            justifyContent: "center",
+            alignItems: { xs: "center", sm: "baseline" },
+            flexDirection: { xs: "column" },
+          }}
+        >
+          <Typography
+            variant="h4"
+            fontSize={{ xs: "28px", sm: "46px" }}
+            color="black"
+            fontWeight="bold"
+            gutterBottom
+            fontFamily={"Instrument sans"}
+          >
+            Raja yoga
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            sx={{
+              color: "#353839",
+              fontStyle: "italic",
+              marginBottom: "1rem",
+              fontSize: "23px",
+              fontFamily: "Instrument Sans",
+            }}
+          >
+            You should join Basic Raja yoga course if :
+          </Typography>
+          <List dense>
+            {[
+              "Develop Mental Clarity & Focus.",
+              "Improve Sleep Quality & Cognitive Function.",
+              "Achieve a Higher State of Awareness.",
+              "Break Free from Negative Patterns.",
+              "Boost Productivity & Foster a Positive Mindset.",
+              "No Prior Experience Needed.",
+              "Learn at Your Own Pace with Expert Guidance",
+            ].map((text, index) => (
+              <ListItem key={index}>
+                <ListItemIcon>
+                  <img
+                    src={checkedIcon}
+                    alt="Checked Icon"
+                    style={{
+                      width: "24px",
+                      height: "24px",
+                      color: "#1470AF",
+                    }}
+                  />
+                </ListItemIcon>
+                <StyledListItemText primary={text} />
+                {/* <ListItemText
+                  primary={text}
+                  sx={{ color: "white", fontSize: "1.5rem" }}
+                /> */}
+              </ListItem>
+            ))}
+          </List>
+          <Button
+            sx={{
+              backgroundColor: "#1470AF",
+              color: "white",
+              fontWeight: "bold",
+              borderRadius: "20px",
+              padding: "0.5rem 1rem",
+              marginTop: "2rem",
+              width: "200px",
+              "&:hover": {
+                backgroundColor: "#1470AF",
+              },
+            }}
+            onClick={() =>
+              captureLocation(
+                "https://tanmaysmarty.wixsite.com/my-site-1/service-page/basic-raja-yoga"
+              )
+            }
+          >
+            Book now
+          </Button>
         </Box>
       </Box>
     </Box>
