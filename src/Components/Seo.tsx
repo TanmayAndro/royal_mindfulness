@@ -11,7 +11,6 @@ const SEO = ({ title, description, keywords, image, url }: any) => {
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
       <meta property="og:url" content={url} />
-      {/* Add other meta tags as needed */}
     </Helmet>
   );
 };

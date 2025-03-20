@@ -161,6 +161,7 @@ import { initGA, logPageView } from "./analitics/analytics";
 import ReactGA from "react-ga";
 import { useEffect } from "react";
 import JitsiComponent from "./Components/Jitsimeeting";
+import { ResetPassword } from "./Pages/Login/ResetPassword";
 
 const TRACKING_ID = "G-SNZDQG6PM4";
 
@@ -179,7 +180,6 @@ function App() {
 }
 
 export default App;
-
 
 const Layout = () => {
   const location = useLocation();
@@ -210,6 +210,7 @@ const Layout = () => {
           path="/meeting"
           element={<ProtectedRoute element={JitsiComponent} />}
         />
+        <Route path="/reset_password" element={<ResetPassword />} />
         <Route path="/success" element={<ThankYouPage />} />
         <Route path="/error" element={<PaymentFailedPage />} />
         <Route path="/contact" element={<ContactUs />} />

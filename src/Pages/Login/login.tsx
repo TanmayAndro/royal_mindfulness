@@ -20,6 +20,8 @@ import { loginApi } from "../../API/ApiConfig";
 import AlertComponent from "../../Components/alert";
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
+
+import emailIcon from "../../Assests/emailIcon.png";
 const config = require("../../config");
 
 interface GoogleUserData {
@@ -33,6 +35,9 @@ const Login = () => {
   const navigate = useNavigate();
 
   const [errorData, setErrorData] = useState("");
+  const [isForgotPassword, setIsForgotPassword] = useState(false);
+  const [forgotEmail, setForgotEmail] = useState("");
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
   const fetchLogin = async (email: string, password: string) => {
     const data = {
@@ -79,6 +84,36 @@ const Login = () => {
     return enablePasswordField ? "password" : "text";
   };
 
+  const handleForgotEmailChange = (value: string) => {
+    setForgotEmail(value);
+  };
+
+  const handleCloseSuccessModal = () => {
+    setIsSuccessModalOpen(false);
+  };
+
+  const handleForgotPasswordSubmit = async () => {
+    if (!forgotEmail) {
+      alert("Please enter your email");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/forgot_password`,
+        {
+          email: forgotEmail,
+        }
+      );
+      setForgotEmail("");
+      setIsSuccessModalOpen(true);
+    } catch (error: any) {
+      setForgotEmail("");
+      console.error("Error sending password reset email:", error);
+      alert(error.response?.data?.message || "Something went wrong");
+    }
+  };
+
   const handlePassword = (value: string) => {
     setData({ ...data, password: value });
     if (value.trim() === "" || value.length < 8) {
@@ -89,6 +124,7 @@ const Login = () => {
       return true;
     }
   };
+
   const handleEmail = (value: string) => {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!value) {
@@ -104,7 +140,7 @@ const Login = () => {
         ...prev,
         email: value,
         emailError: true,
-        emailErrorMessage: "Email does not exist",
+        emailErrorMessage: "Enter a valid email",
       }));
       return false;
     } else {
@@ -117,6 +153,7 @@ const Login = () => {
       return true;
     }
   };
+
   const handleValidtion = () => {
     const resultPassword = handlePassword(data.password);
     const resultEmail = handleEmail(data.email);
@@ -125,173 +162,289 @@ const Login = () => {
       fetchLogin(data.email, data.password);
     }
   };
+
   const handleClose = () => {
     setErrorData("");
   };
 
   return (
-    <MainGrid container>
-      {errorData != "" && (
-        <AlertComponent
-          errorData={errorData}
-          handleClose={handleClose}
-          type={"error"}
-        />
-      )}
-      <Login_register_firstPart />
-      <SecondGrid
-        item
-        xs={12}
-        sm={12}
-        md={6}
-        lg={6}
-        style={{ display: "flex", justifyContent: "center" }}
-      >
-        <MainBox>
-          <Typography style={AllStyle.heading}>
-            {config.main_heading_login}
-          </Typography>
-          <SecondBox style={AllStyle.secondBox}>
-            <Typography style={AllStyle.smallHeading}>
-              {config.welcomeHeading}
-            </Typography>
-
-            <Box
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "10px",
-                marginBottom: "10px",
-              }}
-            >
-              <Box>
-                <GoogleLogin
-                  onSuccess={(credentialResponse: any) => {
-                    const credentialResponseDecode = jwtDecode(
-                      credentialResponse.credential
-                    );
-
-                    console.log(credentialResponseDecode);
-
-                    setUserGoogleData((prev) => {
-                      const updatedData = {
-                        ...prev, // spread the previous state
-                        email: (credentialResponseDecode as any).email,
-                        familyName: (credentialResponseDecode as any)
-                          .family_name,
-                        givenName: (credentialResponseDecode as any).given_name,
-                        emailVerified: (credentialResponseDecode as any)
-                          .email_verified,
-                      };
-                      console.log("User Google Data Updated:", updatedData); // Log updated state here
-                      return updatedData; // return the updated state
-                    });
+    <>
+      <MainGrid container>
+        {errorData != "" && (
+          <AlertComponent
+            errorData={errorData}
+            handleClose={handleClose}
+            type={"error"}
+          />
+        )}
+        <Login_register_firstPart />
+        <SecondGrid
+          item
+          xs={12}
+          sm={12}
+          md={6}
+          lg={6}
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          {isForgotPassword ? (
+            <MainBox>
+              <Typography style={AllStyle.heading}>Enter Your Email</Typography>
+              <SecondBox style={AllStyle.secondBox}>
+                <Typography style={AllStyle.textStyle}>Email</Typography>
+                <InputField
+                  placeholder="Enter your email"
+                  error={data.emailError}
+                  variant="outlined"
+                  value={forgotEmail}
+                  onChange={(e) => handleForgotEmailChange(e.target.value)}
+                  helperText={data.emailError && data.emailErrorMessage}
+                />
+                <ButtonStyle
+                  variant="contained"
+                  style={AllStyle.btnStyle}
+                  onClick={handleForgotPasswordSubmit}
+                >
+                  Submit
+                </ButtonStyle>
+                <Typography
+                  style={{
+                    ...AllStyle.boldStyle,
+                    cursor: "pointer",
+                    textAlign: "center",
                   }}
-                  onError={() => {
-                    console.log("Login Failed");
+                  onClick={() => setIsForgotPassword(false)}
+                >
+                  Back to Login
+                </Typography>
+              </SecondBox>
+            </MainBox>
+          ) : (
+            <MainBox>
+              <Typography style={AllStyle.heading}>
+                {config.main_heading_login}
+              </Typography>
+              <SecondBox style={AllStyle.secondBox}>
+                <Typography style={AllStyle.smallHeading}>
+                  {config.welcomeHeading}
+                </Typography>
+
+                <Box
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "10px",
+                    marginBottom: "10px",
+                  }}
+                >
+                  <Box>
+                    <GoogleLogin
+                      onSuccess={(credentialResponse: any) => {
+                        const credentialResponseDecode = jwtDecode(
+                          credentialResponse.credential
+                        );
+
+                        console.log(credentialResponseDecode);
+
+                        setUserGoogleData((prev) => {
+                          const updatedData = {
+                            ...prev, // spread the previous state
+                            email: (credentialResponseDecode as any).email,
+                            familyName: (credentialResponseDecode as any)
+                              .family_name,
+                            givenName: (credentialResponseDecode as any)
+                              .given_name,
+                            emailVerified: (credentialResponseDecode as any)
+                              .email_verified,
+                          };
+                          console.log("User Google Data Updated:", updatedData); // Log updated state here
+                          return updatedData; // return the updated state
+                        });
+                      }}
+                      onError={() => {
+                        console.log("Login Failed");
+                      }}
+                    />
+                  </Box>
+                  <img
+                    src={google_logo}
+                    style={{ width: 76, cursor: "pointer" }}
+                    alt="Google logo"
+                  />
+                  <img
+                    src={facebook_logo}
+                    style={{ width: 50, cursor: "pointer" }}
+                    alt="logo"
+                  />
+                </Box>
+                <Box
+                  style={{
+                    width: "100%",
+                    height: "1px",
+                    backgroundColor: "#CBD5E1",
+                    marginBlock: "16px",
+                  }}
+                ></Box>
+
+                <Typography style={AllStyle.textStyle}>
+                  {config.email}
+                </Typography>
+                <InputField
+                  placeholder={config.placeHolderEmail}
+                  error={data.emailError}
+                  variant="outlined"
+                  data-test-id="emailtest"
+                  value={data.email}
+                  onChange={(e) => {
+                    handleEmail(e.target.value);
+                  }}
+                  helperText={data.emailError && data.emailErrorMessage}
+                />
+                <Typography style={AllStyle.textStyle}>
+                  {config.password}
+                </Typography>
+                <InputField
+                  error={data.passwordError}
+                  helperText={data.passwordError && config.error_msg}
+                  style={{ marginBottom: "12px" }}
+                  placeholder={config.placeHolderPassword}
+                  data-test-id="txtInputPassword"
+                  type={handleVisiblPassword()}
+                  fullWidth={true}
+                  value={data.password}
+                  variant="outlined"
+                  onChange={(e: any) => {
+                    handlePassword(e.target.value);
+                  }}
+                  InputProps={{
+                    endAdornment: (
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={() => {
+                          setenablePasswordField(!enablePasswordField);
+                        }}
+                        edge="end"
+                      >
+                        {enablePasswordField ? (
+                          <VisibilityOff />
+                        ) : (
+                          <Visibility />
+                        )}
+                      </IconButton>
+                    ),
                   }}
                 />
-              </Box>
-              <img
-                src={google_logo}
-                style={{ width: 76, cursor: "pointer" }}
-                alt="Google logo"
-              />
-              <img
-                src={facebook_logo}
-                style={{ width: 50, cursor: "pointer" }}
-                alt="logo"
-              />
-            </Box>
-            <Box
-              style={{
-                width: "100%",
-                height: "1px",
-                backgroundColor: "#CBD5E1",
-                marginBlock: "16px",
-              }}
-            ></Box>
 
-            <Typography style={AllStyle.textStyle}>{config.email}</Typography>
-            <InputField
-              placeholder={config.placeHolderEmail}
-              error={data.emailError}
-              variant="outlined"
-              data-test-id="emailtest"
-              value={data.email}
-              onChange={(e) => {
-                handleEmail(e.target.value);
-              }}
-              helperText={data.emailError && data.emailErrorMessage}
-            />
-            <Typography style={AllStyle.textStyle}>
-              {config.password}
-            </Typography>
-            <InputField
-              error={data.passwordError}
-              helperText={data.passwordError && config.error_msg}
-              style={{ marginBottom: "12px" }}
-              placeholder={config.placeHolderPassword}
-              data-test-id="txtInputPassword"
-              type={handleVisiblPassword()}
-              fullWidth={true}
-              value={data.password}
-              variant="outlined"
-              onChange={(e: any) => {
-                handlePassword(e.target.value);
-              }}
-              InputProps={{
-                endAdornment: (
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={() => {
-                      setenablePasswordField(!enablePasswordField);
+                <ButtonStyle
+                  variant="contained"
+                  data-test-id="button"
+                  style={AllStyle.btnStyle}
+                  onClick={() => {
+                    handleValidtion();
+                  }}
+                >
+                  {config.labelTitle}
+                </ButtonStyle>
+                <Typography
+                  style={{
+                    ...AllStyle.boldStyle,
+                    display: "flex",
+                    justifyContent: "end",
+                    lineHeight: "19.2px",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => setIsForgotPassword(true)}
+                >
+                  Forgot password ?
+                </Typography>
+                <Typography
+                  style={{
+                    fontFamily: "Lato",
+                    fontWeight: 400,
+                    fontSize: "16px",
+                    color: "#0A2239",
+                    lineHeight: "19.2px",
+                  }}
+                >
+                  {config.haveAccount}{" "}
+                  <Link
+                    to="/register"
+                    style={{
+                      ...AllStyle.boldStyle,
+                      cursor: "pointer",
+                      lineHeight: "24px",
+                      textDecoration: "none",
                     }}
-                    edge="end"
                   >
-                    {enablePasswordField ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                ),
-              }}
-            />
-
-            <ButtonStyle
-              variant="contained"
-              data-test-id="button"
-              style={AllStyle.btnStyle}
-              onClick={() => {
-                handleValidtion();
-              }}
-            >
-              {config.labelTitle}
-            </ButtonStyle>
-            <Typography
-              style={{
-                fontFamily: "Lato",
-                fontWeight: 400,
-                fontSize: "16px",
-                color: "#0A2239",
-                lineHeight: "19.2px",
-              }}
-            >
-              {config.haveAccount}{" "}
-              <Link
-                to="/register"
-                style={{
-                  ...AllStyle.boldStyle,
-                  cursor: "pointer",
-                  lineHeight: "24px",
-                  textDecoration: "none",
-                }}
-              >
-                {config.labelTitleSignUp}
-              </Link>
-            </Typography>
-          </SecondBox>
-        </MainBox>
-      </SecondGrid>
-    </MainGrid>
+                    {config.labelTitleSignUp}
+                  </Link>
+                </Typography>
+              </SecondBox>
+            </MainBox>
+          )}
+        </SecondGrid>
+      </MainGrid>
+      <Dialog
+        open={isSuccessModalOpen}
+        onClose={(event, reason) => {
+          if (reason !== "backdropClick") return;
+        }}
+        disableEscapeKeyDown
+        PaperProps={{
+          style: {
+            borderRadius: "15px",
+            boxShadow: "29px",
+          },
+        }}
+      >
+        <Box
+          sx={{
+            padding: "3rem",
+            textAlign: "center",
+            boxShadow: 24,
+            borderRadius: "10px",
+          }}
+        >
+          <img
+            src={emailIcon}
+            style={{ height: "50px", width: "50px", marginBottom: "10px" }}
+          />
+          <Typography
+            variant="h4"
+            sx={{
+              fontFamily: "Roboto",
+              fontWeight: 600,
+              fontSize: "19px",
+              mb: 2,
+            }}
+          >
+            Check Your email
+          </Typography>
+          <Typography
+            variant="h4"
+            sx={{ fontFamily: "Roboto", fontWeight: 400, fontSize: "16px" }}
+          >
+            We have sent instruction on how to reset your password
+          </Typography>
+          <Button
+            variant="contained"
+            onClick={handleCloseSuccessModal}
+            sx={{
+              mt: 3,
+              textTransform: "none",
+              fontWeight: "bold",
+              width: { xs: "100%", sm: "130px" },
+              height: "40px",
+              backgroundColor: "#1470AF",
+              borderRadius: "34px",
+              "&:hover": { backgroundColor: "#1470AF" },
+            }}
+          >
+            Okay
+          </Button>
+        </Box>
+      </Dialog>
+    </>
   );
 };
 

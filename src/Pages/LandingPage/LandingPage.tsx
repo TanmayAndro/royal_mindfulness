@@ -89,7 +89,7 @@ const LandingPage = () => {
           "Yoga for reducing stress and anxiety online",
         ]}
         image="https://example.com/session-page-image.jpg"
-        url="https://www.royalmindfulness.in"
+        url="https://www.royalmindfulness.com"
       />
       <ToastContainer />
       {/* <Slider /> */}
