@@ -113,7 +113,7 @@ const Header: React.FC = () => {
                           onMouseLeave: handleBookNowMenuClose,
                         }}
                       >
-                        {/* <MenuItem
+                        <MenuItem
                           onClick={() => {
                             window.location.href =
                               "https://tanmaysmarty.wixsite.com/my-site-1/service-page/antar-mouna-inner-silence";
@@ -172,9 +172,9 @@ const Header: React.FC = () => {
                               color: "inherit",
                             }}
                           />
-                        </MenuItem> */}
+                        </MenuItem>
 
-                        {sessions.map((session: any) => (
+                        {/* {sessions.map((session: any) => (
                           <>
                             <MenuItem
                               key={session.id}
@@ -210,7 +210,7 @@ const Header: React.FC = () => {
                               />
                             </MenuItem>
                           </>
-                        ))}
+                        ))} */}
                       </Menu>
                     </div>
                   ) : (
@@ -228,7 +228,7 @@ const Header: React.FC = () => {
             }
           )}
         </Grid>
-        <Grid item xs={12} md={3} sm={12} lg={2}>
+        <Grid item xs={12} md={3} sm={12} lg={2} display={"none"}>
           {!token && (
             <Box
               className="second_grid_css"
