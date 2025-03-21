@@ -79,6 +79,11 @@ const Login = () => {
     emailVerified: false,
   });
 
+  const [forgotEmailError, setForgotEmailError] = useState({
+    error: false,
+    message: "",
+  });
+
   const [enablePasswordField, setenablePasswordField] = useState(true);
   const handleVisiblPassword = () => {
     return enablePasswordField ? "password" : "text";
@@ -86,6 +91,15 @@ const Login = () => {
 
   const handleForgotEmailChange = (value: string) => {
     setForgotEmail(value);
+    if (!value) {
+      setForgotEmailError({ error: true, message: "Enter a value" });
+    } else if (
+      !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)
+    ) {
+      setForgotEmailError({ error: true, message: "Enter a valid email" });
+    } else {
+      setForgotEmailError({ error: false, message: "" });
+    }
   };
 
   const handleCloseSuccessModal = () => {
@@ -94,7 +108,7 @@ const Login = () => {
 
   const handleForgotPasswordSubmit = async () => {
     if (!forgotEmail) {
-      alert("Please enter your email");
+      setForgotEmailError({ error: true, message: "Enter a value" });
       return;
     }
 
@@ -193,7 +207,7 @@ const Login = () => {
                 <Typography style={AllStyle.textStyle}>Email</Typography>
                 <InputField
                   placeholder="Enter your email"
-                  error={data.emailError}
+                  error={forgotEmailError.error}
                   variant="outlined"
                   value={forgotEmail}
                   onChange={(e) => handleForgotEmailChange(e.target.value)}
@@ -306,11 +320,11 @@ const Login = () => {
                 <InputField
                   error={data.passwordError}
                   helperText={data.passwordError && config.error_msg}
-                  style={{ marginBottom: "12px" }}
+                  style={{ marginBottom: "1rem" }}
                   placeholder={config.placeHolderPassword}
                   data-test-id="txtInputPassword"
                   type={handleVisiblPassword()}
-                  fullWidth={true}
+                  // fullWidth={true}
                   value={data.password}
                   variant="outlined"
                   onChange={(e: any) => {
@@ -519,7 +533,7 @@ export const AllStyle = {
     fontFamily: "Lato",
     fontSize: "16px",
     fontWeight: 700,
-    marginBottom: "30px",
+    marginBottom: "10px",
   },
   popup: {
     display: "flex",
