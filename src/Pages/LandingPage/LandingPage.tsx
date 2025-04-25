@@ -25,6 +25,13 @@ import Select from "@mui/material/Select";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import ReactGA from "react-ga";
+import { Comparison } from "./Sections/Comparison";
+import FAQSection from "./Sections/FAQSection";
+import Questionnaire from "./Sections/Questionnaire";
+import { HowItWorks } from "./Sections/HowItWorks";
+import axios from "axios";
+import { WhoisTakingServices } from "./Sections/WhoisTakingServices";
+import MentalTrainingSelector from "./Sections/Questionnaire";
 
 const LandingPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
@@ -94,6 +101,21 @@ const LandingPage = () => {
       <ToastContainer />
       {/* <Slider /> */}
       <Hero />
+
+      {/* Who is taking our services */}
+      {/* <WhoisTakingServices /> */}
+
+      {/* How it works */}
+      {/* <HowItWorks /> */}
+
+      {/* Questionnaire */}
+      {/* <MentalTrainingSelector /> */}
+
+      {/* Comparison */}
+      {/* <Comparison /> */}
+
+      {/* Faq */}
+      {/* <FAQSection /> */}
 
       {/* Second Section */}
       <SecondSection />
