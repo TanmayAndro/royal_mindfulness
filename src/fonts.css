@@ -1,0 +1,21 @@
+/* src/fonts.css */
+
+@font-face {
+    font-family: 'Cardenio Modern';
+    src: url('./Assests/fonts/Cardenio Modern Std.ttf') format('woff2'),
+         url('./Assests/fonts/Cardenio Modern Std.ttf') format('woff'),
+         url('./Assests/fonts/Cardenio Modern Std.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cardenio Modern';
+    src: url('./Assests/fonts/Cardenio Modern Bold.ttf') format('woff2'),
+         url('./Assests/fonts/Cardenio Modern Bold.ttf') format('woff'),
+         url('./Assests/fonts/Cardenio Modern Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Add more @font-face rules if there are other styles (italic, bold italic, etc.) */

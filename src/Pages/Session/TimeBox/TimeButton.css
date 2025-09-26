@@ -1,0 +1,35 @@
+.button {
+  font-family: Lato !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 24px !important;
+  text-align: left !important;
+  text-decoration: none !important;
+  text-transform: inherit !important;
+  cursor: pointer;
+  padding: 4px;
+  color: black !important;
+  width: 170px;
+  height: 45px;
+  border-radius: 8px;
+  background-color: white !important;
+  margin: 5px 5px; 
+}
+.button:hover {
+  background-color: #050A44 !important;
+  color: white !important;
+}
+.selected {
+  background-color: #050A44 !important;
+  color: white !important;
+}
+.button-outer {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+.button-inner {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}

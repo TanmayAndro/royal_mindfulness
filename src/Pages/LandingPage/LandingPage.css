@@ -1,0 +1,23 @@
+@media (max-width: 600px) {
+  .responsive-container {
+    flex-direction: column; 
+  }
+
+  .responsive-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    padding: 1rem;
+  }
+
+  .responsive-image {
+    width: 80%;
+    height: auto;
+  }
+
+  .responsive-button {
+    bottom: 30px; 
+    right: 30px; 
+    left: auto; 
+  }
+}
