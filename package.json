@@ -1,0 +1,96 @@
+{
+  "name": "royal_mindfulness",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@fullcalendar/core": "^6.1.18",
+    "@fullcalendar/daygrid": "^6.1.15",
+    "@fullcalendar/interaction": "^6.1.15",
+    "@fullcalendar/react": "^6.1.15",
+    "@fullcalendar/timegrid": "^6.1.15",
+    "@jitsi/react-sdk": "^1.4.0",
+    "@mui/icons-material": "^5.15.18",
+    "@mui/lab": "^5.0.0-alpha.173",
+    "@mui/material": "^5.15.18",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
+    "@mui/system": "^7.2.0",
+    "@mui/x-date-pickers": "^7.29.3",
+    "@mui/x-date-pickers-pro": "^7.5.1",
+    "@react-oauth/google": "^0.12.1",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.97",
+    "@types/react": "^18.3.2",
+    "ajv": "^8.0.0",
+    "ajv-keywords": "^5.0.0",
+    "axios": "^1.9.0",
+    "chart.js": "^4.5.0",
+    "classnames": "^2.5.1",
+    "date-fns": "^3.6.0",
+    "dayjs": "^1.11.13",
+    "framer-motion": "^12.15.0",
+    "i18n-iso-countries": "^7.14.0",
+    "jwt-decode": "^4.0.0",
+    "libphonenumber-js": "^1.12.25",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.6.0",
+    "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
+    "react-datepicker": "^7.3.0",
+    "react-dom": "^18.2.0",
+    "react-ga": "^3.3.1",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^5.2.1",
+    "react-material-ui-carousel": "^3.4.2",
+    "react-phone-input-2": "^2.15.1",
+    "react-phone-number-input": "^3.4.13",
+    "react-router-dom": "^6.30.1",
+    "react-scripts": "5.0.1",
+    "react-simple-typewriter": "^5.0.1",
+    "react-slick": "^0.30.3",
+    "react-toastify": "^11.0.3",
+    "react-wavify": "^1.11.1",
+    "redux-toolkit": "^1.1.2",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^6.1.11",
+    "typescript": "^4.9.5",
+    "tz-lookup": "^6.1.25",
+    "web-vitals": "^2.1.4",
+    "zipcodes": "^8.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/react-dom": "^18.3.0",
+    "@types/react-helmet": "^6.1.11",
+    "@types/react-phone-number-input": "^3.1.37",
+    "@types/tz-lookup": "^6.1.2",
+    "source-map-explorer": "^2.5.3"
+  }
+}
