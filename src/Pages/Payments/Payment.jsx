@@ -248,7 +248,7 @@ export const Payment = () => {
   const sessionDate = payload?.from_date;
   const sessionTime = payload?.from_time;
 
-  const PAYMENT_AMOUNT_PAISE = 2510400; 
+  const PAYMENT_AMOUNT_PAISE = 500; 
 
   useEffect(() => {
     if (!token || !payload || !sessionDate || !sessionTime) {
