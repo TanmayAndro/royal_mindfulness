@@ -278,7 +278,7 @@ export const Payment = () => {
 
   const initializeRazorpay = () => {
     const options = {
-      key: "rzp_test_FRJjPt3hhMIY1I",
+      key: "rzp_test_Rp6MviJgayT45q",
       amount: PAYMENT_AMOUNT_PAISE, // ✔ Amount in paise
       currency: "INR",             // ✔ Should be INR
       name: "RoyalMindFulness",
