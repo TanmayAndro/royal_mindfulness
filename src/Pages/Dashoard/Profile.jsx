@@ -173,7 +173,7 @@ const handleInputChange = (e) => {
               {/* <ProfileName variant="h6"><b>{config.Alex_Meian}</b></ProfileName> */}
               <ProfileName variant="h6">
                 <b>
-                  {userData?.first_name} {userData?.last_name}
+                  {userData?.first_name || localStorage.getItem("first_name") }    {userData?.last_name|| localStorage.getItem("last_name") }  
                 </b>
               </ProfileName>
               <SubHeading>{config.Product_Manager}</SubHeading>
@@ -190,7 +190,7 @@ const handleInputChange = (e) => {
             <IoMailOutline style={{ width: "16px", height: "16px" }} />
             {/* <InfoContent>{config.email}: {config.profile_email}</InfoContent> */}
             <InfoContent>
-              {config?.email}: {userData?.email}
+              {config?.email}: {userData?.email || localStorage.getItem("email")}
             </InfoContent>
           </EmailInfoBox>
           <PhoneBox>

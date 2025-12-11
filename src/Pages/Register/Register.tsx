@@ -70,7 +70,8 @@ const Register = () => {
     user: {
       email,
       password,
-      full_name: `${firstName} ${lastName}`.trim(),
+      first_name: `${firstName}`.trim(),
+      last_name:`${lastName}`.trim(),
       country: data?.country,
       meeting_link: meetingLink,
     },

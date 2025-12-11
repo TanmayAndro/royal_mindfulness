@@ -21,23 +21,64 @@ dayjs.extend(utc);
 dayjs.extend(customParseFormat);
 
 const CalendarBox = styled(Box)({
-  height: "38rem",
+  width: "100%",
   padding: "10px",
   borderRadius: "20px",
   backgroundColor: "white",
+  "@media (max-width: 1199px)": {
+    paddingBottom: "0px",
+  },
+  "@media (max-width: 699px)": {
+    padding: "5px",
+    fontSize: "15px",
+  },
+  "@media (max-width: 500px)": {
+    fontSize: "13px",
+  },
 });
 
 const Calendar = () => {
   const token = localStorage.getItem("user_token");
   const user_id = localStorage.getItem("user_id");
 
+  // Toggle this to use dummy data for testing POST API
+  // Set to false to use real API calls
+  const USE_DUMMY_DATA = false;
+
   const [events, setEvents] = useState([]);
   const [attendanceData, setAttendanceData] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [open, setOpen] = useState(false);
 
+  /* ---------------- DUMMY ATTENDANCE DATA FOR TESTING ---------------- */
+  const getDummyAttendanceData = () => {
+    return [
+      {
+        id: 93,
+        booking_id: 35,
+        trainer_id: 1,
+        user_id: 57,
+        date_of_class: "December 08, 2025",
+        time_of_class: "10:00 AM",
+        attendance_key: "absent",
+      },
+    ];
+  };
+
   /* ---------------- FETCH ATTENDANCE ---------------- */
   const fetchAttendance = async () => {
+    if (USE_DUMMY_DATA) {
+      // Set dummy meeting link for testing
+      if (!localStorage.getItem("meet_link")) {
+        localStorage.setItem("meet_link", "https://meet.jit.si/test-meeting-room");
+      }
+      
+      const dummyData = getDummyAttendanceData();
+      setAttendanceData(dummyData);
+      console.log("✅ [DUMMY MODE] Attendance data loaded:", dummyData.length, "records");
+      return;
+    }
+
     try {
       const res = await axios.get(
         `https://deedee-unchainable-optionally.ngrok-free.dev/attendances?user_id=${user_id}`,
@@ -205,8 +246,38 @@ const Calendar = () => {
 
   /* ---------------- MARK ATTENDANCE ---------------- */
   const markAttendance = async (status, selectedEvent) => {
+    if (USE_DUMMY_DATA) {
+      
+console.log(selectedEvent.bookingId,"selectedEvent.bookingId>>>>>")
+      
+      const newRecord = {
+        id: `dummy-${Date.now()}`,
+        booking_id: selectedEvent.bookingId || 35,
+        trainer_id: selectedEvent.trainer_id,
+        user_id: parseInt(user_id) || 57,
+        date_of_class: dayjs(selectedEvent.date).format("MMMM DD, YYYY"),
+        time_of_class: selectedEvent.time,
+        attendance_key: status,
+      };
+
+      setAttendanceData((prev) => {
+        const filtered = prev.filter((a) => {
+          if (!a.date_of_class) return true;
+          const attendanceDate = parseAttendanceDate(a.date_of_class);
+          if (!attendanceDate) return true;
+          return attendanceDate.format("YYYY-MM-DD") !== selectedEvent.date;
+        });
+        const updated = [...filtered, newRecord];
+        console.log("✅ [DUMMY MODE] Attendance updated locally:", updated);
+        return updated;
+      });
+
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      return;
+    }
+
     try {
-      await axios.post(
+      const response = await axios.post(
         `https://deedee-unchainable-optionally.ngrok-free.dev/attendances`,
         {
           user_id,
@@ -222,11 +293,13 @@ const Calendar = () => {
           },
         }
       );
-
-      // Refresh attendance data after marking
       await fetchAttendance();
     } catch (err) {
-      console.error("Attendance POST error:", err);
+      console.error("❌ Attendance POST error:", err);
+      if (err.response) {
+        console.error("  - Status:", err.response.status);
+        console.error("  - Data:", err.response.data);
+      }
     }
   };
 
@@ -238,14 +311,21 @@ const Calendar = () => {
     const attendanceStatus = determineAttendanceStatus(
       selectedEvent.bookingDateTime
     );
-
-    // Mark attendance via POST API
+    // Mark attendance via POST API (or dummy mode)
     await markAttendance(attendanceStatus, selectedEvent);
 
     // Open meeting link
     const meetingLink = localStorage.getItem("meet_link");
     if (meetingLink) {
-      window.open(meetingLink, "_blank");
+      if (USE_DUMMY_DATA) {
+        console.log("🧪 [DUMMY MODE] Would open meeting link:", meetingLink);
+        // Still open the link for testing
+        window.open(meetingLink, "_blank");
+      } else {
+        window.open(meetingLink, "_blank");
+      }
+    } else {
+      console.warn("⚠️ No meeting link found in localStorage");
     }
 
     setOpen(false);
@@ -283,7 +363,11 @@ const Calendar = () => {
     const isPast = now.isAfter(sessionEnd);
     const isLive = now.isAfter(start) && now.isBefore(sessionEnd);
     const isUpcoming = now.isBefore(start);
-    const canJoin = isLive || (isUpcoming && now.isAfter(fifteenMinutesBefore));
+    
+    // In dummy mode, always allow joining for testing (unless explicitly past by more than 1 day)
+    const canJoin = USE_DUMMY_DATA 
+      ? !isPast || now.diff(sessionEnd, "day") < 1
+      : isLive || (isUpcoming && now.isAfter(fifteenMinutesBefore));
 
     const attendanceRecord = attendanceData.find((a) => {
       if (!a.date_of_class) return false;
@@ -296,7 +380,8 @@ const Calendar = () => {
 
     const meetingLink = localStorage.getItem("meet_link");
 
-    if (isPast) {
+    // In dummy mode, show join button even for past sessions (for testing)
+    if (isPast && !USE_DUMMY_DATA) {
       return (
         <>
           <Typography sx={{ mt: 2, color: "gray" }}>
@@ -314,7 +399,8 @@ const Calendar = () => {
       );
     }
 
-    if (canJoin) {
+    // Show join button if can join OR in dummy mode
+    if (canJoin || USE_DUMMY_DATA) {
       if (!meetingLink) {
         return (
           <Typography sx={{ mt: 2, color: "red" }}>
@@ -324,13 +410,20 @@ const Calendar = () => {
       }
 
       return (
-        <Button variant="contained" sx={{ mt: 3 }} onClick={handleJoinMeeting}>
-          Join Meeting
-        </Button>
+        <>
+          {USE_DUMMY_DATA && (
+            <Typography sx={{ mt: 2, mb: 1, color: "blue", fontSize: "0.875rem" }}>
+              🧪 [TEST MODE] Join button enabled for testing
+            </Typography>
+          )}
+          <Button variant="contained" sx={{ mt: 3 }} onClick={handleJoinMeeting}>
+            Join Meeting
+          </Button>
+        </>
       );
     }
 
-    if (isUpcoming && now.isBefore(fifteenMinutesBefore)) {
+    if (isUpcoming && now.isBefore(fifteenMinutesBefore) && !USE_DUMMY_DATA) {
       return (
         <Typography sx={{ mt: 2, color: "orange" }}>
           ⏰ Join link will be available 15 minutes before session start
@@ -346,6 +439,7 @@ const Calendar = () => {
       <FullCalendar
         plugins={[dayGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
+        height="auto"
         events={events.map((event) => {
           const symbol = getAttendanceSymbol(event.date);
           return {
@@ -379,6 +473,11 @@ const Calendar = () => {
         dateClick={handleDateClick}
         eventClick={handleEventClick}
         eventDisplay="block"
+        headerToolbar={{
+          left: "prev,next today",
+          center: "title",
+          right: "",
+        }}
       />
 
       <Dialog open={open} onClose={() => setOpen(false)}>

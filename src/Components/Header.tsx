@@ -219,7 +219,10 @@ const Header: React.FC = () => {
   const handleLogout = () => {
     localStorage.removeItem("user_token");
     localStorage.removeItem("first_name");
+        localStorage.removeItem("last_name");
     localStorage.removeItem("user_id");
+    
+        localStorage.removeItem("email");
     navigate("/login");
   };
 

@@ -266,8 +266,14 @@
           }
         );
 
+        console.log(response.data.user,">>>>>her ein formation")
+
         localStorage.setItem("user_token", response.data.token);
-        localStorage.setItem("first_name", response.data.user.full_name);
+        localStorage.setItem("first_name", response.data.user.
+first_name);
+     localStorage.setItem("email", response.data.user.
+email);
+
         localStorage.setItem("user_id", response.data.data.id);
       
         navigate("/");

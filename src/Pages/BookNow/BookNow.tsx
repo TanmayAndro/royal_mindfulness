@@ -558,9 +558,9 @@ const handleChange = (
               value={selectedTime}
               onChange={(newValue) => setSelectedTime(newValue)}
               ampm={false}
-              minutesStep={30}
+              minutesStep={15}
               slotProps={{
-                textField: {
+                textField: {  
                   size: "small",
                   fullWidth: true,
                   margin: "normal",

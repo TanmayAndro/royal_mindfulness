@@ -249,10 +249,9 @@ const Layout = () => {
   );
 };
 
-// ✅ Google Analytics Tracking Component
+
 const GAListener = () => {
   const location = useLocation();
-
   useEffect(() => {
     ReactGA.send({ hitType: "pageview", page: location.pathname });
     console.log("Tracking page view:", location.pathname);
