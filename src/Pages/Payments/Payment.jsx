@@ -329,8 +329,11 @@ export const Payment = () => {
         amount: PAYMENT_AMOUNT_PAISE,             // ✔ MUST MATCH Razorpay amount
         booking_start_date: sessionDate,
         booking_start_time: sessionTime,
-      };
+        time_zone:payload.timezone,
+        mobile_number:payload.phone_number,
+        address:payload.address
 
+      };
       const verifyRes = await axios.post(
         `https://deedee-unchainable-optionally.ngrok-free.dev/payments/verify_payment`,
         body,
