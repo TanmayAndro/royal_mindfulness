@@ -278,7 +278,7 @@ export const Payment = () => {
 
   const initializeRazorpay = () => {
     const options = {
-      key: "rzp_test_Rp6MviJgayT45q",
+      key: "rzp_live_RqiG5GTlbVM4kZ" , 
       amount: PAYMENT_AMOUNT_PAISE, // ✔ Amount in paise
       currency: "INR",             // ✔ Should be INR
       name: "RoyalMindFulness",
@@ -333,8 +333,7 @@ export const Payment = () => {
         mobile_number:payload.phone_number,
         address:payload.address
 
-      };
-      const verifyRes = await axios.post(
+      };      const verifyRes = await axios.post(
         `https://deedee-unchainable-optionally.ngrok-free.dev/payments/verify_payment`,
         body,
         { headers }

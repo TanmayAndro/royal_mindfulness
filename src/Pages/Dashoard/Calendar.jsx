@@ -147,7 +147,7 @@ const Calendar = () => {
             start: dateStr,
           });
 
-          current = current.add(1, "day");
+          current = current.add(2, "day");
         }
       });
 
