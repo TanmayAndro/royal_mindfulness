@@ -595,35 +595,9 @@ const handleSave = async () => {
 
   return (
     <TopBox sx={{ flexWrap: 'wrap', gap: '16px' }}>
-      <Box display="flex" alignItems="center" gap={2}>
-        <HeadingText variant='h4'>{config.Dashboard_Main_Heading}</HeadingText>
-        {isTeacher === "true" && (
-          <Button
-            onClick={handleOpenDialog}
-            sx={{ backgroundColor: '#1976d2', color: 'white', borderRadius: '8px', '&:hover': { backgroundColor: '#1565c0' } }}
-          >
-            Availability
-          </Button>
-        )}
-      </Box>
+      
 
-      <FirstBox>
-        <TexxtFieldStyles
-          placeholder={config.Input_Placholder}
-          variant='outlined'
-          sx={{ backgroundColor: 'white', borderRadius: '20px', height: '50px' }}
-        />
-        <SecondBox><NotificationBell /></SecondBox>
-        <ThirdBox>
-          <IMG className='header-profile' src={profile_img} alt='img' />
-          <Box>
-            <Name>{localStorage.getItem("first_name")}</Name>
-            <SubHeading>{config.Product_Manager}</SubHeading>
-          </Box>
-          <FaAngleDown style={{ cursor: 'pointer', opacity: '50%', paddingRight: '10px' }} />
-        </ThirdBox>
-      </FirstBox>
-
+      
       <Dialog open={open} onClose={handleCloseDialog} fullWidth maxWidth="md">
         <DialogTitle>
           Set Availability
