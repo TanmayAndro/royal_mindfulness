@@ -221,7 +221,7 @@ const Header: React.FC = () => {
     localStorage.removeItem("first_name");
         localStorage.removeItem("last_name");
     localStorage.removeItem("user_id");
-    
+      localStorage.removeItem("meet_link");
         localStorage.removeItem("email");
     navigate("/login");
   };

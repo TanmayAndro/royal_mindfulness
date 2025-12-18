@@ -278,6 +278,18 @@ export default function BookNow() {
     }));
     setCountryList(countriesArray);
   }, []);
+useEffect(() => {
+  const name = localStorage.getItem("first_name") || "";
+  const email = localStorage.getItem("email") || "";
+  const phone = localStorage.getItem("phone_number") || "";
+
+  setFormData((prev) => ({
+    ...prev,
+    name,
+    email,
+    phone, // no +91 because you hid country code
+  }));
+}, []);
 
   const validateField = (name: string, value: string | boolean) => {
     let error = "";
@@ -464,17 +476,18 @@ const handleChange = (
 
           <Box sx={{ mt: 2 }}>
             <PhoneInput
-              country={"in"}
-              inputStyle={{ width: "100%" }}
-              value={formData.phone}
-              onChange={(value) => {
-                setFormData((prev) => ({ ...prev, phone: value }));
-                const err = validateField("phone", value);
-                setErrors((prev: any) => ({ ...prev, phone: err }));
-              }}
-              inputProps={{ name: "phone", required: true }}
-              specialLabel="Phone Number"
-            />
+  country={"in"}
+disableCountryCode={true}  // ✅ hides +91
+  inputStyle={{ width: "100%" }}
+  value={formData.phone}
+  onChange={(value) => {
+    setFormData((prev) => ({ ...prev, phone: value }));
+    const err = validateField("phone", value);
+    setErrors((prev:any) => ({ ...prev, phone: err }));
+  }}
+  inputProps={{ name: "phone", required: true }}
+  specialLabel="Phone Number"
+/>
             {errors.phone && (
               <Typography color="error" variant="caption">
                 {errors.phone}

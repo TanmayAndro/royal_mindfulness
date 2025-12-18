@@ -70,6 +70,10 @@
         "last_name",
         response.data.data.attributes.last_name
       );
+      localStorage.setItem(
+        "last_name",
+        response.data.data.attributes.phone_number
+      );
       localStorage.setItem("email", response.data.data.attributes.email);
       localStorage.setItem("user_id", response.data.data.id);
       localStorage.setItem("is_teacher", response.data.meta.is_teacher);
@@ -243,13 +247,13 @@
         const timestamp = Date.now();
     const safeName = `${decoded.given_name}-${decoded.family_name}`.replace(/\s+/g, "-").toLowerCase();
     const meetingRoom = `deedee-user-${safeName}-${timestamp}`;
-    const meetingLink = `https://meet.jit.si/${meetingRoom}`;
+    const meet_link = `https://meet.jit.si/${meetingRoom}`;
         const userData = {
           email: decoded.email,
           family_name: decoded.family_name,
           given_name: decoded.given_name,
           email_verified: decoded.email_verified,
-          meeting_link: meetingLink, 
+          meeting_link: meet_link, 
         };
 
       
@@ -273,7 +277,7 @@
 first_name);
      localStorage.setItem("email", response.data.user.
 email);
-
+   localStorage.setItem("meet_link", meet_link);
         localStorage.setItem("user_id", response.data.data.id);
       
         navigate("/");
