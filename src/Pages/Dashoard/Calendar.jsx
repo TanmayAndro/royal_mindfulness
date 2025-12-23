@@ -15,9 +15,11 @@ import interactionPlugin from "@fullcalendar/interaction";
 import axios from "axios";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
 dayjs.extend(utc);
+dayjs.extend(timezone);
 dayjs.extend(customParseFormat);
 
 const CalendarBox = styled(Box)({
@@ -59,6 +61,11 @@ const Calendar = () => {
     }
   };
 
+const gmtTime =  (time,timeZone) => {
+  const formatedTime = dayjs.tz(time, "hh:mm A", "UTC")
+  .tz(timeZone);
+  return formatedTime.format("hh:mm A") 
+}
   /* ---------------- FETCH BOOKINGS ---------------- */
   const fetchEventsForMonth = async () => {
     try {
@@ -90,7 +97,7 @@ const Calendar = () => {
             `${dateStr} ${attr.start_time}`,
             "YYYY-MM-DD hh:mm A"
           );
-
+console.log(gmtTime(attr.start_time,attr.time_zone),"time_zone>>>>>")
           slots.push({
             id: `${booking.id}-${dateStr}`,
             bookingId: booking.id,
@@ -98,7 +105,7 @@ const Calendar = () => {
             time: attr.start_time,
             trainer_id: attr.trainer_id,
             bookingDateTime,
-            title: `Session at ${attr.start_time}`,
+            title: `Session at ${ gmtTime(attr.start_time,attr.time_zone)}`,
             start: dateStr,
           });
 

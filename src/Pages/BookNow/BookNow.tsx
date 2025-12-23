@@ -281,7 +281,8 @@ export default function BookNow() {
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(customParseFormat);
-console.log(formData.timezone,">>>localTz")
+
+
   useEffect(() => {
     const countriesObject = countries.getNames("en", { select: "official" });
     const countriesArray = Object.entries(countriesObject).map(([code, name]) => ({
@@ -381,6 +382,8 @@ const handleChange = (
       navigate("/login");
       return;
     }
+
+    
 
     const payload = {
       from_date: selectedDate.format("YYYY-MM-DD"),
