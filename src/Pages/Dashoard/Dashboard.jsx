@@ -80,9 +80,7 @@ const Dashboard = () => {
             style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}
           >
             <Profile />
-            <Box mt={2} ml={1} style={{ marginTop: "0px" }}>
-              <PaymentHistory />
-            </Box>
+            
           </ProfilePaymentGrid>
         </Grid>
 
