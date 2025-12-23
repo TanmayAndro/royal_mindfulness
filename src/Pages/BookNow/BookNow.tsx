@@ -245,18 +245,27 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker, TimePicker } from "@mui/x-date-pickers";
 import dayjs, { Dayjs } from "dayjs";
+import utc from "dayjs/plugin/utc";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+
+
+import timezone from "dayjs/plugin/timezone";
+
 import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/material.css";
 import { Typewriter } from "react-simple-typewriter";
-
+import TimezoneSelect from "react-timezone-select";
 countries.registerLocale(enLocale);
+
+
 
 export default function BookNow() {
   const [countryList, setCountryList] = useState<{ code: string; name: string }[]>([]);
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(dayjs());
   const [selectedTime, setSelectedTime] = useState<Dayjs | null>(dayjs());
+    const localTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -264,12 +273,15 @@ export default function BookNow() {
     address: "",
     pincode: "",
     country: "",
-    timezone: "",
+    timezone: localTZ,
     termsAccepted: false,
   });
   const [errors, setErrors] = useState<any>({});
   const navigate = useNavigate();
-
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.extend(customParseFormat);
+console.log(formData.timezone,">>>localTz")
   useEffect(() => {
     const countriesObject = countries.getNames("en", { select: "official" });
     const countriesArray = Object.entries(countriesObject).map(([code, name]) => ({
@@ -540,17 +552,17 @@ disableCountryCode={true}  // ✅ hides +91
             ))}
           </TextField>
 
-          <TextField
-            fullWidth
-            size="small"
-            label="Timezone"
-            name="timezone"
-            value={formData.timezone}
-            onChange={handleChange}
-            error={!!errors.timezone}
-            helperText={errors.timezone}
-            margin="normal"
-          />
+         <Box mt={2}>
+            <TimezoneSelect
+              value={formData.timezone}
+              onChange={(val: any) =>
+                setFormData((p) => ({ ...p, timezone: val.value }))
+              }
+              styles={{
+                control: (base) => ({ ...base, minHeight: "40px",background:" #fef4e8" }),
+              }}
+            />
+          </Box>
 
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
