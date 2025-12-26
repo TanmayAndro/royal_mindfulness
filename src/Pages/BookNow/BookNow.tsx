@@ -364,6 +364,24 @@ const handleChange = (
 };
 
 
+function convert24hTimeToUTC(time24h:any, timezone:any) {
+  let [hours, minutes, seconds = 0] = time24h
+    .split(":")
+    .map(Number);
+
+  const today = new Date();
+  const year = today.getUTCFullYear();
+  const month = today.getUTCMonth();
+  const day = today.getUTCDate();
+  const utcBase = new Date(Date.UTC(year, month, day, hours, minutes, seconds));
+  const tzDate = new Date(
+    utcBase.toLocaleString("en-US", { timeZone: timezone })
+  );
+  const offset = utcBase.getTime() - tzDate.getTime();
+  return new Date(utcBase.getTime() + offset).toISOString();
+}
+
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const isValid = validateAll();
@@ -383,11 +401,10 @@ const handleChange = (
       return;
     }
 
-    
 
     const payload = {
       from_date: selectedDate.format("YYYY-MM-DD"),
-      from_time: selectedTime.format("HH:mm"),
+      from_time:convert24hTimeToUTC(selectedTime?.format("HH:mm"),formData.timezone),
       user_id: localStorage.getItem("user_id") || 0,
       name: formData.name,
       email: formData.email,
@@ -395,7 +412,7 @@ const handleChange = (
       address: formData.address,
       pincode: formData.pincode,
       nationality: formData.country,
-      timezone: formData.timezone,
+      timezone: formData.timezone
     };
 
     navigate("/payment", { state: { payload, token } });

@@ -97,7 +97,6 @@ const gmtTime =  (time,timeZone) => {
             `${dateStr} ${attr.start_time}`,
             "YYYY-MM-DD hh:mm A"
           );
-console.log(gmtTime(attr.start_time,attr.time_zone),"time_zone>>>>>")
           slots.push({
             id: `${booking.id}-${dateStr}`,
             bookingId: booking.id,
