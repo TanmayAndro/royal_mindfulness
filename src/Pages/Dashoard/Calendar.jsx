@@ -18,6 +18,7 @@ import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
+
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(customParseFormat);
@@ -61,11 +62,14 @@ const Calendar = () => {
     }
   };
 
-const gmtTime =  (time,timeZone) => {
+  const gmtTime =  (time,timeZone) => {
   const formatedTime = dayjs.tz(time, "hh:mm A", "UTC")
   .tz(timeZone);
   return formatedTime.format("hh:mm A") 
 }
+// console.log(gmtTime(attr.start_time,attr.time_zone),">>>>>from the data")
+
+
   /* ---------------- FETCH BOOKINGS ---------------- */
   const fetchEventsForMonth = async () => {
     try {

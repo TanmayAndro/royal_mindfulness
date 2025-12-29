@@ -365,21 +365,53 @@ const handleChange = (
 
 
 function convert24hTimeToUTC(time24h:any, timezone:any) {
-  let [hours, minutes, seconds = 0] = time24h
-    .split(":")
-    .map(Number);
+    const [hours, minutes, seconds = 0] = time24h.split(':').map(Number);
+    const now = new Date();
 
-  const today = new Date();
-  const year = today.getUTCFullYear();
-  const month = today.getUTCMonth();
-  const day = today.getUTCDate();
-  const utcBase = new Date(Date.UTC(year, month, day, hours, minutes, seconds));
-  const tzDate = new Date(
-    utcBase.toLocaleString("en-US", { timeZone: timezone })
-  );
-  const offset = utcBase.getTime() - tzDate.getTime();
-  return new Date(utcBase.getTime() + offset).toISOString();
-}
+    // 1. Create a date in the target timezone
+    const formatter = new Intl.DateTimeFormat('en-US', {
+      timeZone: timezone,
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      hour12: false,
+    });
+
+    // 2. Calculate the offset by comparing UTC vs Local
+    const parts = formatter.formatToParts(now);
+    const dateMap:any = Object.fromEntries(parts.map((p) => [p.type, p.value]));
+
+    const targetDate = new Date(
+      Date.UTC(
+        dateMap.year,
+        dateMap.month - 1,
+        dateMap.day,
+        dateMap.hour,
+        dateMap.minute,
+        dateMap.second
+      )
+    );
+
+    const offsetInMs = now.getTime() - targetDate.getTime();
+
+    // 3. Apply offset to your input time
+    const inputDateUTC = new Date(
+      Date.UTC(
+        now.getUTCFullYear(),
+        now.getUTCMonth(),
+        now.getUTCDate(),
+        hours,
+        minutes,
+        seconds
+      )
+    );
+
+    return new Date(inputDateUTC.getTime() + offsetInMs).toISOString();
+  }
+
 
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -509,7 +541,7 @@ function convert24hTimeToUTC(time24h:any, timezone:any) {
           <Box sx={{ mt: 2 }}>
             <PhoneInput
   country={"in"}
-disableCountryCode={true}  // ✅ hides +91
+ // ✅ hides +91
   inputStyle={{ width: "100%" }}
   value={formData.phone}
   onChange={(value) => {
