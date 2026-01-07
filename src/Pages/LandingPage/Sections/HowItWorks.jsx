@@ -170,7 +170,7 @@ export const HowItWorks = () => {
 
   // // Already logged in → open directly
   if (clickedOn === "calendly") {
-    window.open("https://calendly.com/royalmindfulness/30min", "_blank");
+    navigate("/free_consultance");
   } else if (clickedOn === "rozerpay") {
    navigate("/book-now");
   }

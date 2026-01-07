@@ -18,16 +18,24 @@ const BannerSection = () => {
   const navigate = useNavigate();
 
 
-  const handelConsulation = (clickedOn: "calendly" | "rozerpay") => {
-// window.open("https://calendly.com/royalmindfulness/30min", "_blank");
-  // Already logged in → open directly
-  if (clickedOn === "calendly") {
-    window.open("https://calendly.com/royalmindfulness/30min", "_blank");
-  } else if (clickedOn === "rozerpay") {
-    navigate("/book-now");
-  }
-};
+  //const handelConsulation = (clickedOn: "calendly" | "rozerpay") => {
+  // // window.open("https://calendly.com/royalmindfulness/30min", "_blank");
+  //   // Already logged in → open directly
+  //   if (clickedOn === "calendly") {
+  //     window.open("https://calendly.com/royalmindfulness/30min", "_blank");
+  //   } else if (clickedOn === "rozerpay") {
+  //     navigate("/book-now");
+  //   }
+  // };
 
+
+  function handelConsulation(clickedOn) {
+    if (clickedOn === "freeconsultance") {
+      navigate("/free_consultance");
+    } else if (clickedOn === "rozerpay") {
+      navigate("/book-now");
+    }
+  }
 
 
   return (
@@ -99,7 +107,7 @@ const BannerSection = () => {
                       
                       sx={{ backgroundColor: '#1470AF', color: 'white', lineHeight: "1.2"}}
                       variant="contained"
-                      onClick={() => handelConsulation("calendly")}
+                      onClick={() => handelConsulation("freeconsultance")}
                     />
           
                       <CommonButtons

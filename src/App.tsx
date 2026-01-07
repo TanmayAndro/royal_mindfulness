@@ -170,6 +170,8 @@ import { useEffect } from "react";
 import JitsiComponent from "./Components/Jitsimeeting";
 import { ResetPassword } from "./Pages/Login/ResetPassword";
 import { Box } from "@mui/material";
+import FreeConsultanceForm from "./Pages/FreeConsultance/FreeConsultanceForm"
+
 
 const TRACKING_ID = "G-SNZDQG6PM4";
 
@@ -192,6 +194,7 @@ export default App;
 const Layout = () => {
   const location = useLocation();
   const hideHeaderFooter = location.pathname === "/meeting"; // Hides for Jitsi page
+  const hideFooter = location.pathname === "/free_consultance";  //Hide only footer page
 
   return (
     <Box  >
@@ -243,8 +246,9 @@ const Layout = () => {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/webinar" element={<Webinar />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/free_consultance" element={<FreeConsultanceForm />} />
       </Routes>
-      {!hideHeaderFooter && <Footer />}
+      {!hideHeaderFooter && !hideFooter && <Footer />}
     </Box>
   );
 };

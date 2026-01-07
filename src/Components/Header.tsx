@@ -230,7 +230,7 @@ const Header: React.FC = () => {
     <>
       <Grid container className={`main_header_css ${scrolled ? "scrolled" : ""}`} alignItems="center"
             sx={
-        location.pathname === "/"
+        location.pathname === "/" || location.pathname === "/free_consultance"
           ? {
               position: "absolute",
               top: 0,

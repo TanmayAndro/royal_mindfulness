@@ -1,0 +1,268 @@
+.page {
+  position: absolute;
+  min-height: 100vh;
+  
+}
+
+/* Background section */
+.hero-bg {
+  min-height: 57vh;
+  background-image: url('../../../public/Rectangle.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Overlay centering */
+.overlay {
+  position: relative;
+  justify-content: center;
+  margin-top: -253px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: auto;
+  padding-bottom: 80px;
+}
+
+
+
+
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form box */
+.content {
+  display: block;          /* stop flex recentering */
+  padding-top: 60px;
+  width: 100%;
+}
+
+
+
+.form-box {
+  background: #fff;
+  padding: 3rem;
+  border-radius: 4px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+
+  max-width: 420px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;          /* stays centered horizontally */
+}
+
+
+/* Headings */
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+/* ----------- FIELDS (COMMON STYLE) ----------- */
+.field {
+ margin: 10px 0px 10px;
+}
+
+
+.time_zone_field{
+  margin: 10px 0px 8px;
+}
+
+.field label,
+.time_zone_field label {
+  display: block;
+  font-size: 12px;
+  color: #1f2937;
+  margin-bottom: 6px;
+}
+
+.field input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.field input:focus {
+  border-color: #000;
+}
+
+/* ----------- PHONE ----------- */
+.phone-field {
+  margin: 10px 0;      /* ❗ remove padding so size matches others */
+}
+
+.phone-label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.phone-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.phone-wrapper .flag-dropdown {
+  border: none !important;
+  background: transparent !important;
+}
+
+.phone-flag-button {
+  border: none !important;
+  outline: none !important;
+  padding: 0 5px !important;
+}
+
+.phone-wrapper .selected-flag {
+  padding: 0 12px !important;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.phone-wrapper .selected-flag .flag {
+  margin-right: 4px;
+}
+
+/* INPUT inside phone */
+.phone-input {
+  width: 100% !important;
+  padding: 10px 10px 10px 50px !important;
+
+  border: 1px solid #d1d5db !important;
+  border-radius: 4px !important;   /* ❗ matched with other fields */
+
+  outline: none !important;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.phone-input:focus {
+  border-color: #000 !important;
+  box-shadow: none !important;
+}
+
+.phone-input::placeholder {
+  color: #9ca3af;
+}
+
+.phone-wrapper .selected-dial-code {
+  margin-left: 2px;
+  font-size: 14px;
+}
+
+.react-tel-input .country-list .country {
+  padding: 7px 36px !important;
+  margin: 4px 6px;
+  border-radius: 6px;
+}
+
+/* ----------- TIMEZONE (select) ----------- */
+.custom-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  outline: none;
+  background-color: #fff;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.custom-input:focus {
+  border-color: #000;
+  box-shadow: none;
+}
+
+/* Button */
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.submit-btn:hover {
+  background: #111;
+  font-size: 15px;
+}
+
+
+/* Errors css */
+
+.error-list {
+  margin-top: 4px;       
+  margin-left: -21px;
+}
+
+.error-item {
+  color: #ef4444;         /* Tailwind red-500 */
+  font-size: 14px;        /* text-base */
+  line-height: 1.4;
+}
+
+
+/* /thanks message css  */
+
+.thankyou-box {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 2rem 2.5rem;
+  max-width: 420px;
+  margin: 60px auto;              /* centers the card */
+  text-align: center;              /* center text */
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+}
+
+.thankyou-box h2 {
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+.thankyou-box p {
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.submit-btn-tanks-box {
+  background: none;
+  border: none;
+  text-align: center;
+  color: #000;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.submit-btn-tanks-box:hover {
+  opacity: 0.7;
+}
+
+
+
+

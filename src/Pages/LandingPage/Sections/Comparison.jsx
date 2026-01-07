@@ -49,12 +49,12 @@ export const Comparison = () => {
   const handelConsulation = (clickedOn: "calendly" | "rozerpay") => {
 
   //  navigate("/book-now");
-window.open("https://calendly.com/royalmindfulness/30min", "_blank");
+
   // Already logged in → open directly
-  if (clickedOn === "calendly") {
-    window.open("https://calendly.com/royalmindfulness/30min", "_blank");
+   if (clickedOn === "calendly") {
+    navigate("/free_consultance");
   } else if (clickedOn === "rozerpay") {
-    navigate("/book-now");
+   navigate("/book-now");
   }
 };
   return (
