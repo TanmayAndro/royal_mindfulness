@@ -53,7 +53,7 @@
           >
             <img src={logo} style={{ width: "60px" }} alt="logo"   onClick={()=>navigate('/')}/>
             <Typography
-              className="main_heading_css"
+              className="main_heading_css heading_css"
               style={{ fontFamily: '"Fraunces", serif' }}
             >
               {config.main_heading}

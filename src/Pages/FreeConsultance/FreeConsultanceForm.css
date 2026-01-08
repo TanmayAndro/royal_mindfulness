@@ -1,47 +1,66 @@
+/* =======================
+   GLOBAL RESET
+======================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* =======================
+   PAGE STRUCTURE
+======================= */
+
 .page {
-  position: absolute;
+  position: relative;
   min-height: 100vh;
-  
 }
-
-/* Background section */
-.hero-bg {
-  min-height: 57vh;
-  background-image: url('../../../public/Rectangle.png');
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-/* Overlay centering */
-.overlay {
-  position: relative;
-  justify-content: center;
-  margin-top: -253px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: auto;
-  padding-bottom: 80px;
-}
-
-
-
 
 .page-wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
-/* Form box */
+/* =======================
+   HERO BACKGROUND
+======================= */
+
+.hero-bg {
+  min-height: 57vh;
+  background-image: url('../../../public/Rectangle.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* =======================
+   OVERLAY + CONTENT
+======================= */
+
+.overlay {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: -253px;          /* desktop overlap */
+  padding-bottom: 80px;
+}
+
 .content {
-  display: block;          /* stop flex recentering */
-  padding-top: 60px;
   width: 100%;
+  padding-top: 60px;
 }
 
-
+/* =======================
+   FORM BOX
+======================= */
 
 .form-box {
   background: #fff;
@@ -51,15 +70,16 @@
 
   max-width: 420px;
   width: 100%;
+  margin: 0 auto;
 
   display: flex;
   flex-direction: column;
-
-  margin: 0 auto;          /* stays centered horizontally */
 }
 
+/* =======================
+   HEADINGS
+======================= */
 
-/* Headings */
 .title {
   text-align: center;
   font-size: 24px;
@@ -74,86 +94,56 @@
   margin-bottom: 20px;
 }
 
-/* ----------- FIELDS (COMMON STYLE) ----------- */
-.field {
- margin: 10px 0px 10px;
-}
+/* =======================
+   FIELDS
+======================= */
 
-
-.time_zone_field{
-  margin: 10px 0px 8px;
+.field,
+.time_zone_field,
+.phone-field {
+  margin: 10px 0;
 }
 
 .field label,
-.time_zone_field label {
+.time_zone_field label,
+.phone-label {
   display: block;
   font-size: 12px;
-  color: #1f2937;
   margin-bottom: 6px;
+  color: #1f2937;
 }
 
-.field input {
+.field input,
+.custom-input {
   width: 100%;
   padding: 10px;
   border: 1px solid #d1d5db;
   border-radius: 4px;
   outline: none;
-  box-sizing: border-box;
+  font-size: 14px;
 }
 
-.field input:focus {
+.field input:focus,
+.custom-input:focus {
   border-color: #000;
 }
 
-/* ----------- PHONE ----------- */
-.phone-field {
-  margin: 10px 0;      /* ❗ remove padding so size matches others */
-}
-
-.phone-label {
-  display: block;
-  font-size: 12px;
-  margin-bottom: 6px;
-}
+/* =======================
+   PHONE INPUT
+======================= */
 
 .phone-wrapper {
   width: 100%;
   position: relative;
+  overflow: visible;
 }
 
-.phone-wrapper .flag-dropdown {
-  border: none !important;
-  background: transparent !important;
-}
-
-.phone-flag-button {
-  border: none !important;
-  outline: none !important;
-  padding: 0 5px !important;
-}
-
-.phone-wrapper .selected-flag {
-  padding: 0 12px !important;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.phone-wrapper .selected-flag .flag {
-  margin-right: 4px;
-}
-
-/* INPUT inside phone */
 .phone-input {
   width: 100% !important;
   padding: 10px 10px 10px 50px !important;
-
   border: 1px solid #d1d5db !important;
-  border-radius: 4px !important;   /* ❗ matched with other fields */
-
-  outline: none !important;
+  border-radius: 4px !important;
   font-size: 14px;
-  box-sizing: border-box;
 }
 
 .phone-input:focus {
@@ -161,39 +151,14 @@
   box-shadow: none !important;
 }
 
-.phone-input::placeholder {
-  color: #9ca3af;
-}
-
-.phone-wrapper .selected-dial-code {
-  margin-left: 2px;
-  font-size: 14px;
-}
-
 .react-tel-input .country-list .country {
-  padding: 7px 36px !important;
-  margin: 4px 6px;
-  border-radius: 6px;
+    padding: 7px 38px !important;
 }
 
-/* ----------- TIMEZONE (select) ----------- */
-.custom-input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-  outline: none;
-  background-color: #fff;
-  font-size: 14px;
-  box-sizing: border-box;
-}
+/* =======================
+   BUTTONS
+======================= */
 
-.custom-input:focus {
-  border-color: #000;
-  box-shadow: none;
-}
-
-/* Button */
 .submit-btn {
   width: 100%;
   padding: 10px;
@@ -201,51 +166,40 @@
   color: white;
   border: none;
   border-radius: 999px;
-  font-size: 13px;
+  font-size: 14px;
   cursor: pointer;
-  transition: 0.2s;
 }
 
 .submit-btn:hover {
   background: #111;
-  font-size: 15px;
 }
 
-
-/* Errors css */
+/* =======================
+   ERRORS
+======================= */
 
 .error-list {
-  margin-top: 4px;       
-  margin-left: -21px;
+  margin-top: 4px;
+  padding-left: 16px;
 }
 
 .error-item {
-  color: #ef4444;         /* Tailwind red-500 */
-  font-size: 14px;        /* text-base */
-  line-height: 1.4;
+  color: #ef4444;
+  font-size: 14px;
 }
 
-
-/* /thanks message css  */
+/* =======================
+   THANK YOU BOX
+======================= */
 
 .thankyou-box {
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 2rem 2.5rem;
+  background: #fff;
+  padding: 2rem;
   max-width: 420px;
-  margin: 60px auto;              /* centers the card */
-  text-align: center;              /* center text */
+  margin: 60px auto;
+  text-align: center;
+  border-radius: 10px;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
-}
-
-.thankyou-box h2 {
-  margin-bottom: 10px;
-  color: #111827;
-}
-
-.thankyou-box p {
-  color: #4b5563;
-  font-size: 14px;
 }
 
 .submit-btn-tanks-box {
@@ -262,7 +216,60 @@
 .submit-btn-tanks-box:hover {
   opacity: 0.7;
 }
+/* =======================
+   RESPONSIVE FIXES
+======================= */
+
+/* Tablets */
+/* =======================
+   RESPONSIVE FIX (TABLET + MOBILE SAME)
+======================= */
 
 
 
 
+/* Phones */
+@media (max-width: 425px) {
+
+  .hero-bg {
+    min-height: 400px;
+  }
+
+  .overlay {
+    margin-top: 0 !important;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+  } 
+
+
+
+  .content {
+    padding-top: 39px;
+  }
+
+  /* SAME LAYOUT FOR 768 / 425 / 375 / 320 */
+  .form-box {
+    width: 90%;              /* 🔥 same as tablet */
+    max-width: 420px;
+    margin: 24px auto;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+
+ .thankyou-box {
+  width: 90%;
+  max-width: 420px;
+ margin-top: 140px;  
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+
+  .title {
+    font-size: 20px;
+    font-family: "viswhas";
+  }
+}
