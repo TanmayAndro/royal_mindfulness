@@ -248,7 +248,7 @@ export const Payment = () => {
   const sessionDate = payload?.from_date;
   const sessionTime = payload?.from_time;
 
-  const PAYMENT_AMOUNT_PAISE = 100; 
+  const PAYMENT_AMOUNT_PAISE = 29800; 
 
   useEffect(() => {
     if (!token || !payload || !sessionDate || !sessionTime) {
@@ -280,7 +280,7 @@ export const Payment = () => {
     const options = {
       key: "rzp_live_RqiG5GTlbVM4kZ" , 
       amount: PAYMENT_AMOUNT_PAISE, // ✔ Amount in paise
-      currency: "INR",             // ✔ Should be INR
+      currency: "USD",             // ✔ Should be INR
       name: "RoyalMindFulness",
       description: "Trainer Booking Payment",
 
