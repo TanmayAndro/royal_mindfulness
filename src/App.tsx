@@ -171,7 +171,11 @@ import JitsiComponent from "./Components/Jitsimeeting";
 import { ResetPassword } from "./Pages/Login/ResetPassword";
 import { Box } from "@mui/material";
 import FreeConsultanceForm from "./Pages/FreeConsultance/FreeConsultanceForm"
+
+// front page test 
 import Royal from './Pages/Test1/Royal'
+import ConsultationPage from "./Pages/Test1/TalkSpace/ConsultationPage"
+import TalkSpace from "./Pages/Test1/TalkSpace/TalkSpace"
 
 
 const TRACKING_ID = "G-SNZDQG6PM4";
@@ -251,6 +255,8 @@ const Layout = () => {
         <Route path="*" element={<NotFound />} />
         <Route path="/free_consultance" element={<FreeConsultanceForm />} />
         <Route path="/royalminfullness-test" element={<Royal />} />
+        <Route path="/talk_space" element={<TalkSpace />} />
+        <Route path="/consulation" element={<ConsultationPage />} />
 
       </Routes>
       {!hideHeaderFooter && !hideFooter && <Footer />}

@@ -1,0 +1,706 @@
+/* =======================
+   GLOBAL RESET
+======================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* =======================
+   PAGE STRUCTURE
+======================= */
+
+.page {
+  position: relative;
+  min-height: 100vh;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* =======================
+   HERO BACKGROUND
+======================= */
+
+
+
+/* =======================
+   OVERLAY + CONTENT
+======================= */
+
+.overlay {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: -253px;          /* desktop overlap */
+  padding-bottom: 80px;
+}
+
+.content {
+  width: 100%;
+  padding-top: 60px;
+}
+
+/* =======================
+   FORM BOX
+======================= */
+
+.form-box {
+  background: #fff;
+  padding: 3rem;
+  border-radius: 4px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+
+  max-width: 750px;
+  width: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* =======================
+   HEADINGS
+======================= */
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+/* =======================
+   Opriotns
+======================= */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;   /* poori list ko center me laata hai */
+  width: 100%;
+}
+
+
+.option-item {
+  display: flex;
+  width: 420px;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+/* =======================
+   BUTTONS
+======================= */
+
+.submit-btn {
+  width: 320px;          /* same as option-item */
+  padding: 10px 14px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 25px;
+}
+
+.submit-btn:hover {
+  background: #111;
+}
+
+/* =======================
+   ERRORS
+======================= */
+.error-text{
+    color: red;
+}
+
+/* =======================
+   THANK YOU BOX
+======================= */
+
+.thankyou-box {
+  background: #fff;
+  padding: 2rem;
+  max-width: 420px;
+  margin: 60px auto;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+}
+
+.submit-btn-tanks-box {
+  background: none;
+  border: none;
+  text-align: center;
+  color: #000;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.submit-btn-tanks-box:hover {
+  opacity: 0.7;
+}
+
+
+
+
+/* Checkbox  */
+
+.checkbox{
+    margin-top: 5px;
+}
+/* =======================
+   RESPONSIVE FIXES
+======================= */
+/* Phones */
+
+/* =======================
+   GLOBAL RESET
+======================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* =======================
+   PAGE STRUCTURE
+======================= */
+
+.page {
+  position: relative;
+  min-height: 100vh;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* =======================
+   HERO BACKGROUND
+======================= */
+
+.hero-bg {
+  min-height: 57vh;
+  background-image: url(../../../../public/Rectangle.png);
+  background-size: cover;
+  background-position: center;
+}
+
+
+/* =======================
+   OVERLAY + CONTENT
+======================= */
+
+.overlay {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: -253px;          /* desktop overlap */
+  padding-bottom: 80px;
+}
+
+.content {
+  width: 100%;
+  padding-top: 60px;
+}
+
+/* =======================
+   FORM BOX
+======================= */
+
+.form-box {
+  background: #fff;
+  padding: 3rem;
+  border-radius: 4px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+
+  max-width: 750px;
+  width: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* =======================
+   HEADINGS
+======================= */
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+/* =======================
+   Opriotns
+======================= */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;   /* poori list ko center me laata hai */
+  width: 100%;
+}
+
+
+.option-item {
+  display: flex;
+  width: 420px;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+/* =======================
+   BUTTONS
+======================= */
+
+.submit-btn {
+  width: 320px;          /* same as option-item */
+  padding: 10px 14px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 25px;
+}
+
+.submit-btn:hover {
+  background: #111;
+  font-size: large;
+}
+
+/* =======================
+   ERRORS
+======================= */
+.error-text{
+    color: red;
+}
+
+/* =======================
+   THANK YOU BOX
+======================= */
+
+.thankyou-box {
+  background: #fff;
+  padding: 2rem;
+  max-width: 420px;
+  margin: 60px auto;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+}
+
+.submit-btn-tanks-box {
+  background: none;
+  border: none;
+  text-align: center;
+  color: #000;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.submit-btn-tanks-box:hover {
+  opacity: 0.7;
+}
+
+
+.two-column {
+  display: flex;
+  gap: 24px; 
+  align-items: stretch;
+}
+
+.two-column .form-box {
+  max-width: unset;
+  margin: 0;
+}
+
+
+/* Proper left / right balance */
+.two-column {
+  justify-content: center;
+}
+
+
+
+.calendar-box {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.left-panel {
+  flex: 1;
+}
+.right-panel {
+  flex: 1;
+}
+
+.calendar-box h3 {
+  margin-bottom: 16px;
+}
+
+/* React Calendar UI polish */
+.react-calendar {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+
+/* Timezone text */
+.timezone-text {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+
+/* Time slots better spacing */
+.slot-list {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.slot-btn{
+  width: 80%;
+  padding: 14px;
+  margin-bottom: 10px; 
+  border-radius: 8px;
+  border: 1px solid #2f6bff;
+  background: #fff;
+  color: #2f6bff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.slot-btn:hover {
+  background: #2f6bff;
+  color: #fff;
+}
+
+
+/* Checkbox  */
+
+.checkbox{
+    margin-top: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =======================
+   RESPONSIVE FIXES
+======================= */
+/* Phones */
+
+@media (max-width: 768px){
+  .overlay {
+    position: absolute;          /*  overlap maintained */
+    top: 40%;                      /* hero ke upar */
+    left: 50%;                   /* center point */
+    transform: translateX(-50%); /* exact center */
+    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .hero-bg {
+    min-height: 400px;
+  }
+
+
+  .content {
+    padding-top: 0%;
+  }
+
+  .thankyou-box {
+    width: 90%;
+    max-width: 420px;
+    margin-top: -19%;  
+    padding: 2rem;
+    border-radius: 8px;
+  }
+
+   .options-list {
+    align-items: stretch;   /* full width items */
+    width: 100%;
+  }
+
+  .option-item {
+    width: 100%;            /* remove fixed width */
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 1.4;
+    align-items: flex-start;
+  }
+
+  .two-column {
+    flex-direction: column;
+  }
+
+  .calendar-box {
+    margin-top: 24px;
+  }
+
+
+}
+@media (max-width: 425px) {
+
+  .hero-bg {
+    min-height: 400px;
+  }
+
+  .overlay {
+    position: absolute;          /* overlap maintained */
+    top: 30%;                      /* hero ke upar */
+    left: 50%;                   /* center point */
+    transform: translateX(-50%); /* exact center */
+    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+
+
+  .content {
+    padding-top: 39px;
+  }
+
+  /* SAME LAYOUT FOR 768 / 425 / 375 / 320 */
+  .form-box {
+    width: 90%;
+    max-width: 420px;
+    margin: 79px auto;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+
+  .thankyou-box {
+    width: 90%;
+    max-width: 420px;
+    margin-top: 61%;  
+    padding: 2rem;
+    border-radius: 8px;
+  }
+
+
+  .title {
+    font-size: 20px;
+  }
+
+  .option-item {
+    font-size: 13px;
+  }
+
+  .submit-btn {
+    width: 250px;
+  }
+
+
+}
+
+/* ==============================
+   CONSULTATION ONE-CARD FIX
+   (NEW CLASSES ONLY)
+============================== */
+
+/* one big card ko horizontal layout do */
+.consultation-card {
+  max-width: 1100px;          /* wider card */
+}
+
+/* left-right split */
+.consultation-inner {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+/* left text section */
+.consultation-left {
+  flex: 1;
+}
+
+/* right calendar section */
+.consultation-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* calendar ko normal size + align */
+.consultation-right .react-calendar {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 10px;
+}
+
+/* calendar title spacing */
+.consultation-right h3 {
+  margin-bottom: 12px;
+}
+
+/* timezone text polish */
+.consultation-right .timezone-text {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* mobile stacking */
+@media (max-width: 768px) {
+  .consultation-inner {
+    flex-direction: column;
+  }
+
+  .consultation-right {
+    margin-top: 32px;
+  }
+
+  .consultation-right .react-calendar {
+    max-width: 100%;
+  }
+}
+
+
+/* ==============================
+   CALENDLY STYLE LAYOUT
+   (NEW CLASSES ONLY)
+============================== */
+
+.consultation-card {
+  max-width: 1100px;
+}
+
+.consultation-inner {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.consultation-left {
+  flex: 1;
+}
+
+.consultation-right {
+  flex: 1;
+}
+
+/* Calendar + slots side-by-side */
+.calendly-layout {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.calendar-column {
+  flex: 0 0 360px;   /* fixed width like Calendly */
+}
+
+.slot-column {
+  flex: 0 0 300px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+
+.consultation-right {
+  display: flex;          /* 🔥 MOST IMPORTANT */
+  flex-direction: row;   /* horizontal */
+  align-items: flex-start;
+  gap: 32px;
+}
+/* Mobile */
+@media (max-width: 768px) {
+  .consultation-inner {
+    flex-direction: column;
+  }
+
+  .calendly-layout {
+    flex-direction: column;
+  }
+
+  .calendar-column,
+  .slot-column {
+    width: 100%;
+  }
+}

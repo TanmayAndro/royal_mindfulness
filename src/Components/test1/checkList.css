@@ -11,7 +11,7 @@
 /* 1. Header */
 .zigzag-header {
   background-color: #1470AF;
-  height: 40px;
+  /* height: 40px; */
   width: 100%;
   position: relative;
   /* Ensures the header stays above the content */

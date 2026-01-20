@@ -68,7 +68,7 @@
 }
 
 /* Learning More Button Style */
-.learn-more-btn {
+/* .learn-more-btn {
   background-color: #1470AF;
   color: white;
   border: none;
@@ -77,14 +77,14 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  align-self: flex-end; /* Aligns button to right as per image */
+  align-self: flex-end; 
   box-shadow: 0 4px 6px rgba(20, 112, 175, 0.2);
   transition: background 0.2s;
-}
+} */
 
-.learn-more-btn:hover {
+/* .learn-more-btn:hover {
   background-color: #0d5a8f;
-}
+} */
 
 /* Responsive for smaller screens */
 @media (max-width: 1024px) {
