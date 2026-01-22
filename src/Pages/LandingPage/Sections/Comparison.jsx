@@ -52,7 +52,7 @@ export const Comparison = () => {
 
   // Already logged in → open directly
    if (clickedOn === "calendly") {
-    navigate("/free_consultance");
+    navigate("/talk_space");
   } else if (clickedOn === "rozerpay") {
    navigate("/book-now");
   }

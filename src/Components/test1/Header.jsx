@@ -3,6 +3,7 @@ import "./Header.css";
 import logoImg from '../../Assests/images/royal_image.png';
 import bookConsulation from "../../Assests/images/book_1.png"
 import hiretrainer from "../../Assests/images/hireTrainer.png"
+import { Link } from "react-router-dom";
 
 
 function Header() {
@@ -27,18 +28,18 @@ function Header() {
     <div className='header-root'>    
       <div className='header-section'>
         <nav className="header">
-          <div className="header-logo">
+          <Link to="/" className="header-logo" onClick={toggleMenu}>
             <img
-                src={logoImg}
-                alt="Royal Mindfulness logo"
-                className="logo-icon"
+              src={logoImg}
+              alt="Royal Mindfulness logo"
+              className="logo-icon"
             />
 
             <div className="logo-text">
-                <span className="logo-top">Royal</span>
-                <span className="logo-bottom">Mindfulness</span>
+              <span className="logo-top">Royal</span>
+              <span className="logo-bottom">Mindfulness</span>
             </div>
-          </div>
+          </Link>
 
           <button className="menu-toggle" onClick={toggleMenu}>
             <span className={isOpen ? "bar open" : "bar"}></span>
@@ -47,10 +48,10 @@ function Header() {
           </button>
 
           <ul className={`header-nav ${isOpen ? "active" : ""}`}>
-            <li><a href="#home" onClick={toggleMenu}>Home</a></li>
-            <li><a href="#about" onClick={toggleMenu}>About us</a></li>
-            <li><a href="#book" onClick={toggleMenu}>Book Now</a></li>
-            <li><a href="#contact" onClick={toggleMenu}>Contact Us</a></li>
+            <li><a href="/" onClick={toggleMenu}>Home</a></li>
+            <li><a href="/aboutus" onClick={toggleMenu}>About us</a></li>
+            <li><a href="/book-now" onClick={toggleMenu}>Book Now</a></li>
+            <li><a href="/contact" onClick={toggleMenu}>Contact Us</a></li>
             <li className="login-item">
               <a href="#login" className="login-button">Login</a>
             </li>

@@ -228,22 +228,33 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <Grid container className={`main_header_css ${scrolled ? "scrolled" : ""}`} alignItems="center"
-            sx={
-        location.pathname === "/" || location.pathname === "/free_consultance"
-          ? {
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              backgroundColor: "transparent",
-              transition: "background-color 0.3s ease",
-              zIndex: 10,
-              padding: { xs: "5px 5px",sm: "2px 20px", md: "2px 20px" },
-            }
-          : null
-      }
-      >
+      <Grid
+        container
+        className={`main_header_css ${scrolled ? "scrolled" : ""}`}
+        alignItems="center"
+        sx={
+          location.pathname === "/" ||
+          location.pathname === "/free_consultance" ||
+          location.pathname === "/consulation" || 
+          location.pathname === "/talk_space"
+            ? {
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                backgroundColor: "transparent",
+                transition: "background-color 0.3s ease",
+                zIndex: 10,
+                padding: {
+                  xs: "5px 5px",
+                  sm: "2px 20px",
+                  md: "2px 20px",
+                },
+              }
+            : null
+          }
+        >
+
         <Logo_part />
 
         {/* Toggle Button for Mobile

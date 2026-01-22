@@ -26,6 +26,17 @@
   gap: 12px;
   cursor: pointer;
   z-index: 1100;
+  text-decoration: none; 
+  color: inherit;  
+}
+
+/* Link ke saare states ke liye */
+.header-logo:link,
+.header-logo:visited,
+.header-logo:hover,
+.header-logo:active {
+  text-decoration: none;   /* ✅ underline completely removed */
+  color: inherit;
 }
 
 .logo-icon {
@@ -37,6 +48,7 @@
 .logo-text {
   display: flex;
   flex-direction: column;
+  text-decoration: none;
 }
 
 .logo-top, .logo-bottom {
@@ -44,6 +56,7 @@
   font-size: 22px;
   line-height: 1.1;
   color: white;
+  text-decoration: none; 
 }
 
 /* --- Navigation (Desktop) --- */

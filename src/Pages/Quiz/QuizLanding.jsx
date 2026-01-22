@@ -444,9 +444,9 @@ export default function QuizLanding() {
   const handleVideoOpen = () => setOpenVideo(true);
   const handleVideoClose = () => setOpenVideo(false);
   
-      const handelConsulation = (clickedOn: "calendly" | "rozerpay") => {
+    const handelConsulation = (clickedOn: "calendly" | "rozerpay") => {
   if (clickedOn === "calendly") {
-    navigate("/free_consultance");
+    navigate("/talk_space");
   } else if (clickedOn === "rozerpay") {
     window.open("https://pages.razorpay.com/pl_RJ40RFXQGpJ4w5/view", "_blank");
   }

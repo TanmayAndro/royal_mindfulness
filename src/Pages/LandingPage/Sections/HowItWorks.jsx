@@ -162,7 +162,7 @@ export const HowItWorks = () => {
   const leftRef = useRef(null);
   const [leftHeight, setLeftHeight] = useState("auto");
   const navigate = useNavigate();
-       const handelConsulation = (clickedOn: "calendly" | "rozerpay") => {
+  const handelConsulation = (clickedOn: "calendly" | "rozerpay") => {
 
   //  navigate("/book-now");  
 
@@ -170,7 +170,7 @@ export const HowItWorks = () => {
 
   // // Already logged in → open directly
   if (clickedOn === "calendly") {
-    navigate("/free_consultance");
+    navigate("/talk_space");
   } else if (clickedOn === "rozerpay") {
    navigate("/book-now");
   }

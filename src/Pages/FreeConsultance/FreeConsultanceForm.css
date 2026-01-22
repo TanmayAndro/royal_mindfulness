@@ -62,7 +62,7 @@ body {
    FORM BOX
 ======================= */
 
-.form-box {
+.free-consultanceform-box {
   background: #fff;
   padding: 3rem;
   border-radius: 4px;
@@ -159,7 +159,7 @@ body {
    BUTTONS
 ======================= */
 
-.submit-btn {
+.submit-btnFree {
   width: 100%;
   padding: 10px;
   background: black;
@@ -170,7 +170,7 @@ body {
   cursor: pointer;
 }
 
-.submit-btn:hover {
+.submit-btnFree:hover {
   background: #111;
 }
 
@@ -253,6 +253,14 @@ body {
     border-radius: 8px;
   }
 
+  .free-consultanceform-box {
+    width: 90%;
+    max-width: 420px;
+    margin: 79px auto;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+
 }
 @media (max-width: 425px) {
 
@@ -281,18 +289,18 @@ body {
   }
 
   /* SAME LAYOUT FOR 768 / 425 / 375 / 320 */
-  .form-box {
+  .free-consultanceform-box {
     width: 90%;
     max-width: 420px;
-    margin: 79px auto;
+    margin: 100px auto;
     padding: 2rem;
     border-radius: 8px;
   }
 
   .thankyou-box {
-    width: 90%;
+    width: 77%;
     max-width: 420px;
-    margin-top: 61%;  
+    margin-top: 41%;  
     padding: 2rem;
     border-radius: 8px;
   }

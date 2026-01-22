@@ -1,92 +1,84 @@
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useState, useMemo } from "react";
-import "./CalendarSection.css"
+import "./CalendarSection.css";
 
-/* 🔹 Helper function: GMT offset calculate */
+/* GMT offset helper */
 const getGMTOffset = (timeZone) => {
   const now = new Date();
-
   const tzDate = new Date(
     now.toLocaleString("en-US", { timeZone })
   );
 
-  const diffMinutes = (tzDate - now) / (1000 * 60);
-  const offsetMinutes = Math.round(diffMinutes);
+  const diff = (tzDate - now) / (1000 * 60);
+  const sign = diff >= 0 ? "+" : "-";
+  const abs = Math.abs(Math.round(diff));
 
-  const sign = offsetMinutes >= 0 ? "+" : "-";
-  const absMinutes = Math.abs(offsetMinutes);
+  const h = String(Math.floor(abs / 60)).padStart(2, "0");
+  const m = String(abs % 60).padStart(2, "0");
 
-  const hours = String(Math.floor(absMinutes / 60)).padStart(2, "0");
-  const minutes = String(absMinutes % 60).padStart(2, "0");
-
-  return `GMT${sign}${hours}:${minutes}`;
+  return `GMT${sign}${h}:${m}`;
 };
 
-const CalendarSection = ({ onDateSelect }) => {
-  const now = new Date();
-  const after24hours = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+const CalendarSection = ({ onDateSelect, onTimeZoneChange }) => {
+  const after24hours = new Date(Date.now() + 24 * 60 * 60 * 1000);
 
-  // User system timezone
-  const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-  // All timezones with GMT offset
   const allTimeZones = useMemo(() => {
-    return Intl.supportedValuesOf("timeZone")
+    let zones = Intl.supportedValuesOf("timeZone") || [];
+
+    if (!zones.includes("Asia/Kolkata")) {
+      zones.push("Asia/Kolkata");
+    }
+
+    return zones
       .map((tz) => ({
-        value: tz,
+        value: `${tz} (${getGMTOffset(tz)})`,
         label: `${tz} (${getGMTOffset(tz)})`
       }))
       .sort((a, b) => a.label.localeCompare(b.label));
   }, []);
 
-  const [timeZone, setTimeZone] = useState(userTimeZone);
+  const [timeZone, setTimeZone] = useState("");
+
+  const handleDateClick = (date) => {
+    const onlyDate = new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate()
+    );
+
+    onDateSelect(onlyDate);
+  };
+
+  const handleTimeZoneChange = (e) => {
+    const value = e.target.value;
+    setTimeZone(value);
+    onTimeZoneChange(value);
+  };
 
   return (
-    <>
-      {/* Heading */}
-      <h1
-        style={{
-          fontSize: "25px",
-          fontWeight: "600",
-          marginBottom: "16px"
-        }}
-      >
-        Select a Date & Time
-      </h1>
+    <div className="calendar-section">
+      <h1 className="calendar-heading">Select a Date & Time</h1>
 
-      {/* Calendar */}
       <div className="calendar-wrapper">
         <Calendar
           minDate={after24hours}
-          onClickDay={(date) => onDateSelect(date)}
+          onClickDay={handleDateClick}
         />
       </div>
-            
 
-      {/* Time Zone Section */}
-      <div className="timezone-text" style={{ marginTop: "20px" }}>
-        <h2
-          style={{
-            fontSize: "14px",
-            fontWeight: "600",
-            marginBottom: "6px"
-          }}
-        >
-          Time Zone
-        </h2>
+      <div className="timezone-text">
+        <h2 className="timezone-heading">Time Zone</h2>
 
         <select
+          className="timezone-select"
           value={timeZone}
-          onChange={(e) => setTimeZone(e.target.value)}
-          style={{
-            width: "100%",
-            padding: "8px",
-            borderRadius: "4px",
-            border: "1px solid #ccc",
-            fontSize: "14px"
-          }}
+          onChange={handleTimeZoneChange}
         >
+          <option value="" disabled>
+            Select Time Zone
+          </option>
+
           {allTimeZones.map((tz) => (
             <option key={tz.value} value={tz.value}>
               {tz.label}
@@ -94,7 +86,7 @@ const CalendarSection = ({ onDateSelect }) => {
           ))}
         </select>
       </div>
-    </>
+    </div>
   );
 };
 

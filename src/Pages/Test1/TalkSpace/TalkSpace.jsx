@@ -34,10 +34,11 @@ function TalkSpace() {
   };
 
   return (
+    <div className="talkspace-page">
     <div className="page-wrapper">
       <div className="hero-bg"></div>
 
-      <div className="overlay">
+      <div className="overlayconsul">
         <div className="content">
           <div className="form-box">
             <h1 className="title">
@@ -72,6 +73,7 @@ function TalkSpace() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
