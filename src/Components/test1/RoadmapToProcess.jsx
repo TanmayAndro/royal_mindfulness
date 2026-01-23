@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 
 
 const RoadmapToProcess = () => {
+
+  const userId = localStorage.getItem("user_id");
   const steps = [
     {
       id: 1,
@@ -15,7 +17,7 @@ const RoadmapToProcess = () => {
       description:
         "Start with a free 15-minute consultation where we understand your mental fitness goals, lifestyle, and needs — no obligations, just clarity.",
       buttonText: "Book Free Consultation",
-      note: "(without Credit Card)",
+      note: "(No Credit card required)",
       image: roadmap1,
       position: "right",
       backdrop: "style1",
@@ -56,7 +58,8 @@ const RoadmapToProcess = () => {
       position: "right",
       backdrop: "style3",
       sparkleicon: "icon3",
-      link: "/talk_sapce", 
+      link: `/dashboard/${userId}`, 
+      
   
       sparkle: {
         l1: { x1: 5, y1: 80, x2: 45, y2: 80 },
@@ -69,7 +72,7 @@ const RoadmapToProcess = () => {
   return (
     <section className="roadmap-section">
       <div className="roadmap-container">
-        <h2 className="roadmap-main-title">Roadmap To Peace</h2>
+        <h2 className="roadmap-main-title">How Talkspace works</h2>
 
         <div className="roadmap-steps">
           {steps.map((step, index) => (
