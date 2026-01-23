@@ -119,7 +119,8 @@ function FreeConsultanceForm() {
         /* ✅ FORM STATE */
         <form className="free-consultanceform-box" onSubmit={handleSubmit} noValidate>
 
-          <h1 className="title">Free Consultance Form</h1>
+          <h1 className="title">Let's take the next step together.</h1>
+          <p className="subtitle">(Share your details so we can schedule your free  consultation.)</p>
 
           {/* Name */}
           <div className="field">

@@ -198,7 +198,7 @@ export default App;
 
 const Layout = () => {
   const location = useLocation();
-  const hideHeaderFooter = ["/meeting", "/royalminfullness-test"].includes(location.pathname);
+  const hideHeaderFooter = ["/meeting", "/"].includes(location.pathname);
  // Hides for Jitsi page
   const hideFooter = location.pathname === "/free_consultance";  //Hide only footer page
   
@@ -206,7 +206,8 @@ const Layout = () => {
     <Box  >
       {!hideHeaderFooter && <Header />}
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/royalminfullness-test" element={<LandingPage />} />
+        <Route path="/" element={<Royal />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         
@@ -254,7 +255,7 @@ const Layout = () => {
         <Route path="/webinar" element={<Webinar />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/free_consultance" element={<FreeConsultanceForm />} />
-        <Route path="/royalminfullness-test" element={<Royal />} />
+        
         <Route path="/talk_space" element={<TalkSpace />} />
         <Route path="/consulation" element={<ConsultationPage />} />
 

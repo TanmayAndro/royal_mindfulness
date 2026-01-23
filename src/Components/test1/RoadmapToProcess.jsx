@@ -3,6 +3,8 @@ import './RoadmapToProcess.css';
 import roadmap1 from '../../Assests/images/roadmap1.jpg';
 import roadmap2 from '../../Assests/images/roadmap2.jpg';
 import roadmap3 from '../../Assests/images/roadmap3.jpg';
+import { Link } from "react-router-dom";
+
 
 const RoadmapToProcess = () => {
   const steps = [
@@ -18,6 +20,7 @@ const RoadmapToProcess = () => {
       position: "right",
       backdrop: "style1",
       sparkleicon: "icon1",
+      link: "/talk_space", 
       sparkle: {
         l1: { x1: 5, y1: 80, x2: 45, y2: 80 },
         l2: { x1: 25, y1: 20, x2: 60, y2: 55 },
@@ -35,6 +38,7 @@ const RoadmapToProcess = () => {
       position: "left",
       backdrop: "style2",
       sparkleicon: "icon2",
+      link: "/book-now",
      sparkle: {
         l1: { x1: 5, y1: 80, x2: 45, y2: 80 },
         l2: { x1: 25, y1: 20, x2: 60, y2: 55 },
@@ -52,6 +56,7 @@ const RoadmapToProcess = () => {
       position: "right",
       backdrop: "style3",
       sparkleicon: "icon3",
+      link: "/talk_sapce", 
   
       sparkle: {
         l1: { x1: 5, y1: 80, x2: 45, y2: 80 },
@@ -78,7 +83,9 @@ const RoadmapToProcess = () => {
                   </h3>
                   <p className="step-para">{step.description}</p>
                   <div className="button-group">
-                    <button className="roadmap-btn">{step.buttonText}</button>
+                    <Link to={step.link} className="roadmap-btn">
+                      {step.buttonText}
+                    </Link>
                     {step.note && <span className="btn-note">{step.note}</span>}
                   </div>
                 </div>

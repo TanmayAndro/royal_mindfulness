@@ -3,10 +3,10 @@ import "./TalkspaceFeature.css";
 import PhoneImg from "../../Assests/images/phone-frame-img.svg";
 
 const STEPS = [
-    { id: 1, title: "Check eligibility", desc: "We're in-network with most major plans...", img: "https://cdn.prod.website-files.com/5f1b10a955e49d279bdc2192/6788623f89a65a2751eacb2f_90c318d618b0cbc04bb9317aee84c49d_step1.png" },
-    { id: 2, title: "Get matched with a therapist", desc: "Answer a few questions online...", img: "https://cdn.prod.website-files.com/5f1b10a955e49d279bdc2192/67acf56b482a745d487373f2_c5bea54156108305ad18aae868e69503_step2.png" },
-    { id: 3, title: "Start therapy", desc: "Communicate with your therapist...", img: "https://cdn.prod.website-files.com/5f1b10a955e49d279bdc2192/679b97f79015434b2de4e11f_3b99ece1d6d568e2f6fbbd7817811a19_step3.png" },
-    { id: 4, title: "Switch providers any time", desc: "If your first therapist isn't a fit...", img: "https://cdn.prod.website-files.com/5f1b10a955e49d279bdc2192/6788623f89a65a2751eacb41_83d6b59ad04aedb0524228d4724821a0_step4.png" }
+    { id: 1, title: "Download Mental Fitness Checklist", desc: "We're in-network with most major plans...", img: "https://cdn.prod.website-files.com/5f1b10a955e49d279bdc2192/6788623f89a65a2751eacb2f_90c318d618b0cbc04bb9317aee84c49d_step1.png" },
+    { id: 2, title: "Book a free consultation", desc: "Answer a few questions online...", img: "https://cdn.prod.website-files.com/5f1b10a955e49d279bdc2192/67acf56b482a745d487373f2_c5bea54156108305ad18aae868e69503_step2.png" },
+    { id: 3, title: "Download free Royal Mindfulness journal", desc: "Communicate with your therapist...", img: "https://cdn.prod.website-files.com/5f1b10a955e49d279bdc2192/679b97f79015434b2de4e11f_3b99ece1d6d568e2f6fbbd7817811a19_step3.png" },
+    { id: 4, title: "Take Mental Wellness Quiz", desc: "If your first therapist isn't a fit...", img: "https://cdn.prod.website-files.com/5f1b10a955e49d279bdc2192/6788623f89a65a2751eacb41_83d6b59ad04aedb0524228d4724821a0_step4.png" }
 ];
 
 const TalkspaceFeature = () => {

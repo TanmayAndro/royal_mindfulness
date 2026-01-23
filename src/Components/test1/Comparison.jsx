@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import CommonButtons from "./CommonButton";
 import { useNavigate } from "react-router-dom";
+
 const data = [
   {
     label: "Frequency",
@@ -48,7 +49,7 @@ const Comparison = () => {
   const navigate = useNavigate();
     const handelConsulation = (clickedOn) => {
     if (clickedOn === "calendly") {
-      navigate("/free_consultance");
+      navigate("/talk_space");
     } else if (clickedOn === "rozerpay") {
       navigate("/book-now");
     }
@@ -216,13 +217,32 @@ const Comparison = () => {
               justifyContent: "start",
             }}
           >
-            <CommonButtons
-              label="Book a free consultation"
-              height="50px"
-              sx={{ backgroundColor: "#1470AF", color: "white" }}
-              variant="contained"
-              onClick={() =>handelConsulation("calendly")}
-            />
+           <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "4px",
+              }}
+            >
+              <CommonButtons
+                label="Book a free consultation"
+                height="50px"
+                sx={{ backgroundColor: "#1470AF", color: "white" }}
+                variant="contained"
+                onClick={() => handelConsulation("calendly")}
+              />
+
+              <span
+                style={{
+                  fontSize: "12px",
+                  color: "#555",
+                }}
+              >
+                (No Credit card required)
+              </span>
+            </div>
+
             <CommonButtons
               label="Hire Trainer"
               width="150px"

@@ -1,0 +1,73 @@
+/* =========================
+   NAVBAR – AUTH RELATED
+   ========================= */
+
+/* Login button hover */
+.login-button:hover {
+  background-color: white;
+  color: #1470AF;
+  transition: 0.3s ease;
+}
+
+/* Username text when logged in */
+.user-name span {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 6px 12px;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Logout button styling */
+.login-item button.login-button {
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Logout hover */
+.login-item button.login-button:hover {
+  background-color: #ffffff;
+  color: #1470AF;
+}
+
+/* =========================
+   ACTIVE LINK (OPTIONAL)
+   ========================= */
+.header-nav li a.active {
+  font-weight: 600;
+  border-bottom: 2px solid white;
+  padding-bottom: 4px;
+}
+
+/* =========================
+   MOBILE NAV IMPROVEMENTS
+   ========================= */
+@media (max-width: 768px) {
+  .user-name span {
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .login-item button.login-button {
+    width: 80%;
+    text-align: center;
+  }
+}
+
+/* =========================
+   MENU TOGGLE ANIMATION (OPTIONAL)
+   ========================= */
+.bar.open:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.bar.open:nth-child(2) {
+  opacity: 0;
+}
+
+.bar.open:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}

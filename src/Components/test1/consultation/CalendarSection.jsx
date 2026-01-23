@@ -58,7 +58,7 @@ const CalendarSection = ({ onDateSelect, onTimeZoneChange }) => {
 
   return (
     <div className="calendar-section">
-      <h1 className="calendar-heading">Select a Date & Time</h1>
+      <h1 className="calendar-heading">Choose a time slot</h1>
 
       <div className="calendar-wrapper">
         <Calendar

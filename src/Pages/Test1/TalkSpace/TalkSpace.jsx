@@ -42,8 +42,9 @@ function TalkSpace() {
         <div className="content">
           <div className="form-box">
             <h1 className="title">
-              Which of these feel like your inner weather these days?
+              Which of these sounds a little like you?
             </h1>
+            <p className="subtitle">(You can select more than one. There's no right or wrong.)</p>
 
             
 

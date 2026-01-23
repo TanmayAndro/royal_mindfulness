@@ -5,18 +5,15 @@ import bookConsulation from "../../Assests/images/book_1.png"
 import hiretrainer from "../../Assests/images/hireTrainer.png"
 import { Link } from "react-router-dom";
 
+import NavBar from "./NavBar";
+
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false)
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-    // Cleanup function to ensure scroll is restored if component unmounts
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [isOpen]);
 
@@ -27,36 +24,7 @@ function Header() {
     <>
     <div className='header-root'>    
       <div className='header-section'>
-        <nav className="header">
-          <Link to="/" className="header-logo" onClick={toggleMenu}>
-            <img
-              src={logoImg}
-              alt="Royal Mindfulness logo"
-              className="logo-icon"
-            />
-
-            <div className="logo-text">
-              <span className="logo-top">Royal</span>
-              <span className="logo-bottom">Mindfulness</span>
-            </div>
-          </Link>
-
-          <button className="menu-toggle" onClick={toggleMenu}>
-            <span className={isOpen ? "bar open" : "bar"}></span>
-            <span className={isOpen ? "bar open" : "bar"}></span>
-            <span className={isOpen ? "bar open" : "bar"}></span>
-          </button>
-
-          <ul className={`header-nav ${isOpen ? "active" : ""}`}>
-            <li><a href="/" onClick={toggleMenu}>Home</a></li>
-            <li><a href="/aboutus" onClick={toggleMenu}>About us</a></li>
-            <li><a href="/book-now" onClick={toggleMenu}>Book Now</a></li>
-            <li><a href="/contact" onClick={toggleMenu}>Contact Us</a></li>
-            <li className="login-item">
-              <a href="#login" className="login-button">Login</a>
-            </li>
-          </ul>
-        </nav>
+        <NavBar isOpen={isOpen} toggleMenu={toggleMenu} />
         <section className="hero-section">
           <header className="hero">
             <h1>Mental Fitness Trainer for Building Inner strength</h1>
@@ -65,17 +33,27 @@ function Header() {
 
           <div className="book-card-wrapper">
             <div className="book-card">
-              <img
-                src={bookConsulation}
-                alt="Book Consultation"
-                className="book-consulation1"
-              />
-              <img
-                src={hiretrainer}
-                alt="Hire Trainer"
-                className="book-consulation1"
-              />
+            <div className="book-image-wrapper">
+              <Link to="/talk_space">
+                <img
+                  src={bookConsulation}
+                  alt="Book Consultation"
+                  className="book-consulation1"
+                />
+              </Link>
             </div>
+
+            <div className="book-image-wrapper">
+              <Link to="/book-now">
+                <img
+                  src={hiretrainer}
+                  alt="Hire Trainer"
+                  className="book-consulation1"
+                />
+              </Link>
+            </div>
+          </div>
+
           </div>
 
         </section>

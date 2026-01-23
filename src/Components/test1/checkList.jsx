@@ -1,11 +1,45 @@
 import React, { useState } from 'react';
 import "./checkList.css";
 
+
 const statements = [
-  { id: 1, text: "I often feel stressed due to my work or relationships." },
-  { id: 2, text: "I find it difficult to maintain a healthy sleep schedule." },
-  { id: 3, text: "I sometimes feel overwhelmed by daily responsibility." },
-  { id: 4, text: "I would like to improve my mental well-being." }
+  {
+    question: "I often feel stressed due to my work or relationships.",
+    answer: "Stress is tough, but your mind can be trained to handle it better.",
+  },
+  {
+    question: "I feel anxious about my future, work, health, or relationships.",
+    answer: "Anxiety drains energy. Let’s build a calmer, more focused mind.",
+  },
+  {
+    question: "I struggle to stay calm in high-pressure/intense situations.",
+    answer: "Stay sharp under pressure. Your mind can learn resilience.",
+  },
+  {
+    question:
+      "I know I can do better at work and in personal life, but I need better mental discipline.",
+    answer: "Success starts with discipline. Let’s train your focus.",
+  },
+  {
+    question:
+      "I want to improve my emotional intelligence and handle situations better.",
+    answer: "Mastering emotions means mastering life. Let’s build that skill.",
+  },
+  {
+    question:
+      "I want to train my mind just like athletes train their bodies—for peak performance.",
+    answer: "Peak performance starts in the mind. Let’s train it.",
+  },
+  {
+    question:
+      "I know that mindset is everything, but I don’t know how to train it effectively.",
+    answer: "Mindset is key. We’ll show you how to sharpen it.",
+  },
+  {
+    question:
+      "I feel like my mind is my biggest asset—but sometimes it also holds me back.",
+    answer: "Your mind is powerful—let’s make sure it works for you.",
+  },
 ];
 
 const Checklist = () => {
@@ -16,25 +50,32 @@ const Checklist = () => {
   const currentStatement = statements[currentIndex];
 
   const handleAnswer = (response) => {
-    const newAnswer = {
-      statementId: currentStatement.id,
-      response,
-    };
+    if (response == 'yes') {
+      setLastAnswer('yes'); 
 
-    setAnswers(prev => [...prev, newAnswer]);
-    setLastAnswer(response);
+      setAnswers((prev) => [
+        ...prev,
+        { index: currentIndex, response: 'yes' },
+      ]);
+      return; 
+    }
 
-    setTimeout(() => {
-      setCurrentIndex(prev => {
-        if (prev < statements.length - 1) {
-          return prev + 1;
-        }
-        return prev;
-      });
+    if (response == 'no') {
+      setLastAnswer(null); 
 
-      setLastAnswer(null);
-    }, 1000);
-  };
+      setAnswers((prev) => [
+        ...prev,
+        { index: currentIndex, response: 'no' },
+      ]);
+
+      setCurrentIndex((prev) => 
+      prev < statements.length - 1 ? prev + 1 : prev
+      ); 
+    }
+
+    
+  }
+
 
   return (
     
@@ -97,7 +138,7 @@ const Checklist = () => {
 
               {/* Text content */}
               <div className="statement-text">
-                {currentStatement.text}
+                {currentStatement.question}
               </div>
 
               {/* Right Arrow */}
@@ -136,19 +177,12 @@ const Checklist = () => {
                   {lastAnswer === 'yes' ? '✓' : '✕'}
                 </span>
                 <span>
-                  {lastAnswer === 'yes' 
-                    ? 'You answered: Yes, this applies to me' 
-                    : 'You answered: No, this doesn\'t apply'}
+                   {currentStatement.answer}
                 </span>
               </>
             ) : (
               <>
                 <span className='answer-text'>Answer will appear here when you click</span>
-                <button className="circle-btn check-btn " onClick={() => handleAnswer('yes')}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B5E20" strokeWidth="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </button>
-              
-                
               </>
             )}
           </div>

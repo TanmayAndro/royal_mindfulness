@@ -22,6 +22,10 @@ body {
   min-height: 100vh;
 }
 
+.subtext{
+  color: #9ca3af;
+}
+
 .page-wrapper {
   min-height: 100vh;
   display: flex;

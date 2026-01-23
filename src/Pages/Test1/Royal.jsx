@@ -11,7 +11,7 @@ import HealthMind from "../../Components/test1/HealthMind"
 import HealthyStory from "../../Components/test1/HealthyStory"
 import Comparison from "../../Components/test1/Comparison"
 import FAQSection from "../../Components/test1/FAQSection"
-import TalkspaceFeature from "../../Components/test1/TalkspaceFeature"
+// import TalkspaceFeature from "../../Components/test1/TalkspaceFeature"
 
 
 
@@ -30,7 +30,7 @@ function Royal() {
       <div
         style={{
           width: "100%",
-          maxWidth: "1400px",
+          maxWidth: "100%",
           padding: "0 0px",        // mobile padding
           boxSizing: "border-box",
         }}
@@ -57,9 +57,9 @@ function Royal() {
           <FAQSection />
         </div>
 
-        <div style={{ marginTop: "40px" }}>
+        {/* <div style={{ marginTop: "40px" }}>
           <TalkspaceFeature />
-        </div>
+        </div> */}
 
         <div style={{ marginTop: "40px" }}>
           <HealthyStory />
@@ -73,7 +73,7 @@ function Royal() {
           <FeedBack />
         </div>
 
-        <div style={{ marginTop: "60px" }}>
+        <div style={{ marginTop: "0px" }}>
           <Footer />
         </div>
       </div>

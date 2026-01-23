@@ -69,7 +69,7 @@ const ConsultationPage = () => {
 
               {/* LEFT SIDE */}
               <div className="consultation-left">
-                <h1 className="title">Your Reflection</h1>
+                <h1 className="title"></h1>
 
                 <div className="options-list">
                   {response.map((line, i) => (

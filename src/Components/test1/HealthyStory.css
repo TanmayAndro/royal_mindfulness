@@ -61,6 +61,7 @@
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
+  text-decoration: none;
 
   /* This is what moves it to the right */
   align-self: flex-end; 

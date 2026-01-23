@@ -136,7 +136,7 @@
 //       </Grid>
 //     </>
 //   );
-// };
+// };x
 
 // export default Header;
 
@@ -294,25 +294,24 @@ const Header: React.FC = () => {
             </Box>
           ) : (
            <Box
-  className="second_grid_css hidebutton"
-  sx={{
-    display: { xs: "none", md: "flex" },
-    alignItems: "center",
-    gap: 1,
-  }}
->
-  <Avatar onClick={handleMenuClick} sx={{ cursor: "pointer" }}>
-    {first_name?.[0]}
-  </Avatar>
-  <LogoutIcon
-    sx={{ color: "white", cursor: "pointer" }}
-    onClick={handleLogout}
-  />
-  <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-    <MenuItem onClick={handleDashboard}>Dashboard</MenuItem>
-  </Menu>
-</Box>
-
+              className="second_grid_css hidebutton"
+              sx={{
+                display: { xs: "none", md: "flex" },
+                alignItems: "center",
+                gap: 1,
+              }}
+            >
+            <Avatar onClick={handleMenuClick} sx={{ cursor: "pointer" }}>
+              {first_name?.[0]}
+            </Avatar>
+            <LogoutIcon
+              sx={{ color: "white", cursor: "pointer" }}
+              onClick={handleLogout}
+            />
+            <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+              <MenuItem onClick={handleDashboard}>Dashboard</MenuItem>
+            </Menu>
+          </Box>
           )}
         </Grid>
       </Grid>

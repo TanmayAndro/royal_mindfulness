@@ -3,8 +3,46 @@ import "./FeedBack.css"
 import {FaEdit} from 'react-icons/fa';
 
 function FeebBack() {
-  const [rating, setRating] = useState(5)
+  const [rating, setRating] = useState(0)
+  const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState('')
+
+  const handleSubmitFeedback = async() => {
+    setLoading(true); 
+
+    const payload ={
+      rate_our_teachers: rating,
+      overall_experience: rating, 
+      need_to_improve: "", 
+      how_to_improve: ""
+    }
+
+    try {
+
+      const response = await fetch(
+        "https://deedee-unchainable-optionally.ngrok-free.dev/feedbacks", 
+        {
+          method: "POST", 
+          headers: {
+            "Content-Type": "application/json"
+          }, 
+          body:  JSON.stringify(payload)
+        }
+      );
+
+      const data = await response.json(); 
+
+      if(response.ok){
+        console.log("Api Response:", data); 
+      } else {
+        console.log(data); 
+      }      
+    } catch (error) {
+      console.log("Api errros: ", error); 
+    } finally {
+      setLoading(false)
+    }
+  };  
 
 
 
@@ -38,8 +76,10 @@ function FeebBack() {
           </div>
 
           {/* Submitted Button */}
-          <button className='submit-feedback-btn'>
-            Submit Feedback
+          <button className='submit-feedback-btn'
+           onClick={handleSubmitFeedback} 
+           disabled= {loading || rating == 0}>
+             {loading ? "Submitting..." : "Submit Feedback"}
           </button>
         </div>
       </div>

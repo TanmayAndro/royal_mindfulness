@@ -1,6 +1,7 @@
 import React from 'react'
 import "./HealthyStory.css"
 import stroyImage from "../../Assests/images/Healthstroy.png"
+import { Link } from "react-router-dom";
 
 
 function HealthyStory() {
@@ -19,9 +20,9 @@ function HealthyStory() {
           <p className='health-description-main'>
           Join us on a journey where affordable well-being meets regal serenity, and discover the transformative power of mindfulness at Royal Mindfulness
           </p>
-          <button className="healthy-story-btn">
+          <Link to="/aboutus" className="healthy-story-btn">
             Learn More
-          </button>
+          </Link>
     
     </div>
     

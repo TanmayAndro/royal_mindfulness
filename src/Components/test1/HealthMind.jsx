@@ -1,5 +1,6 @@
 import React from 'react'
 import "./HealthMind.css"
+import { Link } from "react-router-dom";
 function HealthMind() {
   return (
     <div className='healthy-mind-section'>
@@ -10,9 +11,26 @@ function HealthMind() {
         <p className='healthy-mind-description'>
           Start your journey today. It's free and takes just a few minutes.
         </p>
-        <button type='submit' className='healthy-mind-btn'>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "4px",
+          }}
+        >
+        <Link type='submit' to="/talk_space" className='healthy-mind-btn'>
           Book Free Consultation
-        </button>
+        </Link>
+        <span
+          style={{
+            fontSize: "12px",
+            color: "#555",
+          }}
+        >
+        (No Credit card required)
+        </span>
+        </div>
       </div>
     </div>
   )
