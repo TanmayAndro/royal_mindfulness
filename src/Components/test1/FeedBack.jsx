@@ -79,7 +79,7 @@ function FeebBack() {
 
             <textarea
               className="feedback-textarea"
-              placeholder="Comments"
+              placeholder="Any Comments"
               value={needToImprove}
               onChange={(e) => setNeedToImprove(e.target.value)}
             /> 
