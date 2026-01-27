@@ -175,6 +175,14 @@
   .header {
     padding: 20px 30px;
   }
+  .book-card {
+     flex-direction: column;   /* 👈 rows */
+    align-items: center;
+    text-align: center;
+  }
+  .book-image-wrapper {
+    width: 100%
+  }
 }
 
 @media (max-width: 768px) {

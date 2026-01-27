@@ -201,18 +201,6 @@ const Footer = () => {
             ROYAL <br /> MINDFULNESS
           </Typography>
         </Box>
-        <Typography variant="body1" gutterBottom>
-          ONLINE YOGA RELAXATION CLASSES
-        </Typography>
-        <Typography
-          variant="body2"
-          fontStyle="italic"
-          sx={{ color: "#EAEAEE", mt: 2 }}
-        >
-          "Experience deep relaxation at home with our <br />
-          Online Yoga Classes—your journey to inner <br />
-          peace starts here!"
-        </Typography>
       </Box>
       {/* Quick Links */}
       <Box sx={{ flex: 1, minWidth: 200 }}>

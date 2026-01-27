@@ -6,6 +6,8 @@ import roadmap3 from '../../Assests/images/roadmap3.jpg';
 import { Link } from "react-router-dom";
 
 
+
+
 const RoadmapToProcess = () => {
 
   const userId = localStorage.getItem("user_id");
@@ -72,7 +74,7 @@ const RoadmapToProcess = () => {
   return (
     <section className="roadmap-section">
       <div className="roadmap-container">
-        <h2 className="roadmap-main-title">How Talkspace works</h2>
+        <h2 className="roadmap-main-title">How It works</h2>
 
         <div className="roadmap-steps">
           {steps.map((step, index) => (
@@ -139,16 +141,47 @@ const RoadmapToProcess = () => {
 
               {index < steps.length - 1 && (
                 <div className="roadmap-arrow">
-                  <svg width="60" height="150" viewBox="0 0 40 100" fill="none">
-                    <path
-                      d="M20 0V80M20 80L10 70M20 80L30 70"
-                      stroke="#1470AF"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                    />
-                  </svg>
+                  <div className="roadmap-connector">
+                    <svg className="flow-arrow inverted" viewBox="0 0 300 300">
+                      <defs>
+                        <marker
+                          id="arrowHead"
+                          markerWidth="10"
+                          markerHeight="30"
+                          refX="6"
+                          refY="3"
+                          orient="auto"
+                        >
+                          <path d="M0,0 L0,6 L9,3 z" fill="#1E73BE" />
+                        </marker>
+                      </defs>
+
+                      <path
+                        d={
+                          step.position === "right"
+                            ? `
+                              M150 290
+                              C230 240, 230 180, 150 150
+                              C70 120, 70 60, 150 10
+                            `
+                            : `
+                              M150 290
+                              C70 240, 70 180, 150 150
+                              C230 120, 230 60, 150 10
+                            `
+                        }
+                        stroke="#1E73BE"
+                        strokeWidth="3"
+                        fill="none"
+                        strokeDasharray="6,6"
+                        markerEnd="url(#arrowHead)"
+                      />
+                    </svg>
+
+                  </div>
                 </div>
               )}
+
             </React.Fragment>
           ))}
         </div>

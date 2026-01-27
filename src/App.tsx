@@ -144,7 +144,8 @@ import MetntalQuiz from "./Pages/Quiz/MetntalQuiz";
 
 import PricingPlans from "./Pages/Pricing_plans/PricingPlans";
 import "./fonts.css";
-import Footer from "./Components/Footer";
+// import Footer from "./Components/Footer";
+import Footer from "./Components/test1/Footer"
 import FAQ from "./Pages/FAQ/faq";
 import ProtectedRoute from "./API/protectedRoute";
 import TermsCondition from "./Pages/Terms&Conditon/Terms&Condition";

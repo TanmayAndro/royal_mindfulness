@@ -27,7 +27,7 @@ function Header() {
         <NavBar isOpen={isOpen} toggleMenu={toggleMenu} />
         <section className="hero-section">
           <header className="hero">
-            <h1>Mental Fitness Trainer for Building Inner strength</h1>
+            <h1>Train yourself to be "happy"</h1>
             <p>1-on-1 training, live sessions, Free Consultation</p>
           </header>
 

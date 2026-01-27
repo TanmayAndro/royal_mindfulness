@@ -17,6 +17,19 @@ font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     gap:24px
 }
 
+
+.feedback-textarea {
+  width: 58%;
+  margin-top: 14px;
+  min-height: 70px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: none;
+  margin-bottom: 10px;
+}
+
 .feedback-card{
     background-color: #ECEEF1;
     width: 100%; 

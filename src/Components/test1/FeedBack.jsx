@@ -6,6 +6,7 @@ function FeebBack() {
   const [rating, setRating] = useState(0)
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState('')
+  const [needToImprove, setNeedToImprove] = useState('');
 
   const handleSubmitFeedback = async() => {
     setLoading(true); 
@@ -13,7 +14,7 @@ function FeebBack() {
     const payload ={
       rate_our_teachers: rating,
       overall_experience: rating, 
-      need_to_improve: "", 
+      need_to_improve: needToImprove, 
       how_to_improve: ""
     }
 
@@ -63,18 +64,28 @@ function FeebBack() {
           </p>
 
           {/* Start rating system */}
-          <div>
-          {[1,2,3,4,5].map((star) => (
-            <span 
-              key={star} 
-              className={star <= rating ? "star filled" : "star"}
-              onClick={() => setRating(star)}
-            >
-              ★
-            </span>
-          ))}
+          <div className='rating-feedback'>
+            {[1,2,3,4,5].map((star) => (
+              <span 
+                key={star} 
+                className={star <= rating ? "star filled" : "star"}
+                onClick={() => setRating(star)}
+              >
+                ★
+              </span>
+            ))} 
+          </div>
+          <div className="textarea-wrapper">
+
+            <textarea
+              className="feedback-textarea"
+              placeholder="Comments"
+              value={needToImprove}
+              onChange={(e) => setNeedToImprove(e.target.value)}
+            /> 
           </div>
 
+              
           {/* Submitted Button */}
           <button className='submit-feedback-btn'
            onClick={handleSubmitFeedback} 

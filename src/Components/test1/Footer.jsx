@@ -18,10 +18,6 @@ const Footer = () => {
                 <h2 className="brand-name">MINDFULNESS</h2>
               </div>
             </div>
-            <p className="footer-tagline">ONLINE YOGA RELAXATION CLASSES</p>
-            <p className="footer-description">
-              "Experience deep relaxation at home with our Online Yoga Classes—your journey to inner peace starts here!"
-            </p>
           </div>
 
           {/* Column 2: Nav Links + Bottom Section (Stacked) */}
@@ -36,8 +32,8 @@ const Footer = () => {
                 {/* Column 3: Social Icons */}
                 <div className=" social-col">
                   <div className="footer-socials">
-                  <a href="https://www.facebook.com/royalmindfulness/"  target="_blank" className="social-circle"><FaFacebookF /></a>
-                  <a href="https://www.instagram.com/royalmindfulness/" target="_blank"  className="social-circle"><FaInstagram /></a>
+                  <a href="https://www.facebook.com/profile.php?id=61585328290655"  target="_blank" className="social-circle"><FaFacebookF /></a>
+                  <a href="https://www.instagram.com/royalmindfulness24?igsh=MTE3emV1bWJtejV5" target="_blank"  className="social-circle"><FaInstagram /></a>
                   <a href="https://www.linkedin.com/company/royalmindfulness/"  target="_blank" className="social-circle"><FaLinkedinIn /></a>
                   </div>
                 </div>

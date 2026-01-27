@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "./checkList.css";
-
+import { Link } from "react-router-dom";
 
 const statements = [
   {
@@ -46,35 +46,54 @@ const Checklist = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [lastAnswer, setLastAnswer] = useState(null);
+  const [isFinished, setIsFinished] = useState(false); 
+  const [displayedAnswer, setDisplayedAnswer] = useState(null); 
+ 
 
   const currentStatement = statements[currentIndex];
 
   const handleAnswer = (response) => {
-    if (response == 'yes') {
-      setLastAnswer('yes'); 
-
-      setAnswers((prev) => [
-        ...prev,
-        { index: currentIndex, response: 'yes' },
-      ]);
-      return; 
-    }
-
-    if (response == 'no') {
-      setLastAnswer(null); 
-
-      setAnswers((prev) => [
-        ...prev,
-        { index: currentIndex, response: 'no' },
-      ]);
-
-      setCurrentIndex((prev) => 
-      prev < statements.length - 1 ? prev + 1 : prev
-      ); 
-    }
-
     
+    // if (response == 'yes') {
+    //   setLastAnswer('yes'); 
+
+    //   setAnswers((prev) => [
+    //     ...prev,
+    //     { index: currentIndex, response: 'yes' },
+    //   ]);
+    //   return; 
+    // }
+
+    // if (response == 'no') {
+    //   setLastAnswer(null); 
+
+    //   setAnswers((prev) => [
+    //     ...prev,
+    //     { index: currentIndex, response: 'no' },
+    //   ]);
+
+    //   setCurrentIndex((prev) => 
+    //   prev < statements.length - 1 ? prev + 1 : prev
+    //   ); 
+    // }
+
+      setDisplayedAnswer(statements[currentIndex].answer); 
+      setLastAnswer(response); 
+
+      setAnswers((prev) => [
+        ...prev, 
+        {index: currentIndex, response }, 
+      ]); 
+
+      // move to next question
+
+      if(currentIndex < statements.length - 1) {
+        setCurrentIndex((prev) => prev+1); 
+      } else {
+        setIsFinished(true);
+      }
   }
+
 
 
   return (
@@ -114,6 +133,7 @@ const Checklist = () => {
             </div>
           </div>
 
+        {!isFinished && (
           <div className="statement-container">
             <div className="statement-card">
               
@@ -138,7 +158,7 @@ const Checklist = () => {
 
               {/* Text content */}
               <div className="statement-text">
-                {currentStatement.question}
+                {!isFinished && currentStatement.question}
               </div>
 
               {/* Right Arrow */}
@@ -157,25 +177,54 @@ const Checklist = () => {
               </button>
 
               {/* Action Buttons Container */}
-              <div className="action-buttons-overlay">
-                <button className="circle-btn check-btn" onClick={() => handleAnswer('yes')}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B5E20" strokeWidth="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </button>
-                <button className="circle-btn cross-btn" onClick={() => handleAnswer('no')}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B71C1C" strokeWidth="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
-              </div>
-
+              {!isFinished && (
+                <div className="action-buttons-overlay">
+                  <button className="circle-btn check-btn" onClick={() => handleAnswer('yes')}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B5E20" strokeWidth="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </button>
+                  <button className="circle-btn cross-btn" onClick={() => handleAnswer('no')}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B71C1C" strokeWidth="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                  </button>
+                </div>
+              )}
             </div>
           </div>
+        )}
 
           {/* Answer Display Card */}
-          <div className={`answer-card ${lastAnswer ? 'answered' : 'placeholder'}`}>
-            {lastAnswer ? (
-              <>
-                <span className={`answer-icon ${lastAnswer}`}>
-                  {lastAnswer === 'yes' ? '✓' : '✕'}
+          <div className={`answer-card ${displayedAnswer ? 'answered' : 'placeholder'}`}>
+            {isFinished ? (
+              
+              <span className="final-message">
+                <h3 className='final-message-1'>You have completed all questions!</h3>
+                Your mind is powerful—let’s make sure it works for you.
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "4px",
+                    margin: "10px", 
+                  }}
+                >
+                <Link type='submit' to="/talk_space" className='healthy-mind-btn'>
+                  Book Free Consultation
+                </Link>
+                <span
+                  style={{
+                    fontSize: "12px",
+                    color: "#555",
+                  }}
+                >
+                (No Credit card required)
                 </span>
+                </div>
+
+              </span>
+              
+            ) : displayedAnswer ? (
+              <>
+                
                 <span>
                    {currentStatement.answer}
                 </span>

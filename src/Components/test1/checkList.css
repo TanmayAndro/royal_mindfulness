@@ -143,11 +143,20 @@
   cursor: pointer;
 }
 
+.final-message-1{
+  color: black;
+  text-align: center;
+}
+
 /* 5. Answer Card (Grey) */
 .answer-card {
   width: 100%;
   max-width: 766px;
-  height: 115px;
+
+  min-height: 100px;   /* 👈 minimum height */
+  max-height: 220px;   /* 👈 maximum height */
+  height: auto;        /* 👈 content ke according grow */
+
   background-color: #e8eef3;
   border-radius: 17px;
   display: flex;
@@ -156,7 +165,12 @@
   gap: 15px;
   color: #666;
   font-style: italic;
+
+  box-sizing: border-box;
+  padding: 16px;
+  overflow: hidden;    /* 👈 extra content hide */
 }
+
 
 .mini-check {
   width: 36px;
