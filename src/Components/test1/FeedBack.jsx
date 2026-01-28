@@ -18,6 +18,8 @@ function FeebBack() {
       how_to_improve: ""
     }
 
+
+
     try {
 
       const response = await fetch(
@@ -34,9 +36,12 @@ function FeebBack() {
       const data = await response.json(); 
 
       if(response.ok){
-        console.log("Api Response:", data); 
+        setRating(0);
+        setNeedToImprove('');
+
       } else {
-        console.log(data); 
+        console.log(data);
+         
       }      
     } catch (error) {
       console.log("Api errros: ", error); 
@@ -44,6 +49,47 @@ function FeebBack() {
       setLoading(false)
     }
   };  
+
+ 
+
+
+  const handleProspectSubmit = async(e) => {
+    e.preventDefault();
+
+    if(!email) return; 
+
+    const prospect_payload = {
+      prospect: {
+        email: email
+      }
+    };
+
+    try{
+      const response = await fetch(
+        "https://deedee-unchainable-optionally.ngrok-free.dev/prospectes",
+        {
+          method: "POST", 
+          headers: {
+            "Content-Type": "application/json",
+          }, 
+           body:  JSON.stringify(prospect_payload)
+
+        }
+      );
+
+      const data = await response.json(); 
+
+      if (response.ok){
+        setEmail(''); 
+      } else {
+        console.log("Prospect error:", data); 
+      }
+    } catch (error) {
+      console.log("Prospect Api error:", error);
+    }
+  }
+
+
 
 
 
@@ -99,12 +145,13 @@ function FeebBack() {
     <div className='stay-section'>
       <div className='stay-container'>
         <h2 className='stay-heading'>Stay in the loop</h2>
-        <form className='stay-form'>
+        <form className='stay-form' onSubmit={handleProspectSubmit}>
           <input 
           type='email'
           className='stay-input'
           placeholder='email'
           onChange={(e) => setEmail(e.target.value)}
+          value={email}
           required
           />
           <button type='submit' className='stay-sub-button'>
