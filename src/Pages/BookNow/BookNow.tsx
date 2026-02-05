@@ -456,7 +456,7 @@ function convert24hTimeToUTC(time24h:any, timezone:any) {
       <Box
   sx={{
     width: { md: "35%" },
-    bgcolor: "#149BD8",
+    bgcolor: "#1470AF",
     p: 4,
     color: "#fff",
   }}

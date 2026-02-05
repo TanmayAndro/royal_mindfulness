@@ -46,8 +46,6 @@ function TalkSpace() {
             </h1>
             <p className="subtitle">(You can select more than one. There's no right or wrong.)</p>
 
-            
-
             <div className="options-list">
               {error && <p className="error-text">{error}</p>}
               {OPTIONS.map((opt, index) => (

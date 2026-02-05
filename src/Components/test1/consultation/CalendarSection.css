@@ -100,3 +100,9 @@
     max-width: 100%;
   }
 }
+
+@media (min-width: 320px) {
+  .timezone-text-calendar{
+    width: 85% !important;
+  }
+}

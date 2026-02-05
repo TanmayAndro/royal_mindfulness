@@ -1,0 +1,102 @@
+/* Container wrapper */
+.testimonials-page-wrapper {
+    width: 100%;
+    padding: 40px 0;
+    box-sizing: border-box;
+}
+
+/* Swiper ka main container */
+.testimonials-swiper {
+    width: 100%;
+    /* Max-width nahi lagayi, par side padding zaroori hai 
+       taaki cards screen ke kouno se na chipkein */
+    padding: 10px 40px 60px 40px !important;
+}
+
+/* Card ko top-align karne ke liye Swiper slide ki setting */
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+}
+
+/* Swiper Navigation Arrows Customization */
+.swiper-button-next, 
+.swiper-button-prev {
+    color: #005e5d; /* Aapka theme color */
+    background: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+.swiper-button-next::after, 
+.swiper-button-prev::after {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Pagination Dots */
+.swiper-pagination-bullet {
+    background: #cccccc;
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background: #005e5d !important;
+    width: 25px; /* Active dot ko thoda lamba dikhane ke liye */
+    border-radius: 5px;
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+    .testimonials-page-wrapper {
+        padding: 40px 10px;
+    }
+    .swiper-button-next, 
+    .swiper-button-prev {
+        display: none; /* Mobile par swipe kaafi hota hai, buttons hide kar sakte hain */
+    }
+}
+
+
+.carousel-controls {
+    display: flex;
+    /* Button ko end (right side) mein lane ke liye */
+    justify-content: flex-end; 
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 1440px; /* Swiper ki max-width ke barabar */
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 40px; /* Right side se thoda gap */
+    box-sizing: border-box;
+}
+
+.control-icon-btn {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none !important;
+    padding: 0;
+}
+
+.control-icon-btn:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+/* Swiper layout fix */
+.testimonials-page-wrapper {
+    padding: 40px 0;
+    overflow-x: hidden;
+}
+
+.testimonials-swiper {
+    /* Side padding taaki cards edges se na takrayein */
+    padding: 0 40px 50px 40px !important;
+}

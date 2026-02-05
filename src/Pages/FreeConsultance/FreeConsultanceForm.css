@@ -6,6 +6,15 @@
   box-sizing: border-box;
 }
 
+
+.consultance-form-label {
+  display: block;              /* label ko proper line pe laata hai */
+  font-size: 18px !important;             /* readable but not too big */
+  font-weight: 600;            /* bold & professional */
+  color: #1a1a1a;              /* dark text for good contrast */
+  margin-bottom: 6px;          /* space between label & input */
+  line-height: 1.4;
+}
 html,
 body {
   margin: 0;

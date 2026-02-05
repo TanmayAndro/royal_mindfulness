@@ -18,6 +18,11 @@
     flex: 1.2;
 }
 
+.error-message{
+    color: red;
+    
+}
+
 .step-card {
     display: flex;
     padding: 24px;

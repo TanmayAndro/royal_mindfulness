@@ -201,7 +201,8 @@ const Layout = () => {
   const location = useLocation();
   const hideHeaderFooter = ["/meeting", "/"].includes(location.pathname);
  // Hides for Jitsi page
-  const hideFooter = location.pathname === "/free_consultance";  //Hide only footer page
+  // const hideFooter = location.pathname === "/free_consultance"; 
+  const hideFooter = ["/free_consultance", "/talk_space", "/consulation", "/book-now"].includes(location.pathname); //Hide only footer page
   
   return (
     <Box  >

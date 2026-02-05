@@ -1,5 +1,6 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./TimeSlotSection.css"
+import "./TimeSlotSection.css";
 
 const DUMMY_SLOTS = [
   "1:30",
@@ -15,13 +16,15 @@ const DUMMY_SLOTS = [
 
 const TimeSlotSection = ({ date, timeZone }) => {
   const navigate = useNavigate();
+  const [selectedSlot, setSelectedSlot] = useState(null);
 
-  /* ✅ Format date ONLY for display */
-  const formattedDate = date.toLocaleDateString("en-IN", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric"
-  });
+  // ✅ Read from localStorage once on mount
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("freeConsultanceData"));
+    if (stored?.free_consultance_time) {
+      setSelectedSlot(stored.free_consultance_time.trim()); // trim extra spaces
+    }
+  }, []);
 
   const handleSlotClick = (slot) => {
     if (!timeZone) {
@@ -29,9 +32,11 @@ const TimeSlotSection = ({ date, timeZone }) => {
       return;
     }
 
+    setSelectedSlot(slot); // Update state immediately
+
     navigate("/free_consultance", {
       state: {
-        free_consultance_date: date, // Date object (safe)
+        free_consultance_date: date,
         free_consultance_time: slot,
         time_zone: timeZone
       }
@@ -41,14 +46,14 @@ const TimeSlotSection = ({ date, timeZone }) => {
   return (
     <div className="time-slot-wrapper">
       <h4 className="date-title">
-        {formattedDate}
+        {date.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })}
       </h4>
-
+     
       <div className="slot-list">
         {DUMMY_SLOTS.map((slot) => (
           <button
             key={slot}
-            className="slot-btn"
+            className={`slot-btn-time ${selectedSlot === slot ? "selected" : ""}`} // ✅ Highlight selected
             onClick={() => handleSlotClick(slot)}
           >
             {slot}

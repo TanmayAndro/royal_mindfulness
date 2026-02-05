@@ -4,9 +4,12 @@ import CalendarSection from "../../../Components/test1/consultation/CalendarSect
 import TimeSlotSection from "../../../Components/test1/consultation/TimeSlotSection";
 import "./ConsultationPage.css";
 
+
 const ConsultationPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
+
 
   const response = location.state?.response;
 
@@ -69,8 +72,6 @@ const ConsultationPage = () => {
 
               {/* LEFT SIDE */}
               <div className="consultation-left">
-                <h1 className="title"></h1>
-
                 <div className="options-list">
                   {response.map((line, i) => (
                     <p key={i}>{line}</p>

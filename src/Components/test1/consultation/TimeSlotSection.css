@@ -2,6 +2,38 @@
    CALENDAR SECTION – RESPONSIVE
 ============================== */
 
+
+/* ==============================
+   TIME SLOT BUTTONS
+============================== */
+
+.slot-btn-time {
+  padding: 8px 14px;
+  margin: 4px;
+  border: 1px solid #1470af;
+  background-color: #fff;
+  color: #1470af;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 94%; 
+  max-width: 95%;
+}
+
+.slot-btn-time:hover {
+  background-color: #1470af;
+  color: #fff;
+}
+
+/* ✅ SELECTED SLOT */
+.slot-btn-time.selected {
+  background-color: #1470af !important; /* ensure override */
+  color: #fff !important;
+  font-weight: 600;
+  border: 1px solid #0f4a7a;
+}
+
+
 .calendar-section {
   width: 100%;
 }
@@ -108,5 +140,13 @@
   .calendar-column {
     width: 100% !important;
     max-width: 100%;
+  }
+}
+
+
+@media (min-width: 320px) {
+  .calendar-wrapper .react-calendar {
+    width: 88% !important;
+    max-width: 88%;
   }
 }

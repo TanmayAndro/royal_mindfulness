@@ -1,0 +1,73 @@
+/* Card Container */
+
+.testimonial-card-root {
+  /* FIX: 320px hata kar 100% karein */
+  width: 100% !important; 
+  /* Flex-shrink ki zaroorat nahi hai Swiper ke sath */
+  flex-shrink: 1 !important; 
+  display: flex;
+  flex-direction: column;
+  height: 100% !important; /* Saare cards ek barabar height ke dikhenge */
+  align-self: stretch; /* Isse row mein saare cards equal lagenge */
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  overflow: hidden;
+  border: none !important; /* MUI default border hatane ke liye */
+}
+
+/* Image Styling */
+/* .testimonial-image {
+  width: 100% !important;
+  height: 350px !important;
+  object-fit: cover !important;
+  flex-shrink: 0;
+} */
+
+
+.testimonial-image {
+  width: 100% !important;
+  aspect-ratio: 4 / 3;   /* ya 4 / 3 */
+  height: auto !important;
+  object-fit: cover;
+}
+
+
+/* Content Area  */
+
+.testimonial-content {
+  /* CHANGE: flex-grow: 1 ko hata kar 0 kiya */
+  /* Taaki background sirf text tak hi rahe */
+  flex-grow: 0; 
+  padding: 24px;
+}
+
+/* typography (text) */
+
+.testimonial-text {
+    /* FIX: 1.1 rem ke beech ka space hataya (1.1rem) */
+    font-size: 1.1rem !important; 
+    line-height: 1.6 !important;
+    margin-bottom: 20px;
+}
+
+/* Button (Badges) */
+.testimonial-footer {
+    display: flex; 
+    gap: 10px; 
+    margin-top: 15px; /* Buttons ko hamesha niche rakhega */
+}
+
+.badge-btn {
+  border-radius: 50px !important;
+  border: 1px solid currentColor !important;
+  color: inherit !important;
+  font-size: 10px !important;
+  font-weight: bold !important;
+  padding: 4px 12px !important;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+
+
+

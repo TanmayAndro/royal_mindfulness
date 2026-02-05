@@ -11,7 +11,12 @@ import HealthMind from "../../Components/test1/HealthMind"
 import HealthyStory from "../../Components/test1/HealthyStory"
 import Comparison from "../../Components/test1/Comparison"
 import FAQSection from "../../Components/test1/FAQSection"
-// import TalkspaceFeature from "../../Components/test1/TalkspaceFeature"
+import TalkspaceFeature from "../../Components/test1/TalkspaceFeature"
+
+
+import TestimonialsPage from "./TestimonialsPage/TestimonialsPage"
+import TrustMetrics from "../../Components/test1/TrustMetrics/TrustMetrics"
+
 
 
 
@@ -49,6 +54,16 @@ function Royal() {
           <RoadmapToProcess />
         </div>
 
+        <div style={{ marginTop: "0px" }}>
+          <TestimonialsPage />
+        </div>
+
+         <div style={{ marginTop: "0px" }}>
+          <TrustMetrics />
+        </div>
+
+        
+
         <div style={{ marginTop: "40px" }}>
           <Comparison />
         </div>
@@ -57,9 +72,9 @@ function Royal() {
           <FAQSection />
         </div>
 
-        {/* <div style={{ marginTop: "40px" }}>
+        <div style={{ marginTop: "40px" }}>
           <TalkspaceFeature />
-        </div> */}
+        </div>
 
         <div style={{ marginTop: "40px" }}>
           <HealthyStory />
