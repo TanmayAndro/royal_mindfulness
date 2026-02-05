@@ -27,8 +27,8 @@ function Header() {
         <NavBar isOpen={isOpen} toggleMenu={toggleMenu} />
         <section className="hero-section">
           <header className="hero">
-            <h1>Train yourself to be "happy"</h1>
-            <p>1-on-1 training, live sessions, Free Consultation</p>
+            <h1 className='title-main'>Train yourself to be "happy"</h1>
+            <p className='subtitle-main'>1-on-1 training, live sessions, Free Consultation</p>
           </header>
 
           <div className="book-card-wrapper">

@@ -11,11 +11,24 @@
     max-width: 95% !important;
     margin: -94px auto !important;
   }
+  .form-box-talkspace {
+    max-width: 95% !important;
+    margin: -35px auto !important;
+  }
 
   .slot-list {
-      width: 67% !important;
+    width: 67% !important;
   }
+
+  .option-item {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-left: 0% !important;
+  }
+
 }
+
+
 
 html,
 body {
@@ -56,6 +69,13 @@ body {
   padding-bottom: 180px; /* 🔥 footer ko neeche push karta hai */
 }
 
+.overlayconsul-talkspace{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: -220px;     /* hero overlap (desktop) */
+}
+
 
 .content {
   width: 100%;
@@ -71,12 +91,22 @@ body {
   border-radius: 12px;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
   width: 75%;
-  max-width: 1100px;
+  max-width: 1440px;
   margin: -115px auto;
   display: flex;
   flex-direction: column;
 }
 
+.form-box-talkspace{
+  background: #fff;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  width: 60%;
+  margin: -88px auto;
+  display: flex;
+  flex-direction: column;
+}
 
    
 
@@ -94,7 +124,7 @@ body {
 
 .subtitle {
   text-align: center;
-  font-size: 13px;
+  font-size: 15px;
   color: #9ca3af;
   margin-bottom: 20px;
 }
@@ -126,11 +156,14 @@ body {
 }
 
 .option-item {
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 18px;
+  line-height: 0.5;
   margin-left: 31%;
 }
 
+.checkbox{
+  padding-left: 5px;
+}
 /* ======================================================
    CALENDAR + SLOTS (Calendly style)
 ====================================================== */
@@ -210,10 +243,17 @@ body {
    ERRORS
 ====================================================== */
 
-.error-text {
+.error-text-talkspace {
   color: red;
-  margin-top: 8px;
+  margin-top: 0px;
   text-align: center;
+  margin-bottom: 0px;
+}
+.error-text{
+  color: red;
+  margin-top: 0px;
+  text-align: center;
+  margin-bottom: 0px;
 }
 
 /* ======================================================
@@ -244,6 +284,22 @@ body {
 
     margin-top: 0;            /* 🔥 desktop overlap removed */
     padding-bottom: 180px;   /* footer ke liye space */
+  }
+
+  .form-box {
+    max-width: 95% !important;
+    margin: -94px auto !important;
+  }
+
+
+  .form-box-talkspace {
+    width: 85% !important;
+    padding: 1.5rem !important ;
+    margin: 5% auto !important
+  }
+
+  .option-item {
+    line-height: 1.5;
   }
 
   /* Hero smaller on tablet */
@@ -289,6 +345,12 @@ body {
   .consultation-inner {
     gap: 28px;
   }
+
+  .options-list {
+    margin-left: 0px;
+  }
+
+  
 }
 
 

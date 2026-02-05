@@ -9,7 +9,7 @@ function HealthyStory() {
     <div className='health-section'>
     <div className='health-wrappe'>
     <div className='health-content'>
-        <h2 className='health-content-title'>
+        <h2 className='health-content-title '>
           Discover Our Story: Experience the Joy of Relaxation
           
           </h2>

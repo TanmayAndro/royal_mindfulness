@@ -26,3 +26,27 @@ code {
   width:8px;
   height: 12px; 
 }
+
+.title-main {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+}
+
+.subtitle-main {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 1.3 !important;
+}
+
+.heading-main {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 600 !important;
+
+}
+
+.subheading-main {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 200 !important;
+}
+

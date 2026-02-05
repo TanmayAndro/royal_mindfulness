@@ -62,6 +62,7 @@ const Comparison = () => {
           variant="h4"
           fontWeight="bold"
           gutterBottom
+          className="heading-main"
           sx={{
             marginTop: "2rem",
             fontSize: "40px",

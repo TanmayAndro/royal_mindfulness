@@ -46,6 +46,7 @@ const TrustMetrics = () => {
         <Typography 
           variant="h4" 
           sx={{ color: '#005D5D', mb: 8, fontWeight: 700 }}
+          className="heading-main"
         >
           Experts in virtual mental health care
         </Typography>

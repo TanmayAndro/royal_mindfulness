@@ -119,7 +119,7 @@ function FreeConsultanceForm() {
         <div className="hero-bg"></div>
 
         <div className="overlay">
-          <div className="content">
+          <div className="content-free">
             {submitted ? (
               /* ✅ THANK YOU STATE */
               <div className="thankyou-box free-consultanceform-box">
@@ -141,13 +141,16 @@ function FreeConsultanceForm() {
                 onSubmit={handleSubmit}
                 noValidate
               >
-                <div className="back-btn" onClick={() => navigate(-1)}>
-                  <FaCircleArrowLeft size={28} color="#1470af" />
-                </div>
+                <div className="free-heading">
+                  <div className="back-btn" onClick={() => navigate(-1)}>
+                    <FaCircleArrowLeft size={28} color="#1470af" />
+                  </div>
 
-                <h1 className="title">
-                  Let's take the next step together.
-                </h1>
+                  <h1 className="title free-title">
+                   Let's take the next step together.
+                  </h1>
+                </div>
+                
                 <p className="subtitle">
                   (Share your details so we can schedule your free consultation.)
                 </p>
@@ -162,7 +165,7 @@ function FreeConsultanceForm() {
                     onChange={(e) => setName(e.target.value)}
                   />
                   {errors.name && (
-                    <ul className="error-list">
+                    <ul className="error-list-free">
                       {errors.name.map((msg, i) => (
                         <li key={i} className="error-item">{msg}</li>
                       ))}
@@ -180,7 +183,7 @@ function FreeConsultanceForm() {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   {errors.email && (
-                    <ul className="error-list">
+                    <ul className="error-list-free">
                       {errors.email.map((msg, i) => (
                         <li key={i} className="error-item">{msg}</li>
                       ))}
@@ -188,7 +191,40 @@ function FreeConsultanceForm() {
                   )}
                 </div>
 
-                <div className="field">
+                {/* Phone */}
+                <div className="phone-field">
+                  <label className="phone-label consultance-form-label">
+                    Phone Number
+                  </label>
+
+                  <PhoneInput
+                    country="us"
+                    enableSearch
+                    countryCodeEditable={false}
+                    containerClass="phone-wrapper"
+                    inputClass="phone-input"
+                    buttonClass="phone-flag-button"
+                    onChange={(value, data) => {
+                      const dial = data?.dialCode || "";
+                      const withoutPlus = value.replace("+", "");
+                      const numberOnly = withoutPlus.slice(dial.length);
+
+                      setCountryCode(`+${dial}`);
+                      setPhoneNumber(numberOnly);
+                    }}
+                  />
+
+                  {errors.phone_number && (
+                    <ul className="error-list-free">
+                      {errors.phone_number.map((msg, i) => (
+                        <li key={i} className="error-item">{msg}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+
+                {/* Hide filed */}
+                {/* <div className="field">
                   <label className="consultance-form-label">Time Zone</label>
                   <input
                     type="text"
@@ -216,40 +252,8 @@ function FreeConsultanceForm() {
                     readOnly
                     className="readonly-input"
                   />
-                </div>
-
-                {/* Phone */}
-                <div className="phone-field">
-                  <label className="phone-label consultance-form-label">
-                    Phone Number
-                  </label>
-
-                  <PhoneInput
-                    country="us"
-                    enableSearch
-                    countryCodeEditable={false}
-                    containerClass="phone-wrapper"
-                    inputClass="phone-input"
-                    buttonClass="phone-flag-button"
-                    onChange={(value, data) => {
-                      const dial = data?.dialCode || "";
-                      const withoutPlus = value.replace("+", "");
-                      const numberOnly = withoutPlus.slice(dial.length);
-
-                      setCountryCode(`+${dial}`);
-                      setPhoneNumber(numberOnly);
-                    }}
-                  />
-
-                  {errors.phone_number && (
-                    <ul className="error-list">
-                      {errors.phone_number.map((msg, i) => (
-                        <li key={i} className="error-item">{msg}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-
+                </div> */}
+                {/* End of Time zone , Date , Time */}
                 <button type="submit" className="submit-btnFree">
                   Submit
                 </button>

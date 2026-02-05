@@ -38,25 +38,24 @@ function TalkSpace() {
     <div className="page-wrapper">
       <div className="hero-bg"></div>
 
-      <div className="overlayconsul">
+      <div className="overlayconsul-talkspace">
         <div className="content">
-          <div className="form-box">
+          <div className="form-box-talkspace">
             <h1 className="title">
               Which of these sounds a little like you?
             </h1>
-            <p className="subtitle">(You can select more than one. There's no right or wrong.)</p>
+            <p className="subtitle subheading-main">(You can select more than one. There's no right or wrong.)</p>
 
             <div className="options-list">
-              {error && <p className="error-text">{error}</p>}
+              {error && <p className="error-text-talkspace">{error}</p>}
               {OPTIONS.map((opt, index) => (
                 <label key={index} className="option-item">
                   <input
                     type="checkbox"
-                    className="checkbox"
                     checked={selectedOptions.includes(index)}
                     onChange={() => toggleOption(index)}
                   />
-                  <span>{opt}</span>
+                  <span className="checkbox">{opt}</span>
                 </label>
               ))}
               <button

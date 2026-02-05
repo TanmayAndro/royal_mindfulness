@@ -97,6 +97,7 @@ const FAQSection = () => {
             <Typography
               variant="h4"
               fontWeight="bold"
+              className="heading-main"
               sx={{
                 fontSize: { xs: "36px", sm: "48px", md: "56px" },
                 fontWeight: 600,
@@ -131,6 +132,7 @@ const FAQSection = () => {
                   }}
                 >
                   <Typography
+                  className="subheading-main"
                     sx={{
                       fontSize: { xs: "15px", sm: "16px" },
                       fontWeight: 600,
