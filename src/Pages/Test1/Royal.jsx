@@ -16,6 +16,8 @@ import TalkspaceFeature from "../../Components/test1/TalkspaceFeature"
 
 import TestimonialsPage from "./TestimonialsPage/TestimonialsPage"
 import TrustMetrics from "../../Components/test1/TrustMetrics/TrustMetrics"
+import LandingPage from './LandingPage/LandingPage.jsx'
+
 
 
 
@@ -58,11 +60,13 @@ function Royal() {
           <TestimonialsPage />
         </div>
 
-         <div style={{ marginTop: "0px" }}>
+        <div style={{ marginTop: "0px" }}>
           <TrustMetrics />
         </div>
 
-        
+        <div style={{ marginTop: "0px" }}>
+          <LandingPage />
+        </div>
 
         <div style={{ marginTop: "40px" }}>
           <Comparison />

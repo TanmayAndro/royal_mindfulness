@@ -1,0 +1,96 @@
+/* 1. Reset and Wrapper 
+   Removed 100vh to allow the page to grow with your long text */
+.landing-wrapper {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligns to top so it grows downward */
+    min-height: 100vh;
+    background-color: #ffffff;
+    font-family: 'Arial', sans-serif;
+}
+
+.banner-container {
+    width: 100%;
+    /* Standard wide-screen container */
+    max-width: 100%; 
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 2. Red Section 
+   The 'stretch' property ensures the red background follows the white box height */
+.red-section {
+    height: auto; 
+    display: flex;
+    align-items: stretch; 
+    position: relative;
+    overflow: hidden;
+}
+
+/* 3. White Chevron Box
+   Padding-right is larger (150px) to keep text away from the arrow tip */
+.content-chevron {
+    background-color: #ffffff;
+    width: 70%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 150px 25px 35px;; 
+    height: auto;
+    box-sizing: border-box;
+    margin: 3%;
+    
+    /* The arrow point (100% 50%) will always stay vertically centered */
+    clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
+}
+
+.text-area-chevron {
+    width: 100%;
+}
+
+.title-chevron {
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-size: 2.125rem;
+    line-height: 1.235;
+}
+
+
+.sub-text {
+    font-size: -0.95rem;;
+    line-height: 1.8;
+    color: #333333;
+    margin: 0;
+    text-align: justify;
+}
+
+/* 4. Responsive Fixes */
+@media (max-width: 1024px) {
+    .content-chevron {
+        width: 65%;
+        padding: 60px 100px 60px 40px;
+    }
+    .banner-container {
+      padding: 7px 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .red-section {
+        padding: 40px 0;
+    }
+    .content-chevron {
+        width: 100%;
+        clip-path: none; /* Removes arrow on mobile for better readability */
+        padding: 40px;
+    }
+    .title-chevron {
+        font-size: 2rem;
+    }
+}
