@@ -511,7 +511,7 @@ function convert24hTimeToUTC(time24h:any, timezone:any) {
       <Box sx={{ width: {  md: "65%" }, bgcolor: "#fef4e8", p: 4 }}>
         <Box sx={{ width: "100%", maxWidth: 500, mx: "auto" }} component="form" onSubmit={handleSubmit}>
           <Typography variant="h4" sx={{ mb: 2,fontSize:{xs: "1.3rem"}, fontWeight: "bold" }}>
-            Trainer Booking Form
+           Hire  Trainer Booking Form
           </Typography>
 
           <TextField

@@ -3,7 +3,9 @@ import "./FreeConsultanceForm.css";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useNavigate, useLocation } from "react-router-dom";
-import { FaCircleArrowLeft } from "react-icons/fa6";
+// import { FaCircleArrowLeft } from "react-icons/fa6";
+
+import { GoArrowLeft } from "react-icons/go";
 
 function FreeConsultanceForm() {
   const navigate = useNavigate();
@@ -143,7 +145,7 @@ function FreeConsultanceForm() {
               >
                 <div className="free-heading">
                   <div className="back-btn" onClick={() => navigate(-1)}>
-                    <FaCircleArrowLeft size={28} color="#1470af" />
+                    <GoArrowLeft  size={28} color="#070707ff" />
                   </div>
 
                   <h1 className="title free-title">

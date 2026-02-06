@@ -1,4 +1,4 @@
-import { Typography, Grid, Box, Container, styled } from "@mui/material";
+import { Typography, Box, Container, styled } from "@mui/material";
 import Img from "../../Assests/p1.js.webp";
 
 export const AboutUs = () => {
@@ -175,16 +175,7 @@ const Highlight = styled("span")({
   color: "#11100fff",
 });
 
-const QuoteBlock = styled("blockquote")({
-  fontStyle: "italic",
-  fontSize: "1.5rem",
-  marginTop: "3rem",
-  textAlign: "center",
-  color: "#444",
-  borderLeft: "4px solid #7b3f00",
-  paddingLeft: "1rem",
-  fontFamily: "Georgia, serif",
-});
+
 
 const styles = {
   mainText: {
@@ -192,7 +183,7 @@ const styles = {
     color: "#333",
     fontFamily: "'Inter', sans-serif",
     lineHeight: 1.9,
-    fontSize: "1.15rem",
+    fontSize: "18px",
     "@media (max-width:900px)": {
       fontSize: "1rem",
     },

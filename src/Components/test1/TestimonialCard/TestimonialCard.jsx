@@ -30,10 +30,6 @@ const TestimonialCard = ({name, text, image, bgColor, textColor}) => {
             {name}
           </Button>
 
-          <Button variant="outlined" className="badge-btn">
-          TALKSPACE MEMBER
-          </Button>
-
         </Box>
       </Box>   
    </Card>

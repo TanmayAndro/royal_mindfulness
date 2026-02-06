@@ -50,3 +50,14 @@ code {
   font-weight: 200 !important;
 }
 
+.context-main{
+  font-family: "Inter", sans-serif !important;
+  font-weight: 300 !important;
+}
+
+.subcontext-main{
+  font-family: "Inter", sans-serif !important;
+  font-weight: 100 !important;
+  font-size: 18px !important;
+}
+

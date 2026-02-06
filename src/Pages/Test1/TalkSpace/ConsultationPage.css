@@ -9,7 +9,8 @@
 @media (max-width: 1024px) {
   .form-box {
     max-width: 95% !important;
-    margin: -94px auto !important;
+   
+   margin: -25px auto !important;
   }
   .form-box-talkspace {
     max-width: 95% !important;
@@ -91,8 +92,7 @@ body {
   border-radius: 12px;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
   width: 75%;
-  max-width: 1440px;
-  margin: -115px auto;
+  margin: -85px auto;
   display: flex;
   flex-direction: column;
 }

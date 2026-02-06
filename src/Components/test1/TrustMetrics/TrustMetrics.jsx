@@ -6,10 +6,12 @@ import { useInView } from 'react-intersection-observer';
 
 // Styling for the main section
 const StyledSection = styled(Box)({
-  backgroundColor: '#F9FBE7', // Soft greenish background from screenshot
+  backgroundColor: '#f3f5f8',
   padding: '100px 0',
   textAlign: 'center',
 });
+
+
 
 const StatNumber = styled(Typography)({
   color: '#005D5D', // Teal color
@@ -48,7 +50,7 @@ const TrustMetrics = () => {
           sx={{ color: '#005D5D', mb: 8, fontWeight: 700 }}
           className="heading-main"
         >
-          Experts in virtual mental health care
+          Experts in virtual mental fitness traning
         </Typography>
 
         <Grid container spacing={4}>

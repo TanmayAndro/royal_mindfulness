@@ -147,7 +147,7 @@ font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 
 
 .stay-section {
-  background-color: #f2f7f6;
+  background-color: #f3f5f8;
   padding: 60px 20px;
 }
 
@@ -156,7 +156,6 @@ font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 .stay-heading {
-  font-family: 'Georgia', serif;
   color: #0d5a8f;
   font-size: 42px;
   margin-bottom: 24px;
