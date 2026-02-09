@@ -63,7 +63,7 @@ const ConsultationPage = () => {
   return (
     <div className="consultation-page">
     <div className="page-wrapper">
-      <div className="hero-bg"></div>
+      <div className="hero-bg-talk"></div>
 
       <div className="overlayconsul">
         <div className="content">

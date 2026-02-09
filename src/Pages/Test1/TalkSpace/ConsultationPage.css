@@ -53,7 +53,7 @@ body {
    HERO BACKGROUND
 ====================================================== */
 
-.hero-bg {
+.hero-bg-talk {
   min-height: 57vh;
   background: url(../../../../public/Rectangle.png) center/cover no-repeat;
 }
@@ -309,8 +309,9 @@ body {
   }
 
   /* Hero smaller on tablet */
-  .hero-bg {
-    min-height: 85vh ;
+  .hero-bg-talk{
+    min-height: 49vh !important;
+      
   }
 
   /* Stack layout */
@@ -394,6 +395,7 @@ body {
     font-size: 13px;
     margin-left: 0px
   }
+
 }
 
 

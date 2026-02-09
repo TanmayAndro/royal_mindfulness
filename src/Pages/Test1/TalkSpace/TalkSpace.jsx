@@ -36,7 +36,7 @@ function TalkSpace() {
   return (
     <div className="talkspace-page">
     <div className="page-wrapper">
-      <div className="hero-bg"></div>
+      <div className="hero-bg-talk"></div>
 
       <div className="overlayconsul-talkspace">
         <div className="content">
