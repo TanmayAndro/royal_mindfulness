@@ -48,19 +48,19 @@ export const RESPONSES = {
   
   B: [
     "What you’re experiencing is more common than people realize.",
-    "When emotions feel close to the surface, it often means you’ve been carrying a lot internally without space to pause.",
+    "When emotions feel close to the surface, it often means you’ve been carrying a lot internally without space to pause. The consultation helps you understand how to build emotional steadiness through simple mental training.",
   ],
   C: [
     
-    "Starting with intention but struggling to stay regular is usually not a motivation problem — it’s a training problem.",
+    "You’re not alone in feeling this way.Starting with intention but struggling to stay regular is usually not a motivation problem — it’s a training problem.",
     "In the consultation, we look at how to build consistency without self-pressure.",
   ],
   D: [
-    "Many people come not because something is ‘wrong,’ but because they want more clarity and ease in daily life.",
+    "That curiosity is a meaningful place to begin.Many people come not because something is ‘wrong,’ but because they want more clarity and ease in daily life.",
     "The consultation helps you understand how mental fitness training can support that.",
   ],
   E: [
-    "That awareness itself is important.",
+    " Sometimes we know something feels off, even if we can’t explain it clearly yet. That awareness itself is important.",
     "The consultation gives you space to explore what’s happening internally, without labels or judgment."
   ],
 };

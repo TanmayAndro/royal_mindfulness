@@ -5,7 +5,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 min-height: auto;
-font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+
 }
 
 .feedback-container{

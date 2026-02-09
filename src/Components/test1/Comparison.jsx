@@ -6,261 +6,197 @@ import {
   Divider,
   useMediaQuery,
   useTheme,
-  Box
+  Box,
 } from "@mui/material";
 import CommonButtons from "./CommonButton";
 import { useNavigate } from "react-router-dom";
 
 const data = [
-  {
-    label: "Frequency",
-    myYoga: "Daily/ thrice a week ",
-    traditional: "Weekly/Bi-weekly",
-  },
-  {
-    label: "Cost",
-    myYoga: "Affordable ($5 -$20 per session) ",
-    traditional: "$100–$200 per session ",
-  },
-  {
-    label: "Impact",
-    myYoga: "Gradual, long-term ",
-    traditional: "Immediate & lifelong benefits",
-  },
-  {
-    label: "Place",
-    myYoga: "100% Online, train anywhere ",
-    traditional: "Clinic/Online (varies)",
-  },
-  {
-    label: "Availability",
-    myYoga: "Instant access, 24/7 ",
-    traditional: "Appointment-based",
-  },
-  {
-    label: "Focus",
-    myYoga: "Healing + Fitness Training ",
-    traditional: "Healing from mental ailments",
-  },
-]; 
+  { label: "Frequency", myYoga: "Daily/ thrice a week ", traditional: "Weekly/Bi-weekly" },
+  { label: "Cost", myYoga: "Affordable ($5 -$20 per session) ", traditional: "$100–$200 per session " },
+  { label: "Impact", myYoga: "Gradual, long-term ", traditional: "Immediate & lifelong benefits" },
+  { label: "Place", myYoga: "100% Online, train anywhere ", traditional: "Clinic/Online (varies)" },
+  { label: "Availability", myYoga: "Instant access, 24/7 ", traditional: "Appointment-based" },
+  { label: "Focus", myYoga: "Healing + Fitness Training ", traditional: "Healing from mental ailments" },
+];
+
 const Comparison = () => {
   const theme = useTheme();
-  const isMd = useMediaQuery(theme.breakpoints.up("md")); // >=900px
+  const isMd = useMediaQuery(theme.breakpoints.up("md"));
   const navigate = useNavigate();
-    const handelConsulation = (clickedOn) => {
-    if (clickedOn === "calendly") {
-      navigate("/talk_space");
-    } else if (clickedOn === "rozerpay") {
-      navigate("/book-now");
-    }
+
+  const handelConsulation = (clickedOn) => {
+    if (clickedOn === "calendly") navigate("/talk_space");
+    if (clickedOn === "rozerpay") navigate("/book-now");
   };
 
   return (
     <>
-      <div style={{ padding: "2rem", textAlign: "center" }}>
+      <Box sx={{ padding: "2rem", textAlign: "center" }}>
+        {/* Heading */}
         <Typography
           variant="h4"
           fontWeight="bold"
-          gutterBottom
-          className="heading-main"
           sx={{
-            marginTop: "2rem",
-            fontSize: "40px",
-            fontWeight: "bold",
+            mt: "2rem",
+            fontSize: { xs: "26px", sm: "40px" },
             color: "#1470AF",
-            alignSelf: "baseline",
           }}
         >
           Royal Mindfulness vs Traditional Training
         </Typography>
+
+        {/* Cards Section */}
         <Box
           sx={{
             display: "flex",
             justifyContent: "center",
             alignItems: "flex-start",
-            gap: "0px",
-            margin: { xs: "1.5rem 0", md: "3rem" }, // Mobile: 0 left/right, Desktop: 3rem all sides
+            gap: 0,
+            mt: { xs: 3, md: 6 },
             flexWrap: "nowrap",
           }}
         >
-          {/* Feature Card – only on desktop >=900px */}
           {isMd && (
             <Card
               sx={{
-                border: "1px solid #E5E7EB",
+                width: 300,
                 borderRadius: "10px",
-                width: "300px",
-                marginRight: "-20px",
                 opacity: 0.9,
                 transform: "scale(0.95)",
+                mr: "-20px",
               }}
               variant="outlined"
             >
               <CardContent>
-                <Typography
-                  variant="h6"
-                  fontWeight="bold"
-                  sx={{
-                    fontSize: "18px",
-                  }}
-                >
-                  Feature
-                </Typography>
+                <Typography fontWeight="bold">Feature</Typography>
               </CardContent>
               <Divider />
-              {data.map((item, index) => (
-                <CardContent key={index}>
-                  <Typography
-                    sx={{
-                      marginTop: "7px",
-                      fontSize: "16px",
-                    }}
-                  >
-                    {item.label}
-                  </Typography>
+              {data.map((item, i) => (
+                <CardContent key={i}>
+                  <Typography>{item.label}</Typography>
                 </CardContent>
               ))}
             </Card>
           )}
-          {/* Royal Card – always visible */}
+
           <Card
             sx={{
-              border: "1px solid #E5E7EB",
+              width: 300,
               borderRadius: "10px",
-              width: "300px",
               backgroundColor: "#CBE6FF",
               zIndex: 2,
               boxShadow: "0px 10px 30px rgba(0,0,0,0.1)",
             }}
           >
             <CardContent>
-              <Typography
-                variant="h6"
-                fontWeight="bold"
-                color="primary"
-                align="center"
-                sx={{
-                  fontSize: "18px",
-                }}
-              >
+              <Typography fontWeight="bold" color="primary" align="center">
                 Royal Mindfulness
               </Typography>
             </CardContent>
             <Divider />
-            {data.map((item, index) => (
-              <CardContent key={index}>
-                <Typography
-                  align="center"
-                  color="primary"
-                  sx={{
-                    marginTop: "7px",
-                    fontSize: "16px",
-                    fontWeight: 600,
-                  }}
-                >
+            {data.map((item, i) => (
+              <CardContent key={i}>
+                <Typography align="center" fontWeight={600} color="primary">
                   {item.myYoga}
                 </Typography>
               </CardContent>
             ))}
           </Card>
-          {/* Traditional Card – always visible */}
+
           <Card
             sx={{
-              border: "1px solid #E5E7EB",
+              width: 300,
               borderRadius: "10px",
-              width: "300px",
-              marginLeft: "-20px",
               opacity: 0.9,
               transform: "scale(0.95)",
+              ml: "-20px",
             }}
             variant="outlined"
           >
             <CardContent>
-              <Typography
-                variant="h6"
-                fontWeight="bold"
-                sx={{
-                  fontSize: "18px",
-                }}
-              >
-                Traditional Personal Training
-              </Typography>
+              <Typography fontWeight="bold">Traditional Personal Training</Typography>
             </CardContent>
             <Divider />
-            {data.map((item, index) => (
-              <CardContent key={index}>
-                <Typography
-                  sx={{
-                    marginTop: "7px",
-                    fontSize: "16px",
-                  }}
-                >
-                  {item.traditional}
-                </Typography>
+            {data.map((item, i) => (
+              <CardContent key={i}>
+                <Typography>{item.traditional}</Typography>
               </CardContent>
             ))}
           </Card>
         </Box>
-        {/* Buttons Section */}
-        <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+
+        {/* ================= BUTTONS SECTION (FIXED) ================= */}
+        <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
           <Box
             sx={{
               display: "flex",
-              flexDirection: "row",
-              gap: 2,
-              justifyContent: "start",
+              flexDirection: { xs: "column", sm: "row" },
+              gap: 4,
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
+              maxWidth: "600px", // 🔑 laptop/1440px fix
             }}
           >
-           <div
-              style={{
+           {/* Book consultation */}
+            <Box
+              sx={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                gap: "4px",
+
+                width: {
+                  xs: "100%",
+                  sm: "auto",
+                  xl: "auto",   // 👈 1440px+
+                },
+
+                textAlign: "center",
               }}
             >
               <CommonButtons
                 label="Book a free consultation"
                 height="50px"
-                sx={{ backgroundColor: "#1470AF", color: "white" }}
+
+                sx={{
+                  backgroundColor: "#1470AF",
+                  color: "white",
+                  marginTop: { xs: "15px", sm: "25px" },
+                }}
+
                 variant="contained"
                 onClick={() => handelConsulation("calendly")}
               />
-
-              <span
-                style={{
-                  fontSize: "12px",
-                  color: "#555",
-                }}
-              >
+              <Typography fontSize="12px" color="#555" mt="4px">
                 (No Credit card required)
-              </span>
-            </div>
+              </Typography>
+            </Box>
 
-            <CommonButtons
-              label="Hire Trainer"
-              width="150px"
-              height="50px"
-              sx={{ backgroundColor: "#1470AF", color: "white" }}
-              variant="contained"
-              onClick={() =>handelConsulation("rozerpay") }
-            />
+            {/* Hire Trainer */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+
+                width: {
+                  xs: "100%",
+                  sm: "auto",
+                  xl: "auto",   // 👈 1440px+
+                },
+              }}
+            >
+              <CommonButtons
+                label="Hire Trainer"
+                height="50px"
+                sx={{ backgroundColor: "#1470AF", color: "white" }}
+                variant="contained"
+                onClick={() => handelConsulation("rozerpay")}
+              />
+            </Box>
+
           </Box>
         </Box>
-      </div>
-      {/* Background Wave */}
-      <Box
-        sx={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          width: "100%",
-          lineHeight: 0,
-          zIndex: 1,
-          pointerEvents: "none",
-        }}
-      >
-        {/* wave SVG commented */}
       </Box>
     </>
   );

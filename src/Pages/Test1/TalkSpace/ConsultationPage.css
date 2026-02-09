@@ -24,8 +24,9 @@
   .option-item {
     font-size: 18px;
     line-height: 1.5;
-    margin-left: 0% !important;
+    margin-left: 10% !important;
   }
+
 
 }
 
@@ -158,7 +159,7 @@ body {
 .option-item {
   font-size: 18px;
   line-height: 0.5;
-  margin-left: 31%;
+  margin-left: 25%;
 }
 
 .checkbox{
@@ -282,20 +283,25 @@ body {
     display: flex;
     justify-content: center;
 
-    margin-top: 0;            /* 🔥 desktop overlap removed */
+    margin-top: -220px;            /* 🔥 desktop overlap removed */
     padding-bottom: 180px;   /* footer ke liye space */
   }
+
+
+
+
 
   .form-box {
     max-width: 95% !important;
     margin: -94px auto !important;
   }
 
+ 
 
   .form-box-talkspace {
     width: 85% !important;
     padding: 1.5rem !important ;
-    margin: 5% auto !important
+    margin: -25% auto !important
   }
 
   .option-item {
@@ -304,7 +310,7 @@ body {
 
   /* Hero smaller on tablet */
   .hero-bg {
-    min-height: 280px;
+    min-height: 85vh ;
   }
 
   /* Stack layout */
@@ -347,7 +353,7 @@ body {
   }
 
   .options-list {
-    margin-left: 0px;
+    margin-left: 65%px;
   }
 
   

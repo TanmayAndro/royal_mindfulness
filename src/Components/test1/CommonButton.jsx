@@ -12,6 +12,7 @@ const StyledButton = styled(Button, {
   borderRadius: "8px",
   fontWeight: "bold",
   textTransform: "none",
+
 }));
 
 const CommonButtons = ({ label, width, height, onClick, ...rest }) => {

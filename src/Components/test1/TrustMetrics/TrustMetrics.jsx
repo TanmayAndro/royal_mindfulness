@@ -37,42 +37,49 @@ const TrustMetrics = () => {
   });
 
   const stats = [
-    { value: 4999972, label: 'therapy sessions' },
-    { value: 1199969, label: 'members helped' },
-    { value: 5700, label: 'licensed providers' },
+    { value: 12500, suffix: "", label: "Sessions conducted" },
+    { value: 3200, suffix: "+", label: "Individuals trained" },
+    { value: 45, suffix: "+", label: "Certified experts" },
   ];
 
-  return (
-    <StyledSection ref={ref}>
-      <Container maxWidth="lg">
-        <Typography 
-          variant="h4" 
-          sx={{ color: '#005D5D', mb: 8, fontWeight: 700 }}
-          className="heading-main"
-        >
-          Experts in virtual mental fitness traning
-        </Typography>
+ 
+return (
+  <StyledSection ref={ref}>
+    <Container maxWidth="lg">
+      <Typography
+        variant="h4"
+        sx={{ color: "#005D5D", mb: 8, fontWeight: 700 }}
+        className="heading-main"
+      >
+        Experts in virtual mental fitness training
+      </Typography>
 
-        <Grid container spacing={4}>
-          {stats.map((stat, index) => (
-            <Grid item xs={12} md={4} key={index}>
-              <StatNumber>
-                {inView ? (
-                  <CountUp 
-                    start={0} 
-                    end={stat.value} 
-                    duration={2.5} 
-                    separator="," 
+      <Grid container spacing={4}>
+        {stats.map((stat, index) => (
+          <Grid item xs={12} md={4} key={index}>
+            <StatNumber>
+              {inView ? (
+                <>
+                  <CountUp
+                    start={0}
+                    end={stat.value}
+                    duration={2.5}
+                    separator=","
                   />
-                ) : '0'}
-              </StatNumber>
-              <StatLabel>{stat.label}</StatLabel>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    </StyledSection>
-  );
+                  {stat.suffix}
+                </>
+              ) : (
+                "0"
+              )}
+            </StatNumber>
+
+            <StatLabel>{stat.label}</StatLabel>
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
+  </StyledSection>
+);
 };
 
 export default TrustMetrics;
