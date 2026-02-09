@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Journal1 from "../../Assests/images/mobile_1.jpg";
 import CheckList from "../../Assests/images/mobile_2.jpg";
 import videoPlay from "../../Assests/images/mobile3.jpg";
-import Image1 from "../../Assests/images/testmonilas_4.jpg"
+import Image1 from "../../Assests/images/consutaion1.png"
 
 
 
@@ -31,6 +31,7 @@ const DEFAULT_STEPS = [
     desc: "Answer a few questions online...",
     img: Image1,
     route: "/talk_space",
+    imgClass: "consultation-img"
   },
   {
     id: 3,
@@ -38,14 +39,14 @@ const DEFAULT_STEPS = [
     desc: "journal description",
     img: Journal1,
   },
+  // {
+  //   id: 4,
+  //   title: "Take Mental Wellness Quiz",
+  //   desc: "If your first therapist isn't a fit...",
+  //   img: "https://cdn.prod.website-files.com/5f1b10a955e49d279bdc2192/6788623f89a65a2751eacb41_83d6b59ad04aedb0524228d4724821a0_step4.png",
+  // },
   {
     id: 4,
-    title: "Take Mental Wellness Quiz",
-    desc: "If your first therapist isn't a fit...",
-    img: "https://cdn.prod.website-files.com/5f1b10a955e49d279bdc2192/6788623f89a65a2751eacb41_83d6b59ad04aedb0524228d4724821a0_step4.png",
-  },
-  {
-    id: 5,
     title: "Take a Free Relaxation Session",
     desc: "If your first therapist isn't a fit...",
     img: videoPlay,
@@ -163,7 +164,7 @@ const TalkspaceFeature = () => {
 
   return (
     <div className="talkspace-container">
-      <h2 className="main-title heading-main">How Talkspace works</h2>
+      <h2 className="main-title heading-main">Get it for free!</h2>
 
       {errorMessage && <div className="error-message">{errorMessage}</div>}
 
@@ -203,7 +204,7 @@ const TalkspaceFeature = () => {
               <img
                 src={steps[activeStep].img}
                 alt="app-screen"
-                className="screen-fade"
+                className={`screen-fade ${steps[activeStep].imgClass || ""}`}
               />
             </div>
           </div>

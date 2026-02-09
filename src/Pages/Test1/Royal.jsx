@@ -8,14 +8,14 @@ import Service from '../../Components/test1/Service'
 import FeedBack from "../../Components/test1/FeedBack"
 import RoadmapToProcess from '../../Components/test1/RoadmapToProcess'
 import HealthMind from "../../Components/test1/HealthMind"
-import HealthyStory from "../../Components/test1/HealthyStory"
+// import HealthyStory from "../../Components/test1/HealthyStory"
 import Comparison from "../../Components/test1/Comparison"
 import FAQSection from "../../Components/test1/FAQSection"
 import TalkspaceFeature from "../../Components/test1/TalkspaceFeature"
 
 
-import TestimonialsPage from "./TestimonialsPage/TestimonialsPage"
-import TrustMetrics from "../../Components/test1/TrustMetrics/TrustMetrics"
+// import TestimonialsPage from "./TestimonialsPage/TestimonialsPage"
+// import TrustMetrics from "../../Components/test1/TrustMetrics/TrustMetrics"
 import LandingPage from './LandingPage/LandingPage.jsx'
 
 
@@ -56,13 +56,13 @@ function Royal() {
           <RoadmapToProcess />
         </div>
 
-        <div style={{ marginTop: "0px" }}>
+        {/* <div style={{ marginTop: "0px" }}>
           <TestimonialsPage />
-        </div>
+        </div> */}
 
-        <div style={{ marginTop: "0px" }}>
+        {/* <div style={{ marginTop: "0px" }}>
           <TrustMetrics />
-        </div>
+        </div> */}
 
         <div style={{ marginTop: "40px" }}>
           <Comparison />
