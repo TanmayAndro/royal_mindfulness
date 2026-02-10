@@ -11,7 +11,7 @@ const LandingPage = () => {
       >
         <div className="overlay-langin-page">
           <div className="content-card">
-            <h1 className="card-title">
+            <h1 className="card-title title-main">
               Why Royal Mindfulness Works Differently Than Therapy
             </h1>
 
