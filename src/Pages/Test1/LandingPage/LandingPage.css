@@ -1,99 +1,102 @@
-/* 1. Reset and Wrapper */
+/* ===== Wrapper ===== */
 .landing-wrapper {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Aligns to top so it grows downward */
-    background-color: #ffffff;
-    font-family: 'Arial', sans-serif;
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
 }
 
+/* ===== Banner ===== */
 .banner-container {
-    width: 100%;
-    max-width: 100%; 
-    padding: 0;
-    background-size: cover;
-    background-position: right;
-    background-repeat: no-repeat;
+  width: 110%;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
 }
 
-/* 2. Red Section */
-.red-section {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: stretch;
-    position: relative;
-    overflow: hidden;
-    padding: 50px 0;
+/* Dark overlay-langin-page so text readable */
+.overlay-langin-page {
+  width: 100%;
+  padding: 60px;
 }
 
-/* 3. White Chevron Box */
-.content-chevron {
-    background-color: #ffffff;
-    width: 50%; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 18px 18px 3px 12px; 
-    margin-left: 2%;
-    box-sizing: border-box;
+/* ===== Content Card ===== */
+.content-card {
+  background-color: #F9FAFB;
+  color: #050606;
+  max-width: 560px;
+  padding: 20px 40px 40px 40px; 
+  border-radius: 5%;
+  line-height: 1.5;
 }
 
-
-.text-area-chevron {
-    width: 100%;
+.card-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
-.title-chevron {
-    font-weight: 700;
-    color: #040c12;
-    margin-bottom: 30px;
-    font-size: 2.125rem;
-    line-height: 1.235;
+.card-description {
+  font-size: 0.95rem;
+  text-align: justify;
 }
 
-.sub-text {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: #333333;
-    margin: 0;
-    text-align: justify;
-}
-
-/* 4. Responsive Fixes */
+/* ===== Tablet ===== */
 @media (max-width: 1024px) {
-    .content-chevron {
-        width: 65%;
-        padding: 15px 15px 15px 15px;
-        margin-left: 80px 25px 25px;
-    }
+  .overlay-langin-page {
+    padding: 40px;
+  }
 
-    .banner-container {
-        padding: 7px 40px;
-    }
+  .banner-container {
+    width: 120%;
+  }
 }
 
+/* ===== Mobile Fix ===== */
 @media (max-width: 768px) {
-    .red-section {
-        padding: 40px 0;
-    }
+  .banner-container {
+    width: 100%;
+    min-height: auto;
+    background-image: none !important;
+    padding: 30px 0;
+  }
 
-   .banner-container {
-        background-image: none !important; /* Removes inline background */
-        background-color: #ffffff;        /* Optional fallback */
-    }
+  /* Center content */
+  .overlay-langin-page {
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+  }
 
-    .content-chevron {
-        width: 90%;
-        clip-path: none; /* Removes arrow on mobile for better readability */
-        padding: 30px 20px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  .content-card {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 14px;
+    padding: 24px 18px;
+    line-height: 1.7;
+  }
 
-    .title-chevron {
-        font-size: 2rem;
-    }
+    .card-title {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+
+   .card-description {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    text-align: left; /* 📱 better readability */
+  }
+}
+
+@media (max-width: 480px) {
+  .card-title {
+    font-size: 1.35rem;
+  }
+
+  .card-description {
+    font-size: 0.85rem;
+  }
 }
