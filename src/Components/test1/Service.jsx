@@ -35,7 +35,7 @@ const Service = () => {
   return (
     <section className="services-section">
       <div className="services-container">
-        <h2 className="services-title heading-main">Who are taking our services</h2>
+        <h2 className="services-title title-main">Who are taking our services</h2>
         
         <div className="services-grid">
           {serviceData.map((item, index) => (
@@ -44,8 +44,8 @@ const Service = () => {
                 <img src={item.img} alt={item.title} className="service-img" />
               </div>
               <div className="service-info">
-                <h3 className="service-name context-main">{item.title}</h3>
-                <p className="service-desc subcontext-main">{item.desc}</p>
+                <h3 className="service-name heading-main">{item.title}</h3>
+                <p className="service-desc text-main">{item.desc}</p>
                 {/* <button className="learn-more-btn">Learn More</button> */}
               </div>
             </div>

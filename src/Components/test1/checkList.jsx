@@ -126,7 +126,7 @@ const Checklist = () => {
                 {/* 3. Top Vertical Line - Isko sabse zyada height di hai (0 to 45) */}
                 <line x1="85" y1="0" x2="85" y2="45" stroke="#1470AF" strokeWidth="3" strokeLinecap="round"/>
               </svg>  
-              <h1>
+              <h1 className='title-main'>
                 We want to know you a bit better<br />
                 here is the your <span className="highlight">Checklist</span>
               </h1>
@@ -207,7 +207,7 @@ const Checklist = () => {
                     margin: "10px", 
                   }}
                 >
-                <Link type='submit' to="/talk_space" className='healthy-mind-btn'>
+                <Link type='submit' to="/consultation_question" className='healthy-mind-btn'>
                   Book Free Consultation
                 </Link>
                 <span

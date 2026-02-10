@@ -5,10 +5,10 @@ function HealthMind() {
   return (
     <div className='healthy-mind-section'>
       <div className='healthy-min-contet'>
-        <h2 className='healthy-mind-title'>
+        <h2 className='healthy-mind-title title-main'>
           "A healthy mind is the key to a stronger you."
         </h2>
-        <p className='healthy-mind-description'>
+        <p className='healthy-mind-description heading-main'>
           Start your journey today. It's free and takes just a few minutes.
         </p>
         <div
@@ -19,7 +19,7 @@ function HealthMind() {
             gap: "4px",
           }}
         >
-        <Link type='submit' to="/talk_space" className='healthy-mind-btn'>
+        <Link type='submit' to="/consultation_question" className='healthy-mind-btn'>
           Book Free Consultation
         </Link>
         <span

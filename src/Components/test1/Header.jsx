@@ -28,13 +28,13 @@ function Header() {
         <section className="hero-section">
           <header className="hero">
             <h1 className='title-main'>Train yourself to be "happy"</h1>
-            <p className='subtitle-main'>1-on-1 training, live sessions, Free Consultation</p>
+            <p className='heading-main'>1-on-1 training, live sessions, Free Consultation</p>
           </header>
 
           <div className="book-card-wrapper">
             <div className="book-card">
             <div className="book-image-wrapper">
-              <Link to="/talk_space">
+              <Link to="/consultation_question">
                 <img
                   src={bookConsulation}
                   alt="Book Consultation"

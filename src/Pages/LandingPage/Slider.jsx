@@ -31,7 +31,7 @@ const BannerSection = () => {
 
   function handelConsulation(clickedOn) {
     if (clickedOn === "freeconsultance") {
-      navigate("/talk_space");
+      navigate("/consultation_question/");
     } else if (clickedOn === "rozerpay") {
       navigate("/book-now");
     }

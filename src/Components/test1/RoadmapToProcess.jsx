@@ -24,7 +24,7 @@ const RoadmapToProcess = () => {
       position: "right",
       backdrop: "style1",
       sparkleicon: "icon1",
-      link: "/talk_space", 
+      link: "/consultation_question", 
       sparkle: {
         l1: { x1: 5, y1: 80, x2: 45, y2: 80 },
         l2: { x1: 25, y1: 20, x2: 60, y2: 55 },
@@ -74,7 +74,7 @@ const RoadmapToProcess = () => {
   return (
     <section className="roadmap-section">
       <div className="roadmap-container">
-        <h2 className="roadmap-main-title">How It works</h2>
+        <h2 className="roadmap-main-title title-main">How It works</h2>
 
         <div className="roadmap-steps">
           {steps.map((step, index) => (
@@ -82,11 +82,11 @@ const RoadmapToProcess = () => {
               <div className={`roadmap-step ${step.position}`}>
                 {/* Text Content */}
                 <div className="step-text-content">
-                  <h3 className="step-header">
+                  <h3 className="step-header heading-main">
                     {step.title}{" "}
                     <span className="blue-highlight">{step.highlight}</span>
                   </h3>
-                  <p className="step-para">{step.description}</p>
+                  <p className="step-para text-main ">{step.description}</p>
                   <div className="button-group">
                     <Link to={step.link} className="roadmap-btn">
                       {step.buttonText}

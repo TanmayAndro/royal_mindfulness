@@ -104,7 +104,7 @@ function FeebBack() {
             <FaEdit className='edit-icon'/>
           </div>
 
-          <p className='feedback-instruction'>
+          <p className='feedback-instruction heading-main'>
             We value your thoughts! Share your feedback to <br />
             help us improve your yoga experience.
           </p>
@@ -144,7 +144,7 @@ function FeebBack() {
     
     <div className='stay-section'>
       <div className='stay-container'>
-        <h2 className='stay-heading'>Stay in the loop</h2>
+        <h2 className='stay-heading title-main'>Stay in the loop</h2>
         <form className='stay-form' onSubmit={handleProspectSubmit}>
           <input 
           type='email'

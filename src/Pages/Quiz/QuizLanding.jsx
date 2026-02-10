@@ -446,7 +446,7 @@ export default function QuizLanding() {
   
     const handelConsulation = (clickedOn: "calendly" | "rozerpay") => {
   if (clickedOn === "calendly") {
-    navigate("/talk_space");
+    navigate("/consultation_question");
   } else if (clickedOn === "rozerpay") {
     window.open("https://pages.razorpay.com/pl_RJ40RFXQGpJ4w5/view", "_blank");
   }

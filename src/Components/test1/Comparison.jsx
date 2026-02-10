@@ -26,7 +26,7 @@ const Comparison = () => {
   const navigate = useNavigate();
 
   const handelConsulation = (clickedOn) => {
-    if (clickedOn === "calendly") navigate("/talk_space");
+    if (clickedOn === "calendly") navigate("/consultation_question");
     if (clickedOn === "rozerpay") navigate("/book-now");
   };
 
@@ -35,12 +35,13 @@ const Comparison = () => {
       <Box sx={{ padding: "2rem", textAlign: "center" }}>
         {/* Heading */}
         <Typography
+        className="title-main"
           variant="h4"
           fontWeight="bold"
           sx={{
             mt: "2rem",
             fontSize: { xs: "26px", sm: "40px" },
-            color: "#1470AF",
+            color: "#010406ff",
           }}
         >
           Royal Mindfulness vs Traditional Training
@@ -69,7 +70,7 @@ const Comparison = () => {
               variant="outlined"
             >
               <CardContent>
-                <Typography fontWeight="bold">Feature</Typography>
+                <Typography  fontWeight="bold" className="heading-main">Feature</Typography>
               </CardContent>
               <Divider />
               {data.map((item, i) => (

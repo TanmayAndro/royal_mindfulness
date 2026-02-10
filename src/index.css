@@ -27,37 +27,25 @@ code {
   height: 12px; 
 }
 
+
 .title-main {
   font-family: "Inter", sans-serif !important;
-  font-weight: 700 !important;
+  font-weight: 500 !important;
   line-height: 1.3 !important;
-}
-
-.subtitle-main {
-  font-family: "Inter", sans-serif !important;
-  font-weight: 400 !important;
-  line-height: 1.3 !important;
+  font-size: 45px !important;
 }
 
 .heading-main {
   font-family: "Inter", sans-serif !important;
-  font-weight: 600 !important;
+  /* font-weight: 400 !important; */
+  line-height: 1.3 !important;
+  font-size: 20px !important;
+} 
 
-}
-
-.subheading-main {
+.text-main {
   font-family: "Inter", sans-serif !important;
-  font-weight: 200 !important;
-}
-
-.context-main{
-  font-family: "Inter", sans-serif !important;
-  font-weight: 300 !important;
-}
-
-.subcontext-main{
-  font-family: "Inter", sans-serif !important;
-  font-weight: 100 !important;
+  /* font-weight: 100 !important; */
+  line-height: 1.3 !important;
   font-size: 18px !important;
-}
+}   
 

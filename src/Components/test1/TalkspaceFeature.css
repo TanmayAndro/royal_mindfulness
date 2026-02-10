@@ -45,14 +45,14 @@
 .step-num {
     font-size: 42px;
     font-weight: 400;
-    color: #004d4d;
+    color: #010f0f;
     margin-right: 25px;
     line-height: 1;
 }
 
 .step-info h3 {
     margin: 0 0 8px 0;
-    color: #004d4d;
+    color: #000404;
     font-size: 20px;
 }
 
@@ -69,7 +69,7 @@
     display: flex;
     justify-content: center;
     margin-top: 2.5%;
-    /* इसे visible रखें ताकि पीछे का SVG बाहर दिख सके */
+   
     overflow: visible; 
 }
 

@@ -30,7 +30,7 @@ const DEFAULT_STEPS = [
     title: "Book a free consultation",
     desc: "Answer a few questions online...",
     img: Image1,
-    route: "/talk_space",
+    route: "/consultation_question",
     imgClass: "consultation-img"
   },
   {
@@ -164,7 +164,7 @@ const TalkspaceFeature = () => {
 
   return (
     <div className="talkspace-container">
-      <h2 className="main-title heading-main">Get it for free!</h2>
+      <h2 className="main-title title-main">Get it for free!</h2>
 
       {errorMessage && <div className="error-message">{errorMessage}</div>}
 
@@ -186,7 +186,7 @@ const TalkspaceFeature = () => {
             >
               <div className="step-num">{step.id}</div>
               <div className="step-info">
-                <h3 className="subtitle-main heading-main">{step.title}</h3>
+                <h3 className="heading-main" >{step.title}</h3>
                 <p>{step.desc}</p>
               </div>
             </div>

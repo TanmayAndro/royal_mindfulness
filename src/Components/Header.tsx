@@ -238,7 +238,7 @@ const Header: React.FC = () => {
           location.pathname === "/" ||
           location.pathname === "/free_consultance" ||
           location.pathname === "/consulation" || 
-          location.pathname === "/talk_space"
+          location.pathname === "/consultation_question"
             ? {
                 position: "absolute",
                 top: 0,
