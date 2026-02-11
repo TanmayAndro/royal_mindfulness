@@ -421,10 +421,11 @@ export const Payment = () => {
     <Grid container justifyContent="center" alignItems="center" style={{ height: "100vh" }}>
       <Box textAlign="center">
         <CircularProgress />
-        <Box mt={2} fontSize="24px" fontFamily="lato">
+        <Box mt={2} fontSize="24px" fontFamily="Inter">
           Please wait while we process your payment...
         </Box>
       </Box>
     </Grid>
   );
 };
+

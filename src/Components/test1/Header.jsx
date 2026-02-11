@@ -1,6 +1,5 @@
 import React, { useState,useEffect } from 'react';
 import "./Header.css";
-import logoImg from '../../Assests/images/royal_image.png';
 import bookConsulation from "../../Assests/images/book_1.png"
 import hiretrainer from "../../Assests/images/hireTrainer.png"
 import { Link } from "react-router-dom";

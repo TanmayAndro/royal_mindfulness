@@ -74,7 +74,7 @@ export const FourthSection = () => {
             fontWeight: "700",
             textAlign: "center",
             marginTop: "3rem",
-            fontFamily: "Instrument sans",
+            
           }}
         >
           What we offer
@@ -86,7 +86,7 @@ export const FourthSection = () => {
             fontWeight: "400",
             padding: { xs: "1.5rem", sm: "1rem 3rem 0rem 3rem" },
             textAlign: "center",
-            fontFamily: "Instrument sans",
+            
           }}
         >
           We are introducing two distinctive pathways to enhance your
@@ -160,7 +160,7 @@ export const FourthSection = () => {
               fontStyle: "italic",
               marginBottom: "1rem",
               fontSize: "23px",
-              fontFamily: "Instrument Sans",
+              
             }}
           >
             You Need Daily Relaxation sessions if:
@@ -254,7 +254,7 @@ export const FourthSection = () => {
               fontStyle: "italic",
               marginBottom: "1rem",
               fontSize: "23px",
-              fontFamily: "Instrument Sans",
+              
             }}
           >
             You Need Antra Shanti sessions if:
@@ -383,7 +383,7 @@ export const FourthSection = () => {
               fontStyle: "italic",
               marginBottom: "1rem",
               fontSize: "23px",
-              fontFamily: "Instrument Sans",
+              
             }}
           >
             You should join Basic Raja yoga course if :
@@ -450,6 +450,6 @@ const StyledListItemText = styled(ListItemText)(({ theme }) => ({
   "& .MuiListItemText-primary": {
     fontSize: "18px",
     color: "#353839",
-    fontFamily: "Instrument Sans",
+    
   },
 }));

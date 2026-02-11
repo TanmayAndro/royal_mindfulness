@@ -39,12 +39,12 @@ const config=require('../../config')
                   aria-controls={`panel${i}bh-content`}
                   id={`panel${i}bh-header`}
                 >
-                  <Typography style={{ fontFamily: "Inter", color: "#1e293b", fontSize: "16px", fontWeight: "700", lineHeight: "21px" }}>
+                  <Typography style={{  color: "#1e293b", fontSize: "16px", fontWeight: "700", lineHeight: "21px" }}>
                     {faq.question}
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography style={{ color: "#334155", fontFamily: "Inter", fontSize: "16px", fontWeight: "400", lineHeight: "30px" }}>
+                  <Typography style={{ color: "#334155",  fontSize: "16px", fontWeight: "400", lineHeight: "30px" }}>
                     {faq.answer}
                   </Typography>
                 </AccordionDetails>

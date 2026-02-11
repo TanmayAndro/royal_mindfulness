@@ -39,7 +39,7 @@ export const Offerings = () => {
               >
                 <Typography
                   sx={{
-                    fontFamily: "Instrument Sans",
+                    
                     fontWeight: 600,
                     fontSize: "30px",
                   }}
@@ -48,7 +48,7 @@ export const Offerings = () => {
                 </Typography>
                 <Typography
                   sx={{
-                    fontFamily: "Instrument Sans",
+                    
                     fontWeight: 600,
                     fontSize: "22px",
                   }}

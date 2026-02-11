@@ -1,0 +1,134 @@
+.quiz-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;   /* 👈 IMPORTANT */
+  align-items: center;
+  justify-content: center;
+}
+.quiz-container {
+  width: 100%;
+  max-width: 800px;          /* 👈 KEY FIX */
+  padding: 30px;
+}
+
+
+
+/* Question text */
+.quiz-question {
+  font-size: 30px;
+  margin: 20px 0 30px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.question-number{
+  font-weight: 600;
+  min-width: 24px;
+}
+
+.question-text {
+  flex: 1;           /* takes remaining space */
+}
+
+/* Options wrapper */
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Option card */
+.quiz-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  cursor: pointer;
+  text-align: left;          /* 👈 IMPORTANT */
+}
+
+/* Radio alignment */
+.quiz-option input {
+  margin-top: 4px;
+}
+
+.option-text {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+
+/* Buttons container */
+.quiz-actions {
+  width: 100%;       /* same as quiz-container */
+  margin-top: 25px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
+
+/* Default state */
+.quiz-option input[type="radio"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #8f8585;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: 0.2s ease;
+  margin-top: 4px;
+}
+
+/* Hover whole option background */
+
+
+.quiz-option:hover input[type="radio"]:not(:checked)::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: #1470AF;   /* Blue inside */
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.quiz-option:hover {
+  background-color: hwb(0 84% 14%);
+}
+
+
+.quiz-option input[type="radio"]:checked::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: red;   /* Red inside */
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Selected option card */
+.quiz-option:has(input:checked) {
+  border-color: red;
+  background-color: #fff5f5;
+}
+
+
+
+
+
+

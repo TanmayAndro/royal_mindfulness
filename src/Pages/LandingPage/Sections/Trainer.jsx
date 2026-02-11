@@ -39,7 +39,7 @@ const TrainerCard = () => {
                   fontWeight: 700,
                   fontSize: { xs: "32px", sm: "40px", md: "48px" },
                   lineHeight: { xs: "36px", md: "50px" },
-                  fontFamily: "Instrument sans",
+                  
                   color: "#1470AF",
                 }}
               >
@@ -51,7 +51,7 @@ const TrainerCard = () => {
                   fontWeight: 400,
                   fontSize: { xs: "16px", sm: "18px" },
                   marginTop: "2rem",
-                  fontFamily: "Instrument sans",
+                  
                   textAlign: { xs: "center", sm: "left" },
                 }}
               >
@@ -73,7 +73,7 @@ const TrainerCard = () => {
                   fontSize: { xs: "20px", sm: "24px", md: "26px" },
                   fontStyle: "italic",
                   marginTop: "2rem",
-                  fontFamily: "Instrument sans",
+                  
                   color: "#1470AF",
                   textAlign: { xs: "center", sm: "left" },
                 }}

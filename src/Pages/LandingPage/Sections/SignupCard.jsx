@@ -115,7 +115,7 @@ export const SignupCard = () => {
                 fontSize: { xs: "30px", md: "40px" },
                 fontWeight: "700",
                 color: "#1470AF",
-                fontFamily: "Instrument sans",
+                
               }}
             >
               Subscribe to Our Email List

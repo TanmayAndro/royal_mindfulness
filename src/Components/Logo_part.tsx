@@ -54,7 +54,7 @@
             <img src={logo} style={{ width: "60px" }} alt="logo"   onClick={()=>navigate('/')}/>
             <Typography
               className="main_heading_css heading_css"
-              style={{ fontFamily: '"Fraunces", serif' }}
+              style={{ fontFamily: "Inter" }}
             >
               {config.main_heading}
             </Typography>
@@ -98,7 +98,7 @@
               cursor: "pointer",
               textDecoration: "none",
               color: "inherit",
-              fontFamily: "lato",
+              
             }}
           >
             <ListItemText primary={item.name} />

@@ -22,7 +22,7 @@ export const ThirdSection = () => {
           fontWeight: "bold",
           marginBottom: "1rem",
           width: "100%",
-          fontFamily: "Instrument Sans",
+         
           fontSize: { xs: "30px", md: "40px" },
         }}
       >

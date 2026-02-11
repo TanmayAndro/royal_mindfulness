@@ -98,7 +98,7 @@ const FAQSection = () => {
               variant="h4"
               fontWeight="bold"
               sx={{
-                fontFamily: "lato",
+                
                 fontSize: { xs: "36px", sm: "48px", md: "56px" },
                 fontWeight: 600,
                 textAlign: { xs: "center", md: "left" },
@@ -133,7 +133,7 @@ const FAQSection = () => {
                 >
                   <Typography
                     sx={{
-                      fontFamily: "lato",
+                      
                       fontSize: { xs: "15px", sm: "16px" },
                       fontWeight: 600,
                     }}
@@ -144,7 +144,7 @@ const FAQSection = () => {
                 <AccordionDetails sx={{ paddingRight: { xs: 0, sm: 2 } }}>
                   <Typography
                     sx={{
-                      fontFamily: "lato",
+                      
                       fontSize: { xs: "14px", sm: "15px" },
                       fontWeight: 400,
                       lineHeight: 1.6,

@@ -227,7 +227,7 @@ const styles = {
     marginLeft: 1,
     fontSize: "26px",
     fontWeight: 700,
-    fontFamily: "Instrument sans",
+   
     color: "#1470af",
   },
   cardMedia: {
@@ -250,7 +250,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     gap: 1,
-    fontFamily: "Instrument Sans",
+    
     fontWeight: 700,
     fontSize: "25px",
   },

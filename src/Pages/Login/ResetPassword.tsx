@@ -192,10 +192,10 @@ export const ResetPassword = () => {
       <Dialog open={isSuccessModalOpen} disableEscapeKeyDown>
         <Box sx={{ padding: "3rem", textAlign: "center", boxShadow: 24, borderRadius: "10px" }}>
           <video src={"/resetGif.mp4"} autoPlay muted playsInline style={{ height: "130px", width: "130px" }} />
-          <Typography variant="h4" sx={{ fontFamily: "Roboto", fontWeight: 600, fontSize: "19px", mb: 2 }}>
+          <Typography variant="h4" sx={{  fontWeight: 600, fontSize: "19px", mb: 2 }}>
             Password Reset Successfully
           </Typography>
-          <Typography variant="h4" sx={{ fontFamily: "Roboto", fontWeight: 400, fontSize: "16px" }}>
+          <Typography variant="h4" sx={{  fontWeight: 400, fontSize: "16px" }}>
             You will be redirected to the login screen in {count}...
           </Typography>
         </Box>
@@ -212,7 +212,7 @@ const AllStyle = {
     fontWeight: 700,
     fontSize: "24px",
     lineHeight: "32px",
-    fontFamily: "Lato",
+    
     letterSpacing: "-0.12px",
   },
 };
@@ -221,7 +221,7 @@ const InputField = styled(TextField)({
   marginBottom: "16px",
   "& input::placeholder": {
     color: "#94A3B8",
-    fontFamily: "Lato",
+    
     fontSize: "16px",
     opacity: 1,
     fontWeight: 400,
@@ -250,7 +250,7 @@ const InputField = styled(TextField)({
   "& .MuiFormHelperText-root.Mui-error": {
     color: "#DC2626",
     fontSize: "12px",
-    fontFamily: "Lato",
+    
     fontWeight: 400,
     lineHeight: "18px",
   },

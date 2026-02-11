@@ -96,7 +96,7 @@ const TermsCondition = () => {
                 >
                   <Typography
                     style={{
-                      fontFamily: "Inter",
+                      
                       color: "#1e293b",
                       fontSize: "16px",
                       fontWeight: "700",
@@ -110,7 +110,7 @@ const TermsCondition = () => {
                   <Typography
                     style={{
                       color: "#334155",
-                      fontFamily: "Inter",
+                      
                       fontSize: "16px",
                       fontWeight: "400",
                       lineHeight: "30px",

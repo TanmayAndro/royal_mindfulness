@@ -7,7 +7,7 @@
   align-items: center;
 }
 .main_heading_css {
-  font-family: "Fraunces", serif;
+ 
   font-size: 22px !important;
   font-weight: 700 !important;
   color: white !important;
@@ -17,7 +17,7 @@
   justify-content: center;
 }
 .item_heading_css {
-  font-family: Lato !important;
+ 
   font-size: 16px !important;
   font-weight: 500 !important;
   color: white !important;
@@ -25,7 +25,6 @@
 }
 
 .button_login_css {
-  font-family: Lato !important;
   font-size: 16px !important;
   font-weight: 400 !important;
   color: rgb(12, 11, 11);
@@ -88,7 +87,7 @@
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  font-family: Lato;
+ 
 }
 
 .drawer {
@@ -97,7 +96,7 @@
   right: 20px;
 }
 .drawerbtn {
-  font-family: Lato !important;
+ 
   font-size: 16px !important;
   font-weight: 400 !important;
   color: rgb(12, 11, 11);

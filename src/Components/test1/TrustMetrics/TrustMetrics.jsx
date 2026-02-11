@@ -17,7 +17,6 @@ const StatNumber = styled(Typography)({
   color: '#005D5D', // Teal color
   fontWeight: 700,
   fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', // Responsive sizing
-  fontFamily: '"Georgia", serif',
   lineHeight: 1.2,
 });
 

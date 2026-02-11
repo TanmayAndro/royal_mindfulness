@@ -37,7 +37,7 @@ const SortByDateBox = styled(Box)({
 });
 
 const SortByText = styled(Typography)({
-  fontFamily: "Poppins",
+ 
   fontSize: "12px",
   fontWeight: 500,
   lineHeight: "16px",
@@ -84,7 +84,7 @@ const MainCard = styled(Card)({
   },
 });
 const PaymentText = styled(Typography)({
-  fontFamily: "Poppins",
+ 
   fontSize: "16px",
   fontWeight: 600,
   "@media (max-width:900px)": {
@@ -110,7 +110,7 @@ const DateText = styled(Typography)({
   },
 });
 const TypoText = styled(Typography)({
-  fontFamily: "Poppins",
+ 
   fontSize: "12px",
   fontWeight: 400,
   lineHeight: "13.92px",

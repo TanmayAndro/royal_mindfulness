@@ -71,9 +71,11 @@ const NavBar = ({ isOpen, toggleMenu }) => {
                 variant="outlined"
                 size="small"
                 sx={{
-                  color: "#fff",
+                  color: "#ffffffff",
                   borderColor: "#fff",
                   borderRadius: "30px",
+                  fontWeight: "400",
+                  fontSize: "14px",
                   px: 3,
                   "&:hover": {
                     backgroundColor: "#fff",
@@ -93,6 +95,8 @@ const NavBar = ({ isOpen, toggleMenu }) => {
                   color: "#fff",
                   borderColor: "#fff",
                   borderRadius: "30px",
+                  fontWeight: "00",
+                  fontSize: "14px",
                   px: 3,
                   "&:hover": {
                     backgroundColor: "#fff",
@@ -106,6 +110,8 @@ const NavBar = ({ isOpen, toggleMenu }) => {
                 
               </Link>
             </Box>
+
+            
           ) : (
             <Box
               sx={{

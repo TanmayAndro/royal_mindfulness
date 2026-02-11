@@ -39,14 +39,15 @@ const DEFAULT_STEPS = [
     desc: "journal description",
     img: Journal1,
   },
-  // {
-  //   id: 4,
-  //   title: "Take Mental Wellness Quiz",
-  //   desc: "If your first therapist isn't a fit...",
-  //   img: "https://cdn.prod.website-files.com/5f1b10a955e49d279bdc2192/6788623f89a65a2751eacb41_83d6b59ad04aedb0524228d4724821a0_step4.png",
-  // },
   {
     id: 4,
+    title: "Take Mental Wellness Quiz",
+    desc: "If your first therapist isn't a fit...",
+    img: "https://cdn.prod.website-files.com/5f1b10a955e49d279bdc2192/6788623f89a65a2751eacb41_83d6b59ad04aedb0524228d4724821a0_step4.png",
+    route: "/quiz_questions"
+  },
+  {
+    id: 5,
     title: "Take a Free Relaxation Session",
     desc: "If your first therapist isn't a fit...",
     img: videoPlay,

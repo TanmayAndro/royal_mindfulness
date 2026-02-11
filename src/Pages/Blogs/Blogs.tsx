@@ -177,7 +177,7 @@ export const Blogs = () => {
                         variant="h4"
                         gutterBottom
                         sx={{
-                          fontFamily: "Instrument Sans",
+                          
                           fontSize: "40px",
                           fontWeight: 700,
                         }}
@@ -190,7 +190,7 @@ export const Blogs = () => {
                         variant="body1"
                         paragraph
                         sx={{
-                          fontFamily: "Instrument Sans",
+                          
                           fontSize: "18px",
                           fontWeight: 500,
                         }}
@@ -207,7 +207,7 @@ export const Blogs = () => {
                               variant="h5"
                               gutterBottom
                               sx={{
-                                fontFamily: "Instrument Sans",
+                                
                                 fontSize: "20px",
                                 fontWeight: 600,
                               }}
@@ -222,7 +222,7 @@ export const Blogs = () => {
                               variant="body2"
                               paragraph
                               sx={{
-                                fontFamily: "Instrument Sans",
+                                
                                 fontSize: "18px",
                                 fontWeight: 500,
                               }}
@@ -241,7 +241,7 @@ export const Blogs = () => {
                                     variant="h6"
                                     gutterBottom
                                     sx={{
-                                      fontFamily: "Instrument Sans",
+                                     
                                       fontSize: "20px",
                                       fontWeight: 500,
                                     }}
@@ -256,7 +256,7 @@ export const Blogs = () => {
                                     variant="body2"
                                     paragraph
                                     sx={{
-                                      fontFamily: "Instrument Sans",
+                                     
                                       fontSize: "16px",
                                     }}
                                   >

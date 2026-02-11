@@ -346,6 +346,6 @@ body {
 
   .title {
     font-size: 20px;
-    font-family: "viswhas";
+     font-family: 'Inter' !important;
   }
 }

@@ -70,7 +70,7 @@ export const Comparison = () => {
             fontWeight: "bold",
             color: "#1470AF",
             alignSelf: "baseline",
-            fontFamily: "Instrument sans",
+           
           }}
         >
           Royal Mindfulness vs Traditional Training
@@ -103,7 +103,7 @@ export const Comparison = () => {
                   variant="h6"
                   fontWeight="bold"
                   sx={{
-                    fontFamily: "lato",
+                    
                     fontSize: "18px",
                   }}
                 >
@@ -116,7 +116,7 @@ export const Comparison = () => {
                   <Typography
                     sx={{
                       marginTop: "7px",
-                      fontFamily: "lato",
+                      
                       fontSize: "16px",
                     }}
                   >
@@ -144,7 +144,7 @@ export const Comparison = () => {
                 color="primary"
                 align="center"
                 sx={{
-                  fontFamily: "lato",
+                  
                   fontSize: "18px",
                 }}
               >
@@ -159,7 +159,7 @@ export const Comparison = () => {
                   color="primary"
                   sx={{
                     marginTop: "7px",
-                    fontFamily: "lato",
+                    
                     fontSize: "16px",
                     fontWeight: 600,
                   }}
@@ -186,7 +186,7 @@ export const Comparison = () => {
                 variant="h6"
                 fontWeight="bold"
                 sx={{
-                  fontFamily: "lato",
+                  
                   fontSize: "18px",
                 }}
               >
@@ -199,7 +199,7 @@ export const Comparison = () => {
                 <Typography
                   sx={{
                     marginTop: "7px",
-                    fontFamily: "lato",
+                    
                     fontSize: "16px",
                   }}
                 >

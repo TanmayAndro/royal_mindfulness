@@ -30,7 +30,7 @@ export const Hero = () => {
         <Box>
           <Typography
             sx={{
-              fontFamily: "'Instrument Sans', sans-serif",
+              
               fontWeight: 700,
               fontSize: { xs: "30px", md: "70px" },
               textShadow: `
@@ -46,7 +46,7 @@ export const Hero = () => {
           </Typography>
           <Typography
             sx={{
-              fontFamily: "Instrument sans",
+              
               fontWeight: 700,
               fontSize: { xs: "13px", sm: "20px" },
               color: "#EAEAEE",

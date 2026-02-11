@@ -309,7 +309,7 @@ const FirstBox = styled(Box)({
   justifyContent: "space-between",
 });
 const ProfileName = styled(Typography)({
-  fontFamily: "Poppins",
+ 
   fontSize: "14px",
   fontWeight: 700,
   marginTop: "20px",
@@ -326,7 +326,7 @@ const ProfileName = styled(Typography)({
   },
 });
 const SubHeading = styled(Typography)({
-  fontFamily: "Poppins",
+ 
   fontSize: "12px",
   fontWeight: 400,
   lineHeight: "18px",
@@ -343,7 +343,7 @@ const EmailInfoBox = styled(Box)({
   gap: "8px",
 });
 const InfoContent = styled(Typography)({
-  fontFamily: "Poppins",
+ 
   fontSize: "12px",
   fontWeight: 400,
   lineHeight: "16px",
@@ -367,7 +367,7 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiPaper-root": {
     borderRadius: "12px",
     width: "400px",
-    fontFamily: "Poppins",
+   
     backgroundColor: "#FFFFFF",
     [theme.breakpoints.down('sm')]: {
       width: "300px",        

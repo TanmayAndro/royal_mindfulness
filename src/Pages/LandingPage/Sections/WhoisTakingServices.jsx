@@ -44,7 +44,7 @@ export const WhoisTakingServices = () => {
         fontSize: "40px",
         fontWeight: "bold",
         color: "#1470AF",
-        fontFamily: "Instrument sans",
+       
       }}
     >
       Who is Taking Our Services
@@ -73,7 +73,7 @@ export const WhoisTakingServices = () => {
                   sx={{
                     fontSize: { xs: "16px", md: "20px" },
                     fontWeight: "600",
-                    fontFamily: "Instrument sans",
+                   
                   }}
                 >
                   {item.title}

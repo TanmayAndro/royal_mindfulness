@@ -97,7 +97,7 @@ const Purpose = () => {
                 >
                   <Typography
                     style={{
-                      fontFamily: "Inter",
+                      
                       color: "#1e293b",
                       fontSize: "16px",
                       fontWeight: "700",
@@ -111,7 +111,7 @@ const Purpose = () => {
                   <Typography
                     style={{
                       color: "#334155",
-                      fontFamily: "Inter",
+                      
                       fontSize: "16px",
                       fontWeight: "400",
                       lineHeight: "30px",
@@ -180,7 +180,7 @@ const mainStyle = {
     fontSize: "24px",
     lineHeight: "32px",
     marginBottom: "8px",
-    fontFamily: "Lato",
+    
     letterSpacing: "-0.12px",
     color: "rgba(30, 41, 59, 1)",
     "@media (max-width:1024px)": {

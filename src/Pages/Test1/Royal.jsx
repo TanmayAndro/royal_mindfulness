@@ -26,13 +26,14 @@ function Royal() {
   return (
     <div
       style={{
-        fontFamily: "'Inter', sans-serif",
+        
         width: "100%",
         overflowX: "hidden",
         display: "flex",
         justifyContent: "center",
       }}
     >
+      
       {/* Main Responsive Wrapper */}
       <div
         style={{

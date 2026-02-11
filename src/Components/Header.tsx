@@ -271,7 +271,7 @@ const Header: React.FC = () => {
           {config.headerItem.map((item: { name: string; link: string }, index: number) => (
             <div key={index}>
               <Link to={item.link} style={{ textDecoration: "none" }}>
-                <Typography className="item_heading_css" style={{ fontFamily: "lato", cursor: "pointer" }}>
+                <Typography className="item_heading_css" style={{ cursor: "pointer" }}>
                   {item.name}
                 </Typography>
               </Link>

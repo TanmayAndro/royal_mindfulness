@@ -181,7 +181,6 @@ const styles = {
   mainText: {
     marginTop: "1.5rem",
     color: "#333",
-    fontFamily: "'Inter', sans-serif",
     lineHeight: 1.9,
     fontSize: "18px",
     "@media (max-width:900px)": {

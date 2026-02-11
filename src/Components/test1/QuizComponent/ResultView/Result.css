@@ -1,0 +1,52 @@
+.result-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-card {
+  width: 100%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 40px 30px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  align-items: center;
+  text-align: center;
+}
+
+.result-score {
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+.result-description {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.result-note {
+  margin-top: 24px;
+  font-size: 13px;
+  font-style: italic;
+  color: #6b7280;
+}
+
+
+@media (max-width: 1024px) {
+  .result-card {
+    padding: 30px 25px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .result-card {
+    padding: 22px 18px;
+    margin: 20px 25px;
+  }
+}

@@ -178,7 +178,9 @@ import Royal from './Pages/Test1/Royal'
 import ConsultationPage from "./Pages/Test1/TalkSpace/ConsultationPage"
 import TalkSpace from "./Pages/Test1/TalkSpace/TalkSpace"
 
+import Quiz from "./Pages/Test1/Quiz/QuizPage"
 
+// /home/ravi/Desktop/Tanmay_sir/royal_mindfulness/src/Pages/Test1/Quiz/QuizPage.jsx
 const TRACKING_ID = "G-SNZDQG6PM4";
 
 function App() {
@@ -199,7 +201,7 @@ export default App;
 
 const Layout = () => {
   const location = useLocation();
-  const hideHeaderFooter = ["/meeting", "/"].includes(location.pathname);
+  const hideHeaderFooter = ["/meeting", "/", "", "/quiz_questions"].includes(location.pathname);
  // Hides for Jitsi page
   // const hideFooter = location.pathname === "/free_consultance"; 
   const hideFooter = ["/free_consultance", "/consultation_question", "/consulation", "/book-now"].includes(location.pathname); //Hide only footer page
@@ -212,6 +214,7 @@ const Layout = () => {
         <Route path="/" element={<Royal />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/quiz_questions" element={<Quiz />} />
         
         {/* {<Route
           path="/session/:id"

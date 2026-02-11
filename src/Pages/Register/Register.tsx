@@ -521,7 +521,7 @@ const handlePassword = (value:any,fields: string) => {
             <Typography
               data-test-id="button1"
               style={{
-                fontFamily: "Lato",
+               
                 fontWeight: 400,
                 fontSize: "16px",
                 lineHeight: "19.2px",
@@ -565,7 +565,7 @@ export const PhoneStyle = styled(PhoneInput)(({ borderColor }: any) => ({
   },
   "& .PhoneInputInput": {
     color: "#334155",
-    fontFamily: "Lato",
+   
     fontSize: "16px",
     fontWeight: 400,
     background: "transparent",

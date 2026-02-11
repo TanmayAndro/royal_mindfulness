@@ -81,7 +81,7 @@ export const Refund = () => {
                 fontSize: { xs: "30px", md: "40px" },
                 fontWeight: "700",
                 color: "#1470AF",
-                fontFamily: "Instrument sans",
+                
               }}
             >
               Refund and Cancellation
@@ -92,7 +92,7 @@ export const Refund = () => {
                 fontSize: { xs: "16px", md: "20px" },
                 fontWeight: "600",
                 color: "black",
-                fontFamily: "Instrument sans",
+                
                 textAlign: "center",
               }}
             >

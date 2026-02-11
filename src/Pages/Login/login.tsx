@@ -492,7 +492,7 @@ email);
                   </Typography>
                   <Typography
                     style={{
-                      fontFamily: "Lato",
+                      
                       fontWeight: 400,
                       fontSize: "16px",
                       color: "#0A2239",
@@ -545,7 +545,7 @@ email);
             <Typography
               variant="h4"
               sx={{
-                fontFamily: "Roboto",
+                
                 fontWeight: 600,
                 fontSize: "19px",
                 mb: 2,
@@ -555,7 +555,7 @@ email);
             </Typography>
             <Typography
               variant="h4"
-              sx={{ fontFamily: "Roboto", fontWeight: 400, fontSize: "16px" }}
+              sx={{  fontWeight: 400, fontSize: "16px" }}
             >
               We have sent instruction on how to reset your password
             </Typography>
@@ -618,12 +618,12 @@ email);
       alignItems: "center",
       fontSize: "16px",
       lineHeight: "24px",
-      fontFamily: "Lato",
+      
     },
     errorTextStyle: {
       color: "#DC2626",
       fontSize: "12px",
-      fontFamily: "Lato",
+      
       fontWeight: 400,
       lineHeight: "18px",
     },
@@ -632,14 +632,14 @@ email);
       fontWeight: 700,
       marginBottom: "4px",
       color: "#0A2239",
-      fontFamily: "Lato",
+      
       lineHeight: "22px",
     },
 
     boldStyle: {
       color: "#1470AF",
       fontSize: "16px",
-      fontFamily: "Lato",
+      
       fontWeight: 700,
     },
     btnStyle: {
@@ -649,7 +649,7 @@ email);
       background: "#1470AF",
       textTransform: "inherit" as "inherit",
       color: "white",
-      fontFamily: "Lato",
+      
       fontSize: "16px",
       fontWeight: 700,
       marginBottom: "10px",
@@ -665,7 +665,7 @@ email);
       height: "42px",
       fontWeight: 400,
       textAlign: "center",
-      fontFamily: "Lato",
+      
       fontSize: "16px",
       lineHeight: "24px",
       paddingLeft: "10px",
@@ -678,7 +678,7 @@ email);
       fontSize: "24px",
       lineHeight: "32px",
       marginBottom: "8px",
-      fontFamily: "Lato",
+      
       letterSpacing: "-0.12px",
     },
 
@@ -757,7 +757,7 @@ email);
 
       "& input::placeholder": {
         color: "#94A3B8",
-        fontFamily: "Lato",
+        
         fontSize: "16px",
         opacity: 1,
         fontWeight: 400,
@@ -798,7 +798,7 @@ email);
       "& .MuiFormHelperText-root.Mui-error": {
         color: "#DC2626",
         fontSize: "12px",
-        fontFamily: "Lato",
+        
         fontWeight: 400,
         lineHeight: "18px",
       },
