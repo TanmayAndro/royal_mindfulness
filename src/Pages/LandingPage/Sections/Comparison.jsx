@@ -46,17 +46,16 @@ export const Comparison = () => {
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up("md")); // >=900px
   const navigate = useNavigate();
+
   const handelConsulation = (clickedOn: "calendly" | "rozerpay") => {
 
-  //  navigate("/book-now");
+    if (clickedOn === "calendly") {
+      navigate("/consultation_question");
+    } else if (clickedOn === "rozerpay") {
+      navigate("/book-now");
+    }
+  };
 
-  // Already logged in → open directly
-   if (clickedOn === "calendly") {
-    navigate("/consultation_question");
-  } else if (clickedOn === "rozerpay") {
-   navigate("/book-now");
-  }
-};
   return (
     <>
       <div style={{ padding: "2rem", textAlign: "center" }}>
