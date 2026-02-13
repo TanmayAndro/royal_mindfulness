@@ -228,34 +228,56 @@ const Header: React.FC = () => {
     navigate("/login");
   };
 
+  const pathname = location.pathname;
+
+
+  const TRANSPARENT_ROUTES = ["/"];
+
+
+  const WHITE_ROUTES = ["/consultation_question", "/consulation","/free_consultance"];
+ const isTransparentRoute = TRANSPARENT_ROUTES.includes(pathname);
+  const isWhiteRoute = WHITE_ROUTES.includes(pathname);
+
+
   return (
     <>
       <Grid
-        container
-        className={`main_header_css ${scrolled ? "scrolled" : ""}`}
-        alignItems="center"
-        sx={
-          location.pathname === "/" ||
-          location.pathname === "/free_consultance" ||
-          location.pathname === "/consulation" || 
-          location.pathname === "/consultation_question"
-            ? {
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                backgroundColor: "transparent",
-                transition: "background-color 0.3s ease",
-                zIndex: 10,
-                padding: {
-                  xs: "5px 5px",
-                  sm: "2px 20px",
-                  md: "2px 20px",
-                },
-              }
-            : null
-          }
-        >
+  container
+  className="main_header_css"
+  alignItems="center"
+  sx={{
+    position: isTransparentRoute || isWhiteRoute ? "absolute" : "relative",
+    top: 0,
+    left: 0,
+    width: "100%",
+    backgroundColor: isWhiteRoute
+      ? "#ffffff"
+      : isTransparentRoute
+      ? "transparent"
+      : undefined,
+    transition: "background-color 0.3s ease",
+    zIndex: 10,
+    padding: {
+      xs: "5px 5px",
+      sm: "2px 20px",
+      md: "2px 20px",
+    },
+
+    ...(isWhiteRoute && {
+      "& .item_heading_css": {
+        color: "#1470AF !important",
+      },
+      "& .button_login_css": {
+        color: "#1470AF !important",
+      },
+      "& .MuiSvgIcon-root": {
+        color: "#1470AF !important",
+      },
+    }),
+  }}
+>
+
+
 
         <Logo_part />
 

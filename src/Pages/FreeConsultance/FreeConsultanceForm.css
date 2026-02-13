@@ -42,13 +42,19 @@ body {
   overflow-x: hidden;
 }
 
+.page-wrapper-freeconsultation{
+  display: flex;
+  flex-direction: column;
+
+}
+
 /* =======================
    HERO BACKGROUND
 ======================= */
 
 .hero-bg {
   min-height: 57vh;
-  background-image: url('../../../public/Rectangle.png');
+  /* background-image: url('../../../public/Rectangle.png'); */
   background-size: cover;
   background-position: center;
 }
@@ -186,7 +192,7 @@ body {
 .submit-btnFree {
   width: 100%;
   padding: 10px;
-  background: black;
+  background: #1470af;
   color: white;
   border: none;
   border-radius: 999px;
@@ -200,7 +206,7 @@ body {
   margin-top: 5%;
 }
 .submit-btnFree:hover {
-  background: #111;
+  background: #1470af;
 }
 
 /* =======================

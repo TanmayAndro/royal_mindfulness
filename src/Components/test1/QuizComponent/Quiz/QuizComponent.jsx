@@ -88,8 +88,6 @@ const QuizComponent = () => {
   return (
     <div className="quiz-page">
       <div className="quiz-container">
-
-
        <div className="quiz-actions">
          <IconButton
             onClick={handleBack}

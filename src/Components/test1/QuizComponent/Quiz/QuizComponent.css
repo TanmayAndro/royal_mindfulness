@@ -113,7 +113,7 @@
   content: "";
   width: 8px;
   height: 8px;
-  background-color: red;   /* Red inside */
+  background-color: #1470AF;   /* Red inside */
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -123,7 +123,7 @@
 
 /* Selected option card */
 .quiz-option:has(input:checked) {
-  border-color: red;
+  border-color: #1470AF;
   background-color: #fff5f5;
 }
 

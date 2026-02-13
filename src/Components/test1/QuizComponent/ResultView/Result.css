@@ -9,13 +9,14 @@
   width: 100%;
   max-width: 600px;
   margin: 40px auto;
-  padding: 40px 30px;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
   background-color: #ffffff;
   box-sizing: border-box;
   align-items: center;
   text-align: center;
+  padding: 40px 30px;
+  padding-bottom: 2px;
 }
 
 .result-score {
@@ -31,15 +32,16 @@
 
 .result-note {
   margin-top: 24px;
-  font-size: 13px;
+  font-size: 15px;
   font-style: italic;
-  color: #6b7280;
+  color: #4a4d53;
 }
 
 
 @media (max-width: 1024px) {
   .result-card {
     padding: 30px 25px;
+    padding-bottom: 1px;
   }
 }
 

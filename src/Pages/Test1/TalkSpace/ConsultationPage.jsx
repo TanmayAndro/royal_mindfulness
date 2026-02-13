@@ -8,11 +8,7 @@ import "./ConsultationPage.css";
 const ConsultationPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
-
-
   const response = location.state?.response;
-
   const [selectedDate, setSelectedDate] = useState(null);
   const [timeZone, setTimeZone] = useState("");
   const [error, setError] = useState("");
@@ -63,7 +59,7 @@ const ConsultationPage = () => {
   return (
     <div className="consultation-page">
     <div className="page-wrapper">
-      <div className="hero-bg-talk"></div>
+      <div className="hero-bg-consultation"></div>
 
       <div className="overlayconsul">
         <div className="content">

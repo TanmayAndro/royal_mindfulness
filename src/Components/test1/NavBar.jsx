@@ -45,8 +45,8 @@ const NavBar = ({ isOpen, toggleMenu }) => {
       <Link to="/" className="header-logo" onClick={toggleMenu}>
         <img src={logoImg} alt="Royal Mindfulness logo" className="logo-icon" />
         <div className="logo-text">
-          <span className="logo-top">Royal</span>
-          <span className="logo-bottom">Mindfulness</span>
+          <span className="logo-top main_heading_css heading_css">ROYAL</span>
+          <span className="logo-bottom main_heading_css heading_css">MINDFULNESS</span>
         </div>
       </Link>
 

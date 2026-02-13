@@ -117,7 +117,7 @@ function FreeConsultanceForm() {
 
   return (
     <div className="free-consultance-page">
-      <div className="page-wrapper">
+      <div className="page-wrapper-freeconsultation">
         <div className="hero-bg"></div>
 
         <div className="overlay">

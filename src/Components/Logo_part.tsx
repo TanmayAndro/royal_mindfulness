@@ -15,6 +15,7 @@
   import { Link, useNavigate } from "react-router-dom";
   import { logo } from "../assests";
   import "../Components/common.css";
+  import { useLocation } from "react-router-dom";
   const config = require("../config");
 
   const Logo_part: React.FC = () => {
@@ -22,11 +23,16 @@
     const token = localStorage.getItem("user_token");
     const first_name = localStorage.getItem("first_name");
     const navigate = useNavigate();
+    const location = useLocation();
+    const pathname = location.pathname;  
+     const consultationPaths = ["/consultation_question", "/consulation","/free_consultance"];
+    const isConsultationPage = consultationPaths.includes(pathname); 
+   
 
     const toggleDrawer =
-      (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-        setDrawerOpen(open);
-      };
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      setDrawerOpen(open);
+    };
 
     const handleDashboard = () => {
       navigate(`/dashboard/${localStorage.getItem("user_id")}`);
@@ -40,6 +46,9 @@
       navigate("/login");
     };
 
+    const headingColor = isConsultationPage ? "#1470AF !important" : undefined;
+
+
     return (
       <Grid item xs={12} md={3} sm={12} lg={2}>
         <Link to="/" style={{ textDecoration: "none" }}>
@@ -51,13 +60,25 @@
             }}
             className="main_heading_css"
           >
-            <img src={logo} style={{ width: "60px" }} alt="logo"   onClick={()=>navigate('/')}/>
+            <img
+              src={logo}
+              style={{
+                width: "60px",
+                filter: isConsultationPage
+                  ? "invert(32%) sepia(96%) saturate(1200%) hue-rotate(190deg)"
+                  : "none",
+              }}
+              alt="logo"
+              onClick={() => navigate("/")}
+            />
+
             <Typography
               className="main_heading_css heading_css"
-              style={{ fontFamily: "Inter" }}
+              sx={{ color: headingColor }}
             >
               {config.main_heading}
             </Typography>
+
           </Box>
         </Link>
 
@@ -73,80 +94,80 @@
           </IconButton>
         </Box>
 
-<Drawer
-  anchor="left"
-  open={drawerOpen}
-  onClose={toggleDrawer(false)}
-  PaperProps={{
-    sx: { width: "50%", backgroundColor: "#fff", color: "black" },
-  }}
->
-  <Box
-    className="drawerparent"
-    sx={{
-      height: "100%",
-      overflowY: "auto",
-      paddingBottom: 4,
-    }}
-  >
-    <List>
-      {config.drawerItems.map((item:any, index:any) => (
-        <ListItem key={index} onClick={toggleDrawer(false)}>
-          <Link
-            to={item.link}
-            style={{
-              cursor: "pointer",
-              textDecoration: "none",
-              color: "inherit",
-              
+        <Drawer
+          anchor="left"
+          open={drawerOpen}
+          onClose={toggleDrawer(false)}
+          PaperProps={{
+            sx: { width: "50%", backgroundColor: "#fff", color: "black" },
+          }}
+        >
+          <Box
+            className="drawerparent"
+            sx={{
+              height: "100%",
+              overflowY: "auto",
+              paddingBottom: 4,
             }}
           >
-            <ListItemText primary={item.name} />
-          </Link>
-        </ListItem>
-      ))}
-    </List>
+          <List>
+            {config.drawerItems.map((item:any, index:any) => (
+              <ListItem key={index} onClick={toggleDrawer(false)}>
+                <Link
+                  to={item.link}
+                  style={{
+                    cursor: "pointer",
+                    textDecoration: "none",
+                    color: "inherit",
+                    
+                  }}
+                >
+                  <ListItemText primary={item.name} />
+                </Link>
+              </ListItem>
+            ))}
+          </List>
 
-    {token && first_name && (
-      <Box>
-        <Button
-          onClick={handleDashboard}
-          sx={{ color: "black" }}
-          variant="contained"
-          className="drawerbtn"
-        >
-          Dashboard
-        </Button>
+          {token && first_name && (
+            <Box>
+              <Button
+                onClick={handleDashboard}
+                sx={{ color: "black" }}
+                variant="contained"
+                className="drawerbtn"
+              >
+                Dashboard
+              </Button>
 
-        <Button
-          onClick={handleLogout}
-          sx={{ marginTop: 2, color: "black" }}
-          variant="contained"
-          className="drawerbtn"
-        >
-          Logout
-        </Button>
-      </Box>
-    )}
+              <Button
+                onClick={handleLogout}
+                sx={{ marginTop: 2, color: "black" }}
+                variant="contained"
+                className="drawerbtn"
+              >
+                Logout
+              </Button>
+            </Box>
+          )}
 
-    <Box
-      sx={{
-        display: { xs: "none", sm: "flex" },
-        justifyContent: "center",
-        marginBottom: 2,
-        flexDirection: "column",
-      }}
-    >
-      <Link to={"/login"}>
-        <Button>Login</Button>
-      </Link>
+          <Box
+            sx={{
+              display: { xs: "none", sm: "flex" },
+              justifyContent: "center",
+              marginBottom: 2,
+              flexDirection: "column",
+            }}
+          >
+            <Link to={"/login"}>
+              <Button>Login</Button>
+            </Link>
 
-      <Link to={"/register"}>
-        <Button>Register</Button>
-      </Link>
-    </Box>
-  </Box>
-</Drawer>
+            <Link to={"/register"}>
+              <Button>Register</Button>
+            </Link>
+          </Box>
+          </Box>
+       </Drawer>
 
        
       </Grid>

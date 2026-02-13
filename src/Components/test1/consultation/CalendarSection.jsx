@@ -45,9 +45,6 @@
       if (time_zone) {
         const tzName = time_zone;
         const tzObj = { value: tzName, label: tzName };
-        console.log("tzObj", tzObj)
-        console.log("timeZone", timeZone)
-        console.log("tzName", tzName)
        
         setTimeZone(tzObj);
         onTimeZoneChange(time_zone);
@@ -73,7 +70,7 @@
     const handleTimeZoneChange = (val) => {
       setTimeZone(val);
       if (!val?.value) return;
-      console.log("",val)
+      
 
       const tzName = val.value;
       const gmtOffset = getGMTOffset(tzName);

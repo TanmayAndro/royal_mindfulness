@@ -13,8 +13,7 @@
    margin: -25px auto !important;
   }
   .form-box-talkspace {
-    max-width: 95% !important;
-    margin: -35px auto !important;
+   margin-top: 25% !important;
   }
 
   .slot-list {
@@ -49,13 +48,19 @@ body {
   overflow-x: hidden;
 }
 
+.page-wrapper-talkspace{
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
 /* ======================================================
    HERO BACKGROUND
 ====================================================== */
 
-.hero-bg-talk {
+.hero-bg-consultation {
   min-height: 57vh;
-  background: url(../../../../public/Rectangle.png) center/cover no-repeat;
+  /* background: url(../../../../public/Rectangle.png) center/cover no-repeat; */
 }
 
 /* ======================================================
@@ -67,21 +72,32 @@ body {
   display: flex;
   justify-content: center;
 
-  margin-top: -220px;     /* hero overlap (desktop) */
-  padding-bottom: 180px; /* 🔥 footer ko neeche push karta hai */
+  margin-top: -220px;     
+  padding-bottom: 180px; 
 }
 
 .overlayconsul-talkspace{
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: -220px;     /* hero overlap (desktop) */
+  margin-top: -220px;    
 }
 
 
 .content {
   width: 100%;
 }
+
+.content-talkspace{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20%;
+}
+
+
+
 
 /* ======================================================
    FORM / CARD
@@ -98,15 +114,15 @@ body {
   flex-direction: column;
 }
 
-.form-box-talkspace{
-  background: #fff;
-  padding: 3rem;
-  border-radius: 12px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-  width: 60%;
-  margin: -88px auto;
-  display: flex;
-  flex-direction: column;
+
+
+
+/* Form Box */
+.form-box-talkspace {
+  width: 100%;
+  max-width: 600px;
+  padding: 40px 30px;
+  box-sizing: border-box;
 }
 
    
@@ -116,19 +132,22 @@ body {
    HEADINGS
 ====================================================== */
 
-.title {
-  text-align: center;
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 12px;
+
+
+
+.title-talkspace {
+  font-size: 28px;
+  margin-bottom: 10px;
 }
 
-.subtitle {
-  text-align: center;
-  font-size: 15px;
-  color: #9ca3af;
-  margin-bottom: 20px;
+
+/* Subheading */
+.subtitle-talkspace {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0px 0px 9px
 }
+
 
 /* ======================================================
    CONSULTATION LAYOUT
@@ -156,10 +175,36 @@ body {
   gap: 12px;
 }
 
+.options-list-talkspace{
+  display: flex;
+  flex-direction: column;
+  /* gap: 12px; */
+}
+
+
+.option-item-talkspace{
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 3px 3px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left; 
+
+}
+
+.option-item-talkspace input {
+  margin-top: 4px;
+}
+
+
+
 .option-item {
   font-size: 18px;
   line-height: 0.5;
-  margin-left: 25%;
+  /* margin-left: 25%; */
 }
 
 .checkbox{
@@ -224,21 +269,24 @@ body {
    BUTTONS
 ====================================================== */
 
-.submit-btn {
-  width: 320px;
-  margin: 32px auto 0;
-  padding: 12px;
-  background: #000;
-  color: #fff;
+
+
+
+.submit-btn-talk {
+  margin-top: 25px;
+  padding: 10px 25px;
   border: none;
-  border-radius: 999px;
-  font-size: 14px;
+  background-color: #1470AF;
+  color: white;
+  border-radius: 6px;
   cursor: pointer;
+  width: 27%;
 }
 
-.submit-btn:hover {
-  background: #111;
+.submit-btn-talk:hover {
+  background-color: #0f5c8c;
 }
+
 
 /* ======================================================
    ERRORS
@@ -246,9 +294,7 @@ body {
 
 .error-text-talkspace {
   color: red;
-  margin-top: 0px;
-  text-align: center;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
 }
 .error-text{
   color: red;
@@ -257,19 +303,7 @@ body {
   margin-bottom: 0px;
 }
 
-/* ======================================================
-   THANK YOU BOX
-====================================================== */
 
-/* .thankyou-box {
-  background: #fff;
-  padding: 2rem;
-  max-width: 420px;
-  margin: 60px auto;
-  text-align: center;
-  border-radius: 12px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
-} */
 
 /* ======================================================
    TABLET FIX (≤768px)
@@ -298,11 +332,6 @@ body {
 
  
 
-  .form-box-talkspace {
-    width: 85% !important;
-    padding: 1.5rem !important ;
-    margin: -25% auto !important
-  }
 
   .option-item {
     line-height: 1.5;
@@ -311,7 +340,6 @@ body {
   /* Hero smaller on tablet */
   .hero-bg-talk{
     min-height: 49vh !important;
-      
   }
 
   /* Stack layout */
