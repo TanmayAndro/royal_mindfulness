@@ -339,7 +339,7 @@ body {
 
   /* Hero smaller on tablet */
   .hero-bg-talk{
-    min-height: 30vh !important;
+    min-height: 15vh !important;
   }
 
   /* Stack layout */

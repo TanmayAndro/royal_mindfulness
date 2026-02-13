@@ -65,7 +65,7 @@
               style={{
                 width: "60px",
                 filter: isConsultationPage
-                  ? "invert(32%) sepia(96%) saturate(1200%) hue-rotate(190deg)"
+                  ? "brightness(0) saturate(100%) invert(34%) sepia(92%) saturate(1039%) hue-rotate(176deg) brightness(91%) contrast(93%)"
                   : "none",
               }}
               alt="logo"
