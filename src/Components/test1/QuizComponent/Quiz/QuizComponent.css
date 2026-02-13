@@ -96,7 +96,7 @@
   content: "";
   width: 8px;
   height: 8px;
-  background-color: #1470AF;   /* Blue inside */
+  background-color: #1470AF;   
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -106,6 +106,15 @@
 
 .quiz-option:hover {
   background-color: hwb(0 84% 14%);
+}
+
+@media (max-width: 640px) {
+  .quiz-option:hover {
+    background-color: transparent; 
+  }
+  .quiz-option:hover input[type="radio"]:not(:checked)::after {
+    background-color: transparent;   
+  }
 }
 
 
