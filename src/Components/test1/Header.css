@@ -273,10 +273,7 @@
     flex-direction: row;
     justify-content: space-between;
   }
-  .title-section {
-  
-    align-items: center;
-  }
+
 
   .menu-toggle {
     display: flex;
