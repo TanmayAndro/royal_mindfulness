@@ -9,7 +9,8 @@ import { useNavigate } from "react-router-dom";
 import Journal1 from "../../Assests/images/mobile_1.jpg";
 import CheckList from "../../Assests/images/mobile_2.jpg";
 import videoPlay from "../../Assests/images/mobile3.jpg";
-import Image1 from "../../Assests/images/consutaion1.png"
+import Image1 from "../../Assests/images/consutaion1.png";
+import Image2 from "../../Assests/images/consultation_question-Picsart-AiImageEnhancer.jpg";  
 
 
 
@@ -43,8 +44,9 @@ const DEFAULT_STEPS = [
     id: 4,
     title: "Take Mental Wellness Quiz",
     desc: "If your first therapist isn't a fit...",
-    img: "https://cdn.prod.website-files.com/5f1b10a955e49d279bdc2192/6788623f89a65a2751eacb41_83d6b59ad04aedb0524228d4724821a0_step4.png",
-    route: "/quiz_questions"
+    img: Image2,
+    route: "/quiz_questions",
+    imgClass: "quiz-img"
   },
   {
     id: 5,

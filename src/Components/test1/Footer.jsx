@@ -2,6 +2,7 @@ import React from 'react';
 import './Footer.css';
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import logoImg from '../../Assests/images/royal_image.png';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -11,13 +12,15 @@ const Footer = () => {
           
           {/* Column 1: Brand Info */}
           <div className="footer-column brand-col">
-            <div className="brand-logo-text">
-              <img src={logoImg} alt="Logo" className="footer-logo" />
-              <div className="brand-titles">
-                <h2 className="brand-name">ROYAL</h2>
-                <h2 className="brand-name">MINDFULNESS</h2>
+            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <div className="brand-logo-text">
+                <img src={logoImg} alt="Logo" className="footer-logo" />
+                <div className="brand-titles">
+                  <h2 className="brand-name">ROYAL</h2>
+                  <h2 className="brand-name">MINDFULNESS</h2>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
 
           {/* Column 2: Nav Links + Bottom Section (Stacked) */}

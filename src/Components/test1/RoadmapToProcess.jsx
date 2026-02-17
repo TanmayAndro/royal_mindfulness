@@ -14,12 +14,12 @@ const RoadmapToProcess = () => {
   const steps = [
     {
       id: 1,
-      title: "Get a",
-      highlight: "Free Consultation",
+      title: "Relaxation ",
+      highlight: "Training",
       description:
-        "Start with a free 15-minute consultation where we understand your mental fitness goals, lifestyle, and needs — no obligations, just clarity.",
-      buttonText: "Book Free Consultation",
-      note: "(No Credit card required)",
+        "Learn deep and practical relaxation methods that can be applied in daily life, workspaces, stressful situations and even public environments, helping the mind slow down and release accumulated stress.",
+      buttonText: "Book a free consultaion",
+      note: "(Duration: 1 Month)",
       image: roadmap1,
       position: "right",
       backdrop: "style1",
@@ -33,12 +33,13 @@ const RoadmapToProcess = () => {
     },
     {
       id: 2,
-      title: "We match you with a",
-      highlight: "Mental Fitness Trainer",
+      title: "Awareness ",
+      highlight: "Training",
       description:
-        "Based on your consultation, our system assigns you a certified mental fitness trainer — not chosen randomly, but carefully aligned with your personal goals.",
-      buttonText: "Hire Trainer",
+        "Train your mind to observe automatic thoughts, recurring concerns, and daily mental patterns through guided awareness practices and structured reflection techniques.",
+      // buttonText: "Duration: 2 Months",
       image: roadmap2,
+     note: "(Duration: 1 Month)",
       position: "left",
       backdrop: "style2",
       sparkleicon: "icon2",
@@ -51,11 +52,12 @@ const RoadmapToProcess = () => {
     },
     {
       id: 3,
-      title: "Start Daily",
-      highlight: "Training Sessions",
+      title: "Response Training",
+      highlight: "Training",
       description:
-        "You get live, guided training sessions (e.g., Antar Mouna, Yoga Nidra, breathwork, journaling) tailored to help you build a stronger, more resilient mind.",
-      buttonText: "Start Session",
+        "Develop the ability to respond consciously to concerning thoughts/emotions, instead of reacting automatically — through thought-response practices and daily mental review exercises.",
+      // buttonText: "Duration: 1 Month",
+      note: "(Duration: 1 Month)",
       image: roadmap3,
       position: "right",
       backdrop: "style3",
@@ -68,13 +70,32 @@ const RoadmapToProcess = () => {
         l2: { x1: 25, y1: 20, x2: 60, y2: 55 },
         l3: { x1: 85, y1: 0, x2: 85, y2: 45 }
       }
+    },
+   {
+      id: 4,
+      title: "Behavioral ",
+      highlight: "& Habit Training",
+      description:
+        "Build awareness and respond to habits, compulsions, and behavioral patterns, goals/ambitions while aligning daily actions with personal goals and long-term intentions.",
+      // buttonText: "Duration: 1 Months",
+      image: "https://media.istockphoto.com/id/1446368365/photo/autumn-patio-portraits-hispanic-mexican-american-outdoors-photo-series.webp?a=1&b=1&s=612x612&w=0&k=20&c=fGAXlLD8HU6K0XiUVfd7DB5xZnr54nwiPU8rgYFR95M=",
+      note: "(Duration: 1 Month)",
+      position: "left",
+      backdrop: "style2",
+      sparkleicon: "icon2",
+      link: "/book-now",
+     sparkle: {
+        l1: { x1: 5, y1: 80, x2: 45, y2: 80 },
+        l2: { x1: 25, y1: 20, x2: 60, y2: 55 },
+        l3: { x1: 85, y1: 0, x2: 85, y2: 45 }
+      }
     }
   ];
 
   return (
     <section className="roadmap-section">
       <div className="roadmap-container">
-        <h2 className="roadmap-main-title title-main">How It works</h2>
+        <h2 className="roadmap-main-title title-main">About Our Mental Fitness Trainings</h2>
 
         <div className="roadmap-steps">
           {steps.map((step, index) => (
@@ -88,10 +109,17 @@ const RoadmapToProcess = () => {
                   </h3>
                   <p className="step-para text-main ">{step.description}</p>
                   <div className="button-group">
+                    {step.buttonText && (
                     <Link to={step.link} className="roadmap-btn">
                       {step.buttonText}
                     </Link>
-                    {step.note && <span className="btn-note">{step.note}</span>}
+                  )}
+                  {step.note && (
+                    <span className="btn-note">
+                      {step.note}
+                    </span>
+                  )}
+
                   </div>
                 </div>
 

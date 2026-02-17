@@ -13,9 +13,11 @@ import Comparison from "../../Components/test1/Comparison"
 import FAQSection from "../../Components/test1/FAQSection"
 import TalkspaceFeature from "../../Components/test1/TalkspaceFeature"
 
+import FounderSection from "../../Components/test1/FounderSection/FounderSection"
+
 
 // import TestimonialsPage from "./TestimonialsPage/TestimonialsPage"
-// import TrustMetrics from "../../Components/test1/TrustMetrics/TrustMetrics"
+import TrustMetrics from "../../Components/test1/TrustMetrics/TrustMetrics"
 import LandingPage from './LandingPage/LandingPage.jsx'
 
 
@@ -61,9 +63,7 @@ function Royal() {
           <TestimonialsPage />
         </div> */}
 
-        {/* <div style={{ marginTop: "0px" }}>
-          <TrustMetrics />
-        </div> */}
+      
 
         <div style={{ marginTop: "40px" }}>
           <Comparison />
@@ -77,10 +77,17 @@ function Royal() {
           <TalkspaceFeature />
         </div>
 
-       
 
         <div style={{ marginTop: "0px" }}>
           <LandingPage />
+        </div>
+
+        <div style={{ marginTop: "0px" }}>
+          <FounderSection />
+        </div>
+
+        <div style={{ marginTop: "0px" }}>
+          <TrustMetrics />
         </div>
 
         <div style={{ marginTop: "40px" }}>
