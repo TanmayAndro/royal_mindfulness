@@ -32,10 +32,11 @@
   line-height: 1.5;
 }
 
-.card-title {
+.card-title-1 {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 20px;
+  color: #1470AF;
 }
 
 .card-description {
@@ -78,7 +79,7 @@
     line-height: 1.7;
   }
 
-    .card-title {
+    .card-title-1{
     font-size: 1.5rem;
     line-height: 1.3;
     margin-bottom: 16px;
@@ -92,7 +93,7 @@
 }
 
 @media (max-width: 480px) {
-  .card-title {
+  .card-title-1 {
     font-size: 1.35rem;
   }
 

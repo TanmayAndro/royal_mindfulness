@@ -62,19 +62,44 @@ const Calendar = () => {
     }
   };
 
-  const gmtTime =  (time,timeZone) => {
-  const formatedTime = dayjs.tz(time, "hh:mm A", "UTC")
-  .tz(timeZone);
-  return formatedTime.format("hh:mm A") 
-}
+  
 // console.log(gmtTime(attr.start_time,attr.time_zone),">>>>>from the data")
 
 
   /* ---------------- FETCH BOOKINGS ---------------- */
+  //   const gmtTime =  (time,timeZone) => {
+  //   const formatedTime = dayjs.tz(time, "hh:mm A", "UTC")
+  //   .tz(timeZone);
+  //   return formatedTime.format("hh:mm A") 
+  // }
+
+  const gmtTime = (time, bookingTimeZone) => {
+    const viewerTimeZone =
+      Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+    const today = dayjs().format("YYYY-MM-DD");
+
+    // Step 1: Treat stored time as UTC
+    const utcTime = dayjs.tz(
+      `${today} ${time}`,
+      "YYYY-MM-DD hh:mm A",
+      "UTC"
+    );
+
+    // Step 2: Convert to viewer timezone
+    const convertedTime =
+      utcTime.tz(viewerTimeZone);
+
+    return convertedTime.format("hh:mm A");
+  };
+
+
+  
+
   const fetchEventsForMonth = async () => {
     try {
       const response = await axios.get(
-        `https://deedee-unchainable-optionally.ngrok-free.dev/bookings?user_id=${user_id}`,
+        `https://deedee-unchainable-optionally.ngrok-free.dev/bookings`,
         {
           headers: {
             accept: "application/json",
@@ -86,7 +111,7 @@ const Calendar = () => {
 
       const data = response.data?.bookings || [];
       const slots = [];
-
+      
       data.forEach((booking) => {
         const attr = booking.attributes;
         const startDate = dayjs(attr.start_date, "DD MMM YYYY");
@@ -126,6 +151,8 @@ const Calendar = () => {
     fetchEventsForMonth();
     fetchAttendance();
   }, []);
+
+
 
   /* ---------------- PARSE ATTENDANCE DATE ---------------- */
   const parseAttendanceDate = (dateString) => {
@@ -259,14 +286,18 @@ const Calendar = () => {
   return (
     <CalendarBox>
       <FullCalendar
-        plugins={[dayGridPlugin, interactionPlugin]}
-        initialView="dayGridMonth"
-        events={events.map((e) => ({
-          ...e,
-          title: `${getAttendanceSymbol(e.date) || ""} ${e.title}`,
-        }))}
-        dateClick={handleDateClick}
-      />
+  plugins={[dayGridPlugin, interactionPlugin]}
+  initialView="dayGridMonth"
+  events={events}
+  eventContent={(eventInfo) => {
+    return (
+      <div style={{ whiteSpace: "normal", fontSize: "10px" }}>
+        {getAttendanceSymbol(eventInfo.event.startStr)} {eventInfo.event.title}
+      </div>
+    );
+  }}
+  dateClick={handleDateClick}
+/>
 
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>Session Details</DialogTitle>
@@ -287,7 +318,7 @@ const Calendar = () => {
         <DialogActions>
           <Button onClick={() => setOpen(false)}>Close</Button>
         </DialogActions>
-      </Dialog>
+      </Dialog>  
     </CalendarBox>
   );
 };

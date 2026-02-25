@@ -12,7 +12,7 @@ const StyledSection = styled(Box)({
 });
 
 const TitleText = styled(Typography)({
-  color: "#005D5D",
+  color: "#1470AF",
   fontWeight: 700,
   fontSize: "1.4rem",
   marginTop: "16px", // Space between ID and Title
@@ -77,7 +77,7 @@ const FeatureCard = ({ id, title, description, subText, buttonText, route }) => 
       {/* Step ID Circle */}
       <Avatar 
         sx={{ 
-          bgcolor: "#005D5D", 
+          bgcolor: "#1470AF", 
           width: 50, 
           height: 50, 
           fontSize: "1.5rem", 
@@ -125,7 +125,8 @@ const TrustMetrics = () => {
         <Typography
           variant="h3"
           sx={{ 
-            color: "#005D5D", 
+            color: "#1470AF", 
+
             mb: 10, 
             fontWeight: 800,
             fontSize: { xs: '2rem', md: '2.5rem' } 
