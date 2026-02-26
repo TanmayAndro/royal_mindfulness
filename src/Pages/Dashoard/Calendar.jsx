@@ -291,7 +291,7 @@ const Calendar = () => {
   events={events}
   eventContent={(eventInfo) => {
     return (
-      <div style={{ whiteSpace: "normal", fontSize: "10px" }}>
+      <div style={{ whiteSpace: "normal", fontSize: "x-small"}}>
         {getAttendanceSymbol(eventInfo.event.startStr)} {eventInfo.event.title}
       </div>
     );
