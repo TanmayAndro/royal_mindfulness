@@ -275,8 +275,17 @@ const Calendar = () => {
   };
 
   /* ---------------- CLICK HANDLERS ---------------- */
-  const handleDateClick = (info) => {
+ const handleDateClick = (info) => {
+    // If clicking an event
+    if (info.event) {
+      setSelectedEvent(info.event);
+      setOpen(true);
+      return;
+    }
+
+    // If clicking a date cell
     const event = events.find((e) => e.date === info.dateStr);
+
     if (event) {
       setSelectedEvent(event);
       setOpen(true);
@@ -286,18 +295,20 @@ const Calendar = () => {
   return (
     <CalendarBox>
       <FullCalendar
-  plugins={[dayGridPlugin, interactionPlugin]}
-  initialView="dayGridMonth"
-  events={events}
-  eventContent={(eventInfo) => {
-    return (
-      <div style={{ whiteSpace: "normal", fontSize: "x-small"}}>
-        {getAttendanceSymbol(eventInfo.event.startStr)} {eventInfo.event.title}
-      </div>
-    );
-  }}
-  dateClick={handleDateClick}
-/>
+        plugins={[dayGridPlugin, interactionPlugin]}
+        initialView="dayGridMonth"
+        events={events}
+        eventContent={(eventInfo) => {
+          return (
+            <div style={{ whiteSpace: "normal", fontSize: "x-small" }}>
+              {getAttendanceSymbol(eventInfo.event.startStr)}{" "}
+              {eventInfo.event.title}
+            </div>
+          );
+        }}
+        dateClick={handleDateClick}
+        eventClick={handleDateClick}  // 👈 same function
+      />
 
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>Session Details</DialogTitle>
