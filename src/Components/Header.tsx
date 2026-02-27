@@ -239,145 +239,197 @@ const Header: React.FC = () => {
   const isWhiteRoute = WHITE_ROUTES.includes(pathname);
 
 
-  return (
-    <>
-      <Grid
-  container
-  className="main_header_css"
-  alignItems="center"
-  sx={{
-    position: isTransparentRoute || isWhiteRoute ? "absolute" : "relative",
-    top: 0,
-    left: 0,
-    width: "100%",
-    backgroundColor: isWhiteRoute
-      ? "#ffffff"
-      : isTransparentRoute
-      ? "transparent"
-      : undefined,
-    transition: "background-color 0.3s ease",
-    zIndex: 10,
-    padding: {
-      xs: "5px 5px",
-      sm: "2px 20px",
-      md: "2px 20px",
-    },
+ return (
+  <>
+    <Grid
+      container
+      className="main_header_css"
+      alignItems="center"
+      sx={{
+        position:
+          isTransparentRoute || isWhiteRoute ? "absolute" : "relative",
+        top: 0,
+        left: 0,
+        width: "100%",
+        backgroundColor: isWhiteRoute
+          ? "#ffffff"
+          : isTransparentRoute
+          ? "transparent"
+          : undefined,
+        transition: "background-color 0.3s ease",
+        zIndex: 10,
+        padding: {
+          xs: "8px 15px",
+          sm: "2px 20px",
+          md: "2px 20px",
+        },
 
-    ...(isWhiteRoute && {
-      "& .item_heading_css": {
-        color: "#1470AF !important",
-      },
-      "& .button_login_css": {
-        color: "#1470AF !important",
-      },
-      "& .MuiSvgIcon-root": {
-        color: "#1470AF !important",
-      },
-    }),
-  }}
->
-
-
-
+        ...(isWhiteRoute && {
+          "& .item_heading_css": {
+            color: "#1470AF !important",
+          },
+          "& .button_login_css": {
+            color: "#1470AF !important",
+          },
+          "& .MuiSvgIcon-root": {
+            color: "#1470AF !important",
+          },
+        }),
+      }}
+    >
+      {/* ✅ Logo */}
+      <Grid item>
         <Logo_part />
+      </Grid>
 
-        {/* Toggle Button for Mobile
-        <Grid item sx={{ display: { xs: "flex", md: "none" }, pl: 1 }} >
-          <IconButton onClick={() => setMobileMenuOpen(true)} sx={{ color: "white" }}>
-            <MenuIcon />
-          </IconButton>
-        </Grid> */}
+      {/* ✅ Spacer */}
+      <Grid item sx={{ flexGrow: 1 }} />
 
-        {/* Header items (hidden on small screens) */}
-        <Grid item xs={12} md={6} sm={12} lg={8} className="header_item_box_css" sx={{ display: { xs: "none", md: "flex" } }}>
-          {config.headerItem.map((item: { name: string; link: string }, index: number) => (
-            <div key={index}>
-              <Link to={item.link} style={{ textDecoration: "none" }}>
-                <Typography className="item_heading_css" style={{ cursor: "pointer" }}>
+      {/* ✅ Mobile Toggle Button */}
+      <Grid
+        item
+        sx={{
+          display: { xs: "flex", md: "none" },
+        }}
+      >
+       
+          <MenuIcon  onClick={() => setMobileMenuOpen(true)}
+          sx={{ color: isWhiteRoute ? "#1470AF" : "white" }} />
+        
+      </Grid>
+
+      {/* ✅ Desktop Right Section */}
+      <Grid
+        item
+        sx={{
+          display: { xs: "none", md: "flex" },
+          alignItems: "center",
+          gap: 4,
+        }}
+      >
+        {/* Header Links */}
+        <Box sx={{ display: "flex", gap: 3 }}>
+          {config.headerItem.map(
+            (item: { name: string; link: string }, index: number) => (
+              <Link
+                key={index}
+                to={item.link}
+                style={{ textDecoration: "none" }}
+              >
+                <Typography
+                  className="item_heading_css"
+                  sx={{ cursor: "pointer" }}
+                >
                   {item.name}
                 </Typography>
               </Link>
-            </div>
-          ))}
-        </Grid>
+            )
+          )}
+        </Box>
 
-        {/* Login/Register or Avatar Section */}
-        <Grid item xs={12} md={3} sm={12} lg={2}>
-          {!token ? (
-            <Box className="second_grid_css" sx={{ display: { xs: "none", md: "flex" } }}>
-              <Link to="/login" className="button_login_css">
-                <Button className="button_login_css" color="inherit">
-                  {config.login_button_name}
-                </Button>
-              </Link>
-              <Link to="/register" className="button_login_css">
-                <Button className="button_login_css" color="inherit">
-                  {config.register_button_name}
-                </Button>
-              </Link>
-            </Box>
-          ) : (
-           <Box
-              className="second_grid_css hidebutton"
-              sx={{
-                display: { xs: "none", md: "flex" },
-                alignItems: "center",
-                gap: 1,
-              }}
-            >
+        {/* Login / Avatar */}
+        {!token ? (
+          <Box sx={{ display: "flex", gap: 2 }}>
+            <Link to="/login" className="button_login_css">
+              <Button className="button_login_css" color="inherit">
+                {config.login_button_name}
+              </Button>
+            </Link>
+            <Link to="/register" className="button_login_css">
+              <Button className="button_login_css" color="inherit">
+                {config.register_button_name}
+              </Button>
+            </Link>
+          </Box>
+        ) : (
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <Avatar onClick={handleMenuClick} sx={{ cursor: "pointer" }}>
               {first_name?.[0]}
             </Avatar>
+
             <LogoutIcon
-              sx={{ color: "white", cursor: "pointer" }}
+              sx={{
+                color: isWhiteRoute ? "#1470AF" : "white",
+                cursor: "pointer",
+              }}
               onClick={handleLogout}
             />
-            <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-              <MenuItem onClick={handleDashboard}>Dashboard</MenuItem>
+
+            <Menu
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleMenuClose}
+            >
+              <MenuItem onClick={handleDashboard}>
+                Dashboard
+              </MenuItem>
             </Menu>
           </Box>
-          )}
-        </Grid>
+        )}
       </Grid>
+    </Grid>
 
-      {/* Mobile Drawer */}
-      <Drawer anchor="left" open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)}>
-        <Box sx={{ width: 250, mt: 2 }} role="presentation" onClick={() => setMobileMenuOpen(false)}>
-          <List>
-            {config.headerItem.map((item: { name: string; link: string }, index: number) => (
-              <ListItem button key={index} component={Link} to={item.link}>
+    {/* ✅ Mobile Drawer (WORKING) */}
+    <Drawer
+      anchor="left"
+      open={mobileMenuOpen}
+      onClose={() => setMobileMenuOpen(false)}
+    >
+      <Box
+        sx={{ width: 250, mt: 2 }}
+        role="presentation"
+        onClick={() => setMobileMenuOpen(false)}
+      >
+        <List>
+          {config.headerItem.map(
+            (item: { name: string; link: string }, index: number) => (
+              <ListItem
+                button
+                key={index}
+                component={Link}
+                to={item.link}
+              >
                 <ListItemText primary={item.name} />
               </ListItem>
-            ))}
-          </List>
-          <Divider />
-          {!token ? (
-            <List>
-              <ListItem button component={Link} to="/login">
-                <ListItemText primary="Login" />
-              </ListItem>
-              <ListItem button component={Link} to="/register">
-                <ListItemText primary="Register" />
-              </ListItem>
-            </List>
-          ) : (
-            <List>
-              <ListItem>
-                <Avatar sx={{ mr: 1 }}>{first_name?.[0]}</Avatar>
-                <Typography variant="subtitle1">{first_name}</Typography>
-              </ListItem>
-              <ListItem button onClick={handleDashboard}>
-                <ListItemText primary="Dashboard" />
-              </ListItem>
-              <ListItem button onClick={handleLogout}>
-                <ListItemText primary="Logout" />
-              </ListItem>
-            </List>
+            )
           )}
-        </Box>
-      </Drawer>
-    </>
-  );
+        </List>
+
+        <Divider />
+
+        {!token ? (
+          <List>
+            <ListItem button component={Link} to="/login">
+              <ListItemText primary="Login" />
+            </ListItem>
+            <ListItem button component={Link} to="/register">
+              <ListItemText primary="Register" />
+            </ListItem>
+          </List>
+        ) : (
+          <List>
+            <ListItem>
+              <Avatar sx={{ mr: 1 }}>
+                {first_name?.[0]}
+              </Avatar>
+              <Typography variant="subtitle1">
+                {first_name}
+              </Typography>
+            </ListItem>
+
+            <ListItem button onClick={handleDashboard}>
+              <ListItemText primary="Dashboard" />
+            </ListItem>
+
+            <ListItem button onClick={handleLogout}>
+              <ListItemText primary="Logout" />
+            </ListItem>
+          </List>
+        )}
+      </Box>
+    </Drawer>
+  </>
+);
 };
 
 export default Header;

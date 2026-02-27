@@ -82,7 +82,10 @@
           </Box>
         </Link>
 
-        <Box display={{ xs: "flex" }} className="second_grid_css drawer">
+         {/* Toggle part code in logo  */}
+
+
+        {/* <Box display={{ xs: "flex" }} className="second_grid_css drawer">
           <IconButton
             style={{ color: "white" }}
             edge="start"
@@ -92,9 +95,9 @@
           >
             <MenuIcon />
           </IconButton>
-        </Box>
+        </Box> */}
 
-        <Drawer
+        {/* <Drawer
           anchor="left"
           open={drawerOpen}
           onClose={toggleDrawer(false)}
@@ -167,7 +170,7 @@
             </Link>
           </Box>
           </Box>
-       </Drawer>
+       </Drawer> */}
 
        
       </Grid>
