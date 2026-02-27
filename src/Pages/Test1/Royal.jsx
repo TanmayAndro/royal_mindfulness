@@ -69,9 +69,6 @@ function Royal() {
           <Comparison />
         </div>
 
-        <div style={{ marginTop: "40px" }}>
-          <FAQSection />
-        </div>
 
         <div style={{ marginTop: "40px" }}>
           <TalkspaceFeature />
@@ -89,12 +86,17 @@ function Royal() {
         <div style={{ marginTop: "0px" }}>
           <TrustMetrics />
         </div>
+        
 
         <div style={{ marginTop: "40px" }}>
           <HealthMind />
         </div>
 
-        <div style={{ marginTop: "40px" }}>
+        <div style={{ marginTop: "0px" }}>
+          <FAQSection />
+        </div>
+
+        <div style={{ marginTop: "0px" }}>
           <FeedBack />
         </div>
 

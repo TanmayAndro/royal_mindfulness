@@ -39,6 +39,9 @@ const Comparison = () => {
           variant="h4"
           fontWeight="bold"
           sx={{
+             fontFamily: `-apple-system, BlinkMacSystemFont, 'Segoe UI',
+              'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+              'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif`,
             mt: "2rem",
             fontSize: { xs: "26px", sm: "40px" },
             color: "#010406ff",

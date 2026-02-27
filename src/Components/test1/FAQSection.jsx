@@ -100,7 +100,9 @@ const FAQSection = () => {
               className="title-main"
               sx={{
                 fontSize: { xs: "36px", sm: "48px", md: "56px" },
-                fontWeight: 600,
+                 fontFamily: `-apple-system, BlinkMacSystemFont, 'Segoe UI',
+                  'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+                  'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif`,
                 textAlign: { xs: "center", md: "left" },
                 lineHeight: 1.1,
                 mb: { xs: 2, md: 0 },
