@@ -49,6 +49,7 @@ const Profile = () => {
         console.log(response," data responce ---->")
         setUserData(response.data.data.attributes);
         setEditableData(response.data.data.attributes);
+        console.log("aqkjbaxibiuhxih",response.data.data.attributes)
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);
