@@ -162,7 +162,11 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import AuthModal from "./AuthModal";
+import { trackEvent } from "../analitics/analytics";
 const config = require("../config");
+
+
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -171,8 +175,8 @@ const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-
-
+  const [authOpen, setAuthOpen] = useState(false);
+  const [authView, setAuthView] = useState<"login" | "register">("login");
   const token = localStorage.getItem("user_token");
   const first_name = localStorage.getItem("first_name");
   const user_id = localStorage.getItem("user_id");
@@ -225,17 +229,14 @@ const Header: React.FC = () => {
     localStorage.removeItem("email");
     localStorage.removeItem("freeConsultanceData");
 
-    navigate("/login");
+    navigate("/");
   };
 
+  
   const pathname = location.pathname;
-
-
   const TRANSPARENT_ROUTES = ["/"];
-
-
   const WHITE_ROUTES = ["/consultation_question", "/consulation","/free_consultance"];
- const isTransparentRoute = TRANSPARENT_ROUTES.includes(pathname);
+  const isTransparentRoute = TRANSPARENT_ROUTES.includes(pathname);
   const isWhiteRoute = WHITE_ROUTES.includes(pathname);
 
 
@@ -293,8 +294,8 @@ const Header: React.FC = () => {
         }}
       >
        
-          <MenuIcon  onClick={() => setMobileMenuOpen(true)}
-          sx={{ color: isWhiteRoute ? "#1470AF" : "white" }} />
+      <MenuIcon  onClick={() => setMobileMenuOpen(true)}
+      sx={{ color: isWhiteRoute ? "#1470AF" : "white" }} />
         
       </Grid>
 
@@ -319,6 +320,13 @@ const Header: React.FC = () => {
                 <Typography
                   className="item_heading_css"
                   sx={{ cursor: "pointer" }}
+                  onClick={() => {
+                  trackEvent(
+                    "Navigation",
+                    "Click",
+                    `Nav Actions ${item.name}`
+                  );
+                }}
                 >
                   {item.name}
                 </Typography>
@@ -329,18 +337,21 @@ const Header: React.FC = () => {
 
         {/* Login / Avatar */}
         {!token ? (
-          <Box sx={{ display: "flex", gap: 2 }}>
-            <Link to="/login" className="button_login_css">
-              <Button className="button_login_css" color="inherit">
-                {config.login_button_name}
-              </Button>
-            </Link>
-            <Link to="/register" className="button_login_css">
-              <Button className="button_login_css" color="inherit">
-                {config.register_button_name}
-              </Button>
-            </Link>
-          </Box>
+           <Box sx={{ display: "flex", gap: 2 }}>
+              <a className="button_login_css">
+                <Button
+                  className="button_login_css"
+                  color="inherit"
+                  onClick={() => {
+                    setAuthView("login");
+                    setAuthOpen(true);
+                  }}
+                >
+                  Login
+                </Button>
+              </a>
+            </Box>
+
         ) : (
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <Avatar onClick={handleMenuClick} sx={{ cursor: "pointer" }}>
@@ -368,7 +379,7 @@ const Header: React.FC = () => {
         )}
       </Grid>
     </Grid>
-
+  
     {/* ✅ Mobile Drawer (WORKING) */}
     <Drawer
       anchor="left"
@@ -399,11 +410,11 @@ const Header: React.FC = () => {
 
         {!token ? (
           <List>
-            <ListItem button component={Link} to="/login">
+            <ListItem  onClick={() => {
+                    setAuthView("login");
+                    setAuthOpen(true);
+                  }}>
               <ListItemText primary="Login" />
-            </ListItem>
-            <ListItem button component={Link} to="/register">
-              <ListItemText primary="Register" />
             </ListItem>
           </List>
         ) : (
@@ -428,6 +439,15 @@ const Header: React.FC = () => {
         )}
       </Box>
     </Drawer>
+
+    {/* AUTH MODAL */}
+    
+    <AuthModal
+      open={authOpen}
+      onClose={() => setAuthOpen(false)}
+      defaultView={authView}
+    />
+
   </>
 );
 };

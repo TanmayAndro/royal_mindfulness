@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import "./FeedBack.css"
 import {FaEdit} from 'react-icons/fa';
+import { trackEvent } from "../../analitics/analytics";
 
 function FeebBack() {
   const [rating, setRating] = useState(0)
@@ -17,9 +18,6 @@ function FeebBack() {
       need_to_improve: needToImprove, 
       how_to_improve: ""
     }
-
-
-
     try {
 
       const response = await fetch(
@@ -49,8 +47,6 @@ function FeebBack() {
       setLoading(false)
     }
   };  
-
- 
 
 
   const handleProspectSubmit = async(e) => {
@@ -134,7 +130,15 @@ function FeebBack() {
               
           {/* Submitted Button */}
           <button className='submit-feedback-btn'
-           onClick={handleSubmitFeedback} 
+          
+            onClick={() => {
+              trackEvent(
+                "Landing Page",
+                "from Submit",
+                `Feedback Form`
+              );
+              handleSubmitFeedback();       
+            }}
            disabled= {loading || rating == 0}>
              {loading ? "Submitting..." : "Submit Feedback"}
           </button>
@@ -154,7 +158,14 @@ function FeebBack() {
           value={email}
           required
           />
-          <button type='submit' className='stay-sub-button'>
+          <button type='submit' className='stay-sub-button' onClick={() => {
+            trackEvent(
+              "Landing Page",
+              "Submit",
+              `Form Submit`
+            );
+                    
+          }}>
           Submit
           </button>
         </form>
@@ -165,12 +176,7 @@ function FeebBack() {
       </div>
 
     </div>
-    </>
-    
-
-    
-
-    
+    </>   
   )
 }
 

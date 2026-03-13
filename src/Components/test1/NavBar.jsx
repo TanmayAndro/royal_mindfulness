@@ -9,18 +9,19 @@ import {
   Grid,
   Menu,
   MenuItem,
-  Typography,
 } from "@mui/material";
+import { trackEvent } from "../../analitics/analytics";
+import AuthModal from "../AuthModal"; // path fix
 
 const NavBar = ({ isOpen, toggleMenu }) => {
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
+  const [authOpen, setAuthOpen] = useState(false);
+  const [authView, setAuthView] = useState("login");
   const token = localStorage.getItem("user_token");
   const firstName = localStorage.getItem("first_name");
   const userId = localStorage.getItem("user_id");
-
   const [anchorEl, setAnchorEl] = useState(null);
-
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -39,73 +40,68 @@ const NavBar = ({ isOpen, toggleMenu }) => {
     localStorage.clear();
     handleMenuClose();
     toggleMenu();
-    navigate("/login");
+    navigate("/");
   };
 
   return (
-    <nav className="header">
-      {/* LOGO */}
-      <Link to="/" className="header-logo" onClick={toggleMenu}>
-        <img src={logoImg} alt="Royal Mindfulness logo" className="logo-icon" />
-        <div className="logo-text">
-          <span className="logo-top main_heading_css heading_css">ROYAL</span>
-          <span className="logo-bottom main_heading_css heading_css">
-            MINDFULNESS
-          </span>
-        </div>
-      </Link>
+    <>
+      <nav className="header">
 
-      {/* MOBILE TOGGLE */}
-      <button className="menu-toggle" onClick={toggleMenu}>
-        <span className={isOpen ? "bar open" : "bar"}></span>
-        <span className={isOpen ? "bar open" : "bar"}></span>
-        <span className={isOpen ? "bar open" : "bar"}></span>
-      </button>
+        {/* LOGO */}
+        <Link to="/" className="header-logo" onClick={toggleMenu}>
+          <img src={logoImg} alt="Royal Mindfulness logo" className="logo-icon" />
+          <div className="logo-text">
+            <span className="logo-top main_heading_css heading_css">ROYAL</span>
+            <span className="logo-bottom main_heading_css heading_css">
+              MINDFULNESS
+            </span>
+          </div>
+        </Link>
 
-      {/* NAV LINKS */}
-      <ul className={`header-nav ${isOpen ? "active" : ""}`}>
-        <li>
-          <Link to="/" onClick={toggleMenu}>
-            Home
-          </Link>
-        </li>
+        {/* MOBILE TOGGLE */}
+        <button className="menu-toggle" onClick={toggleMenu}>
+          <span className={isOpen ? "bar open" : "bar"}></span>
+          <span className={isOpen ? "bar open" : "bar"}></span>
+          <span className={isOpen ? "bar open" : "bar"}></span>
+        </button>
 
-        <li>
-          <Link to="/aboutus" onClick={toggleMenu}>
-            About us
-          </Link>
-        </li>
+        {/* NAV LINKS */}
+        <ul className={`header-nav ${isOpen ? "active" : ""}`}>
 
-        <li>
-          <Link to="/book-now" onClick={toggleMenu}>
-            Book Now
-          </Link>
-        </li>
+          <li>
+            <Link to="/" onClick={toggleMenu}>Home</Link>
+          </li>
 
-        <li>
-          <Link to="/contact" onClick={toggleMenu}>
-            Contact Us
-          </Link>
-        </li>
+          <li>
+            <Link to="/aboutus" onClick={toggleMenu}>About us</Link>
+          </li>
 
-        {/* AUTH SECTION */}
-        <Grid item xs={12} sx={{ margin: "0 auto", textAlign: "center" }}>
-          {!token ? (
-           <Box
-              sx={{
-                display: "flex",
-                gap: 1,
-                flexDirection: { xs: "column", md: "row" },
-                mt: { xs: 2, md: 0 },
-                alignItems: "center",
-                justifyContent: "center",
-                textAlign: "center",
-                width: "100%",
-                margin: "0 auto",
-              }}
-            >
-                      
-              <Link to="/login" onClick={toggleMenu}>
+          <li>
+            <Link to="/book-now" onClick={toggleMenu}>Book Now</Link>
+          </li>
+
+          <li>
+            <Link to="/contact" onClick={toggleMenu}>Contact Us</Link>
+          </li>
+
+          {/* AUTH SECTION */}
+
+          <Grid item xs={12} sx={{ margin: "0 auto", textAlign: "center" }}>
+
+            {!token ? (
+
+              <Box
+                sx={{
+                  display: "flex",
+                  gap: 1,
+                  flexDirection: { xs: "column", md: "row" },
+                  mt: { xs: 2, md: 0 },
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "100%",
+                }}
+              >
+
                 <Button
                   variant="outlined"
                   size="small"
@@ -116,18 +112,21 @@ const NavBar = ({ isOpen, toggleMenu }) => {
                     fontSize: "14px",
                     px: 3,
                     width: { xs: "100%", md: "auto" },
-                    "&:hover": {
-                      backgroundColor: "#fff",
-                      color: "#1470AF",
-                    },
+                  }}
+                  onClick={() => {
+                    setAuthView("login");
+                    setAuthOpen(true);
+                    trackEvent(
+                      "Navigation",
+                      "Click",
+                      `Login`
+                    );
                   }}
                 >
                   Login
                 </Button>
-              </Link>
 
-              <Link to="/register" onClick={toggleMenu}>
-                <Button
+                {/* <Button
                   variant="outlined"
                   size="small"
                   sx={{
@@ -137,87 +136,115 @@ const NavBar = ({ isOpen, toggleMenu }) => {
                     fontSize: "14px",
                     px: 3,
                     width: { xs: "100%", md: "auto" },
-                    "&:hover": {
-                      backgroundColor: "#fff",
-                      color: "#1470AF",
-                    },
+                  }}
+                  onClick={() => {
+                    setAuthView("register");
+                    setAuthOpen(true);
                   }}
                 >
                   Register
-                </Button>
-              </Link>
-            </Box>
-          ) : (
-            <Box
-              sx={{
-                display: "flex",
-                gap: 1,
-                flexDirection: { xs: "column", md: "row" },
-                mt: { xs: 2, md: 0 },
-                alignItems: "center",
-                justifyContent: "center",
-                textAlign: "center",
-                width: "100%",
-                margin: "0 auto",
-              }}
-            >
-              {/* Avatar */}
-              <Avatar
-                onClick={handleMenuClick}
-                sx={{ cursor: "pointer", bgcolor: "#7f888e" }}
-              >
-                {firstName?.[0]}
-              </Avatar>
+                </Button> */}
 
-              {/* Desktop dropdown */}
-              <Menu
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={handleMenuClose}
-              >
-                <MenuItem onClick={handleDashboard}>Dashboard</MenuItem>
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-              </Menu>
+              </Box>
 
-              {/* Mobile options */}
-             <Box
+            ) : (
+
+              <Box
                 sx={{
-                  display: { xs: "flex", md: "none" },
-                  flexDirection: "column",
+                  display: "flex",
                   gap: 1,
-                  width: "100%",
+                  flexDirection: { xs: "column", md: "row" },
+                  mt: { xs: 2, md: 0 },
                   alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
-                <Button
-                  variant="outlined"
-                  sx={{
-                    color: "#fff",
-                    borderColor: "#fff",
-                    borderRadius: "30px",
-                  }}
-                  onClick={handleDashboard}
-                >
-                  Dashboard
-                </Button>
 
-                <Button
-                  variant="outlined"
-                  sx={{
-                    color: "#fff",
-                    borderColor: "#fff",
-                    borderRadius: "30px",
-                  }}
-                  onClick={handleLogout}
+                {/* Avatar */}
+
+                <Avatar
+                  onClick={handleMenuClick}
+                  sx={{ cursor: "pointer", bgcolor: "#7f888e" }}
                 >
-                  Logout
-                </Button>
+                  {firstName?.[0]}
+                </Avatar>
+
+                {/* Desktop Menu */}
+
+                <Menu
+                  anchorEl={anchorEl}
+                  open={Boolean(anchorEl)}
+                  onClose={handleMenuClose}
+                >
+                <MenuItem 
+                onClick={() => {
+                handleDashboard();
+                    trackEvent(
+                      "Navigation",
+                      "Click",
+                      `Dashboard`
+                    );
+                }}>Dashboard</MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                </Menu>
+
+                {/* Mobile Buttons */}
+
+                <Box
+                  sx={{
+                    display: { xs: "flex", md: "none" },
+                    flexDirection: "column",
+                    gap: 1,
+                    width: "100%",
+                    alignItems: "center",
+                  }}
+                >
+
+                  <Button
+                    variant="outlined"
+                    sx={{
+                      color: "#fff",
+                      borderColor: "#fff",
+                      borderRadius: "30px",
+                    }}
+                    onClick={handleDashboard}
+                  >
+                    Dashboard
+                  </Button>
+
+                  <Button
+                    variant="outlined"
+                    sx={{
+                      color: "#fff",
+                      borderColor: "#fff",
+                      borderRadius: "30px",
+                    }}
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </Button>
+
+                </Box>
+
               </Box>
-            </Box>
-          )}
-        </Grid>
-      </ul>
-    </nav>
+
+            )}
+
+          </Grid>
+
+        </ul>
+
+      </nav>
+
+      {/* AUTH MODAL */}
+
+      <AuthModal
+        open={authOpen}
+        onClose={() => setAuthOpen(false)}
+        defaultView={authView}
+      />
+
+    </>
   );
 };
 

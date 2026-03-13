@@ -3,6 +3,7 @@ import './Footer.css';
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import logoImg from '../../Assests/images/royal_image.png';
 import { Link } from 'react-router-dom';
+import { trackEvent } from "../../analitics/analytics";
 
 const Footer = () => {
   return (
@@ -27,22 +28,42 @@ const Footer = () => {
           <div className="footer-column center-col">
             <div className='footer-content'>
                 <ul className="footer-nav">
-                <li><a href="/aboutus">About us</a></li>
-                <li><a href="/contact">Contact us</a></li>
-                <li><a href="https://tanmaysmarty.wixsite.com/my-site-1/blog">Blogs</a></li>
-                <li><a href="/book-now">Hire Trainer</a></li>
+                <li><a href="/aboutus"  onClick={() => {
+                      trackEvent("Landing Page Footer", "Click", "About Us");
+                    }}>About us</a></li>
+                <li><a href="/contact"  onClick={() => {
+                      trackEvent("Landing Page Footer", "Click", "contact us");
+                    }}>Contact us</a></li>
+                <li><a href="https://tanmaysmarty.wixsite.com/my-site-1/blog"  onClick={() => {
+                      trackEvent("Landing Page Footer", "Click", "Blog");
+                    }}>Blogs</a></li>
+                <li>
+                  <a
+                    href="/book-now"
+                    onClick={() => {
+                      trackEvent("Landing Page Footer", "Click", "Hire Trainer");
+                    }}
+                  >
+                    Hire Trainer
+                  </a>
+                </li>
                 </ul>
                 {/* Column 3: Social Icons */}
                 <div className=" social-col">
-                  <div className="footer-socials">
+                  <div className="footer-socials"  onClick={() => {
+                                trackEvent(
+                                  "Landing Page",
+                                  "Click",
+                                  `Social Media Icon`
+                                );
+                                        
+                              }}>
                   <a href="https://www.facebook.com/profile.php?id=61585328290655"  target="_blank" className="social-circle"><FaFacebookF /></a>
                   <a href="https://www.instagram.com/royalmindfulness24?igsh=MTE3emV1bWJtejV5" target="_blank"  className="social-circle"><FaInstagram /></a>
                   <a href="https://www.linkedin.com/company/royalmindfulness/"  target="_blank" className="social-circle"><FaLinkedinIn /></a>
                   </div>
                 </div>
             </div>
-            
-            
             <hr className="footer-divider" />
             
             <div className="footer-bottom-content">
@@ -52,10 +73,7 @@ const Footer = () => {
               </div>
               <p className="copyright">© 2025 Royal Mindfulness</p>
             </div>
-          </div>
-
-        
-
+          </div>       
         </div>
       </div>
    </footer>

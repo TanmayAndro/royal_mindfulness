@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import CommonButtons from "./CommonButton";
 import { useNavigate } from "react-router-dom";
+import { trackEvent } from "../../analitics/analytics";
 
 const data = [
   { label: "Frequency", myYoga: "Daily/ thrice a week ", traditional: "Weekly/Bi-weekly" },
@@ -155,7 +156,6 @@ const Comparison = () => {
                   sm: "auto",
                   xl: "auto",   // 👈 1440px+
                 },
-
                 textAlign: "center",
               }}
             >
@@ -170,7 +170,15 @@ const Comparison = () => {
                 }}
 
                 variant="contained"
-                onClick={() => handelConsulation("calendly")}
+                onClick={() => {
+                  trackEvent(
+                    "Landing Page",
+                    "Click",
+                    "BookConsultation"
+                  );
+
+                  handelConsulation("calendly");
+                }}
               />
               <Typography fontSize="12px" color="#555" mt="4px">
                 (No Credit card required)
@@ -195,7 +203,14 @@ const Comparison = () => {
                 height="50px"
                 sx={{ backgroundColor: "#1470AF", color: "white" }}
                 variant="contained"
-                onClick={() => handelConsulation("rozerpay")}
+                onClick={() => {
+                trackEvent(
+                  "Landing Page",
+                  "Click",
+                  "Hire Trainer"
+                );
+                handelConsulation("rozerpay");
+              }}
               />
             </Box>
 

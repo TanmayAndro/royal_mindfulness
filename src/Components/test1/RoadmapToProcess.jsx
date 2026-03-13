@@ -4,8 +4,7 @@ import roadmap1 from '../../Assests/images/roadmap1.jpg';
 import roadmap2 from '../../Assests/images/roadmap2.jpg';
 import roadmap3 from '../../Assests/images/roadmap3.jpg';
 import { Link } from "react-router-dom";
-
-
+import { trackEvent } from "../../analitics/analytics";
 import ArrowImg from "../../Assests/images/arrow1.png"
 
 const RoadmapToProcess = () => {
@@ -63,8 +62,6 @@ const RoadmapToProcess = () => {
       backdrop: "style3",
       sparkleicon: "icon3",
       link: `/dashboard/${userId}`, 
-      
-  
       sparkle: {
         l1: { x1: 5, y1: 80, x2: 45, y2: 80 },
         l2: { x1: 25, y1: 20, x2: 60, y2: 55 },
@@ -110,7 +107,13 @@ const RoadmapToProcess = () => {
                   <p className="step-para text-main ">{step.description}</p>
                   <div className="button-group">
                     {step.buttonText && (
-                    <Link to={step.link} className="roadmap-btn">
+                    <Link to={step.link} className="roadmap-btn"  onClick={() => {
+                      trackEvent(
+                        "Landing Page",
+                        "Click",
+                        `BookConsultation`
+                      );
+                    }}>
                       {step.buttonText}
                     </Link>
                   )}
@@ -181,8 +184,6 @@ const RoadmapToProcess = () => {
                   </div>
                 </div>
               )}
-
-
             </React.Fragment>
           ))}
         </div>

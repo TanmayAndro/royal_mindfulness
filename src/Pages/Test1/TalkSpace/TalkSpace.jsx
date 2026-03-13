@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ConsultationPage.css";
 import { OPTIONS, getFinalResponse } from "./TalkSpaceLogic";
+import { trackEvent } from "../../../analitics/analytics";
 
 function TalkSpace() {
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -58,16 +59,17 @@ function TalkSpace() {
                   <span className="checkbox">{opt}</span>
                 </label>
               ))}
-              <button
-              type="button"
-              className="submit-btn-talk"
-              onClick={handleSubmit}
-            >
+             <button
+                type="button"
+                className="submit-btn-talk"
+                onClick={() => {
+                  handleSubmit();
+                  trackEvent("consultation_question", "submit", "consultation_question");
+                }}
+              >
               Submit
             </button>
             </div>
-
-            
           </div>
         </div>
       </div>

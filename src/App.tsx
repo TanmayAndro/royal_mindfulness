@@ -144,6 +144,8 @@ import MetntalQuiz from "./Pages/Quiz/MetntalQuiz";
 
 import PricingPlans from "./Pages/Pricing_plans/PricingPlans";
 import "./fonts.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import Footer from "./Components/Footer";
 import Footer from "./Components/test1/Footer"
 import FAQ from "./Pages/FAQ/faq";
@@ -177,7 +179,7 @@ import FreeConsultanceForm from "./Pages/FreeConsultance/FreeConsultanceForm"
 import Royal from './Pages/Test1/Royal'
 import ConsultationPage from "./Pages/Test1/TalkSpace/ConsultationPage"
 import TalkSpace from "./Pages/Test1/TalkSpace/TalkSpace"
-
+import { AuthModalProvider } from "./context/AuthModalContext";
 import Quiz from "./Pages/Test1/Quiz/QuizPage"
 
 // /home/ravi/Desktop/Tanmay_sir/royal_mindfulness/src/Pages/Test1/Quiz/QuizPage.jsx
@@ -189,10 +191,15 @@ function App() {
   return (
     <div style={{ overflow: "hidden" }}>
       <Router>
-        <ScrollToTop />
-        <GAListener />
-        <Layout />
+        <AuthModalProvider>         
+          <ScrollToTop />
+          <GAListener />
+          <Layout />
+        </AuthModalProvider>
       </Router>
+      
+      {/* Global Toast Container */}
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 }

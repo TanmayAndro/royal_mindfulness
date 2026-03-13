@@ -4,14 +4,9 @@ import "./Header.css";
 import bookConsulation from "../../Assests/images/book_freeconsultation.png"
 import hiretrainer from "../../Assests/images/hire_traniner.png"
 import { HiArrowCircleRight } from "react-icons/hi";
-
-
-
-
+import { trackEvent } from "../../analitics/analytics";
 import { Link } from "react-router-dom";
-
 import NavBar from "./NavBar";
-
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -61,7 +56,13 @@ useEffect(() => {
               
               {/* Card 1: Consultation */}
               <div className="book-image-wrapper">
-                <Link to="/consultation_question" className="card-link">
+                <Link to="/consultation_question" className="card-link" onClick={() => {
+                  trackEvent(
+                    "Landing Page",
+                    "Click",
+                    `Free Consultation `
+                  );
+                }}>
                   <div className="card-content">
                     <div className="card-header">
                       <div className="title-section">
@@ -84,7 +85,13 @@ useEffect(() => {
 
               {/* Card 2: Hire Trainer */}
               <div className="book-image-wrapper">
-                <Link to="/book-now" className="card-link">
+                <Link to="/book-now" className="card-link" onClick={() => {
+                  trackEvent(
+                    "Landing Page",
+                    "Click",
+                    "Hire Trainer"
+                  );
+                }}>
                     <div className="card-content">
                     <div className="card-header">
                       <div className="title-section">
@@ -103,10 +110,8 @@ useEffect(() => {
                   </div>
                 </Link>
               </div>
-
             </div>
           </div>
-
         </section>
       </div>
     </div>

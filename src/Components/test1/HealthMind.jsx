@@ -1,6 +1,7 @@
 import React from 'react'
 import "./HealthMind.css"
 import { Link } from "react-router-dom";
+import { trackEvent } from "../../analitics/analytics";
 function HealthMind() {
   return (
     <div className='healthy-mind-section'>
@@ -19,7 +20,14 @@ function HealthMind() {
             gap: "4px",
           }}
         >
-        <Link type='submit' to="/consultation_question" className='healthy-mind-btn'>
+        <Link type='submit' to="/consultation_question" className='healthy-mind-btn' onClick={() => {
+          trackEvent(
+            "Landing Page",
+            "Click",
+            `Free Consultation`
+          );
+          
+        }}>
           Book Free Consultation
         </Link>
         <span

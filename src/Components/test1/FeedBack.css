@@ -195,7 +195,8 @@ min-height: auto;
 }
 
 .stay-sub-button:hover {
-  background-color: #1e4447;
+  background-color: #0d5a8f;
+  font-size: 18px;
 }
 
 .stay-discpration {
@@ -253,6 +254,3 @@ min-height: auto;
     padding: 0 10px;
   }
 }
-
-
-

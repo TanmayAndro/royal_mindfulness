@@ -48,7 +48,8 @@ const FounderSection = () => {
                       // color: '#4a5568', 
                       fontSize: '1.15rem', 
                       lineHeight: 1.6, // Slightly increased for readability
-                      mb: 2 
+                      mb: 2 , 
+                      textTransform: 'capitalize'
                     }}
                   >
                     {para}

@@ -1,6 +1,7 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import { AllStyle, InputField } from "../Login/login";
+import { trackEvent } from "../../analitics/analytics";
 
 const ContactUs = () => {
   return (
@@ -77,8 +78,14 @@ const ContactUs = () => {
               variant="contained"
               color="primary"
               type="submit"
-            >
-              Submit
+              onClick={() => {
+              trackEvent(
+                "contact-us page",
+                "Submit-form",
+                `Contact-Us`
+              );
+            }}>
+            Submit
             </Button>
           </Grid>
         </Grid>

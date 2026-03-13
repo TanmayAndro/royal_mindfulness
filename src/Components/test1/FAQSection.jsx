@@ -9,6 +9,7 @@ import {
   Box,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { trackEvent } from "../../analitics/analytics";
 
 const faqs = [
   {
@@ -111,12 +112,18 @@ const FAQSection = () => {
               Frequently Asked Questions
             </Typography>
           </Grid>
-          <Grid item xs={12} md={7}>
+          <Grid item xs={12} md={7} onClick={() => {
+              trackEvent(
+                "Landing Page",
+                "Click",
+                `FAQ Section`
+              );     
+            }}>
             {faqs.map((faq, index) => (
               <Accordion
                 key={index}
                 expanded={expanded === index}
-                onChange={handleChange(index)}
+                onChange={handleChange(index)} 
                 sx={{
                   boxShadow: "none",
                   border: "none",
@@ -160,30 +167,6 @@ const FAQSection = () => {
         </Grid>
       </Container>
     </Box>
-     {/* <Box sx={{ width: "100%", overflow: "hidden", lineHeight: 0 }}>
-        <svg
-          viewBox="0 0 1440 150"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          style={{
-            display: "block",
-            width: "100vw", // Force full screen width
-            height: "100px",
-          }}
-        >
-          <defs>
-            <linearGradient id="waveGradientLight" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#D6EAF8" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#AED6F1" stopOpacity="0.8" />
-            </linearGradient>
-          </defs>
-          <path
-            fill="url(#waveGradientLight)"
-            d="M0,30 C360,60 1080,0 1440,50 L1440,150 L0,150 Z"
-            opacity="1"
-          />
-        </svg>
-      </Box> */}
     </>
   );
 };

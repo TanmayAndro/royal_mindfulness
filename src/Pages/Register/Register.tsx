@@ -23,9 +23,15 @@ import Login_register_firstPart from "../../Components/login_register_firstPart"
 import axios from "axios";
 import { signupApi } from "../../API/ApiConfig";
 import AlertComponent from "../../Components/alert";
+import { trackEvent } from "../../analitics/analytics";
 const config = require("../../config");
 
-const Register = () => {
+interface RegisterProps {
+  closeModal?: () => void;
+  switchToLogin?: () => void;
+}
+
+const Register: React.FC<RegisterProps> = ({ closeModal, switchToLogin }) => {
   const navigate = useNavigate();
   const [errorData, setErrorData] = useState("");
   const [successData, setSuccessData] = useState("");
@@ -46,6 +52,7 @@ const Register = () => {
     country:'',
     passwordErrorMessage:""
   });
+
   const [enablePasswordField, setenablePasswordField] = useState(true);
   const [enablePasswordField2, setenablePasswordField2] = useState(true);
 
@@ -89,14 +96,29 @@ const Register = () => {
       }
     );
 
-
     setSuccessData("Your account was created successfully!");
+    if (response.status === 201) {
+
+        console.log("Registration successful");
+
+        // 🔹 If modal is open → switch inside modal
+        if (switchToLogin) {
+          setTimeout(() => {
+            switchToLogin();
+          }, 1500);
+        }
+
+        // 🔹 If user is on /signup page → navigate
+        else {
+          setTimeout(() => {
+            navigate("/login");
+          }, 1500);
+        }
+
+    }
 
     // Optional: print meeting link
 
-      setTimeout(() => {
-        navigate("/login");
-      }, 3000);
     } catch (err: any) {
       console.error("Signup error:", err.response?.data || err.message);
       setErrorData( 
@@ -189,7 +211,7 @@ const handlePhoneNumber = (val: any) => {
   }
 
   const hasError = !(val && isValidPhoneNumber(val.toString()));
-console.log(countryName,"countryName>>>")
+  console.log(countryName,"countryName>>>")
   setData((prev) => ({
     ...prev,
     mobileNo: val,
@@ -321,7 +343,7 @@ const handlePassword = (value:any,fields: string) => {
         sm={12}
         md={6}
         lg={6}
-        style={{ display: "flex", justifyContent: "center" }}
+        style={{ display: "flex", justifyContent: "end" , flexDirection:"row"}}
       >
         <MainBox>
           <Typography style={AllStyle.heading}>
@@ -512,16 +534,24 @@ const handlePassword = (value:any,fields: string) => {
               variant="contained"
               data-test-id="button"
               style={AllStyle.btnStyle}
-              onClick={handleValidation}
+              
+              onClick={() => {
+                        handleValidation();
+                          trackEvent(
+                            "Login ",
+                            "Click",
+                            `Login`
+                          );
+                        }}
             >
               {config.labelTitleSignUp}
             </ButtonStyle>
 
             {/* Already have account */}
+    
             <Typography
               data-test-id="button1"
               style={{
-               
                 fontWeight: 400,
                 fontSize: "16px",
                 lineHeight: "19.2px",
@@ -529,8 +559,8 @@ const handlePassword = (value:any,fields: string) => {
               }}
             >
               {config.lable_already_signup}{" "}
-              <Link
-                to="/login"
+              <span
+                onClick={switchToLogin}
                 style={{
                   ...AllStyle.boldStyle,
                   cursor: "pointer",
@@ -538,7 +568,7 @@ const handlePassword = (value:any,fields: string) => {
                 }}
               >
                 {config.labelTitle}
-              </Link>
+              </span>
             </Typography>
           </SecondBox>
         </MainBox>

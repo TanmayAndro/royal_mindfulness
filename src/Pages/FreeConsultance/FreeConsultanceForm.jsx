@@ -4,7 +4,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useNavigate, useLocation } from "react-router-dom";
 // import { FaCircleArrowLeft } from "react-icons/fa6";
-
+import { trackEvent } from "../../analitics/analytics";
 import { GoArrowLeft } from "react-icons/go";
 
 function FreeConsultanceForm() {
@@ -225,38 +225,15 @@ function FreeConsultanceForm() {
                   )}
                 </div>
 
-                {/* Hide filed */}
-                {/* <div className="field">
-                  <label className="consultance-form-label">Time Zone</label>
-                  <input
-                    type="text"
-                    value={time_zone}
-                    readOnly
-                    className="readonly-input"
-                  />
-                </div>
-
-                <div className="field">
-                  <label className="consultance-form-label">Date</label>
-                  <input
-                    type="text"
-                    value={formattedDate}
-                    readOnly
-                    className="readonly-input"
-                  />
-                </div>
-
-                <div className="field">
-                  <label className="consultance-form-label">Time</label>
-                  <input
-                    type="text"
-                    value={free_consultance_time}
-                    readOnly
-                    className="readonly-input"
-                  />
-                </div> */}
                 {/* End of Time zone , Date , Time */}
-                <button type="submit" className="submit-btnFree">
+                <button type="submit" className="submit-btnFree"  onClick={() => {
+                          trackEvent(
+                            "Free Consultation",
+                            "Submit Form",
+                            `Free Consultation`
+                          );
+                          
+                        }}>
                   Submit
                 </button>
               </form>

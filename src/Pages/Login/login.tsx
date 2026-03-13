@@ -1,49 +1,52 @@
+import React, { useRef, useState } from "react";
+import "./login.css";
+import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
+import {
+  Box,
+  Dialog,
+  IconButton,
+  styled,
+  Button,
+  TextField,
+  Grid,
+  CircularProgress,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { facebook_logo, google_logo } from "../../assests";
+import { Link } from "react-router-dom";
+import Login_register_firstPart from "../../Components/login_register_firstPart";
+import axios from "axios";
+import { loginApi } from "../../API/ApiConfig";
+import AlertComponent from "../../Components/alert";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
+import { trackEvent } from "../../analitics/analytics";
 
+import emailIcon from "../../Assests/emailIcon.png";
+const config = require("../../config")
 
+interface GoogleUserData {
+  email: string;
+  familyName: string;
+  givenName: string;
+  emailVerified: boolean
+}
 
-  import React, { useRef, useState } from "react";
-  import "./login.css";
-  import Typography from "@mui/material/Typography";
-  import { useNavigate } from "react-router-dom";
-  import {
-    Box,
-    Dialog,
-    IconButton,
-    styled,
-    Button,
-    TextField,
-    Grid,
-    CircularProgress,
-  } from "@mui/material";
-  import { Visibility, VisibilityOff } from "@mui/icons-material";
-  import { facebook_logo, google_logo } from "../../assests";
-  import { Link } from "react-router-dom";
-  import Login_register_firstPart from "../../Components/login_register_firstPart";
-  import axios from "axios";
-  import { loginApi } from "../../API/ApiConfig";
-  import AlertComponent from "../../Components/alert";
-  import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
-  import { jwtDecode } from "jwt-decode";
+interface LoginProps {
+  closeModal?: () => void;
+  switchToRegister?: () => void;
+}
 
-  import emailIcon from "../../Assests/emailIcon.png";
-  const config = require("../../config")
-
-  interface GoogleUserData {
-    email: string;
-    familyName: string;
-    givenName: string;
-    emailVerified: boolean
-  }
-
-  const Login = () => {
-    const navigate = useNavigate();
+const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false); // Loader state
-    const [errorData, setErrorData] = useState("");
-    const [isForgotPassword, setIsForgotPassword] = useState(false);
-    const [forgotEmail, setForgotEmail] = useState("");
-    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
-
-    const fetchLogin = async (email: string, password: string) => {
+  const [errorData, setErrorData] = useState("");
+  const [isForgotPassword, setIsForgotPassword] = useState(false);
+  const [forgotEmail, setForgotEmail] = useState("");
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  
+  const fetchLogin = async (email: string, password: string) => {
     const data = {
       user: {
         email: email,
@@ -77,232 +80,23 @@
       localStorage.setItem("email", response.data.data.attributes.email);
       localStorage.setItem("user_id", response.data.data.id);
       localStorage.setItem("is_teacher", response.data.meta.is_teacher);
-
-  const redirect = localStorage.getItem("redirectAfterLogin");
-
-  if (redirect === "calendly") {
-    localStorage.removeItem("redirectAfterLogin");
-    window.open("https://calendly.com/royalmindfulness/30min", "_blank");
-    navigate("/"); 
-  } else if (redirect === "rozerpay") {
-    localStorage.removeItem("redirectAfterLogin");
-    window.open("https://pages.razorpay.com/pl_RJ40RFXQGpJ4w5/view", "_blank");
-    navigate("/");
-  } else {
-    navigate("/");
-  }
-
-    } catch (err: any) {
-      setErrorData(err?.response?.data?.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-    const [data, setData] = useState({
-      email: "",
-      emailError: false,
-      password: "",
-      passwordError: false,
-      emailErrorMessage: "",
-    });
-
-    const [userGoogleData, setUserGoogleData] = useState({
-      email: "",
-      familyName: "",
-      givenName: "",
-      emailVerified: false,
-    });
-
-    const [forgotEmailError, setForgotEmailError] = useState({
-      error: false,
-      message: "",
-    });
-
-    const [enablePasswordField, setenablePasswordField] = useState(true);
-    const handleVisiblPassword = () => {
-      return enablePasswordField ? "password" : "text";
-    };
-
-    const handleForgotEmailChange = (value: string) => {
-      setForgotEmail(value);
-      if (!value) {
-        setForgotEmailError({ error: true, message: "Enter a value" });
-      } else if (
-        !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)
-      ) {
-        setForgotEmailError({ error: true, message: "Enter a valid email" });
-      } else {
-        setForgotEmailError({ error: false, message: "" });
-      }
-    };
-
-    const handleCloseSuccessModal = () => {
-      setIsSuccessModalOpen(false);
-    };
-
-    const handleForgotPasswordSubmit = async () => {
-      if (!forgotEmail) {
-        setForgotEmailError({ error: true, message: "Enter a value" });
-        return;
-      }
-
-      try {
-        const response = await axios.post(
-          `${process.env.REACT_APP_BASE_URL}/forgot_password`,
-          {
-            email: forgotEmail,
-          }
-        );
-        setForgotEmail("");
-        setIsSuccessModalOpen(true);
-      } catch (error: any) {
-        setForgotEmail("");
-        console.error("Error sending password reset email:", error);
-        alert(error.response?.data?.message || "Something went wrong");
-      }
-    };
-
-  const handlePassword = (value: string) => {
-  setData({ ...data, password: value });
-
-  // Standard password validation:
-  const minLength = value.length >= 8;
-  const hasNumber = /\d/.test(value);
-  const hasSpecial = /[@$!%*?&^#()\-_=+{}[\]|;:'",.<>/\\]/.test(value);
-
-  if (!value.trim()) {
-    setData({
-      ...data,
-      password: value,
-      passwordError: true,
-    });
-    return false;
-  }
-
-  if (!minLength || !hasNumber || !hasSpecial) {
-    setData({
-      ...data,
-      password: value,
-      passwordError: true,
-    });
-    return false;
-  }
-
-  setData({
-    ...data,
-    password: value,
-    passwordError: false,
-  });
-
-  return true;
-};
-
-
-    const handleEmail = (value: string) => {
-      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      if (!value) {
-        setData((prev) => ({
-          ...prev,
-          email: value,
-          emailError: true,
-          emailErrorMessage: "Enter a value",
-        }));
-        return false;
-      } else if (!emailPattern.test(value)) {
-        setData((prev) => ({
-          ...prev,
-          email: value,
-          emailError: true,
-          emailErrorMessage: "Enter a valid email",
-        }));
-        return false;
-      } else {
-        setData((prev) => ({
-          ...prev,
-          email: value,
-          emailError: false,
-          emailErrorMessage: "",
-        }));
-        return true;
-      }
-    };
-
-    const handleValidtion = () => {
-      const resultPassword = handlePassword(data.password);
-      const resultEmail = handleEmail(data.email);
-
-      if (resultEmail && resultPassword) {
-        fetchLogin(data.email, data.password);
-      }
-    };
-
-    const handleClose = () => {
-      setErrorData("");
-    };
-
-  const handleGoogleSuccess = async (credentialResponse: any) => {
-      try {
-        const decoded: any = jwtDecode(credentialResponse.credential);
-        const timestamp = Date.now();
-    const safeName = `${decoded.given_name}-${decoded.family_name}`.replace(/\s+/g, "-").toLowerCase();
-    const meetingRoom = `deedee-user-${safeName}-${timestamp}`;
-    const meet_link = `https://meet.jit.si/${meetingRoom}`;
-        const userData = {
-          email: decoded.email,
-          family_name: decoded.family_name,
-          given_name: decoded.given_name,
-          email_verified: decoded.email_verified,
-          meeting_link: meet_link, 
-        };
-
       
-
-    
-        const response = await axios.post(
-          "https://deedee-unchainable-optionally.ngrok-free.dev/google_login",
-          { user: userData },
-          {
-            headers: {
-              "Content-Type": "application/json",
-              "ngrok-skip-browser-warning": "true",
-            },
-          }
-        );
-
-        console.log(response.data.user,">>>>>her ein formation")
-
-        localStorage.setItem("user_token", response.data.token);
-        localStorage.setItem("first_name", response.data.user.
-first_name);
-     localStorage.setItem("email", response.data.user.
-email);
-   localStorage.setItem("meet_link", meet_link);
-        localStorage.setItem("user_id", response.data.data.id);
-      
-        navigate("/");
-      } catch (error: any) {
-        console.error("❌ Google login failed:", error);
-        alert(error.response?.data?.message || "Google login failed, please try again.");
-      }
-    };
-
-
-    /** ====================== Store Login Data ====================== */
-    const saveLoginData = (data: any) => {
-      localStorage.setItem("user_token", data.meta.token);
-      localStorage.setItem("first_name", data.data.attributes.first_name);
-      localStorage.setItem("last_name", data.data.attributes.last_name);
-      localStorage.setItem("email", data.data.attributes.email);
-
-      localStorage.setItem("is_teacher", data.meta.is_teacher);
-
       const redirect = localStorage.getItem("redirectAfterLogin");
 
+      if (response.status === 201) {
+
+        localStorage.setItem("token", response.data.token);
+
+        if (closeModal) {
+          closeModal();
+        }
+        navigate("/");
+      }
+      
       if (redirect === "calendly") {
         localStorage.removeItem("redirectAfterLogin");
         window.open("https://calendly.com/royalmindfulness/30min", "_blank");
-        navigate("/");
+        navigate("/"); 
       } else if (redirect === "rozerpay") {
         localStorage.removeItem("redirectAfterLogin");
         window.open("https://pages.razorpay.com/pl_RJ40RFXQGpJ4w5/view", "_blank");
@@ -310,214 +104,503 @@ email);
       } else {
         navigate("/");
       }
-    };
+      
+    } catch (err: any) {
+      setErrorData(err?.response?.data?.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  const [data, setData] = useState({
+    email: "",
+    emailError: false,
+    password: "",
+    passwordError: false,
+    emailErrorMessage: "",
+  });
+  
+  const [userGoogleData, setUserGoogleData] = useState({
+    email: "",
+    familyName: "",
+    givenName: "",
+    emailVerified: false,
+  });
+  
+  const [forgotEmailError, setForgotEmailError] = useState({
+    error: false,
+    message: "",
+  });
+  
+  const [enablePasswordField, setenablePasswordField] = useState(true);
+  const handleVisiblPassword = () => {
+    return enablePasswordField ? "password" : "text";
+  };
+  
+  const handleForgotEmailChange = (value: string) => {
+    setForgotEmail(value);
+    if (!value) {
+      setForgotEmailError({ error: true, message: "Enter a value" });
+    } else if (
+      !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)
+    ) {
+      setForgotEmailError({ error: true, message: "Enter a valid email" });
+    } else {
+      setForgotEmailError({ error: false, message: "" });
+    }
+  };
+  
+  const handleCloseSuccessModal = () => {
+    setIsSuccessModalOpen(false);
+  };
+  
+  const handleForgotPasswordSubmit = async () => {
+    if (!forgotEmail) {
+      setForgotEmailError({ error: true, message: "Enter a value" });
+      return;
+    }
+    
+    try {
+      const response = await axios.post(
+        // `${process.env.REACT_APP_BASE_URL}/forgot_password`,
+        "https://deedee-unchainable-optionally.ngrok-free.dev/forgot_password",
+        {
+          email: forgotEmail,
+        }
+      );
+      
+      setForgotEmail("");
+      setIsSuccessModalOpen(true);
+       if (response.status === 200) {
+        if (closeModal) {
+          closeModal();
+        }
+        navigate("/");
+      }
 
-    return (
-      <>
+    } catch (error: any) {
+      setForgotEmail("");
+      console.error("Error sending password reset email:", error);
+      alert(error.response?.data?.message || "Something went wrong");
+    }
+  };
+  
+  const handlePassword = (value: string) => {
+    setData({ ...data, password: value });
+    
+    // Standard password validation:
+    const minLength = value.length >= 8;
+    const hasNumber = /\d/.test(value);
+    const hasSpecial = /[@$!%*?&^#()\-_=+{}[\]|;:'",.<>/\\]/.test(value);
+    
+    if (!value.trim()) {
+      setData({
+        ...data,
+        password: value,
+        passwordError: true,
+      });
+      return false;
+    }
+    
+    if (!minLength || !hasNumber || !hasSpecial) {
+      setData({
+        ...data,
+        password: value,
+        passwordError: true,
+      });
+      return false;
+    }
+    
+    setData({
+      ...data,
+      password: value,
+      passwordError: false,
+    });
+    
+    return true;
+  };
+  
+  
+  const handleEmail = (value: string) => {
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!value) {
+      setData((prev) => ({
+        ...prev,
+        email: value,
+        emailError: true,
+        emailErrorMessage: "Enter a value",
+      }));
+      return false;
+    } else if (!emailPattern.test(value)) {
+      setData((prev) => ({
+        ...prev,
+        email: value,
+        emailError: true,
+        emailErrorMessage: "Enter a valid email",
+      }));
+      return false;
+    } else {
+      setData((prev) => ({
+        ...prev,
+        email: value,
+        emailError: false,
+        emailErrorMessage: "",
+      }));
+      return true;
+    }
+  };
+  
+  const handleValidtion = () => {
+    const resultPassword = handlePassword(data.password);
+    const resultEmail = handleEmail(data.email);
+    
+    if (resultEmail && resultPassword) {
+      fetchLogin(data.email, data.password);
+    }
+  };
+  
+  const handleClose = () => {
+    setErrorData("");
+  };
+  
+  // const handleGoogleSuccess = async (credentialResponse: any) => {
+  //   try {
+  //     const decoded: any = jwtDecode(credentialResponse.credential);
+  //     const timestamp = Date.now();
+  //     const safeName = `${decoded.given_name}-${decoded.family_name}`.replace(/\s+/g, "-").toLowerCase();
+  //     const meetingRoom = `deedee-user-${safeName}-${timestamp}`;
+  //     const meet_link = `https://meet.jit.si/${meetingRoom}`;
+  //     const userData = {
+  //       email: decoded.email,
+  //       family_name: decoded.family_name,
+  //       given_name: decoded.given_name,
+  //       email_verified: decoded.email_verified,
+  //       meeting_link: meet_link, 
+  //     };
+      
+      
+      
+      
+  //     const response = await axios.post(
+  //       "https://deedee-unchainable-optionally.ngrok-free.dev/google_login",
+  //       { user: userData },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           "ngrok-skip-browser-warning": "true",
+  //         },
+  //       }
+  //     );
+      
+  //     console.log(response.data.user,">>>>>her ein formation")
+      
+  //     localStorage.setItem("user_token", response.data.token);
+  //     localStorage.setItem("first_name", response.data.user.
+  //       first_name);
+  //       localStorage.setItem("email", response.data.user.
+  //         email);
+  //         localStorage.setItem("meet_link", meet_link);
+  //         localStorage.setItem("user_id", response.data.data.id);
+          
+  //         navigate("/");
+  //       } catch (error: any) {
+  //         console.error("❌ Google login failed:", error);
+  //         alert(error.response?.data?.message || "Google login failed, please try again.");
+  //       }
+  //  };
+    
+  const handleGoogleSuccess = async (credentialResponse: any) => {
+    try {
+
+      const decoded: any = jwtDecode(credentialResponse.credential);
+
+      const timestamp = Date.now();
+      const safeName = `${decoded.given_name}-${decoded.family_name}`
+        .replace(/\s+/g, "-")
+        .toLowerCase();
+
+      const meetingRoom = `deedee-user-${safeName}-${timestamp}`;
+      const meet_link = `https://meet.jit.si/${meetingRoom}`;
+
+      const userData = {
+        email: decoded.email,
+        family_name: decoded.family_name,
+        given_name: decoded.given_name,
+        email_verified: decoded.email_verified,
+        meeting_link: meet_link,
+      };
+
+      const response = await axios.post(
+        "https://deedee-unchainable-optionally.ngrok-free.dev/google_login",
+        { user: userData },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "true",
+          },
+        }
+      );
+
+      console.log(response.data.user, ">>>> Google user info");
+
+      // 🔹 Save user data
+      localStorage.setItem("user_token", response.data.token);
+      localStorage.setItem("first_name", response.data.user.first_name);
+      localStorage.setItem("email", response.data.user.email);
+      localStorage.setItem("meet_link", meet_link);
+      localStorage.setItem("user_id", response.data.data.id);
+
+      // 🔹 Modal login flow
+      if (closeModal) {
+        closeModal();
+      }
+
+      // 🔹 Page login flow
+      else {
+        navigate("/");
+      }
+
+    } catch (error: any) {
+      console.error("❌ Google login failed:", error);
+
+      alert(
+        error.response?.data?.message ||
+        "Google login failed, please try again."
+      );
+    }
+  };
+      
+      /** ====================== Store Login Data ====================== */
+      const saveLoginData = (data: any) => {
+        localStorage.setItem("user_token", data.meta.token);
+        localStorage.setItem("first_name", data.data.attributes.first_name);
+        localStorage.setItem("last_name", data.data.attributes.last_name);
+        localStorage.setItem("email", data.data.attributes.email);
+        
+        localStorage.setItem("is_teacher", data.meta.is_teacher);
+        
+        const redirect = localStorage.getItem("redirectAfterLogin");
+        
+        if (redirect === "calendly") {
+          localStorage.removeItem("redirectAfterLogin");
+          window.open("https://calendly.com/royalmindfulness/30min", "_blank");
+          navigate("/");
+        } else if (redirect === "rozerpay") {
+          localStorage.removeItem("redirectAfterLogin");
+          window.open("https://pages.razorpay.com/pl_RJ40RFXQGpJ4w5/view", "_blank");
+          navigate("/");
+        } else {
+          navigate("/");
+        }
+      };
+      
+      return (
+        <>
         <MainGrid container>
-          {errorData != "" && (
-            <AlertComponent
-              errorData={errorData}
-              handleClose={handleClose}
-              type={"error"}
-            />
-          )}
-          <Login_register_firstPart />
-          <SecondGrid
-            item
-            xs={12}
-            sm={12}
-            md={7}
-            lg={7}
-            style={{ display: "flex", justifyContent: "center" }}
+        {errorData != "" && (
+          <AlertComponent
+          errorData={errorData}
+          handleClose={handleClose}
+          type={"error"}
+          />
+        )}
+        <Login_register_firstPart />
+        <SecondGrid
+        item
+        xs={12}
+        sm={12}
+        md={7}
+        lg={7}
+        style={{ display: "flex", justifyContent: "center" }}
+        >
+        {isForgotPassword ? (
+          <MainBox>
+          <Typography style={AllStyle.heading}>Enter Your Email</Typography>
+          <SecondBox style={AllStyle.secondBox}>
+          <Typography style={AllStyle.textStyle}>Email</Typography>
+          <InputField
+          placeholder="Enter your email"
+          error={forgotEmailError.error}
+          variant="outlined"
+          value={forgotEmail}
+          onChange={(e) => handleForgotEmailChange(e.target.value)}
+          helperText={data.emailError && data.emailErrorMessage}
+          />
+          <ButtonStyle
+          variant="contained"
+          style={AllStyle.btnStyle}
+          onClick={handleForgotPasswordSubmit}
           >
-            {isForgotPassword ? (
-              <MainBox>
-                <Typography style={AllStyle.heading}>Enter Your Email</Typography>
-                <SecondBox style={AllStyle.secondBox}>
-                  <Typography style={AllStyle.textStyle}>Email</Typography>
-                  <InputField
-                    placeholder="Enter your email"
-                    error={forgotEmailError.error}
-                    variant="outlined"
-                    value={forgotEmail}
-                    onChange={(e) => handleForgotEmailChange(e.target.value)}
-                    helperText={data.emailError && data.emailErrorMessage}
-                  />
-                  <ButtonStyle
-                    variant="contained"
-                    style={AllStyle.btnStyle}
-                    onClick={handleForgotPasswordSubmit}
-                  >
-                    Submit
-                  </ButtonStyle>
-                  <Typography
-                    style={{
-                      ...AllStyle.boldStyle,
-                      cursor: "pointer",
-                      textAlign: "center",
-                    }}
-                    onClick={() => setIsForgotPassword(false)}
-                  >
-                    Back to Login
-                  </Typography>
-                </SecondBox>
-              </MainBox>
-            ) : (
-              <MainBox>
-                <Typography style={AllStyle.heading}>
-                  {config.main_heading_login}
-                </Typography>
-                <SecondBox style={AllStyle.secondBox}>
-                  {/* <Typography style={AllStyle.smallHeading}>
-                    {config.welcomeHeading}
-                  </Typography> */}
-
-                  <Box
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      gap: "10px",
-                      marginBottom: "10px",
-                    }}
-                  >
-                    <Box>
-                    <GoogleLogin
-    onSuccess={handleGoogleSuccess}
-    onError={() => {
-      console.log("❌ Google Login Failed");
-      alert("Google login failed, please try again.");
-    }}
-  />
-
-                    </Box>
-                    <img
-                      src={google_logo}
-                      style={{ width: 76, cursor: "pointer" }}
-                      alt="Google logo"
-                    />
-                    <img
-                      src={facebook_logo}
-                      style={{ width: 50, cursor: "pointer" }}
-                      alt="logo"
-                    />
-                  </Box>
-                  <Box
-                  sx={{ width: {  md: "65%" }}}
-                    style={{
-                      width: "100%",
-                      height: "1px",
-                      backgroundColor: "#CBD5E1",
-                      marginBlock: "16px",
-                    }}
-                  ></Box>
-
-                  <Typography style={AllStyle.textStyle}>
-                    {config.email}
-                  </Typography>
-                  <InputField
-                    placeholder={config.placeHolderEmail}
-                    error={data.emailError}
-                    variant="outlined"
-                    data-test-id="emailtest"
-                    value={data.email}
-                    onChange={(e) => {
-                      handleEmail(e.target.value);
-                    }}
-                    helperText={data.emailError && data.emailErrorMessage}
-                  />
-                  <Typography style={AllStyle.textStyle}>
-                    {config.password}
-                  </Typography>
-                  <InputField
-                    error={data.passwordError}
-                  helperText={
-  data.passwordError &&
-  "Password must be 8+ chars, include 1 number & 1 special character"
-}
-                    style={{ marginBottom: "1rem" }}
-                    placeholder={config.placeHolderPassword}
-                    data-test-id="txtInputPassword"
-                    type={handleVisiblPassword()}
-                    // fullWidth={true}
-                    value={data.password}
-                    variant="outlined"
-                    onChange={(e: any) => {
-                      handlePassword(e.target.value);
-                    }}
-                    InputProps={{
-                      endAdornment: (
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={() => {
-                            setenablePasswordField(!enablePasswordField);
-                          }}
-                          edge="end"
-                        >
-                          {enablePasswordField ? (
-                            <VisibilityOff />
-                          ) : (
-                            <Visibility />
-                          )}
-                        </IconButton>
-                      ),
-                    }}
-                  />
-
-                    <Button
-                variant="contained"
-                color="primary"
-                fullWidth
-              onClick={() => {
-                      handleValidtion();
-                    }}
-                disabled={loading}
-                startIcon={loading && <CircularProgress size={20} />}
+          Submit
+          </ButtonStyle>
+          <Typography
+          style={{
+            ...AllStyle.boldStyle,
+            cursor: "pointer",
+            textAlign: "center",
+          }}
+          onClick={() => setIsForgotPassword(false)}
+          >
+          Back to Login
+          </Typography>
+          </SecondBox>
+          </MainBox>
+        ) : (
+          <MainBox>
+          <Typography style={AllStyle.heading}>
+          {config.main_heading_login}
+          </Typography>
+          <SecondBox style={AllStyle.secondBox}>
+          {/* <Typography style={AllStyle.smallHeading}>
+            {config.welcomeHeading}
+            </Typography> */}
+            
+            <Box
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "10px",
+              marginBottom: "10px",
+            }}
+            >
+            <Box>
+            <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={() => {
+              console.log("❌ Google Login Failed");
+              alert("Google login failed, please try again.");
+            }}
+            />
+            
+            </Box>
+            <img
+            src={google_logo}
+            style={{ width: 76, cursor: "pointer" }}
+            alt="Google logo"
+            />
+            <img
+            src={facebook_logo}
+            style={{ width: 50, cursor: "pointer" }}
+            alt="logo"
+            />
+            </Box>
+            <Box
+            sx={{ width: {  md: "65%" }}}
+            style={{
+              width: "100%",
+              height: "1px",
+              backgroundColor: "#CBD5E1",
+              marginBlock: "16px",
+            }}
+            ></Box>
+            
+            <Typography style={AllStyle.textStyle}>
+            {config.email}
+            </Typography>
+            <InputField
+            placeholder={config.placeHolderEmail}
+            error={data.emailError}
+            variant="outlined"
+            data-test-id="emailtest"
+            value={data.email}
+            onChange={(e) => {
+              handleEmail(e.target.value);
+            }}
+            helperText={data.emailError && data.emailErrorMessage}
+            />
+            <Typography style={AllStyle.textStyle}>
+            {config.password}
+            </Typography>
+            <InputField
+            error={data.passwordError}
+            helperText={
+              data.passwordError &&
+              "Password must be 8+ chars, include 1 number & 1 special character"
+            }
+            style={{ marginBottom: "1rem" }}
+            placeholder={config.placeHolderPassword}
+            data-test-id="txtInputPassword"
+            type={handleVisiblPassword()}
+            // fullWidth={true}
+            value={data.password}
+            variant="outlined"
+            onChange={(e: any) => {
+              handlePassword(e.target.value);
+            }}
+            InputProps={{
+              endAdornment: (
+                <IconButton
+                aria-label="toggle password visibility"
+                onClick={() => {
+                  setenablePasswordField(!enablePasswordField);
+                }}
+                edge="end"
+                >
+                {enablePasswordField ? (
+                  <VisibilityOff />
+                ) : (
+                  <Visibility />
+                )}
+                </IconButton>
+              ),
+            }}
+            />
+            
+            <Button
+            variant="contained"
+            color="primary"
+            fullWidth
+            onClick={() => {
+              handleValidtion();
+            }}
+            disabled={loading}
+            startIcon={loading && <CircularProgress size={20} />}
+            >
+            {loading ? "Logging in..." : config.labelTitle}
+            </Button>
+            
+            <Typography
+            style={{
+              ...AllStyle.boldStyle,
+              display: "flex",
+              justifyContent: "end",
+              lineHeight: "19.2px",
+              cursor: "pointer",
+              marginTop: "5%",
+              marginBottom: "5%",
+            }}
+            onClick={() => setIsForgotPassword(true)}
+            >
+            Forgot password ?
+            </Typography>
+            <Typography
+              style={{
+                fontWeight: 400,
+                fontSize: "16px",
+                color: "#0A2239",
+                lineHeight: "19.2px",
+              }}
+            >
+              {config.haveAccount}{" "}
+              <span
+                onClick={switchToRegister}
+                style={{
+                  ...AllStyle.boldStyle,
+                  cursor: "pointer",
+                  lineHeight: "24px",
+                  textDecoration: "none",
+                }}
               >
-                {loading ? "Logging in..." : config.labelTitle}
-              </Button>
-
-                  <Typography
-                    style={{
-                      ...AllStyle.boldStyle,
-                      display: "flex",
-                      justifyContent: "end",
-                      lineHeight: "19.2px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setIsForgotPassword(true)}
-                  >
-                    Forgot password ?
-                  </Typography>
-                  <Typography
-                    style={{
-                      
-                      fontWeight: 400,
-                      fontSize: "16px",
-                      color: "#0A2239",
-                      lineHeight: "19.2px",
-                    }}
-                  >
-                    {config.haveAccount}{" "}
-                    <Link
-                      to="/register"
-                      style={{
-                        ...AllStyle.boldStyle,
-                        cursor: "pointer",
-                        lineHeight: "24px",
-                        textDecoration: "none",
-                      }}
-                    >
-                      {config.labelTitleSignUp}
-                    </Link>
-                  </Typography>
-                </SecondBox>
-              </MainBox>
-            )}
+                {config.labelTitleSignUp}
+              </span>
+            </Typography>
+            </SecondBox>
+            </MainBox>
+          )}
           </SecondGrid>
-        </MainGrid>
-        <Dialog
+          </MainGrid>
+          <Dialog
           open={isSuccessModalOpen}
           onClose={(event, reason) => {
             if (reason !== "backdropClick") return;
@@ -529,61 +612,61 @@ email);
               boxShadow: "29px",
             },
           }}
-        >
-          <Box
-            sx={{
-              padding: "3rem",
-              textAlign: "center",
-              boxShadow: 24,
-              borderRadius: "10px",
-            }}
           >
-            <img
-              src={emailIcon}
-              style={{ height: "50px", width: "50px", marginBottom: "10px" }}
-            />
-            <Typography
-              variant="h4"
-              sx={{
-                
-                fontWeight: 600,
-                fontSize: "19px",
-                mb: 2,
-              }}
-            >
-              Check Your email
-            </Typography>
-            <Typography
-              variant="h4"
-              sx={{  fontWeight: 400, fontSize: "16px" }}
-            >
-              We have sent instruction on how to reset your password
-            </Typography>
-            <Button
-              variant="contained"
-              onClick={handleCloseSuccessModal}
-              sx={{
-                mt: 3,
-                textTransform: "none",
-                fontWeight: "bold",
-                width: { xs: "100%", sm: "130px" },
-                height: "40px",
-                backgroundColor: "#1470AF",
-                borderRadius: "34px",
-                "&:hover": { backgroundColor: "#1470AF" },
-              }}
-            >
-              Okay
-            </Button>
+          <Box
+          sx={{
+            padding: "3rem",
+            textAlign: "center",
+            boxShadow: 24,
+            borderRadius: "10px",
+          }}
+          >
+          <img
+          src={emailIcon}
+          style={{ height: "50px", width: "50px", marginBottom: "10px" }}
+          />
+          <Typography
+          variant="h4"
+          sx={{
+            
+            fontWeight: 600,
+            fontSize: "19px",
+            mb: 2,
+          }}
+          >
+          Check Your email
+          </Typography>
+          <Typography
+          variant="h4"
+          sx={{  fontWeight: 400, fontSize: "16px" }}
+          >
+          We have sent instruction on how to reset your password
+          </Typography>
+          <Button
+          variant="contained"
+          onClick={handleCloseSuccessModal}
+          sx={{
+            mt: 3,
+            textTransform: "none",
+            fontWeight: "bold",
+            width: { xs: "100%", sm: "130px" },
+            height: "40px",
+            backgroundColor: "#1470AF",
+            borderRadius: "34px",
+            "&:hover": { backgroundColor: "#1470AF" },
+          }}
+          >
+          Okay
+          </Button>
           </Box>
-        </Dialog>
-      </>
-    );
+          </Dialog>
+          </>
+        );
   };
-
+  
   export const SecondBox = styled(Box)({
     maxWidth: "360px",
-
+    
     marginTop: "40px",
     "@media (max-width:390px)": {
       paddingInline: "10px",
@@ -592,22 +675,22 @@ email);
       justifyContent: "center",
     },
   });
-
+  
   export const ButtonStyle = styled(Button)({
     minWidth: "360px",
     "@media (max-width:380px)": {
       minWidth: "200px",
     },
   });
-
+  
   export const FirstBOx = styled(Grid)({
     display: "flex",
-
+    
     "@media (max-width:899px)": {
       display: "none",
     },
   });
-
+  
   export const AllStyle = {
     smallHeading: {
       color: "#0A2239",
@@ -635,7 +718,7 @@ email);
       
       lineHeight: "22px",
     },
-
+    
     boldStyle: {
       color: "#1470AF",
       fontSize: "16px",
@@ -681,14 +764,14 @@ email);
       
       letterSpacing: "-0.12px",
     },
-
+    
     secondBox: {
       flexDirection: "column" as "column",
       display: "flex",
       flexWrap: "Wrap" as "wrap",
     },
   };
-
+  
   export const DiologStyle = styled(Dialog)({
     "& .MuiDialog-paperWidthSm": {
       maxWidth: "500px",
@@ -720,7 +803,7 @@ email);
     marginBlock: "auto",
     alignItems: "center",
     paddingBlock: "50px",
-
+    
     "@media (max-width:959px)": {
       paddingTop: "25px",
       paddingBottom: "55px",
@@ -754,7 +837,7 @@ email);
   export const InputField = styled(TextField)(
     ({ disabled, textstyle, textColor }: any) => ({
       marginBottom: "16px",
-
+      
       "& input::placeholder": {
         color: "#94A3B8",
         
@@ -811,4 +894,5 @@ email);
       },
     })
   );
-  export default Login;
+export default Login;
+          

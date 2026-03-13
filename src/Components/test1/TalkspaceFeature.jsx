@@ -11,9 +11,7 @@ import CheckList from "../../Assests/images/mobile_2.jpg";
 import videoPlay from "../../Assests/images/mobile3.jpg";
 import Image1 from "../../Assests/images/consutaion1.png";
 import Image2 from "../../Assests/images/consultation_question-Picsart-AiImageEnhancer.jpg";  
-
-
-
+import { trackEvent } from "../../analitics/analytics";
 
 const API_URL =
   "https://deedee-unchainable-optionally.ngrok-free.dev/checklists";
@@ -179,7 +177,14 @@ const TalkspaceFeature = () => {
               className={`step-card ${activeStep === index ? "active" : ""}`}
               onMouseEnter={() => setActiveStep(index)}
               onMouseLeave={() => setActiveStep(0)}
-              onClick={() => handleStepClick(step)}
+              onClick={() => {
+                              trackEvent(
+                                "Landing Page",
+                                "Click",
+                                `${step.title}`
+                              );
+                              handleStepClick(step) 
+                            }}
               style={{
                 cursor:
                   step.route || step.document_url || step.link_url
