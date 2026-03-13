@@ -8,6 +8,7 @@ import {
   Typography,
   Button,
   DialogActions,
+  Rating
 } from "@mui/material";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -17,6 +18,8 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -40,8 +43,14 @@ const Calendar = () => {
 
   const isTrainer = localStorage.getItem("is_teacher") === "true";
   const [attendanceLoading, setAttendanceLoading] = useState(false);
+  const [sessionRatings, setSessionRatings] = useState({});
 
-  // const TEST_TIME = "2026-03-05 18:45"; 
+
+  //  Session Details  Date: 11 Mar 2026 Time: 02:30 PM
+ 
+  // Example :- const TEST_TIME = "2026-03-11 14:20:00";
+
+    //  const TEST_TIME = "2026-03-23 11:00:00";
 
   /* ---------------- FETCH ATTENDANCE ---------------- */
   const fetchAttendance = async () => {
@@ -120,6 +129,7 @@ const Calendar = () => {
             date: dateStr,
             time: attr.start_time,
             bookingDateTime,
+            trainerId: attr.trainer_id,
             meet_link: attr.meeting_link?.meeting_link,
             student_name: attr.meeting_link?.full_name,
             student_phone_number: attr.meeting_link?.phone_number,
@@ -127,6 +137,8 @@ const Calendar = () => {
             title: `Session at ${gmtTime(attr.start_time)}`,
             start: dateStr,
           };
+
+         
 
           if (isTrainer) {
             if (!trainerDateMap[dateStr]) {
@@ -221,7 +233,7 @@ const Calendar = () => {
       const classUtc = dayjs(eventData.bookingDateTime).utc();
       const dateOfClass = classUtc.format("YYYY-MM-DD");
       const timeOfClass = classUtc.format("hh:mm A");
-      const joinTime = dayjs().utc().format();
+       const joinTime = dayjs().utc().format();
       // const joinTime = TEST_TIME
       //   ? dayjs(TEST_TIME).utc().format()
       //   : dayjs().utc().format();
@@ -272,12 +284,12 @@ const Calendar = () => {
   const getMeetingWindow = (bookingDateTime) => {
     // const viewerTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const start = dayjs(bookingDateTime);
+      /* Test dummy test time 
+      const now = TEST_TIME
+        ? dayjs.tz(TEST_TIME, "YYYY-MM-DD HH:mm", viewerTimeZone)
+         : dayjs(); */
 
-    // const now = TEST_TIME
-    //   ? dayjs.tz(TEST_TIME, "YYYY-MM-DD HH:mm", viewerTimeZone)
-    //   : dayjs();
-
-    const now = dayjs(); // real current time
+     const now = dayjs(); // real current time
     const joinStart = start.subtract(15, "minute");
     const joinEnd = start.add(15, "minute");
     return { start, now, joinStart, joinEnd };
@@ -323,44 +335,143 @@ const Calendar = () => {
     setOpen(false);
 
   };
+
+
+  /* -----------------Rating------------------------*/
+  
+  const submitRating = async (session, ratingValue) => {
+    try {
+
+      const formData = new FormData();
+
+      formData.append("rating[rating]", ratingValue);
+      formData.append("rating[booking_id]", session.bookingId);
+      // formData.append("rating[trainer_id]", session.trainer_id || null);
+      formData.append(
+        "rating[session_date]",
+        dayjs(session.date).format("DD/MM/YYYY")
+      );
+      if (session.trainerId) {
+        formData.append("rating[trainer_id]", session.trainerId);
+      }
+        
+
+     const response = await axios.post(
+        "https://deedee-unchainable-optionally.ngrok-free.dev/ratings",
+        formData,
+        {
+          headers: {
+            accept: "application/json",
+            token: token?.trim(),
+            "ngrok-skip-browser-warning": "true",
+          },
+        }
+      );
+
+      if (response.status === 200){
+        toast.success("Rating submitted successfully!");
+      }
+     toast.success("Rating submitted successfully");
+    } catch (error) {
+      const errorMessage =
+        error?.response?.data?.errors ||
+        error?.response?.data?.message ||
+        "Something went wrong";
+      toast.error(errorMessage);
+    }
+  };
+
+  const handleRatingChange = (session, value) => {
+    if (!session) return;
+    setSessionRatings((prev) => ({
+      ...prev,
+      [session.id]: value,
+    }));
+    submitRating(session, value);
+  };
+
 /* ---------------- POPUP CONTENT ---------------- */
 
+ 
   const renderPopupContent = (session = null) => {
+  const eventData = session || selectedEvent;
+  if (!eventData) return null;
 
-    const eventData = session || selectedEvent;
+  const { now, joinStart, joinEnd } = getMeetingWindow(eventData.bookingDateTime);
 
-    if (!eventData) return null;
-
-    const { now, joinStart, joinEnd } = getMeetingWindow(eventData.bookingDateTime);
-    
-    if (now.isAfter(joinEnd)) {
-      return (
-        <Typography sx={{ mt: 2, color: "gray" }}>
+  if (now.isAfter(joinEnd)) {
+    return (
+      <Box sx={{ textAlign: "center" }}>
+        <Typography
+          sx={{
+            mb: 2,
+            fontWeight: 500,
+            color: "gray"
+          }}
+        >
           Session Closed
         </Typography>
-      );
+          {isTrainer ? null : (
+            <>
+              <Typography sx={{ mb: 1 }}>Rate your session</Typography>
+              <Rating
+                name={`rating-${eventData.id}`}
+                value={sessionRatings[eventData.id] || 0}
+                precision={0.5}
+                disabled={!!sessionRatings[eventData.id]}
+                onChange={(event, newValue) => {
+                  handleRatingChange(eventData, newValue);
+                }}
+              />
+              {sessionRatings[eventData.id] && (
+              <Typography
+                variant="body2"
+                sx={{ mt: 1, fontWeight: 500, color: "#555" }}
+              >
+                Your Rating: {sessionRatings[eventData.id]} ⭐
+              </Typography>
+            )}
+            </>
+          )}
+      </Box>
+    );
+  }
 
-    }
-
-    if (now.isBefore(joinStart)) {
-      return (
-        <Typography sx={{ mt: 2, color: "orange" }}>
-          ⏰ Join link available 15 minutes before start
-        </Typography>
-      );
-    }
-
+  if (now.isBefore(joinStart)) {
     return (
+      <Typography
+        sx={{
+          textAlign: "center",
+          color: "orange",
+          fontWeight: 500
+        }}
+      >
+        ⏰ Join link available 15 minutes before start
+      </Typography>
+    );
+  }
+
+  return (
+    <Box sx={{ textAlign: "center" }}>
       <Button
         variant="contained"
-        sx={{ mt: 1 }}
+        size="large"
+        sx={{
+          mt: 1,
+          px: 4,
+          borderRadius: "8px",
+          textTransform: "none",
+          fontWeight: 600
+        }}
         disabled={attendanceLoading}
-        onClick={() => handleJoinMeeting(session)}
+        onClick={() => handleJoinMeeting(eventData)}
       >
         {attendanceLoading ? "Joining..." : "Join Meeting"}
       </Button>
-    );
-  };
+    </Box>
+  );
+};
+  
   /* ---------------- DATE CLICK ---------------- */
   const handleDateClick = (info) => {
 
@@ -459,7 +570,10 @@ const Calendar = () => {
                 ))}
               </>
             ) : (
-              <Typography>No sessions available</Typography>
+              <>
+                <Typography>No sessions available</Typography>
+                             
+               </>
             )}
           </DialogContent>
           <DialogActions>
@@ -467,18 +581,46 @@ const Calendar = () => {
           </DialogActions>
         </Dialog>
       ) : (
-        <Dialog open={open} onClose={() => setOpen(false)}>
-          <DialogTitle>Session Details</DialogTitle>
-          <DialogContent>
+        <Dialog open={open} onClose={() => setOpen(false)} maxWidth="xs" fullWidth>
+          <DialogTitle
+            sx={{
+              textAlign: "center",
+              fontWeight: 600,
+              fontSize: "20px",
+              pb: 1
+            }}
+          >
+            Session Details
+          </DialogTitle>
+
+          <DialogContent dividers>
             {selectedEvent && (
               <>
-                <Typography>
-                  <strong>Date:</strong>{" "}
+                <Typography
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: 1,
+                    mb: 1,
+                    fontSize: "15px"
+                  }}
+                >
+                  📅 <strong>Date:</strong>
                   {dayjs(selectedEvent.date).format("DD MMM YYYY")}
                 </Typography>
 
-                <Typography>
-                  <strong>Time:</strong>{" "}
+                <Typography
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: 1,
+                    mb: 2,
+                    fontSize: "15px"
+                  }}
+                >
+                  ⏰ <strong>Time:</strong>
                   {selectedEvent.title?.replace("Session at ", "")}
                 </Typography>
 
@@ -486,8 +628,15 @@ const Calendar = () => {
               </>
             )}
           </DialogContent>
-          <DialogActions>
-            <Button onClick={() => setOpen(false)}>Close</Button>
+
+          <DialogActions sx={{ justifyContent: "center", pb: 2 }}>
+            <Button
+              variant="outlined"
+              onClick={() => setOpen(false)}
+              sx={{ textTransform: "none", px: 3 }}
+            >
+              Close
+            </Button>
           </DialogActions>
         </Dialog>
       )}

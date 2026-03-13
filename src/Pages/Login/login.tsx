@@ -22,7 +22,6 @@ import AlertComponent from "../../Components/alert";
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { trackEvent } from "../../analitics/analytics";
-
 import emailIcon from "../../Assests/emailIcon.png";
 const config = require("../../config")
 
@@ -263,51 +262,7 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
     setErrorData("");
   };
   
-  // const handleGoogleSuccess = async (credentialResponse: any) => {
-  //   try {
-  //     const decoded: any = jwtDecode(credentialResponse.credential);
-  //     const timestamp = Date.now();
-  //     const safeName = `${decoded.given_name}-${decoded.family_name}`.replace(/\s+/g, "-").toLowerCase();
-  //     const meetingRoom = `deedee-user-${safeName}-${timestamp}`;
-  //     const meet_link = `https://meet.jit.si/${meetingRoom}`;
-  //     const userData = {
-  //       email: decoded.email,
-  //       family_name: decoded.family_name,
-  //       given_name: decoded.given_name,
-  //       email_verified: decoded.email_verified,
-  //       meeting_link: meet_link, 
-  //     };
-      
-      
-      
-      
-  //     const response = await axios.post(
-  //       "https://deedee-unchainable-optionally.ngrok-free.dev/google_login",
-  //       { user: userData },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           "ngrok-skip-browser-warning": "true",
-  //         },
-  //       }
-  //     );
-      
-  //     console.log(response.data.user,">>>>>her ein formation")
-      
-  //     localStorage.setItem("user_token", response.data.token);
-  //     localStorage.setItem("first_name", response.data.user.
-  //       first_name);
-  //       localStorage.setItem("email", response.data.user.
-  //         email);
-  //         localStorage.setItem("meet_link", meet_link);
-  //         localStorage.setItem("user_id", response.data.data.id);
-          
-  //         navigate("/");
-  //       } catch (error: any) {
-  //         console.error("❌ Google login failed:", error);
-  //         alert(error.response?.data?.message || "Google login failed, please try again.");
-  //       }
-  //  };
+  
     
   const handleGoogleSuccess = async (credentialResponse: any) => {
     try {
