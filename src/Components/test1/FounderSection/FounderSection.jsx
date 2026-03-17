@@ -1,6 +1,16 @@
 import React from 'react';
 import { Box, Typography, Container, Grid, Paper } from '@mui/material';
 import FounderImage from "../../../Assests/images/tanmay_image.png"
+import { styled } from "@mui/system";
+
+const DescriptionText = styled(Typography)({
+  color: "#4a5568", // Changed to a softer grey-blue for better readability
+  fontSize: "1.05rem",
+  fontWeight: 400,
+  marginTop: "12px",
+  lineHeight: 1.6,
+  textTransform: 'capitalize'
+});
 
 // Content configuration remains the same
 const FOUNDER_CONTENT = {
@@ -26,34 +36,17 @@ const FounderSection = () => {
           {/* Column 1: Text Content */}
           <Grid item xs={12} md={7} sx={{ textAlign: { xs: 'center', md: 'left' } }}>
             <Box sx={{ pr: { md: 4 } }}>
-              <Typography 
-                variant="overline" 
-                sx={{ 
-                  color: 'primary.main',
-                  fontSize: { xs: '1.2rem', md: '1.80rem' }, 
-                  fontWeight: 700, 
-                  letterSpacing: 1.5,
-                  display: 'block'
-                }}
+             <Typography
+                component="h1"
+                className="card-title-1 title-main"
+                sx={{ fontWeight: "700 !important" }}
               >
                 Words From The Founder
               </Typography>
               
               <Box sx={{ mt: 3, mb: 4 }}>
                 {text.map((para, index) => (
-                  <Typography 
-                    key={index} 
-                    variant="body1" 
-                    sx={{ 
-                      // color: '#4a5568', 
-                      fontSize: '1.15rem', 
-                      lineHeight: 1.6, // Slightly increased for readability
-                      mb: 2 , 
-                      textTransform: 'capitalize'
-                    }}
-                  >
-                    {para}
-                  </Typography>
+                  <DescriptionText>{para}</DescriptionText>
                 ))}
               </Box>
 
@@ -61,12 +54,8 @@ const FounderSection = () => {
                 elevation={0} 
                 sx={{ 
                   p: 0, 
-                  // bgcolor: '#f8fafc', 
-                  // borderLeft: { xs: 'none', md: '5px solid' },
-                  // borderTop: { xs: '5px solid', md: 'none' }, // Top border looks better centered on mobile
                   borderColor: 'primary.main',
                   borderRadius: '4px 16px 16px 4px',
-                  // textAlign: 'center' // Keep the quote centered
                 }}
               >
                 <Typography 

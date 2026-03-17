@@ -161,6 +161,10 @@
   border-bottom-right-radius: 16px;
   border-bottom-left-radius: 16px;
 }
+.visual-img.image3 {
+  object-fit: cover;
+  object-position: top;
+}
 
 /* ===============================
    Arrow Image (REPLACED SVG)

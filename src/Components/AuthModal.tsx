@@ -18,10 +18,16 @@ const AuthModal: React.FC<Props> = ({ open, onClose, defaultView = "login" }) =>
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
-      <DialogContent
+     <DialogContent
         sx={{
           position: "relative",
-          paddingTop: "40px", // space for the close button
+          paddingTop: "0px",
+          height: "90vh",        // limit modal height
+          overflow: "hidden",    // prevent modal scroll
+          display: "flex",
+          paddingLeft: "0px",
+          paddingRight: "0px",
+          paddingBottom: "0px",
         }}
       >
         {/* Close (X) Button */}
@@ -30,9 +36,28 @@ const AuthModal: React.FC<Props> = ({ open, onClose, defaultView = "login" }) =>
           aria-label="close"
           sx={{
             position: "absolute",
-            top: 8,
-            right: 8,
+            top: 3,
+            right: 6,
+            buttom:3,
+
             color: "rgba(0,0,0,0.6)",
+            cursor: "pointer",
+            "&:hover": {
+              color: "rgba(0,0,0,0.8)",
+            },
+          }}
+        >
+          <CloseIcon />
+        </IconButton><IconButton
+          onClick={onClose}
+          aria-label="close"
+          sx={{
+            position: "absolute",
+            top: 3,
+            right: 6,
+            buttom: 3,
+            color: "rgba(0,0,0,0.6)",
+            cursor: "pointer",
             "&:hover": {
               color: "rgba(0,0,0,0.8)",
             },

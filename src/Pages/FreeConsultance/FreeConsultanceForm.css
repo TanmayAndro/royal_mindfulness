@@ -204,6 +204,7 @@ body {
 
 .back-btn{
   margin-top: 5%;
+  cursor: pointer;
 }
 .submit-btnFree:hover {
   background: #1470af;

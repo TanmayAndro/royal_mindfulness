@@ -1,11 +1,13 @@
 import React from 'react';
 import './RoadmapToProcess.css';
-import roadmap1 from '../../Assests/images/roadmap1.jpg';
+import roadmap1 from '../../Assests/images/Relaxation_training_image.png';
 import roadmap2 from '../../Assests/images/roadmap2.jpg';
-import roadmap3 from '../../Assests/images/roadmap3.jpg';
+import roadmap3 from '../../Assests/images/Response_training_image.png';
+import roadmap4 from '../../Assests/images/Behavioral & Habit Training.webp';
 import { Link } from "react-router-dom";
 import { trackEvent } from "../../analitics/analytics";
 import ArrowImg from "../../Assests/images/arrow1.png"
+
 
 const RoadmapToProcess = () => {
 
@@ -60,6 +62,7 @@ const RoadmapToProcess = () => {
       image: roadmap3,
       position: "right",
       backdrop: "style3",
+      image_style: "image3",
       sparkleicon: "icon3",
       link: `/dashboard/${userId}`, 
       sparkle: {
@@ -75,7 +78,7 @@ const RoadmapToProcess = () => {
       description:
         "Build awareness and respond to habits, compulsions, and behavioral patterns, goals/ambitions while aligning daily actions with personal goals and long-term intentions.",
       // buttonText: "Duration: 1 Months",
-      image: "https://media.istockphoto.com/id/1446368365/photo/autumn-patio-portraits-hispanic-mexican-american-outdoors-photo-series.webp?a=1&b=1&s=612x612&w=0&k=20&c=fGAXlLD8HU6K0XiUVfd7DB5xZnr54nwiPU8rgYFR95M=",
+      image: roadmap4,
       note: "(Duration: 1 Month)",
       position: "left",
       backdrop: "style2",
@@ -134,7 +137,7 @@ const RoadmapToProcess = () => {
                     <img
                       src={step.image}
                       alt={step.highlight}
-                      className="visual-img"
+                      className={`visual-img ${step.image_style}`}
                     />
 
                     <div className="sparkle-icons-container">

@@ -16,8 +16,12 @@ import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 
 // import metadata from "react-phone-number-input/metadata.min.json";
 import en from "react-phone-number-input/locale/en.json";
-import { getCountryCallingCode, getCountries, getExampleNumber } from "libphonenumber-js";
-import parsePhoneNumber from 'libphonenumber-js'
+import {
+  getCountryCallingCode,
+  getCountries,
+  getExampleNumber,
+} from "libphonenumber-js";
+import parsePhoneNumber from "libphonenumber-js";
 import { facebook_logo, google_logo } from "../../assests";
 import Login_register_firstPart from "../../Components/login_register_firstPart";
 import axios from "axios";
@@ -49,56 +53,56 @@ const Register: React.FC<RegisterProps> = ({ closeModal, switchToLogin }) => {
     mobileNoError: false,
     setPasswordError: false,
     emailErrorMessage: "",
-    country:'',
-    passwordErrorMessage:""
+    country: "",
+    passwordErrorMessage: "",
   });
 
   const [enablePasswordField, setenablePasswordField] = useState(true);
   const [enablePasswordField2, setenablePasswordField2] = useState(true);
 
-    const fetchSignup = async (
+  const fetchSignup = async (
     email: string,
     password: string,
     newPassword: string,
     mobileNO: string,
     firstName: string,
-    lastName: string
+    lastName: string,
   ) => {
-
-    console.log("called this fun:")
+    console.log("called this fun:");
     // ✅ backend expects full_name, not first_name/last_name separately
     const timestamp = Date.now();
-  const safeName = `${firstName}-${lastName}`.replace(/\s+/g, "-").toLowerCase();
-  const meetingRoom = `deedee-user-${safeName}-${timestamp}`;
-  const meetingLink = `https://meet.jit.si/${meetingRoom}`;
+    const safeName = `${firstName}-${lastName}`
+      .replace(/\s+/g, "-")
+      .toLowerCase();
+    const meetingRoom = `deedee-user-${safeName}-${timestamp}`;
+    const meetingLink = `https://meet.jit.si/${meetingRoom}`;
 
-  // ✅ Prepare payload for backend
-  const payload = {
-    user: {
-      email,
-      password,
-      first_name: `${firstName}`.trim(),
-      last_name:`${lastName}`.trim(),
-      country: data?.country,
-      meeting_link: meetingLink,
-    },
-  };
+    // ✅ Prepare payload for backend
+    const payload = {
+      user: {
+        email,
+        password,
+        first_name: `${firstName}`.trim(),
+        last_name: `${lastName}`.trim(),
+        country: data?.country,
+        meeting_link: meetingLink,
+      },
+    };
 
-  try {
-    const response = await axios.post(
-      "https://deedee-unchainable-optionally.ngrok-free.dev/users",
-      payload,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "ngrok-skip-browser-warning": "true",
+    try {
+      const response = await axios.post(
+        "https://deedee-unchainable-optionally.ngrok-free.dev/users",
+        payload,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "true",
+          },
         },
-      }
-    );
+      );
 
-    setSuccessData("Your account was created successfully!");
-    if (response.status === 201) {
-
+      setSuccessData("Your account was created successfully!");
+      if (response.status === 201) {
         console.log("Registration successful");
 
         // 🔹 If modal is open → switch inside modal
@@ -114,34 +118,30 @@ const Register: React.FC<RegisterProps> = ({ closeModal, switchToLogin }) => {
             navigate("/login");
           }, 1500);
         }
+      }
 
-    }
-
-    // Optional: print meeting link
-
+      // Optional: print meeting link
     } catch (err: any) {
       console.error("Signup error:", err.response?.data || err.message);
-      setErrorData( 
+      setErrorData(
         err?.response?.data?.errors?.[0]?.account ||
           err?.response?.data?.message ||
-          "Something went wrong, please try again."
+          "Something went wrong, please try again.",
       );
     }
   };
 
-// Reverse map: find the country with this calling code
-const getCountryNameByCallingCode = (callingCode: string) => {
-  
-  return "Unknown Country";
-};
+  // Reverse map: find the country with this calling code
+  const getCountryNameByCallingCode = (callingCode: string) => {
+    return "Unknown Country";
+  };
 
-// Example usage
-console.log(getCountryNameByCallingCode("+91"));  // "India"
-console.log(getCountryNameByCallingCode("+971")); // "United Arab Emirates"
-console.log(getCountryNameByCallingCode("+1"));  
+  // Example usage
+  console.log(getCountryNameByCallingCode("+91")); // "India"
+  console.log(getCountryNameByCallingCode("+971")); // "United Arab Emirates"
+  console.log(getCountryNameByCallingCode("+1"));
   const handleEmail = (value: string) => {
-    const emailPattern =
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     let emailError = false;
     let emailErrorMessage = "";
@@ -192,53 +192,49 @@ console.log(getCountryNameByCallingCode("+1"));
     return hasError;
   };
 
+  const handlePhoneNumber = (val: any) => {
+    if (!val) return;
 
+    // Parse number and remove '+'
+    const cleanCode = val.replace("+", "").trim();
 
-const handlePhoneNumber = (val: any) => {
-  if (!val) return;
-
-  // Parse number and remove '+'
-  const cleanCode = val.replace("+", "").trim();
-
-  // Try to match country by calling code
-  let countryName = "";
-  for (const country of getCountries()) {
-    const code = getCountryCallingCode(country);
-    if (cleanCode.startsWith(code)) {
-      countryName = en[country]; // Example: "India"
-      break;
+    // Try to match country by calling code
+    let countryName = "";
+    for (const country of getCountries()) {
+      const code = getCountryCallingCode(country);
+      if (cleanCode.startsWith(code)) {
+        countryName = en[country]; // Example: "India"
+        break;
+      }
     }
-  }
 
-  const hasError = !(val && isValidPhoneNumber(val.toString()));
-  console.log(countryName,"countryName>>>")
-  setData((prev) => ({
-    ...prev,
-    mobileNo: val,
-    mobileNoError: hasError,
-    country: countryName || "Unknown",
-  }));
+    const hasError = !(val && isValidPhoneNumber(val.toString()));
+    console.log(countryName, "countryName>>>");
+    setData((prev) => ({
+      ...prev,
+      mobileNo: val,
+      mobileNoError: hasError,
+      country: countryName || "Unknown",
+    }));
 
-  console.log(`Detected Country: ${countryName}`);
-  return hasError;
-};
-
+    console.log(`Detected Country: ${countryName}`);
+    return hasError;
+  };
 
   const handleVisiblPassword = (enabled: boolean) =>
     enabled ? "password" : "text";
 
-  const handleColorPhone = () =>
-    data.mobileNoError ? "#F87171" : "#CBD5E1";
+  const handleColorPhone = () => (data.mobileNoError ? "#F87171" : "#CBD5E1");
 
   const handleValidationFirstLast = (
     fieldName: string,
     value: string,
-    maxLength: number
+    maxLength: number,
   ) => {
     let errorMessage = "";
 
     if (value.trim() === "") {
-      console.log(" in if condition")
+      console.log(" in if condition");
       errorMessage = "Please enter a value";
     } else if (value.length > maxLength) {
       value = value.slice(0, maxLength);
@@ -254,45 +250,45 @@ const handlePhoneNumber = (val: any) => {
     return errorMessage !== "";
   };
 
-const handlePassword = (value:any,fields: string) => {
-  let errorMessage = "";
+  const handlePassword = (value: any, fields: string) => {
+    let errorMessage = "";
 
-  // Standard strong password pattern
-  const passwordPattern =
-    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    // Standard strong password pattern
+    const passwordPattern =
+      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-  if (!value.trim()) {
-    errorMessage = "Please enter password";
-  } else if (!passwordPattern.test(value)) {
-    errorMessage =
-      "Password must be 8+ chars, include upper, lower, number & special character";
-  }
+    if (!value.trim()) {
+      errorMessage = "Please enter password";
+    } else if (!passwordPattern.test(value)) {
+      errorMessage =
+        "Password must be 8+ chars, include upper, lower, number & special character";
+    }
 
-  setData({
-    ...data,
-    password: value,
-    passwordError: errorMessage ? true : false,
-    passwordErrorMessage: errorMessage,
-  });
-};
+    setData({
+      ...data,
+      password: value,
+      passwordError: errorMessage ? true : false,
+      passwordErrorMessage: errorMessage,
+    });
+  };
 
   const handleValidation = () => {
     const emailError = handleEmail(data.email);
     const firstNameError = handleValidationFirstLast(
       "firstName",
       data.firstName,
-      20
+      20,
     );
     const lastNameError = handleValidationFirstLast(
       "lastName",
       data.lastName,
-      20
+      20,
     );
     const mobileNoError = handlePhoneNumber(data.mobileNo);
-    const passwordError:any = handlePassword(data.password,"password");
+    const passwordError: any = handlePassword(data.password, "password");
     const setPasswordError = handleConfirmPassword(
       data.setPassword,
-      data.password
+      data.password,
     );
 
     if (
@@ -309,7 +305,7 @@ const handlePassword = (value:any,fields: string) => {
         data.setPassword,
         data.mobileNo,
         data.firstName,
-        data.lastName
+        data.lastName,
       );
     }
   };
@@ -320,7 +316,14 @@ const handlePassword = (value:any,fields: string) => {
   };
 
   return (
-    <MainGrid container>
+    <MainGrid
+      container
+      style={{
+        height: "100%", // ✅ IMPORTANT
+        overflow: "hidden",
+        // justifyContent: "space-between",
+      }}
+    >
       <Login_register_firstPart />
       {errorData && (
         <AlertComponent
@@ -343,45 +346,43 @@ const handlePassword = (value:any,fields: string) => {
         sm={12}
         md={6}
         lg={6}
-        style={{ display: "flex", justifyContent: "end" , flexDirection:"row"}}
+        style={{
+          display: "flex",
+          justifyContent: "end",
+          flexDirection: "row",
+          overflowY: "auto",
+          height: "100%",
+          paddingRight: "25px",
+          marginBottom: "15px",
+          marginTop: "10px",
+          paddingTop: "10px",
+
+          /* ✅ HIDE SCROLLBAR */
+          scrollbarWidth: "none", // Firefox
+          msOverflowStyle: "none", // IE/Edge
+        }}
+        sx={{
+          "&::-webkit-scrollbar": {
+            display: "none", // Chrome, Safari
+          },
+        }}
       >
         <MainBox>
           <Typography style={AllStyle.heading}>
             {config.signHeadingName}
           </Typography>
-          <SecondBox style={AllStyle.secondBox}>
+          <SecondBox
+            sx={{
+              maxWidth: "360px",
+              width: "100%",
+              marginTop: "5%",
+            }}
+            style={AllStyle.secondBox}
+          >
             <Typography style={AllStyle.smallHeading}>
               {config.welcomeHeading}
             </Typography>
-
-            <Box
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "10px",
-                marginBottom: "10px",
-              }}
-            >
-              <img
-                src={google_logo}
-                style={{ width: 76, cursor: "pointer" }}
-                alt="logo"
-              />
-              <img
-                src={facebook_logo}
-                style={{ width: 50, cursor: "pointer" }}
-                alt="logo"
-              />
-            </Box>
-            <Box
-              style={{
-                width: "100%",
-                height: "1px",
-                backgroundColor: "#CBD5E1",
-                marginBlock: "16px",
-              }}
-            ></Box>
+                       
 
             {/* Email */}
             <Typography style={AllStyle.textStyle}>
@@ -435,7 +436,7 @@ const handlePassword = (value:any,fields: string) => {
             </Typography>
             <InputField
               error={data.passwordError}
-             helperText={data.passwordError ? data.passwordErrorMessage : ""}
+              helperText={data.passwordError ? data.passwordErrorMessage : ""}
               style={{ marginBottom: "12px" }}
               placeholder={config.placeHolderPassword}
               data-test-id="txtInputPassword"
@@ -443,9 +444,7 @@ const handlePassword = (value:any,fields: string) => {
               fullWidth
               value={data.password}
               variant="outlined"
-              onChange={(e: any) =>
-                handlePassword(e.target.value,"")
-              }
+              onChange={(e: any) => handlePassword(e.target.value, "")}
               InputProps={{
                 endAdornment: (
                   <IconButton
@@ -455,11 +454,7 @@ const handlePassword = (value:any,fields: string) => {
                     }
                     edge="end"
                   >
-                    {enablePasswordField2 ? (
-                      <VisibilityOff />
-                    ) : (
-                      <Visibility />
-                    )}
+                    {enablePasswordField2 ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 ),
               }}
@@ -490,16 +485,10 @@ const handlePassword = (value:any,fields: string) => {
                 endAdornment: (
                   <IconButton
                     aria-label="toggle password visibility"
-                    onClick={() =>
-                      setenablePasswordField(!enablePasswordField)
-                    }
+                    onClick={() => setenablePasswordField(!enablePasswordField)}
                     edge="end"
                   >
-                    {enablePasswordField ? (
-                      <VisibilityOff />
-                    ) : (
-                      <Visibility />
-                    )}
+                    {enablePasswordField ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 ),
               }}
@@ -534,21 +523,16 @@ const handlePassword = (value:any,fields: string) => {
               variant="contained"
               data-test-id="button"
               style={AllStyle.btnStyle}
-              
               onClick={() => {
-                        handleValidation();
-                          trackEvent(
-                            "Login ",
-                            "Click",
-                            `Login`
-                          );
-                        }}
+                handleValidation();
+                trackEvent("Login ", "Click", `Login`);
+              }}
             >
               {config.labelTitleSignUp}
             </ButtonStyle>
 
             {/* Already have account */}
-    
+
             <Typography
               data-test-id="button1"
               style={{
@@ -556,6 +540,7 @@ const handlePassword = (value:any,fields: string) => {
                 fontSize: "16px",
                 lineHeight: "19.2px",
                 color: "#0A2239",
+                marginBottom: "10px",
               }}
             >
               {config.lable_already_signup}{" "}
@@ -595,7 +580,7 @@ export const PhoneStyle = styled(PhoneInput)(({ borderColor }: any) => ({
   },
   "& .PhoneInputInput": {
     color: "#334155",
-   
+
     fontSize: "16px",
     fontWeight: 400,
     background: "transparent",
