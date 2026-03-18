@@ -315,71 +315,150 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
       );
     }
   };
+  // const handleFacebookSuccess = async (fbResponse: any) => {
+  //   try {
+  //     const accessToken = fbResponse.accessToken;
+
+  //     const fbUserRes = await axios.get(
+  //       `https://graph.facebook.com/me?fields=id,name,email,picture&access_token=${accessToken}`,
+  //     );
+
+  //     const profile = fbUserRes.data;
+
+  //     if (!profile.email) {
+  //       alert(
+  //         "Facebook did not return email. Please use another login method.",
+  //       );
+  //       return;
+  //     }
+
+  //     const nameParts = profile.name ? profile.name.split(" ") : [];
+
+  //     // ✅ Generate meeting link
+  //     const timestamp = Date.now();
+  //     const safeName = profile.name
+  //       ? profile.name.replace(/\s+/g, "-").toLowerCase()
+  //       : "user";
+
+  //     const meetingRoom = `deedee-user-${safeName}-${timestamp}`;
+  //     const meet_link = `https://meet.jit.si/${meetingRoom}`;
+
+  //     const userData = {
+  //       email: profile.email,
+  //       given_name: nameParts[0] || "",
+  //       family_name: nameParts.slice(1).join(" ") || "",
+  //       email_verified: true,
+  //       meeting_link: meet_link,
+  //       provider: "facebook",
+  //     };
+
+  //     const apiResponse = await axios.post(
+  //       "https://deedee-unchainable-optionally.ngrok-free.dev/google_login",
+  //       { user: userData },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           "ngrok-skip-browser-warning": "true",
+  //         },
+  //       },
+  //     );
+
+  //     // ✅ fallback meeting link
+  //     localStorage.setItem("meet_link", meet_link);
+
+  //     saveLoginData(apiResponse.data);
+
+  //     if (closeModal) {
+  //       closeModal();
+  //     }
+  //   } catch (error: any) {
+  //     console.error("❌ Facebook login failed:", error);
+
+  //     alert(
+  //       error?.response?.data?.message ||
+  //         "Facebook login failed, please try again.",
+  //     );
+  //   }
+  // };
+  
   const handleFacebookSuccess = async (fbResponse: any) => {
-    try {
-      const accessToken = fbResponse.accessToken;
+  try {
+    const accessToken = fbResponse.accessToken;
 
-      const fbUserRes = await axios.get(
-        `https://graph.facebook.com/me?fields=id,name,email,picture&access_token=${accessToken}`,
-      );
+    // ✅ Email-only Graph API call - minimal fields
+    const fbUserRes = await axios.get(
+      `https://graph.facebook.com/me?fields=email&access_token=${accessToken}`,
+      { timeout: 10000 } // 10s timeout
+    );
 
-      const profile = fbUserRes.data;
+    const profile = fbUserRes.data;
+    console.log("user profile facebbok data", profile)
 
-      if (!profile.email) {
-        alert(
-          "Facebook did not return email. Please use another login method.",
-        );
-        return;
-      }
-
-      const nameParts = profile.name ? profile.name.split(" ") : [];
-
-      // ✅ Generate meeting link
-      const timestamp = Date.now();
-      const safeName = profile.name
-        ? profile.name.replace(/\s+/g, "-").toLowerCase()
-        : "user";
-
-      const meetingRoom = `deedee-user-${safeName}-${timestamp}`;
-      const meet_link = `https://meet.jit.si/${meetingRoom}`;
-
-      const userData = {
-        email: profile.email,
-        given_name: nameParts[0] || "",
-        family_name: nameParts.slice(1).join(" ") || "",
-        email_verified: true,
-        meeting_link: meet_link,
-        provider: "facebook",
-      };
-
-      const apiResponse = await axios.post(
-        "https://deedee-unchainable-optionally.ngrok-free.dev/google_login",
-        { user: userData },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "ngrok-skip-browser-warning": "true",
-          },
-        },
-      );
-
-      // ✅ fallback meeting link
-      localStorage.setItem("meet_link", meet_link);
-
-      saveLoginData(apiResponse.data);
-
-      if (closeModal) {
-        closeModal();
-      }
-    } catch (error: any) {
-      console.error("❌ Facebook login failed:", error);
-
-      alert(
-        error?.response?.data?.message ||
-          "Facebook login failed, please try again.",
-      );
+    // ✅ Email validation - STRICT CHECK
+    if (!profile.email) {
+      alert("Facebook email not available. Please use another method.");
+      return;
     }
-  };
+
+    // ✅ Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(profile.email)) {
+      alert("Invalid email format from Facebook.");
+      return;
+    }
+
+    // ✅ Generate meeting link using email hash (deterministic)
+    const timestamp = Date.now();
+    const emailHash = btoa(profile.email).slice(0, 8); // First 8 chars of base64 email
+    const meetingRoom = `deedee-${emailHash}-${timestamp}`;
+    const meet_link = `https://meet.jit.si/${meetingRoom}`;
+
+    // ✅ Email-only userData - NO name dependency
+    const userData = {
+      email: profile.email.toLowerCase().trim(), // Normalized email
+      email_verified: true,
+      meeting_link: meet_link,
+      provider: "facebook",
+    };
+
+    console.log("✅ Email-only login data:", userData);
+
+    const apiResponse = await axios.post(
+      "https://deedee-unchainable-optionally.ngrok-free.dev/google_login",
+      { user: userData },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "true",
+        },
+        timeout: 15000,
+      }
+    );
+
+    // ✅ Fallback storage
+    localStorage.setItem("meet_link", meet_link);
+    localStorage.setItem("user_email", profile.email); // Cache verified email
+
+    saveLoginData(apiResponse.data);
+
+    if (closeModal) {
+      closeModal();
+    }
+
+  } catch (error: any) {
+    console.error("❌ Facebook email login failed:", error);
+
+    const errorMsg = 
+      error?.response?.data?.message ||
+      error?.message?.includes("timeout") 
+        ? "Facebook response timeout. Please retry." 
+        : "Email login failed. Please try again.";
+
+    alert(errorMsg);
+  }
+};
+
+  
   /** ====================== Store Login Data ====================== */
 
   const saveLoginData = (data: any) => {
@@ -530,7 +609,7 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
                       }}
                     />
 
-                    <FacebookLogin
+                     {/* <FacebookLogin
                       appId={APPID}
                       fields="id,name,email"
                       onSuccess={(response) => {
@@ -562,7 +641,43 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
                           Continue with Facebook
                         </Button>
                       )}
+                    /> */}
+
+                   <FacebookLogin
+                      appId={APPID}
+                      fields="id,name,email,first_name,last_name"  // ✅ Tumhare saare fields
+                      scope="email"                                // ✅ Basic permission only
+                      onSuccess={(response) => {
+                        console.log("✅ Facebook Login Success:", response);
+                        handleFacebookSuccess(response);
+                      }}
+                      onFail={(error) => {
+                        console.error("❌ Facebook Login Failed:", error);
+                      }}
+                      render={({ onClick }) => (
+                        <Button
+                          onClick={onClick}
+                          variant="outlined"
+                          startIcon={<FacebookIcon />}
+                          sx={{
+                            textTransform: "none",
+                            borderColor: "#dadce0",
+                            color: "#3b5998",
+                            backgroundColor: "#fff",
+                            padding: "6px 12px",
+                            fontSize: "14px",
+                            marginTop: "10px",
+                            "&:hover": {
+                              backgroundColor: "#f5f7fb",
+                              borderColor: "#bebfc4",
+                            },
+                          }}
+                        >
+                          Continue with Facebook
+                        </Button>
+                      )}
                     />
+
                   </Box>
                 </Box>
                 <Box
