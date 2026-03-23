@@ -40,6 +40,8 @@ interface LoginProps {
   switchToRegister?: () => void;
 }
 
+ 
+
 const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false); // Loader state
@@ -47,6 +49,7 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
   const [isForgotPassword, setIsForgotPassword] = useState(false);
   const [forgotEmail, setForgotEmail] = useState("");
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [fbLoading, setFbLoading] = useState(false);
 
   const fetchLogin = async (email: string, password: string) => {
     const data = {
@@ -264,7 +267,7 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
     setErrorData("");
   };
 
-  /** ======================new wroking code  Login Data ====================== */
+  /** ======================Google Login  ====================== */
 
   const handleGoogleSuccess = async (credentialResponse: any) => {
     try {
@@ -315,150 +318,179 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
       );
     }
   };
-  // const handleFacebookSuccess = async (fbResponse: any) => {
-  //   try {
-  //     const accessToken = fbResponse.accessToken;
+   
 
-  //     const fbUserRes = await axios.get(
-  //       `https://graph.facebook.com/me?fields=id,name,email,picture&access_token=${accessToken}`,
-  //     );
 
-  //     const profile = fbUserRes.data;
+/** ============Facebook auth login=============== */
 
-  //     if (!profile.email) {
-  //       alert(
-  //         "Facebook did not return email. Please use another login method.",
-  //       );
-  //       return;
-  //     }
+// ✅ FINAL handleFacebookLogin - ALL USERS PRODUCTION READY
+ 
 
-  //     const nameParts = profile.name ? profile.name.split(" ") : [];
+  const handleFacebookLogin = (): void => {
+    // Safety checks
+    if (fbLoading || loading) {
+      console.log("⏳ Already loading...");
+      return;
+    }
 
-  //     // ✅ Generate meeting link
-  //     const timestamp = Date.now();
-  //     const safeName = profile.name
-  //       ? profile.name.replace(/\s+/g, "-").toLowerCase()
-  //       : "user";
+    if (!window.FB) {
+      console.log("🔄 Loading Facebook SDK...");
+      loadFacebookSDK();
+      return;
+    }
 
-  //     const meetingRoom = `deedee-user-${safeName}-${timestamp}`;
-  //     const meet_link = `https://meet.jit.si/${meetingRoom}`;
+    if (typeof (window.FB as any).login !== 'function') {
+      console.log("❌ FB.login not ready, retrying...");
+      setTimeout(handleFacebookLogin, 1000);
+      return;
+    }
 
-  //     const userData = {
-  //       email: profile.email,
-  //       given_name: nameParts[0] || "",
-  //       family_name: nameParts.slice(1).join(" ") || "",
-  //       email_verified: true,
-  //       meeting_link: meet_link,
-  //       provider: "facebook",
-  //     };
+    console.log("🚀 Starting Facebook login...");
+    setFbLoading(true);
 
-  //     const apiResponse = await axios.post(
-  //       "https://deedee-unchainable-optionally.ngrok-free.dev/google_login",
-  //       { user: userData },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           "ngrok-skip-browser-warning": "true",
-  //         },
-  //       },
-  //     );
-
-  //     // ✅ fallback meeting link
-  //     localStorage.setItem("meet_link", meet_link);
-
-  //     saveLoginData(apiResponse.data);
-
-  //     if (closeModal) {
-  //       closeModal();
-  //     }
-  //   } catch (error: any) {
-  //     console.error("❌ Facebook login failed:", error);
-
-  //     alert(
-  //       error?.response?.data?.message ||
-  //         "Facebook login failed, please try again.",
-  //     );
-  //   }
-  // };
-  
-  const handleFacebookSuccess = async (fbResponse: any) => {
-  try {
-    const accessToken = fbResponse.accessToken;
-
-    // ✅ Email-only Graph API call - minimal fields
-    const fbUserRes = await axios.get(
-      `https://graph.facebook.com/me?fields=email&access_token=${accessToken}`,
-      { timeout: 10000 } // 10s timeout
+    // FB Login call
+    (window.FB as any).login(
+      (response: any) => {
+        console.log("📱 FB Response:", response);
+        
+        if (response.authResponse) {
+          const accessToken = response.authResponse.accessToken;
+          console.log("✅ Access Token:", accessToken.substring(0, 20) + "...");
+          handleFacebookSuccess({ accessToken });
+        } else {
+          console.log("❌ Cancelled/Error:", response.status);
+          setFbLoading(false);
+          if (response.status === 'not_authorized') {
+            alert("Please allow email permission.");
+          }
+        }
+      },
+      { scope: 'email' }
     );
+  };
 
-    const profile = fbUserRes.data;
-    console.log("user profile facebbok data", profile)
-
-    // ✅ Email validation - STRICT CHECK
-    if (!profile.email) {
-      alert("Facebook email not available. Please use another method.");
+  // ✅ FB SDK Loader (called automatically)
+  const loadFacebookSDK = (): void => {
+    if (document.getElementById('facebook-jssdk')) {
+      console.log("✅ FB SDK already loading...");
+      setTimeout(handleFacebookLogin, 1500);
       return;
     }
 
-    // ✅ Email format validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(profile.email)) {
-      alert("Invalid email format from Facebook.");
-      return;
-    }
-
-    // ✅ Generate meeting link using email hash (deterministic)
-    const timestamp = Date.now();
-    const emailHash = btoa(profile.email).slice(0, 8); // First 8 chars of base64 email
-    const meetingRoom = `deedee-${emailHash}-${timestamp}`;
-    const meet_link = `https://meet.jit.si/${meetingRoom}`;
-
-    // ✅ Email-only userData - NO name dependency
-    const userData = {
-      email: profile.email.toLowerCase().trim(), // Normalized email
-      email_verified: true,
-      meeting_link: meet_link,
-      provider: "facebook",
+    console.log("📥 Loading FB SDK...");
+    
+    // Load SDK
+    const script = document.createElement('script') as HTMLScriptElement;
+    script.id = 'facebook-jssdk';
+    script.async = true;
+    script.defer = true;
+    script.crossOrigin = 'anonymous';
+    script.src = 'https://connect.facebook.net/en_US/sdk.js';
+    
+    script.onload = () => {
+      console.log("✅ FB SDK loaded");
+      window.fbAsyncInit = () => {
+        (window.FB as any).init({
+          appId: APPID,  // Tumhara ApiConfig se
+          cookie: true,
+          xfbml: true,
+          version: '20.0'  // Stable version
+        });
+        console.log("✅ FB SDK Initialized:", APPID);
+        setTimeout(handleFacebookLogin, 500);
+      };
     };
+    
+    document.head.appendChild(script);
+  };
 
-    console.log("✅ Email-only login data:", userData);
+  const handleFacebookSuccess = async (fbResponse: any) => {
+    try {
+      const accessToken = fbResponse.accessToken;
 
-    const apiResponse = await axios.post(
-      "https://deedee-unchainable-optionally.ngrok-free.dev/google_login",
-      { user: userData },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "ngrok-skip-browser-warning": "true",
-        },
-        timeout: 15000,
+      // ✅ FIXED: v20.0 Graph API + ALL fields (name bhi milega)
+      const fbUserRes = await axios.get(
+        `https://graph.facebook.com/v20.0/me?fields=id,name,email,first_name,last_name&access_token=${accessToken}`,  // ✅ v20.0 + all fields
+        { timeout: 10000 }
+      );
+
+      const profile = fbUserRes.data;
+      console.log("✅ Facebook Profile (COMPLETE):", profile);
+
+      // ✅ Email validation
+      if (!profile.email) {
+        alert("Facebook email not available. Please use another method.");
+        return;
       }
-    );
 
-    // ✅ Fallback storage
-    localStorage.setItem("meet_link", meet_link);
-    localStorage.setItem("user_email", profile.email); // Cache verified email
+      // ✅ Email format validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(profile.email)) {
+        alert("Invalid email format from Facebook.");
+        return;
+      }
 
-    saveLoginData(apiResponse.data);
+      // ✅ Generate meeting link (your logic - perfect)
+      const timestamp = Date.now();
+      const emailHash = btoa(profile.email).slice(0, 8);
+      const meetingRoom = `deedee-${emailHash}-${timestamp}`;
+      const meet_link = `https://meet.jit.si/${meetingRoom}`;
 
-    if (closeModal) {
-      closeModal();
+      // ✅ COMPLETE userData (name bhi add kiya backend ke liye)
+      const userData = {
+        email: profile.email.toLowerCase().trim(),
+        given_name: profile.first_name || '',           // ✅ Backend expects this
+        family_name: profile.last_name || '',           // ✅ Backend expects this  
+        email_verified: true,
+        meeting_link: meet_link,
+        provider: "facebook",
+        // ✅ Extra fields for your app
+        id: profile.id,
+        name: profile.name,
+      };
+
+      console.log("✅ Complete userData for backend:", userData);
+
+      const apiResponse = await axios.post(
+        "https://deedee-unchainable-optionally.ngrok-free.dev/google_login",
+        { user: userData },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "true",
+          },
+          timeout: 15000,
+        }
+      );
+
+
+      // ✅ Local storage (your exact logic)
+      localStorage.setItem("meet_link", meet_link);
+      localStorage.setItem("user_email", profile.email);
+      localStorage.setItem("first_name", profile.first_name || '');
+      localStorage.setItem("last_name", profile.last_name || '');
+
+      // ✅ Your existing saveLoginData
+      saveLoginData(apiResponse.data);
+
+      if (closeModal) {
+        closeModal();
+      }
+
+    } catch (error: any) {
+      console.error("❌ Facebook login failed:", error);
+      
+      const errorMsg = 
+        error?.response?.data?.message ||
+        (error.message && error.message.includes("timeout")) 
+          ? "Facebook response timeout. Please retry." 
+          : "Facebook login failed. Please try again.";
+
+      alert(errorMsg);
     }
+  };
 
-  } catch (error: any) {
-    console.error("❌ Facebook email login failed:", error);
 
-    const errorMsg = 
-      error?.response?.data?.message ||
-      error?.message?.includes("timeout") 
-        ? "Facebook response timeout. Please retry." 
-        : "Email login failed. Please try again.";
-
-    alert(errorMsg);
-  }
-};
-
-  
   /** ====================== Store Login Data ====================== */
 
   const saveLoginData = (data: any) => {
