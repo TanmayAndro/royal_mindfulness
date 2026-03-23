@@ -13,7 +13,8 @@ import {
   Dialog,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import styled from "styled-components";
+// import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
 export const ResetPassword = () => {
   const [token, setToken] = useState<string | null>(null);

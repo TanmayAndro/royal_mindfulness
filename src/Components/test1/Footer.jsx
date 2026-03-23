@@ -71,7 +71,7 @@ const Footer = () => {
                 <a href="/term-condition">Terms & Conditions</a>
                 <a href="/privacy-policy">Privacy Policy</a>
               </div>
-              <p className="copyright">© 2025 Royal Mindfulness</p>
+              <p className="copyright">© 2026 Royal Mindfulness</p>
             </div>
           </div>       
         </div>

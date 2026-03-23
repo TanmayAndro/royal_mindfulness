@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Session.css";
-import { LocalizationProvider } from "@mui/x-date-pickers-pro/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import {
   Box,
@@ -15,7 +15,7 @@ import {
   Select,
   Typography,
 } from "@mui/material";
-import { DateCalendar } from "@mui/x-date-pickers-pro";
+import { DateCalendar } from "@mui/x-date-pickers";
 
 import axios from "axios";
 import { useParams } from "react-router-dom";

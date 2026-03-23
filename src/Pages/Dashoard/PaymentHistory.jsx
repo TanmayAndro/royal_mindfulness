@@ -11,11 +11,11 @@ import {
   styled,
   Link,
 } from "@mui/material";
-import moment from 'moment';
+import dayjs from "dayjs";
 
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { DatePicker } from "@mui/x-date-pickers";
+import { TextField } from "@mui/material";
 const config = require("../../config")
 
 const CalendarWrapper = styled(Box)({
@@ -49,7 +49,7 @@ const PaymentHistory = () => {
   const [selectedDate, setSelectedDate] = useState(null);
 
   const handleDateChange = (date) => {
-    const formattedDate = moment(date).format('YYYY-MM-DD');
+    const formattedDate = dayjs(date).format('YYYY-MM-DD');
     setSelectedDate(formattedDate);
     setShowCalendar(false);
   };

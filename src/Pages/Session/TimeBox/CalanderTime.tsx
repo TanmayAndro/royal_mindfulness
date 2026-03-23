@@ -261,11 +261,11 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useMemo, useState } from "react";
-import { LocalizationProvider } from "@mui/x-date-pickers-pro/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers";;
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
 import { Box, Button, Divider, Grid, Typography } from "@mui/material";
-import { DateCalendar } from "@mui/x-date-pickers-pro";
+import { DateCalendar } from "@mui/x-date-pickers";
 import { Console } from "console";
 import { useNavigate } from "react-router-dom";
 
