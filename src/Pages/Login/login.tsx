@@ -1,6 +1,5 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import "./login.css";
-import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -10,22 +9,21 @@ import {
   Button,
   TextField,
   Grid,
+  Typography,
   CircularProgress,
-} from "@mui/material";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { facebook_logo, google_logo } from "../../assests";
-import { Link } from "react-router-dom";
+} from "@mui/material/index";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+
 import Login_register_firstPart from "../../Components/login_register_firstPart";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { loginApi } from "../../API/ApiConfig";
 import { APPID } from "../../API/ApiConfig";
 import AlertComponent from "../../Components/alert";
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
-import { trackEvent } from "../../analitics/analytics";
 import emailIcon from "../../Assests/emailIcon.png";
 import FacebookLogin from "@greatsumini/react-facebook-login";
-import FacebookIcon from "@mui/icons-material/Facebook";
 const config = require("../../config");
 
 interface GoogleUserData {
@@ -39,6 +37,14 @@ interface LoginProps {
   closeModal?: () => void;
   switchToRegister?: () => void;
 }
+
+const FacebookIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="#3b5998">
+    <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
+  </svg>
+);
+
+
 
  
 
@@ -301,7 +307,7 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
         },
       );
 
-      // ✅ fallback meeting link
+      //  fallback meeting link
       localStorage.setItem("meet_link", meet_link);
 
       saveLoginData(response.data);
@@ -323,42 +329,42 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
 
 /** ============Facebook auth login=============== */
 
-// ✅ FINAL handleFacebookLogin - ALL USERS PRODUCTION READY
+//  FINAL handleFacebookLogin - ALL USERS PRODUCTION READY
  
 
   const handleFacebookLogin = (): void => {
     // Safety checks
     if (fbLoading || loading) {
-      console.log("⏳ Already loading...");
+      console.log(" Already loading...");
       return;
     }
 
     if (!window.FB) {
-      console.log("🔄 Loading Facebook SDK...");
+      console.log(" Loading Facebook SDK...");
       loadFacebookSDK();
       return;
     }
 
     if (typeof (window.FB as any).login !== 'function') {
-      console.log("❌ FB.login not ready, retrying...");
+      console.log(" FB.login not ready, retrying...");
       setTimeout(handleFacebookLogin, 1000);
       return;
     }
 
-    console.log("🚀 Starting Facebook login...");
+    console.log(" Starting Facebook login...");
     setFbLoading(true);
 
     // FB Login call
     (window.FB as any).login(
       (response: any) => {
-        console.log("📱 FB Response:", response);
+        console.log(" FB Response:", response);
         
         if (response.authResponse) {
           const accessToken = response.authResponse.accessToken;
-          console.log("✅ Access Token:", accessToken.substring(0, 20) + "...");
+          console.log("Access Token:", accessToken.substring(0, 20) + "...");
           handleFacebookSuccess({ accessToken });
         } else {
-          console.log("❌ Cancelled/Error:", response.status);
+          console.log(" Cancelled/Error:", response.status);
           setFbLoading(false);
           if (response.status === 'not_authorized') {
             alert("Please allow email permission.");
@@ -369,15 +375,15 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
     );
   };
 
-  // ✅ FB SDK Loader (called automatically)
+  //  FB SDK Loader (called automatically)
   const loadFacebookSDK = (): void => {
     if (document.getElementById('facebook-jssdk')) {
-      console.log("✅ FB SDK already loading...");
+      console.log(" FB SDK already loading...");
       setTimeout(handleFacebookLogin, 1500);
       return;
     }
 
-    console.log("📥 Loading FB SDK...");
+    console.log(" Loading FB SDK...");
     
     // Load SDK
     const script = document.createElement('script') as HTMLScriptElement;
@@ -388,7 +394,7 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
     script.src = 'https://connect.facebook.net/en_US/sdk.js';
     
     script.onload = () => {
-      console.log("✅ FB SDK loaded");
+      console.log(" FB SDK loaded");
       window.fbAsyncInit = () => {
         (window.FB as any).init({
           appId: APPID,  // Tumhara ApiConfig se
@@ -396,7 +402,7 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
           xfbml: true,
           version: '20.0'  // Stable version
         });
-        console.log("✅ FB SDK Initialized:", APPID);
+        console.log(" FB SDK Initialized:", APPID);
         setTimeout(handleFacebookLogin, 500);
       };
     };
@@ -408,48 +414,48 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
     try {
       const accessToken = fbResponse.accessToken;
 
-      // ✅ FIXED: v20.0 Graph API + ALL fields (name bhi milega)
+      //  FIXED: v20.0 Graph API + ALL fields (name bhi milega)
       const fbUserRes = await axios.get(
-        `https://graph.facebook.com/v20.0/me?fields=id,name,email,first_name,last_name&access_token=${accessToken}`,  // ✅ v20.0 + all fields
+        `https://graph.facebook.com/v20.0/me?fields=id,name,email,first_name,last_name&access_token=${accessToken}`,  //  v20.0 + all fields
         { timeout: 10000 }
       );
 
       const profile = fbUserRes.data;
-      console.log("✅ Facebook Profile (COMPLETE):", profile);
+      console.log(" Facebook Profile (COMPLETE):", profile);
 
-      // ✅ Email validation
+      //  Email validation
       if (!profile.email) {
         alert("Facebook email not available. Please use another method.");
         return;
       }
 
-      // ✅ Email format validation
+      //  Email format validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(profile.email)) {
         alert("Invalid email format from Facebook.");
         return;
       }
 
-      // ✅ Generate meeting link (your logic - perfect)
+      //  Generate meeting link (your logic - perfect)
       const timestamp = Date.now();
       const emailHash = btoa(profile.email).slice(0, 8);
       const meetingRoom = `deedee-${emailHash}-${timestamp}`;
       const meet_link = `https://meet.jit.si/${meetingRoom}`;
 
-      // ✅ COMPLETE userData (name bhi add kiya backend ke liye)
+      //  COMPLETE userData (name bhi add kiya backend ke liye)
       const userData = {
         email: profile.email.toLowerCase().trim(),
-        given_name: profile.first_name || '',           // ✅ Backend expects this
-        family_name: profile.last_name || '',           // ✅ Backend expects this  
+        given_name: profile.first_name || '',           //  Backend expects this
+        family_name: profile.last_name || '',           //  Backend expects this  
         email_verified: true,
         meeting_link: meet_link,
         provider: "facebook",
-        // ✅ Extra fields for your app
+        //  Extra fields for your app
         id: profile.id,
         name: profile.name,
       };
 
-      console.log("✅ Complete userData for backend:", userData);
+      console.log("Complete userData for backend:", userData);
 
       const apiResponse = await axios.post(
         "https://deedee-unchainable-optionally.ngrok-free.dev/google_login",
@@ -464,13 +470,13 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
       );
 
 
-      // ✅ Local storage (your exact logic)
+      //  Local storage (your exact logic)
       localStorage.setItem("meet_link", meet_link);
       localStorage.setItem("user_email", profile.email);
       localStorage.setItem("first_name", profile.first_name || '');
       localStorage.setItem("last_name", profile.last_name || '');
 
-      // ✅ Your existing saveLoginData
+      //  Your existing saveLoginData
       saveLoginData(apiResponse.data);
 
       if (closeModal) {
@@ -495,17 +501,17 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
 
   const saveLoginData = (data: any) => {
     try {
-      // ✅ TOKEN
+      //  TOKEN
       const token = data?.meta?.token || data?.token || "";
       if (token) {
         localStorage.setItem("user_token", token);
       }
 
-      // ✅ USER OBJECT (handle all cases)
+      //  USER OBJECT (handle all cases)
       const attributes = data?.data?.attributes || {};
       const user = data?.user || {};
 
-      // ✅ BASIC USER INFO
+      //  BASIC USER INFO
       localStorage.setItem(
         "first_name",
         attributes.first_name || user.first_name || "",
@@ -517,17 +523,17 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
 
       localStorage.setItem("user_id", data?.data?.id || user.id || "");
 
-      // ✅ PHONE NUMBER (FIXED BUG)
+      //  PHONE NUMBER (FIXED BUG)
       if (attributes.phone_number) {
         localStorage.setItem("phone_number", attributes.phone_number);
       }
 
-      // ✅ TEACHER FLAG (IMPORTANT)
+      //  TEACHER FLAG (IMPORTANT)
       if (data?.meta?.is_teacher !== undefined) {
         localStorage.setItem("is_teacher", data.meta.is_teacher);
       }
 
-      // ✅ MEETING LINK (backend OR frontend fallback)
+      //  MEETING LINK (backend OR frontend fallback)
       const meetingLink =
         attributes.meeting_link || localStorage.getItem("meet_link");
 
@@ -535,12 +541,12 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
         localStorage.setItem("meet_link", meetingLink);
       }
 
-      // ✅ OPTIONAL EXTRA FIELDS (future safe)
+      //  OPTIONAL EXTRA FIELDS (future safe)
       if (attributes.meeting_link) {
         localStorage.setItem("meeting_link_backend", attributes.meeting_link);
       }
 
-      // ✅ REDIRECT LOGIC (UNCHANGED)
+      //  REDIRECT LOGIC (UNCHANGED)
       const redirect = localStorage.getItem("redirectAfterLogin");
 
       if (redirect === "calendly") {
@@ -554,7 +560,7 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
         );
       }
 
-      // ✅ FINAL NAVIGATION
+      //  FINAL NAVIGATION
       navigate("/");
     } catch (error) {
       console.error("❌ Error in saveLoginData:", error);
@@ -677,10 +683,10 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
 
                    <FacebookLogin
                       appId={APPID}
-                      fields="id,name,email,first_name,last_name"  // ✅ Tumhare saare fields
-                      scope="email"                                // ✅ Basic permission only
+                      fields="id,name,email,first_name,last_name"  //  Tumhare saare fields
+                      scope="email"                                //  Basic permission only
                       onSuccess={(response) => {
-                        console.log("✅ Facebook Login Success:", response);
+                        console.log(" Facebook Login Success:", response);
                         handleFacebookSuccess(response);
                       }}
                       onFail={(error) => {
