@@ -130,7 +130,7 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  useLocation,
+  useLocation
 } from "react-router-dom";
 import Header from "./Components/Header";
 import Login from "./Pages/Login/login";
@@ -144,8 +144,10 @@ import MetntalQuiz from "./Pages/Quiz/MetntalQuiz";
 
 import PricingPlans from "./Pages/Pricing_plans/PricingPlans";
 import "./fonts.css";
+// @ts-ignore
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// @ts-ignore
+import "react-toastify/dist/ReactToastify.css"; 
 // import Footer from "./Components/Footer";
 import Footer from "./Components/test1/Footer"
 import FAQ from "./Pages/FAQ/faq";
@@ -172,6 +174,7 @@ import ReactGA from "react-ga";
 import { useEffect } from "react";
 import JitsiComponent from "./Components/Jitsimeeting";
 import { ResetPassword } from "./Pages/Login/ResetPassword";
+// @ts-ignore
 import { Box } from "@mui/material";
 import FreeConsultanceForm from "./Pages/FreeConsultance/FreeConsultanceForm"
 
@@ -181,6 +184,7 @@ import ConsultationPage from "./Pages/Test1/TalkSpace/ConsultationPage"
 import TalkSpace from "./Pages/Test1/TalkSpace/TalkSpace"
 import { AuthModalProvider } from "./context/AuthModalContext";
 import Quiz from "./Pages/Test1/Quiz/QuizPage"
+import  WhatsAppButton from "./context/WhatsAppButton"
 
 // /home/ravi/Desktop/Tanmay_sir/royal_mindfulness/src/Pages/Test1/Quiz/QuizPage.jsx
 const TRACKING_ID = "G-SNZDQG6PM4";
@@ -200,6 +204,7 @@ function App() {
       
       {/* Global Toast Container */}
       <ToastContainer position="top-right" autoClose={3000} />
+      <WhatsAppButton />
     </div>
   );
 }

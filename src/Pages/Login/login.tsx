@@ -647,43 +647,11 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
                       }}
                     />
 
-                     {/* <FacebookLogin
+                    
+                     {/* facebook login logo */}
+                   {/* <FacebookLogin
                       appId={APPID}
-                      fields="id,name,email"
-                      onSuccess={(response) => {
-                        console.log("Facebook Login Success:", response);
-                        handleFacebookSuccess(response);
-                      }}
-                      onFail={(error) => {
-                        console.log("Facebook Login Failed:", error);
-                      }}
-                      render={({ onClick }) => (
-                        <Button
-                          onClick={onClick}
-                          variant="outlined"
-                          startIcon={<FacebookIcon />}
-                          sx={{
-                            textTransform: "none",
-                            borderColor: "#dadce0",
-                            color: "#3b5998",
-                            backgroundColor: "#fff",
-                            padding: "6px 12px",
-                            fontSize: "14px",
-                            marginTop: "10px",
-                            "&:hover": {
-                              backgroundColor: "#f5f7fb",
-                              borderColor: "#bebfc4",
-                            },
-                          }}
-                        >
-                          Continue with Facebook
-                        </Button>
-                      )}
-                    /> */}
-
-                   <FacebookLogin
-                      appId={APPID}
-                      fields="id,name,email,first_name,last_name"  //  Tumhare saare fields
+                      fields="id,name,email,first_name,last_name"  
                       scope="email"                                //  Basic permission only
                       onSuccess={(response) => {
                         console.log(" Facebook Login Success:", response);
@@ -714,7 +682,7 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
                           Continue with Facebook
                         </Button>
                       )}
-                    />
+                    /> */}
 
                   </Box>
                 </Box>
