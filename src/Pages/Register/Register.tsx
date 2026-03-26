@@ -60,6 +60,7 @@ const Register: React.FC<RegisterProps> = ({ closeModal, switchToLogin }) => {
 
   const [enablePasswordField, setenablePasswordField] = useState(true);
   const [enablePasswordField2, setenablePasswordField2] = useState(true);
+  
 
   const fetchSignup = async (
     email: string,
@@ -502,8 +503,10 @@ const Register: React.FC<RegisterProps> = ({ closeModal, switchToLogin }) => {
               {config.phone_no} {importantField()}
             </Typography>
             <PhoneStyle
+              // autoFocus={false}
+              borderColor={data.mobileNoError ? "#FF5E5B" : "#dddfe2"}
               style={{ marginBottom: !data.mobileNoError ? "16px" : 0 }}
-              value={data.mobileNo}
+              value={data.mobileNo} 
               onChange={(val) => handlePhoneNumber(val)}
               defaultCountry="IN"
               countries={[]}
@@ -560,7 +563,7 @@ const Register: React.FC<RegisterProps> = ({ closeModal, switchToLogin }) => {
 };
 
 export const PhoneStyle = styled(PhoneInput)(({ borderColor, theme }: any) => ({
-  border: `1px solid ${borderColor || "#F87171"}`,
+  border: `1px solid ${borderColor ?? "#dddfe2"}`,
   borderRadius: 8,
 
   // ✅ responsive height
