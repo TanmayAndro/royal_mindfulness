@@ -186,11 +186,18 @@ import { AuthModalProvider } from "./context/AuthModalContext";
 import Quiz from "./Pages/Test1/Quiz/QuizPage"
 import  WhatsAppButton from "./context/WhatsAppButton"
 
-// /home/ravi/Desktop/Tanmay_sir/royal_mindfulness/src/Pages/Test1/Quiz/QuizPage.jsx
 const TRACKING_ID = "G-SNZDQG6PM4";
 
 function App() {
   ReactGA.initialize(TRACKING_ID);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      window.location.reload();
+    }, 60 * 60 * 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div style={{ overflow: "hidden" }}>
