@@ -14,7 +14,10 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
+  IconButton,
+  useTheme, useMediaQuery,
 } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import { FaRegEdit } from "react-icons/fa";
 import { IoMailOutline } from "react-icons/io5";
 import { MdPhone } from "react-icons/md";
@@ -23,16 +26,27 @@ import { profile_img } from "../../assests";
 import { userprofile } from "../../API/ApiConfig";
 import AlertComponent from "../../Components/alert";
 import { InputField, AllStyle } from "../Login/login";
+import TrainerChat from "../TrainerChat/TrainerChat";
 
 const config = require("../../config");
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
   const [open, setOpen] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
   const [errorData, setErrorData] = useState("");
   const [successData, setSuccessData] = useState("");
   const [editableData, setEditableData] = useState({});
   const [errors, setErrors] = useState({});
+  const isTeacher = localStorage.getItem("is_teacher") === "true";
+
+  const chatLabel = isTeacher
+    ? "Chat with User"
+    : "Chat with Trainer";
+  // Responsive hook
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   const { id } = useParams();
   useEffect(() => {
     getuserinfo();
@@ -46,10 +60,10 @@ const Profile = () => {
         headers: { token: token },
       })
       .then((response) => {
-        console.log(response," data responce ---->")
+        // console.log(response, " data responce ---->");
         setUserData(response.data.data.attributes);
         setEditableData(response.data.data.attributes);
-        console.log("aqkjbaxibiuhxih",response.data.data.attributes)
+        // console.log("aqkjbaxibiuhxih", response.data.data.attributes);
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);
@@ -61,10 +75,7 @@ const Profile = () => {
   };
   const validateProfileData = () => {
     const errors = {};
-    if (
-      !editableData.first_name ||
-      editableData.first_name.length > 20
-    ) {
+    if (!editableData.first_name || editableData.first_name.length > 20) {
       errors.first_name = "First name is required.";
     }
 
@@ -76,64 +87,58 @@ const Profile = () => {
       errors.email = "Email is required.";
     }
 
-
     setErrors(errors);
 
     return Object.keys(errors).length === 0;
   };
 
+  const validateField = (name, value) => {
+    let error = "";
 
-const validateField = (name, value) => {
-  let error = "";
-  
-  switch (name) {
-    case "first_name":
-      if (!value) {
-        error = "First name is required";
-      } else if (value.length > 20) {
-        error = "First name should not exceed 20 characters";
-      }
-      break;
-    case "last_name":
-      if (!value) {
-        error = "Last name is required";
-      } else if (value.length > 20) {
-        error = "Last name should not exceed 20 characters";
-      }
-      break;
-    case "email":
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!value) {
-        error = "Email is required";
-      } else if (!emailRegex.test(value)) {
-        error = "Invalid email address";
-      }
-      break;
-    default:
-      break;
-  }
+    switch (name) {
+      case "first_name":
+        if (!value) {
+          error = "First name is required";
+        } else if (value.length > 20) {
+          error = "First name should not exceed 20 characters";
+        }
+        break;
+      case "last_name":
+        if (!value) {
+          error = "Last name is required";
+        } else if (value.length > 20) {
+          error = "Last name should not exceed 20 characters";
+        }
+        break;
+      case "email":
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!value) {
+          error = "Email is required";
+        } else if (!emailRegex.test(value)) {
+          error = "Invalid email address";
+        }
+        break;
+      default:
+        break;
+    }
 
-  return error;
-};
+    return error;
+  };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
 
-const handleInputChange = (e) => {
-  const { name, value } = e.target;
-  
- 
-  setEditableData((prevData) => ({
-    ...prevData,
-    [name]: value,
-  }));
+    setEditableData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
 
-
-  const error = validateField(name, value);
-  setErrors((prevErrors) => ({
-    ...prevErrors,
-    [name]: error,
-  }));
-};
-
+    const error = validateField(name, value);
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: error,
+    }));
+  };
 
   const handleSave = () => {
     if (validateProfileData()) {
@@ -149,134 +154,177 @@ const handleInputChange = (e) => {
     setErrorData("");
   };
 
- 
   return (
-    <Box>
-      {errorData != "" && (
-        <AlertComponent
-          errorData={errorData}
-          handleClose={handleAlertClose}
-          type={"error"}
-        />
-      )}
-      {successData != "" && (
-        <AlertComponent
-          errorData={successData}
-          handleClose={handleAlertClose}
-          type={"success"}
-        />
-      )}
-      <MainCard>
-        <CardContent>
-          <FirstBox>
-            <IMGBox src={profile_img} alt="Profile" />
-            <Box>
-              {/* <ProfileName variant="h6"><b>{config.Alex_Meian}</b></ProfileName> */}
-              <ProfileName variant="h6">
-                <b>
-                  {userData?.first_name || localStorage.getItem("first_name") }    {userData?.last_name|| localStorage.getItem("last_name") }  
-                </b>
-              </ProfileName>
-              <SubHeading>{config.Product_Manager}</SubHeading>
-            </Box>
-            <Box>
-              <FaRegEdit
-                cursor="pointer"
-                size={22}
-                onClick={() => setOpen(true)}
-              />
-            </Box>
-          </FirstBox>
-          <EmailInfoBox>
-            <IoMailOutline style={{ width: "16px", height: "16px" }} />
-            {/* <InfoContent>{config.email}: {config.profile_email}</InfoContent> */}
-            <InfoContent>
-              {config?.email}: {userData?.email || localStorage.getItem("email")}
-            </InfoContent>
-          </EmailInfoBox>
-          <PhoneBox>
-            <MdPhone style={{ width: "16px", height: "16px" }} />
-            {/* <InfoContent>{config.Phone}: {config.Phone_Number}</InfoContent> */}
-            <InfoContent>
-              {config?.Phone}: {userData?.Phone_Number}
-            </InfoContent>
-          </PhoneBox>
-          <AddressBox>
-            <AiOutlineHome style={{ width: "16px", height: "16px" }} />
-            <InfoContent>
-              {config?.Address}: {config?.Profile_Address}
-            </InfoContent>
-          </AddressBox>
-        </CardContent>
-      </MainCard>
-      
-      <StyledDialog open={open} onClose={handleClose}>
-  <DialogTitle>Edit Profile</DialogTitle>
-  <DialogContent>
-    <Typography style={AllStyle.textStyle}>
-      {config?.first_name}
-    </Typography>
-    <InputField
-      name="first_name"
-      placeholder={config.first_name_placeholder}
-      variant="outlined"
-      margin="dense"
-      fullWidth
-      value={editableData.first_name || ""}
-      onChange={handleInputChange}
-      error={!!errors.first_name}
-      helperText={errors.first_name}
-    />
-    <Typography style={AllStyle.textStyle}>
-      {config?.last_name}
-    </Typography>
-    <InputField
-      name="last_name"
-      placeholder={config.last_name_placeholder}
-      variant="outlined"
-      margin="dense"
-      fullWidth
-      value={editableData.last_name || ""}
-      onChange={handleInputChange}
-      error={!!errors.last_name}
-      helperText={errors.last_name}
-    />
-    <Typography style={AllStyle.textStyle}>
-      {config?.email}
-    </Typography>
-    <InputField
-      name="email"
-      placeholder={config.placeHolderEmail}
-      variant="outlined"
-      margin="dense"
-      fullWidth
-      value={editableData?.email || ""}
-      onChange={handleInputChange}
-      InputProps={{ readOnly: true }}
-      error={!!errors.email}
-      helperText={errors.email}
-    />
-  </DialogContent>
-  <DialogActions>
-    <Button onClick={handleClose} color="secondary">
-      Cancel
-    </Button>
-    <Button
-      onClick={handleSave}
-      sx={{
-        backgroundColor: "green",
-        color: "white",
-        "&:hover": {
-          backgroundColor: "darkgreen",
-        },
-      }}
-    >
-      Save
-    </Button>
-  </DialogActions>
-</StyledDialog>
+    <>
+      <Box>
+        {errorData != "" && (
+          <AlertComponent
+            errorData={errorData}
+            handleClose={handleAlertClose}
+            type={"error"}
+          />
+        )}
+        {successData != "" && (
+          <AlertComponent
+            errorData={successData}
+            handleClose={handleAlertClose}
+            type={"success"}
+          />
+        )}
+        <MainCard>
+          <CardContent>
+            <FirstBox>
+              <IMGBox src={profile_img} alt="Profile" />
+              <Box>
+                {/* <ProfileName variant="h6"><b>{config.Alex_Meian}</b></ProfileName> */}
+                <ProfileName variant="h6">
+                  <b>
+                    {userData?.first_name || localStorage.getItem("first_name")}{" "}
+                    {userData?.last_name || localStorage.getItem("last_name")}
+                  </b>
+                </ProfileName>
+                <SubHeading>{config.Product_Manager}</SubHeading>
+              </Box>
+              <Box>
+                <FaRegEdit
+                  cursor="pointer"
+                  size={22}
+                  onClick={() => setOpen(true)}
+                />
+              </Box>
+            </FirstBox>
+            <EmailInfoBox>
+              <IoMailOutline style={{ width: "16px", height: "16px" }} />
+              {/* <InfoContent>{config.email}: {config.profile_email}</InfoContent> */}
+              <InfoContent>
+                {config?.email}:{" "}
+                {userData?.email || localStorage.getItem("email")}
+              </InfoContent>
+            </EmailInfoBox>
+            <PhoneBox>
+              <MdPhone style={{ width: "16px", height: "16px" }} />
+              {/* <InfoContent>{config.Phone}: {config.Phone_Number}</InfoContent> */}
+              <InfoContent>
+                {config?.Phone}: {userData?.Phone_Number}
+              </InfoContent>
+            </PhoneBox>
+            <AddressBox>
+              <AiOutlineHome style={{ width: "16px", height: "16px" }} />
+              <InfoContent>
+                {config?.Address}: {config?.Profile_Address}
+              </InfoContent>
+            </AddressBox>
+          </CardContent>
+        </MainCard>
 
-    </Box>
+        <StyledDialog open={open} onClose={handleClose}>
+          <DialogTitle>Edit Profile</DialogTitle>
+          <DialogContent>
+            <Typography style={AllStyle.textStyle}>
+              {config?.first_name}
+            </Typography>
+            <InputField
+              name="first_name"
+              placeholder={config.first_name_placeholder}
+              variant="outlined"
+              margin="dense"
+              fullWidth
+              value={editableData.first_name || ""}
+              onChange={handleInputChange}
+              error={!!errors.first_name}
+              helperText={errors.first_name}
+            />
+            <Typography style={AllStyle.textStyle}>
+              {config?.last_name}
+            </Typography>
+            <InputField
+              name="last_name"
+              placeholder={config.last_name_placeholder}
+              variant="outlined"
+              margin="dense"
+              fullWidth
+              value={editableData.last_name || ""}
+              onChange={handleInputChange}
+              error={!!errors.last_name}
+              helperText={errors.last_name}
+            />
+            <Typography style={AllStyle.textStyle}>{config?.email}</Typography>
+            <InputField
+              name="email"
+              placeholder={config.placeHolderEmail}
+              variant="outlined"
+              margin="dense"
+              fullWidth
+              value={editableData?.email || ""}
+              onChange={handleInputChange}
+              InputProps={{ readOnly: true }}
+              error={!!errors.email}
+              helperText={errors.email}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="secondary">
+              Cancel
+            </Button>
+            <Button
+              onClick={handleSave}
+              sx={{
+                backgroundColor: "green",
+                color: "white",
+                "&:hover": {
+                  backgroundColor: "darkgreen",
+                },
+              }}
+            >
+              Save
+            </Button>
+          </DialogActions>
+         
+         
+        </StyledDialog>
+        {/* BUTTON SECTION: Isko center karne ka logic */}
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2, marginBottom: "15px" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => setChatOpen(true)}
+          sx={{ 
+            borderRadius: '25px', 
+            px: 4, 
+            py: 1, 
+            fontWeight: 'bold',
+            textTransform: 'none' 
+
+          }}
+        >
+          {/* Chat with Trainer */}
+          {chatLabel}
+        </Button>
+      </Box>
+
+      {/* CHAT DIALOG: Responsive Logic yahan hai */}
+      <Dialog
+        open={chatOpen}
+        onClose={() => setChatOpen(false)}
+        fullWidth
+        maxWidth="md"
+        fullScreen={isMobile}
+      >
+        <DialogTitle sx={{ bgcolor: 'primary.main', color: 'white' }}>
+          Chat
+          <IconButton onClick={() => setChatOpen(false)} sx={{ position: 'absolute', right: 8, top: 8, color: 'white' }}>
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+
+        {/* IMPORTANT: Added flex styles here */}
+        <DialogContent dividers sx={{ p: 0, display: 'flex', flexDirection: 'column', height: '70vh' }}>
+          <TrainerChat />
+        </DialogContent>
+      </Dialog>
+      </Box>
+
+    </>
   );
 };
 export default Profile;
@@ -310,7 +358,6 @@ const FirstBox = styled(Box)({
   justifyContent: "space-between",
 });
 const ProfileName = styled(Typography)({
- 
   fontSize: "14px",
   fontWeight: 700,
   marginTop: "20px",
@@ -327,7 +374,6 @@ const ProfileName = styled(Typography)({
   },
 });
 const SubHeading = styled(Typography)({
- 
   fontSize: "12px",
   fontWeight: 400,
   lineHeight: "18px",
@@ -344,7 +390,6 @@ const EmailInfoBox = styled(Box)({
   gap: "8px",
 });
 const InfoContent = styled(Typography)({
- 
   fontSize: "12px",
   fontWeight: 400,
   lineHeight: "16px",
@@ -368,11 +413,11 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiPaper-root": {
     borderRadius: "12px",
     width: "400px",
-   
+
     backgroundColor: "#FFFFFF",
-    [theme.breakpoints.down('sm')]: {
-      width: "300px",        
-      borderRadius: "8px"
+    [theme.breakpoints.down("sm")]: {
+      width: "300px",
+      borderRadius: "8px",
     },
   },
 }));

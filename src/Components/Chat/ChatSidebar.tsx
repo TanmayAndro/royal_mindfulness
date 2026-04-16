@@ -12,6 +12,7 @@ interface Props {
   users: ChatUser[];
   selectedUser: ChatUser | null;
   onSelect: (user: ChatUser) => void;
+  label: string;
 }
 
 const ChatSidebar: React.FC<Props> = ({users, selectedUser, onSelect}) => {

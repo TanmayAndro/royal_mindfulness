@@ -7,6 +7,7 @@ import UserBatchPerformance from "./UserBatchPerformance";
 import Header from "./Header";
 import Calendar from "./Calendar";
 
+
 const CalenderMain = styled(Box)({
   "@media (max-width:1199px)": {
     display: "flex",
@@ -82,6 +83,7 @@ const Dashboard = () => {
             <Profile />
             
           </ProfilePaymentGrid>
+          
         </Grid>
 
         
