@@ -1,17 +1,20 @@
 import axios from "axios";
 
-// axios instance (central API config)
 export const api = axios.create({
   baseURL: "https://deedee-unchainable-optionally.ngrok-free.dev",
 });
 
-// attach token in every request
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("user_token");
 
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
+    if (token && config.headers) {
+      config.headers.set("token", token.trim());
+      config.headers.set("accept", "application/json");
+      config.headers.set("ngrok-skip-browser-warning", "true");
+    }
 
-  return config;
-});
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
