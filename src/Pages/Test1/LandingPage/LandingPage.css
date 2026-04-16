@@ -9,8 +9,8 @@
 .banner-container {
   width: 100%; 
   min-height: 100vh;
-  background-size: 150%; 
-  background-position: 0% 30%; 
+  background-size: 130%;
+  background-position: 0% 60%;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
