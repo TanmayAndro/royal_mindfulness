@@ -37,7 +37,7 @@ const FounderSection = () => {
           <Grid item xs={12} md={7} sx={{ textAlign: { xs: 'center', md: 'left' } }}>
             <Box sx={{ pr: { md: 4 } }}>
              <Typography
-                component="h1"
+                component="h2"
                 className="card-title-1 title-main"
                 sx={{ fontWeight: "700 !important" }}
               >

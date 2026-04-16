@@ -7,6 +7,8 @@ import Service3 from "../../Assests/images/service3.jpg"
 import Service4 from "../../Assests/images/service4.jpg"
 
 
+
+
 const Service = () => {
   const serviceData = [
       {
@@ -18,7 +20,8 @@ const Service = () => {
       {
       title: "Entrepreneurs",
       desc: "To handle stress, make better decisions, and manage work-life balance.",
-      img: Service2
+      img: Service2, 
+      imgClass: "entrepreneur-img"
       },
       {
       title: "Habitualist/Addicts",
@@ -41,7 +44,9 @@ const Service = () => {
           {serviceData.map((item, index) => (
             <div className="service-card" key={index}>
               <div className="service-img-wrapper">
-                <img src={item.img} alt={item.title} className="service-img" />
+                <img src={item.img} alt={item.title} 
+                className={`service-img ${item.imgClass || ""}`}
+                loading="lazy"/>
               </div>
               <div className="service-info">
                 <h3 className="service-name heading-main">{item.title}</h3>

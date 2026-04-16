@@ -7,13 +7,15 @@
 
 /* ===== Banner ===== */
 .banner-container {
-  width: 110%;
+  width: 100%; 
   min-height: 100vh;
-  background-size: cover;
-  background-position: right center;
+  background-size: 150%; 
+  background-position: 0% 30%; 
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
+  overflow: hidden;
+  position: relative;
 }
 
 /* Dark overlay-langin-page so text readable */

@@ -47,7 +47,7 @@ useEffect(() => {
         <NavBar isOpen={isOpen} toggleMenu={toggleMenu} />
         <section className="hero-section">
           <header className="hero">
-            <h1 className='title-main'>Train yourself to be 'happy'</h1>
+            <h1 className='title-main hero-section-heading'>Train Yourself To Be Happy</h1>
             <p className='heading-main'>1-on-1 training, live sessions, Free Consultation</p>
           </header>
 

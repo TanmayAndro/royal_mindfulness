@@ -36,13 +36,29 @@
 
 .service-img-wrapper {
   padding: 15px; /* Creates the border effect around image */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .service-img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  aspect-ratio: 16 / 16; 
+  object-fit: cover; 
   border-radius: 8px;
+  display: block;
+}
+
+.entrepreneur-img {
+      /* object-fit: contain !important; */
+    background-color: #fcfcfc;
+    object-position: center;
+    /* transform: scale(1.67); */
+    object-fit: cover !important;
+    object-position: top;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
 .service-info {

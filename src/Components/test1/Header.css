@@ -39,6 +39,10 @@
   color: inherit;
 }
 
+.hero-section-heading{
+  font-size: 47px !important;
+}
+
 .logo-icon {
   width: 60px;
   height: 60px;

@@ -1,9 +1,9 @@
 import React from 'react';
 import './RoadmapToProcess.css';
-import roadmap1 from '../../Assests/images/Relaxation_training_image.png';
+import roadmap1 from '../../Assests/images/roadmap1.jpg';
 import roadmap2 from '../../Assests/images/roadmap2.jpg';
-import roadmap3 from '../../Assests/images/Response_training_image.png';
-import roadmap4 from '../../Assests/images/Behavioral & Habit Training.webp';
+import roadmap3 from '../../Assests/images/roadmap3.jpg';
+import roadmap4 from '../../Assests/images/roadmap4.jpg';
 import { Link } from "react-router-dom";
 import { trackEvent } from "../../analitics/analytics";
 import ArrowImg from "../../Assests/images/arrow1.png"
@@ -44,6 +44,7 @@ const RoadmapToProcess = () => {
       position: "left",
       backdrop: "style2",
       sparkleicon: "icon2",
+     
       link: "/book-now",
      sparkle: {
         l1: { x1: 5, y1: 80, x2: 45, y2: 80 },
@@ -53,7 +54,7 @@ const RoadmapToProcess = () => {
     },
     {
       id: 3,
-      title: "Response Training",
+      title: "Response ",
       highlight: "Training",
       description:
         "Develop the ability to respond consciously to concerning thoughts/emotions, instead of reacting automatically — through thought-response practices and daily mental review exercises.",

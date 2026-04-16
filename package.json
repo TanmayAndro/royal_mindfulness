@@ -17,6 +17,7 @@
     "@mui/system": "^7.2.0",
     "@mui/x-date-pickers": "^7.29.3",
     "@mui/x-date-pickers-pro": "^7.5.1",
+    "@rails/actioncable": "^8.1.300",
     "@react-oauth/google": "^0.12.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

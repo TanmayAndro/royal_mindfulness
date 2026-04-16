@@ -163,7 +163,8 @@
 }
 .visual-img.image3 {
   object-fit: cover;
-  object-position: top;
+  object-position: 29% top;
+  transform: scale(1.1);
 }
 
 /* ===============================
