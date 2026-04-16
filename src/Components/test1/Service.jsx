@@ -45,8 +45,7 @@ const Service = () => {
             <div className="service-card" key={index}>
               <div className="service-img-wrapper">
                 <img src={item.img} alt={item.title} 
-                className={`service-img ${item.imgClass || ""}`}
-                loading="lazy"/>
+                className={`service-img ${item.imgClass || ""}`}/>
               </div>
               <div className="service-info">
                 <h3 className="service-name heading-main">{item.title}</h3>
