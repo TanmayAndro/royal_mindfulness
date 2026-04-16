@@ -1,6 +1,6 @@
 import React from "react";
 import "./LandingPage.css";
-import ImgLanding from "../../../Assests/images/landing2.jpg";
+import ImgLanding from "../../../Assests/images/businessman-with-his-partner-working-office.jpg";
 
 const LandingPage = () => {
   return (
