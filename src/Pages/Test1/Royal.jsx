@@ -81,7 +81,7 @@ function Royal() {
         </div>
         
 
-        <div style={{ marginTop: "40px" }}>
+        <div style={{ marginTop: "0px" }}>
           <HealthMind />
         </div>
 

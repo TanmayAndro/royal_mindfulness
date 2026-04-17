@@ -116,8 +116,8 @@ const NavBar = ({ isOpen, toggleMenu }) => {
                   variant="outlined"
                   size="small"
                   sx={{
-                    color: "#fff",
-                    borderColor: "#fff",
+                    color: "#1976d2;",
+                    borderColor: "#1976d2;",
                     borderRadius: "30px",
                     fontSize: "14px",
                     px: 3,
