@@ -3,26 +3,26 @@
     justify-content: center;
     align-items: center;
     padding: 50px 20px;
-    background-color: #ffffff;
+    background-color: #1e73be9c;
     text-align: center;
 }
 
 .healthy-mind-title{
-    color: #02060a;
-    font-size: 1.3rem;
+    color: #ffffff;
     font-weight: 700;
     line-height: 1.4;
     margin-bottom: 12px;
+    font-size: 28px;
 }
 
 .healthy-mind-description{
-    color: #555555;
-  font-size: 1rem;
+  color: #ffffff;
   margin-bottom: 30px;
+  font-size: 16px;
 }
 
 .healthy-mind-btn{
-    background-color: #1e73be;
+    background-color: #aca040;
     color: #ffffff;
     border: none;
     padding: 14px 32px;
@@ -46,18 +46,23 @@
 /* Tablet (768px and up) */
 @media (min-width: 768px) {
   .healthy-mind-title {
-    font-size: 1.8rem;
+    font-size: 22px;
   }
   .healthy-mind-section {
     padding: 70px 40px;
   }
+
+  .healthy-mind-description{
+    color: #ffffff;
+  font-size: 14px;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
 }
 
 /* Desktop (1024px and up) */
 @media (min-width: 1024px) {
-  .healthy-mind-title {
-    font-size: 2.2rem;
-  }
+
   .healthy-mind-section {
     padding: 100px 0;
   }

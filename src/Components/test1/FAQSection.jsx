@@ -76,97 +76,103 @@ const FAQSection = () => {
 
   return (
     <>
-    <Box
-      sx={{
-        width: "100%",
-        backgroundColor: "#F9FAFB",
-      }}
+  <Box
+  sx={{
+    width: "100%",
+    backgroundColor: "#F9FAFB",
+  }}
+>
+  <Container
+    sx={{
+      padding: { xs: "2rem 1.5rem", md: "6rem 4rem" },
+      maxWidth: "lg",
+    }}
+  >
+    <Grid
+      container
+      spacing={4}
+      // 'column' direction se elements upar-neeche stack ho jayenge
+      direction="column" 
+      alignItems="center"
     >
-      <Container
-        sx={{
-          padding: { xs: "2rem 1.5rem", md: "6rem 4rem" },
-          maxWidth: "lg",
+      {/* SECTION A: Heading */}
+      <Grid item xs={12} sx={{ width: '100%' }}>
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          className="title-main"
+          sx={{
+            // Desktop size 28px aur Mobile size 22px aapki requirement ke hisaab se
+            fontSize: { xs: "22px", md: "28px" }, 
+            fontFamily: `-apple-system, BlinkMacSystemFont, 'Segoe UI',
+              'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+              'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif`,
+            textAlign: "center", // Dono view par center align
+            lineHeight: 1.2,
+            mb: { xs: 4, md: 6 }, // Neeche gap dene ke liye
+          }}
+        >
+          Frequently Asked Questions
+        </Typography>
+      </Grid>
+
+      {/* SECTION B: FAQ Accordions */}
+      <Grid 
+        item 
+        xs={12} 
+        sx={{ width: '100%' }}
+        onClick={() => {
+          trackEvent("Landing Page", "Click", `FAQ Section`);     
         }}
       >
-        <Grid
-          container
-          spacing={4}
-          alignItems="flex-start"
-          justifyContent="space-between"
-        >
-          <Grid item xs={12} md={5}>
-            <Typography
-              variant="h4"
-              fontWeight="bold"
-              className="title-main"
+        {faqs.map((faq, index) => (
+          <Accordion
+            key={index}
+            expanded={expanded === index}
+            onChange={handleChange(index)} 
+            sx={{
+              boxShadow: "none",
+              border: "none",
+              backgroundColor: "#F9FAFB",
+              "&:before": { display: "none" },
+            }}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
               sx={{
-                fontSize: { xs: "36px", sm: "48px", md: "56px" },
-                 fontFamily: `-apple-system, BlinkMacSystemFont, 'Segoe UI',
-                  'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-                  'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif`,
-                textAlign: { xs: "center", md: "left" },
-                lineHeight: 1.1,
-                mb: { xs: 2, md: 0 },
+                paddingRight: { xs: 0, sm: 2 },
+                "& .MuiAccordionSummary-content": {
+                  margin: { xs: "8px 0" },
+                },
               }}
             >
-              Frequently Asked Questions
-            </Typography>
-          </Grid>
-          <Grid item xs={12} md={7} onClick={() => {
-              trackEvent(
-                "Landing Page",
-                "Click",
-                `FAQ Section`
-              );     
-            }}>
-            {faqs.map((faq, index) => (
-              <Accordion
-                key={index}
-                expanded={expanded === index}
-                onChange={handleChange(index)} 
+              <Typography
+                className="heading-main"
                 sx={{
-                  boxShadow: "none",
-                  border: "none",
-                  backgroundColor: "#F9FAFB",
-                  "&:before": { display: "none" },
+                  fontSize: { xs: "15px", sm: "16px" },
+                  fontWeight: 600,
                 }}
               >
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  sx={{
-                    paddingRight: { xs: 0, sm: 2 },
-                    "& .MuiAccordionSummary-content": {
-                      margin: { xs: "8px 0" },
-                    },
-                  }}
-                >
-                  <Typography
-                  className="heading-main"
-                    sx={{
-                      fontSize: { xs: "15px", sm: "16px" },
-                      fontWeight: 600,
-                    }}
-                  >
-                    {faq.question}
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails sx={{ paddingRight: { xs: 0, sm: 2 } }}>
-                  <Typography
-                    sx={{
-                      fontSize: { xs: "14px", sm: "15px" },
-                      fontWeight: 400,
-                      lineHeight: 1.6,
-                    }}
-                  >
-                    {faq.answer}
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-            ))}
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
+                {faq.question}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails sx={{ paddingRight: { xs: 0, sm: 2 } }}>
+              <Typography
+                sx={{
+                  fontSize: { xs: "14px", sm: "15px" },
+                  fontWeight: 400,
+                  lineHeight: 1.6,
+                }}
+              >
+                {faq.answer}
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+        ))}
+      </Grid>
+    </Grid>
+  </Container>
+</Box>
     </>
   );
 };

@@ -96,7 +96,7 @@ const RoadmapToProcess = () => {
   return (
     <section className="roadmap-section">
       <div className="roadmap-container">
-        <h2 className="roadmap-main-title title-main">About Our Mental Fitness Trainings</h2>
+        <h2 className="roadmap-main-title">About Our Mental Fitness Trainings</h2>
 
         <div className="roadmap-steps">
           {steps.map((step, index) => (
@@ -104,11 +104,11 @@ const RoadmapToProcess = () => {
               <div className={`roadmap-step ${step.position}`}>
                 {/* Text Content */}
                 <div className="step-text-content">
-                  <h3 className="step-header heading-main">
+                  <h3 className="step-header">
                     {step.title}{" "}
                     <span className="blue-highlight">{step.highlight}</span>
                   </h3>
-                  <p className="step-para text-main ">{step.description}</p>
+                  <p className="step-para ">{step.description}</p>
                   <div className="button-group">
                     {step.buttonText && (
                     <Link to={step.link} className="roadmap-btn"  onClick={() => {

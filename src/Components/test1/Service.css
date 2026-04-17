@@ -69,38 +69,20 @@
 }
 
 .service-name {
-  font-size: 22px;
+  font-size: 23px;
   font-weight: 600;
   color: #1a1a1a;
   margin: 10px 0;
 }
 
 .service-desc {
-  font-size: 13px;
+  font-size: 16px;
   color: #666;
   line-height: 1.5;
   margin-bottom: 20px;
   flex-grow: 1; /* Pushes button to bottom */
+  margin-top: 0px;
 }
-
-/* Learning More Button Style */
-/* .learn-more-btn {
-  background-color: #1470AF;
-  color: white;
-  border: none;
-  padding: 10px 24px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  align-self: flex-end; 
-  box-shadow: 0 4px 6px rgba(20, 112, 175, 0.2);
-  transition: background 0.2s;
-} */
-
-/* .learn-more-btn:hover {
-  background-color: #0d5a8f;
-} */
 
 /* Responsive for smaller screens */
 @media (max-width: 1024px) {
@@ -115,5 +97,12 @@
   }
   .services-title {
     font-size: 28px;
+  }
+
+  .service-name{
+    font-size: 18px;
+  }
+  .service-desc{
+    font-size: 14px;
   }
 }

@@ -37,7 +37,15 @@ const FeatureCard = ({ id, title, description, subText, buttonText, route }) => 
 
       <TitleText variant="h5">{title}</TitleText>
 
-      <DescriptionText>{description}</DescriptionText>
+      <DescriptionText
+      sx={{
+        fontSize: {
+          xs: "14px",  // mobile
+          sm: "15px",
+          md: "16px",  // desktop
+        },
+      }}
+    >{description}</DescriptionText>
       
       {buttonText && (
         <Box mt={3}>
@@ -123,13 +131,14 @@ const TrustMetrics = () => {
     <StyledSection>
       <Container maxWidth="lg">
         <Typography
-          variant="h3"
-          sx={{ 
-            color: "#1470AF", 
-
+          variant="h2"
+          sx={{  
             mb: 10, 
-            fontWeight: 800,
-            fontSize: { xs: '2rem', md: '2.5rem' } 
+            fontWeight: 700,
+            fontSize: {
+                  xs: "22px",  // mobile
+                  md: "28px",  // desktop
+            } 
           }}
         >
           How It Works

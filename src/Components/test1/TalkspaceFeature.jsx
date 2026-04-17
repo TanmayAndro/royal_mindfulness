@@ -194,7 +194,7 @@ const TalkspaceFeature = () => {
             >
               <div className="step-num">{step.id}</div>
               <div className="step-info">
-                <h3 className="heading-main" >{step.title}</h3>
+                <h3 className="talk-title" >{step.title}</h3>
                 <p>{step.desc}</p>
               </div>
             </div>

@@ -53,33 +53,8 @@ const Checklist = () => {
   const currentStatement = statements[currentIndex];
 
   const handleAnswer = (response) => {
-    
-    // if (response == 'yes') {
-    //   setLastAnswer('yes'); 
-
-    //   setAnswers((prev) => [
-    //     ...prev,
-    //     { index: currentIndex, response: 'yes' },
-    //   ]);
-    //   return; 
-    // }
-
-    // if (response == 'no') {
-    //   setLastAnswer(null); 
-
-    //   setAnswers((prev) => [
-    //     ...prev,
-    //     { index: currentIndex, response: 'no' },
-    //   ]);
-
-    //   setCurrentIndex((prev) => 
-    //   prev < statements.length - 1 ? prev + 1 : prev
-    //   ); 
-    // }
-
       setDisplayedAnswer(statements[currentIndex].answer); 
       setLastAnswer(response); 
-
       setAnswers((prev) => [
         ...prev, 
         {index: currentIndex, response }, 
@@ -100,35 +75,16 @@ const Checklist = () => {
     
     <section>
        <div className="checklist-container">
-      {/* Zigzag Header */}
-      <div className="zigzag-header" />
-
         {/* Main Content */}
         <div className="checklist-content">
           {/* Heading */}
           <div className="checklist-heading">
             {/* Decorative Sparkle SVG */}
             <div className="heading-decorator">
-            <svg 
-                className="sparkle-icon" 
-                width="120" 
-                height="100" 
-                viewBox="0 0 120 100" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* 1. Bottom Line - Iski width badhayi hai (x1: 5 to x2: 40) */}
-                <line x1="5" y1="70" x2="58" y2="70" stroke="#1470AF" strokeWidth="3" strokeLinecap="round"/>
-                
-                {/* 2. Middle Diagonal Line - Iski height aur gap badhaya hai */}
-                <line x1="25" y1="20" x2="60" y2="55" stroke="#1470AF" strokeWidth="3" strokeLinecap="round"/>
-                
-                {/* 3. Top Vertical Line - Isko sabse zyada height di hai (0 to 45) */}
-                <line x1="85" y1="0" x2="85" y2="45" stroke="#1470AF" strokeWidth="3" strokeLinecap="round"/>
-              </svg>  
-              <h2 className='title-main'>
-                We want to know you a bit better<br />
-                here is the your <span className="highlight">Checklist</span>
+           
+              <h2 className='title-checklist'>
+                Help Us Understand Your Mind Better - Your Mental Fitness<span className="highlight"> Checklist</span><br />
+                {/* here is the your */}
               </h2>
             </div>
           </div>

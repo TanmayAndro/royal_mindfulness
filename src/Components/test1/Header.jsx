@@ -1,35 +1,39 @@
 import React, { useState,useEffect } from 'react';
 import "./Header.css";
+import {
+  Typography,
+  Box,
+} from "@mui/material";
 
+import CommonButtons from "./CommonButton";
 import bookConsulation from "../../Assests/images/book_freeconsultation.png"
 import hiretrainer from "../../Assests/images/hire_traniner.png"
 import { HiArrowCircleRight } from "react-icons/hi";
 import { trackEvent } from "../../analitics/analytics";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 
 function Header() {
-  const [isOpen, setIsOpen] = useState(false)
-  // useEffect(() => {
-  //   document.body.style.overflow = isOpen ? "hidden" : "auto";
-  //   return () => {
-  //     document.body.style.overflow = "auto";
-  //   };
-  // }, [isOpen]);
-// Header.js mein useEffect ko aise update karein
-useEffect(() => {
-  const handleScrollLock = () => {
-    // Sirf tab lock karein jab menu open ho AUR screen mobile width ho
-    if (isOpen && window.innerWidth <= 768) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+
+  const navigate = useNavigate();
+  
+  const handelConsulation = (clickedOn) => {
+    if (clickedOn === "calendly") navigate("/consultation_question");
+    if (clickedOn === "rozerpay") navigate("/book-now");
   };
+  const [isOpen, setIsOpen] = useState(false)
+  useEffect(() => {
+    const handleScrollLock = () => {
+      // Sirf tab lock karein jab menu open ho AUR screen mobile width ho
+      if (isOpen && window.innerWidth <= 768) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
+    };
 
-  handleScrollLock(); // Run on mount/change
-
-  // Window resize par bhi check karein (agar user screen badi kare)
+  handleScrollLock(); 
   window.addEventListener('resize', handleScrollLock);
 
   return () => {
@@ -46,70 +50,101 @@ useEffect(() => {
       <div className='header-section'>
         <NavBar isOpen={isOpen} toggleMenu={toggleMenu} />
         <section className="hero-section">
-          <header className="hero">
-            <h1 className='title-main hero-section-heading'>Train Yourself To Be Happy</h1>
-            <p className='heading-main'>1-on-1 training, live sessions, Free Consultation</p>
-          </header>
+          <div className="hero-container">
+            {/* Column 1: Text Content */}
+            <div className="hero-content">
+              <h1 className='title-main hero-section-heading'>Train Your Mind To Be Happy</h1>
+              <p className='heading-main'>1-on-1 Mind Fitness Training, Live Sessions, Free Consultation</p>
+              {/* Optional: Add buttons here if needed */}
+              <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              gap: 4,
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
+              maxWidth: "600px", // 🔑 laptop/1440px fix
+            }}
+          >
+           {/* Book consultation */}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
 
-          <div className="book-card-wrapper">
-            <div className="book-card">
-              
-              {/* Card 1: Consultation */}
-              <div className="book-image-wrapper">
-                <Link to="/consultation_question" className="card-link" onClick={() => {
+                width: {
+                  xs: "100%",
+                  sm: "auto",
+                  xl: "auto",   // 👈 1440px+
+                },
+                textAlign: "center",
+              }}
+            >
+              <CommonButtons
+                label="Book a free consultation"
+                height="50px"
+
+                sx={{
+                  backgroundColor: "#1470AF",
+                  color: "white",
+                  marginTop: { xs: "15px", sm: "25px" },
+                }}
+
+                variant="contained"
+                onClick={() => {
                   trackEvent(
                     "Landing Page",
                     "Click",
-                    `Free Consultation `
+                    "BookConsultation"
                   );
-                }}>
-                  <div className="card-content">
-                    <div className="card-header">
-                      <div className="title-section">
-                        <span className="book-text">Book</span>
-                        <div className="bottom-row">
-                          <span className="consultation-text">Free Consultation</span>
-                          <HiArrowCircleRight className="card-icon" />
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <img
-                      src={bookConsulation}
-                      alt="Book Consultation"
-                      className="book-consulation-img"
-                    />
-                  </div>
-                </Link>
-              </div>
 
-              {/* Card 2: Hire Trainer */}
-              <div className="book-image-wrapper">
-                <Link to="/book-now" className="card-link" onClick={() => {
-                  trackEvent(
-                    "Landing Page",
-                    "Click",
-                    "Hire Trainer"
-                  );
-                }}>
-                    <div className="card-content">
-                    <div className="card-header">
-                      <div className="title-section">
-                        <span className="book-text">Hire</span>
-                        <div className="bottom-row">
-                          <span className="consultation-text">Trainer</span>
-                          <HiArrowCircleRight className="card-icon" />
-                        </div>
-                      </div>
-                    </div>
-                    <img
-                      src={hiretrainer}
-                      alt="Hire Trainer"
-                      className="book-consulation-img"
-                    />
-                  </div>
-                </Link>
-              </div>
+                  handelConsulation("calendly");
+                }}
+              />
+              <Typography fontSize="12px" color="#555" mt="4px">
+                (No Credit card required)
+              </Typography>
+            </Box>
+
+            {/* Hire Trainer */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+
+                width: {
+                  xs: "100%",
+                  sm: "auto",
+                  xl: "auto",   // 👈 1440px+
+                },
+              }}
+            >
+              <CommonButtons
+                label="Hire Trainer"
+                height="50px"
+                sx={{ backgroundColor: "#1470AF", color: "white" }}
+                variant="contained"
+                onClick={() => {
+                trackEvent(
+                  "Landing Page",
+                  "Click",
+                  "Hire Trainer"
+                );
+                handelConsulation("rozerpay");
+              }}
+              />
+            </Box>
+
+          </Box>
+        </Box>
+            </div>
+
+            {/* Column 2: Image Content */}
+            <div className="hero-image">
+              <img src={bookConsulation} alt="Mindfulness Training" />
             </div>
           </div>
         </section>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logoImg from "../../Assests/images/royal_image.png";
+ import { logo } from "../../assests";
 import "./NavBar.css";
 import {
   Avatar,
@@ -46,13 +47,22 @@ const NavBar = ({ isOpen, toggleMenu }) => {
   return (
     <>
       <nav className="header">
-
         {/* LOGO */}
         <Link to="/" className="header-logo" onClick={toggleMenu}>
-          <img src={logoImg} alt="Royal Mindfulness logo" className="logo-icon" />
+         <img
+                       src={logo}
+                       style={{
+                         width: "60px",
+                         filter: 
+                            "brightness(0) saturate(100%) invert(34%) sepia(92%) saturate(1039%) hue-rotate(176deg) brightness(91%) contrast(93%)",
+                           
+                       }}
+                       alt="logo"
+                       onClick={() => navigate("/")}
+                     />
           <div className="logo-text">
-            <span className="logo-top main_heading_css heading_css">ROYAL</span>
-            <span className="logo-bottom main_heading_css heading_css">
+            <span className="logo-top main_heading_css heading_css brand-text">ROYAL</span>
+            <span className="logo-bottom main_heading_css heading_css brand-text">
               MINDFULNESS
             </span>
           </div>
@@ -164,14 +174,14 @@ const NavBar = ({ isOpen, toggleMenu }) => {
 
                 <Avatar
                   onClick={handleMenuClick}
-                  sx={{ cursor: "pointer", bgcolor: "#7f888e" }}
+                  sx={{ cursor: "pointer", bgcolor: "#1470AF" }}
                 >
                   {firstName?.[0]}
                 </Avatar>
 
                 {/* Desktop Menu */}
 
-                <Menu
+                {/* <Menu
                   anchorEl={anchorEl}
                   open={Boolean(anchorEl)}
                   onClose={handleMenuClose}
@@ -186,7 +196,34 @@ const NavBar = ({ isOpen, toggleMenu }) => {
                     );
                 }}>Dashboard</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                </Menu>
+                </Menu> */}
+
+                <Menu
+  anchorEl={anchorEl}
+  open={Boolean(anchorEl)}
+  onClose={handleMenuClose}
+  // Ye do lines menu ko avatar ke niche sahi jagah dikhayengi
+  anchorOrigin={{
+    vertical: 'bottom',
+    horizontal: 'right',
+  }}
+  transformOrigin={{
+    vertical: 'top',
+    horizontal: 'right',
+  }}
+  // Z-index ko header se zyada rakhein taaki menu chhup na jaye
+  sx={{ zIndex: 2100 }} 
+>
+  <MenuItem 
+    onClick={() => {
+      handleDashboard();
+      trackEvent("Navigation", "Click", "Dashboard");
+    }}
+  >
+    Dashboard
+  </MenuItem>
+  <MenuItem onClick={handleLogout}>Logout</MenuItem>
+</Menu>
 
                 {/* Mobile Buttons */}
 
@@ -233,7 +270,6 @@ const NavBar = ({ isOpen, toggleMenu }) => {
           </Grid>
 
         </ul>
-
       </nav>
 
       {/* AUTH MODAL */}

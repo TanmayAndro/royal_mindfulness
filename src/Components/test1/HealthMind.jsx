@@ -6,11 +6,11 @@ function HealthMind() {
   return (
     <div className='healthy-mind-section'>
       <div className='healthy-min-contet'>
-        <h2 className='healthy-mind-title title-main'>
-          "A healthy mind is the key to a stronger you."
+        <h2 className='healthy-mind-title'>
+          "A stronger you start with a trained mind. Improve your focus, reduce anxiety, and build real mental fitness."
         </h2>
-        <p className='healthy-mind-description heading-main'>
-          Start your journey today. It's free and takes just a few minutes.
+        <p className='healthy-mind-description'>
+          Start your journey today, it’s free and takes just a few minutes.
         </p>
         <div
           style={{
@@ -28,12 +28,12 @@ function HealthMind() {
           );
           
         }}>
-          Book Free Consultation
+          Book Your Free Consultation
         </Link>
         <span
           style={{
             fontSize: "12px",
-            color: "#555",
+            color: "#ffffff",
           }}
         >
         (No Credit card required)

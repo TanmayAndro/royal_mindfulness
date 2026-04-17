@@ -132,7 +132,7 @@ const Comparison = () => {
         </Box>
 
         {/* ================= BUTTONS SECTION (FIXED) ================= */}
-        <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
+        <Box sx={{ display: "flex", justifyContent: "center"}}>
           <Box
             sx={{
               display: "flex",

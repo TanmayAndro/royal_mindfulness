@@ -1,353 +1,74 @@
-/* --- Global Resets --- */
-.header-root {
+/* --- Global Scrollbar Hide Settings --- */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  scrollbar-width: none; /* Firefox [cite: 96] */
+  -ms-overflow-style: none; /* Edge [cite: 96] */
 }
 
-.header-section {
-  background-color: #1470AF;
-  color: aliceblue;
-  width: 100%;
+html::-webkit-scrollbar, 
+body::-webkit-scrollbar {
+  display: none; /* Chrome/Safari [cite: 97] */
 }
 
-/* --- Header --- */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 5%;
-  position: relative;
-}
-
-.header-logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-  z-index: 1100;
-  text-decoration: none; 
-  color: inherit;  
-}
-
-/* Link ke saare states ke liye */
-.header-logo:link,
-.header-logo:visited,
-.header-logo:hover,
-.header-logo:active {
-  text-decoration: none;   
-  color: inherit;
-}
-
-.hero-section-heading{
-  font-size: 47px !important;
-}
-
-.logo-icon {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-}
-
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-}
-
-.logo-top, .logo-bottom {
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 1.1;
-  color: white;
-  text-decoration: none; 
-}
-
-/* --- Navigation (Desktop) --- */
-.header-nav {
-  display: flex;
-  list-style: none;
-  align-items: center;
-  gap: 25px;
-}
-
-.header-nav li a {
-  text-decoration: none;
-  color: #fff !important;
-  font-size: 16px;
-}
-
-.login-button {
-  border: 1px solid white;
-  padding: 8px 24px;
-  border-radius: 25px;
-  color: white;
-  text-decoration: none;
-  display: inline-block;
-}
-
-/* --- Toggle Button --- */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  background: none;
-  border: none;
-  z-index: 1100;
-}
-
-.bar {
-  height: 3px;
-  width: 25px;
-  background-color: white;
-  margin: 2px 0;
-  transition: 0.3s;
-}
-
-/* --- Hero Section --- */
+/* --- Hero Section Layout --- */
 .hero-section {
-  padding: 0px 20px;
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: clamp(28px, 5vw, 48px);
-  line-height: 1.2;
-  font-weight: 500;
-  margin-bottom: 0px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-   margin-top: -10px;
-}
-
-.hero p {
-  font-size: clamp(18px, 3vw, 24px);
-  opacity: 0.9; 
-  margin-bottom: 2px;
-}
-
-/* --- Book Cards --- */
-.book-card-wrapper {
+  margin-top: 80px; /* Header height ke barabar gap  */
+  padding: 50px 5%;
+  min-height: 30vh;
   display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 15px 0;
-}
-
-.book-card {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 25px;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 1000px;
-  padding: 20px;
 }
 
-.book-image-wrapper {
- width: 25cqw;
-  max-width: 346cqw;
-  background-color: #f0f2f5;
+.hero-container {
+  display: flex;
+  flex-direction: row; /* 1 Row */
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 30px;
+}
+
+/* Column 1: Text */
+.hero-content {
+  flex: 1; /* Equal width */
+  text-align: left;
+}
+
+.hero-section-heading {
+  font-size: 3rem;
+  color: #1470AF; /* Brand Blue [cite: 28, 53] */
+  margin-bottom: 20px;
+}
+
+/* Column 2: Image */
+.hero-image {
+  flex: 1; /* Equal width */
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
   border-radius: 15px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-
-  container-type: inline-size; 
+  /* Optional: filter logic agar use karni ho [cite: 9] */
 }
 
-
-
-.card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    padding: 8cqw; 
-    padding-bottom: 0cqw;
-}
-
-.card-header {
-    margin-bottom: 5cqw;
-    width: 100%;
-}
-
-.title-section {
-  display: flex;
-  flex-direction: column; 
-  align-items: flex-start;
-}
-
-.book-text {
-  font-size: 8cqw; 
-  font-weight: 700;
-  color: #1a6391;
-  line-height: 1.2;
-}
-
-.bottom-row {
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;          
-  width: 100%;
-  margin-top: 5cqmin;
-}
-
-.consultation-text {
-    font-size: 8.5cqw;
-    font-weight: 700;
-    color: #1a6391;
-    letter-spacing: -0.02em;
-}
-
-
-.card-title {
-  font-size: 1.8rem;
-  color: #1a6391; 
-  margin: 0;
-  line-height: 1.2;
-  font-weight: 500;
-}
-
-/* Arrow Icon style */
-.card-icon {
-    font-size: 10cqw; 
-    color: #1a6391;
-    flex-shrink: 0;
-}
-
-
-/* "Book" text style */
-.text-light {
-  font-size: 28px;
-  font-weight: 300; 
-  color: #1a6391;
-}
-
-/* "Free Consultation" text style */
-.text-bold {
-  font-size: 32px;
-  font-weight: 700; 
-  color: #1a6391;
-}
-
-.book-consulation-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    background: transparent;
-    object-fit: contain;
-    margin-top: 5cqw;
-}
-
-
-
-.book-consulation1 {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  object-fit: cover;
-  display: block;
-}
-
-.fream {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* --- Media Queries --- */
-
-@media (max-width: 992px) {
-  .header {
-    padding: 20px 30px;
-  }
-  .book-card {
-    flex-direction: column;   
-    align-items: center;
+/* --- Responsive for Mobile --- */
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column; /* Mobile par 1 row ki jagah stack ho jaye [cite: 62] */
     text-align: center;
   }
-  .book-image-wrapper {
-    width: 100%
+  
+  .hero-content {
+    text-align: center;
   }
-}
-
-@media (max-width: 768px) {
-  .header {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-
-  .menu-toggle {
-    display: flex;
-    margin-bottom: 2px;
-  }
-
-  .header-nav {
-    position: fixed;
-    right: -100%; 
-    top: 0;
-    width: 260px;
-    height: 100vh;
-    background-color: #1470AF;
-    flex-direction: column;
-    justify-content: flex-start; 
-    align-items: flex-start; 
-    padding-top: 100px; 
-    padding-left: 25px; 
-    transition: 0.4s ease-in-out;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
-    z-index: 1000;
-    gap: 0;
-    box-sizing: border-box;
-  }
-
-  .header-nav.active {
-    right: 0; 
-  }
-
-  .header-nav li {
-    display: flex;         
-    align-items: center;
-    justify-content: center; 
-    width: 100%;
-    list-style: none;
-    margin-bottom: 25px;
-  }
-
-  .header-nav li a {
-    font-size: 18px;
-    display: block;
-    color: white;
-    text-decoration: none;
-    width: 100%;
-    text-align: center;     
-  }
-
-  .login-item {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .hero-section {
-    padding: 11px 20px;
-  }
-  .logo-icon {
-    width: 45px;
-    height: 45px;
-  }
-  .logo-top, .logo-bottom {
-    font-size: 18px;
-    padding: 0px;
-
-  }
-}
-
-@media (max-width: 480px) {
-  .header-nav {
-    width: 50%;
+  
+  .hero-section-heading {
+    font-size: 2rem;
   }
 }

@@ -6,6 +6,10 @@
     
 }
 
+.talk-title{
+    font-size: 22px;
+}
+
 .content-wrapper {
     display: flex;
     justify-content: space-between;
@@ -53,7 +57,7 @@
 .step-info h3 {
     margin: 0 0 8px 0;
     color: #000404;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .step-info p {
@@ -77,15 +81,15 @@
   color: var(--components---trust-teal);
     margin-top: 0;
     margin-bottom: 20px;
-    font-size: 2.75rem;
+    font-size: 28px;
     font-weight: 400;
     line-height: 1.2;
 }
 
 .phone-container {
     position: relative;
-    width: 266px;
-    height: 442px;
+    width: 342px;
+    height: 532px;
     flex-shrink: 0;
 }
 
@@ -194,6 +198,10 @@
    
     .main-title {
         text-align: center;
+        font-size: 22px;
+    }
+    .talk-title{
+        font-size: 18px;
     }
    
 }

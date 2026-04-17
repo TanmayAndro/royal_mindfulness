@@ -8,7 +8,6 @@
 /* ===== Banner ===== */
 .banner-container {
   width: 100%; 
-  min-height: 100vh;
   background-size: 130%;
   background-position: 0% 60%;
   background-repeat: no-repeat;

@@ -12,17 +12,10 @@ import HealthMind from "../../Components/test1/HealthMind"
 import Comparison from "../../Components/test1/Comparison"
 import FAQSection from "../../Components/test1/FAQSection"
 import TalkspaceFeature from "../../Components/test1/TalkspaceFeature"
-
 import FounderSection from "../../Components/test1/FounderSection/FounderSection"
-
-
 // import TestimonialsPage from "./TestimonialsPage/TestimonialsPage"
 import TrustMetrics from "../../Components/test1/TrustMetrics/TrustMetrics"
 import LandingPage from './LandingPage/LandingPage.jsx'
-
-
-
-
 
 function Royal() {
   return (
@@ -51,11 +44,11 @@ function Royal() {
           <Checklist />
         </div>
 
-        <div style={{ marginTop: "40px" }}>
+        <div style={{ marginTop: "0px" }}>
           <Service />
         </div>
 
-        <div style={{ marginTop: "40px" }}>
+        <div style={{ marginTop: "0px" }}>
           <RoadmapToProcess />
         </div>
 
@@ -65,12 +58,12 @@ function Royal() {
 
       
 
-        <div style={{ marginTop: "40px" }}>
+        <div style={{ marginTop: "0px" }}>
           <Comparison />
         </div>
 
 
-        <div style={{ marginTop: "40px" }}>
+        <div style={{ marginTop: "0px" }}>
           <TalkspaceFeature />
         </div>
 

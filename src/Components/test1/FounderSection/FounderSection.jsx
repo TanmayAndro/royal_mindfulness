@@ -38,16 +38,32 @@ const FounderSection = () => {
             <Box sx={{ pr: { md: 4 } }}>
              <Typography
                 component="h2"
-                className="card-title-1 title-main"
-                sx={{ fontWeight: "700 !important" }}
+                className=""
+                sx={{ fontWeight: "700 !important",
+                  fontSize: {
+                  xs: "22px",  // mobile
+                  md: "28px",  // desktop
+                },
+                 }}
               >
                 Words From The Founder
               </Typography>
               
               <Box sx={{ mt: 3, mb: 4 }}>
-                {text.map((para, index) => (
-                  <DescriptionText>{para}</DescriptionText>
-                ))}
+                 {text.map((para, index) => (
+                  <DescriptionText
+                    key={index}
+                    sx={{
+                      fontSize: {
+                        xs: "14px",  // mobile
+                        sm: "15px",
+                        md: "16px",  // desktop
+                      },
+                    }}
+                  >
+                    {para}
+                  </DescriptionText>
+                ))} 
               </Box>
 
               <Paper 
