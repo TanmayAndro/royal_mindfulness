@@ -1,13 +1,45 @@
-.healthy-mind-section{
+.healthy-mind-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px 20px;
-    background-color: #1e73be9c;
     text-align: center;
+    background: #f5f7fa;
 }
 
-.healthy-mind-title{
+/* Background Image moved here */
+.healthy-min-contet {
+    width: 100%;
+    max-width: 1100px;
+    padding: 80px 30px;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+
+    background-image: url("../../Assests/images/bg-image.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Optional dark overlay */
+.healthy-min-contet::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1;
+}
+
+/* Content above overlay */
+.healthy-min-contet > * {
+    position: relative;
+    z-index: 2;
+}
+
+.healthy-mind-title {
     color: #ffffff;
     font-weight: 700;
     line-height: 1.4;
@@ -15,14 +47,14 @@
     font-size: 28px;
 }
 
-.healthy-mind-description{
-  color: #ffffff;
-  margin-bottom: 30px;
-  font-size: 16px;
+.healthy-mind-description {
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-size: 16px;
 }
 
-.healthy-mind-btn{
-    background-color: #aca040;
+.healthy-mind-btn {
+    background-color: rgba(30, 115, 190, 0.791);
     color: #ffffff;
     border: none;
     padding: 14px 32px;
@@ -35,36 +67,30 @@
     text-decoration: none;
 }
 
-.healthy-mind-btn:hover{
+.healthy-mind-btn:hover {
     background-color: #155a96;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(30, 115, 190, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30, 115, 190, 0.3);
 }
 
-/* --- Responsive Adjustments --- */
-
-/* Tablet (768px and up) */
+/* Tablet */
 @media (min-width: 768px) {
-  .healthy-mind-title {
-    font-size: 22px;
-  }
-  .healthy-mind-section {
-    padding: 70px 40px;
-  }
 
-  .healthy-mind-description{
-    color: #ffffff;
-  font-size: 14px;
-  margin-bottom: 30px;
-  font-size: 14px;
-}
+    .healthy-min-contet {
+        padding: 90px 50px;
+    }
+
+    .healthy-mind-title {
+        font-size: 22px;
+    }
+
+    .healthy-mind-description {
+        font-size: 14px;
+    }
 }
 
-/* Desktop (1024px and up) */
+/* Desktop */
 @media (min-width: 1024px) {
 
-  .healthy-mind-section {
-    padding: 100px 0;
-  }
+    
 }
-

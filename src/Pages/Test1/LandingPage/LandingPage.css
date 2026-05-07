@@ -1,104 +1,24 @@
-/* ===== Wrapper ===== */
+/* Purani values ko overwrite karne ke liye ye use karein */
 .landing-wrapper {
   width: 100%;
   background: #fff;
   overflow: hidden;
 }
 
-/* ===== Banner ===== */
+/* Isse background properties hata di hain taaki React code sahi kaam kare */
 .banner-container {
   width: 100%; 
-  background-size: 130%;
-  background-position: 0% 60%;
-  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   overflow: hidden;
   position: relative;
 }
 
-/* Dark overlay-langin-page so text readable */
-.overlay-langin-page {
-  width: 100%;
-  padding: 60px;
-}
-
-/* ===== Content Card ===== */
 .content-card {
   background-color: #F9FAFB;
   color: #050606;
   max-width: 560px;
   padding: 20px 40px 40px 40px; 
-  border-radius: 5%;
+  border-radius: 20px; /* Percentage ki jagah px use karein consistency ke liye */
   line-height: 1.5;
-}
-
-.card-title-1 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: #1470AF;
-}
-
-.card-description {
-  font-size: 0.95rem;
-  text-align: justify;
-}
-
-/* ===== Tablet ===== */
-@media (max-width: 1024px) {
-  .overlay-langin-page {
-    padding: 40px;
-  }
-
-  .banner-container {
-    width: 120%;
-  }
-}
-
-/* ===== Mobile Fix ===== */
-@media (max-width: 768px) {
-  .banner-container {
-    width: 100%;
-    min-height: auto;
-    background-image: none !important;
-    padding: 30px 0;
-  }
-
-  /* Center content */
-  .overlay-langin-page {
-    padding: 16px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .content-card {
-    max-width: 100%;
-    width: 100%;
-    border-radius: 14px;
-    padding: 24px 18px;
-    line-height: 1.7;
-  }
-
-    .card-title-1{
-    font-size: 1.5rem;
-    line-height: 1.3;
-    margin-bottom: 16px;
-  }
-
-   .card-description {
-    font-size: 0.88rem;
-    line-height: 1.7;
-    text-align: left; /* 📱 better readability */
-  }
-}
-
-@media (max-width: 480px) {
-  .card-title-1 {
-    font-size: 1.35rem;
-  }
-
-  .card-description {
-    font-size: 0.85rem;
-  }
 }

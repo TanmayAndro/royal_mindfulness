@@ -1,6 +1,7 @@
 import React from 'react'
 import "./HealthMind.css"
 import { Link } from "react-router-dom";
+import bgIma from "../../Assests/images/blue-bg.jpg";
 import { trackEvent } from "../../analitics/analytics";
 function HealthMind() {
   return (
@@ -29,6 +30,7 @@ function HealthMind() {
           
         }}>
           Book Your Free Consultation
+          
         </Link>
         <span
           style={{

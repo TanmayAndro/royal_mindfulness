@@ -133,7 +133,7 @@ const TrustMetrics = () => {
         <Typography
           variant="h2"
           sx={{  
-            mb: 10, 
+            mb: 0, 
             fontWeight: 700,
             fontSize: {
                   xs: "22px",  // mobile
