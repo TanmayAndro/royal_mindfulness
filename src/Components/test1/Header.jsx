@@ -71,7 +71,7 @@
                       mb: 2 
                     }}
                   >
-                    Train Your Mind To Be Happy
+                    Train Your Mind To Be <br />  Happy !
                   </Typography>
                   
                   <Typography 
@@ -79,7 +79,7 @@
                     component="p"
                     sx={{ 
                       color: "#e0e0e0", 
-                      mb: 4, 
+                      mb: 1, 
                       fontWeight: 400,
                       fontSize: { xs: "1rem", md: "1.25rem" } 
                     }}

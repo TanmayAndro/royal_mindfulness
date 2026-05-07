@@ -9,26 +9,35 @@
 ================================ */
 
 .roadmap-container {
-  max-width: 900px;
+ width: 100%;
   margin: 0 auto;
+  padding: 0 40px;
+  box-sizing: border-box;
 }
 
 .roadmap-main-title {
-  font-size: 28px;
-  color: #111;
+  font-size: 32px;
+  color: #3498db;
+  text-align: center; 
+  margin-bottom: 60px;
+  margin-top: 0px;
 }
 
-.roadmap-steps {
+.roadmap-step {
+  width: 100%;
+ 
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center; /* Changed from space-between to group content */
+  gap: 80px; /* Added gap to control space between text and image */
+  margin-bottom: 40px;
 }
 
 .roadmap-step {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 /* Direction */
@@ -45,7 +54,8 @@
 ================================ */
 
 .step-text-content {
-  width: 45%;
+  width: 40%;
+  text-align: center; /* Added centering for the text */
 }
 
 .step-header {
@@ -69,8 +79,9 @@
 .button-group {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center; 
   gap: 10px;
+  margin-top: 20px;
 }
 
 .roadmap-btn {
@@ -88,7 +99,7 @@
 .btn-note {
   font-size: 15px;
   color: #888;
-  margin-left: 17px;
+  margin-left: 0px;
 }
 
 /* ===============================

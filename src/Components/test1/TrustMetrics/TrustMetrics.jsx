@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const StyledSection = styled(Box)({
   backgroundColor: "#f3f5f8",
-  padding: "100px 0",
+  padding: "50px 0",
   textAlign: "center",
 });
 
@@ -33,7 +33,7 @@ const FeatureCard = ({ id, title, description, subText, buttonText, route }) => 
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', px: 2 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center',  }}>
 
       <TitleText variant="h5">{title}</TitleText>
 
@@ -138,6 +138,7 @@ const TrustMetrics = () => {
             fontSize: {
                   xs: "22px",  // mobile
                   md: "28px",  // desktop
+                  color: "#1470AF",
             } 
           }}
         >

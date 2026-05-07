@@ -1,11 +1,12 @@
-.feedback-section{
-background: #8EB6DC;
-padding: 40px 16px;
-display: flex;
-justify-content: center;
-align-items: center;
-min-height: auto;
-
+.feedback-section {
+  background: #8EB6DC;
+  /* Top padding ko 40px se kam karke 0 ya minimal kiya */
+  padding: 10px 16px 40px 16px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: auto;
+  margin-top: 0; /* Extra margin reset */
 }
 
 .feedback-container{
@@ -148,7 +149,9 @@ min-height: auto;
 
 .stay-section {
   background-color: #f3f5f8;
-  padding: 60px 20px;
+  /* Top padding ko 60px se kam kiya */
+  padding: 20px 20px 60px 20px; 
+  margin-top: 0; /* Extra margin reset */
 }
 
 .stay-container {
@@ -156,7 +159,7 @@ min-height: auto;
 }
 
 .stay-heading {
-  color: #030b10;
+  color: #1470AF;;
   font-size: 42px;
   margin-bottom: 24px;
   font-weight: 400;

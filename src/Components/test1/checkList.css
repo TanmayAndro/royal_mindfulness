@@ -37,7 +37,7 @@
 /* 2. Main Layout Flow */
 .checklist-content {
   width: 100%;
-  max-width: 900px;
+  /* max-width: 900px; */
   display: flex;
   flex-direction: column;
   align-items: center; /* Ensures Heading, Card, and Answer Card are centered */

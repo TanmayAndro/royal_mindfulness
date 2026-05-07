@@ -7,6 +7,7 @@ import {
   useMediaQuery,
   useTheme,
   Box,
+  Container,
 } from "@mui/material";
 import CommonButtons from "./CommonButton";
 import { useNavigate } from "react-router-dom";
@@ -32,54 +33,56 @@ const Comparison = () => {
   };
 
   return (
-    <>
-      <Box sx={{ padding: "2rem", textAlign: "center" }}>
-        {/* Heading */}
+    // Outer section remains 100% width, no extra internal padding
+    <Box component="section" sx={{ width: "100%", py: "4rem", backgroundColor: "#ffffff" }}>
+      <Container maxWidth={false} sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        
+        {/* Heading - Centered via textAlign and flex alignment */}
         <Typography
-        className="title-main"
+          className="title-main"
           variant="h4"
-          fontWeight="bold"
           sx={{
-             fontFamily: `-apple-system, BlinkMacSystemFont, 'Segoe UI',
-              'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-              'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif`,
-            mt: "2rem",
+            fontWeight: "bold",
+            fontFamily: "inherit",
+            textAlign: "center",
+            width: "100%",
             fontSize: { xs: "26px", sm: "40px" },
-            color: "#010406ff",
+            color: "#1470AF", // Brand Blue
+            mb: { xs: 3, md: 6 },
           }}
         >
           Royal Mindfulness vs Traditional Training
         </Typography>
 
-        {/* Cards Section */}
+        {/* Cards Section - Centered and flexible */}
         <Box
           sx={{
             display: "flex",
             justifyContent: "center",
-            alignItems: "flex-start",
-            gap: 0,
-            mt: { xs: 3, md: 6 },
-            flexWrap: "nowrap",
+            alignItems: "stretch", // Ensures cards have equal height
+            width: "100%",
+            maxWidth: "1200px", // Safety limit for very large screens
+            gap: { xs: 1, md: 0 },
+            flexDirection: { xs: "column", md: "row" }, // Stack on mobile
           }}
         >
           {isMd && (
             <Card
               sx={{
-                width: 300,
-                borderRadius: "10px",
+                flex: 1,
+                borderRadius: "10px 0 0 10px", // Round left corners only
                 opacity: 0.9,
                 transform: "scale(0.95)",
-                mr: "-20px",
               }}
               variant="outlined"
             >
-              <CardContent>
-                <Typography  fontWeight="bold" className="heading-main">Feature</Typography>
+              <CardContent sx={{ textAlign: "center" }}>
+                <Typography fontWeight="bold" className="heading-main">Feature</Typography>
               </CardContent>
               <Divider />
               {data.map((item, i) => (
-                <CardContent key={i}>
-                  <Typography>{item.label}</Typography>
+                <CardContent key={i} sx={{ textAlign: "center" }}>
+                  <Typography variant="body2" fontWeight={500}>{item.label}</Typography>
                 </CardContent>
               ))}
             </Card>
@@ -87,22 +90,23 @@ const Comparison = () => {
 
           <Card
             sx={{
-              width: 300,
-              borderRadius: "10px",
+              flex: 1.1, // Slightly larger to emphasize brand card
+              borderRadius: isMd ? "10px" : "10px",
               backgroundColor: "#CBE6FF",
               zIndex: 2,
               boxShadow: "0px 10px 30px rgba(0,0,0,0.1)",
+              transform: isMd ? "scale(1.05)" : "none", // Pop out the center card
             }}
           >
-            <CardContent>
-              <Typography fontWeight="bold" color="primary" align="center">
+            <CardContent sx={{ textAlign: "center" }}>
+              <Typography fontWeight="bold" color="primary">
                 Royal Mindfulness
               </Typography>
             </CardContent>
             <Divider />
             {data.map((item, i) => (
-              <CardContent key={i}>
-                <Typography align="center" fontWeight={600} color="primary">
+              <CardContent key={i} sx={{ textAlign: "center" }}>
+                <Typography fontWeight={600} color="primary">
                   {item.myYoga}
                 </Typography>
               </CardContent>
@@ -111,113 +115,81 @@ const Comparison = () => {
 
           <Card
             sx={{
-              width: 300,
-              borderRadius: "10px",
+              flex: 1,
+              borderRadius: isMd ? "0 10px 10px 0" : "10px", // Round right corners
               opacity: 0.9,
               transform: "scale(0.95)",
-              ml: "-20px",
             }}
             variant="outlined"
           >
-            <CardContent>
+            <CardContent sx={{ textAlign: "center" }}>
               <Typography fontWeight="bold">Traditional Personal Training</Typography>
             </CardContent>
             <Divider />
             {data.map((item, i) => (
-              <CardContent key={i}>
-                <Typography>{item.traditional}</Typography>
+              <CardContent key={i} sx={{ textAlign: "center" }}>
+                <Typography variant="body2">{item.traditional}</Typography>
               </CardContent>
             ))}
           </Card>
         </Box>
 
-        {/* ================= BUTTONS SECTION (FIXED) ================= */}
-        <Box sx={{ display: "flex", justifyContent: "center"}}>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: { xs: "column", sm: "row" },
-              gap: 4,
-              alignItems: "center",
-              justifyContent: "center",
-              width: "100%",
-              maxWidth: "600px", // 🔑 laptop/1440px fix
-            }}
-          >
-           {/* Book consultation */}
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
+        {/* ================= BUTTONS SECTION ================= */}
+        <Box
+  sx={{
+    display: "flex",
+    flexDirection: { xs: "column", sm: "row" },
+    gap: { xs: 2, sm: 4 },
+    // Change: 'center' ki jagah 'flex-start' kiya taaki buttons top se barabar align ho
+    alignItems: { xs: "center", sm: "flex-start" }, 
+    justifyContent: "center",
+    mt: 8,
+    width: "100%",
+  }}
+>
+  {/* Book consultation */}
+  <Box sx={{ textAlign: "center" }}>
+    <CommonButtons
+      label="Book a free consultation"
+      height="50px"
+      sx={{
+        backgroundColor: "#1470AF",
+        color: "white",
+        minWidth: "250px",
+      }}
+      variant="contained"
+      onClick={() => {
+        trackEvent("Landing Page", "Click", "BookConsultation");
+        handelConsulation("calendly");
+      }}
+    />
+    <Typography fontSize="12px" color="#555" mt="4px">
+      (No Credit card required)
+    </Typography>
+  </Box>
 
-                width: {
-                  xs: "100%",
-                  sm: "auto",
-                  xl: "auto",   // 👈 1440px+
-                },
-                textAlign: "center",
-              }}
-            >
-              <CommonButtons
-                label="Book a free consultation"
-                height="50px"
-
-                sx={{
-                  backgroundColor: "#1470AF",
-                  color: "white",
-                  marginTop: { xs: "15px", sm: "25px" },
-                }}
-
-                variant="contained"
-                onClick={() => {
-                  trackEvent(
-                    "Landing Page",
-                    "Click",
-                    "BookConsultation"
-                  );
-
-                  handelConsulation("calendly");
-                }}
-              />
-              <Typography fontSize="12px" color="#555" mt="4px">
-                (No Credit card required)
-              </Typography>
-            </Box>
-
-            {/* Hire Trainer */}
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-
-                width: {
-                  xs: "100%",
-                  sm: "auto",
-                  xl: "auto",   // 👈 1440px+
-                },
-              }}
-            >
-              <CommonButtons
-                label="Hire Trainer"
-                height="50px"
-                sx={{ backgroundColor: "#1470AF", color: "white" }}
-                variant="contained"
-                onClick={() => {
-                trackEvent(
-                  "Landing Page",
-                  "Click",
-                  "Hire Trainer"
-                );
-                handelConsulation("rozerpay");
-              }}
-              />
-            </Box>
-
-          </Box>
-        </Box>
-      </Box>
-    </>
+  {/* Hire Trainer */}
+  <Box sx={{ textAlign: "center" }}>
+    <CommonButtons
+      label="Hire Trainer"
+      height="50px"
+      sx={{ 
+        backgroundColor: "#1470AF", 
+        color: "white", 
+        minWidth: "250px" 
+      }}
+      variant="contained"
+      onClick={() => {
+        trackEvent("Landing Page", "Click", "Hire Trainer");
+        handelConsulation("rozerpay");
+      }}
+    />
+    {/* Optional: Agar symmetry chahiye toh yahan ek empty space add kar sakte hain */}
+    <Box sx={{ height: "20px", display: { xs: "none", sm: "block" } }} />
+  </Box>
+</Box>
+      </Container>
+    </Box>
   );
 };
 

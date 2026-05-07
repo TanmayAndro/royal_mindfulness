@@ -80,11 +80,14 @@ const FAQSection = () => {
   sx={{
     width: "100%",
     backgroundColor: "#F9FAFB",
+    mt: 0, 
+        pt: { xs: 4, md: 6 },
+        pb: { xs: 4, md: 8 },
   }}
 >
   <Container
     sx={{
-      padding: { xs: "2rem 1.5rem", md: "6rem 4rem" },
+      padding: { xs: "0 1.5rem", md: "0 4rem" },
       maxWidth: "lg",
     }}
   >
@@ -102,15 +105,15 @@ const FAQSection = () => {
           fontWeight="bold"
           className="title-main"
           sx={{
-            // Desktop size 28px aur Mobile size 22px aapki requirement ke hisaab se
-            fontSize: { xs: "22px", md: "28px" }, 
-            fontFamily: `-apple-system, BlinkMacSystemFont, 'Segoe UI',
-              'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-              'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif`,
-            textAlign: "center", // Dono view par center align
-            lineHeight: 1.2,
-            mb: { xs: 4, md: 6 }, // Neeche gap dene ke liye
-          }}
+            // Changes: Color changed to Brand Blue and margins removed
+                color: "#1470AF", 
+                fontWeight: "700",
+                fontSize: { xs: "24px", md: "36px" }, 
+                textAlign: "center",
+                lineHeight: 1.2,
+                mt: 0, // Heading ke upar ki space remove ki
+                mb: { xs: 3, md: 4 }, // Accordion se thoda gap
+              }}
         >
           Frequently Asked Questions
         </Typography>
