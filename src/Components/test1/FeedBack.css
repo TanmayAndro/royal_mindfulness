@@ -1,5 +1,5 @@
 .feedback-section {
-  background: #8EB6DC;
+  background: #1470AF ;
   /* Top padding ko 40px se kam karke 0 ya minimal kiya */
   padding: 10px 16px 40px 16px; 
   display: flex;
@@ -160,7 +160,7 @@
 
 .stay-heading {
   color: #1470AF;;
-  font-size: 42px;
+  font-size: 36px;
   margin-bottom: 24px;
   font-weight: 400;
 }

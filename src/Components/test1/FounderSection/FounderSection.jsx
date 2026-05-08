@@ -150,31 +150,33 @@ const FounderSection = () => {
   return (
     // Section ki top padding kam kar di hai (py: { xs: 4, md: 6 }) taaki extra space hat jaye
     <Box component="section" sx={{ py: { xs: 4, md: 6 }, bgcolor: '#ffffff', width: '100%' }}>
+      <Typography
+      className="title-main"
+      sx={{ 
+        fontWeight: "500",
+        color: "#1470AF",
+        // Fix 1: textAlign ko fontSize se bahar nikala gaya hai
+        textAlign: 'center', 
+        fontSize: {
+          xs: "24px",  
+          md: "36px",  
+        },
+        mt: 0,
+        mb: 1
+      }}
+    >
+      Words From The Founder
+    </Typography>
       <Container maxWidth="lg">
         <Grid 
           container 
           spacing={{ xs: 4, md: 6 }} 
           alignItems="center"
-        >
-          
+        >       
           {/* Column 1: Text Content (Left Side) */}
           <Grid item xs={12} md={7}>
             <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
-              <Typography
-                className="title-main"
-                sx={{ 
-                  fontWeight: "700",
-                  color: "#1470AF",
-                  fontSize: {
-                    xs: "24px",  
-                    md: "32px",  
-                  },
-                  mt: 0, // Top margin bilkul zero kar di hai
-                  mb: 1
-                }}
-              >
-                Words From The Founder
-              </Typography>
+              
               
               <Box sx={{ mb: 3 }}>
                  {text.map((para, index) => (
@@ -225,7 +227,7 @@ const FounderSection = () => {
           </Grid>
 
           {/* Column 2: Image (Right Side) */}
-          <Grid item xs={12} md={5}>
+          {/* <Grid item xs={12} md={5}>
             <Box
               component="img"
               src={image}
@@ -241,7 +243,29 @@ const FounderSection = () => {
                 mx: 'auto' 
               }}
             />
-          </Grid>
+          </Grid> */}
+          {/* Column 2: Image (Right Side) */}
+<Grid item xs={12} md={5}>
+  <Box
+    component="img"
+    src={image}
+    alt={name}
+    sx={{
+      width: '100%',
+      maxWidth: '360px',
+      // Change 1: Fixed height dena zaroori hai niche se cut karne ke liye
+      height: { xs: '300px', md: '400px' }, 
+      // Change 2: 'cover' ensure karta hai ki image stretch na ho
+      objectFit: 'cover',
+      // Change 3: 'top' ka matlab hai image upar se dikhegi aur niche se cut jayegi
+      objectPosition: 'top', 
+      borderRadius: '24px',
+      boxShadow: '0px 15px 35px rgba(20, 112, 175, 0.1)',
+      display: 'block',
+      mx: 'auto' 
+    }}
+  />
+</Grid>
 
         </Grid>
       </Container>

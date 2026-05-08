@@ -34,7 +34,7 @@ const Comparison = () => {
 
   return (
     // Outer section remains 100% width, no extra internal padding
-    <Box component="section" sx={{ width: "100%", py: "4rem", backgroundColor: "#ffffff" }}>
+    <Box component="section" sx={{ width: "100%", py: "2rem", backgroundColor: "#ffffff" }}>
       <Container maxWidth={false} sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
         
         {/* Heading - Centered via textAlign and flex alignment */}
@@ -46,7 +46,7 @@ const Comparison = () => {
             fontFamily: "inherit",
             textAlign: "center",
             width: "100%",
-            fontSize: { xs: "26px", sm: "40px" },
+            fontSize: { xs: "26px", sm: "36px" },
             color: "#1470AF", // Brand Blue
             mb: { xs: 3, md: 6 },
           }}
@@ -184,7 +184,6 @@ const Comparison = () => {
         handelConsulation("rozerpay");
       }}
     />
-    {/* Optional: Agar symmetry chahiye toh yahan ek empty space add kar sakte hain */}
     <Box sx={{ height: "20px", display: { xs: "none", sm: "block" } }} />
   </Box>
 </Box>

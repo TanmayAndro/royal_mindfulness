@@ -10,15 +10,13 @@
   width: 100%; 
   display: flex;
   align-items: center;
-  overflow: hidden;
   position: relative;
+  /* overflow: hidden yahan bhi ensure karein */
+  overflow: hidden; 
+  border-radius: 20px; 
 }
-
 .content-card {
-  background-color: #F9FAFB;
-  color: #050606;
+  background-color: transparent; 
   max-width: 560px;
-  padding: 20px 40px 40px 40px; 
-  border-radius: 20px; /* Percentage ki jagah px use karein consistency ke liye */
   line-height: 1.5;
 }

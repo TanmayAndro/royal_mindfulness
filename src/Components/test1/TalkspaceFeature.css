@@ -60,7 +60,7 @@
     line-height: 1;
 }
 .step-info h3 {
-    margin: 0 0 8px 0;
+    margin: 0 0 2px 0;
     color: #000404;
     font-size: 18px;
 }
@@ -68,7 +68,7 @@
 .step-info p {
     margin: 0;
     color: #333;
-    line-height: 1.6;
+    line-height: 0.6;
     font-size: 16px;
 }
 
@@ -82,7 +82,7 @@
 
 .main-title {
     color: #1470AF;
-    margin-bottom: 60px;
+    margin-bottom: 10px;
     font-size: 36px;
     font-weight: 600;
     text-align: center;
@@ -91,8 +91,8 @@
 
 .phone-container {
     position: relative;
-    width: 300px;           /* Standardized width */
-    height: 600px;
+    width: 268px;           /* Standardized width */
+    height: 522px;
     flex-shrink: 0;
 }
 

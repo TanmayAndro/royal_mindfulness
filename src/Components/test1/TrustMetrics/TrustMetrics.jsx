@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const StyledSection = styled(Box)({
   backgroundColor: "#f3f5f8",
-  padding: "50px 0",
+  padding: "20px 0",
   textAlign: "center",
 });
 
@@ -134,10 +134,10 @@ const TrustMetrics = () => {
           variant="h2"
           sx={{  
             mb: 0, 
-            fontWeight: 700,
+            fontWeight: 500,
             fontSize: {
                   xs: "22px",  // mobile
-                  md: "28px",  // desktop
+                  md: "36px",  // desktop
                   color: "#1470AF",
             } 
           }}

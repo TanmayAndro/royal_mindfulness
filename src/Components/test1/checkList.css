@@ -26,10 +26,10 @@
   height: 20px;
   /* The 4-layer gradient creates the triangular 'teeth' effect */
   background: 
-    linear-gradient(135deg, #1470AF 25%, transparent 25%) -20px 0,
-    linear-gradient(225deg, #1470AF 25%, transparent 25%) -20px 0,
-    linear-gradient(315deg, #1470AF 25%, transparent 25%),
-    linear-gradient(45deg, #1470AF 25%, transparent 25%);
+  linear-gradient(135deg, #1470AF 25%, transparent 25%) -20px 0,
+  linear-gradient(225deg, #1470AF 25%, transparent 25%) -20px 0,
+  linear-gradient(315deg, #1470AF 25%, transparent 25%),
+  linear-gradient(45deg, #1470AF 25%, transparent 25%);
   background-size: 40px 40px;
   background-color: transparent;
 }
@@ -57,8 +57,8 @@
 
 .sparkle-icon {
   position: absolute;
-    top: -46px;
-    left: -65px;
+  top: -46px;
+  left: -65px;
 }
 
 .heading-decorator h1 {
@@ -71,7 +71,7 @@
 
 .highlight {
   color: #1470AF;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 /* 4. Statement Card (Blue Pill) */
@@ -104,7 +104,7 @@
 }
 
 .title-checklist{
-  font-size: 28px;
+  font-size: 36px;
 }
 
 /* Navigation Arrows */
@@ -154,11 +154,11 @@
 .answer-card {
   width: 100%;
   max-width: 766px;
-
+  
   min-height: 100px;   /* 👈 minimum height */
   max-height: 220px;   /* 👈 maximum height */
   height: auto;        /* 👈 content ke according grow */
-
+  
   background-color: #e8eef3;
   border-radius: 17px;
   display: flex;
@@ -191,29 +191,29 @@
     border-radius: 40px; /* Less rounded for better text space on mobile */
     padding: 40px 10px;
   }
- 
+  
   .sparkle-icon {
     width: 50px;      /* chhota kar do */
     top: -45px;
     left: -20px;
     display: block;  
   } /* force show */
-
+  
   .answer-text{
     margin-left: 30px
   }
-
+  
   .answer-card{
     margin-right: 0px;
   }
-
+  
   .title-checklist{
     font-size: 22px;
   }
   .final-message-1{
-  color: black;
-  text-align: center;
-  font-size: 14px;
-}
+    color: black;
+    text-align: center;
+    font-size: 14px;
+  }
   
 }
