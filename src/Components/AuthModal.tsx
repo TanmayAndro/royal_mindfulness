@@ -19,17 +19,17 @@ const AuthModal: React.FC<Props> = ({ open, onClose, defaultView = "login" }) =>
   return (
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
      <DialogContent
-        sx={{
-          position: "relative",
-          paddingTop: "0px",
-          height: "90vh",        // limit modal height
-          overflow: "hidden",    // prevent modal scroll
-          display: "flex",
-          paddingLeft: "0px",
-          paddingRight: "0px",
-          paddingBottom: "0px",
-        }}
-      >
+  sx={{
+    position: "relative",
+    height: "90vh",
+    overflow: "hidden",
+    display: "flex",
+    paddingLeft: "0px",
+    paddingRight: "0px",
+    paddingBottom: "0px",
+    paddingTop: "4%" // Only one instance allowed
+  }}
+>
         {/* Close (X) Button */}
         <IconButton
           onClick={onClose}
