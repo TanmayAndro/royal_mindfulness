@@ -24,6 +24,7 @@ const Login_register_firstPart = () => {
           bgcolor: "#1470AF",
           p: 4,
           color: "#fff",
+          minHeight: "700px"
         }}
       >
         {/* TOP CONTENT */}

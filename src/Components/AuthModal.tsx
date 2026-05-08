@@ -17,70 +17,61 @@ const AuthModal: React.FC<Props> = ({ open, onClose, defaultView = "login" }) =>
   const switchToLogin = () => setView("login");
 
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
-     <DialogContent
-  sx={{
-    position: "relative",
-    height: "90vh",
-    overflow: "hidden",
-    display: "flex",
-    paddingLeft: "0px",
-    paddingRight: "0px",
-    paddingBottom: "0px",
-    paddingTop: "4%" // Only one instance allowed
-  }}
->
-        {/* Close (X) Button */}
+    <Dialog 
+      open={open} 
+      onClose={onClose} 
+      maxWidth="md" 
+      fullWidth
+      // Fix: Removed trapFocus, and kept these to handle interaction
+      disableEnforceFocus={false} 
+      disableRestoreFocus={false}
+      sx={{ 
+        zIndex: 9999, // Modal level
+        "& .MuiBackdrop-root": {
+           zIndex: 9998, // Backdrop level (one step below modal content)
+        },
+        "& .MuiPaper-root": {
+          zIndex: 9999,
+          borderRadius: "12px",
+          overflow: "hidden",
+          // Ensure the box itself doesn't block its own children
+          pointerEvents: "auto" ,
+          
+        }
+      }}
+    >
+      <DialogContent
+        sx={{
+          position: "relative",
+          p: 0, // Set to 0 to remove gaps between your Login component and the Modal edge
+          display: "flex",
+          flexDirection: "column",
+          
+          overflow: "hidden"
+        }}
+      >
+        {/* Close Button - Increased z-index to be at the very top */}
         <IconButton
           onClick={onClose}
-          aria-label="close"
           sx={{
             position: "absolute",
-            top: 3,
-            right: 6,
-            buttom:3,
-
-            color: "rgba(0,0,0,0.6)",
-            cursor: "pointer",
-            "&:hover": {
-              color: "rgba(0,0,0,0.8)",
-            },
-          }}
-        >
-          <CloseIcon />
-        </IconButton><IconButton
-          onClick={onClose}
-          aria-label="close"
-          sx={{
-            position: "absolute",
-            top: 3,
-            right: 6,
-            buttom: 3,
-            color: "rgba(0,0,0,0.6)",
-            cursor: "pointer",
-            "&:hover": {
-              color: "rgba(0,0,0,0.8)",
-            },
+            top: 12,
+            right: 12,
+            zIndex: 10000, 
+            color: "rgba(0,0,0,0.5)",
+            "&:hover": { color: "black" }
           }}
         >
           <CloseIcon />
         </IconButton>
 
-        {/* Conditional rendering of Login / Register */}
         {view === "login" ? (
-          <Login
-            closeModal={onClose}
-            switchToRegister={switchToRegister}
-          />
+          <Login closeModal={onClose} switchToRegister={switchToRegister} />
         ) : (
-          <Register
-            closeModal={onClose}
-            switchToLogin={switchToLogin}
-          />
+          <Register closeModal={onClose} switchToLogin={switchToLogin} />
         )}
       </DialogContent>
     </Dialog>
   );
 };
-
 export default AuthModal;
