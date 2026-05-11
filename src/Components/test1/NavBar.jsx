@@ -129,7 +129,8 @@ const NavBar = ({ isOpen, toggleMenu }) => {
                     trackEvent(
                       "Navigation",
                       "Click",
-                      `Login`
+                      `Login`,
+                      true
                     );
                   }}
                 >

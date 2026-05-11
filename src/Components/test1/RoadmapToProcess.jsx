@@ -115,7 +115,8 @@ const RoadmapToProcess = () => {
                       trackEvent(
                         "Landing Page",
                         "Click",
-                        `BookConsultation`
+                        `BookConsultation`,
+                       true
                       );
                     }}>
                       {step.buttonText}

@@ -324,7 +324,8 @@ const Header: React.FC = () => {
                   trackEvent(
                     "Navigation",
                     "Click",
-                    `Nav Actions ${item.name}`
+                    `Nav Actions ${item.name}`,
+                    true
                   );
                 }}
                 >

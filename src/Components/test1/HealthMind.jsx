@@ -25,7 +25,8 @@ function HealthMind() {
           trackEvent(
             "Landing Page",
             "Click",
-            `Free Consultation`
+            `Free Consultation`, 
+            true
           );
           
         }}>

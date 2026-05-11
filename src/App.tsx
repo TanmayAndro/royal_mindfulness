@@ -168,9 +168,11 @@ import PaymentFailedPage from "./Pages/Payments/PaymentFailedPage";
 import { Blogs } from "./Pages/Blogs/Blogs";
 import { Refund } from "./Pages/Refund/Refund";
 import { Webinar } from "./Pages/Webinar/Webinar";
+
+//Analytics
 import { initGA, logPageView } from "./analitics/analytics";
 
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import { useEffect } from "react";
 import JitsiComponent from "./Components/Jitsimeeting";
 import { ResetPassword } from "./Pages/Login/ResetPassword";
@@ -186,10 +188,12 @@ import { AuthModalProvider } from "./context/AuthModalContext";
 import Quiz from "./Pages/Test1/Quiz/QuizPage"
 import  WhatsAppButton from "./context/WhatsAppButton"
 
-const TRACKING_ID = "G-SNZDQG6PM4";
 
 function App() {
-  ReactGA.initialize(TRACKING_ID);
+  // Initialize Google Analytics + Google Ads
+  useEffect(() => {
+    initGA();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {

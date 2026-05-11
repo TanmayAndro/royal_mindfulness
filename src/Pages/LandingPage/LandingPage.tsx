@@ -25,7 +25,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import { Comparison } from "./Sections/Comparison";
 import FAQSection from "./Sections/FAQSection";
 import Questionnaire from "./Sections/Questionnaire";

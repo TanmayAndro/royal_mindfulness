@@ -159,7 +159,7 @@ const Comparison = () => {
       }}
       variant="contained"
       onClick={() => {
-        trackEvent("Landing Page", "Click", "BookConsultation");
+        trackEvent("Landing Page", "Click", "BookConsultation", true);
         handelConsulation("calendly");
       }}
     />
@@ -180,7 +180,7 @@ const Comparison = () => {
       }}
       variant="contained"
       onClick={() => {
-        trackEvent("Landing Page", "Click", "Hire Trainer");
+        trackEvent("Landing Page", "Click", "Hire Trainer", true);
         handelConsulation("rozerpay");
       }}
     />
