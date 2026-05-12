@@ -495,7 +495,8 @@ const handleAddClick = (day) => {
       };
 
       const response = await axios.post(
-        'https://deedee-unchainable-optionally.ngrok-free.dev/trainer_availabilities',
+        // 'https://deedee-unchainable-optionally.ngrok-free.dev/trainer_availabilities',
+        `${process.env.REACT_APP_BASE_URL}/trainer_availabilities`,
         formattedData,
         {
           headers: {

@@ -21,7 +21,7 @@ function FeebBack() {
     try {
 
       const response = await fetch(
-        "https://deedee-unchainable-optionally.ngrok-free.dev/feedbacks", 
+        `${process.env.REACT_APP_BASE_URL}/feedbacks`, 
         {
           method: "POST", 
           headers: {
@@ -62,7 +62,8 @@ function FeebBack() {
 
     try{
       const response = await fetch(
-        "https://deedee-unchainable-optionally.ngrok-free.dev/prospectes",
+        // "https://deedee-unchainable-optionally.ngrok-free.dev/prospectes",
+        `${process.env.REACT_APP_BASE_URL}/prospectes`,
         {
           method: "POST", 
           headers: {

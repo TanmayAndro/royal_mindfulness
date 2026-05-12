@@ -56,7 +56,7 @@ const Calendar = () => {
   const fetchAttendance = async () => {
     try {
       const res = await axios.get(
-        `https://deedee-unchainable-optionally.ngrok-free.dev/attendances?user_id=${user_id}`,
+         `${process.env.REACT_APP_BASE_URL}/attendances?user_id=${user_id}`,
         {
           headers: {
             accept: "application/json",
@@ -93,7 +93,7 @@ const Calendar = () => {
   const fetchEventsForMonth = async () => {
     try {
       const response = await axios.get(
-        `https://deedee-unchainable-optionally.ngrok-free.dev/bookings`,
+        `${process.env.REACT_APP_BASE_URL}/bookings`,
         {
           headers: {
             accept: "application/json",
@@ -250,7 +250,7 @@ const Calendar = () => {
       }
 
       await axios.post(
-        "https://deedee-unchainable-optionally.ngrok-free.dev/attendances",
+       `${process.env.REACT_APP_BASE_URL}/attendances`,
         {
           attendance: {
             booking_id: eventData.bookingId,
@@ -357,7 +357,7 @@ const Calendar = () => {
         
 
      const response = await axios.post(
-        "https://deedee-unchainable-optionally.ngrok-free.dev/ratings",
+        `${process.env.REACT_APP_BASE_URL}/ratings`,
         formData,
         {
           headers: {

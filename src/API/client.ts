@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://deedee-unchainable-optionally.ngrok-free.dev",
+  baseURL: process.env.REACT_APP_BASE_URL,
 });
 
 api.interceptors.request.use(

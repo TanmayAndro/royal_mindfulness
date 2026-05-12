@@ -243,12 +243,10 @@ export const Payment = () => {
   const hasVerified = useRef(false);
   const navigate = useNavigate();
   const location = useLocation();
-
   const { payload, token } = location.state || {};
   const sessionDate = payload?.from_date;
   const sessionTime = payload?.from_time;
-
-  const PAYMENT_AMOUNT_PAISE = 29800; 
+  const PAYMENT_AMOUNT_PAISE = process.env.REACT_APP_PAYMENT_AMOUNT_USD; 
 
   useEffect(() => {
     if (!token || !payload || !sessionDate || !sessionTime) {
@@ -278,7 +276,7 @@ export const Payment = () => {
 
   const initializeRazorpay = () => {
     const options = {
-      key: "rzp_live_RqiG5GTlbVM4kZ" , 
+      key: process.env.REACT_APP_RAZORPAY_KEY, // ✔ Razorpay key from env, 
       amount: PAYMENT_AMOUNT_PAISE, // ✔ Amount in paise
       currency: "USD",             // ✔ Should be INR
       name: "RoyalMindFulness",
@@ -333,8 +331,10 @@ export const Payment = () => {
         mobile_number:payload.phone_number,
         address:payload.address
 
-      };      const verifyRes = await axios.post(
-        `https://deedee-unchainable-optionally.ngrok-free.dev/payments/verify_payment`,
+      };    
+      
+      const verifyRes = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/payments/verify_payment`,
         body,
         { headers }
       );
@@ -361,7 +361,8 @@ export const Payment = () => {
       const headers = { token: token.trim() };
 
       const res = await axios.post(
-        "https://deedee-unchainable-optionally.ngrok-free.dev/trainer_bookings",
+        // "https://deedee-unchainable-optionally.ngrok-free.dev/trainer_bookings",
+        `${process.env.REACT_APP_BASE_URL}/trainer_bookings`,
         payload,
         { headers }
       );
@@ -405,7 +406,8 @@ export const Payment = () => {
       };
 
       await axios.post(
-        "https://deedee-unchainable-optionally.ngrok-free.dev/trainer_bookings/send_meeting_link",
+        // "https://deedee-unchainable-optionally.ngrok-free.dev/trainer_bookings/send_meeting_link",
+        `${process.env.REACT_APP_BASE_URL}/trainer_bookings/send_meeting_link`,
         { booking_id: bookingId, meeting_link: roomName },
         { headers }
       );

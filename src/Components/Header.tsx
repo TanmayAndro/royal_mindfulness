@@ -185,7 +185,7 @@ const Header: React.FC = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://deedee-unchainable-optionally.ngrok-free.dev/sessions"
+          `${process.env.REACT_APP_BASE_URL}/sessions`  
         );
         const processedSessions = response.data.data.map((session: any) => ({
           id: session.id,

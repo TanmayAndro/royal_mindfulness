@@ -66,10 +66,15 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
     };
     setLoading(true);
     try {
-      const response = await axios.post(
-        "https://deedee-unchainable-optionally.ngrok-free.dev/" + loginApi,
-        data,
-      );
+           
+        console.log("FULL ENV", process.env);
+console.log("BASE URLsmdfds", process.env.REACT_APP_BASE_URL);
+
+        const response = await axios.post(
+          // "https://deedee-unchainable-optionally.ngrok-free.dev/" + loginApi,
+          `${process.env.REACT_APP_BASE_URL}/${loginApi}`,
+          data,
+        );
       localStorage.setItem("user_token", response.data.meta.token);
 
       localStorage.setItem(
@@ -175,7 +180,7 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
     try {
       const response = await axios.post(
         // `${process.env.REACT_APP_BASE_URL}/forgot_password`,
-        "https://deedee-unchainable-optionally.ngrok-free.dev/forgot_password",
+        `${process.env.REACT_APP_BASE_URL}/forgot_password`,
         {
           email: forgotEmail,
         },
@@ -297,7 +302,8 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
       };
 
       const response = await axios.post(
-        "https://deedee-unchainable-optionally.ngrok-free.dev/google_login",
+        // "https://deedee-unchainable-optionally.ngrok-free.dev/google_login",
+        `${process.env.REACT_APP_BASE_URL}/google_login`,
         { user: userData },
         {
           headers: {
@@ -458,7 +464,8 @@ const Login: React.FC<LoginProps> = ({ closeModal, switchToRegister }) => {
       console.log("Complete userData for backend:", userData);
 
       const apiResponse = await axios.post(
-        "https://deedee-unchainable-optionally.ngrok-free.dev/google_login",
+        // "https://deedee-unchainable-optionally.ngrok-free.dev/google_login",
+        `${process.env.REACT_APP_BASE_URL}/google_login`,
         { user: userData },
         {
           headers: {

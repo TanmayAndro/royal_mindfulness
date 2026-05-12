@@ -56,7 +56,8 @@ const Session = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://deedee-unchainable-optionally.ngrok-free.dev/sessions/${id}`
+          // `https://deedee-unchainable-optionally.ngrok-free.dev/sessions/${id}`
+          `${process.env.REACT_APP_BASE_URL}/sessions/${id}`,
         );
         setSessionData(response.data);
         console.log("API Response:", response.data.data);

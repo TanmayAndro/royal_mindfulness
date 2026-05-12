@@ -93,7 +93,8 @@ const Register: React.FC<RegisterProps> = ({ closeModal, switchToLogin }) => {
 
     try {
       const response = await axios.post(
-        "https://deedee-unchainable-optionally.ngrok-free.dev/users",
+        // "https://deedee-unchainable-optionally.ngrok-free.dev/users",
+        `${process.env.REACT_APP_BASE_URL}/users`,
         payload,
         {
           headers: {

@@ -310,7 +310,7 @@ export const Payment = () => {
     try {
       const headers = { token: token.trim() };
       const res = await axios.get(
-        `https://deedee-unchainable-optionally.ngrok-free.dev/trainer_bookings/check_booking?from_date=${sessionDate}&from_time=${sessionTime}`,
+        `${process.env.REACT_APP_BASE_URL}/trainer_bookings/check_booking?from_date=${sessionDate}&from_time=${sessionTime}`,
         { headers }
       );
       // Expected: { exists: true/false }
@@ -331,7 +331,7 @@ export const Payment = () => {
 
       // Verify payment first
       const verifyRes = await axios.post(
-        `https://deedee-unchainable-optionally.ngrok-free.dev/payments/verify_payment`,
+        `${process.env.REACT_APP_BASE_URL}/payments/verify_payment`,
         {
           payment_id: paymentResponse.razorpay_payment_id,
           booking_start_date: sessionDate,
@@ -371,7 +371,7 @@ export const Payment = () => {
     try {
       const headers = { token: token.trim() };
       const res = await axios.post(
-        "https://deedee-unchainable-optionally.ngrok-free.dev/trainer_bookings",
+        `${process.env.REACT_APP_BASE_URL}/trainer_bookings`,
         payload,
         { headers }
       );

@@ -14,7 +14,9 @@ import Image2 from "../../Assests/images/consultation_question-Picsart-AiImageEn
 import { trackEvent } from "../../analitics/analytics";
 
 const API_URL =
-  "https://deedee-unchainable-optionally.ngrok-free.dev/checklists";
+  // "https://deedee-unchainable-optionally.ngrok-free.dev/checklists";
+  `${process.env.REACT_APP_BASE_URL}/checklists`;
+
 
 /* 🔹 STATIC UI */
 const DEFAULT_STEPS = [

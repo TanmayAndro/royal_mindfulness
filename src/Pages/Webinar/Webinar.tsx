@@ -34,7 +34,8 @@ export const Webinar = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://deedee-unchainable-optionally.ngrok-free.dev/customer_supports",
+        // "https://deedee-unchainable-optionally.ngrok-free.dev/customer_supports",
+        `${process.env.REACT_APP_BASE_URL}/customer_supports`,
         formData,
         {
           headers: {

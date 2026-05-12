@@ -36,7 +36,9 @@ export const FeedbackSection = () => {
 
     try {
       const response = await axios.post(
-        "https://deedee-unchainable-optionally.ngrok-free.dev/feedbacks",
+        // "https://deedee-unchainable-optionally.ngrok-free.dev/feedbacks",
+        `${process.env.REACT_APP_BASE_URL}/feedbacks`,
+        
         {
           data: {
             type: "feedback",

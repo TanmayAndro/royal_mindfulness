@@ -178,7 +178,7 @@ import JitsiComponent from "./Components/Jitsimeeting";
 import { ResetPassword } from "./Pages/Login/ResetPassword";
 // @ts-ignore
 import { Box } from "@mui/material";
-import FreeConsultanceForm from "./Pages/FreeConsultance/FreeConsultanceForm"
+import FreeConsultanceForm from "./Pages/FreeConsultance/FreeConsultanceForm.jsx";
 
 // front page test 
 import Royal from './Pages/Test1/Royal'

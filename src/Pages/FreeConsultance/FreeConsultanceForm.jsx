@@ -92,29 +92,104 @@ function FreeConsultanceForm() {
       }
     };
 
-    try {
-      const response = await fetch(
-        "https://deedee-unchainable-optionally.ngrok-free.dev/free_consultances",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        }
-      );
 
-      const data = await response.json();
+   
 
-      if (response.ok) {
-        setSubmitted(true);
-        localStorage.removeItem("freeConsultanceData"); // optional cleanup
-      } else {
-        setErrors(data || {});
-      }
-    } catch (err) {
-      console.error("API ERROR:", err);
-    }
-  };
+  //   try {
 
+  //     const freeConsultationUrl =
+  //     process.env.REACT_APP_FREECONSULTATION_URL;
+
+  //     const baseUrl =
+  //     process.env.REACT_APP_BASE_URL;
+
+  //     const finalUrl = freeConsultationUrl
+  //     ? `${freeConsultationUrl}/free_consultances`
+  //     : `${baseUrl}/free_consultances`;
+
+      
+  //     const response = await fetch(
+  //     finalUrl,
+  //       {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify(payload)
+  //       }
+  //     );
+  //     const data = await response.json();
+
+  //     if (response.ok) {
+  //       setSubmitted(true);
+  //       localStorage.removeItem("freeConsultanceData"); // optional cleanup
+  //     } else {
+  //       setErrors(data || {});
+  //     }
+  //   } catch (err) {
+  //     console.error("API ERROR:", err);
+  //   }
+  // };
+
+  try {
+  const freeConsultationUrl =
+    process.env.REACT_APP_FREECONSULTATION_URL;
+
+  const baseUrl =
+    process.env.REACT_APP_BASE_URL;
+
+  // both URLs
+  const urls = [
+    freeConsultationUrl,
+    baseUrl,
+  ].filter(Boolean);
+
+  // call both APIs
+  const responses = await Promise.allSettled(
+    urls.map((url) =>
+      fetch(`${url}/free_consultances`, {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(payload),
+      })
+    )
+  );
+
+  console.log("API RESPONSES:", responses);
+
+  // success check
+  const successResponse = responses.find(
+    (res) =>
+      res.status === "fulfilled" &&
+      res.value.ok
+  );
+
+  if (successResponse) {
+    const data =
+      await successResponse.value.json();
+
+    console.log("SUCCESS DATA:", data);
+
+    setSubmitted(true);
+
+    localStorage.removeItem(
+      "freeConsultanceData"
+    );
+  } else {
+    console.log("All APIs failed");
+
+    setErrors({
+      error: "All APIs failed",
+    });
+  }
+} catch (err) {
+  console.error("API ERROR:", err);
+}
+};
+
+  
   return (
     <div className="free-consultance-page">
       <div className="page-wrapper-freeconsultation">
