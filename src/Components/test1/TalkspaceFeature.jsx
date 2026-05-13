@@ -89,7 +89,7 @@ const TalkspaceFeature = () => {
             if (step.id === 1 && checklist) {
               return {
                 ...step,
-                document_url: checklist.attributes.document_url.replace(
+                document_url: checklist.attributes.document_url?.replace(
                   "http://",
                   "https://"
                 ),
@@ -99,7 +99,7 @@ const TalkspaceFeature = () => {
             if (step.id === 3 && journal) {
               return {
                 ...step,
-                document_url: journal.attributes.document_url.replace(
+                document_url: journal.attributes.document_url?.replace(
                   "http://",
                   "https://"
                 ),
