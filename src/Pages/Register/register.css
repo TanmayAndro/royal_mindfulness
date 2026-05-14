@@ -1,0 +1,18 @@
+.hide-scrollbar {
+    /* For Chrome, Safari, and Edge */
+    &::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+
+    /* For Firefox */
+    scrollbar-width: none !important;
+
+    /* For Internet Explorer and older Edge */
+    -ms-overflow-style: none !important;
+    
+    /* Ensure scrolling is still allowed */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling for iOS */
+}

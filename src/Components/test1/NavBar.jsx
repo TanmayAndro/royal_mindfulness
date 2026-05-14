@@ -112,26 +112,30 @@ const NavBar = ({ isOpen, toggleMenu }) => {
                 }}
               >
 
-                <Button
+               <Button
                   variant="outlined"
                   size="small"
                   sx={{
-                    color: "#1976d2;",
-                    borderColor: "#1976d2;",
+                    // Responsive Colors: White on Mobile/Tablet (xs), Blue on Laptop/Desktop (md)
+                    color: { xs: "#fff", md: "#1976d2" },
+                    borderColor: { xs: "#fff", md: "#1976d2" },
+                    
+                    // Hover effect for better UX
+                    "&:hover": {
+                      borderColor: { xs: "#fff", md: "#1976d2" },
+                      backgroundColor: "rgba(25, 118, 210, 0.04)",
+                    },
+                    
                     borderRadius: "30px",
                     fontSize: "14px",
                     px: 3,
                     width: { xs: "100%", md: "auto" },
+                    textTransform: "none", // Optional: Prevents all caps
                   }}
                   onClick={() => {
                     setAuthView("login");
                     setAuthOpen(true);
-                    trackEvent(
-                      "Navigation",
-                      "Click",
-                      `Login`,
-                      true
-                    );
+                    trackEvent("Navigation", "Click", `Login`, true);
                   }}
                 >
                   Login

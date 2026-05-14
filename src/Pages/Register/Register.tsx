@@ -322,244 +322,355 @@ const Register: React.FC<RegisterProps> = ({ closeModal, switchToLogin }) => {
   const isMobileOrTablet = useMediaQuery(theme.breakpoints.down("md")); //
 
   return (
-    <MainGrid
-      container
-      style={{
-        height: "100%",
-        overflow: "hidden",
+  //  <MainGrid
+  //     container
+  //     sx={{
+  //       height: { xs: "auto", md: "100vh" }, // Auto height on mobile to allow natural scroll
+  //       minHeight: "100vh",
+  //       overflowX: "hidden",
+  //       overflowY: { xs: "auto", md: "hidden" }, // Scroll on mobile, locked on desktop
+  //     }}
+  //   >
+  //     {/* LEFT SIDE (HIDE ON MOBILE/TABLET) */}
+  //     {!isMobileOrTablet && <Login_register_firstPart />}
+
+  //     {/* ALERT MESSAGES */}
+  //     <Box sx={{ position: "fixed", top: 20, right: 20, zIndex: 3000 }}>
+  //       {errorData && <AlertComponent errorData={errorData} handleClose={handleClose} type="error" />}
+  //       {successData && <AlertComponent errorData={successData} handleClose={handleClose} type="success" />}
+  //     </Box>
+
+  //     {/* RIGHT SIDE (SIGNUP FORM) */}
+  //     <SecondGrid
+  //       item
+  //       xs={12}
+  //       md={6}
+  //       sx={{
+  //         display: "flex",
+  //         justifyContent: "center",
+  //         alignItems: { xs: "flex-start", md: "center" }, // Align to top on mobile for scrolling
+  //         height: { xs: "auto", md: "100%" },
+  //         overflowY: { xs: "visible", md: "auto" }, // Allow scroll inside grid on desktop
+  //         padding: { xs: "20px 15px", md: "40px 25px" },
+  //         "&::-webkit-scrollbar": { display: "none" },
+  //       }}
+  //     >
+  //       <MainBox 
+  //         sx={{ 
+  //           width: "100%", 
+  //           maxWidth: "450px", // Prevents form from becoming too wide on tablets
+  //           margin: "0 auto" 
+  //         }}
+  //       >
+  //         <Typography style={AllStyle.heading}>
+  //           {config.signHeadingName}
+  //         </Typography>
+
+  //         <SecondBox
+  //           sx={{
+  //             width: "100%",
+  //             marginTop: "20px",
+  //             display: "flex",
+  //             flexDirection: "column",
+  //             gap: "5px" // Adds consistent spacing between fields
+  //           }}
+  //         >
+  //           <Typography style={AllStyle.smallHeading}>
+  //             {config.welcomeHeading}
+  //           </Typography>
+
+  //           {/* Form Fields Start */}
+  //           <Typography style={AllStyle.textStyle}>
+  //             {config.email} {importantField()}
+  //           </Typography>
+  //           <InputField
+  //             placeholder={config.placeHolderEmail}
+  //             variant="outlined"
+  //             value={data.email}
+  //             onChange={(e) => handleEmail(e.target.value)}
+  //             error={data.emailError}
+  //             helperText={data.emailError && data.emailErrorMessage}
+  //           />
+
+  //           {/* First Name */}
+  //           <Typography style={AllStyle.textStyle}>
+  //             {config.first_name} {importantField()}
+  //           </Typography>
+  //           <InputField
+  //             placeholder={config.first_name_placeholder}
+  //             value={data.firstName}
+  //             onChange={(e) => handleValidationFirstLast("firstName", e.target.value, 20)}
+  //             error={data.firstNameError}
+  //             helperText={data.firstNameError && config.error_msg}
+  //           />
+
+  //           {/* Last Name */}
+  //           <Typography style={AllStyle.textStyle}>
+  //             {config.last_name} {importantField()}
+  //           </Typography>
+  //           <InputField
+  //             placeholder={config.last_name_placeholder}
+  //             onChange={(e) => handleValidationFirstLast("lastName", e.target.value, 20)}
+  //             error={data.lastNameError}
+  //             value={data.lastName}
+  //             helperText={data.lastNameError && config.error_msg}
+  //           />
+
+  //           {/* Password */}
+  //           <Typography style={AllStyle.textStyle}>
+  //             {config.password} {importantField()}
+  //           </Typography>
+  //           <InputField
+  //             error={data.passwordError}
+  //             helperText={data.passwordError ? data.passwordErrorMessage : ""}
+  //             placeholder={config.placeHolderPassword}
+  //             type={handleVisiblPassword(enablePasswordField2)}
+  //             fullWidth
+  //             value={data.password}
+  //             onChange={(e) => handlePassword(e.target.value, "")}
+  //             InputProps={{
+  //               endAdornment: (
+  //                 <IconButton onClick={() => setenablePasswordField2(!enablePasswordField2)}>
+  //                   {enablePasswordField2 ? <VisibilityOff /> : <Visibility />}
+  //                 </IconButton>
+  //               ),
+  //             }}
+  //           />
+
+  //           {/* Confirm Password */}
+  //           <Typography style={AllStyle.textStyle}>
+  //             {config.confirm_password} {importantField()}
+  //           </Typography>
+  //           <InputField
+  //             error={data.setPasswordError}
+  //             helperText={data.setPasswordError ? "Passwords do not match" : ""}
+  //             placeholder={config.placeHolderPassword}
+  //             type={handleVisiblPassword(enablePasswordField)}
+  //             fullWidth
+  //             value={data.setPassword}
+  //             onChange={(e) => handleConfirmPassword(e.target.value, data.password)}
+  //             InputProps={{
+  //               endAdornment: (
+  //                 <IconButton onClick={() => setenablePasswordField(!enablePasswordField)}>
+  //                   {enablePasswordField ? <VisibilityOff /> : <Visibility />}
+  //                 </IconButton>
+  //               ),
+  //             }}
+  //           />
+
+  //           {/* Phone */}
+  //           <Typography style={AllStyle.textStyle}>
+  //             {config.phone_no} {importantField()}
+  //           </Typography>
+  //           <PhoneStyle
+  //             borderColor={data.mobileNoError ? "#FF5E5B" : "#dddfe2"}
+  //             value={data.mobileNo} 
+  //             onChange={(val) => handlePhoneNumber(val)}
+  //             defaultCountry="IN"
+  //             international
+  //           />
+  //           {data.mobileNoError && (
+  //             <Typography style={{ ...AllStyle.errorTextStyle, color: 'red', fontSize: '12px' }}>
+  //               Please enter a valid phone number
+  //             </Typography>
+  //           )}
+
+  //           {/* Submit */}
+  //           <ButtonStyle
+  //             variant="contained"
+  //             sx={{ ...AllStyle.btnStyle, mt: 2, mb: 2 }}
+  //             onClick={() => {
+  //               handleValidation();
+  //               trackEvent("Signup ", "Click", `Register`);
+  //             }}
+  //           >
+  //             {config.labelTitleSignUp}
+  //           </ButtonStyle>
+
+  //           {/* Already have account */}
+  //           <Typography align="center" sx={{ fontSize: "14px", color: "#0A2239", mb: 4 }}>
+  //             {config.lable_already_signup}{" "}
+  //             <span
+  //               onClick={switchToLogin}
+  //               style={{ ...AllStyle.boldStyle, cursor: "pointer", color: "#1470AF" }}
+  //             >
+  //               {config.labelTitle}
+  //             </span>
+  //           </Typography>
+  //         </SecondBox>
+  //       </MainBox>
+  //     </SecondGrid>
+  //   </MainGrid>
+  <MainGrid
+  container
+  sx={{
+    // CRITICAL: Change height from 100% to min-height for mobile
+    height: { xs: "auto", md: "100vh" }, 
+    minHeight: "100vh",
+    // CRITICAL: Allow the whole page to scroll on mobile
+    overflowY: { xs: "visible", md: "hidden" }, 
+    overflowX: "hidden",
+    position: "relative",
+    backgroundColor: "#fff",
+  }}
+>
+  {/* LEFT SIDE (Hides on mobile) */}
+  {!isMobileOrTablet && <Login_register_firstPart />}
+
+  {/* RIGHT SIDE (SIGNUP FORM) */}
+  <SecondGrid
+  item
+  xs={12}
+  md={6}
+  className="hide-scrollbar" // Add the class here
+  sx={{
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: { xs: "flex-start", md: "center" },
+    alignItems: "center",
+    height: { xs: "auto", md: "100vh" },
+    overflowY: "auto", // Functional scrolling
+    padding: { xs: "20px 20px 60px 20px", md: "40px" },
+    
+    /* Inline alternative if you don't want to use a CSS class */
+    "&::-webkit-scrollbar": { display: "none" },
+    "scrollbarWidth": "none",
+    "msOverflowStyle": "none",
+  }}
+>
+  {/* Form content */}
+    <MainBox 
+      sx={{ 
+        width: "100%", 
+        maxWidth: "400px", 
+        // Remove any fixed height that might be coming from Login/login.js
+        height: "auto !important" 
       }}
     >
-      {/* ✅ LEFT SIDE (HIDE ON MOBILE/TABLET) */}
-      {!isMobileOrTablet && <Login_register_firstPart />}
+      <Typography style={AllStyle.heading}>
+        {config.signHeadingName}
+      </Typography>
 
-      {errorData && (
-        <AlertComponent
-          errorData={errorData}
-          handleClose={handleClose}
-          type="error"
-        />
-      )}
-      {successData && (
-        <AlertComponent
-          errorData={successData}
-          handleClose={handleClose}
-          type="success"
-        />
-      )}
-
-      {/* ✅ RIGHT SIDE (SIGNUP FORM) */}
-      <SecondGrid
-        item
-        xs={12}
-        sm={12}
-        md={isMobileOrTablet ? 12 : 6} // ✅ UPDATED
-        lg={isMobileOrTablet ? 12 : 6} // ✅ UPDATED
-        style={{
-          display: "flex",
-          justifyContent: isMobileOrTablet ? "center" : "end",
-          alignItems: "flex-start", // ✅ ADD THIS
-          flexDirection: "row",
-          overflowY: "auto",
-          height: "100%",
-
-          paddingRight: isMobileOrTablet ? "10px" : "25px",
-          paddingLeft: isMobileOrTablet ? "10px" : "0px", // ✅ ADD THIS
-
-          marginBottom: "15px",
-          marginTop: "10px",
-          paddingTop: "10px",
-        }}
+      <SecondBox
         sx={{
-          "&::-webkit-scrollbar": {
-            display: "none",
-          },
+          width: "100%",
+          marginTop: "10px",
+          // Force child elements to flow naturally
+          height: "auto !important",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
-        <MainBox>
-          <Typography style={AllStyle.heading}>
-            {config.signHeadingName}
-          </Typography>
+        <Typography style={AllStyle.smallHeading}>
+          {config.welcomeHeading}
+        </Typography>
 
-          <SecondBox
-            sx={{
-              maxWidth: isMobileOrTablet ? "100%" : "360px", // ✅ OPTIONAL IMPROVEMENT
-              width: "100%",
-              marginTop: "5%",
-            }}
-            style={AllStyle.secondBox}
-          >
-            <Typography style={AllStyle.smallHeading}>
-              {config.welcomeHeading}
-            </Typography>
+        {/* --- FORM FIELDS START --- */}
+        {/* Email */}
+        <Typography style={AllStyle.textStyle}>
+          {config.email} {importantField()}
+        </Typography>
+        <InputField
+          placeholder={config.placeHolderEmail}
+          variant="outlined"
+          value={data.email}
+          onChange={(e) => handleEmail(e.target.value)}
+          error={data.emailError}
+          helperText={data.emailError && data.emailErrorMessage}
+        />
 
-            {/* ===== YOUR FULL FORM (UNCHANGED) ===== */}
+        {/* Name Fields */}
+        <Typography style={AllStyle.textStyle}>
+          {config.first_name} {importantField()}
+        </Typography>
+        <InputField
+          placeholder={config.first_name_placeholder}
+          value={data.firstName}
+          onChange={(e) => handleValidationFirstLast("firstName", e.target.value, 20)}
+          error={data.firstNameError}
+        />
 
-            {/* Email */}
-            <Typography style={AllStyle.textStyle}>
-              {config.email} {importantField()}
-            </Typography>
-            <InputField
-              placeholder={config.placeHolderEmail}
-              variant="outlined"
-              data-test-id="emailtest"
-              value={data.email}
-              onChange={(e) => handleEmail(e.target.value)}
-              error={data.emailError}
-              helperText={data.emailError && data.emailErrorMessage}
-            />
+        <Typography style={AllStyle.textStyle}>
+          {config.last_name} {importantField()}
+        </Typography>
+        <InputField
+          placeholder={config.last_name_placeholder}
+          value={data.lastName}
+          onChange={(e) => handleValidationFirstLast("lastName", e.target.value, 20)}
+          error={data.lastNameError}
+        />
 
-            {/* First Name */}
-            <Typography style={AllStyle.textStyle}>
-              {config.first_name} {importantField()}
-            </Typography>
-            <InputField
-              placeholder={config.first_name_placeholder}
-              value={data.firstName}
-              variant="outlined"
-              data-test-id="1stame"
-              onChange={(e) =>
-                handleValidationFirstLast("firstName", e.target.value, 20)
-              }
-              error={data.firstNameError}
-              helperText={data.firstNameError && config.error_msg}
-            />
+        {/* Passwords */}
+        <Typography style={AllStyle.textStyle}>
+          {config.password} {importantField()}
+        </Typography>
+        <InputField
+          error={data.passwordError}
+          type={handleVisiblPassword(enablePasswordField2)}
+          value={data.password}
+          onChange={(e) => handlePassword(e.target.value, "")}
+          InputProps={{
+            endAdornment: (
+              <IconButton onClick={() => setenablePasswordField2(!enablePasswordField2)}>
+                {enablePasswordField2 ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            ),
+          }}
+        />
 
-            {/* Last Name */}
-            <Typography style={AllStyle.textStyle}>
-              {config.last_name} {importantField()}
-            </Typography>
-            <InputField
-              placeholder={config.last_name_placeholder}
-              onChange={(e) =>
-                handleValidationFirstLast("lastName", e.target.value, 20)
-              }
-              variant="outlined"
-              error={data.lastNameError}
-              value={data.lastName}
-              helperText={data.lastNameError && config.error_msg}
-              data-test-id="lstname"
-            />
+        <Typography style={AllStyle.textStyle}>
+          {config.confirm_password} {importantField()}
+        </Typography>
+        <InputField
+          error={data.setPasswordError}
+          type={handleVisiblPassword(enablePasswordField)}
+          value={data.setPassword}
+          onChange={(e) => handleConfirmPassword(e.target.value, data.password)}
+          InputProps={{
+            endAdornment: (
+              <IconButton onClick={() => setenablePasswordField(!enablePasswordField)}>
+                {enablePasswordField ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            ),
+          }}
+        />
 
-            {/* Password */}
-            <Typography style={AllStyle.textStyle}>
-              {config.password} {importantField()}
-            </Typography>
-            <InputField
-              error={data.passwordError}
-              helperText={data.passwordError ? data.passwordErrorMessage : ""}
-              style={{ marginBottom: "12px" }}
-              placeholder={config.placeHolderPassword}
-              data-test-id="txtInputPassword"
-              type={handleVisiblPassword(enablePasswordField2)}
-              fullWidth
-              value={data.password}
-              variant="outlined"
-              onChange={(e) => handlePassword(e.target.value, "")}
-              InputProps={{
-                endAdornment: (
-                  <IconButton
-                    onClick={() =>
-                      setenablePasswordField2(!enablePasswordField2)
-                    }
-                  >
-                    {enablePasswordField2 ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                ),
-              }}
-            />
+        {/* Phone */}
+        <Typography style={AllStyle.textStyle}>
+          {config.phone_no} {importantField()}
+        </Typography>
+        <PhoneStyle
+          borderColor={data.mobileNoError ? "#FF5E5B" : "#dddfe2"}
+          value={data.mobileNo} 
+          onChange={(val) => handlePhoneNumber(val)}
+          defaultCountry="IN"
+          international
+        />
 
-            {/* Confirm Password */}
-            <Typography style={AllStyle.textStyle}>
-              {config.confirm_password} {importantField()}
-            </Typography>
-            <InputField
-              error={data.setPasswordError}
-              helperText={
-                data.setPasswordError
-                  ? "Passwords do not match or too short"
-                  : ""
-              }
-              style={{ marginBottom: "12px" }}
-              placeholder={config.placeHolderPassword}
-              type={handleVisiblPassword(enablePasswordField)}
-              fullWidth
-              value={data.setPassword}
-              variant="outlined"
-              onChange={(e) =>
-                handleConfirmPassword(e.target.value, data.password)
-              }
-              InputProps={{
-                endAdornment: (
-                  <IconButton
-                    onClick={() => setenablePasswordField(!enablePasswordField)}
-                  >
-                    {enablePasswordField ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                ),
-              }}
-            />
+        {/* Action Button */}
+        <ButtonStyle
+          variant="contained"
+          sx={{ 
+            ...AllStyle.btnStyle, 
+            mt: 3, 
+            mb: 2,
+            backgroundColor: "#1470AF !important" 
+          }}
+          onClick={handleValidation}
+        >
+          {config.labelTitleSignUp}
+        </ButtonStyle>
 
-            {/* Phone */}
-            <Typography style={AllStyle.textStyle}>
-              {config.phone_no} {importantField()}
-            </Typography>
-            <PhoneStyle
-              // autoFocus={false}
-              borderColor={data.mobileNoError ? "#FF5E5B" : "#dddfe2"}
-              style={{ marginBottom: !data.mobileNoError ? "16px" : 0 }}
-              value={data.mobileNo} 
-              onChange={(val) => handlePhoneNumber(val)}
-              defaultCountry="IN"
-              countries={[]}
-              international
-            />
-
-            {data.mobileNoError && (
-              <Typography
-                style={{ ...AllStyle.errorTextStyle, marginBottom: "16px" }}
-              >
-                Please enter a valid phone number
-              </Typography>
-            )}
-
-            {/* Submit */}
-            <ButtonStyle
-              variant="contained"
-              style={AllStyle.btnStyle}
-              onClick={() => {
-                handleValidation();
-                trackEvent("Login ", "Click", `Login`);
-              }}
-            >
-              {config.labelTitleSignUp}
-            </ButtonStyle>
-
-            {/* Already account */}
-            <Typography
-              style={{
-                fontWeight: 400,
-                fontSize: "16px",
-                lineHeight: "19.2px",
-                color: "#0A2239",
-                marginBottom: "10px",
-              }}
-            >
-              {config.lable_already_signup}{" "}
-              <span
-                onClick={switchToLogin}
-                style={{
-                  ...AllStyle.boldStyle,
-                  cursor: "pointer",
-                  textDecoration: "none",
-                }}
-              >
-                {config.labelTitle}
-              </span>
-            </Typography>
-          </SecondBox>
-        </MainBox>
-      </SecondGrid>
-    </MainGrid>
+        <Typography align="center" sx={{ mb: 4 }}>
+          {config.lable_already_signup}{" "}
+          <span onClick={switchToLogin} style={{ cursor: "pointer", color: "#1470AF", fontWeight: "bold" }}>
+            {config.labelTitle}
+          </span>
+        </Typography>
+      </SecondBox>
+    </MainBox>
+  </SecondGrid>
+</MainGrid>
   );
 };
 
