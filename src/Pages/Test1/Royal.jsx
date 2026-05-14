@@ -72,9 +72,9 @@ function Royal() {
           <LandingPage />
         </div>
 
-        <div style={{ marginTop: "0px" }}>
+        {/* <div style={{ marginTop: "0px" }}>
           <FounderSection />
-        </div>
+        </div> */}
 
         <div style={{ marginTop: "0px" }}>
           <TrustMetrics />
