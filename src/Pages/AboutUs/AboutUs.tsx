@@ -1,21 +1,68 @@
 import { Typography, Box, Container, styled } from "@mui/material";
 import Img from "../../Assests/p1.js.webp";
+import AboutSection, { AboutData } from './AboutSection';
+import WomanImage from "../../Assests/images/smiling-woman.png"
+import FounderSection from './FounderSection';
+import CEOImage from "../../Assests/images/ceo.png"; // Add your founder image path here
+
+const aboutData: AboutData[] = [
+  {
+    id: 1,
+    title: "Our Mission",
+    highlight: "",
+    description: "To empower individuals with the mental fitness tools needed to navigate the complexities of modern life with resilience and clarity.",
+    buttonText: "Book free consultation",
+    image: WomanImage, 
+    isImageLeft: false, 
+    backdropStyle: 'style-blue',
+    note: "" 
+  },
+];
 
 export const AboutUs = () => {
   return (
     <MainWrapper>
-      <Container maxWidth="lg" style={{paddingTop:20}}>
+      {/* --- FIXED ABOUT SECTION START --- */}
+      <Box component="main" sx={{ bgcolor: '#ffff', width: '100%' }}>
+          <Container 
+            disableGutters 
+            maxWidth={false} 
+            sx={{ 
+              display: 'flex', 
+              flexDirection: 'column', 
+              alignItems: 'center',
+              px: 0, // This removes the final padding
+              width: '100%'
+            }}
+          >
+            {aboutData.map((section) => (
+              <AboutSection key={section.id} data={section} />
+            ))}
+          </Container>
+          {/* --- NEW FOUNDER SECTION ADDED HERE --- */}
+          <FounderSection 
+            image={CEOImage}
+            name="Tanmay Agnihotri"
+            designation="Founder & CEO"
+            quote="With consistent training, the mind learns to serve you obediently."
+            message={`I started this organization to help those who have been struggling with mental health issues for a long time. When I saw how poorly many mental health care techniques were designed, it became necessary for me to come up with more advanced mental fitness training - training that is more beneficial and practical than many current practices.
+
+          I sincerely hope that our mental fitness trainings and programs serve you to your satisfaction and bring greater clarity, strength, and joy into your life.`}
+          />
+     
+      {/* --- FIXED ABOUT SECTION END --- */}
+
+      <Container style={{paddingTop:20}}>
         {/* Hero Section */}
-        <HeroSection>
+        {/* <HeroSection>
           <Overlay />
           <HeroImage src={Img} alt="Royal Mindfulness" />
           <MainHeading>About Us</MainHeading>
-        </HeroSection>
+        </HeroSection> */}
 
-        {/* Content Section */}
+        {/* Text Content Section */}
         <ContentWrapper>
-
-          <Typography variant="body1" sx={styles.mainText}>
+           <Typography variant="body1" sx={styles.mainText}>
            At Royalmindfulness, we believe that our mind also need a daily training for fitness to deal withemotional, relationship issues, anxiety, fatigue, stress, overthinking, lack of sleep, focus and procrastination similar to our body. We can't make our body fit and relaxing by working out once in a week or a month, same our brain need a routine workout to deal with our day to day life problems.
           </Typography>
 
@@ -41,6 +88,7 @@ export const AboutUs = () => {
           </Typography>
         </ContentWrapper>
       </Container>
+       </Box>
     </MainWrapper>
   );
 };
@@ -51,7 +99,6 @@ const MainWrapper = styled(Box)({
   background: "linear-gradient(180deg, #fdfcfb 0%, #e2d1c3 100%)",
   color: "#333",
   minHeight: "100vh",
-  paddingBottom: "4rem",
   overflow: "hidden",
 });
 
@@ -61,15 +108,14 @@ const HeroSection = styled(Box)({
   height: "75vh",
   borderRadius: "20px",
   overflow: "hidden",
-  boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
+  // boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
   marginBottom: "4rem",
 });
 
 const Overlay = styled(Box)({
   position: "absolute",
   inset: 0,
-  background:
-    "linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%)",
+  background: "linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%)",
   zIndex: 1,
 });
 
@@ -80,9 +126,7 @@ const HeroImage = styled("img")({
   filter: "brightness(0.8)",
   transform: "scale(1.02)",
   transition: "transform 3s ease",
-  "&:hover": {
-    transform: "scale(1.05)",
-  },
+  "&:hover": { transform: "scale(1.05)" },
 });
 
 const MainHeading = styled(Typography)({
@@ -97,33 +141,20 @@ const MainHeading = styled(Typography)({
   letterSpacing: "2px",
   textShadow: "2px 2px 6px rgba(0,0,0,0.5)",
   textAlign: "center",
-  "@media (max-width:900px)": {
-    fontSize: "2.8rem",
-  },
-  "@media (max-width:500px)": {
-    fontSize: "2rem",
-  },
+  "@media (max-width:900px)": { fontSize: "2.8rem" },
+  "@media (max-width:500px)": { fontSize: "2rem" },
 });
 
 const ContentWrapper = styled(Box)({
   backgroundColor: "rgba(255,255,255,0.8)",
   padding: "3rem 2rem",
   borderRadius: "20px",
-  boxShadow: "0 10px 40px rgba(0,0,0,0.1)",
+  // boxShadow: "0 10px 40px rgba(0,0,0,0.1)",
   lineHeight: 1.8,
   fontSize: "1.15rem",
   textAlign: "justify",
-  "@media (max-width:900px)": {
-    padding: "2rem 1rem",
-  },
+  "@media (max-width:900px)": { padding: "2rem 1rem" },
 });
-
-const Highlight = styled("span")({
-  fontWeight: 600,
-  color: "#11100fff",
-});
-
-
 
 const styles = {
   mainText: {
@@ -131,8 +162,6 @@ const styles = {
     color: "#333",
     lineHeight: 1.9,
     fontSize: "18px",
-    "@media (max-width:900px)": {
-      fontSize: "1rem",
-    },
+    "@media (max-width:900px)": { fontSize: "1rem" },
   },
 };
