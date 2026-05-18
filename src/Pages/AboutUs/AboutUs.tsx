@@ -3,6 +3,7 @@ import Img from "../../Assests/p1.js.webp";
 import AboutSection, { AboutData } from './AboutSection';
 import WomanImage from "../../Assests/images/smiling-woman.png"
 import FounderSection from './FounderSection';
+import CTASection from './CTASection';
 import CEOImage from "../../Assests/images/ceo.png"; // Add your founder image path here
 
 const aboutData: AboutData[] = [
@@ -38,7 +39,8 @@ export const AboutUs = () => {
             {aboutData.map((section) => (
               <AboutSection key={section.id} data={section} />
             ))}
-          </Container>
+          </Container>        
+
           {/* --- NEW FOUNDER SECTION ADDED HERE --- */}
           <FounderSection 
             image={CEOImage}
@@ -88,8 +90,13 @@ export const AboutUs = () => {
           </Typography>
         </ContentWrapper>
       </Container>
-       </Box>
+      {/* CTA Section */}
+        <Box sx={{ mt: 5 }}> {/* Adjust the number (e.g., 4, 6, 8) to get your desired margin-top spacing */}
+          <CTASection />
+        </Box>
+      </Box>
     </MainWrapper>
+    
   );
 };
 
@@ -97,7 +104,7 @@ export const AboutUs = () => {
 
 const MainWrapper = styled(Box)({
   background: "linear-gradient(180deg, #fdfcfb 0%, #e2d1c3 100%)",
-  color: "#333",
+  color: "#f8f8f8",
   minHeight: "100vh",
   overflow: "hidden",
 });

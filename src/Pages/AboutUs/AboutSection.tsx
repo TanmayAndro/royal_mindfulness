@@ -36,7 +36,7 @@ const AboutSection: React.FC<Props> = ({ data }) => {
           position: 'relative' 
         }}
       >
-        {/* Structural Blue Backdrop */}
+        {/* Structural Blue Backdrop - Exact Same Original Curve with Sharp Edges Fixed */}
         <Box 
           sx={{ 
             position: 'absolute',
@@ -47,8 +47,9 @@ const AboutSection: React.FC<Props> = ({ data }) => {
             height: '100%', 
             bgcolor: '#1470af',
             zIndex: 0,
-            maskImage: 'radial-gradient(circle at 0% 0%, transparent 55%, black 56%)',
-            WebkitMaskImage: 'radial-gradient(circle at 0% 0%, transparent 55%, black 56%)',
+            // Gap reduced from 55%-56% to 55%-55.1% to completely eliminate blur/anti-aliasing fuzziness
+            maskImage: `radial-gradient(circle at ${isImageLeft ? '100% 0%' : '0% 0%'}, transparent 55%, black 55.1%)`,
+            WebkitMaskImage: `radial-gradient(circle at ${isImageLeft ? '100% 0%' : '0% 0%'}, transparent 55%, black 55.1%)`,
           }} 
         />
 

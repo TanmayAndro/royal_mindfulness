@@ -12,30 +12,33 @@ interface FounderProps {
 
 const FounderSection: React.FC<FounderProps> = ({ image, name, designation, quote, message }) => {
   return (
-    <Box sx={{ width: '100%', bgcolor: '#fff', pt: { xs: 5, md: 12 }, pb: 0, overflow: 'hidden' }}>
+    <Box sx={{ width: '100%', bgcolor: '#fff', pt: { xs: 4, md: 12 }, pb: 0, overflow: 'hidden' }}>
       <Container disableGutters maxWidth={false} sx={{ position: 'relative' }}>
         
-        {/* Background Blue Shape - Height and Curve Adjusted */}
+        {/* Background Blue Shape - Desktop and Mobile Adaptive View */}
         <Box 
           sx={{ 
             position: 'absolute',
             bottom: 0,
             left: 0,
             width: '100%',
-            height: { xs: '90%', md: '82%' }, // Slightly adjusted height
+            // Mobile par full background cover strip aur desktop par original fixed height proportion
+            height: { xs: '100%', md: '82%' }, 
             bgcolor: '#1470af',
             zIndex: 0,
+            // Mobile par clean straight rectangular layer aur desktop par exact complex ellipse curve
             clipPath: {
-              xs: 'ellipse(150% 100% at 50% 100%)', 
+              xs: 'none', 
               md: 'ellipse(100% 100% at 50% 100%)'
             },
+            borderRadius: { xs: 0, md: 0 }
           }} 
         />
 
         <Stack 
           direction={{ xs: 'column', md: 'row' }} 
-          spacing={{ xs: 2, md: 4 }} 
-          alignItems="flex-end" // Image hamesha bottom se touch rahegi
+          spacing={{ xs: 3, md: 4 }} 
+          alignItems="stretch" 
           justifyContent="center"
           sx={{ position: 'relative', zIndex: 1, px: { xs: 3, md: 10 } }}
         >
@@ -44,14 +47,18 @@ const FounderSection: React.FC<FounderProps> = ({ image, name, designation, quot
             flex: 1, 
             color: '#fff', 
             textAlign: 'center', 
-            pb: { xs: 6, md: 8 }, // Space from name to bottom
-            pt: { xs: 8, md: 2 } 
+            pb: { xs: 2, md: 2 }, 
+            pt: { xs: 6, md: 8 },
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center'
           }}>
             <FormatQuoteIcon sx={{ 
               fontSize: { xs: 40, md: 60 }, 
               opacity: 0.9, 
               mb: 1, 
-              transform: 'rotate(180deg)' 
+              transform: 'rotate(180deg)',
+              mx: 'auto' 
             }} />
             
             <Typography variant="body1" sx={{ 
@@ -74,7 +81,7 @@ const FounderSection: React.FC<FounderProps> = ({ image, name, designation, quot
               "{quote}"
             </Typography>
 
-            <Box>
+            <Box sx={{ mb: { xs: 2, md: 0 } }}>
               <Typography variant="h5" sx={{ fontWeight: 800, fontSize: { xs: '1.3rem', md: '1.5rem' } }}>
                 {name}
               </Typography>
@@ -84,16 +91,20 @@ const FounderSection: React.FC<FounderProps> = ({ image, name, designation, quot
             </Box>
           </Box>
 
-          {/* Founder Image Area - Alignment Fixed */}
+          {/* Founder Image Area - Responsive Clean Padding Integration */}
           <Box 
             sx={{ 
               width: { xs: '85%', sm: '65%', md: '450px' },
               display: 'flex',
               justifyContent: 'center',
-              alignItems: 'flex-end',
-              mr: { md: -2 }, // Balanced right margin
-              mt: { xs: 4, md: 0 },
-              lineHeight: 0 // Removes any default spacing below image
+              alignItems: 'flex-end', 
+              mr: { md: -2 }, 
+              mt: { xs: 2, md: 0 },
+              mx: { xs: 'auto', md: 0 },
+              lineHeight: 0, 
+              alignSelf: 'flex-end',
+              // Mobile screens par image ke neeche background border se subtle touch spacing maintain karne ke liye
+              pb: { xs: 0, md: 0 }
             }}
           >
             <Box 
@@ -103,14 +114,12 @@ const FounderSection: React.FC<FounderProps> = ({ image, name, designation, quot
               sx={{ 
                 width: '100%', 
                 height: 'auto', 
-                maxWidth: { xs: '320px', md: '440px' },
+                maxWidth: { xs: '280px', sm: '320px', md: '440px' },
                 display: 'block',
-                // Niche se cut ko minimize kiya gaya he alignment ke liye
                 mb: 0, 
-                filter: 'drop-shadow(0px -10px 20px rgba(0,0,0,0.1))',
+                filter: 'drop-shadow(0px -10px 20px rgba(0,0,0,0.15))',
                 zIndex: 2,
-                // Inset percentage ko kam kiya taaki image natural lage
-                clipPath: 'inset(0 0 2% 0)' 
+                clipPath: 'none' 
               }} 
             />
           </Box>
