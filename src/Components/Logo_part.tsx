@@ -63,7 +63,7 @@
             <img
               src={logo}
               style={{
-                width: "60px",
+                width: "48px",
                 filter: isConsultationPage
                   ? "brightness(0) saturate(100%) invert(34%) sepia(92%) saturate(1039%) hue-rotate(176deg) brightness(91%) contrast(93%)"
                   : "none",

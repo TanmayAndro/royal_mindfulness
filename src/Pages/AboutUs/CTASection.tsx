@@ -66,11 +66,11 @@ export const ConnectWithUwill: React.FC = () => {
               },
             }}
           >
-            Connect with Royal Mindfulness
+           Connect with Royal Mindfulness Experts
           </Typography>
 
           <ActionButton variant="contained" disableRipple>
-            Contact Us
+            Contact us Today!
           </ActionButton>
         </Box>
       </Container>
