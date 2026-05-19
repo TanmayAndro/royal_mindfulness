@@ -65,22 +65,35 @@ const AboutSection: React.FC<Props> = ({ data }) => {
               sx={{ 
                 width: '100%', 
                 maxWidth: '650px',
-
-                // FIXED: 1200px se kam me padding add hogi, 1200px+ (aur 1440px) par strict 0 rahegi
+                
+                // Vertical Spacing
                 pt: { 
-                  xs: '48px', // 0px se lekar 1199px tak padding-top: 48px apply rahega
-                  md: '48px', // 900px screen par bhi padding-top active rahega
-                  lg: 0       // Strict 1200px aur usse upar (jaise 1440px) par padding 0 ho jayegi
+                  xs: '48px', 
+                  md: '48px', 
+                  lg: 0, // @media (min-width: 1200px) -> padding-top: 0px     
+                  xl: 0       
                 },
                 pb: { 
-                  xs: 0,      // Padding-bottom har jagah commented/zero hai
+                  xs: 0,      
                   md: 0,      
-                  lg: 0 
+                  lg: 0, // @media (min-width: 1200px) -> padding-bottom: 0px     
+                  xl: 0
                 },
-                px: { 
-                  xs: 0,      // Horizontal padding har jagah commented/zero hai
-                  md: 0,      
-                  lg: 0       
+
+                // ✅ UPDATED: Horizontal Responsive Padding according to your new CSS rule
+                pl: {
+                  xs: '20px',  
+                  sm: 0,        // ✅ FIXED: @media (min-width: 600px) par padding-left strictly 0px kar di hai
+                  md: '12%',  
+                  lg: '39px',  // @media (min-width: 1200px) -> padding-left: 39px
+                  xl: '49px'   // 1440px+ screens
+                },
+                pr: {
+                  xs: '20px',  
+                  sm: '32px',   // Baaki screens ki integrity maintain rakhi hai
+                  md: '12%',  
+                  lg: 0,       // @media (min-width: 1200px) -> padding-right: 0px
+                  xl: 0        
                 }
               }}
             >
@@ -102,30 +115,44 @@ const AboutSection: React.FC<Props> = ({ data }) => {
                 {description}
               </Typography>
               
-              <Button 
-                variant="contained" 
-                sx={{ 
-                  bgcolor: '#1470af', 
-                  width: 'fit-content', 
-                  px: 4, 
-                  py: 1.5, 
-                  fontWeight: 700, 
-                  textTransform: 'none',
-                  color: '#fff', 
-                  '&:hover': { bgcolor: '#105d91' } 
-                }}
-                onClick={() => {
-                  trackEvent(
-                    "about_section_button",
-                    "Click",
-                    "BookConsultation",
-                    true
-                  );
-                  navigate("/consultation_question");
-                }}
-              >
-                {buttonText}
-              </Button>              
+              <Box sx={{ display: 'flex', flexDirection: 'column', width: 'fit-content' }}>
+                <Button 
+                  variant="contained" 
+                  sx={{ 
+                    bgcolor: '#1470af', 
+                    width: 'fit-content', 
+                    px: 4, 
+                    py: 1.5, 
+                    fontWeight: 700, 
+                    textTransform: 'none',
+                    color: '#fff', 
+                    '&:hover': { bgcolor: '#105d91' } 
+                  }}
+                  onClick={() => {
+                    trackEvent(
+                      "about_section_button",
+                      "Click",
+                      "BookConsultation",
+                      true
+                    );
+                    navigate("/consultation_question");
+                  }}
+                >
+                  {buttonText}
+                </Button>   
+                
+                <Typography 
+                  variant="caption" 
+                  display="block" 
+                  sx={{ 
+                    mt: 1, 
+                    color: "rgb(179 165 165);",
+                    textAlign: 'center' 
+                  }}
+                >
+                  (No Credit card required)
+                </Typography>  
+              </Box>         
             </Stack>
           </Grid>
 

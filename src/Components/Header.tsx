@@ -259,11 +259,8 @@ const Header: React.FC = () => {
           : undefined,
         transition: "background-color 0.3s ease",
         zIndex: 10,
-        padding: {
-          xs: "8px 15px",
-          sm: "2px 20px",
-          md: "2px 20px",
-        },
+        // ✅ Exact CSS padding applied here
+        padding: "15px 5%", 
 
         ...(isWhiteRoute && {
           "& .item_heading_css": {
