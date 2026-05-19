@@ -186,7 +186,7 @@ const AboutSection: React.FC<Props> = ({ data }) => {
 
                 mb: { 
                   md: '-7px',    
-                  lg: -2,        
+                  lg: -1,        
                 }, 
 
                 mr: { 
