@@ -226,8 +226,8 @@ const Layout = () => {
   const location = useLocation();
   const hideHeaderFooter = ["/meeting", "/", "", "/quiz_questions"].includes(location.pathname);
  // Hides for Jitsi page
-  // const hideFooter = location.pathname === "/free_consultance"; 
-  const hideFooter = ["/free_consultance", "/consultation_question", "/consulation", "/book-now"].includes(location.pathname); //Hide only footer page
+  // const hideFooter = location.pathname === "/free_consultation"; 
+  const hideFooter = ["/free_consultation", "/consultation_question", "/consulation", "/book-now"].includes(location.pathname); //Hide only footer page
   
   return (
     <Box  >
@@ -282,7 +282,7 @@ const Layout = () => {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/webinar" element={<Webinar />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/free_consultance" element={<FreeConsultanceForm />} />
+        <Route path="/free_consultation" element={<FreeConsultanceForm />} />
         
         <Route path="/consultation_question" element={<TalkSpace />} />
         <Route path="/consulation" element={<ConsultationPage />} />

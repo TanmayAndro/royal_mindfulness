@@ -34,7 +34,7 @@ const TimeSlotSection = ({ date, timeZone }) => {
 
     setSelectedSlot(slot); // Update state immediately
 
-    navigate("/free_consultance", {
+    navigate("/free_consultation", {
       state: {
         free_consultance_date: date,
         free_consultance_time: slot,

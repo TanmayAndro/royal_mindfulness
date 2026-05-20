@@ -29,7 +29,7 @@ function TalkSpace() {
     const response = getFinalResponse(selectedOptions);
 
     // Navigate ONLY when valid
-    navigate("/free_consultance", {
+    navigate("/free_consultation", {
       state: { response },
     });
   };
