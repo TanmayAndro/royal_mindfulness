@@ -1,145 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import {
-//   Avatar,
-//   Box,
-//   Button,
-//   Grid,
-//   Typography,
-//   Menu,
-//   MenuItem,
-// } from "@mui/material";
-// import { Link, useNavigate } from "react-router-dom";
-// import Logo_part from "./Logo_part";
-// import LogoutIcon from "@mui/icons-material/Logout";
-// import axios from "axios";
-// const config = require("../config");
-
-// const Header: React.FC = () => {
-//   const navigate = useNavigate();
-//   const [sessions, setSessions] = useState([]);
-//   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-//   const [scrolled, setScrolled] = useState(false);
-
-//   const token = localStorage.getItem("user_token");
-//   const first_name = localStorage.getItem("first_name");
-//   const user_id = localStorage.getItem("user_id");
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const response = await axios.get(
-//           "https://deedee-unchainable-optionally.ngrok-free.dev/sessions"
-//         );
-//         const processedSessions = response.data.data.map((session: any) => ({
-//           id: session.id,
-//           sessionName: session.attributes.session_name,
-//         }));
-//         setSessions(processedSessions);
-//       } catch (error) {
-//         console.error("Error fetching sessions:", error);
-//       }
-//     };
-//     fetchData();
-//   }, []);
-
-// useEffect(() => {
-//   const handleScroll = () => {
-//     setScrolled(window.scrollY > 10);
-//   };
-//   window.addEventListener("scroll", handleScroll);
-//   return () => window.removeEventListener("scroll", handleScroll);
-// }, []);
-
-//   const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
-//     setAnchorEl(event.currentTarget);
-//   };
-
-//   const handleMenuClose = () => {
-//     setAnchorEl(null);
-//   };
-
-//   const handleDashboard = () => {
-//     navigate(`/dashboard/${user_id}`);
-//     handleMenuClose();
-//   };
-
-//   const handleSessionClick = (sessionId: any, sessionName: any) => {
-//     navigate(`/session/${sessionId}`);
-//   };
-
-//   return (
-//     <>
-//       <Grid container className={`main_header_css ${scrolled ? "scrolled" : ""}`}>
-
-//         <Logo_part />
-//         <Grid item xs={12} md={6} sm={12} lg={8} className="header_item_box_css">
-//           {config.headerItem.map(
-//             (item: { name: string; link: string }, index: number) => {
-//               const { name, link } = item;
-//               return (
-//                 <div key={`${index}`}>
-//                   <Link to={link} style={{ textDecoration: "none" }}>
-//                     <Typography
-//                       className="item_heading_css"
-//                       style={{ fontFamily: "lato", cursor: "pointer" }}
-//                     >
-//                       {name}
-//                     </Typography>
-//                   </Link>
-//                 </div>
-//               );
-//             }
-//           )}
-//         </Grid>
-//         <Grid item xs={12} md={3} sm={12} lg={2}>
-//           {!token && (
-//             <Box
-//               className="second_grid_css"
-//               sx={{ "@media (max-width:500px)": { display: "none" } }}
-//             >
-//               <Link to="/login" className="button_login_css">
-//                 <Button className="button_login_css" color="inherit">
-//                   {config.login_button_name}
-//                 </Button>
-//               </Link>
-//               <Link to="/register" className="button_login_css">
-//                 <Button className="button_login_css" color="inherit">
-//                   {config.register_button_name}
-//                 </Button>
-//               </Link>
-//             </Box>
-//           )}
-//           {token && first_name && (
-//             <Box className="second_grid_css hidebutton">
-//               <Avatar onClick={handleMenuClick} style={{ cursor: "pointer" }}>
-//                 {first_name[0]}
-//               </Avatar>
-//               <LogoutIcon
-//                 style={{ color: "white", cursor: "pointer" }}
-//                 onClick={() => {
-//                   localStorage.removeItem("user_token");
-//                   localStorage.removeItem("first_name");
-//                   localStorage.removeItem("user_id");
-//                   navigate("/login");
-//                 }}
-//               />
-//               <Menu
-//                 anchorEl={anchorEl}
-//                 open={Boolean(anchorEl)}
-//                 onClose={handleMenuClose}
-//               >
-//                 <MenuItem onClick={handleDashboard}>Dashboard</MenuItem>
-//               </Menu>
-//             </Box>
-//           )}
-//         </Grid>
-//       </Grid>
-//     </>
-//   );
-// };x
-
-// export default Header;
-
 import React, { useEffect, useState } from "react";
 import {
   Avatar,
@@ -155,6 +13,8 @@ import {
   ListItem,
   ListItemText,
   Divider,
+  useMediaQuery,
+  useTheme
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import Logo_part from "./Logo_part";
@@ -164,6 +24,8 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import AuthModal from "./AuthModal";
 import { trackEvent } from "../analitics/analytics";
+
+import MinimalMobileHeader from "../Components/Header/MinimalMobileHeader";
 const config = require("../config");
 
 
@@ -175,11 +37,15 @@ const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const theme = useTheme();
   const [authOpen, setAuthOpen] = useState(false);
   const [authView, setAuthView] = useState<"login" | "register">("login");
   const token = localStorage.getItem("user_token");
   const first_name = localStorage.getItem("first_name");
   const user_id = localStorage.getItem("user_id");
+
+  // / 1.  Isse pata chalega ki screen size mobile (md breakpoint se choti) hai ya nahi
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {
     const fetchData = async () => {
@@ -235,10 +101,15 @@ const Header: React.FC = () => {
   
   const pathname = location.pathname;
   const TRANSPARENT_ROUTES = ["/"];
-  const WHITE_ROUTES = ["/consultation_question", "/consulation","/free_consultance"];
+  const WHITE_ROUTES = ["/consultation_question", "/consulation","/free_consultation"];
+  // 2.Hide navbar mobile view only 
+  const HIDDEN_ROUTES = ["/consultation_question", "/consulation","/free_consultation"];;
   const isTransparentRoute = TRANSPARENT_ROUTES.includes(pathname);
   const isWhiteRoute = WHITE_ROUTES.includes(pathname);
-
+  const shouldHideNavbarOnMobile = HIDDEN_ROUTES.includes(pathname) && isMobile;
+  if (HIDDEN_ROUTES.includes(pathname) && isMobile) {
+    return <MinimalMobileHeader />; 
+  }
 
  return (
   <>
@@ -247,6 +118,7 @@ const Header: React.FC = () => {
       className="main_header_css"
       alignItems="center"
       sx={{
+        display: shouldHideNavbarOnMobile ? "none" : "flex",
         position:
           isTransparentRoute || isWhiteRoute ? "absolute" : "relative",
         top: 0,
@@ -260,7 +132,7 @@ const Header: React.FC = () => {
         transition: "background-color 0.3s ease",
         zIndex: 10,
         // ✅ Exact CSS padding applied here
-        padding: "15px 5%", 
+        padding: "15px 10%", 
 
         ...(isWhiteRoute && {
           "& .item_heading_css": {
@@ -335,20 +207,31 @@ const Header: React.FC = () => {
 
         {/* Login / Avatar */}
         {!token ? (
-           <Box sx={{ display: "flex", gap: 2 }}>
-              <a className="button_login_css">
-                <Button
-                  className="button_login_css"
-                  color="inherit"
-                  onClick={() => {
-                    setAuthView("login");
-                    setAuthOpen(true);
-                  }}
-                >
-                  Login
-                </Button>
-              </a>
-            </Box>
+          <Box sx={{ display: "flex", gap: 2 }}>
+            <a className="button_login_css">
+              <Button
+                className="button_login_css"
+                variant="outlined" // 1. Border layout lane ke liye variant ko outlined kiya
+                onClick={() => {
+                  setAuthView("login");
+                  setAuthOpen(true);
+                }}
+                sx={{
+                  color: "#1470AF",
+                  borderColor: "#1470AF", // 2. 'boorderColor' typo ko fix kiya
+                  borderWidth: "1px",
+                  textTransform: "none",
+                  "&:hover": {
+                    borderColor: "#1470af",
+                    backgroundColor: "rgba(20, 112, 175, 0.04)", 
+                    borderWidth: "1px",
+                  },  
+                }}
+              >
+                Login
+              </Button>
+            </a>
+          </Box>
 
         ) : (
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
@@ -379,6 +262,7 @@ const Header: React.FC = () => {
     </Grid>
   
     {/* ✅ Mobile Drawer (WORKING) */}
+    {!shouldHideNavbarOnMobile && (
     <Drawer
       anchor="left"
       open={mobileMenuOpen}
@@ -437,6 +321,7 @@ const Header: React.FC = () => {
         )}
       </Box>
     </Drawer>
+    )}
 
     {/* AUTH MODAL */}
     

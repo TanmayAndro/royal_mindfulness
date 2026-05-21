@@ -25,7 +25,7 @@
     const navigate = useNavigate();
     const location = useLocation();
     const pathname = location.pathname;  
-     const consultationPaths = ["/consultation_question", "/consulation","/free_consultance"];
+     const consultationPaths = ["/consultation_question", "/consulation","/free_consultation"];
     const isConsultationPage = consultationPaths.includes(pathname); 
    
 

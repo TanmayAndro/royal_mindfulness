@@ -11,9 +11,7 @@ function TalkSpace() {
 
   const toggleOption = (index) => {
     setSelectedOptions((prev) =>
-      prev.includes(index)
-        ? prev.filter((i) => i !== index)
-        : [...prev, index]
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
     );
   };
 
@@ -44,7 +42,7 @@ function TalkSpace() {
             {/* Form Box - Inside a clean container card */}
             <div className="form-box-talkspace">
               <h1 className="title-talkspace">
-                Which of these sounds a little like you?
+               What's stressing you the most right now?
               </h1>
               <p className="subtitle-talkspace subheading-main">
                 (You can select more than one. There's no right or wrong.)
@@ -62,13 +60,17 @@ function TalkSpace() {
                     <span className="checkbox">{opt}</span>
                   </label>
                 ))}
-                
+
                 <button
                   type="button"
                   className="submit-btn-talk"
                   onClick={() => {
                     handleSubmit();
-                    trackEvent("consultation_question", "submit", "consultation_question");
+                    trackEvent(
+                      "consultation_question",
+                      "submit",
+                      "consultation_question",
+                    );
                   }}
                 >
                   Submit

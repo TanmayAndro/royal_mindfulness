@@ -2,15 +2,11 @@
 // OPTIONS (UI)
 // ==========================
 export const OPTIONS = [
-  "I feel mentally tired most days",
-  "My mind keeps running, even when I want to rest",
-  "I struggle to stay regular with habits",
-  "My emotions feel harder to handle than before",
-  "I find it hard to focus on one thing",
-  "I feel pressure to hold everything together",
-  "I’m doing okay, but inside I feel unsettled",
-  "I want to understand my mind better",
-  "It's Something else",
+  "I can’t stop overthinking",
+  "I feel anxious for no reason",
+  "I can’t focus on anything",
+  "I feel mentally exhausted",
+  "My mood keeps changing",
 ];
 
 // ==========================

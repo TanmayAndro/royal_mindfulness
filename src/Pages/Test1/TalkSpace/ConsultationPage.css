@@ -14,12 +14,17 @@ body {
 
 /* Base Wrapper Background Setup */
 .talkspace-page {
-  background-color: #f0f4f8; /* Soft background color to hold the card cleanly */
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f0f4f8;
+    height: 100vh;           /* 1. min-height ki jagah fix height 100vh di */
+    width: 100vw;            /* 2. Poori width capture karne ke liye */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;        /* 3. Kisi bhi unwanted scroll ko strictly block karne ke liye */
+    box-sizing: border-box;  /* 4. Padding/margins ko boundaries ke andar rakhne ke liye */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;               /* 5. Default body margin ko reset karne ke liye */
+    padding: 0;
 }
 
 .page-wrapper-talkspace {
@@ -39,7 +44,7 @@ body {
 .form-box-talkspace {
   width: 100%;
   max-width: 650px;
-  background: #ffffff; /* Beautiful white card container */
+  background: #f0f4f8; /* Beautiful white card container */
   padding: 45px 40px;
   border-radius: 16px; /* Smooth professional rounded edges */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 8px rgba(0, 0, 0, 0.04); /* Balanced clean elevation dropshadow */
@@ -65,6 +70,8 @@ body {
   margin-top: 0;
   margin-bottom: 12px;
   line-height: 1.3;
+  color: #1470AF;
+;
 }
 
 .subtitle-talkspace {
@@ -122,10 +129,10 @@ body {
 /* ======================================================
    SUBMIT BUTTON (STYLING IMPROVEMENTS)
 ====================================================== */
-
 .submit-btn-talk {
-  margin-top: 20px;
-  padding: 14px 30px;
+  display: block;             /* Necessary for auto margins to take effect */
+  margin: 20px auto 0 auto;   /* Top: 20px, Right/Left: auto (centers it), Bottom: 0 */
+  padding: 14px 45px;         /* Increased horizontal padding for a balanced premium look */
   border: none;
   background-color: #1470AF;
   color: white;
@@ -133,7 +140,8 @@ body {
   font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
-  width: 100%; /* Spans full width perfectly for better reach balance inside container */
+  width: max-content;         /* Adjusts exactly to text size + paddings instead of full screen width */
+  min-width: 200px;           /* Ensures it remains prominent on all displays */
   transition: background-color 0.2s ease, transform 0.1s ease;
   box-shadow: 0 4px 12px rgba(20, 112, 175, 0.2);
 }
