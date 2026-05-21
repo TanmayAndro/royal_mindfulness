@@ -6,6 +6,7 @@ import {
   Button,
   Box,
 } from "@mui/material";
+import free_consulation_bg from "../../Assests/free_consulation_bg.jpg" // 🆕 BACKGROUND IMAGE IMPOR     T
 
 const ConfirmationModal = ({
   open,
@@ -19,8 +20,15 @@ const ConfirmationModal = ({
       onClose={onClose}
       maxWidth="sm"
       fullWidth
+      sx={{
+        backgroundImage: `url(${free_consulation_bg})`, // Direct variable ko backticks `` ke andar call kiya
+        backgroundSize: "cover",                       // Poori screen ko stretch-free cover karne ke liye
+        backgroundPosition: "center",                  // Image ko center align rakhne ke liye
+        backgroundRepeat: "no-repeat",                  // Repeat strictly block karne ke liye
+        // bgcolor: "#f0f4f8",   
+      }}
     >
-      <DialogContent sx={{ py: 5, textAlign: "center" }}>
+      <DialogContent sx={{ py: 5, textAlign: "center", bgcolor: "#f0f4f8" }}>
         <Typography
           variant="h5"
           fontWeight={700}

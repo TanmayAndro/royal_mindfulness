@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
+import free_consulation_bg from "../../Assests/free_consulation_bg.jpg";
 
 // Import your custom reusable confirmation modal component
 import ConfirmationModal from "../../Components/FreeConsultance/ConfirmationModal";
@@ -29,11 +30,12 @@ import {
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
-
 const PhoneInputWrapper = styled(Box)(({ theme, error }) => ({
   width: "100%",
   "& .react-tel-input": {
     fontFamily: theme.typography.fontFamily,
+    position: "relative",
+    
     "& .form-control": {
       width: "100%",
       height: "56px",
@@ -53,10 +55,12 @@ const PhoneInputWrapper = styled(Box)(({ theme, error }) => ({
         boxShadow: "none",
       },
     },
+    
     "& .flag-dropdown": {
       backgroundColor: "transparent",
       border: "none",
       borderRadius: "4px 0 0 4px",
+      
       "& .selected-flag": {
         backgroundColor: "transparent",
         width: "45px",
@@ -66,33 +70,64 @@ const PhoneInputWrapper = styled(Box)(({ theme, error }) => ({
         },
       },
     },
+    
+    /* 🌐 GLOBAL COUNTRY LIST VIEW (DESKTOP + MOBILE BOTH UPWARDS) */
     "& .country-list": {
       borderRadius: "8px",
       boxShadow: "0px 5px 15px rgba(0,0,0,0.15)",
       border: "1px solid #ddd",
-      marginTop: "2px",
-      width: "300px",
+      width: "300px", /* Desktop width standard */
       zIndex: 1500,
+      backgroundColor: "#ffffff",
+      
+      /* 🆕 DESKTOP & GENERAL UPWARD POSITIONING */
+      top: "auto !important",          /* Default bottom layout reset kiya */
+      bottom: "100% !important",       /* Dropdown hamesha upar khulega */
+      marginBottom: "6px !important",  /* Input area se safe distance */
+      marginTop: "0px !important",
+      
+      /* 📱 ONLY MOBILE VIEW RESPONSIVE DESIGN */
+      "@media (max-width: 500px)": {
+        width: "270px !important", 
+        maxHeight: "180px !important", 
+        left: "0px !important", 
+      },
+      
       "& .country": {
-        padding: "12px 16px !important",
+        padding: "10px 14px !important",
+        display: "flex",
+        alignItems: "center",
+        
         "& .country-name": {
           fontSize: "14px",
-          marginLeft: "27px",
+          marginLeft: "35px",          /* Aapka custom margin-left */
+          marginRight: "9px",          /* Aapka custom margin-right */
+          marginTop: "0px",            /* Aapka custom margin-top */
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
         },
         "&:hover": {
           backgroundColor: "#f5f5f5",
         },
       },
+      
       "& .search": {
-        padding: "10px",
+        padding: "8px 10px",
+        backgroundColor: "#ffffff",
+        position: "sticky",
+        top: 0,
+        zIndex: 2,
         "& .search-box": {
-          width: "90%",
+          width: "88%",
           marginLeft: "0",
+          padding: "6px 8px",
           border: "1px solid #ddd",
           borderRadius: "4px",
         },
       },
     },
+    
     "& .special-label": {
       display: "none",
     },
@@ -165,7 +200,6 @@ function FreeConsultanceForm() {
     return "";
   };
 
-  // 1. Validation function
   const validateTime = (val) => {
     if (!val) return "Please select a consultation time.";
     return "";
@@ -218,7 +252,6 @@ function FreeConsultanceForm() {
     setErrors((prev) => ({ ...prev, consultDate: validateDate(value) }));
   };
 
-  // Step 1: Handle Initial Form Submit Interception
   const handlePreSubmitCheck = (e) => {
     e.preventDefault();
     if (loading) return;
@@ -240,81 +273,74 @@ function FreeConsultanceForm() {
       return;
     }
 
-    // Agar FE validation pass ho gayi, toh API direct hit nahi hogi. Modal open hoga.
     setIsConfirmOpen(true);
   };
 
-  // Step 2: Actual API integration Execute logic inside modal confirm trigger
   const handleFinalApiSubmit = async () => {
-  const primaryUrl = process.env.REACT_APP_FREECONSULTATION_URL?.replace(/\/$/, "");
-  const localUrl = process.env.REACT_APP_BASE_URL?.replace(/\/$/, "");
+    const primaryUrl = process.env.REACT_APP_FREECONSULTATION_URL?.replace(/\/$/, "");
+    const localUrl = process.env.REACT_APP_BASE_URL?.replace(/\/$/, "");
 
-  if (!primaryUrl) {
-    setErrors((prev) => ({ ...prev, error: "Primary API URL is missing." }));
-    setIsConfirmOpen(false);
-    return;
-  }
+    if (!primaryUrl) {
+      setErrors((prev) => ({ ...prev, error: "Primary API URL is missing." }));
+      setIsConfirmOpen(false);
+      return;
+    }
 
-  setLoading(true);
-  setErrors({});
+    setLoading(true);
+    setErrors({});
 
-  const digitsOnly = phoneValue.replace(/\D/g, "");
-  const purePhoneNo = digitsOnly.startsWith(countryCode) 
-    ? digitsOnly.slice(countryCode.length) 
-    : digitsOnly;
+    const digitsOnly = phoneValue.replace(/\D/g, "");
+    const purePhoneNo = digitsOnly.startsWith(countryCode) 
+      ? digitsOnly.slice(countryCode.length) 
+      : digitsOnly;
 
-  const payload = {
-    free_consultance: {
-      name, email,
-      time_zone: getGMTOffset(selectedTimeZone),
-      phone_number: purePhoneNo,
-      country_code: `+${countryCode}`,
-      free_consultance_date: consultDate,
-      free_consultance_time: consultTime,
-    },
+    const payload = {
+      free_consultance: {
+        name, email,
+        time_zone: getGMTOffset(selectedTimeZone),
+        phone_number: purePhoneNo,
+        country_code: `+${countryCode}`,
+        free_consultance_date: consultDate,
+        free_consultance_time: consultTime,
+      },
+    };
+
+    const sendRequest = (url) => 
+      fetch(`${url}/free_consultances`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }).then(res => res.ok ? res.json() : Promise.reject(res));
+
+    try {
+      const results = await Promise.allSettled([
+        sendRequest(primaryUrl),
+        localUrl ? sendRequest(localUrl) : Promise.reject("Local URL missing")
+      ]);
+
+      const [primaryResult, localResult] = results;
+
+      if (primaryResult.status === "rejected") {
+        throw new Error("Primary API failed: " + (primaryResult.reason?.message || "Connection error"));
+      }
+
+      if (localResult.status === "rejected") {
+        console.warn("Local server update failed, but primary succeeded:", localResult.reason);
+      } else {
+        console.log("Local server updated successfully.");
+      }
+
+      setSubmitted(true);
+      localStorage.removeItem("freeConsultanceData");
+      setIsConfirmOpen(false);
+
+    } catch (err) {
+      setErrors((prev) => ({ ...prev, error: err.message }));
+      setIsConfirmOpen(false);
+    } finally {
+      setLoading(false);
+    }
   };
-
-  // Helper function to perform fetch
-  const sendRequest = (url) => 
-    fetch(`${url}/free_consultances`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    }).then(res => res.ok ? res.json() : Promise.reject(res));
-
-  try {
-    // Dono requests trigger karein
-    const results = await Promise.allSettled([
-      sendRequest(primaryUrl),
-      localUrl ? sendRequest(localUrl) : Promise.reject("Local URL missing")
-    ]);
-
-    const [primaryResult, localResult] = results;
-
-    // 1. Primary API handling (Mandatory)
-    if (primaryResult.status === "rejected") {
-      throw new Error("Primary API failed: " + (primaryResult.reason?.message || "Connection error"));
-    }
-
-    // 2. Local API handling (Optional/Silent)
-    if (localResult.status === "rejected") {
-      console.warn("Local server update failed, but primary succeeded:", localResult.reason);
-    } else {
-      console.log("Local server updated successfully.");
-    }
-
-    // Agar yahan tak pahunch gaye, matlab Primary success hai
-    setSubmitted(true);
-    localStorage.removeItem("freeConsultanceData");
-    setIsConfirmOpen(false);
-
-  } catch (err) {
-    setErrors((prev) => ({ ...prev, error: err.message }));
-    setIsConfirmOpen(false);
-  } finally {
-    setLoading(false);
-  }
-};
 
   return (
     <Box
@@ -323,18 +349,22 @@ function FreeConsultanceForm() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        pt: { xs: "30%", sm: "15%", md: "8%" },
+        pt: { xs: "25%", sm: "15%", md: "8%" },
         pb: "40px",
-        bgcolor: "#f0f2f5",
+        backgroundImage: `url(${free_consulation_bg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        bgcolor: "#f0f4f8",
       }}
     >
-      <Container maxWidth="sm">
+      <Container maxWidth="sm" >
         <Paper
           elevation={3}
-          sx={{ p: { xs: 3, md: 6 }, borderRadius: 3, textAlign: "left" }}
+          sx={{ p: { xs: 3, md: 6 }, borderRadius: 3, textAlign: "left" ,bgcolor: "#f0f4f8" }}
         >
           {submitted ? (
-            <Box textAlign="center" py={4}>
+            <Box textAlign="center" py={4} sx={{bgcolor: "#f0f4f8"}}>
               <Typography
                 variant="h4"
                 fontWeight={700}
@@ -371,12 +401,12 @@ function FreeConsultanceForm() {
               </Box>
             </Box>
           ) : (
-            <Box component="form" onSubmit={handlePreSubmitCheck} noValidate>
-              <Box display="flex" alignItems="flex-start" mb={4}>
+            <Box component="form" onSubmit={handlePreSubmitCheck} noValidate backgroundColor="#f0f4f8">
+              <Box display="flex" alignItems="flex-start" mb={4} backgroundColor="#f0f4f8">
                 <IconButton
                   onClick={() => navigate(-1)}
                   sx={{
-                    display: { xs: "none", md: "inline-flex" }, // 🆕 Yeh line mobile par hide kar degi aur desktop par dikhayegi
+                    display: { xs: "none", md: "inline-flex" },
                     mr: 2,
                     mt: 0.5,
                     color: "#fff",
@@ -454,11 +484,8 @@ function FreeConsultanceForm() {
                     required
                     InputLabelProps={{ shrink: true }}
                     value={consultTime}
-                    // Yahan function call kiya gaya hai
                     onChange={handleTimeChange}
-                    // Error condition check
                     error={!!errors.consultTime}
-                    // Error message display
                     helperText={errors.consultTime}
                   />
                 </Grid>
