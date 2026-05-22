@@ -12,6 +12,7 @@ import free_consulation_bg from "../../Assests/free_consulation_bg.jpg";
 
 // Import your custom reusable confirmation modal component
 import ConfirmationModal from "../../Components/FreeConsultance/ConfirmationModal";
+import consulation_bg from "../../Assests/images/consulation_bg.jpg";
 
 // MUI Components
 import {
@@ -35,7 +36,7 @@ const PhoneInputWrapper = styled(Box)(({ theme, error }) => ({
   "& .react-tel-input": {
     fontFamily: theme.typography.fontFamily,
     position: "relative",
-    
+
     "& .form-control": {
       width: "100%",
       height: "56px",
@@ -55,12 +56,12 @@ const PhoneInputWrapper = styled(Box)(({ theme, error }) => ({
         boxShadow: "none",
       },
     },
-    
+
     "& .flag-dropdown": {
       backgroundColor: "transparent",
       border: "none",
       borderRadius: "4px 0 0 4px",
-      
+
       "& .selected-flag": {
         backgroundColor: "transparent",
         width: "45px",
@@ -70,39 +71,39 @@ const PhoneInputWrapper = styled(Box)(({ theme, error }) => ({
         },
       },
     },
-    
+
     /* 🌐 GLOBAL COUNTRY LIST VIEW (DESKTOP + MOBILE BOTH UPWARDS) */
     "& .country-list": {
       borderRadius: "8px",
       boxShadow: "0px 5px 15px rgba(0,0,0,0.15)",
       border: "1px solid #ddd",
-      width: "300px", /* Desktop width standard */
+      width: "300px" /* Desktop width standard */,
       zIndex: 1500,
       backgroundColor: "#ffffff",
-      
+
       /* 🆕 DESKTOP & GENERAL UPWARD POSITIONING */
-      top: "auto !important",          /* Default bottom layout reset kiya */
-      bottom: "100% !important",       /* Dropdown hamesha upar khulega */
-      marginBottom: "6px !important",  /* Input area se safe distance */
+      top: "auto !important" /* Default bottom layout reset kiya */,
+      bottom: "100% !important" /* Dropdown hamesha upar khulega */,
+      marginBottom: "6px !important" /* Input area se safe distance */,
       marginTop: "0px !important",
-      
+
       /* 📱 ONLY MOBILE VIEW RESPONSIVE DESIGN */
       "@media (max-width: 500px)": {
-        width: "270px !important", 
-        maxHeight: "180px !important", 
-        left: "0px !important", 
+        width: "270px !important",
+        maxHeight: "180px !important",
+        left: "0px !important",
       },
-      
+
       "& .country": {
         padding: "10px 14px !important",
         display: "flex",
         alignItems: "center",
-        
+
         "& .country-name": {
           fontSize: "14px",
-          marginLeft: "35px",          /* Aapka custom margin-left */
-          marginRight: "9px",          /* Aapka custom margin-right */
-          marginTop: "0px",            /* Aapka custom margin-top */
+          marginLeft: "35px" /* Aapka custom margin-left */,
+          marginRight: "9px" /* Aapka custom margin-right */,
+          marginTop: "0px" /* Aapka custom margin-top */,
           whiteSpace: "nowrap",
           overflow: "hidden",
           textOverflow: "ellipsis",
@@ -111,7 +112,7 @@ const PhoneInputWrapper = styled(Box)(({ theme, error }) => ({
           backgroundColor: "#f5f5f5",
         },
       },
-      
+
       "& .search": {
         padding: "8px 10px",
         backgroundColor: "#ffffff",
@@ -127,7 +128,7 @@ const PhoneInputWrapper = styled(Box)(({ theme, error }) => ({
         },
       },
     },
-    
+
     "& .special-label": {
       display: "none",
     },
@@ -277,7 +278,10 @@ function FreeConsultanceForm() {
   };
 
   const handleFinalApiSubmit = async () => {
-    const primaryUrl = process.env.REACT_APP_FREECONSULTATION_URL?.replace(/\/$/, "");
+    const primaryUrl = process.env.REACT_APP_FREECONSULTATION_URL?.replace(
+      /\/$/,
+      "",
+    );
     const localUrl = process.env.REACT_APP_BASE_URL?.replace(/\/$/, "");
 
     if (!primaryUrl) {
@@ -290,13 +294,14 @@ function FreeConsultanceForm() {
     setErrors({});
 
     const digitsOnly = phoneValue.replace(/\D/g, "");
-    const purePhoneNo = digitsOnly.startsWith(countryCode) 
-      ? digitsOnly.slice(countryCode.length) 
+    const purePhoneNo = digitsOnly.startsWith(countryCode)
+      ? digitsOnly.slice(countryCode.length)
       : digitsOnly;
 
     const payload = {
       free_consultance: {
-        name, email,
+        name,
+        email,
         time_zone: getGMTOffset(selectedTimeZone),
         phone_number: purePhoneNo,
         country_code: `+${countryCode}`,
@@ -305,27 +310,33 @@ function FreeConsultanceForm() {
       },
     };
 
-    const sendRequest = (url) => 
+    const sendRequest = (url) =>
       fetch(`${url}/free_consultances`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-      }).then(res => res.ok ? res.json() : Promise.reject(res));
+      }).then((res) => (res.ok ? res.json() : Promise.reject(res)));
 
     try {
       const results = await Promise.allSettled([
         sendRequest(primaryUrl),
-        localUrl ? sendRequest(localUrl) : Promise.reject("Local URL missing")
+        localUrl ? sendRequest(localUrl) : Promise.reject("Local URL missing"),
       ]);
 
       const [primaryResult, localResult] = results;
 
       if (primaryResult.status === "rejected") {
-        throw new Error("Primary API failed: " + (primaryResult.reason?.message || "Connection error"));
+        throw new Error(
+          "Primary API failed: " +
+            (primaryResult.reason?.message || "Connection error"),
+        );
       }
 
       if (localResult.status === "rejected") {
-        console.warn("Local server update failed, but primary succeeded:", localResult.reason);
+        console.warn(
+          "Local server update failed, but primary succeeded:",
+          localResult.reason,
+        );
       } else {
         console.log("Local server updated successfully.");
       }
@@ -333,7 +344,6 @@ function FreeConsultanceForm() {
       setSubmitted(true);
       localStorage.removeItem("freeConsultanceData");
       setIsConfirmOpen(false);
-
     } catch (err) {
       setErrors((prev) => ({ ...prev, error: err.message }));
       setIsConfirmOpen(false);
@@ -348,270 +358,580 @@ function FreeConsultanceForm() {
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        pt: { xs: "25%", sm: "15%", md: "8%" },
+        justifyContent: "center", // Vertically center karega
+        alignItems: "center", // Horizontally center karega
         pb: "40px",
-        backgroundImage: `url(${free_consulation_bg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
+        position: "relative", // Background overlay ke liye zaroori hai
         bgcolor: "#f0f4f8",
+        overflow: "hidden",
+
+        // Background Image with 25% Opacity (Taki text dhundhla na ho)
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: `url(${free_consulation_bg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          opacity: 0.25, // 25% Opacity applied here
+          zIndex: 1,
+        },
+
+        // Taki is Box ke andar ka content image ke upar dikhe
+        "& > *": {
+          position: "relative",
+          zIndex: 2,
+        },
       }}
     >
-      <Container maxWidth="sm" >
-        <Paper
-          elevation={3}
-          sx={{ p: { xs: 3, md: 6 }, borderRadius: 3, textAlign: "left" ,bgcolor: "#f0f4f8" }}
+      {/* Aapka card ya baaki content yahan aayega */}
+
+     <Container
+  maxWidth={false}
+  sx={{
+    width: "100%",
+
+    display: "flex",
+
+    justifyContent: "center",
+
+    alignItems: "center",
+
+    py: {
+      xs: 3,
+      md: 6,
+    },
+  }}
+>
+  <Paper
+  elevation={0}
+  sx={{
+    width: {
+      xs: "100%",
+      sm: "92%",
+      md: submitted ? "570px" : "552px",
+    },
+
+    minHeight: {
+      xs: "auto",
+      md: submitted ? "337px" : "638px",
+    },
+
+    mx: "auto",
+
+    position: "relative",
+
+    overflow: "hidden",
+
+    borderRadius: "16px",
+
+    backgroundImage: `url(${consulation_bg})`,
+
+    backgroundSize: "cover",
+
+    backgroundPosition: "center",
+
+    backgroundRepeat: "no-repeat",
+
+    boxShadow: "0px 4px 18px rgba(0,0,0,0.10)",
+
+    border: "1px solid rgba(255,255,255,0.25)",
+
+    // ✅ Responsive padding
+    p: {
+      xs: "24px 18px",
+      sm: "32px 28px",
+      md: submitted ? "33px 70px" : "48px",
+    },
+
+    display: "flex",
+
+    flexDirection: "column",
+
+    justifyContent: submitted
+      ? "center"
+      : "flex-start",
+
+   alignItems: "stretch",
+
+    // ✅ Extra inner spacing remove
+    boxSizing: "border-box",
+
+    "&::before": {
+      content: '""',
+
+      position: "absolute",
+
+      inset: 0,
+
+      backgroundColor:
+        "rgba(255,255,255,0.72)",
+
+      zIndex: 1,
+    },
+
+    "& > *": {
+      position: "relative",
+
+      zIndex: 2,
+      width: "100%",
+    },
+  }}
+>
+    {submitted ? (
+
+<Box
+  sx={{
+    width: "100%",
+
+    maxWidth: {
+      xs: "100%",
+      sm: "650px",
+      md: "650px",
+    },
+
+    margin: "0 auto",
+
+    display: "flex",
+
+    flexDirection: "column",
+
+    alignItems: "center",
+
+    justifyContent: "center",
+
+    textAlign: "center",
+
+    py: {
+      xs: "30px",
+      sm: "40px",
+      md: "55px",
+    },
+
+    px: {
+      xs: "20px",
+      sm: "35px",
+      md: "60px",
+    },
+
+    boxSizing: "border-box",
+  }}
+>
+  {/* TITLE */}
+  <Typography
+    sx={{
+      width: "100%",
+
+      maxWidth: "760px",
+
+      fontFamily: "Roboto, sans-serif",
+
+      fontWeight: 800,
+
+      fontSize: {
+        xs: "30px",
+        sm: "34px",
+        md: "36px",
+      },
+
+      lineHeight: {
+        xs: "40px",
+        sm: "48px",
+        md: "54px",
+      },
+
+      color: "rgba(20,112,175,0.87)",
+
+      textAlign: "center",
+
+      mb: {
+        xs: "14px",
+        md: "18px",
+      },
+
+      overflowWrap: "break-word",
+    }}
+  >
+    The Hardest Step Is Starting
+  </Typography>
+
+  {/* DESCRIPTION */}
+  <Typography
+    sx={{
+      width: "100%",
+
+      maxWidth: {
+        xs: "100%",
+        md: "620px",
+      },
+
+      fontFamily: "Roboto, sans-serif",
+
+      fontWeight: 400,
+
+      fontSize: {
+        xs: "14px",
+        md: "18px",
+      },
+
+      lineHeight: {
+        xs: "24px",
+        md: "32px",
+      },
+
+      color: "#3F3F3F",
+
+      textAlign: "center",
+
+      mb: {
+        xs: "24px",
+        md: "34px",
+      },
+
+      overflowWrap: "break-word",
+    }}
+  >
+    Your session has been successfully reserved, and your
+    mental fitness expert will connect with you at your
+    selected time. Until then, take deep breathes.
+  </Typography>
+
+  {/* BUTTON */}
+  <Button
+    variant="contained"
+    onClick={() => navigate("/")}
+    sx={{
+      backgroundColor: "#1470AF",
+
+      color: "#ffffff",
+
+      width: {
+        xs: "220px",
+        md: "258px",
+      },
+
+      height: {
+        xs: "44px",
+        md: "48px",
+      },
+
+      borderRadius: "4px",
+
+      boxShadow:
+        "0px 4px 12px rgba(20, 112, 175, 0.35)",
+
+      fontWeight: 700,
+
+      fontSize: {
+        xs: "13px",
+        md: "14px",
+      },
+
+      textTransform: "uppercase",
+
+      "&:hover": {
+        backgroundColor: "#10598c",
+
+        boxShadow:
+          "0px 4px 12px rgba(20, 112, 175, 0.35)",
+      },
+    }}
+  >
+    HOME
+  </Button>
+</Box>
+
+
+    ) : (
+      <Box
+        component="form"
+        onSubmit={handlePreSubmitCheck}
+        noValidate
+        sx={{
+          backgroundColor: "transparent",
+        }}
+      >
+        <Box
+          display="flex"
+          alignItems="flex-start"
+          mb={4}
+          sx={{
+            backgroundColor: "transparent",
+          }}
         >
-          {submitted ? (
-            <Box textAlign="center" py={4} sx={{bgcolor: "#f0f4f8"}}>
-              <Typography
-                variant="h4"
-                fontWeight={700}
-                color="#1470af"
-                gutterBottom
-              >
-                The Hardest Step Is Starting
-              </Typography>
-              <Typography variant="body1" color="text.secondary" mb={4}>
-                Your session has been successfully reserved, and your mental
-                fitness expert will connect with you at your selected time.
-                Until then, take deep breathes.
-              </Typography>
-              <Box sx={{ display: "flex", justifyContent: "center" }}>
-                <Button
-                  variant="contained"
-                  onClick={() => navigate("/")}
-                  sx={{
-                    bgcolor: "#1470af",
-                    color: "#ffff",
-                    px: 6,
-                    py: 1,
-                    width: "fit-content",
-                    minWidth: "150px",
-                    borderRadius: "20px",
-                    boxShadow: "none",
-                    fontWeight: 600,
-                    textTransform: "none",
-                    "&:hover": { bgcolor: "#074f80", boxShadow: "none" },
-                  }}
-                >
-                  Home
-                </Button>
-              </Box>
-            </Box>
-          ) : (
-            <Box component="form" onSubmit={handlePreSubmitCheck} noValidate backgroundColor="#f0f4f8">
-              <Box display="flex" alignItems="flex-start" mb={4} backgroundColor="#f0f4f8">
-                <IconButton
-                  onClick={() => navigate(-1)}
-                  sx={{
-                    display: { xs: "none", md: "inline-flex" },
-                    mr: 2,
-                    mt: 0.5,
-                    color: "#fff",
-                    transition: "0.3s",
-                    bgcolor: "#1470af",
-                    "&:hover": {
-                      bgcolor: "#1575b5",
-                      color: "#fff",
-                      transform: "translateX(-3px)",
-                    },
-                  }}
-                >
-                  <GoArrowLeft />
-                </IconButton>
+          <IconButton
+            onClick={() => navigate(-1)}
+            sx={{
+              display: { xs: "none", md: "inline-flex" },
 
-                <Box display="flex" flexDirection="column" gap={0.5}>
-                  <Typography
-                    variant="h5"
-                    fontWeight={800}
-                    sx={{ lineHeight: 1.2, color: "#1470af" }}
-                  >
-                    Lets Discuss It Over A Free Consultation
-                  </Typography>
-                </Box>
-              </Box>
+              mr: 2,
 
-              <Grid container spacing={2.5}>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Full Name"
-                    placeholder="John Doe"
-                    required
-                    value={name}
-                    onChange={handleNameChange}
-                    error={!!errors.name}
-                    helperText={errors.name}
-                  />
-                </Grid>
+              mt: 0.5,
 
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Email Address"
-                    type="email"
-                    placeholder="example@mail.com"
-                    required
-                    value={email}
-                    onChange={handleEmailChange}
-                    error={!!errors.email}
-                    helperText={errors.email}
-                  />
-                </Grid>
+              width: "42px",
 
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Select Date"
-                    type="date"
-                    required
-                    InputLabelProps={{ shrink: true }}
-                    inputProps={{ min: tomorrowStr }}
-                    value={consultDate}
-                    onChange={handleDateChange}
-                    error={!!errors.consultDate}
-                    helperText={errors.consultDate}
-                  />
-                </Grid>
+              height: "42px",
 
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Select Time"
-                    type="time"
-                    required
-                    InputLabelProps={{ shrink: true }}
-                    value={consultTime}
-                    onChange={handleTimeChange}
-                    error={!!errors.consultTime}
-                    helperText={errors.consultTime}
-                  />
-                </Grid>
+              color: "#fff",
 
-                <Grid item xs={12}>
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      mb: 0.8,
-                      display: "block",
-                      fontWeight: 700,
-                      color: "text.secondary",
-                    }}
-                  >
-                    YOUR TIME ZONE
-                  </Typography>
-                  <TimezoneSelect
-                    value={selectedTimeZone}
-                    onChange={setSelectedTimeZone}
-                    styles={{
-                      control: (base) => ({
-                        ...base,
-                        minHeight: "56px",
-                        borderRadius: "4px",
-                        borderColor: "rgba(0, 0, 0, 0.23)",
-                        boxShadow: "none",
-                        "&:hover": { borderColor: "rgba(0,0,0,0.87)" },
-                      }),
-                    }}
-                  />
-                </Grid>
+              bgcolor: "#1470af",
 
-                <Grid item xs={12}>
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      mb: 0.8,
-                      display: "block",
-                      fontWeight: 700,
-                      color: errors.phone ? "#d32f2f" : "text.secondary",
-                    }}
-                  >
-                    PHONE NUMBER
-                  </Typography>
-                  <PhoneInputWrapper error={!!errors.phone}>
-                    <PhoneInput
-                      country="us"
-                      value={phoneValue}
-                      onChange={(value, data) => {
-                        setPhoneValue(value);
-                        setCountryCode(data.dialCode);
-                        setCurrentCountryIso(data.countryCode);
+              "&:hover": {
+                bgcolor: "#1575b5",
 
-                        const phoneValidationError = validatePhone(
-                          value,
-                          data.countryCode,
-                        );
-                        setErrors((prev) => ({
-                          ...prev,
-                          phone: phoneValidationError,
-                        }));
-                      }}
-                      enableSearch={true}
-                      containerClass="react-tel-input"
-                      inputClass="form-control"
-                    />
-                  </PhoneInputWrapper>
-                  {errors.phone && (
-                    <FormHelperText error sx={{ ml: 1 }}>
-                      {errors.phone}
-                    </FormHelperText>
-                  )}
-                </Grid>
+                color: "#fff",
 
-                <Grid
-                  item
-                  xs={12}
-                  sx={{ mt: 2, display: "flex", justifyContent: "center" }}
-                >
-                  <Button
-                    type="submit"
-                    disabled={loading}
-                    variant="contained"
-                    sx={{
-                      bgcolor: "#1470af",
-                      px: 4,
-                      py: 1.2,
-                      fontFamily: "Roboto, sans-serif",
-                      fontWeight: 700,
-                      fontSize: "0.9rem",
-                      textTransform: "uppercase",
-                      borderRadius: "4px",
-                      boxShadow: "0 2px 4px rgba(0,0,0,0.15)",
-                      "&:hover": {
-                        bgcolor: "#0e5a8d",
-                      },
-                    }}
-                  >
-                    {loading ? (
-                      <CircularProgress size={24} sx={{ color: "#fff" }} />
-                    ) : (
-                      "Submit"
-                    )}
-                  </Button>
-                </Grid>
-              </Grid>
+                transform: "translateX(-3px)",
+              },
+            }}
+          >
+            <GoArrowLeft />
+          </IconButton>
 
-              {errors.error && (
-                <Typography
-                  color="error"
-                  variant="body2"
-                  sx={{
-                    mt: 2,
-                    textAlign: "center",
-                    bgcolor: "#ffebee",
-                    p: 1,
-                    borderRadius: 1,
-                  }}
-                >
-                  {errors.error}
-                </Typography>
+          <Box>
+            <Typography
+              sx={{
+                fontSize: {
+                  xs: "24px",
+                  md: "28px",
+                },
+
+                fontWeight: 700,
+
+                lineHeight: 1.15,
+
+                color: "#1470af",
+              }}
+            >
+              Lets Discuss It Over A Free
+              Consultation
+            </Typography>
+          </Box>
+        </Box>
+
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label="Full Name"
+              placeholder="John Doe"
+              required
+              value={name}
+              onChange={handleNameChange}
+              error={!!errors.name}
+              helperText={errors.name}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label="Email Address"
+              type="email"
+              placeholder="example@mail.com"
+              required
+              value={email}
+              onChange={handleEmailChange}
+              error={!!errors.email}
+              helperText={errors.email}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <TextField
+              fullWidth
+              label="Select Date"
+              type="date"
+              required
+              InputLabelProps={{ shrink: true }}
+              inputProps={{ min: tomorrowStr }}
+              value={consultDate}
+              onChange={handleDateChange}
+              error={!!errors.consultDate}
+              helperText={errors.consultDate}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <TextField
+              fullWidth
+              label="Select Time"
+              type="time"
+              required
+              InputLabelProps={{ shrink: true }}
+              value={consultTime}
+              onChange={handleTimeChange}
+              error={!!errors.consultTime}
+              helperText={errors.consultTime}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <Typography
+              variant="caption"
+              sx={{
+                mb: 0.8,
+
+                display: "block",
+
+                fontWeight: 700,
+
+                color: "text.secondary",
+              }}
+            >
+              YOUR TIME ZONE
+            </Typography>
+
+            <TimezoneSelect
+              value={selectedTimeZone}
+              onChange={setSelectedTimeZone}
+              styles={{
+                control: (base) => ({
+                  ...base,
+                  minHeight: "56px",
+                  borderRadius: "4px",
+                  borderColor: "rgba(0, 0, 0, 0.23)",
+                  boxShadow: "none",
+                  "&:hover": {
+                    borderColor: "rgba(0,0,0,0.87)",
+                  },
+                }),
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <Typography
+              variant="caption"
+              sx={{
+                mb: 0.8,
+
+                display: "block",
+
+                fontWeight: 700,
+
+                color: errors.phone
+                  ? "#d32f2f"
+                  : "text.secondary",
+              }}
+            >
+              PHONE NUMBER
+            </Typography>
+
+            <PhoneInputWrapper error={!!errors.phone}>
+              <PhoneInput
+                country="us"
+                value={phoneValue}
+                onChange={(value, data) => {
+                  setPhoneValue(value);
+
+                  setCountryCode(data.dialCode);
+
+                  setCurrentCountryIso(data.countryCode);
+
+                  const phoneValidationError =
+                    validatePhone(
+                      value,
+                      data.countryCode
+                    );
+
+                  setErrors((prev) => ({
+                    ...prev,
+                    phone: phoneValidationError,
+                  }));
+                }}
+                enableSearch={true}
+                containerClass="react-tel-input"
+                inputClass="form-control"
+              />
+            </PhoneInputWrapper>
+
+            {errors.phone && (
+              <FormHelperText error sx={{ ml: 1 }}>
+                {errors.phone}
+              </FormHelperText>
+            )}
+          </Grid>
+
+          <Grid
+            item
+            xs={12}
+            sx={{
+              mt: 2,
+
+              display: "flex",
+
+              justifyContent: "center",
+            }}
+          >
+            <Button
+              type="submit"
+              disabled={loading}
+              variant="contained"
+              sx={{
+                backgroundColor: "#1470AF",
+
+                color: "#ffffff",
+
+                width: "160px",
+
+                height: "44px",
+
+                borderRadius: "4px",
+
+                boxShadow:
+                  "0px 4px 12px rgba(20, 112, 175, 0.35)",
+
+                fontWeight: 700,
+
+                fontSize: "15px",
+
+                textTransform: "uppercase",
+
+                "&:hover": {
+                  backgroundColor: "#10598c",
+                },
+              }}
+            >
+              {loading ? (
+                <CircularProgress
+                  size={24}
+                  sx={{ color: "#fff" }}
+                />
+              ) : (
+                "Submit"
               )}
-            </Box>
-          )}
-        </Paper>
-      </Container>
+            </Button>
+          </Grid>
+        </Grid>
+
+        {errors.error && (
+          <Typography
+            color="error"
+            variant="body2"
+            sx={{
+              mt: 2,
+
+              textAlign: "center",
+
+              bgcolor: "#ffebee",
+
+              p: 1,
+
+              borderRadius: 1,
+            }}
+          >
+            {errors.error}
+          </Typography>
+        )}
+      </Box>
+    )}
+  </Paper>
+</Container>
 
       {/* Confirmation Modal Render */}
       <ConfirmationModal

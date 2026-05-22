@@ -98,53 +98,75 @@ const Header: React.FC = () => {
     navigate("/");
   };
 
-  
   const pathname = location.pathname;
-  const TRANSPARENT_ROUTES = ["/"];
-  const WHITE_ROUTES = ["/consultation_question", "/consulation","/free_consultation"];
-  // 2.Hide navbar mobile view only 
-  const HIDDEN_ROUTES = ["/consultation_question", "/consulation","/free_consultation"];;
-  const isTransparentRoute = TRANSPARENT_ROUTES.includes(pathname);
-  const isWhiteRoute = WHITE_ROUTES.includes(pathname);
-  const shouldHideNavbarOnMobile = HIDDEN_ROUTES.includes(pathname) && isMobile;
-  if (HIDDEN_ROUTES.includes(pathname) && isMobile) {
-    return <MinimalMobileHeader />; 
-  }
+
+const TRANSPARENT_ROUTES = [
+  "/",
+  "/consultation_question",
+  "/consulation",
+  "/free_consultation",
+];
+
+const HIDDEN_ROUTES = [
+  "/consultation_question",
+  "/consulation",
+  "/free_consultation",
+];
+
+const isTransparentRoute =
+  TRANSPARENT_ROUTES.includes(pathname);
+
+const shouldHideNavbarOnMobile =
+  HIDDEN_ROUTES.includes(pathname) && isMobile;
+
+if (shouldHideNavbarOnMobile) {
+  return <MinimalMobileHeader />;
+}
+
 
  return (
   <>
     <Grid
       container
-      className="main_header_css"
-      alignItems="center"
       sx={{
-        display: shouldHideNavbarOnMobile ? "none" : "flex",
-        position:
-          isTransparentRoute || isWhiteRoute ? "absolute" : "relative",
+        display: shouldHideNavbarOnMobile
+          ? "none"
+          : "flex",
+
+        position: isTransparentRoute
+          ? "absolute"
+          : "relative",
+
         top: 0,
         left: 0,
         width: "100%",
-        backgroundColor: isWhiteRoute
-          ? "#ffffff"
-          : isTransparentRoute
-          ? "transparent"
-          : undefined,
-        transition: "background-color 0.3s ease",
-        zIndex: 10,
-        // ✅ Exact CSS padding applied here
-        padding: "15px 10%", 
 
-        ...(isWhiteRoute && {
-          "& .item_heading_css": {
-            color: "#1470AF !important",
-          },
-          "& .button_login_css": {
-            color: "#1470AF !important",
-          },
-          "& .MuiSvgIcon-root": {
-            color: "#1470AF !important",
-          },
-        }),
+        backgroundColor: isTransparentRoute
+          ? "transparent"
+          : "#ffffff",
+
+        transition: "background-color 0.3s ease",
+
+        zIndex: 10,
+
+        padding: {
+          xs: "15px 20px",
+          md: "15px 8%",
+        },
+
+        alignItems: "center",
+        justifyContent: "space-between",
+
+        "& .item_heading_css": {
+          color: "#1470AF !important",
+          fontWeight: 500,
+        },
+
+        "& .button_login_css": {  color: isTransparentRoute    ? "#ffffff !important"    : "#1470AF !important",},
+
+        "& .MuiSvgIcon-root": {
+          color: "#1470AF !important",
+        },
       }}
     >
       {/* ✅ Logo */}
@@ -163,8 +185,13 @@ const Header: React.FC = () => {
         }}
       >
        
-      <MenuIcon  onClick={() => setMobileMenuOpen(true)}
-      sx={{ color: isWhiteRoute ? "#1470AF" : "white" }} />
+      <MenuIcon
+          onClick={() => setMobileMenuOpen(true)}
+          sx={{
+            color: "#1470AF",
+            cursor: "pointer",
+          }}
+        />
         
       </Grid>
 
@@ -180,7 +207,10 @@ const Header: React.FC = () => {
         {/* Header Links */}
         <Box sx={{ display: "flex", gap: 3 }}>
           {config.headerItem.map(
-            (item: { name: string; link: string }, index: number) => (
+            (
+              item: { name: string; link: string },
+              index: number
+            ) => (
               <Link
                 key={index}
                 to={item.link}
@@ -188,15 +218,18 @@ const Header: React.FC = () => {
               >
                 <Typography
                   className="item_heading_css"
-                  sx={{ cursor: "pointer" }}
+                  sx={{
+                    cursor: "pointer",
+                    color: "#1470AF",
+                  }}
                   onClick={() => {
-                  trackEvent(
-                    "Navigation",
-                    "Click",
-                    `Nav Actions ${item.name}`,
-                    true
-                  );
-                }}
+                    trackEvent(
+                      "Navigation",
+                      "Click",
+                      `Nav Actions ${item.name}`,
+                      true
+                    );
+                  }}
                 >
                   {item.name}
                 </Typography>
@@ -205,57 +238,76 @@ const Header: React.FC = () => {
           )}
         </Box>
 
+
         {/* Login / Avatar */}
-        {!token ? (
+         {!token ? (
           <Box sx={{ display: "flex", gap: 2 }}>
             <a className="button_login_css">
               <Button
-                className="button_login_css"
-                variant="outlined" // 1. Border layout lane ke liye variant ko outlined kiya
-                onClick={() => {
-                  setAuthView("login");
-                  setAuthOpen(true);
-                }}
-                sx={{
-                  color: "#1470AF",
-                  borderColor: "#1470AF", // 2. 'boorderColor' typo ko fix kiya
-                  borderWidth: "1px",
-                  textTransform: "none",
-                  "&:hover": {
-                    borderColor: "#1470af",
-                    backgroundColor: "rgba(20, 112, 175, 0.04)", 
-                    borderWidth: "1px",
-                  },  
-                }}
-              >
-                Login
-              </Button>
+  className="button_login_css"
+  variant="contained"
+  onClick={() => {
+    setAuthView("login");
+    setAuthOpen(true);
+  }}
+  sx={{
+    color: "#ffffff",
+
+    backgroundColor: "#1470AF",
+
+    border: "1px solid #1470AF",
+
+    textTransform: "none",
+
+    borderRadius: "6px",
+
+    minWidth: "90px",
+
+    px: 2.5,
+
+    py: 1,
+
+    fontWeight: 500,
+
+    boxShadow: "none",
+
+    "&:hover": {
+      color: "#ffffff",
+
+      backgroundColor: "#10598c",
+
+      borderColor: "#10598c",
+
+      boxShadow: "none",
+    },
+  }}
+>
+  Login
+</Button>
             </a>
           </Box>
-
         ) : (
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <Avatar onClick={handleMenuClick} sx={{ cursor: "pointer" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+            }}
+          >
+            <Avatar
+              onClick={handleMenuClick}
+              sx={{ cursor: "pointer" }}
+            >
               {first_name?.[0]}
             </Avatar>
 
             <LogoutIcon
               sx={{
-                color: isWhiteRoute ? "#1470AF" : "white",
+                color: "#1470AF",
                 cursor: "pointer",
               }}
               onClick={handleLogout}
             />
-
-            <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleMenuClose}
-            >
-              <MenuItem onClick={handleDashboard}>
-                Dashboard
-              </MenuItem>
-            </Menu>
           </Box>
         )}
       </Grid>

@@ -2,6 +2,7 @@ import React from "react";
 import { Box, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
+import logo from"../../Assests/images/logo/logo.webp";
 
 const MinimalMobileHeader: React.FC = () => {
   const navigate = useNavigate();
@@ -12,19 +13,17 @@ const MinimalMobileHeader: React.FC = () => {
       sx={{
         width: "100%",
         height: "100px", 
-        display: { xs: "flex", md: "none" }, // Sirf mobile par dikhega
+        display: { xs: "flex", md: "none" }, 
         
-        // 💥 Yahan absolute hata kar perfect flex alignment lagaya hai
-        alignItems: "center",         /* Isse dono vertically bilkul center align ho jayenge */
-        justifyContent: "space-between", /* Arrow left me aur Logo right me chala jayega */
-        padding: "0 42px",            /* Aapki di hui spacing (left aur right se 42px) */
+        alignItems: "center",         
+        justifyContent: "space-between", 
+        padding: "0 42px",           
         
-        backgroundColor: "#f0f4f8", 
+        backgroundColor: "transparent", 
         boxSizing: "border-box",
         zIndex: 100,
       }}
     >
-      {/* 🔙 Back Button - Exact Dimensions maintained */}
       <IconButton
         onClick={() => navigate(-1)}
         sx={{
@@ -43,7 +42,7 @@ const MinimalMobileHeader: React.FC = () => {
         <ArrowBackIcon sx={{ fontSize: "18px" }} />
       </IconButton>
 
-      {/* 🧠 Logo Container */}
+      {/*  Logo Container */}
       <Box
         sx={{
           display: "flex",
@@ -51,7 +50,8 @@ const MinimalMobileHeader: React.FC = () => {
         }}
       >
         <img
-          src={`${process.env.PUBLIC_URL}/logo.png`}
+          // src={`${process.env.PUBLIC_URL}/logo.png`}
+          src={logo}
           alt="Royal Mindfulness Logo"
           style={{ width: "59px", height: "68.63px", display: "block" }}
         />

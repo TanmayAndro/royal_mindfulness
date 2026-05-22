@@ -26,16 +26,13 @@ body {
   box-sizing: border-box;  
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   margin: 0;               
-  padding: 20px;           
-
-  /* Background Image setup */
-  background-image: url("../../../Assests/free_consulation_bg.jpg"); 
-  background-size: cover;          
-  background-position: center;     
-  background-repeat: no-repeat;    
+  padding: 0px;           
 }
 
 /* 🔴 FIXED DUPLICATE: Dono page-wrapper definitions ko merge kar ke ek clean class banayi */
+
+
+
 .page-wrapper-talkspace {
   height: 100%;
   width: 100%;
@@ -43,6 +40,38 @@ body {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  
+  /* 1. Pseudo-element overlay ko sahi jagah rakhne ke liye */
+  position: relative;
+  overflow: hidden; 
+  /* background-color: #dc2626; */ /* Fallback color agar rakhna ho */
+}
+
+/* 2. Background image aur opacity ke liye alag layer */
+.page-wrapper-talkspace::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* Aapki background image */
+  background-image: url("../../../Assests/free_consulation_bg.jpg"); 
+  background-size: cover;          
+  background-position: center;     
+  background-repeat: no-repeat;    
+  
+  /* 3. Exactly 25% Opacity set kar di hai */
+  opacity: 0.25; 
+  
+  z-index: 1; /* Background ko peeche rakhne ke liye */
+}
+
+/* 4. Yeh ensure karega ki andar ka saara content (Forms, Text, Buttons) top par rahe */
+.page-wrapper-talkspace > * {
+  position: relative;
+  z-index: 2;
 }
 
 /* ======================================================
@@ -52,21 +81,71 @@ body {
 .form-box-talkspace {
   width: 100%;
   max-width: 650px;
-  background: #f0f4f8; 
   padding: 45px 40px;
   border-radius: 16px; 
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 8px rgba(0, 0, 0, 0.04); 
   box-sizing: border-box;
   transition: transform 0.2s ease;
+  
+  /* 1. Pseudo-element ko fit rakhne ke liye zaroori properties */
+  position: relative;
+  overflow: hidden; 
+  
+}
+
+/* 2. Background image aur uski opacity yahan handles hogi */
+.form-box-talkspace {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+
+  /* ✅ Card effect */
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.10);
+  border: 1px solid rgba(255,255,255,0.25);
+
+  background-color: rgba(255,255,255,0.55);
+  backdrop-filter: blur(2px);
+}
+
+.form-box-talkspace::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-image: url('../../../Assests/images/consulation_bg.jpg');
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  opacity: 0.25; /* ✅ increased opacity */
+
+  z-index: 1;
+}
+
+/* Content always above image */
+.form-box-talkspace > * {
+  position: relative;
+  z-index: 2;
 }
 
 .content-talkspace {
   width: 100%;
+
   display: flex;
+
   justify-content: center;
+
   align-items: center;
 }
-
 /* ======================================================
    HEADINGS & TEXTS
 ====================================================== */
