@@ -69,7 +69,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
             backgroundSize: "cover",                       
             backgroundPosition: "center",                  
             backgroundRepeat: "no-repeat",
-            opacity: 0.25, // Placed exactly at 25%
+            opacity: 0.5, // Placed exactly at 25%
             zIndex: 1,                 
           },
 
