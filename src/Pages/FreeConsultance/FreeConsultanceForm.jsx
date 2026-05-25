@@ -390,562 +390,545 @@ function FreeConsultanceForm() {
     >
       {/* Aapka card ya baaki content yahan aayega */}
 
-     <Container
-  maxWidth={false}
-  sx={{
-    width: "100%",
-
-    display: "flex",
-
-    justifyContent: "center",
-
-    alignItems: "center",
-
-    py: {
-      xs: 3,
-      md: 6,
-    },
-    mt: "5%",
-  }}
->
- <Paper
-  elevation={0}
-  sx={{
-    width: {
-      xs: "100%",
-      sm: "92%",
-      md: submitted ? "750px" : "552px",
-    },
-
-    minHeight: {
-      xs: "auto",
-      md: submitted ? "337px" : "638px",
-    },
-
-    // 🔴 INJECTED HERE: margin-top ko humne responsive breakpoints ke sath define kiya hai
-    mt: {
-      xs: "20%",      // Mobile view me normal space rahega
-      sm: "13%",      // Tablet/Desktop (600px ke upar) par 13% margin-top apply hoga
-      md: "0px",      // Agar laptop/desktop setup par overwrite karna ho toh 0px ya space de sakte hain (requirement ke mutabik badal lein)
-    },
-
-
-    mx: { xs: "7%", sm: "7%", md: "auto" },// Mobile par thoda horizontal margin, desktop par auto center  
-
-    position: "relative",
-
-    overflow: "hidden",
-
-    borderRadius: "16px",
-
-    backgroundImage: `url(${consulation_bg})`,
-
-    backgroundSize: "cover",
-
-    backgroundPosition: "center",
-
-    backgroundRepeat: "no-repeat",
-
-    boxShadow: "0px 4px 18px rgba(0,0,0,0.10)",
-
-    border: "1px solid rgba(255,255,255,0.25)",
-
-    // ✅ Responsive padding
-    p: {
-      xs: "24px 18px",
-      sm: "32px 28px",
-      md: submitted ? "33px 70px" : "48px",
-    },
-
-    display: "flex",
-
-    flexDirection: "column",
-
-    justifyContent: submitted
-      ? "center"
-      : "flex-start",
-
-    alignItems: "stretch",
-
-    // ✅ Extra inner spacing remove
-    boxSizing: "border-box",
-
-    "&::before": {
-      content: '""',
-
-      position: "absolute",
-
-      inset: 0,
-
-      backgroundColor:
-        "rgba(255,255,255,0.72)",
-
-      zIndex: 1,
-    },
-
-    "& > *": {
-      position: "relative",
-
-      zIndex: 2,
-      width: "100%",
-    },
-  }}
->
-    {submitted ? (
-
-<Box
-  sx={{
-    width: "100%",
-
-    maxWidth: {
-      xs: "100%",
-      sm: "650px",
-      md: "650px",
-    },
-
-    // margin: "0 auto",
-    mt: {
-      xs:"0px",
-      sm:"13%", 
-      md:"0px",
-    },
-
-    display: "flex",
-
-    flexDirection: "column",
-
-    alignItems: "center",
-
-    justifyContent: "center",
-
-    textAlign: "center",
-
-    py: {
-      xs: "30px",
-      sm: "40px",
-      md: "55px",
-    },
-
-    px: {
-      xs: "20px",
-      sm: "35px",
-      md: "60px",
-    },
-
-    boxSizing: "border-box",
-  }}
->
-  {/* TITLE */}
-  <Typography
-    sx={{
-      width: "100%",
-
-      maxWidth: "760px",
-
-      fontFamily: "Roboto, sans-serif",
-
-      fontWeight: 800,
-
-      fontSize: {
-        xs: "30px",
-        sm: "34px",
-        md: "36px",
-      },
-
-      lineHeight: {
-        xs: "40px",
-        sm: "48px",
-        md: "54px",
-      },
-
-      color: "rgba(20,112,175,0.87)",
-
-      textAlign: "center",
-
-      mb: {
-        xs: "14px",
-        md: "18px",
-      },
-
-      overflowWrap: "break-word",
-    }}
-  >
-    The Hardest Step Is Starting
-  </Typography>
-
-  {/* DESCRIPTION */}
-  <Typography
-    sx={{
-      width: "100%",
-
-      maxWidth: {
-        xs: "100%",
-        md: "620px",
-      },
-
-      fontFamily: "Roboto, sans-serif",
-
-      fontWeight: 400,
-
-      fontSize: {
-        xs: "14px",
-        md: "18px",
-      },
-
-      lineHeight: {
-        xs: "24px",
-        md: "32px",
-      },
-
-      color: "#3F3F3F",
-
-      textAlign: "center",
-
-      mb: {
-        xs: "24px",
-        md: "34px",
-      },
-
-      overflowWrap: "break-word",
-    }}
-  >
-    Your session has been successfully reserved, and your
-    mental fitness expert will connect with you at your
-    selected time. Until then, take deep breathes.
-  </Typography>
-
-  {/* BUTTON */}
-  <Button
-    variant="contained"
-    onClick={() => navigate("/")}
-    sx={{
-      backgroundColor: "#1470AF",
-
-      color: "#ffffff",
-
-      width: {
-        xs: "220px",
-        md: "258px",
-      },
-
-      height: {
-        xs: "44px",
-        md: "48px",
-      },
-
-      borderRadius: "4px",
-
-      boxShadow:
-        "0px 4px 12px rgba(20, 112, 175, 0.35)",
-
-      fontWeight: 700,
-
-      fontSize: {
-        xs: "13px",
-        md: "14px",
-      },
-
-      textTransform: "uppercase",
-
-      "&:hover": {
-        backgroundColor: "#10598c",
-
-        boxShadow:
-          "0px 4px 12px rgba(20, 112, 175, 0.35)",
-      },
-    }}
-  >
-    HOME
-  </Button>
-</Box>
-
-
-    ) : (
-      <Box
-        component="form"
-        onSubmit={handlePreSubmitCheck}
-        noValidate
+      <Container
+        maxWidth={false}
         sx={{
-          backgroundColor: "transparent",
+          width: "100%",
+
+          display: "flex",
+
+          justifyContent: "center",
+
+          alignItems: "center",
+
+          py: {
+            xs: 3,
+            md: 6,
+          },
+          mt: "5%",
         }}
       >
-        <Box
-          display="flex"
-          alignItems="flex-start"
-          mb={4}
+        <Paper
+          elevation={0}
           sx={{
-            backgroundColor: "transparent",
+            width: {
+              xs: "100%",
+              sm: "92%",
+              md: submitted ? "750px" : "552px",
+            },
+
+            minHeight: {
+              xs: "auto",
+              md: submitted ? "337px" : "638px",
+            },
+
+            // 🔴 INJECTED HERE: margin-top ko humne responsive breakpoints ke sath define kiya hai
+            mt: {
+              xs: "20%", // Mobile view me normal space rahega
+              sm: "13%", // Tablet/Desktop (600px ke upar) par 13% margin-top apply hoga
+              md: "0px", // Agar laptop/desktop setup par overwrite karna ho toh 0px ya space de sakte hain (requirement ke mutabik badal lein)
+            },
+
+            mx: { xs: "7%", sm: "7%", md: "auto" }, // Mobile par thoda horizontal margin, desktop par auto center
+
+            position: "relative",
+
+            overflow: "hidden",
+
+            borderRadius: "16px",
+
+            backgroundImage: `url(${consulation_bg})`,
+
+            backgroundSize: "cover",
+
+            backgroundPosition: "center",
+
+            backgroundRepeat: "no-repeat",
+
+            boxShadow: "0px 4px 18px rgba(0,0,0,0.10)",
+
+            // border: "1px solid rgba(255,255,255,0.25)",
+
+            // ✅ Responsive padding
+            p: {
+              xs: "24px 18px",
+              sm: "32px 28px",
+              md: submitted ? "33px 70px" : "48px",
+            },
+
+            display: "flex",
+
+            flexDirection: "column",
+
+            justifyContent: submitted ? "center" : "flex-start",
+
+            alignItems: "stretch",
+
+            // ✅ Extra inner spacing remove
+            boxSizing: "border-box",
+
+            "&::before": {
+              content: '""',
+
+              position: "absolute",
+
+              inset: 0,
+
+              backgroundColor: "rgba(255,255,255,0.72)",
+
+              zIndex: 1,
+            },
+
+            "& > *": {
+              position: "relative",
+
+              zIndex: 2,
+              width: "100%",
+            },
           }}
         >
-          <IconButton
-            onClick={() => navigate(-1)}
-            sx={{
-              display: { xs: "none", md: "inline-flex" },
-
-              mr: 2,
-
-              mt: 0.5,
-
-              width: "42px",
-
-              height: "42px",
-
-              color: "#fff",
-
-              bgcolor: "#1470af",
-
-              "&:hover": {
-                bgcolor: "#1575b5",
-
-                color: "#fff",
-
-                transform: "translateX(-3px)",
-              },
-            }}
-          >
-            <GoArrowLeft />
-          </IconButton>
-
-          <Box>
-            <Typography
+          {submitted ? (
+            <Box
               sx={{
-                fontSize: {
-                  xs: "24px",
-                  md: "28px",
+                width: "100%",
+
+                maxWidth: {
+                  xs: "100%",
+                  sm: "650px",
+                  md: "650px",
                 },
 
-                fontWeight: 700,
+                // margin: "0 auto",
+                mt: {
+                  xs: "0px",
+                  sm: "13%",
+                  md: "0px",
+                },
 
-                lineHeight: 1.15,
+                display: "flex",
 
-                color: "#1470af",
+                flexDirection: "column",
+
+                alignItems: "center",
+
+                justifyContent: "center",
+
+                textAlign: "center",
+
+                py: {
+                  xs: "30px",
+                  sm: "40px",
+                  md: "55px",
+                },
+
+                px: {
+                  xs: "20px",
+                  sm: "35px",
+                  md: "60px",
+                },
+
+                boxSizing: "border-box",
               }}
             >
-              Lets Discuss It Over A Free
-              Consultation
-            </Typography>
-          </Box>
-        </Box>
+              {/* TITLE */}
+              <Typography
+                sx={{
+                  width: "100%",
 
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <TextField
-              fullWidth
-              label="Full Name"
-              placeholder="John Doe"
-              required
-              value={name}
-              onChange={handleNameChange}
-              error={!!errors.name}
-              helperText={errors.name}
-            />
-          </Grid>
+                  maxWidth: "760px",
 
-          <Grid item xs={12}>
-            <TextField
-              fullWidth
-              label="Email Address"
-              type="email"
-              placeholder="example@mail.com"
-              required
-              value={email}
-              onChange={handleEmailChange}
-              error={!!errors.email}
-              helperText={errors.email}
-            />
-          </Grid>
+                  fontFamily: "Roboto, sans-serif",
 
-          <Grid item xs={12} md={6}>
-            <TextField
-              fullWidth
-              label="Select Date"
-              type="date"
-              required
-              InputLabelProps={{ shrink: true }}
-              inputProps={{ min: tomorrowStr }}
-              value={consultDate}
-              onChange={handleDateChange}
-              error={!!errors.consultDate}
-              helperText={errors.consultDate}
-            />
-          </Grid>
+                  fontWeight: 800,
 
-          <Grid item xs={12} md={6}>
-            <TextField
-              fullWidth
-              label="Select Time"
-              type="time"
-              required
-              InputLabelProps={{ shrink: true }}
-              value={consultTime}
-              onChange={handleTimeChange}
-              error={!!errors.consultTime}
-              helperText={errors.consultTime}
-            />
-          </Grid>
-
-          <Grid item xs={12}>
-            <Typography
-              variant="caption"
-              sx={{
-                mb: 0.8,
-
-                display: "block",
-
-                fontWeight: 700,
-
-                color: "text.secondary",
-              }}
-            >
-              YOUR TIME ZONE
-            </Typography>
-
-            <TimezoneSelect
-              value={selectedTimeZone}
-              onChange={setSelectedTimeZone}
-              styles={{
-                control: (base) => ({
-                  ...base,
-                  minHeight: "56px",
-                  borderRadius: "4px",
-                  borderColor: "rgba(0, 0, 0, 0.23)",
-                  boxShadow: "none",
-                  "&:hover": {
-                    borderColor: "rgba(0,0,0,0.87)",
+                  fontSize: {
+                    xs: "30px",
+                    sm: "34px",
+                    md: "36px",
                   },
-                }),
-              }}
-            />
-          </Grid>
 
-          <Grid item xs={12}>
-            <Typography
-              variant="caption"
-              sx={{
-                mb: 0.8,
+                  lineHeight: {
+                    xs: "40px",
+                    sm: "48px",
+                    md: "54px",
+                  },
 
-                display: "block",
+                  color: "rgba(20,112,175,0.87)",
 
-                fontWeight: 700,
+                  textAlign: "center",
 
-                color: errors.phone
-                  ? "#d32f2f"
-                  : "text.secondary",
-              }}
-            >
-              PHONE NUMBER
-            </Typography>
+                  mb: {
+                    xs: "14px",
+                    md: "18px",
+                  },
 
-            <PhoneInputWrapper error={!!errors.phone}>
-              <PhoneInput
-                country="us"
-                value={phoneValue}
-                onChange={(value, data) => {
-                  setPhoneValue(value);
-
-                  setCountryCode(data.dialCode);
-
-                  setCurrentCountryIso(data.countryCode);
-
-                  const phoneValidationError =
-                    validatePhone(
-                      value,
-                      data.countryCode
-                    );
-
-                  setErrors((prev) => ({
-                    ...prev,
-                    phone: phoneValidationError,
-                  }));
+                  overflowWrap: "break-word",
                 }}
-                enableSearch={true}
-                containerClass="react-tel-input"
-                inputClass="form-control"
-              />
-            </PhoneInputWrapper>
+              >
+                The Hardest Step Is Starting
+              </Typography>
 
-            {errors.phone && (
-              <FormHelperText error sx={{ ml: 1 }}>
-                {errors.phone}
-              </FormHelperText>
-            )}
-          </Grid>
+              {/* DESCRIPTION */}
+              <Typography
+                sx={{
+                  width: "100%",
 
-          <Grid
-            item
-            xs={12}
-            sx={{
-              mt: 2,
+                  maxWidth: {
+                    xs: "100%",
+                    md: "620px",
+                  },
 
-              display: "flex",
+                  fontFamily: "Roboto, sans-serif",
 
-              justifyContent: "center",
-            }}
-          >
-            <Button
-              type="submit"
-              disabled={loading}
-              variant="contained"
+                  fontWeight: 400,
+
+                  fontSize: {
+                    xs: "14px",
+                    md: "18px",
+                  },
+
+                  lineHeight: {
+                    xs: "24px",
+                    md: "32px",
+                  },
+
+                  color: "#3F3F3F",
+
+                  textAlign: "center",
+
+                  mb: {
+                    xs: "24px",
+                    md: "34px",
+                  },
+
+                  overflowWrap: "break-word",
+                }}
+              >
+                Your session has been successfully reserved, and your mental
+                fitness expert will connect with you at your selected time.
+                Until then, take deep breathes.
+              </Typography>
+
+              {/* BUTTON */}
+              <Button
+                variant="contained"
+                onClick={() => navigate("/")}
+                sx={{
+                  backgroundColor: "#1470AF",
+
+                  color: "#ffffff",
+
+                  width: {
+                    xs: "220px",
+                    md: "258px",
+                  },
+
+                  height: {
+                    xs: "44px",
+                    md: "48px",
+                  },
+
+                  borderRadius: "4px",
+
+                  boxShadow: "0px 4px 12px rgba(20, 112, 175, 0.35)",
+
+                  fontWeight: 700,
+
+                  fontSize: {
+                    xs: "13px",
+                    md: "14px",
+                  },
+
+                  textTransform: "uppercase",
+
+                  "&:hover": {
+                    backgroundColor: "#10598c",
+
+                    boxShadow: "0px 4px 12px rgba(20, 112, 175, 0.35)",
+                  },
+                }}
+              >
+                HOME
+              </Button>
+            </Box>
+          ) : (
+            <Box
+              component="form"
+              onSubmit={handlePreSubmitCheck}
+              noValidate
               sx={{
-                backgroundColor: "#1470AF",
-
-                color: "#ffffff",
-
-                width: "160px",
-
-                height: "44px",
-
-                borderRadius: "4px",
-
-                boxShadow:
-                  "0px 4px 12px rgba(20, 112, 175, 0.35)",
-
-                fontWeight: 700,
-
-                fontSize: "15px",
-
-                textTransform: "uppercase",
-
-                "&:hover": {
-                  backgroundColor: "#10598c",
-                },
+                backgroundColor: "transparent",
               }}
             >
-              {loading ? (
-                <CircularProgress
-                  size={24}
-                  sx={{ color: "#fff" }}
-                />
-              ) : (
-                "Submit"
+              <Box
+                display="flex"
+                alignItems="flex-start"
+                mb={4}
+                sx={{
+                  backgroundColor: "transparent",
+                }}
+              >
+                <IconButton
+                  onClick={() => navigate(-1)}
+                  sx={{
+                    display: { xs: "none", md: "inline-flex" },
+
+                    mr: 2,
+
+                    mt: 0.5,
+
+                    width: "42px",
+
+                    height: "42px",
+
+                    color: "#fff",
+
+                    bgcolor: "#1470af",
+
+                    "&:hover": {
+                      bgcolor: "#1575b5",
+
+                      color: "#fff",
+
+                      transform: "translateX(-3px)",
+                    },
+                  }}
+                >
+                  <GoArrowLeft />
+                </IconButton>
+
+                <Box>
+                  <Typography
+                    sx={{
+                      fontSize: {
+                        xs: "24px",
+                        md: "28px",
+                      },
+
+                      fontWeight: 700,
+
+                      lineHeight: 1.15,
+
+                      color: "#1470af",
+                    }}
+                  >
+                    Lets Discuss It Over A Free Consultation
+                  </Typography>
+                </Box>
+              </Box>
+
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Full Name"
+                    placeholder="John Doe"
+                    required
+                    value={name}
+                    onChange={handleNameChange}
+                    error={!!errors.name}
+                    helperText={errors.name}
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Email Address"
+                    type="email"
+                    placeholder="example@mail.com"
+                    required
+                    value={email}
+                    onChange={handleEmailChange}
+                    error={!!errors.email}
+                    helperText={errors.email}
+                  />
+                </Grid>
+
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Select Date"
+                    type="date"
+                    required
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{ min: tomorrowStr }}
+                    value={consultDate}
+                    onChange={handleDateChange}
+                    error={!!errors.consultDate}
+                    helperText={errors.consultDate}
+                  />
+                </Grid>
+
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Select Time"
+                    type="time"
+                    required
+                    InputLabelProps={{ shrink: true }}
+                    value={consultTime}
+                    onChange={handleTimeChange}
+                    error={!!errors.consultTime}
+                    helperText={errors.consultTime}
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      mb: 0.8,
+
+                      display: "block",
+
+                      fontWeight: 700,
+
+                      color: "text.secondary",
+                    }}
+                  >
+                    YOUR TIME ZONE
+                  </Typography>
+
+                  <TimezoneSelect
+                    value={selectedTimeZone}
+                    onChange={setSelectedTimeZone}
+                    styles={{
+                      control: (base) => ({
+                        ...base,
+                        minHeight: "56px",
+                        borderRadius: "4px",
+                        borderColor: "rgba(0, 0, 0, 0.23)",
+                        boxShadow: "none",
+                        "&:hover": {
+                          borderColor: "rgba(0,0,0,0.87)",
+                        },
+                      }),
+                    }}
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      mb: 0.8,
+
+                      display: "block",
+
+                      fontWeight: 700,
+
+                      color: errors.phone ? "#d32f2f" : "text.secondary",
+                    }}
+                  >
+                    PHONE NUMBER
+                  </Typography>
+
+                  <PhoneInputWrapper error={!!errors.phone}>
+                    <PhoneInput
+                      country="us"
+                      value={phoneValue}
+                      onChange={(value, data) => {
+                        setPhoneValue(value);
+
+                        setCountryCode(data.dialCode);
+
+                        setCurrentCountryIso(data.countryCode);
+
+                        const phoneValidationError = validatePhone(
+                          value,
+                          data.countryCode,
+                        );
+
+                        setErrors((prev) => ({
+                          ...prev,
+                          phone: phoneValidationError,
+                        }));
+                      }}
+                      enableSearch={true}
+                      containerClass="react-tel-input"
+                      inputClass="form-control"
+                    />
+                  </PhoneInputWrapper>
+
+                  {errors.phone && (
+                    <FormHelperText error sx={{ ml: 1 }}>
+                      {errors.phone}
+                    </FormHelperText>
+                  )}
+                </Grid>
+
+                <Grid
+                  item
+                  xs={12}
+                  sx={{
+                    mt: 2,
+
+                    display: "flex",
+
+                    justifyContent: "center",
+                  }}
+                >
+                  <Button
+                    type="submit"
+                    disabled={loading}
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "#1470AF",
+
+                      color: "#ffffff",
+
+                      width: "160px",
+
+                      height: "44px",
+
+                      borderRadius: "4px",
+
+                      boxShadow: "0px 4px 12px rgba(20, 112, 175, 0.35)",
+
+                      fontWeight: 700,
+
+                      fontSize: "15px",
+
+                      textTransform: "uppercase",
+
+                      "&:hover": {
+                        backgroundColor: "#10598c",
+                      },
+                    }}
+                  >
+                    {loading ? (
+                      <CircularProgress size={24} sx={{ color: "#fff" }} />
+                    ) : (
+                      "Submit"
+                    )}
+                  </Button>
+                </Grid>
+              </Grid>
+
+              {errors.error && (
+                <Typography
+                  color="error"
+                  variant="body2"
+                  sx={{
+                    mt: 2,
+
+                    textAlign: "center",
+
+                    bgcolor: "#ffebee",
+
+                    p: 1,
+
+                    borderRadius: 1,
+                  }}
+                >
+                  {errors.error}
+                </Typography>
               )}
-            </Button>
-          </Grid>
-        </Grid>
-
-        {errors.error && (
-          <Typography
-            color="error"
-            variant="body2"
-            sx={{
-              mt: 2,
-
-              textAlign: "center",
-
-              bgcolor: "#ffebee",
-
-              p: 1,
-
-              borderRadius: 1,
-            }}
-          >
-            {errors.error}
-          </Typography>
-        )}
-      </Box>
-    )}
-  </Paper>
-</Container>
+            </Box>
+          )}
+        </Paper>
+      </Container>
 
       {/* Confirmation Modal Render */}
       <ConfirmationModal
