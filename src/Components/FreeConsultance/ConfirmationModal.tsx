@@ -131,16 +131,26 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   disabled={loading}
   fullWidth
   sx={{
-    py: 1.8,
-    px: 3,
+    py:{
+      xs: "0px",
+      sm: "0px",
+      md: 1.8
+
+    },
+    px:{
+      xs: "7px",
+      sm: "7px",
+      md: 3
+    } ,
+   
     borderRadius: "20px",
     border: "3px solid #1470af", // thick blue border
     color: "#1470af",
     fontWeight: 800,
     textTransform: "uppercase",
     fontSize: {
-      xs: "10px",
-      sm: "10px",
+      xs: "15px",
+      sm: "15px",
       md: "16px"
     },
     lineHeight: {
@@ -170,16 +180,26 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
             disabled={loading}
             fullWidth
             sx={{
-              py: 1.8,
-              px: 3,
+              py:{
+              xs: "7px",
+              sm: "7px",
+              md: 1.8,
+            } ,
+       
+            px:{
+              xs: "7px",
+              sm: "7px",
+              md: 3
+            } ,
               borderRadius: "14px",
               bgcolor: "#1470af",
               color: "#fff",
               fontWeight: 700,
-              textTransform: "none",
+             
               fontSize: "1rem",
               boxShadow: "0px 6px 18px rgba(20, 112, 175, 0.2)",
               transition: "all 0.2s ease",
+               textTransform: "uppercase",
               "&:hover": {
                 bgcolor: "#0e5a8d",
                 boxShadow: "0px 8px 22px rgba(14, 90, 141, 0.3)",
