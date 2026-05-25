@@ -259,7 +259,7 @@ body {
 
 @media (max-width: 768px) {
   .talkspace-page {
-    padding: 10px; /* Outer boundary safe padding chota kiya mobile par */
+    /* padding: 10px; */
   }
 
   .page-wrapper-talkspace {
@@ -270,7 +270,8 @@ body {
     padding: 30px 20px;
     margin: 3vh auto 0 auto; /* Pure responsive top margin jisse extra large spacing clear ho gayi */
     max-height: 85vh;       /* White card pure view ke andar lock rahega */
-    overflow-y: auto;       /* Card ke andar content automatic scroll hoga, page overflow block */
+    overflow-y: auto; 
+    margin-top: 30%;      /* Card ke andar content automatic scroll hoga, page overflow block */
   }
   
   .title-talkspace {
@@ -292,11 +293,14 @@ body {
   }
   
   .form-box-talkspace {
-    padding: 22px 15px;
+    /* padding: 22px 15px; */
     border-radius: 12px;
     margin-top: 2vh;        /* Bilkul choti screens par spacing aur tight aur elegant ki */
     max-height: 88vh;       
     width: 100%;
+    margin-top: 35%; 
+    margin-left: 30px;
+    margin-right: 30px;
   }
   
   .title-talkspace {

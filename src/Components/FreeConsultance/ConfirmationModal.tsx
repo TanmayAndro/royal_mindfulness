@@ -108,16 +108,22 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         </Typography>
 
         {/* Buttons Action Wrapper */}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: { xs: "column-reverse", sm: "row" }, 
-            justifyContent: "center",
-            gap: 2.5,
-            width: "100%",
-            maxWidth: "540px", 
-          }}
-        >
+       <Box
+  sx={{
+    display: "flex",
+    // Mobile (xs) aur Tablet/Desktop (sm) dono par "row" rakha hai taaki buttons ek hi line me aayein
+    flexDirection: "row", 
+    justifyContent: "center",
+    gap: 2.5,
+    width: "100%",
+    maxWidth: "540px", 
+    // Touch optimization for mobile screen buttons width control
+    "& > button, & > a": {
+      flex: 1, // Dono buttons barabar width (50% - 50%) le lenge
+      minWidth: "0px" // Text overflow hone par layout break nahi karega
+    }
+  }}
+>
           {/* Action: Secondary Reschedule */}
           <Button
             variant="outlined"

@@ -405,15 +405,16 @@ function FreeConsultanceForm() {
       xs: 3,
       md: 6,
     },
+    mt: "5%",
   }}
 >
-  <Paper
+ <Paper
   elevation={0}
   sx={{
     width: {
       xs: "100%",
       sm: "92%",
-      md: submitted ? "570px" : "552px",
+      md: submitted ? "750px" : "552px",
     },
 
     minHeight: {
@@ -421,7 +422,15 @@ function FreeConsultanceForm() {
       md: submitted ? "337px" : "638px",
     },
 
-    mx: "auto",
+    // 🔴 INJECTED HERE: margin-top ko humne responsive breakpoints ke sath define kiya hai
+    mt: {
+      xs: "20%",      // Mobile view me normal space rahega
+      sm: "13%",      // Tablet/Desktop (600px ke upar) par 13% margin-top apply hoga
+      md: "0px",      // Agar laptop/desktop setup par overwrite karna ho toh 0px ya space de sakte hain (requirement ke mutabik badal lein)
+    },
+
+
+    mx: { xs: "7%", sm: "7%", md: "auto" },// Mobile par thoda horizontal margin, desktop par auto center  
 
     position: "relative",
 
@@ -456,7 +465,7 @@ function FreeConsultanceForm() {
       ? "center"
       : "flex-start",
 
-   alignItems: "stretch",
+    alignItems: "stretch",
 
     // ✅ Extra inner spacing remove
     boxSizing: "border-box",
@@ -494,7 +503,12 @@ function FreeConsultanceForm() {
       md: "650px",
     },
 
-    margin: "0 auto",
+    // margin: "0 auto",
+    mt: {
+      xs:"0px",
+      sm:"13%", 
+      md:"0px",
+    },
 
     display: "flex",
 
