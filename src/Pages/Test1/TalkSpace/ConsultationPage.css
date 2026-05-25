@@ -285,7 +285,7 @@ body {
 
 @media (max-width: 425px) {
   .talkspace-page {
-    padding: 8px;
+    /* padding: 8px; */
   }
 
   .page-wrapper-talkspace {
