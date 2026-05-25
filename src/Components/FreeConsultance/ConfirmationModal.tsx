@@ -126,28 +126,42 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
 >
           {/* Action: Secondary Reschedule */}
           <Button
-            variant="outlined"
-            onClick={onClose}
-            disabled={loading}
-            fullWidth
-            sx={{
-              py: 1.8, 
-              px: 3,
-              borderRadius: "14px",
-              borderColor: "#1470af",
-              color: "#1470af",
-              fontWeight: 700,
-              textTransform: "none", 
-              fontSize: "1rem",
-              transition: "all 0.2s ease",
-              "&:hover": {
-                borderColor: "#0e5a8d",
-                bgcolor: "rgba(20, 112, 175, 0.04)",
-              },
-            }}
-          >
-            No, I Want to Reschedule
-          </Button>
+  variant="outlined"
+  onClick={onClose}
+  disabled={loading}
+  fullWidth
+  sx={{
+    py: 1.8,
+    px: 3,
+    borderRadius: "20px",
+    border: "3px solid #1470af", // thick blue border
+    color: "#1470af",
+    fontWeight: 800,
+    textTransform: "uppercase",
+    fontSize: {
+      xs: "10px",
+      sm: "10px",
+      md: "16px"
+    },
+    lineHeight: {
+      xs: 1.5,
+      sm: 1.5,
+      md: 1.1
+    },
+    letterSpacing: "1px",
+    backgroundColor: "#f4f4f4",
+    boxShadow: "0px 4px 0px #1470af",
+    transition: "all 0.2s ease",
+
+    "&:hover": {
+      border: "3px solid #0e5a8d",
+      backgroundColor: "#eef6fb",
+      boxShadow: "0px 4px 0px #0e5a8d",
+    },
+  }}
+>
+  No, I Want To Reschedule
+</Button>
 
           {/* Action: Primary Confirm */}
           <Button
