@@ -277,27 +277,129 @@ function FreeConsultanceForm() {
     setIsConfirmOpen(true);
   };
 
-  const handleFinalApiSubmit = async () => {
-    const primaryUrl = process.env.REACT_APP_FREECONSULTATION_URL?.replace(
-      /\/$/,
-      "",
-    );
-    const localUrl = process.env.REACT_APP_BASE_URL?.replace(/\/$/, "");
+  // const handleFinalApiSubmit = async () => {
+  //   const primaryUrl = process.env.REACT_APP_FREECONSULTATION_URL?.replace(
+  //     /\/$/,
+  //     "",
+  //   );
+  //   const localUrl = process.env.REACT_APP_BASE_URL?.replace(/\/$/, "");
 
-    if (!primaryUrl) {
-      setErrors((prev) => ({ ...prev, error: "Primary API URL is missing." }));
+  //   if (!primaryUrl) {
+  //     setErrors((prev) => ({ ...prev, error: "Primary API URL is missing." }));
+  //     setIsConfirmOpen(false);
+  //     return;
+  //   }
+
+  //   setLoading(true);
+  //   setErrors({});
+
+  //   const digitsOnly = phoneValue.replace(/\D/g, "");
+  //   const purePhoneNo = digitsOnly.startsWith(countryCode)
+  //     ? digitsOnly.slice(countryCode.length)
+  //     : digitsOnly;
+
+  //   const payload = {
+  //     free_consultance: {
+  //       name,
+  //       email,
+  //       time_zone: getGMTOffset(selectedTimeZone),
+  //       phone_number: purePhoneNo,
+  //       country_code: `+${countryCode}`,
+  //       free_consultance_date: consultDate,
+  //       free_consultance_time: consultTime,
+  //     },
+  //   };
+
+  //   const sendRequest = (url) =>
+  //     fetch(`${url}/free_consultances`, {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(payload),
+  //     }).then((res) => (res.ok ? res.json() : Promise.reject(res)));
+
+  //   try {
+  //     const results = await Promise.allSettled([
+  //       sendRequest(primaryUrl),
+  //       localUrl ? sendRequest(localUrl) : Promise.reject("Local URL missing"),
+  //     ]);
+
+  //     const [primaryResult, localResult] = results;
+
+  //     if (primaryResult.status === "rejected") {
+  //       throw new Error(
+  //         "Primary API failed: " +
+  //           (primaryResult.reason?.message || "Connection error"),
+  //       );
+  //     }
+
+  //     if (localResult.status === "rejected") {
+  //       console.warn(
+  //         "Local server update failed, but primary succeeded:",
+  //         localResult.reason,
+  //       );
+  //     } else {
+  //       console.log("Local server updated successfully.");
+  //     }
+
+  //     setSubmitted(true);
+  //     localStorage.removeItem("freeConsultanceData");
+  //     setIsConfirmOpen(false);
+  //   } catch (err) {
+  //     setErrors((prev) => ({ ...prev, error: err.message }));
+  //     setIsConfirmOpen(false);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  const handleFinalApiSubmit = async () => {
+    // =========================
+    // API URLS
+    // =========================
+    const primaryUrl = process.env.REACT_APP_FREECONSULTATION_URL || "";
+
+    const localUrl = process.env.REACT_APP_BASE_URL || "";
+
+    const cleanPrimaryUrl = primaryUrl.replace(/\/$/, "");
+    const cleanLocalUrl = localUrl.replace(/\/$/, "");
+
+    // =========================
+    // DEBUG LOGS
+    // =========================
+    // console.log("PRIMARY URL:", cleanPrimaryUrl);
+    // console.log("LOCAL URL:", cleanLocalUrl);
+
+    // =========================
+    // CHECK PRIMARY URL
+    // =========================
+    if (!cleanPrimaryUrl) {
+      setErrors((prev) => ({
+        ...prev,
+        error: "Render API URL is missing.",
+      }));
+
       setIsConfirmOpen(false);
       return;
     }
 
+    // =========================
+    // START LOADING
+    // =========================
     setLoading(true);
     setErrors({});
 
+    // =========================
+    // CLEAN PHONE NUMBER
+    // =========================
     const digitsOnly = phoneValue.replace(/\D/g, "");
+
     const purePhoneNo = digitsOnly.startsWith(countryCode)
       ? digitsOnly.slice(countryCode.length)
       : digitsOnly;
 
+    // =========================
+    // PAYLOAD
+    // =========================
     const payload = {
       free_consultance: {
         name,
@@ -310,44 +412,88 @@ function FreeConsultanceForm() {
       },
     };
 
-    const sendRequest = (url) =>
-      fetch(`${url}/free_consultances`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      }).then((res) => (res.ok ? res.json() : Promise.reject(res)));
+    // console.log("PAYLOAD:", payload);
+
+    // =========================
+    // API REQUEST FUNCTION
+    // =========================
+    const sendRequest = async (url, label) => {
+      try {
+        // console.log(`CALLING ${label} API:`, url);
+
+        const response = await fetch(`${url}/free_consultances`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        // console.log(`${label} STATUS:`, response.status);
+
+        const responseText = await response.text();
+
+        // console.log(`${label} RESPONSE:`, responseText);
+
+        if (!response.ok) {
+          throw new Error(responseText || `${label} API request failed`);
+        }
+
+        return responseText ? JSON.parse(responseText) : {};
+      } catch (error) {
+        console.error(`${label} API ERROR:`, error);
+
+        throw error;
+      }
+    };
 
     try {
-      const results = await Promise.allSettled([
-        sendRequest(primaryUrl),
-        localUrl ? sendRequest(localUrl) : Promise.reject("Local URL missing"),
-      ]);
+      // =====================================
+      // STEP 1 → SAVE TO RENDER (MANDATORY)
+      // =====================================
+      await sendRequest(cleanPrimaryUrl, "RENDER");
 
-      const [primaryResult, localResult] = results;
+      // console.log("Render server saved successfully");
 
-      if (primaryResult.status === "rejected") {
-        throw new Error(
-          "Primary API failed: " +
-            (primaryResult.reason?.message || "Connection error"),
-        );
-      }
-
-      if (localResult.status === "rejected") {
-        console.warn(
-          "Local server update failed, but primary succeeded:",
-          localResult.reason,
-        );
+      // =====================================
+      // STEP 2 → SAVE TO LOCAL (OPTIONAL)
+      // =====================================
+      if (cleanLocalUrl && cleanLocalUrl !== cleanPrimaryUrl) {
+        sendRequest(cleanLocalUrl, "LOCAL")
+          .then(() => {
+            console.log("Local server saved successfully");
+          })
+          .catch((localError) => {
+            console.warn(
+              "Local server failed but render succeeded:",
+              localError.message,
+            );
+          });
       } else {
-        console.log("Local server updated successfully.");
+        console.log("Local URL skipped (same as render or missing)");
       }
 
+      // =====================================
+      // SUCCESS
+      // =====================================
       setSubmitted(true);
+
       localStorage.removeItem("freeConsultanceData");
+
       setIsConfirmOpen(false);
     } catch (err) {
-      setErrors((prev) => ({ ...prev, error: err.message }));
+      console.error("FINAL SUBMIT ERROR:", err);
+
+      setErrors((prev) => ({
+        ...prev,
+        error: err.message || "Something went wrong. Please try again.",
+      }));
+
       setIsConfirmOpen(false);
     } finally {
+      // =====================================
+      // STOP LOADING
+      // =====================================
       setLoading(false);
     }
   };
