@@ -88,7 +88,7 @@ const ChecklistResultPanel: React.FC<ChecklistResultPanelProps> = ({
                   color: "#FFFFFF",
                 }}
               >
-               Connect to Our Experts
+               Connect with Our Experts
               </Button> 
 
             </Box>
