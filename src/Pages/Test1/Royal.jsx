@@ -1,40 +1,39 @@
-import React from 'react'
+import React from "react";
 
-import Header from '../../Components/test1/Header'
+import Header from "../../Components/test1/Header";
 
-import Checklist from '../../Components/test1/checkList'
-import Footer from '../../Components/test1/Footer'
-import Service from '../../Components/test1/Service'
-import FeedBack from "../../Components/test1/FeedBack"
-import RoadmapToProcess from '../../Components/test1/RoadmapToProcess'
-import HealthMind from "../../Components/test1/HealthMind"
+import Checklist from "../../Components/test1/checklist/checkList";
+
+import Footer from "../../Components/test1/Footer";
+import Service from "../../Components/test1/Service";
+import FeedBack from "../../Components/test1/FeedBack";
+import RoadmapToProcess from "../../Components/test1/RoadmapToProcess";
+import HealthMind from "../../Components/test1/HealthMind";
 // import HealthyStory from "../../Components/test1/HealthyStory"
-import Comparison from "../../Components/test1/Comparison"
-import FAQSection from "../../Components/test1/FAQSection"
-import TalkspaceFeature from "../../Components/test1/TalkspaceFeature"
-import FounderSection from "../../Components/test1/FounderSection/FounderSection"
+import Comparison from "../../Components/test1/Comparison";
+import FAQSection from "../../Components/test1/FAQSection";
+import TalkspaceFeature from "../../Components/test1/TalkspaceFeature";
+import FounderSection from "../../Components/test1/FounderSection/FounderSection";
 // import TestimonialsPage from "./TestimonialsPage/TestimonialsPage"
-import TrustMetrics from "../../Components/test1/TrustMetrics/TrustMetrics"
-import LandingPage from './LandingPage/LandingPage.jsx'
+import TrustMetrics from "../../Components/test1/TrustMetrics/TrustMetrics";
+import LandingPage from "./LandingPage/LandingPage.jsx";
 
 function Royal() {
   return (
     <div
       style={{
-        
         width: "100%",
         overflowX: "hidden",
         display: "flex",
         justifyContent: "center",
       }}
     >
-      
       {/* Main Responsive Wrapper */}
       <div
         style={{
           width: "100%",
           maxWidth: "100%",
-          padding: "0 0px",        // mobile padding
+          padding: "0 0px", // mobile padding
           boxSizing: "border-box",
         }}
       >
@@ -43,6 +42,7 @@ function Royal() {
         <div style={{ marginTop: "0px" }}>
           <Checklist />
         </div>
+
 
         <div style={{ marginTop: "0px" }}>
           <Service />
@@ -56,17 +56,13 @@ function Royal() {
           <TestimonialsPage />
         </div> */}
 
-      
-
         <div style={{ marginTop: "0px" }}>
           <Comparison />
         </div>
 
-
         <div style={{ marginTop: "0px" }}>
           <TalkspaceFeature />
         </div>
-
 
         <div style={{ marginTop: "0px" }}>
           <LandingPage />
@@ -79,7 +75,6 @@ function Royal() {
         <div style={{ marginTop: "0px" }}>
           <TrustMetrics />
         </div>
-        
 
         <div style={{ marginTop: "0px" }}>
           <HealthMind />
@@ -101,5 +96,4 @@ function Royal() {
   );
 }
 
-
-export default Royal
+export default Royal;
