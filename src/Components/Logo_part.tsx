@@ -46,7 +46,7 @@
       navigate("/login");
     };
 
-    const headingColor = isConsultationPage ? "#1470AF !important" : undefined;
+    const headingColor = isConsultationPage ? "#1470AF !important" : "#1470AF !important";
 
 
     return (
@@ -66,7 +66,7 @@
                 width: "48px",
                 filter: isConsultationPage
                   ? "brightness(0) saturate(100%) invert(34%) sepia(92%) saturate(1039%) hue-rotate(176deg) brightness(91%) contrast(93%)"
-                  : "none",
+                  : "brightness(0) saturate(100%) invert(34%) sepia(92%) saturate(1039%) hue-rotate(176deg) brightness(91%) contrast(93%)",
               }}
               alt="logo"
               onClick={() => navigate("/")}
