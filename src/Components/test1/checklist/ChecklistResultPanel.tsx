@@ -75,7 +75,7 @@ const ChecklistResultPanel: React.FC<ChecklistResultPanelProps> = ({
               <Button
                 variant="contained"
                 onClick={()=>{
-                  navigate("/consultation_question")
+                  navigate("/free_consultation")
                 }}
                 
                 sx={{
