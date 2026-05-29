@@ -11,6 +11,7 @@
     "@fullcalendar/react": "^6.1.15",
     "@fullcalendar/timegrid": "^6.1.15",
     "@greatsumini/react-facebook-login": "^3.4.0",
+    "@iconify/react": "^6.0.2",
     "@jitsi/react-sdk": "^1.4.0",
     "@mui/icons-material": "^5.18.0",
     "@mui/material": "^5.15.18",

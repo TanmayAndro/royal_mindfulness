@@ -1,0 +1,220 @@
+// src/Components/mobile/HowWeWork.tsx
+
+import React from "react";
+
+import { Box, Typography, Button } from "@mui/material";
+
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+
+const workSteps = [
+  {
+    title: "Get a Free Consultation",
+    description:
+      "Start with a free 15-minute consultation where we understand your mental fitness goals.",
+  },
+
+  {
+    title: "We match you with a Trainer",
+    description:
+      "Based on your consultation, our system assigns you a certified mental fitness trainer aligned with your goals.",
+  },
+
+  {
+    title: "Start Daily Training",
+    description:
+      "Get live, guided training sessions like Yoga Nidra and breathwork tailored to build mental resilience.",
+  },
+];
+
+const HowWeWork = () => {
+  return (
+    <Box
+      sx={{
+        width: "100%",
+
+        position: "relative",
+
+        mt: 6,
+
+        px: 3,
+        pt: 6,
+        pb: 10,
+
+        textAlign: "center",
+
+        overflow: "hidden",
+      }}
+    >
+      {/* TITLE */}
+      <Typography
+        sx={{
+          color: "#1470AF",
+
+          fontSize: {
+            xs: "34px",
+            sm: "42px",
+          },
+
+          fontWeight: 700,
+
+          lineHeight: 1.1,
+
+          mb: 4,
+        }}
+      >
+        How we work?
+      </Typography>
+
+      {/* STEPS */}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        {workSteps.map((step, index) => (
+          <React.Fragment key={index}>
+            {/* ICON */}
+            <Box
+              sx={{
+                width: 34,
+                height: 34,
+
+                borderRadius: "50%",
+
+                background: "#1470AF",
+
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+
+                mb: 2,
+
+                boxShadow: "0px 4px 10px rgba(0,0,0,0.12)",
+              }}
+            >
+              <KeyboardArrowDownIcon
+                sx={{
+                  color: "#fff",
+                  fontSize: "24px",
+                }}
+              />
+            </Box>
+
+            {/* STEP TITLE */}
+            <Typography
+              sx={{
+                color: "#1470AF",
+
+                fontSize: {
+                  xs: "20px",
+                  sm: "24px",
+                },
+
+                fontWeight: 700,
+
+                lineHeight: 1.2,
+
+                mb: 1,
+              }}
+            >
+              {step.title}
+            </Typography>
+
+            {/* STEP DESCRIPTION */}
+            <Typography
+              sx={{
+                maxWidth: "330px",
+
+                color: "#111",
+
+                fontSize: {
+                  xs: "16px",
+                  sm: "18px",
+                },
+
+                lineHeight: 1.3,
+
+                fontWeight: 400,
+
+                mb: 3,
+              }}
+            >
+              {step.description}
+            </Typography>
+          </React.Fragment>
+        ))}
+      </Box>
+
+      {/* CTA BUTTON */}
+      <Button
+        variant="contained"
+        sx={{
+          mt: 2,
+
+          height: "70px",
+
+          px: 5,
+
+          borderRadius: "999px",
+
+          background: "#1470AF",
+
+          textTransform: "none",
+
+          fontSize: {
+            xs: "22px",
+            sm: "28px",
+          },
+
+          fontWeight: 700,
+
+          boxShadow: "0px 8px 18px rgba(0,0,0,0.18)",
+
+          "&:hover": {
+            background: "#1470AF",
+            boxShadow: "0px 8px 18px rgba(0,0,0,0.18)",
+          },
+        }}
+      >
+        Book A Free Consultation
+      </Button>
+
+      {/* BOTTOM CURVE */}
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: -1,
+          left: 0,
+
+          width: "100%",
+          lineHeight: 0,
+        }}
+      >
+        <svg
+          viewBox="0 0 1440 220"
+          preserveAspectRatio="none"
+          style={{
+            width: "100%",
+            height: "70px",
+            display: "block",
+          }}
+        >
+          {/* <path
+            fill="#1470AF"
+            d="
+              M0,0
+              C300,180 1140,180 1440,0
+              L1440,220
+              L0,220
+              Z
+            "
+          /> */}
+        </svg>
+      </Box>
+    </Box>
+  );
+};
+
+export default HowWeWork;
