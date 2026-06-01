@@ -12,6 +12,7 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import logo from "../../Assests/images/logo/logo.webp";
 
+import comimage from "../../Assests/images/mobile/Rectangle16.png";
 
 const comparisonData = [
   {
@@ -88,16 +89,14 @@ const ComparisonSection = () => {
         <CheckIcon
           sx={{
             color: "#16B23A",
-            fontSize: "28px",
-            fontWeight: 700,
+            fontSize: "30px",
           }}
         />
       ) : (
         <CloseIcon
           sx={{
             color: "#FF3B30",
-            fontSize: "28px",
-            fontWeight: 700,
+            fontSize: "30px",
           }}
         />
       );
@@ -106,16 +105,15 @@ const ComparisonSection = () => {
     return (
       <Typography
         sx={{
-          color: "ffffff",
+          color: "#fff",
 
-          fontSize: "12px",
+          fontSize: "13px",
 
           fontWeight: 500,
 
           textAlign: "center",
 
           lineHeight: 1.2,
-          
         }}
       >
         {value}
@@ -124,207 +122,240 @@ const ComparisonSection = () => {
   };
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-
-        px: 2.5,
-        py: 6,
-
-        boxSizing: "border-box",
-        // bgcolor: "#1470AF",
-      }}
-    >
-      {/* MAIN CARD */}
-      <Box
+ 
+<Box
   sx={{
     width: "100%",
 
-    background: "#1470AF",
+    px: 4,
+    py: 4,
 
-    /* FIGMA SHAPE */
-    borderTopLeftRadius: "70px",
-    borderTopRightRadius: "120px",
-    borderBottomLeftRadius: "95px",
-    borderBottomRightRadius: "95px",
+    boxSizing: "border-box",
 
-    px: 2,
-    py: 5,
+    display: "flex",
 
-    boxShadow:
-      "0px 12px 28px rgba(0,0,0,0.18)",
-
-    overflow: "hidden",
-
-    position: "relative",
+    justifyContent: "center",
   }}
 >
-        {/* TITLE */}
-        <Typography
-          sx={{
-            color: "#fff",
+  {/* MAIN CARD */}
+  <Box
+    sx={{
+      width: "100%",
+      // height: "450px",
+      
 
-            textAlign: "center",
+      // borderTopLeftRadius: "80px",
+      // borderTopRightRadius: "120px",
+      // borderBottomLeftRadius: "90px",
+      // borderBottomRightRadius: "90px",
 
-            fontSize: {
-              xs: "28px",
-              sm: "36px",
-            },
+      px: 2.5,
+      py: 5,
 
-            fontWeight: 700,
+      overflow: "hidden",
 
-            lineHeight: 1.15,
+      position: "relative",
 
-            mb: 5,
-          }}
-        >
-          Royal Mindfulness Training
-          <br />
-          vs Traditional Therapy
-        </Typography>
+      /* IMAGE AS BACKGROUND */
+      backgroundImage: `url(${comimage})`,
 
-        {/* TABLE */}
-        <Box
-          sx={{
-            width: "100%",
+      backgroundSize: "cover",
 
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          {/* HEADER */}
-          <Box
+      backgroundPosition: "center",
+
+      backgroundRepeat: "no-repeat",
+
+      // marginTop: "-100px",
+    }}
+  >
+    {/* CONTENT */}
+    <Box
+      sx={{
+        position: "relative",
+
+        zIndex: 2,
+      }}
+    >
+
+
+          {/* TITLE */}
+          <Typography
             sx={{
-              display: "grid",
+              color: "#fff",
 
-              gridTemplateColumns:
-                "1.6fr 1fr 1fr",
+              textAlign: "center",
 
-              alignItems: "center",
+              fontSize: {
+                xs: "28px",
+                sm: "36px",
+              },
 
-              pb: 2,
+              fontWeight: 700,
 
-              borderBottom:
-                "1px solid rgba(255,255,255,0.4)",
+              lineHeight: 1.12,
+
+              mb: 5,
+              mt: 5,
             }}
           >
-            {/* EMPTY */}
-            <Box />
+            Royal Mindfulness Training
+            <br />
+            vs Traditional Therapy
+          </Typography>
 
-            {/* ROYAL */}
+          {/* TABLE */}
+          <Box
+            sx={{
+              width: "100%",
+
+              display: "flex",
+
+              flexDirection: "column",
+            }}
+          >
+            {/* HEADER */}
             <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-               
-              }}
-            >
-              <Box
-                sx={{
-                  width: 82,
-                  height: 82,
-
-                  borderRadius: "18px",
-
-                  background: "#F5F5F5",
-
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  bgcolor: "#fff",
-                }}
-              >
-                <Box
-                  component="img"
-                  src={logo}
-                  alt="logo"
-                  sx={{
-                    width: 42,
-                    height: 42,
-
-                    objectFit: "contain",
-                  }}
-                />
-              </Box>
-            </Box>
-
-            {/* THERAPY */}
-            <Typography
-              sx={{
-                color: "#fff",
-
-                fontSize: "20px",
-
-                fontWeight: 700,
-
-                lineHeight: 1.1,
-
-                textAlign: "center",
-              }}
-            >
-              Traditional
-              <br />
-              Therapy
-            </Typography>
-          </Box>
-
-          {/* ROWS */}
-          {comparisonData.map((item, index) => (
-            <Box
-              key={index}
               sx={{
                 display: "grid",
 
                 gridTemplateColumns:
-                  "1.6fr 1fr 1fr",
+                  "1.7fr 1fr 1fr",
 
                 alignItems: "center",
 
-                minHeight: "58px",
+                pb: 2,
 
                 borderBottom:
-                  "1px solid rgba(255,255,255,0.4)",
+                  "1px solid rgba(255,255,255,0.6)",
               }}
             >
-              {/* FEATURE */}
-              <Typography
-                sx={{
-                  color: "#fff",
-
-                  fontSize: "16px",
-
-                  fontWeight: 500,
-
-                  lineHeight: 1.15,
-
-                  pr: 1,
-                }}
-              >
-                • {item.feature}
-              </Typography>
+              {/* EMPTY */}
+              <Box />
 
               {/* ROYAL */}
               <Box
                 sx={{
                   display: "flex",
+
+                  alignItems: "center",
+
                   justifyContent: "center",
-                  color: "#1470AF",
                 }}
               >
-                {renderValue(item.royal)}
+                <Box
+                  sx={{
+                    width: 92,
+                    height: 92,
+
+                    borderRadius: "18px",
+
+                    background: "#F4F4F4",
+
+                    display: "flex",
+
+                    alignItems: "center",
+
+                    justifyContent: "center",
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={logo}
+                    alt="logo"
+                    sx={{
+                      width: "54%",
+
+                      objectFit: "contain",
+                    }}
+                  />
+                </Box>
               </Box>
 
               {/* THERAPY */}
-              <Box
+              <Typography
                 sx={{
-                  display: "flex",
-                  justifyContent: "center",
+                  color: "#fff",
+
+                  fontSize: "18px",
+
+                  fontWeight: 700,
+
+                  textAlign: "center",
+
+                  lineHeight: 1.1,
                 }}
               >
-                {renderValue(item.therapy)}
-              </Box>
+                Traditional
+                <br />
+                Therapy
+              </Typography>
             </Box>
-          ))}
+
+            {/* ROWS */}
+            {comparisonData.map(
+              (item, index) => (
+                <Box
+                  key={index}
+                  sx={{
+                    display: "grid",
+
+                    gridTemplateColumns:
+                      "1.7fr 1fr 1fr",
+
+                    alignItems: "center",
+
+                    py: 1.8,
+
+                    borderBottom:
+                      "1px solid rgba(255,255,255,0.5)",
+                  }}
+                >
+                  {/* FEATURE */}
+                  <Typography
+                    sx={{
+                      color: "#fff",
+
+                      fontSize: "15px",
+
+                      fontWeight: 400,
+
+                      lineHeight: 1.15,
+
+                      pr: 1,
+                    }}
+                  >
+                    • {item.feature}
+                  </Typography>
+
+                  {/* ROYAL */}
+                  <Box
+                    sx={{
+                      display: "flex",
+
+                      justifyContent: "center",
+
+                      alignItems: "center",
+                    }}
+                  >
+                    {renderValue(item.royal)}
+                  </Box>
+
+                  {/* THERAPY */}
+                  <Box
+                    sx={{
+                      display: "flex",
+
+                      justifyContent: "center",
+
+                      alignItems: "center",
+                    }}
+                  >
+                    {renderValue(item.therapy)}
+                  </Box>
+                </Box>
+              )
+            )}
+          </Box>
         </Box>
       </Box>
     </Box>

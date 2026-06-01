@@ -1,4 +1,5 @@
 import React from "react";
+
 import MobileHero from "../../Mobile/MobileHero";
 import MobileHeader from "../../Mobile/MobileHeader";
 import Checklist from "../../test1/checklist/checkList";
@@ -12,57 +13,84 @@ import ProcessTraining from "../../Mobile/ProcessTraining";
 
 import herobg from "../../../Assests/images/checklist_bg.jpg";
 
+import MobileFooter from "../../Mobile/MobileFooter";
+import TriangleDivider from "../../Mobile/TriangleDivider";
+
+
+
+// import Test from "../../Mobile/Test";
+
 function MobileLanding() {
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        overflow: "hidden",
-      }}
-    >
-      {/* BACKGROUND IMAGE WITH 25% OPACITY */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-
-          backgroundImage: `url(${herobg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-
-          opacity: 0.25,
-
-          zIndex: 1,
-        }}
-      />
-
-      {/* CONTENT */}
+    <>
       <div
         style={{
           position: "relative",
-          zIndex: 2,
+
+          width: "100%",
+
+          overflow: "hidden",
         }}
       >
-        <MobileHero />
+        {/* BACKGROUND IMAGE */}
+        <div
+          style={{
+            position: "absolute",
 
-        <MobileHeader />
+            inset: 0,
 
-        <Checklist />
+            backgroundImage: `url(${herobg})`,
 
-        <StatsSection />
-        <ServiceCarousel />
-        {/* GetItFree.tsx */}
-        <GetItFree />
-        <HowWeWork />
-        <ProcessTraining />
+            backgroundSize: "cover",
 
-        {/* ComparisonSection.tsx */}
-        <ComparisonSection />
-        <MobileFaq />
+            backgroundPosition: "center",
+
+            backgroundRepeat: "no-repeat",
+
+            opacity: 0.25,
+
+            zIndex: 1,
+          }}
+        />
+
+        {/* CONTENT */}
+        <div
+          style={{
+            position: "relative",
+
+            zIndex: 2,
+          }}
+        >
+          <MobileHero />
+
+          <MobileHeader />
+
+          <Checklist />
+
+          <StatsSection />
+
+          <ServiceCarousel />
+
+          <GetItFree />
+
+          <ProcessTraining />
+
+          <ComparisonSection />
+
+          <HowWeWork />
+
+          {/* TriangleDivider */}
+          {/* <TriangleDivider /> */}
+
+          <MobileFaq />
+
+          <MobileFooter />
+
+          {/* Test */}
+          {/* <Test /> */}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -11,6 +11,9 @@ import {
 } from "@mui/material";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import herobg from "../../Assests/images/checklist_bg.jpg";
+// import herobg from "../../Assests";
+// import TriangleDivider from "./TriangleDivider";
 
 const faqData = [
   {
@@ -79,11 +82,19 @@ const MobileFaq = () => {
     };
 
   return (
+<>
+
+    
+    
     <Box
       sx={{
         width: "100%",
 
         background: "#0B67B2",
+          position: "relative",
+
+        overflow: "hidden",
+
 
         px: 3,
         py: 6,
@@ -91,6 +102,14 @@ const MobileFaq = () => {
         boxSizing: "border-box",
       }}
     >
+
+       {/* TOP TRIANGLE DESIGN */}
+    {/* TOP TRIANGLE DESIGN */}
+
+{/* TriangleDivider  */}
+{/* <TriangleDivider /> */}
+
+      
       {/* TITLE */}
       <Typography
         sx={{
@@ -103,6 +122,7 @@ const MobileFaq = () => {
             sm: "40px",
           },
 
+          mt: "10px",
           fontWeight: 700,
 
           mb: 4,
@@ -201,6 +221,7 @@ const MobileFaq = () => {
         ))}
       </Box>
     </Box>
+    </>
   );
 };
 
