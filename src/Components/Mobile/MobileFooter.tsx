@@ -11,7 +11,7 @@ import {
 import { Icon } from "@iconify/react";
 
 import logo from "../../Assests/images/logo/logo.webp";
-import footerBg from "../../Assests/images/checklist_bg.jpg";
+import footerBg from "../../Assests/images/mobile/Rectangle36.png";
 
 const leftLinks = [
   "About us",
@@ -43,40 +43,43 @@ const MobileFooter = () => {
     >
       {/* MAIN FOOTER */}
       <Box
-        sx={{
-          width: "100%",
+  sx={{
+    width: "100%",
 
-          position: "relative",
+    position: "relative",
 
-          overflow: "hidden",
+    overflow: "hidden",
 
-          // borderRadius: "28px",
+    backgroundColor: "#1470AF",
 
-          px: 3,
-          py: 5,
+    px: 3,
+    py: 5,
 
-          boxSizing: "border-box",
+    boxSizing: "border-box",
 
-          background: "#1470AF",
+    boxShadow: "0px 8px 20px rgba(0,0,0,0.18)",
 
-          boxShadow: "0px 8px 20px rgba(0,0,0,0.18)",
+    "&::before": {
+      content: '""',
 
-          "&::before": {
-            content: '""',
+      position: "absolute",
 
-            position: "absolute",
-            inset: 0,
+      inset: 0,
 
-            backgroundImage: `url(${footerBg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+      backgroundImage: `url(${footerBg})`,
 
-            opacity: 0.08,
+      backgroundSize: "cover",
 
-            zIndex: 1,
-          },
-        }}
-      >
+      backgroundPosition: "center",
+
+      backgroundRepeat: "no-repeat",
+
+      opacity: 0.08,
+
+      zIndex: 1,
+    },
+  }}
+>
         {/* MAIN GRID */}
         <Box
           sx={{
@@ -182,7 +185,7 @@ const MobileFooter = () => {
                 src={logo}
                 alt="Royal Mindfulness"
                 sx={{
-                  width: 40,
+                  width: 70,
                   height: "auto",
 
                   objectFit: "contain",

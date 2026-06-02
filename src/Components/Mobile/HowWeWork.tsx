@@ -41,7 +41,7 @@ const HowWeWork = () => {
 
         zIndex: 1,
 
-        mt: 6,
+        // mt: 6,
 
         px: 3,
         pt: 6,
@@ -61,6 +61,8 @@ const HowWeWork = () => {
         backgroundPosition: "center",
 
         backgroundRepeat: "no-repeat",
+        
+        
       }}
     >
       {/* CONTENT WRAPPER */}
@@ -192,8 +194,8 @@ const HowWeWork = () => {
             textTransform: "none",
 
             fontSize: {
-              xs: "22px",
-              sm: "28px",
+              xs: "13px",
+              sm: "13px",
             },
 
             fontWeight: 700,

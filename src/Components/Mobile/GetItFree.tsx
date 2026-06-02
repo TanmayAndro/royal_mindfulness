@@ -3,6 +3,8 @@
 import React from "react";
 
 import { Box, Typography, Paper, IconButton } from "@mui/material";
+import workbg from "../../Assests/images/mobile/Group103.png";
+import checklist from "../../Assests/images/checklist_bg.jpg";
 
 import { Icon } from "@iconify/react";
 
@@ -35,17 +37,49 @@ const freeItems = [
 
 const GetItFree = () => {
   return (
-    <Box
-      sx={{
-        width: "100%",
+   <Box
+  sx={{
+    width: "100%",
 
-        px: 2.5,
-        py: 6,
+    px: 2.5,
+    py: 6,
 
-        boxSizing: "border-box",
-        
-      }}
-    >
+    boxSizing: "border-box",
+
+    position: "relative",
+
+    overflow: "hidden",
+  }}
+>
+  {/* BG IMAGE */}
+  <Box
+    sx={{
+      position: "absolute",
+
+      inset: 0,
+
+      backgroundImage: `url(${checklist})`,
+
+      backgroundSize: "105% 103%",
+
+      backgroundPosition: "center",
+
+      backgroundRepeat: "no-repeat",
+
+      opacity: 0.15,
+
+      zIndex: 1,
+    }}
+  />
+
+  {/* CONTENT */}
+  <Box
+    sx={{
+      position: "relative",
+
+      zIndex: 2,
+    }}
+  >
       {/* TITLE */}
       <Typography
         sx={{
@@ -177,6 +211,8 @@ const GetItFree = () => {
         ))}
       </Box>
     </Box>
+    </Box>
+
   );
 };
 

@@ -114,3 +114,16 @@ const Test = () => {
 };
 
 export default Test;
+
+
+
+// /* Rectangle 16 */
+
+// position: absolute;
+// width: 371px;
+// height: 617px;
+// left: 125px;
+// top: 2962px;
+
+// background: #1470AF;
+// border-radius: 95px;

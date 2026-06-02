@@ -268,10 +268,10 @@ function MobileHero() {
 
                   textTransform: "none",
 
-                  fontSize: "16px",
+                  fontSize: "10px",
                   fontWeight: 500,
 
-                  boxShadow: "none",
+                  boxShadow: "1px 1px 2px rgba(210, 23, 23, 0.2)",
 
                   "&:hover": {
                     bgcolor: "#0B67B2",

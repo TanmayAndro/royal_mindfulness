@@ -4,19 +4,48 @@ import { Box, Button } from "@mui/material";
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 
 import logo from "../../Assests/images/logo/logo.webp";
+interface MobileNavbarProps {
+  isSticky?: boolean;
+}
 
-function MobileNavbar() {
+function MobileNavbar({
+  isSticky = false,
+}: MobileNavbarProps) {
+
+
   return (
     <Box
-      sx={{
-        width: "100%",
+  sx={{
+    width: "100%",
 
-        display: "flex",
-        justifyContent: "center",
+    display: "flex",
 
-        pt: 2,
-      }}
-    >
+    justifyContent: "center",
+
+    pt: isSticky ? 1 : 2,
+
+    position: isSticky
+      ? "fixed"
+      : "relative",
+
+    top: 0,
+
+    left: 0,
+
+    zIndex: 9999,
+
+    transition:
+      "all 0.3s ease",
+
+    backgroundColor: isSticky
+      ? "rgba(255,255,255,0.95)"
+      : "transparent",
+
+    backdropFilter: isSticky
+      ? "blur(10px)"
+      : "none",
+  }}
+>
       {/* NAVBAR CONTAINER */}
       <Box
         sx={{
