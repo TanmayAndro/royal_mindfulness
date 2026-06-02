@@ -92,6 +92,7 @@ const ComparisonSection = () => {
         sx={{
           color: "#16B23A",
           fontSize: "30px",
+          fontWeight: 500,
         }}
       />
     ) : (

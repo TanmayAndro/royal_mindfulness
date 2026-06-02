@@ -118,8 +118,8 @@ const MobileFaq = () => {
           textAlign: "center",
 
           fontSize: {
-            xs: "32px",
-            sm: "40px",
+            xs: "20px",
+            sm: "20px",
           },
 
           mt: "10px",
@@ -168,7 +168,7 @@ const MobileFaq = () => {
                 <ExpandMoreIcon
                   sx={{
                     color: "#fff",
-                    fontSize: "28px",
+                    fontSize: "14px",
                   }}
                 />
               }

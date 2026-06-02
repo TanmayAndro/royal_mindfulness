@@ -86,11 +86,39 @@ const Checklist = () => {
                 sm: "40px",
               },
               lineHeight: 1.2,
-              mb: 6,
+              mb: {
+                md: 6,
+                sm: 1,
+                xs: 1,
+              },
             }}
           >
             What's Stressing You The Most Right Now?
           </Typography>
+
+          {/* subheading  */}
+
+          {/* Mobile Only Subheading */}
+<Typography
+  sx={{
+    display: {
+      xs: "block",
+      sm: "none",
+    },
+
+    color: "#494b4c",
+
+    fontWeight: 400,
+
+    fontSize: "12px",
+
+    lineHeight: 1.4,
+
+    mb: 4,
+  }}
+>
+  (You can select more than one. There's no right or wrong.)
+</Typography>
 
           {/* Checklist */}
           <Box
@@ -137,6 +165,11 @@ const Checklist = () => {
                 <Typography
                   sx={{
                     color: "#1470af",
+                    color: {
+                      md: "#1470af",
+                      sm: "#374151",
+                      xs: "#374151",
+                    },
                     fontWeight: 700,
                     fontSize: {
                       xs: "16px",

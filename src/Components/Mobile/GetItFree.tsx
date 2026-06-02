@@ -49,28 +49,42 @@ const GetItFree = () => {
     position: "relative",
 
     overflow: "hidden",
+    borderTopLeftRadius: 0,
+borderTopRightRadius: 0,
+
+borderBottomLeftRadius: "40px",
+borderBottomRightRadius: "40px",
+
+border: "0.5px solid rgba(20,112,175,0.25)",
+
+boxShadow:
+  "0px 12px 30px rgba(0, 0, 0, 0.48)",
+  marginBottom: 1,
   }}
 >
   {/* BG IMAGE */}
   <Box
-    sx={{
-      position: "absolute",
+  sx={{
+    position: "absolute",
 
-      inset: 0,
+    inset: 0,
 
-      backgroundImage: `url(${checklist})`,
+    backgroundImage: `url(${checklist})`,
 
-      backgroundSize: "105% 103%",
+    backgroundSize: "105% 103%",
 
-      backgroundPosition: "center",
+    backgroundPosition: "center",
 
-      backgroundRepeat: "no-repeat",
+    backgroundRepeat: "no-repeat",
 
-      opacity: 0.15,
+    opacity: 0.15,
 
-      zIndex: 1,
-    }}
-  />
+    zIndex: 1,
+
+    /* FIGMA STYLE */
+    
+  }}
+/>
 
   {/* CONTENT */}
   <Box
