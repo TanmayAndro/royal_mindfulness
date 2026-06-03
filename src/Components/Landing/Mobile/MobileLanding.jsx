@@ -22,9 +22,12 @@ import MobileFooter from "../../Mobile/MobileFooter";
 function MobileLanding() {
   const heroRef = useRef(null);
 
+  const checklistRef = useRef(null);
+
   const [isSticky, setIsSticky] =
     useState(false);
 
+  /* STICKY HEADER LOGIC */
   useEffect(() => {
     const hero = heroRef.current;
 
@@ -33,7 +36,6 @@ function MobileLanding() {
     const observer =
       new IntersectionObserver(
         ([entry]) => {
-          // Show header when hero visibility drops below 70%
           setIsSticky(
             entry.intersectionRatio < 0.5
           );
@@ -62,6 +64,20 @@ function MobileLanding() {
     };
   }, []);
 
+  /* AUTO SCROLL AFTER 3 SECONDS */
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (checklistRef.current) {
+        checklistRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       {/* HERO */}
@@ -69,7 +85,7 @@ function MobileLanding() {
         <MobileHero />
       </div>
 
-      {/* SHOW HEADER AFTER ~30% HERO SCROLL */}
+      {/* SHOW HEADER AFTER HERO SCROLL */}
       {isSticky && (
         <>
           <MobileHeader
@@ -85,13 +101,18 @@ function MobileLanding() {
         </>
       )}
 
-      <Checklist />
+      {/* CHECKLIST */}
+      <div ref={checklistRef}>
+        <Checklist />
+      </div>
 
       {/* BACKGROUND SECTION */}
       <div
         style={{
           position: "relative",
+
           width: "100%",
+
           overflow: "hidden",
         }}
       >
@@ -99,6 +120,7 @@ function MobileLanding() {
         <div
           style={{
             position: "absolute",
+
             inset: 0,
 
             backgroundImage: `url(${herobg})`,
@@ -121,6 +143,7 @@ function MobileLanding() {
         <div
           style={{
             position: "relative",
+
             zIndex: 2,
           }}
         >
