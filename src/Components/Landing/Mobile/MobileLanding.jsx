@@ -33,12 +33,25 @@ function MobileLanding() {
     const observer =
       new IntersectionObserver(
         ([entry]) => {
+          // Show header when hero visibility drops below 70%
           setIsSticky(
-            !entry.isIntersecting
+            entry.intersectionRatio < 0.5
           );
         },
         {
-          threshold: 0,
+          threshold: [
+            0,
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1,
+          ],
         }
       );
 
@@ -56,7 +69,7 @@ function MobileLanding() {
         <MobileHero />
       </div>
 
-      {/* SHOW HEADER ONLY AFTER HERO IS OUT OF VIEW */}
+      {/* SHOW HEADER AFTER ~30% HERO SCROLL */}
       {isSticky && (
         <>
           <MobileHeader
@@ -74,12 +87,11 @@ function MobileLanding() {
 
       <Checklist />
 
+      {/* BACKGROUND SECTION */}
       <div
         style={{
           position: "relative",
-
           width: "100%",
-
           overflow: "hidden",
         }}
       >
@@ -87,14 +99,14 @@ function MobileLanding() {
         <div
           style={{
             position: "absolute",
-
             inset: 0,
 
             backgroundImage: `url(${herobg})`,
 
             backgroundSize: "cover",
 
-            backgroundPosition: "center",
+            backgroundPosition:
+              "center",
 
             backgroundRepeat:
               "no-repeat",
@@ -109,7 +121,6 @@ function MobileLanding() {
         <div
           style={{
             position: "relative",
-
             zIndex: 2,
           }}
         >
@@ -120,10 +131,8 @@ function MobileLanding() {
       </div>
 
       <ProcessTraining />
-     
 
       <ComparisonSection />
-      
 
       <GetItFree />
 

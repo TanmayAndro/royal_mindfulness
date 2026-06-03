@@ -56,7 +56,7 @@ const HowWeWork = () => {
 
         backgroundImage: `url(${workbg})`,
 
-        backgroundSize: "105% 103%",
+        backgroundSize: "103% 100%",
 
         backgroundPosition: "center",
 
@@ -200,14 +200,14 @@ const HowWeWork = () => {
 
             fontWeight: 700,
 
-            boxShadow:
-              "0px 8px 18px rgba(0,0,0,0.18)",
+            // boxShadow:
+            //   "0px 8px 18px rgba(0,0,0,0.18)",
 
             "&:hover": {
               background: "#1470AF",
 
-              boxShadow:
-                "0px 8px 18px rgba(0,0,0,0.18)",
+              // boxShadow:
+              //   "0px 8px 18px rgba(0,0,0,0.18)",
             },
           }}
         >

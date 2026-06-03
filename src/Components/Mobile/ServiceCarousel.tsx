@@ -9,6 +9,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import anxiousImg from "../../Assests/images/mobile/anxious.jpg";
 import stressedImg from "../../Assests/images/mobile/stressed.jpg";
 import burnoutImg from "../../Assests/images/mobile/burnout.jpg";
+import depression from "../../Assests/images/mobile/depression.jpg";
 
 const carouselData = [
   {
@@ -22,6 +23,10 @@ const carouselData = [
   {
     title: "Burnout",
     image: burnoutImg,
+  },
+  {
+    title: "Depression",
+    image: depression,
   },
 ];
 
@@ -122,12 +127,12 @@ const ServiceCarousel = () => {
 
     transform: `
       translateX(${offset * 30}px)
-      scale(${1 - offset * 0.05})
+      scale(${1 - offset * 0.06})
     `,
 
     zIndex: carouselData.length - offset,
 
-    opacity: offset > 2 ? 0 : 1,
+    opacity: offset > 3 ? 0 : 1,
 
     // boxShadow: "0px 10px 24px rgba(0,0,0,0.22)",
   }}
