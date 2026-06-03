@@ -38,7 +38,7 @@ function MobileNavbar({
       "all 0.3s ease",
 
     backgroundColor: isSticky
-      ? "rgba(255,255,255,0.95)"
+      ? "transparent"
       : "transparent",
 
     backdropFilter: isSticky

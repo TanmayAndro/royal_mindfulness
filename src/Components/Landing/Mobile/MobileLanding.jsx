@@ -1,4 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import MobileHero from "../../Mobile/MobileHero";
 import MobileHeader from "../../Mobile/MobileHeader";
@@ -18,21 +22,25 @@ import MobileFooter from "../../Mobile/MobileFooter";
 function MobileLanding() {
   const heroRef = useRef(null);
 
-  const [isSticky, setIsSticky] = useState(false);
+  const [isSticky, setIsSticky] =
+    useState(false);
 
   useEffect(() => {
     const hero = heroRef.current;
 
     if (!hero) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsSticky(!entry.isIntersecting);
-      },
-      {
-        threshold: 0,
-      },
-    );
+    const observer =
+      new IntersectionObserver(
+        ([entry]) => {
+          setIsSticky(
+            !entry.isIntersecting
+          );
+        },
+        {
+          threshold: 0,
+        }
+      );
 
     observer.observe(hero);
 
@@ -48,16 +56,20 @@ function MobileLanding() {
         <MobileHero />
       </div>
 
-      {/* HEADER */}
-      <MobileHeader isSticky={isSticky} />
-
-      {/* PREVENT LAYOUT JUMP */}
+      {/* SHOW HEADER ONLY AFTER HERO IS OUT OF VIEW */}
       {isSticky && (
-        <div
-          style={{
-            height: "72px",
-          }}
-        />
+        <>
+          <MobileHeader
+            isSticky={true}
+          />
+
+          {/* PREVENT LAYOUT JUMP */}
+          <div
+            style={{
+              height: "72px",
+            }}
+          />
+        </>
       )}
 
       <Checklist />
@@ -65,7 +77,9 @@ function MobileLanding() {
       <div
         style={{
           position: "relative",
+
           width: "100%",
+
           overflow: "hidden",
         }}
       >
@@ -73,12 +87,17 @@ function MobileLanding() {
         <div
           style={{
             position: "absolute",
+
             inset: 0,
 
             backgroundImage: `url(${herobg})`,
+
             backgroundSize: "cover",
+
             backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
+
+            backgroundRepeat:
+              "no-repeat",
 
             opacity: 0.25,
 
@@ -90,6 +109,7 @@ function MobileLanding() {
         <div
           style={{
             position: "relative",
+
             zIndex: 2,
           }}
         >
@@ -99,11 +119,11 @@ function MobileLanding() {
         </div>
       </div>
 
-      
-
       <ProcessTraining />
+     
 
       <ComparisonSection />
+      
 
       <GetItFree />
 

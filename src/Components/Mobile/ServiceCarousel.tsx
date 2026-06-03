@@ -137,7 +137,7 @@ const ServiceCarousel = () => {
     src={item.image}
     alt={item.title}
     sx={{
-      width: "250px",
+      width: "230px",
       height: "350px",
 
       display: "block",
@@ -145,7 +145,7 @@ const ServiceCarousel = () => {
       objectFit: "cover",
 
       borderRadius: "36px",
-      marginRight:"35px"
+      marginRight:"50px"
     }}
   />
 </Box>

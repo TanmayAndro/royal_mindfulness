@@ -255,32 +255,41 @@ function MobileHero() {
 
               {/* BUTTON */}
               <Button
-                variant="contained"
-                sx={{
-                  bgcolor: "#0B67B2",
+  variant="contained"
+  sx={{
+    bgcolor: "#0B67B2",
 
-                  borderRadius: "999px",
+    borderRadius: "999px",
 
-                  px: 3.5,
-                  py: 1,
+    minWidth: "171px",
 
-                  minWidth: "190px",
+    height: "48px",
 
-                  textTransform: "none",
+    px: 4,
 
-                  fontSize: "10px",
-                  fontWeight: 500,
+    textTransform: "none",
 
-                  boxShadow: "1px 1px 2px rgba(210, 23, 23, 0.2)",
+    fontSize: "18px",
 
-                  "&:hover": {
-                    bgcolor: "#0B67B2",
-                    boxShadow: "none",
-                  },
-                }}
-              >
-                Get Free Guidance
-              </Button>
+    fontWeight: 600,
+
+    color: "#fff",
+
+    whiteSpace: "nowrap",
+
+    boxShadow:
+      "0px 6px 12px rgba(0,0,0,0.15)",
+
+    "&:hover": {
+      bgcolor: "#0B67B2",
+
+      boxShadow:
+        "0px 6px 12px rgba(0,0,0,0.15)",
+    },
+  }}
+>
+  Get Free Guidance
+</Button>
             </Paper>
           </Box>
         </Box>
