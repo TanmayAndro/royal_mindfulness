@@ -36,13 +36,13 @@ const MobileFooter = () => {
         width: "100%",
 
         // px: 2,
-        // pb: 2,
+        pb: 2,
 
         boxSizing: "border-box",
       }}
     >
       {/* MAIN FOOTER */}
-      <Box
+     <Box
   sx={{
     width: "100%",
 
@@ -50,51 +50,34 @@ const MobileFooter = () => {
 
     overflow: "hidden",
 
-    backgroundColor: "#1470AF",
-
     px: 3,
     py: 5,
 
     boxSizing: "border-box",
 
-    boxShadow: "0px 8px 20px rgba(0,0,0,0.18)",
+    backgroundImage: `url(${footerBg})`,
 
-    "&::before": {
-      content: '""',
+    backgroundSize: "100% 100%",
 
-      position: "absolute",
+    backgroundPosition: "center",
 
-      inset: 0,
-
-      backgroundImage: `url(${footerBg})`,
-
-      backgroundSize: "cover",
-
-      backgroundPosition: "center",
-
-      backgroundRepeat: "no-repeat",
-
-      opacity: 0.08,
-
-      zIndex: 1,
-    },
+    backgroundRepeat: "no-repeat",
   }}
 >
-        {/* MAIN GRID */}
-        <Box
-          sx={{
-            position: "relative",
-            zIndex: 2,
+  <Box
+    sx={{
+      position: "relative",
+      zIndex: 2,
 
-            display: "grid",
+      display: "grid",
 
-            gridTemplateColumns: "1.4fr 1fr 1.3fr",
+      gridTemplateColumns: "1.4fr 1fr 1.3fr",
 
-            gap: 3,
+      gap: 3,
 
-            alignItems: "start",
-          }}
-        >
+      alignItems: "start",
+    }}
+  >
           {/* COLUMN 1 */}
           <Box
             sx={{

@@ -1,7 +1,8 @@
 import React from "react";
 import { Box, Button, Typography, Paper } from "@mui/material";
 
-import Navgirl from "../../Assests/images/mobile/mobilegirl.png";
+// import Navgirl from "../../Assests/images/mobile/mobilegirl.png";
+import Navgirl from "../../Assests/images/mobile/updateHEro.png";
 import herobg from "../../Assests/images/checklist_bg.jpg";
 import logo from "../../Assests/images/logo/logo.webp";
 
