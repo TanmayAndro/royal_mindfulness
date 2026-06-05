@@ -37,14 +37,24 @@ function MobileLanding() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  /* AUTO SCROLL AFTER 5 SECONDS */
+  /* AUTO SCROLL ONLY ON FIRST LOAD (MOBILE) */
   useEffect(() => {
+    // Desktop par mat chalao
+    if (window.innerWidth > 768) return;
+
+    // Pehle check karo auto scroll ho chuka hai ya nahi
+    const hasAutoScrolled = sessionStorage.getItem("mobileLandingAutoScrolled");
+
+    if (hasAutoScrolled) return;
+
     const timer = setTimeout(() => {
       if (checklistRef.current) {
         checklistRef.current.scrollIntoView({
           behavior: "smooth",
           block: "start",
         });
+
+        sessionStorage.setItem("mobileLandingAutoScrolled", "true");
       }
     }, 5000);
 
@@ -68,7 +78,7 @@ function MobileLanding() {
 
             boxSizing: "border-box",
 
-            background: "transparent"
+            background: "transparent",
           }}
         >
           <MobileNav isSticky={true} />
@@ -140,25 +150,25 @@ function MobileLanding() {
       >
         <ComparisonSection />
       </div>
-<div
-  style={{
-    marginTop: "-60px",
-    position: "relative",
-    zIndex: 10,
-  }}
->
-  <GetItFree />
-</div>
+      <div
+        style={{
+          marginTop: "-60px",
+          position: "relative",
+          zIndex: 10,
+        }}
+      >
+        <GetItFree />
+      </div>
 
-<div
-  style={{
-    marginTop: "-100px",
-    position: "relative",
-    zIndex: 1,
-  }}
->
-  <HowWeWork />
-</div>
+      <div
+        style={{
+          marginTop: "-100px",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        <HowWeWork />
+      </div>
 
       <MobileFaq />
 

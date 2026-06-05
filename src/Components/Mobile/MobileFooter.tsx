@@ -17,8 +17,8 @@ const leftLinks = [
   { label: "About us", path: "/aboutus" },
   { label: "Contact us", path: "/contact" },
   { label: "Blogs", path: "https://tanmaysmarty.wixsite.com/my-site-1/blog" },
-  { label: "Hire Trainer", path: "/book-now" },
-  { label: "Our Pricing", path: "/pricing" },
+  // { label: "Hire Trainer", path: "/book-now" },
+  // { label: "Our Pricing", path: "/pricing" },
   { label: "Our Trainings", path: "/trainings" },
   { label: "Terms & Conditions", path: "/term-condition" },
   { label: "Privacy Policy", path: "/privacy-policy" },
@@ -26,7 +26,8 @@ const leftLinks = [
 
 
 
-const rightLinks = ["Feedback", "Email Us"];
+// const rightLinks = ["Feedback", "Email Us"];
+const rightLinks = [""];
 
 
 const MobileFooter = () => {
