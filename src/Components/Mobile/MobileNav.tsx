@@ -8,8 +8,18 @@ import {
 } from "@mui/material";
 
 import logo from "../../Assests/images/logo/logo.webp";
+import {useNavigate} from "react-router-dom";
+import { trackEvent } from "../../analitics/analytics";
+
 
 const MobileNav = ({ isSticky = false }) => {
+  const navigate = useNavigate();
+
+  const handleGetFreeGuidance = () => {
+    trackEvent("Get Free Guidance Clicked");
+    navigate("/consultation_question");
+  };
+
   return (
     <Paper
       elevation={0}
@@ -112,6 +122,7 @@ const MobileNav = ({ isSticky = false }) => {
           "0px 6px 12px rgba(0,0,0,0.15)",
       },
     }}
+    onClick={handleGetFreeGuidance}
   >
     Get Free Guidance
   </Button>

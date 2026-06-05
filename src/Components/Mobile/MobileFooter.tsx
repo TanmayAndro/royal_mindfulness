@@ -9,20 +9,40 @@ import { Icon } from "@iconify/react";
 import logo from "../../Assests/images/logo/logo.webp";
 import footerBg from "../../Assests/images/mobile/Rectangle36.png";
 
+// import { Link } from 'react-router-dom';
+import { trackEvent } from "../../analitics/analytics";
+import { useNavigate } from "react-router-dom";
+
 const leftLinks = [
-  "About us",
-  "Contact us",
-  "Blogs",
-  "Hire Trainer",
-  "Our Pricing",
-  "Our Trainings",
-  "Terms & Conditions",
-  "Privacy Policy",
+  { label: "About us", path: "/aboutus" },
+  { label: "Contact us", path: "/contact" },
+  { label: "Blogs", path: "https://tanmaysmarty.wixsite.com/my-site-1/blog" },
+  { label: "Hire Trainer", path: "/book-now" },
+  { label: "Our Pricing", path: "/pricing" },
+  { label: "Our Trainings", path: "/trainings" },
+  { label: "Terms & Conditions", path: "/term-condition" },
+  { label: "Privacy Policy", path: "/privacy-policy" },
 ];
+
+
 
 const rightLinks = ["Feedback", "Email Us"];
 
+
 const MobileFooter = () => {
+  const navigate = useNavigate();
+   const handleNavigation = (
+    label: string,
+    path: string
+  ) => {
+    trackEvent(
+      "Footer",
+      "Click",
+      label
+    );
+
+    navigate(path);
+  };
   return (
     <Box
       sx={{
@@ -79,28 +99,44 @@ const MobileFooter = () => {
             }}
           >
             {leftLinks.map((item, index) => (
-              <Link
-                key={index}
-                underline="always"
-                href="#"
-                sx={{
-                  color: "#fff",
+  <Link
+    key={index}
+    component="button"
+    underline="always"
+    onClick={() =>
+      handleNavigation(
+        item.label,
+        item.path
+      )
+    }
+    sx={{
+      color: "#fff",
 
-                  fontSize: {
-                    xs: "11px",
-                    sm: "11px",
-                  },
+      fontSize: {
+        xs: "11px",
+        sm: "11px",
+      },
 
-                  fontWeight: 400,
+      fontWeight: 400,
 
-                  lineHeight: 1.2,
+      lineHeight: 1.2,
 
-                  textDecorationColor: "#fff",
-                }}
-              >
-                {item}
-              </Link>
-            ))}
+      textDecorationColor: "none",
+
+      cursor: "pointer",
+
+      background: "none",
+
+      border: "none",
+
+      textAlign: "left",
+
+      p: 0,
+    }}
+  >
+    {item.label}
+  </Link>
+))}
           </Box>
 
           {/* COLUMN 2 */}
@@ -137,6 +173,15 @@ const MobileFooter = () => {
 
           {/* COLUMN 3 */}
           <Box
+           onClick={() => {
+    trackEvent(
+      "Footer",
+      "Click",
+      "Logo"
+    );
+
+    navigate("/");
+  }}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -202,29 +247,119 @@ const MobileFooter = () => {
 
             {/* SOCIAL ICONS */}
             <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+  sx={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
 
-                gap: 1.2,
+    gap: 1.2,
 
-                mt: 3,
-                mb: 2,
-              }}
-            >
-              {/* LINKEDIN */}
-              <Icon icon="skill-icons:linkedin" width="32" height="32" />
+    mt: 3,
+    mb: 2,
+  }}
+>
+  {/* LINKEDIN */}
+  <Box
+    component="a"
+    href="https://www.linkedin.com/company/royalmindfulness/"
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={() =>
+      trackEvent(
+        "Footer",
+        "Click",
+        "LinkedIn"
+      )
+    }
+    sx={{
+      display: "flex",
+      cursor: "pointer",
+    }}
+  >
+    <Icon
+      icon="skill-icons:linkedin"
+      width="32"
+      height="32"
+    />
+  </Box>
 
-              {/* INSTAGRAM */}
-              <Icon icon="skill-icons:instagram" width="32" height="32" />
+  {/* INSTAGRAM */}
+  <Box
+    component="a"
+    href="https://www.instagram.com/royalmindfulness24?igsh=MTE3emV1bWJtejV5"
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={() =>
+      trackEvent(
+        "Footer",
+        "Click",
+        "Instagram"
+      )
+    }
+    sx={{
+      display: "flex",
+      cursor: "pointer",
+    }}
+  >
+    <Icon
+      icon="skill-icons:instagram"
+      width="32"
+      height="32"
+    />
+  </Box>
 
-              {/* FACEBOOK */}
-              <Icon icon="logos:facebook" width="32" height="32" />
+  {/* FACEBOOK */}
+  <Box
+    component="a"
+    href="https://www.facebook.com/profile.php?id=61585328290655"
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={() =>
+      trackEvent(
+        "Footer",
+        "Click",
+        "Facebook"
+      )
+    }
+    sx={{
+      display: "flex",
+      cursor: "pointer",
+    }}
+  >
+    <Icon
+      icon="logos:facebook"
+      width="32"
+      height="32"
+    />
+  </Box>
 
-              {/* X/TWITTER */}
-              <Icon icon="pajamas:twitter" width="30" height="30" />
-            </Box>
+  {/* TWITTER/X */}
+  <Box
+    component="a"
+    href="https://x.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={() =>
+      trackEvent(
+        "Footer",
+        "Click",
+        "Twitter"
+      )
+    }
+    sx={{
+      display: "flex",
+      cursor: "pointer",
+      
+    }}
+  >
+    <Icon
+      icon="pajamas:twitter"
+      width="30"
+      height="30"
+      color="#000000"
+    />
+  </Box>
+</Box>
 
             {/* COPYRIGHT */}
             <Typography

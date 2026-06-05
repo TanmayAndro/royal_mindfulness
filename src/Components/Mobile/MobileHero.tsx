@@ -3,10 +3,19 @@ import { Box, Button, Typography, Paper } from "@mui/material";
 import Navgirl from "../../Assests/images/mobile/updateHEro.png";
 import herobg from "../../Assests/images/checklist_bg.jpg";
 import MobileNav from "./MobileNav";
+import { useNavigate } from "react-router-dom";
+import { trackEvent } from "../../analitics/analytics";
 
 function MobileHero({
   hideNav = false,
 }) {
+  const navigate = useNavigate();
+
+  const handleHireTrainer = () => {
+    trackEvent("Hire Trainer Clicked");
+    navigate("/book-now");
+  };
+
   return (
     <Box
       sx={{
@@ -135,6 +144,7 @@ function MobileHero({
                   boxShadow: "none",
                 },
               }}
+              onClick={handleHireTrainer}
             >
               Hire A Trainer
             </Button>

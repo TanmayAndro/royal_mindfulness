@@ -1,41 +1,193 @@
 // src/Components/mobile/GetItFree.tsx
 
-import React from "react";
+import { useEffect, useState } from "react";
 
 import { Box, Typography, Paper, IconButton } from "@mui/material";
 import workbg from "../../Assests/images/mobile/Group103.png";
 import checklist from "../../Assests/images/checklist_bg.jpg";
+import { trackEvent } from "../../analitics/analytics";
 
 import { Icon } from "@iconify/react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 
 const freeItems = [
   {
+    id: 1,
     title: "Download Mental Fitness Checklist",
-    description: "A checklist to evaluate your mental fitness.",
+    desc: "checklist description",
   },
-
   {
-    title: "Book a Free Consultation",
-    description: "Answer a few questions online and get expert guidance.",
+    id: 2,
+    title: "Book a free consultation",
+    desc: "Answer a few questions online...",
+    route: "/consultation_question",
+    imgClass: "consultation-img",
   },
-
   {
-    title: "Download Free Royal Mindfulness Journal",
-    description: "A mindful journal to help you heal and grow.",
+    id: 3,
+    title: "Download free Royal Mindfulness journal",
+    desc: "journal description",
   },
-
   {
+    id: 4,
     title: "Take Mental Wellness Quiz",
-    description: "If your first therapist isn’t a fit",
+    desc: "If your first therapist isn't a fit...",
+    route: "/quiz_questions",
   },
-
   {
+    id: 5,
     title: "Take a Free Relaxation Session",
-    description: "If your first therapist isn’t a fit",
+    desc: "If your first therapist isn't a fit...",
+    link_url: "https://youtu.be/y9pG051DWqc?si=SBP9wl75W1ozw9XG",
   },
 ];
 
+
+type Step = {
+  id: number;
+  title: string;
+  desc: string;
+  route?: string;
+  imgClass?: string;
+  link_url?: string;
+  document_url?: string;
+};
+
+
+const API_URL =
+  // "https://deedee-unchainable-optionally.ngrok-free.dev/checklists";
+  `${process.env.REACT_APP_BASE_URL}/checklists`;
+
 const GetItFree = () => {
+ const [steps, setSteps] = useState<Step[]>(freeItems);
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
+  
+
+  /* 🔹 FETCH DATA ON MOUNT */
+  useEffect(() => {
+    const fetchChecklist = async () => {
+      try {
+        const response = await axios.get(API_URL, {
+          headers: {
+            Accept: "application/json",
+            "ngrok-skip-browser-warning": "true",
+          },
+        });
+
+        const list = response?.data?.data || [];
+
+       const checklist = list.find(
+  (i: any) =>
+    i.attributes.title ===
+    "Mental Fitness Checklist"
+);
+
+const journal = list.find(
+  (i: any) =>
+    i.attributes.title ===
+    "Royal Mindfulness Journal"
+);
+        setSteps((prev) =>
+          prev.map((step) => {
+            if (step.id === 1 && checklist) {
+              return {
+                ...step,
+                document_url: checklist.attributes.document_url?.replace(
+                  "http://",
+                  "https://",
+                ),
+              };
+            }
+
+            if (step.id === 3 && journal) {
+              return {
+                ...step,
+                document_url: journal.attributes.document_url?.replace(
+                  "http://",
+                  "https://",
+                ),
+              };
+            }
+
+            return step;
+          }),
+        );
+      } catch (error) {
+        console.warn("Initial API failed – using static UI");
+      }
+    };
+
+    fetchChecklist();
+  }, []);
+
+  // FUNCTION CHECK SERVER ON /OFF
+  const isBackendAlive = async () => {
+    try {
+      await axios.head(API_URL, { timeout: 3000 });
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  const handleCardClick = async (step: Step) => {
+  try {
+    trackEvent(
+      "Landing Page",
+      "Click",
+      step.title
+    );
+  } catch (error) {
+    console.error(
+      "Track Event Error:",
+      error
+    );
+  }
+
+  await handleStepClick(step);
+};
+
+  /* 🔹 CLICK HANDLER */
+const handleStepClick = async (
+  step: Step
+) => {
+    setErrorMessage("");
+
+    // 1️⃣ Internal route
+    if (step.route) {
+      navigate(step.route);
+      return;
+    }
+
+    // 2️⃣ Document (needs backend alive)
+    if (step.document_url) {
+      const alive = await isBackendAlive();
+
+      if (!alive) {
+        setErrorMessage(
+          "Service is temporarily unavailable. Please try again later.",
+        );
+        return;
+      }
+
+      window.open(step.document_url, "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    // 3️⃣ External link (independent)
+    if (step.link_url) {
+      window.open(step.link_url, "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    // 4️⃣ Nothing available
+    setErrorMessage(
+      "Content is currently unavailable. Please try again later.",
+    );
+  };
   return (
     <Box
       sx={{
@@ -124,6 +276,20 @@ const GetItFree = () => {
           </Box>
         </Typography>
 
+        {errorMessage && (
+          <Typography
+            sx={{
+              color: "#D32F2F",
+              textAlign: "center",
+              mb: 3,
+              fontSize: "14px",
+              fontWeight: 500,
+            }}
+          >
+            {errorMessage}
+          </Typography>
+        )}
+
         {/* CARDS */}
         <Box
           sx={{
@@ -132,13 +298,13 @@ const GetItFree = () => {
             gap: 3,
           }}
         >
-          {freeItems.map((item, index) => (
+          {steps.map((step, index) => (
             <Paper
               key={index}
               elevation={0}
+              onClick={() => handleCardClick(step)}
               sx={{
                 width: "100%",
-
                 minHeight: "105px",
 
                 px: 2.5,
@@ -150,6 +316,8 @@ const GetItFree = () => {
                 alignItems: "center",
                 justifyContent: "space-between",
 
+                cursor: "pointer",
+
                 background: "rgba(255,255,255,0.55)",
 
                 backdropFilter: "blur(10px)",
@@ -159,6 +327,12 @@ const GetItFree = () => {
                 boxShadow: "0px 6px 14px rgba(0,0,0,0.10)",
 
                 boxSizing: "border-box",
+
+                transition: "all 0.2s ease",
+
+                "&:hover": {
+                  transform: "translateY(-2px)",
+                },
               }}
             >
               {/* LEFT CONTENT */}
@@ -185,7 +359,7 @@ const GetItFree = () => {
                     mb: 0.5,
                   }}
                 >
-                  {item.title}
+                  {step.title}
                 </Typography>
 
                 {/* DESCRIPTION */}
@@ -203,16 +377,19 @@ const GetItFree = () => {
                     fontWeight: 400,
                   }}
                 >
-                  {item.description}
+                  {step.desc}
                 </Typography>
               </Box>
 
               {/* RIGHT ICON */}
 
               <IconButton
+                disableRipple
                 sx={{
                   width: 42,
                   height: 42,
+
+                  pointerEvents: "none",
                 }}
               >
                 <Icon

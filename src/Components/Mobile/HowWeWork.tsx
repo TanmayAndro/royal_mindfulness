@@ -7,6 +7,9 @@ import { Box, Typography, Button } from "@mui/material";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 import workbg from "../../Assests/images/mobile/Group103.png";
+ import { trackEvent } from "../../analitics/analytics";
+  import { useNavigate } from "react-router-dom";     
+
 
 const workSteps = [
   {
@@ -32,6 +35,12 @@ const workSteps = [
 ];
 
 const HowWeWork = () => {
+  const navigate = useNavigate();
+  
+    const handleBookFreeConsultation = () => {
+      trackEvent("Book Free Consultation Clicked");
+      navigate("/consultation_question");
+    };
   return (
     <Box
       sx={{
@@ -206,6 +215,7 @@ const HowWeWork = () => {
               background: "#1470AF",
             },
           }}
+          onClick={handleBookFreeConsultation}
         >
           Book A Free Consultation
         </Button>
