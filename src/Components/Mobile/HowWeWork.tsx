@@ -179,42 +179,48 @@ const HowWeWork = () => {
           ))}
         </Box>
 
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+
         {/* CTA BUTTON */}
         <Button
           variant="contained"
           sx={{
             mt: 2,
-
-            height: "70px",
-
-            px: 5,
-
+            height: "40px",
+            px: 2,
             borderRadius: "999px",
-
             background: "#1470AF",
-
             textTransform: "none",
-
             fontSize: {
               xs: "13px",
               sm: "13px",
             },
-
             fontWeight: 700,
-
-            // boxShadow:
-            //   "0px 8px 18px rgba(0,0,0,0.18)",
-
-            "&:hover": {
+                       "&:hover": {
               background: "#1470AF",
-
-              // boxShadow:
-              //   "0px 8px 18px rgba(0,0,0,0.18)",
             },
           }}
         >
           Book A Free Consultation
         </Button>
+        <Typography
+            sx={{
+              mt: "2px",
+              fontSize: "11px",
+              color: "#878788",
+              textAlign: "center",
+              lineHeight: 2,
+            }}
+          >
+            (No Credit card required)
+          </Typography>
+          </Box>
       </Box>
     </Box>
   );

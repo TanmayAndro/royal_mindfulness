@@ -95,6 +95,10 @@ const MobileFaq = () => {
 
         overflow: "hidden",
         borderRadius: "22px",
+        borderTopLeftRadius: "22px",
+        borderTopRightRadius: "22px",
+
+
 
 
         px: 3,

@@ -80,31 +80,58 @@ const MobileNav = ({ isSticky = false }) => {
         </Typography>
       </Box>
 
-      {/* BUTTON */}
-      <Button
-        variant="contained"
-        sx={{
-          bgcolor: "#0B67B2",
-          borderRadius: "999px",
-          minWidth: "171px",
-          height: "48px",
-          px: 4,
-          textTransform: "none",
-          fontSize: "18px",
-          fontWeight: 600,
-          color: "#fff",
-          whiteSpace: "nowrap",
-          boxShadow:
-            "0px 6px 12px rgba(0,0,0,0.15)",
-          "&:hover": {
-            bgcolor: "#0B67B2",
-            boxShadow:
-              "0px 6px 12px rgba(0,0,0,0.15)",
-          },
-        }}
-      >
-        Get Free Guidance
-      </Button>
+    
+      
+
+     <Box
+  sx={{
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  }}
+>
+  <Button
+    variant="contained"
+    sx={{
+      bgcolor: "#0B67B2",
+      borderRadius: "999px",
+      minWidth: "171px",
+      height: "48px",
+      px: 2,
+      textTransform: "none",
+      fontSize: "18px",
+      fontWeight: 600,
+      color: "#fff",
+      whiteSpace: "nowrap",
+      boxShadow:
+        "0px 6px 12px rgba(0,0,0,0.15)",
+
+      "&:hover": {
+        bgcolor: "#0B67B2",
+        boxShadow:
+          "0px 6px 12px rgba(0,0,0,0.15)",
+      },
+    }}
+  >
+    Get Free Guidance
+  </Button>
+
+  <Typography
+    sx={{
+      mt: "2px",
+      fontSize: "11px",
+      color: "#878788",
+      textAlign: "center",
+      lineHeight: 2,
+    }}
+  >
+    (No Credit card required)
+  </Typography>
+</Box>
+      
+       
+        
+      
     </Paper>
   );
 };

@@ -2,11 +2,7 @@
 
 import React from "react";
 
-import {
-  Box,
-  Typography,
-  Link,
-} from "@mui/material";
+import { Box, Typography, Link } from "@mui/material";
 
 import { Icon } from "@iconify/react";
 
@@ -24,10 +20,7 @@ const leftLinks = [
   "Privacy Policy",
 ];
 
-const rightLinks = [
-  "Feedback",
-  "Email Us",
-];
+const rightLinks = ["Feedback", "Email Us"];
 
 const MobileFooter = () => {
   return (
@@ -39,42 +32,43 @@ const MobileFooter = () => {
       }}
     >
       {/* MAIN FOOTER */}
-     <Box
-  sx={{
-    width: "100%",
+      <Box
+        sx={{
+          width: "100%",
 
-    position: "relative",
+          position: "relative",
 
-    overflow: "hidden",
+          overflow: "hidden",
 
-    px: 3,
-    py: 5,
+          px: 3,
+          py: 5,
 
-    boxSizing: "border-box",
+          boxSizing: "border-box",
 
-    backgroundImage: `url(${footerBg})`,
+          backgroundImage: `url(${footerBg})`,
 
-    backgroundSize: "100% 100%",
+          backgroundSize: "100% 100%",
 
-    backgroundPosition: "center",
+          backgroundPosition: "center",
 
-    backgroundRepeat: "no-repeat",
-  }}
->
-  <Box
-    sx={{
-      position: "relative",
-      zIndex: 2,
+          backgroundRepeat: "no-repeat",
+          marginTop: "-5px",
+        }}
+      >
+        <Box
+          sx={{
+            position: "relative",
+            zIndex: 2,
 
-      display: "grid",
+            display: "grid",
 
-      gridTemplateColumns: "1.4fr 1fr 1.3fr",
+            gridTemplateColumns: "1.4fr 1fr 1.3fr",
 
-      gap: 3,
+            gap: 3,
 
-      alignItems: "start",
-    }}
-  >
+            alignItems: "start",
+          }}
+        >
           {/* COLUMN 1 */}
           <Box
             sx={{
@@ -170,8 +164,7 @@ const MobileFooter = () => {
 
                   objectFit: "contain",
 
-                  filter:
-                    "brightness(0) invert(1)",
+                  filter: "brightness(0) invert(1)",
                 }}
               />
             </Box>
@@ -221,32 +214,16 @@ const MobileFooter = () => {
               }}
             >
               {/* LINKEDIN */}
-              <Icon
-                icon="skill-icons:linkedin"
-                width="32"
-                height="32"
-              />
+              <Icon icon="skill-icons:linkedin" width="32" height="32" />
 
               {/* INSTAGRAM */}
-              <Icon
-                icon="skill-icons:instagram"
-                width="32"
-                height="32"
-              />
+              <Icon icon="skill-icons:instagram" width="32" height="32" />
 
               {/* FACEBOOK */}
-              <Icon
-                icon="logos:facebook"
-                width="32"
-                height="32"
-              />
+              <Icon icon="logos:facebook" width="32" height="32" />
 
               {/* X/TWITTER */}
-              <Icon
-                icon="pajamas:twitter"
-                width="30"
-                height="30"
-              />
+              <Icon icon="pajamas:twitter" width="30" height="30" />
             </Box>
 
             {/* COPYRIGHT */}
