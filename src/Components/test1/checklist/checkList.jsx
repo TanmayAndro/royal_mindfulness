@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Typography,
-  Container,
-  Paper,
-  Checkbox,
-} from "@mui/material";
+import { Box, Typography, Container, Paper, Checkbox } from "@mui/material";
 
 import checklistbg from "../../../Assests/images/checklist_bg.jpg";
 
@@ -25,9 +19,7 @@ const Checklist = () => {
 
   const handleToggle = (item) => {
     if (selected.includes(item)) {
-      setSelected(
-        selected.filter((value) => value !== item)
-      );
+      setSelected(selected.filter((value) => value !== item));
     } else {
       setSelected([...selected, item]);
     }
@@ -45,7 +37,15 @@ const Checklist = () => {
   return (
     <Box
       sx={{
-        minHeight: "100vh",
+        minHeight: {
+          md: "100vh",
+        },
+
+        pt: {
+          xs: "70px",
+          md: 0,
+        },
+
         position: "relative",
         overflow: "hidden",
         display: "flex",
@@ -99,26 +99,26 @@ const Checklist = () => {
           {/* subheading  */}
 
           {/* Mobile Only Subheading */}
-<Typography
-  sx={{
-    display: {
-      xs: "block",
-      sm: "none",
-    },
+          <Typography
+            sx={{
+              display: {
+                xs: "block",
+                sm: "none",
+              },
 
-    color: "#494b4c",
+              color: "#494b4c",
 
-    fontWeight: 400,
+              fontWeight: 400,
 
-    fontSize: "12px",
+              fontSize: "12px",
 
-    lineHeight: 1.4,
+              lineHeight: 1.4,
 
-    mb: 4,
-  }}
->
-  (You can select more than one. There's no right or wrong.)
-</Typography>
+              mb: 4,
+            }}
+          >
+            (You can select more than one. There's no right or wrong.)
+          </Typography>
 
           {/* Checklist */}
           <Box
@@ -142,8 +142,7 @@ const Checklist = () => {
                   alignItems: "center",
                   px: 2,
                   backgroundColor: "#f8f8f8",
-                  boxShadow:
-                    "0px 2px 6px rgba(0,0,0,0.15)",
+                  boxShadow: "0px 2px 6px rgba(0,0,0,0.15)",
                   transition: "0.2s ease",
 
                   "&:hover": {

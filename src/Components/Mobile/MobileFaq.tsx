@@ -94,20 +94,17 @@ const MobileFaq = () => {
           position: "relative",
 
         overflow: "hidden",
+        borderRadius: "22px",
 
 
         px: 3,
         py: 6,
 
         boxSizing: "border-box",
+        marginTop: "-80px"
       }}
     >
 
-       {/* TOP TRIANGLE DESIGN */}
-    {/* TOP TRIANGLE DESIGN */}
-
-{/* TriangleDivider  */}
-{/* <TriangleDivider /> */}
 
       
       {/* TITLE */}
@@ -122,7 +119,7 @@ const MobileFaq = () => {
             sm: "20px",
           },
 
-          mt: "10px",
+          mt: "50px",
           fontWeight: 700,
 
           mb: 4,

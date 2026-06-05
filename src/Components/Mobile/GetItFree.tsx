@@ -37,196 +37,196 @@ const freeItems = [
 
 const GetItFree = () => {
   return (
-   <Box
-  sx={{
-    width: "100%",
+    <Box
+      sx={{
+        width: "100%",
 
-    px: 2.5,
-    py: 6,
+        px: 2.5,
+        py: 6,
 
-    boxSizing: "border-box",
+        boxSizing: "border-box",
 
-    position: "relative",
+        position: "relative",
+        borderRadius: "40px",
 
-    overflow: "hidden",
-    borderTopLeftRadius: 0,
-borderTopRightRadius: 0,
+        overflow: "hidden",
+        borderTopLeftRadius: "40px",
+        borderTopRightRadius: "40px",
 
-borderBottomLeftRadius: "40px",
-borderBottomRightRadius: "40px",
+        borderBottomLeftRadius: "16px",
+        borderBottomRightRadius: "16px",
 
-border: "0.5px solid rgba(20,112,175,0.25)",
+        backgroundColor: "#F5F5F5",
 
-boxShadow:
-  "0px 12px 30px rgba(0, 0, 0, 0.48)",
-  marginBottom: 1,
-  }}
->
-  {/* BG IMAGE */}
-  <Box
-  sx={{
-    position: "absolute",
-
-    inset: 0,
-
-    backgroundImage: `url(${checklist})`,
-
-    backgroundSize: "105% 103%",
-
-    backgroundPosition: "center",
-
-    backgroundRepeat: "no-repeat",
-
-    opacity: 0.15,
-
-    zIndex: 1,
-
-    /* FIGMA STYLE */
-    
-  }}
-/>
-
-  {/* CONTENT */}
-  <Box
-    sx={{
-      position: "relative",
-
-      zIndex: 2,
-    }}
-  >
-      {/* TITLE */}
-      <Typography
-        sx={{
-          textAlign: "center",
-
-          fontSize: {
-            xs: "34px",
-            sm: "44px",
-          },
-
-          fontWeight: 400,
-
-          color: "#555",
-
-          mb: 5,
-        }}
-      >
-        Get it for{" "}
-        <Box
-          component="span"
-          sx={{
-            color: "#1470AF",
-            fontWeight: 700,
-          }}
-        >
-          Free!
-        </Box>
-      </Typography>
-
-      {/* CARDS */}
+        boxShadow: "0px 6px 10px rgba(0, 0, 0, 0.2)",
+        marginBottom: 1,
+      }}
+    >
+      {/* BG IMAGE */}
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 3,
+          position: "absolute",
+
+          inset: 0,
+
+          backgroundImage: `url(${checklist})`,
+
+          backgroundSize: "105% 103%",
+          borderRadius: "10px",
+
+          backgroundPosition: "center",
+
+          backgroundRepeat: "no-repeat",
+
+          opacity: 0.15,
+
+          zIndex: 1,
+
+          /* FIGMA STYLE */
+        }}
+      />
+
+      {/* CONTENT */}
+      <Box
+        sx={{
+          position: "relative",
+          marginTop: "40px",
+
+          zIndex: 2,
         }}
       >
-        {freeItems.map((item, index) => (
-          <Paper
-            key={index}
-            elevation={0}
+        {/* TITLE */}
+        <Typography
+          sx={{
+            textAlign: "center",
+
+            fontSize: {
+              xs: "34px",
+              sm: "44px",
+            },
+
+            fontWeight: 400,
+
+            color: "#555",
+
+            mb: 5,
+          }}
+        >
+          Get it for{" "}
+          <Box
+            component="span"
             sx={{
-              width: "100%",
-
-              minHeight: "105px",
-
-              px: 2.5,
-              py: 2,
-
-              borderRadius: "26px",
-
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-
-              background: "rgba(255,255,255,0.55)",
-
-              backdropFilter: "blur(10px)",
-
-              border: "1px solid rgba(20,112,175,0.15)",
-
-              boxShadow: "0px 6px 14px rgba(0,0,0,0.10)",
-
-              boxSizing: "border-box",
+              color: "#1470AF",
+              fontWeight: 700,
             }}
           >
-            {/* LEFT CONTENT */}
-            <Box
+            Free!
+          </Box>
+        </Typography>
+
+        {/* CARDS */}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 3,
+          }}
+        >
+          {freeItems.map((item, index) => (
+            <Paper
+              key={index}
+              elevation={0}
               sx={{
-                flex: 1,
-                pr: 2,
+                width: "100%",
+
+                minHeight: "105px",
+
+                px: 2.5,
+                py: 2,
+
+                borderRadius: "26px",
+
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+
+                background: "rgba(255,255,255,0.55)",
+
+                backdropFilter: "blur(10px)",
+
+                border: "1px solid rgba(20,112,175,0.15)",
+
+                boxShadow: "0px 6px 14px rgba(0,0,0,0.10)",
+
+                boxSizing: "border-box",
               }}
             >
-              {/* TITLE */}
-              <Typography
+              {/* LEFT CONTENT */}
+              <Box
                 sx={{
-                  color: "#1470AF",
-
-                  fontSize: {
-                    xs: "17px",
-                    sm: "20px",
-                  },
-
-                  fontWeight: 700,
-
-                  lineHeight: 1.15,
-
-                  mb: 0.5,
+                  flex: 1,
+                  pr: 2,
                 }}
               >
-                {item.title}
-              </Typography>
+                {/* TITLE */}
+                <Typography
+                  sx={{
+                    color: "#1470AF",
 
-              {/* DESCRIPTION */}
-              <Typography
+                    fontSize: {
+                      xs: "17px",
+                      sm: "20px",
+                    },
+
+                    fontWeight: 700,
+
+                    lineHeight: 1.15,
+
+                    mb: 0.5,
+                  }}
+                >
+                  {item.title}
+                </Typography>
+
+                {/* DESCRIPTION */}
+                <Typography
+                  sx={{
+                    color: "#555",
+
+                    fontSize: {
+                      xs: "14px",
+                      sm: "16px",
+                    },
+
+                    lineHeight: 1.25,
+
+                    fontWeight: 400,
+                  }}
+                >
+                  {item.description}
+                </Typography>
+              </Box>
+
+              {/* RIGHT ICON */}
+
+              <IconButton
                 sx={{
-                  color: "#555",
-
-                  fontSize: {
-                    xs: "14px",
-                    sm: "16px",
-                  },
-
-                  lineHeight: 1.25,
-
-                  fontWeight: 400,
+                  width: 42,
+                  height: 42,
                 }}
               >
-                {item.description}
-              </Typography>
-            </Box>
-
-            {/* RIGHT ICON */}
-
-            <IconButton
-              sx={{
-                width: 42,
-                height: 42,
-              }}
-            >
-              <Icon
-                icon="solar:map-arrow-right-bold"
-                width="38"
-                height="38"
-                color="#1470AF"
-              />
-            </IconButton>
-          </Paper>
-        ))}
+                <Icon
+                  icon="solar:map-arrow-right-bold"
+                  width="38"
+                  height="38"
+                  color="#1470AF"
+                />
+              </IconButton>
+            </Paper>
+          ))}
+        </Box>
       </Box>
     </Box>
-    </Box>
-
   );
 };
 

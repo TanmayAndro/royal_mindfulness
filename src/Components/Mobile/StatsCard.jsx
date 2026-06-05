@@ -31,6 +31,26 @@ const StatsSection = () => {
         overflow: "hidden",
       }}
     >
+      <Box
+        sx={{
+          position: "absolute",
+
+          right: "0px",
+
+          top: "50%",
+
+          transform: "translateY(-50%)",
+
+          width: "100%",
+
+          height: "4px",
+
+          background:
+            "linear-gradient(to right, transparent, rgba(255,255,255,0.5), transparent)",
+
+          filter: "blur(1px)",
+        }}
+      />
       {/* ITEM 1 */}
       <Box
         sx={{
@@ -83,7 +103,6 @@ const StatsSection = () => {
 
             background:
               "linear-gradient(to bottom, transparent, rgba(255,255,255,0.5), transparent)",
-
             filter: "blur(1px)",
           }}
         />
@@ -100,12 +119,10 @@ const StatsSection = () => {
         <Typography
           sx={{
             color: "#fff",
-
             fontSize: {
               xs: "24px",
               sm: "32px",
             },
-
             fontWeight: 700,
             lineHeight: 1,
           }}
@@ -116,14 +133,11 @@ const StatsSection = () => {
         <Typography
           sx={{
             mt: 2,
-
             color: "#fff",
-
             fontSize: {
               xs: "18px",
               sm: "22px",
             },
-
             fontWeight: 700,
           }}
         >
@@ -137,10 +151,8 @@ const StatsSection = () => {
             right: 0,
             top: "50%",
             transform: "translateY(-50%)",
-
             width: "2px",
             height: "80px",
-
             background:
               "linear-gradient(to bottom, transparent, rgba(255,255,255,0.5), transparent)",
 

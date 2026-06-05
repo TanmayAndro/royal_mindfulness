@@ -1,11 +1,8 @@
-import React, {
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import MobileHero from "../../Mobile/MobileHero";
-import MobileHeader from "../../Mobile/MobileHeader";
+import MobileNav from "../../Mobile/MobileNav";
+
 import Checklist from "../../test1/checklist/checkList";
 import StatsSection from "../../Mobile/StatsCard";
 import ServiceCarousel from "../../Mobile/ServiceCarousel";
@@ -14,57 +11,33 @@ import HowWeWork from "../../Mobile/HowWeWork";
 import GetItFree from "../../Mobile/GetItFree";
 import ComparisonSection from "../../Mobile/ComparisonSection";
 import ProcessTraining from "../../Mobile/ProcessTraining";
+import MobileFooter from "../../Mobile/MobileFooter";
 
 import herobg from "../../../Assests/images/checklist_bg.jpg";
-
-import MobileFooter from "../../Mobile/MobileFooter";
 
 function MobileLanding() {
   const heroRef = useRef(null);
 
   const checklistRef = useRef(null);
 
-  const [isSticky, setIsSticky] =
-    useState(false);
+  const [showStickyNav, setShowStickyNav] = useState(false);
 
-  /* STICKY HEADER LOGIC */
+  /* STICKY NAV LOGIC */
   useEffect(() => {
-    const hero = heroRef.current;
+    const handleScroll = () => {
+      if (!heroRef.current) return;
 
-    if (!hero) return;
+      const heroHeight = heroRef.current.offsetHeight;
 
-    const observer =
-      new IntersectionObserver(
-        ([entry]) => {
-          setIsSticky(
-            entry.intersectionRatio < 0.5
-          );
-        },
-        {
-          threshold: [
-            0,
-            0.1,
-            0.2,
-            0.3,
-            0.4,
-            0.5,
-            0.6,
-            0.7,
-            0.8,
-            0.9,
-            1,
-          ],
-        }
-      );
-
-    observer.observe(hero);
-
-    return () => {
-      observer.disconnect();
+      setShowStickyNav(window.scrollY > heroHeight - 120);
     };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  /* AUTO SCROLL AFTER 3 SECONDS */
+  /* AUTO SCROLL AFTER 5 SECONDS */
   useEffect(() => {
     const timer = setTimeout(() => {
       if (checklistRef.current) {
@@ -73,33 +46,39 @@ function MobileLanding() {
           block: "start",
         });
       }
-    }, 3000);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <>
+      {/* STICKY NAV */}
+      {showStickyNav && (
+        <div
+          style={{
+            position: "fixed",
+
+            top: 0,
+            left: 0,
+
+            width: "100%",
+
+            zIndex: 9999,
+
+            boxSizing: "border-box",
+
+            background: "transparent"
+          }}
+        >
+          <MobileNav isSticky={true} />
+        </div>
+      )}
+
       {/* HERO */}
       <div ref={heroRef}>
-        <MobileHero />
+        <MobileHero hideNav={showStickyNav} />
       </div>
-
-      {/* SHOW HEADER AFTER HERO SCROLL */}
-      {isSticky && (
-        <>
-          <MobileHeader
-            isSticky={true}
-          />
-
-          {/* PREVENT LAYOUT JUMP */}
-          <div
-            style={{
-              height: "72px",
-            }}
-          />
-        </>
-      )}
 
       {/* CHECKLIST */}
       <div ref={checklistRef}>
@@ -127,11 +106,9 @@ function MobileLanding() {
 
             backgroundSize: "cover",
 
-            backgroundPosition:
-              "center",
+            backgroundPosition: "center",
 
-            backgroundRepeat:
-              "no-repeat",
+            backgroundRepeat: "no-repeat",
 
             opacity: 0.25,
 
@@ -155,11 +132,33 @@ function MobileLanding() {
 
       <ProcessTraining />
 
-      <ComparisonSection />
+      <div
+        style={{
+          position: "relative",
+          zIndex: 13,
+        }}
+      >
+        <ComparisonSection />
+      </div>
+<div
+  style={{
+    marginTop: "-60px",
+    position: "relative",
+    zIndex: 10,
+  }}
+>
+  <GetItFree />
+</div>
 
-      <GetItFree />
-
-      <HowWeWork />
+<div
+  style={{
+    marginTop: "-100px",
+    position: "relative",
+    zIndex: 1,
+  }}
+>
+  <HowWeWork />
+</div>
 
       <MobileFaq />
 

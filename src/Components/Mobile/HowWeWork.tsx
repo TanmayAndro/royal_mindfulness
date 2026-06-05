@@ -46,13 +46,14 @@ const HowWeWork = () => {
         px: 3,
         pt: 6,
         pb: 10,
+        mt: 10,
 
         textAlign: "center",
 
         overflow: "hidden",
 
         /* ADD ONLY THIS */
-        backgroundColor: "#0B67B2",
+        // backgroundColor: "#0B67B2",
 
         backgroundImage: `url(${workbg})`,
 
@@ -82,6 +83,7 @@ const HowWeWork = () => {
               xs: "34px",
               sm: "42px",
             },
+            
 
             fontWeight: 700,
 

@@ -35,9 +35,6 @@ const MobileFooter = () => {
       sx={{
         width: "100%",
 
-        // px: 2,
-        pb: 2,
-
         boxSizing: "border-box",
       }}
     >
@@ -96,8 +93,8 @@ const MobileFooter = () => {
                   color: "#fff",
 
                   fontSize: {
-                    xs: "16px",
-                    sm: "18px",
+                    xs: "11px",
+                    sm: "11px",
                   },
 
                   fontWeight: 400,
@@ -128,8 +125,8 @@ const MobileFooter = () => {
                   color: "#fff",
 
                   fontSize: {
-                    xs: "16px",
-                    sm: "18px",
+                    xs: "11px",
+                    sm: "11px",
                   },
 
                   fontWeight: 400,
@@ -168,7 +165,7 @@ const MobileFooter = () => {
                 src={logo}
                 alt="Royal Mindfulness"
                 sx={{
-                  width: 70,
+                  width: 45,
                   height: "auto",
 
                   objectFit: "contain",
@@ -192,11 +189,11 @@ const MobileFooter = () => {
                 alignItems: "center",
 
                 fontSize: {
-                  xs: "16px",
-                  sm: "18px",
+                  xs: "12px",
+                  sm: "12px",
                 },
 
-                fontWeight: 500,
+                fontWeight: 400,
 
                 lineHeight: 1.2,
 
@@ -258,8 +255,8 @@ const MobileFooter = () => {
                 color: "#fff",
 
                 fontSize: {
-                  xs: "14px",
-                  sm: "16px",
+                  xs: "11px",
+                  sm: "11px",
                 },
 
                 fontWeight: 400,

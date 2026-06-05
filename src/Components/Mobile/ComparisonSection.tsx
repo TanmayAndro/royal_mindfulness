@@ -12,6 +12,7 @@ import logo from "../../Assests/images/logo/logo.webp";
 import comimage from "../../Assests/images/mobile/Rectangle16.png";
 
 import topimage from "../../Assests/images/mobile/Rectangle16(1).png";
+import { Icon } from "@iconify/react";
 
 const comparisonData = [
   {
@@ -82,318 +83,328 @@ const comparisonData = [
 ];
 
 const ComparisonSection = () => {
-  const renderValue = (
-  value: boolean | string,
-  type: "royal" | "therapy"
-) => {
-  if (typeof value === "boolean") {
-    return value ? (
-      <CheckIcon
-        sx={{
-          color: "#16B23A",
-          fontSize: "30px",
-          fontWeight: 500,
-        }}
-      />
-    ) : (
-      <CloseIcon
-        sx={{
-          color: "#FF3B30",
-          fontSize: "30px",
-        }}
-      />
-    );
-  }
+  const renderValue = (value: boolean | string, type: "royal" | "therapy") => {
+    if (typeof value === "boolean") {
+      return value ? (
+       <Icon
+  icon="icon-park-solid:correct"
+  width="20"
+  height="34"
+  color="#16B23A"
+  style={{
+    filter:
+      "drop-shadow(0 0 1px #16B23A)",
+  }}
+/>
+      ) : (
+        <Icon
+  icon="raphael:cross"
+  width="34"
+  height="34"
+  color="#FF3B30"
+/>
+      );
+    }
 
-   return (
-    <Typography
-      sx={{
-        color:
-          type === "royal"
-            ? "#1470AF"
-            : "#FFFFFF",
-
-        fontSize: "11px",
-
-        fontWeight: 500,
-
-        textAlign: "center",
-
-        lineHeight: 1.2,
-      }}
-    >
-      {value}
-    </Typography>
-  );
-};
-
-  return (
-  <Box
-    sx={{
-      width: "100%",
-      position: "relative",
-      overflow: "hidden",
-
-      borderBottomLeftRadius: "90px",
-      borderBottomRightRadius: "90px",
-
-      backgroundImage: `url(${topimage})`,
-      backgroundSize: "100% 100%",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
-
-      mt: "-52px",
-    }}
-  >
-    {/* TOP SHAPE IMAGE */}
-    <Box
-      component="img"
-      src={comimage}
-      alt="top-shape"
-      sx={{
-        width: "100%",
-        display: "block",
-
-        position: "absolute",
-        top: 0,
-        left: 0,
-
-        zIndex: 1,
-
-        pointerEvents: "none",
-      }}
-    />
-
-    {/* CONTENT WRAPPER */}
-    <Box
-      sx={{
-        position: "relative",
-
-        zIndex: 2,
-
-        px: 3.5,
-
-        pt: "80px",
-
-        pb: 5,
-      }}
-    >
-      {/* TITLE */}
+    return (
       <Typography
         sx={{
-          color: "#fff",
+          color: type === "royal" ? "#1470AF" : "#FFFFFF",
+
+          fontSize: "11px",
+
+          fontWeight: 500,
 
           textAlign: "center",
 
-          fontSize: {
-            xs: "24px",
-            sm: "30px",
-          },
-
-          fontWeight: 700,
-
-          lineHeight: 1.12,
-
-          maxWidth: "320px",
-
-          mx: "auto",
-
-          mb: 5,
-
-          mt: 5,
+          lineHeight: 1.2,
         }}
       >
-        Royal Mindfulness Training
-        <br />
-        vs Traditional Therapy
+        {value}
       </Typography>
+    );
+  };
 
-      {/* TABLE */}
+  return (
+    <Box
+      sx={{
+        marginRight: "23px",
+
+        marginLeft: "23px",
+      }}
+    >
       <Box
         sx={{
           width: "100%",
+          position: "relative",
+          overflow: "hidden",
 
-          display: "flex",
+          borderBottomLeftRadius: "90px",
+          borderBottomRightRadius: "90px",
 
-          flexDirection: "column",
+          backgroundImage: `url(${topimage})`,
+          backgroundSize: "100% 100%",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+
+          mt: "-52px",
         }}
       >
-        {/* HEADER */}
+        {/* TOP SHAPE IMAGE */}
+        <Box
+          component="img"
+          src={comimage}
+          alt="top-shape"
+          sx={{
+            width: "100%",
+            display: "block",
+
+            position: "absolute",
+            top: 0,
+            left: 0,
+
+            zIndex: 1,
+
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* CONTENT WRAPPER */}
         <Box
           sx={{
-            display: "grid",
+            position: "relative",
 
-            gridTemplateColumns: "1.25fr 0.95fr 0.95fr",
+            zIndex: 2,
 
-            alignItems: "end",
+            px: 2.5,
 
-            borderBottom:
-              "1px solid rgba(255,255,255,0.8)",
+            pt: "80px",
 
+            pb: 5,
           }}
         >
-          {/* EMPTY */}
-          <Box />
-
-          {/* ROYAL */}
-          <Box
-            sx={{
-              display: "flex",
-
-              justifyContent: "center",
-
-              alignItems: "flex-end",
-            }}
-          >
-            <Box
-              sx={{
-                width: 100,
-
-                height: 45,
-
-                background: "#F4F4F4",
-
-                borderTopLeftRadius: "18px",
-
-                borderTopRightRadius: "18px",
-
-                display: "flex",
-
-                alignItems: "center",
-
-                justifyContent: "center",
-
-                position: "relative",
-              }}
-            >
-              {/* BLUE LINE */}
-              <Box
-                sx={{
-                  position: "absolute",
-
-                  bottom: 0,
-
-                  left: 0,
-
-                  width: "100%",
-
-                  height: "2px",
-
-                  background: "#1470AF",
-                }}
-              />
-
-              <Box
-                component="img"
-                src={logo}
-                alt="logo"
-                sx={{
-                  width: "30%",
-
-                  objectFit: "contain",
-                }}
-              />
-            </Box>
-          </Box>
-
-          {/* THERAPY */}
+          {/* TITLE */}
           <Typography
             sx={{
               color: "#fff",
 
-              fontSize: "15px",
+              textAlign: "center",
+
+              fontSize: {
+                xs: "24px",
+                sm: "30px",
+              },
 
               fontWeight: 700,
 
-              textAlign: "center",
+              lineHeight: 1.12,
 
-              lineHeight: 1.1,
+              maxWidth: "320px",
 
-              pb: 1,
+              mx: "auto",
+
+              mb: 5,
+
+              mt: 5,
             }}
           >
-            Traditional
+            Royal Mindfulness Training
             <br />
-            Therapy
+            vs Traditional Therapy
           </Typography>
-        </Box>
 
-        {/* ROWS */}
-        {comparisonData.map((item, index) => (
+          {/* TABLE */}
           <Box
-            key={index}
             sx={{
-              display: "grid",
+              width: "100%",
 
-              gridTemplateColumns:
-                "1.25fr 0.95fr 0.95fr",
+              display: "flex",
 
-              alignItems: "center",
-
-              py: "3px",
-
-              position: "relative",
-
-              "&::after": {
-                content: '""',
-
-                position: "absolute",
-
-                left: "18px",
-
-                right: 0,
-
-                bottom: 0,
-
-                height: "1px",
-
-                background:
-                  "rgba(255,255,255,0.55)",
-              },
+              flexDirection: "column",
             }}
           >
-            {/* FEATURE */}
+            {/* HEADER */}
             <Box
               sx={{
-                display: "flex",
+                display: "grid",
 
-                alignItems: "center",
+                gridTemplateColumns: "1.25fr 0.95fr 0.95fr",
 
-                gap: 1,
-
-                pr: 1,
+                alignItems: "end",
               }}
             >
+              {/* EMPTY */}
+              <Box />
+
+              {/* ROYAL */}
+              <Box
+                sx={{
+                  display: "flex",
+
+                  justifyContent: "center",
+
+                  alignItems: "flex-end",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: 90,
+
+                    height: 42,
+
+                    background: "#F4F4F4",
+
+                    borderTopLeftRadius: "18px",
+
+                    borderTopRightRadius: "18px",
+
+                    display: "flex",
+
+                    alignItems: "center",
+
+                    justifyContent: "center",
+
+                    position: "relative",
+                  }}
+                >
+                  {/* BLUE LINE */}
+                  <Box
+                    sx={{
+                      position: "absolute",
+
+                      bottom: 0,
+
+                      left: 0,
+
+                      width: "100%",
+
+                      height: "2px",
+
+                      background: "#1470AF",
+                    }}
+                  />
+
+                  <Box
+                    component="img"
+                    src={logo}
+                    alt="logo"
+                    sx={{
+                      width: "30%",
+
+                      objectFit: "contain",
+                    }}
+                  />
+                </Box>
+              </Box>
+
+              {/* THERAPY */}
               <Typography
                 sx={{
                   color: "#fff",
 
-                  fontSize: "18px",
+                  fontSize: "15px",
 
-                  lineHeight: 1,
+                  fontWeight: 700,
+
+                  textAlign: "center",
+
+                  lineHeight: 1.1,
+
+                  pb: 1,
                 }}
               >
-                •
-              </Typography>
-
-              <Typography
-                sx={{
-                  color: "#fff",
-
-                  fontSize: "14px",
-
-                  fontWeight: 400,
-
-                  lineHeight: 1.15,
-                }}
-              >
-                {item.feature}
+                Traditional
+                <br />
+                Therapy
               </Typography>
             </Box>
 
-            {/* ROYAL */}
-            {/* ROYAL */}
-<Box
+            {/* CUSTOM BORDER */}
+            <Box
+              sx={{
+                width: "60%",
+
+                ml: "auto",
+
+                borderBottom: "1px solid rgba(255,255,255,0.8)",
+              }}
+            />
+
+            {/* ROWS */}
+            {comparisonData.map((item, index) => (
+              <Box
+                key={index}
+                sx={{
+                  display: "grid",
+
+                  gridTemplateColumns: "1.25fr 0.95fr 0.95fr",
+
+                  alignItems: "center",
+
+                  // py: "3px",
+
+                  position: "relative",
+
+                  "&::after": {
+                    content: '""',
+
+                    position: "absolute",
+
+                    left: "18px",
+
+                    right: 0,
+
+                    bottom: 0,
+
+                    height: "1px",
+
+                    background: "rgba(255,255,255,0.55)",
+                  },
+                }}
+              >
+                {/* FEATURE */}
+                <Box
+                  sx={{
+                    display: "flex",
+
+                    alignItems: "center",
+
+                    gap: 0.2,
+
+                    pr: 1,
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      color: "#fff",
+                      fontSize: "18px",
+                      lineHeight: 1,
+
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Icon icon="ph:dot-outline" width="20" height="20" />
+                  </Typography>
+
+                  <Typography
+                    sx={{
+                      color: "#fff",
+
+                      fontSize: "12px",
+
+                      fontWeight: 400,
+
+                      lineHeight: 1.15,
+                    }}
+                  >
+                    {item.feature}
+                  </Typography>
+                </Box>
+
+
+                {/* ROYAL */}
+                <Box
   sx={{
     display: "flex",
 
@@ -405,6 +416,8 @@ const ComparisonSection = () => {
 
     height: "100%",
 
+    position: "relative",
+
     borderLeft: "1px solid #1470AF",
 
     borderRight: "1px solid #1470AF",
@@ -413,30 +426,49 @@ const ComparisonSection = () => {
       index === comparisonData.length - 1
         ? "1px solid #1470AF"
         : "none",
+
+    "&::after": {
+      content: '""',
+
+      position: "absolute",
+
+      bottom: 0,
+
+      left: 0,
+
+      width: "100%",
+
+      height: "1px",
+
+      background: "#1470AF",
+    },
   }}
 >
-{renderValue(item.royal, "royal")}
+  {renderValue(item.royal, "royal")}
 </Box>
 
-            {/* THERAPY */}
-            <Box
-              sx={{
-                display: "flex",
 
-                justifyContent: "center",
+                {/* i want to add border blue in this  */}
 
-                alignItems: "center",
-              }}
-            >
-              {renderValue(item.therapy, "therapy")}
-            </Box>
+                {/* THERAPY */}
+                <Box
+                  sx={{
+                    display: "flex",
+
+                    justifyContent: "center",
+
+                    alignItems: "center",
+                  }}
+                >
+                  {renderValue(item.therapy, "therapy")}
+                </Box>
+              </Box>
+            ))}
           </Box>
-        ))}
+        </Box>
       </Box>
     </Box>
-  </Box>
-);
-
+  );
 };
 
 export default ComparisonSection;
