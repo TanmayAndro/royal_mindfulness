@@ -1,21 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logoImg from "../../Assests/images/royal_image.png";
- import { logo } from "../../assests";
+import { logo } from "../../assests";
 import "./NavBar.css";
-import {
-  Avatar,
-  Box,
-  Button,
-  Grid,
-  Menu,
-  MenuItem,
-} from "@mui/material";
+import { Avatar, Box, Button, Grid, Menu, MenuItem } from "@mui/material";
 import { trackEvent } from "../../analitics/analytics";
 import AuthModal from "../AuthModal"; // path fix
 
-const NavBar = ({ isOpen, toggleMenu }) => {
 
+const NavBar = ({ isOpen, toggleMenu }) => {
   const navigate = useNavigate();
   const [authOpen, setAuthOpen] = useState(false);
   const [authView, setAuthView] = useState("login");
@@ -49,19 +42,20 @@ const NavBar = ({ isOpen, toggleMenu }) => {
       <nav className="header">
         {/* LOGO */}
         <Link to="/" className="header-logo" onClick={toggleMenu}>
-         <img
-                       src={logo}
-                       style={{
-                         width: "60px",
-                         filter: 
-                            "brightness(0) saturate(100%) invert(34%) sepia(92%) saturate(1039%) hue-rotate(176deg) brightness(91%) contrast(93%)",
-                           
-                       }}
-                       alt="logo"
-                       onClick={() => navigate("/")}
-                     />
+          <img
+            src={logo}
+            style={{
+              width: "60px",
+              filter:
+                "brightness(0) saturate(100%) invert(34%) sepia(92%) saturate(1039%) hue-rotate(176deg) brightness(91%) contrast(93%)",
+            }}
+            alt="logo"
+            onClick={() => navigate("/")}
+          />
           <div className="logo-text">
-            <span className="logo-top main_heading_css heading_css brand-text">ROYAL</span>
+            <span className="logo-top main_heading_css heading_css brand-text">
+              ROYAL
+            </span>
             <span className="logo-bottom main_heading_css heading_css brand-text">
               MINDFULNESS
             </span>
@@ -77,29 +71,34 @@ const NavBar = ({ isOpen, toggleMenu }) => {
 
         {/* NAV LINKS */}
         <ul className={`header-nav ${isOpen ? "active" : ""}`}>
-
           <li>
-            <Link to="/" onClick={toggleMenu}>Home</Link>
+            <Link to="/" onClick={toggleMenu}>
+              Home
+            </Link>
           </li>
 
           <li>
-            <Link to="/aboutus" onClick={toggleMenu}>About us</Link>
+            <Link to="/aboutus" onClick={toggleMenu}>
+              About us
+            </Link>
           </li>
 
           <li>
-            <Link to="/book-now" onClick={toggleMenu}>Book Now</Link>
+            <Link to="/book-now" onClick={toggleMenu}>
+              Book Now
+            </Link>
           </li>
 
           <li>
-            <Link to="/contact" onClick={toggleMenu}>Contact Us</Link>
+            <Link to="/contact" onClick={toggleMenu}>
+              Contact Us
+            </Link>
           </li>
 
           {/* AUTH SECTION */}
 
           <Grid item xs={12} sx={{ margin: "0 auto", textAlign: "center" }}>
-
             {!token ? (
-
               <Box
                 sx={{
                   display: "flex",
@@ -111,21 +110,20 @@ const NavBar = ({ isOpen, toggleMenu }) => {
                   width: "100%",
                 }}
               >
-
-               <Button
+                <Button
                   variant="outlined"
                   size="small"
                   sx={{
                     // Responsive Colors: White on Mobile/Tablet (xs), Blue on Laptop/Desktop (md)
                     color: { xs: "#fff", md: "#1976d2" },
                     borderColor: { xs: "#fff", md: "#1976d2" },
-                    
+
                     // Hover effect for better UX
                     "&:hover": {
                       borderColor: { xs: "#fff", md: "#1976d2" },
                       backgroundColor: "rgba(25, 118, 210, 0.04)",
                     },
-                    
+
                     borderRadius: "30px",
                     fontSize: "14px",
                     px: 3,
@@ -159,11 +157,8 @@ const NavBar = ({ isOpen, toggleMenu }) => {
                 >
                   Register
                 </Button> */}
-
               </Box>
-
             ) : (
-
               <Box
                 sx={{
                   display: "flex",
@@ -174,7 +169,6 @@ const NavBar = ({ isOpen, toggleMenu }) => {
                   justifyContent: "center",
                 }}
               >
-
                 {/* Avatar */}
 
                 <Avatar
@@ -204,31 +198,31 @@ const NavBar = ({ isOpen, toggleMenu }) => {
                 </Menu> */}
 
                 <Menu
-  anchorEl={anchorEl}
-  open={Boolean(anchorEl)}
-  onClose={handleMenuClose}
-  // Ye do lines menu ko avatar ke niche sahi jagah dikhayengi
-  anchorOrigin={{
-    vertical: 'bottom',
-    horizontal: 'right',
-  }}
-  transformOrigin={{
-    vertical: 'top',
-    horizontal: 'right',
-  }}
-  // Z-index ko header se zyada rakhein taaki menu chhup na jaye
-  sx={{ zIndex: 2100 }} 
->
-  <MenuItem 
-    onClick={() => {
-      handleDashboard();
-      trackEvent("Navigation", "Click", "Dashboard");
-    }}
-  >
-    Dashboard
-  </MenuItem>
-  <MenuItem onClick={handleLogout}>Logout</MenuItem>
-</Menu>
+                  anchorEl={anchorEl}
+                  open={Boolean(anchorEl)}
+                  onClose={handleMenuClose}
+                  // Ye do lines menu ko avatar ke niche sahi jagah dikhayengi
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  // Z-index ko header se zyada rakhein taaki menu chhup na jaye
+                  sx={{ zIndex: 2100 }}
+                >
+                  <MenuItem
+                    onClick={() => {
+                      handleDashboard();
+                      trackEvent("Navigation", "Click", "Dashboard");
+                    }}
+                  >
+                    Dashboard
+                  </MenuItem>
+                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                </Menu>
 
                 {/* Mobile Buttons */}
 
@@ -241,7 +235,6 @@ const NavBar = ({ isOpen, toggleMenu }) => {
                     alignItems: "center",
                   }}
                 >
-
                   <Button
                     variant="outlined"
                     sx={{
@@ -265,15 +258,10 @@ const NavBar = ({ isOpen, toggleMenu }) => {
                   >
                     Logout
                   </Button>
-
                 </Box>
-
               </Box>
-
             )}
-
           </Grid>
-
         </ul>
       </nav>
 
@@ -284,7 +272,6 @@ const NavBar = ({ isOpen, toggleMenu }) => {
         onClose={() => setAuthOpen(false)}
         defaultView={authView}
       />
-
     </>
   );
 };

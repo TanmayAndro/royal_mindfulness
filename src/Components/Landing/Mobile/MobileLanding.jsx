@@ -81,7 +81,10 @@ function MobileLanding() {
             background: "transparent",
           }}
         >
-          <MobileNav isSticky={true} />
+         <MobileNav
+  isSticky={true}
+  showMenuIcon={true}
+/>
         </div>
       )}
 
