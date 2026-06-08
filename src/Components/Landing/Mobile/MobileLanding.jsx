@@ -29,7 +29,7 @@ function MobileLanding() {
 
       const heroHeight = heroRef.current.offsetHeight;
 
-      setShowStickyNav(window.scrollY > heroHeight - 120);
+      setShowStickyNav(window.scrollY > heroHeight - 100);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -56,7 +56,7 @@ function MobileLanding() {
 
         sessionStorage.setItem("mobileLandingAutoScrolled", "true");
       }
-    }, 5000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
