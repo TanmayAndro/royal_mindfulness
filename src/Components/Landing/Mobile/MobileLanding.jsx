@@ -84,7 +84,7 @@ useEffect(() => {
           width: "100%",
           zIndex: 9999,
           boxSizing: "border-box",
-          background: "white",
+          background: "transparent",
         }}
       >
         <MobileNav
