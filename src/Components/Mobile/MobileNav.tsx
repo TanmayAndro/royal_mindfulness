@@ -5,6 +5,7 @@ import {
   Box,
   Typography,
   Button,
+  Drawer
 } from "@mui/material";
 
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
@@ -14,7 +15,8 @@ import logo from "../../Assests/images/logo/logo.webp";
 import { useNavigate } from "react-router-dom";
 
 import { trackEvent } from "../../analitics/analytics";
-import NavBar from "../../Components/test1/NavBar";
+
+import Header from "../../Components/Header";
 
 const MobileNav = ({
   isSticky = false,
@@ -174,20 +176,12 @@ const toggleMenu = () => {
     {/* MOBILE MENU */}
     {isMenuOpen && (
       <Box
-        sx={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100vh",
-          zIndex: 99999,
-          backgroundColor: "rgba(0,0,0,0.5)",
-        }}
       >
-        <NavBar
-          isOpen={isMenuOpen}
-          toggleMenu={toggleMenu}
-        />
+        <Header
+  isOpen={isMenuOpen}
+  toggleMenu={toggleMenu}
+  drawerOnly={true}
+/>
       </Box>
     )}
   </>

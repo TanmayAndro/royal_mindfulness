@@ -38,55 +38,69 @@ function MobileLanding() {
   }, []);
 
   /* AUTO SCROLL ONLY ON FIRST LOAD (MOBILE) */
-  useEffect(() => {
-    // Desktop par mat chalao
-    if (window.innerWidth > 768) return;
+ /* AUTO SCROLL ONLY ON FIRST LOAD (MOBILE) */
+useEffect(() => {
+  if (window.innerWidth > 768) return;
 
-    // Pehle check karo auto scroll ho chuka hai ya nahi
-    const hasAutoScrolled = sessionStorage.getItem("mobileLandingAutoScrolled");
+  const hasAutoScrolled = sessionStorage.getItem(
+    "mobileLandingAutoScrolled"
+  );
 
-    if (hasAutoScrolled) return;
+  if (hasAutoScrolled) return;
 
-    const timer = setTimeout(() => {
-      if (checklistRef.current) {
-        checklistRef.current.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+  const timer = setTimeout(() => {
+    if (!checklistRef.current) return;
 
-        sessionStorage.setItem("mobileLandingAutoScrolled", "true");
-      }
-    }, 3000);
+    const stickyNavHeight = 80;
 
-    return () => clearTimeout(timer);
-  }, []);
+    const targetPosition =
+      checklistRef.current.offsetTop -
+      stickyNavHeight;
+
+    window.scrollTo({
+      top: Math.max(0, targetPosition),
+      behavior: "smooth",
+    });
+
+    sessionStorage.setItem(
+      "mobileLandingAutoScrolled",
+      "true"
+    );
+  }, 3000);
+
+  return () => clearTimeout(timer);
+}, []);
 
   return (
     <>
       {/* STICKY NAV */}
-      {showStickyNav && (
-        <div
-          style={{
-            position: "fixed",
+     {showStickyNav && (
+    <>
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          zIndex: 9999,
+          boxSizing: "border-box",
+          background: "transparent",
+        }}
+      >
+        <MobileNav
+          isSticky={true}
+          showMenuIcon={true}
+        />
+      </div>
 
-            top: 0,
-            left: 0,
-
-            width: "100%",
-
-            zIndex: 9999,
-
-            boxSizing: "border-box",
-
-            background: "transparent",
-          }}
-        >
-         <MobileNav
-  isSticky={true}
-  showMenuIcon={true}
-/>
-        </div>
-      )}
+      {/* Spacer */}
+      <div
+        style={{
+          height: "110px",
+        }}
+      />
+    </>
+  )}
 
       {/* HERO */}
       <div ref={heroRef}>
@@ -94,9 +108,15 @@ function MobileLanding() {
       </div>
 
       {/* CHECKLIST */}
-      <div ref={checklistRef}>
-        <Checklist />
-      </div>
+     <div
+  ref={checklistRef}
+  style={{
+    marginTop: showStickyNav ? "110px" : "0px",
+    transition: "margin-top 0.3s ease",
+  }}
+>
+  <Checklist />
+</div>
 
       {/* BACKGROUND SECTION */}
       <div

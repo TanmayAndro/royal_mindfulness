@@ -27,8 +27,17 @@ import { trackEvent } from "../analitics/analytics";
 
 import MinimalMobileHeader from "../Components/Header/MinimalMobileHeader";
 const config = require("../config");
+interface HeaderProps {
+  isOpen?: boolean;
+  toggleMenu?: () => void;
+  drawerOnly?: boolean;
+}
 
-const Header: React.FC = () => {
+const Header: React.FC<HeaderProps> = ({
+  isOpen,
+  toggleMenu,
+  drawerOnly = false,
+}) => {
   const navigate = useNavigate();
   const [sessions, setSessions] = useState([]);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -44,6 +53,14 @@ const Header: React.FC = () => {
 
   // / 1.  Isse pata chalega ki screen size mobile (md breakpoint se choti) hai ya nahi
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  const handleDrawerClose = () => {
+    if (toggleMenu) {
+      toggleMenu();
+    } else {
+      setMobileMenuOpen(false);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -114,6 +131,7 @@ const Header: React.FC = () => {
   const isTransparentRoute = TRANSPARENT_ROUTES.includes(pathname);
 
   const shouldHideNavbarOnMobile = HIDDEN_ROUTES.includes(pathname) && isMobile;
+  const drawerOpen = typeof isOpen === "boolean" ? isOpen : mobileMenuOpen;
 
   if (shouldHideNavbarOnMobile) {
     return <MinimalMobileHeader />;
@@ -121,193 +139,199 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <Grid
-        container
-        sx={{
-          display: shouldHideNavbarOnMobile ? "none" : "flex",
-
-          position: isTransparentRoute ? "absolute" : "relative",
-
-          top: 0,
-          left: 0,
-          width: "100%",
-
-          backgroundColor: isTransparentRoute ? "transparent" : "#ffffff",
-
-          transition: "background-color 0.3s ease",
-
-          zIndex: 10,
-
-          padding: {
-            xs: "15px 20px",
-            md: "15px 8%",
-          },
-
-          alignItems: "center",
-          justifyContent: "space-between",
-
-          "& .item_heading_css": {
-            color: "#1470AF !important",
-            fontWeight: 500,
-          },
-
-          "& .button_login_css": {
-            color: isTransparentRoute
-              ? "#ffffff !important"
-              : "#ffffff !important",
-          },
-
-          "& .MuiSvgIcon-root": {
-            color: "#1470AF !important",
-          },
-        }}
-      >
-        {/* ✅ Logo */}
-        <Grid item>
-          <Logo_part />
-        </Grid>
-
-        {/* ✅ Spacer */}
-        <Grid item sx={{ flexGrow: 1 }} />
-
-        {/* ✅ Mobile Toggle Button */}
+      {!drawerOnly && (
         <Grid
-          item
+          container
           sx={{
-            display: { xs: "flex", md: "none" },
-          }}
-        >
-          <MenuIcon
-            onClick={() => setMobileMenuOpen(true)}
-            sx={{
-              color: "#1470AF",
-              cursor: "pointer",
-            }}
-          />
-        </Grid>
+            display: shouldHideNavbarOnMobile ? "none" : "flex",
 
-        {/* ✅ Desktop Right Section */}
-        <Grid
-          item
-          sx={{
-            display: { xs: "none", md: "flex" },
+            position: isTransparentRoute ? "absolute" : "relative",
+
+            top: 0,
+            left: 0,
+            width: "100%",
+
+            backgroundColor: isTransparentRoute ? "transparent" : "#ffffff",
+
+            transition: "background-color 0.3s ease",
+
+            zIndex: 10,
+
+            padding: {
+              xs: "15px 20px",
+              md: "15px 8%",
+            },
+
             alignItems: "center",
-            gap: 4,
+            justifyContent: "space-between",
+
+            "& .item_heading_css": {
+              color: "#1470AF !important",
+              fontWeight: 500,
+            },
+
+            "& .button_login_css": {
+              color: isTransparentRoute
+                ? "#ffffff !important"
+                : "#ffffff !important",
+            },
+
+            "& .MuiSvgIcon-root": {
+              color: "#1470AF !important",
+            },
           }}
         >
-          {/* Header Links */}
-          <Box sx={{ display: "flex", gap: 3 }}>
-            {config.headerItem.map(
-              (item: { name: string; link: string }, index: number) => (
-                <Link
-                  key={index}
-                  to={item.link}
-                  style={{ textDecoration: "none" }}
-                >
-                  <Typography
-                    className="item_heading_css"
-                    sx={{
-                      cursor: "pointer",
-                      color: "#1470AF",
-                    }}
-                    onClick={() => {
-                      trackEvent(
-                        "Navigation",
-                        "Click",
-                        `Nav Actions ${item.name}`,
-                        true,
-                      );
-                    }}
+          {/* ✅ Logo */}
+          <Grid item>
+            <Logo_part />
+          </Grid>
+
+          {/* ✅ Spacer */}
+          <Grid item sx={{ flexGrow: 1 }} />
+
+          {/* ✅ Mobile Toggle Button */}
+          <Grid
+            item
+            sx={{
+              display: { xs: "flex", md: "none" },
+            }}
+          >
+            <MenuIcon
+              onClick={() => {
+                if (toggleMenu) {
+                  toggleMenu();
+                } else {
+                  setMobileMenuOpen(true);
+                }
+              }}
+              sx={{
+                color: "#1470AF",
+                cursor: "pointer",
+              }}
+            />
+          </Grid>
+
+          {/* ✅ Desktop Right Section */}
+          <Grid
+            item
+            sx={{
+              display: { xs: "none", md: "flex" },
+              alignItems: "center",
+              gap: 4,
+            }}
+          >
+            {/* Header Links */}
+            <Box sx={{ display: "flex", gap: 3 }}>
+              {config.headerItem.map(
+                (item: { name: string; link: string }, index: number) => (
+                  <Link
+                    key={index}
+                    to={item.link}
+                    style={{ textDecoration: "none" }}
                   >
-                    {item.name}
-                  </Typography>
-                </Link>
-              ),
-            )}
-          </Box>
+                    <Typography
+                      className="item_heading_css"
+                      sx={{
+                        cursor: "pointer",
+                        color: "#1470AF",
+                      }}
+                      onClick={() => {
+                        trackEvent(
+                          "Navigation",
+                          "Click",
+                          `Nav Actions ${item.name}`,
+                          true,
+                        );
+                      }}
+                    >
+                      {item.name}
+                    </Typography>
+                  </Link>
+                ),
+              )}
+            </Box>
 
-          {/* Login / Avatar */}
-          {!token ? (
-            <Box sx={{ display: "flex", gap: 2 }}>
-              <a className="button_login_css">
-                <Button
-                  className="button_login_css"
-                  variant="contained"
-                  onClick={() => {
-                    setAuthView("login");
-                    setAuthOpen(true);
-                  }}
-                  sx={{
-                    color: "#ffffff",
-
-                    backgroundColor: "#1470AF",
-
-                    border: "1px solid #1470AF",
-
-                    textTransform: "none",
-
-                    borderRadius: "6px",
-
-                    minWidth: "90px",
-
-                    px: 2.5,
-
-                    py: 1,
-
-                    fontWeight: 500,
-
-                    boxShadow: "none",
-
-                    "&:hover": {
+            {/* Login / Avatar */}
+            {!token ? (
+              <Box sx={{ display: "flex", gap: 2 }}>
+                <a className="button_login_css">
+                  <Button
+                    className="button_login_css"
+                    variant="contained"
+                    onClick={() => {
+                      setAuthView("login");
+                      setAuthOpen(true);
+                    }}
+                    sx={{
                       color: "#ffffff",
 
-                      backgroundColor: "#10598c",
+                      backgroundColor: "#1470AF",
 
-                      borderColor: "#10598c",
+                      border: "1px solid #1470AF",
+
+                      textTransform: "none",
+
+                      borderRadius: "6px",
+
+                      minWidth: "90px",
+
+                      px: 2.5,
+
+                      py: 1,
+
+                      fontWeight: 500,
 
                       boxShadow: "none",
-                    },
-                  }}
-                >
-                  Login
-                </Button>
-              </a>
-            </Box>
-          ) : (
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: 1,
-              }}
-            >
-              <Avatar onClick={handleMenuClick} sx={{ cursor: "pointer" }}>
-                {first_name?.[0]}
-              </Avatar>
 
-              <LogoutIcon
+                      "&:hover": {
+                        color: "#ffffff",
+
+                        backgroundColor: "#10598c",
+
+                        borderColor: "#10598c",
+
+                        boxShadow: "none",
+                      },
+                    }}
+                  >
+                    Login
+                  </Button>
+                </a>
+              </Box>
+            ) : (
+              <Box
                 sx={{
-                  color: "#1470AF",
-                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
                 }}
-                onClick={handleLogout}
-              />
-            </Box>
-          )}
-        </Grid>
-      </Grid>
+              >
+                <Avatar onClick={handleMenuClick} sx={{ cursor: "pointer" }}>
+                  {first_name?.[0]}
+                </Avatar>
 
+                <LogoutIcon
+                  sx={{
+                    color: "#1470AF",
+                    cursor: "pointer",
+                  }}
+                  onClick={handleLogout}
+                />
+              </Box>
+            )}
+          </Grid>
+        </Grid>
+      )}
       {/* ✅ Mobile Drawer (WORKING) */}
       {!shouldHideNavbarOnMobile && (
-        <Drawer
-          anchor="left"
-          open={mobileMenuOpen}
-          onClose={() => setMobileMenuOpen(false)}
-        >
+        <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerClose}>
           <Box
-            sx={{ width: 250, mt: 2 }}
+            sx={{
+              width: 250,
+              mt: drawerOnly ? "100px" : 2,
+            }}
             role="presentation"
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={handleDrawerClose}
           >
             <List>
               {config.headerItem.map(
