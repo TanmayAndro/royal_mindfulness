@@ -141,11 +141,11 @@ const toggleMenu = () => {
           sx={{
             bgcolor: "#0B67B2",
             borderRadius: "999px",
-            minWidth: "171px",
+            minWidth: "169px",
             height: "48px",
             px: 2,
             textTransform: "none",
-            fontSize: "18px",
+            fontSize: "12px",
             fontWeight: 600,
             color: "#fff",
             whiteSpace: "nowrap",
@@ -156,7 +156,7 @@ const toggleMenu = () => {
             },
           }}
         >
-          Get Free Guidance
+         Book a Free consultaion
         </Button>
 
         <Typography
