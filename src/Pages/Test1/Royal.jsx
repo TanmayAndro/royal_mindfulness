@@ -8,12 +8,14 @@ import DesktopLanding from "../../Components/Landing/Desktop/DesktopLanding";
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
     
   return (
-    <div>
-      {isMobile ? <MobileLanding /> : <DesktopLanding />}
-    </div>
     // <div>
-    //   {isMobile ? <DesktopLanding /> : <MobileLanding />  }
+    //   {isMobile ? <MobileLanding /> : <DesktopLanding />}
     // </div>
+
+    
+    <div>
+      {isMobile ? <DesktopLanding /> : <MobileLanding />  }
+    </div>
   );
 }   
 export default Royal;
