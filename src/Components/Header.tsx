@@ -348,9 +348,14 @@ const Header: React.FC<HeaderProps> = ({
             {!token ? (
               <List>
                 <ListItem
+                  button
                   onClick={() => {
-                    setAuthView("login");
-                    setAuthOpen(true);
+                    handleDrawerClose(); // sidebar close
+
+                    setTimeout(() => {
+                      setAuthView("login");
+                      setAuthOpen(true);
+                    }, 150);
                   }}
                 >
                   <ListItemText primary="Login" />
