@@ -79,7 +79,15 @@ const ServiceCarousel = () => {
         sx={{
           position: "relative",
 
-          width: "100%",
+          width: {
+            xs: "100%",
+            md: "900px"
+          },
+
+          mx: {
+            md: "auto",
+          },
+
           height: 360,
 
           display: "flex",

@@ -45,7 +45,17 @@ const ProcessTraining = () => {
   return (
     <Box
       sx={{
-        width: "88%",
+        width: {
+  xs: "88%",
+  sm: "88%",
+  md: "44%",
+},
+
+mx: {
+  md: "auto"
+},
+
+    
 
         px: 3,
         pt: 5,

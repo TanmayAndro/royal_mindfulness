@@ -126,7 +126,13 @@ const ComparisonSection = () => {
     >
       <Box
         sx={{
-          width: "100%",
+          // width: "100%",
+          width: {
+            xs: "100%",
+            sm:"100%",
+            md: "40%"
+
+          },
           position: "relative",
           overflow: "hidden",
 
@@ -139,6 +145,9 @@ const ComparisonSection = () => {
           backgroundRepeat: "no-repeat",
 
           mt: "-52px",
+          mx:{
+            md: "auto"
+          }
         }}
       >
         {/* TOP SHAPE IMAGE */}
@@ -229,14 +238,21 @@ const ComparisonSection = () => {
 
               {/* ROYAL */}
               <Box
-                sx={{
-                  display: "flex",
+  sx={{
+    display: "flex",
 
-                  justifyContent: "center",
+    alignItems: "center",
 
-                  alignItems: "flex-end",
-                }}
-              >
+    justifyContent: {
+      xs: "flex-start",
+      md: "center",
+    },
+
+    gap: 0.2,
+
+    pr: 1,
+  }}
+>
                 <Box
                   sx={{
                     width: 90,
@@ -379,18 +395,23 @@ const ComparisonSection = () => {
                   </Typography>
 
                   <Typography
-                    sx={{
-                      color: "#fff",
+  sx={{
+    color: "#fff",
 
-                      fontSize: "12px",
+    fontSize: "12px",
 
-                      fontWeight: 400,
+    fontWeight: 400,
 
-                      lineHeight: 1.15,
-                    }}
-                  >
-                    {item.feature}
-                  </Typography>
+    lineHeight: 1.15,
+
+    textAlign: {
+      xs: "left",
+      md: "center",
+    },
+  }}
+>
+  {item.feature}
+</Typography>
                 </Box>
 
                 {/* ROYAL */}

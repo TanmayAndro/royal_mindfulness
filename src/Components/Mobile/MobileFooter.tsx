@@ -95,7 +95,12 @@ const MobileFooter = () => {
               display: "flex",
               flexDirection: "column",
 
-              gap: 0.8,
+              // gap: 0.8,
+              gap: {
+                xs: 0.8,
+                sm: 0.8,
+                md: 3
+              }
             }}
           >
             {leftLinks.map((item, index) => (

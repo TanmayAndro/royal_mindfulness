@@ -304,8 +304,17 @@ const handleStepClick = async (
               elevation={0}
               onClick={() => handleCardClick(step)}
               sx={{
-                width: "100%",
+               
+                width: {
+                  xs: "100%",
+                  sm: "100%", 
+                  md: "30%"
+                },
                 minHeight: "105px",
+
+                mx: {
+                  md: "auto"
+                },
 
                 px: 2.5,
                 py: 2,

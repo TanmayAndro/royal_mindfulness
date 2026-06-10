@@ -7,7 +7,11 @@ const StatsSection = () => {
   return (
     <Box
       sx={{
-        width: "calc(100% - 48px)",
+        width: {
+      xs: "calc(100% - 48px)",
+      md: "900px",
+    },
+
 
         mt: 6,
 
@@ -18,7 +22,10 @@ const StatsSection = () => {
         px: 3,
         py: 4,
 
-        mx: 3,
+       mx: {
+      xs: 3,
+      md: "auto",
+    },
 
         display: "flex",
         alignItems: "center",
