@@ -12,9 +12,9 @@ import DesktopLanding from "../../Components/Landing/Desktop/DesktopLanding";
     //   {isMobile ? <MobileLanding /> : <DesktopLanding />}
     // </div>
 
-    
+
     <div>
-      {isMobile ? <DesktopLanding /> : <MobileLanding />  }
+      {isMobile ? <MobileLanding /> : <MobileLanding />  }
     </div>
   );
 }   
