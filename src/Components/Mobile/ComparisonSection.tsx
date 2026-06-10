@@ -86,23 +86,14 @@ const ComparisonSection = () => {
   const renderValue = (value: boolean | string, type: "royal" | "therapy") => {
     if (typeof value === "boolean") {
       return value ? (
-       <Icon
-  icon="icon-park-solid:correct"
-  width="20"
-  height="34"
-  color="#16B23A"
-  style={{
-    filter:
-      "drop-shadow(0 0 1px #16B23A)",
-  }}
-/>
-      ) : (
         <Icon
-  icon="raphael:cross"
-  width="34"
-  height="34"
-  color="#FF3B30"
-/>
+          icon="icon-park-solid:correct"
+          width="20"
+          height="20"
+          color="#16B23A"
+        />
+      ) : (
+        <Icon icon="raphael:cross" width="34" height="34" color="#FF3B30" />
       );
     }
 
@@ -402,51 +393,49 @@ const ComparisonSection = () => {
                   </Typography>
                 </Box>
 
-
                 {/* ROYAL */}
                 <Box
-  sx={{
-    display: "flex",
+                  sx={{
+                    display: "flex",
 
-    justifyContent: "center",
+                    justifyContent: "center",
 
-    alignItems: "center",
+                    alignItems: "center",
 
-    backgroundColor: "#F4F4F4",
+                    backgroundColor: "#F4F4F4",
 
-    height: "100%",
+                    height: "100%",
 
-    position: "relative",
+                    position: "relative",
 
-    borderLeft: "1px solid #1470AF",
+                    borderLeft: "1px solid #1470AF",
 
-    borderRight: "1px solid #1470AF",
+                    borderRight: "1px solid #1470AF",
 
-    borderBottom:
-      index === comparisonData.length - 1
-        ? "1px solid #1470AF"
-        : "none",
+                    borderBottom:
+                      index === comparisonData.length - 1
+                        ? "1px solid #1470AF"
+                        : "none",
 
-    "&::after": {
-      content: '""',
+                    "&::after": {
+                      content: '""',
 
-      position: "absolute",
+                      position: "absolute",
 
-      bottom: 0,
+                      bottom: 0,
 
-      left: 0,
+                      left: 0,
 
-      width: "100%",
+                      width: "100%",
 
-      height: "1px",
+                      height: "1px",
 
-      background: "#1470AF",
-    },
-  }}
->
-  {renderValue(item.royal, "royal")}
-</Box>
-
+                      background: "#1470AF",
+                    },
+                  }}
+                >
+                  {renderValue(item.royal, "royal")}
+                </Box>
 
                 {/* i want to add border blue in this  */}
 
