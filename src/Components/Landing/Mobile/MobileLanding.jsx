@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useTheme, useMediaQuery, Box } from "@mui/material";
 
 import MobileHero from "../../Mobile/MobileHero";
 import MobileNav from "../../Mobile/MobileNav";
@@ -24,6 +25,9 @@ function MobileLanding() {
 
   const [showStickyNav, setShowStickyNav] = useState(false);
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
   /* STICKY NAV LOGIC */
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +43,6 @@ function MobileLanding() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  /* AUTO SCROLL ONLY ON FIRST LOAD (MOBILE) */
   /* AUTO SCROLL ONLY ON FIRST LOAD (MOBILE) */
   useEffect(() => {
     if (window.innerWidth > 768) return;
@@ -94,17 +97,13 @@ function MobileLanding() {
         </>
       )}
 
-      {/* HERO */}
-      {/* <div ref={heroRef}>
-        <MobileHero hideNav={showStickyNav} />
-      </div> */}
-
-      {/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
-      {/* HERO */}
       <div ref={heroRef}>
-        <Header hideNav={showStickyNav} />
+        {isMobile ? (
+          <MobileHero hideNav={showStickyNav} />
+        ) : (
+          <Header hideNav={showStickyNav} />
+        )}
       </div>
-      {/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
 
       {/* CHECKLIST */}
       <div
@@ -162,39 +161,128 @@ function MobileLanding() {
         </div>
       </div>
 
-      <ProcessTraining />
+     <Box
+  sx={{
+    position: "relative",
 
-      <div
-        style={{
-          position: "relative",
-          zIndex: 13,
-        }}
-      >
-        <ComparisonSection />
-      </div>
-      <div
-        style={{
-          marginTop: "-60px",
-          position: "relative",
-          zIndex: 10,
-        }}
-      >
-        <GetItFree />
-      </div>
+    "&::before": {
+      content: '""',
 
-      <div
-        style={{
-          marginTop: "-100px",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
-        <HowWeWork />
-      </div>
+      position: "absolute",
 
+      inset: 0,
+
+      backgroundImage: {
+        xs: "none",
+        md: `url(${herobg})`,
+      },
+
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+
+      opacity: 0.25,
+
+      zIndex: 0,
+    },
+  }}
+>
+  <Box
+    sx={{
+      position: "relative",
+      zIndex: 1,
+    }}
+  >
+    <ProcessTraining />
+
+    <div
+      style={{
+        position: "relative",
+        zIndex: 13,
+      }}
+    >
+      <ComparisonSection />
+    </div>
+
+    {/* GET IT FREE */}
+    <Box
+      sx={{
+        width: {
+          xs: "100%",
+          md: "50%",
+        },
+
+        mx: {
+          md: "auto",
+        },
+
+        mt: "-60px",
+
+        position: "relative",
+        zIndex: 10,
+      }}
+    >
+      <GetItFree />
+    </Box>
+
+    {/* HOW WE WORK */}
+    <Box
+      sx={{
+        width: {
+          xs: "100%",
+          md: "50%",
+        },
+
+        mx: {
+          md: "auto",
+        },
+
+        mt: {
+          xs: "-100px",
+          md: "-100px",
+        },
+
+        position: "relative",
+        zIndex: 1,
+      }}
+    >
+      <HowWeWork />
+    </Box>
+
+    {/* FAQ */}
+    <Box
+      sx={{
+        width: {
+          xs: "100%",
+          md: "50%",
+        },
+
+        mx: {
+          md: "auto",
+        },
+      }}
+    >
       <MobileFaq />
+    </Box>
 
-      <MobileFooter />
+        <Box
+  sx={{
+    width: {
+      xs: "100%",
+      md: "50%",
+    },
+
+    mx: {
+      md: "auto",
+    },
+  }}
+>
+  <MobileFooter />
+</Box>
+
+  </Box>
+</Box>
+      
     </>
   );
 }

@@ -34,15 +34,11 @@ const ServiceCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handlePrev = () => {
-    setActiveIndex((prev) =>
-      prev === 0 ? carouselData.length - 1 : prev - 1
-    );
+    setActiveIndex((prev) => (prev === 0 ? carouselData.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
-    setActiveIndex((prev) =>
-      prev === carouselData.length - 1 ? 0 : prev + 1
-    );
+    setActiveIndex((prev) => (prev === carouselData.length - 1 ? 0 : prev + 1));
   };
 
   return (
@@ -62,6 +58,7 @@ const ServiceCarousel = () => {
           fontSize: {
             xs: "27px",
             sm: "27px",
+            md: "40px"
           },
 
           fontWeight: 700,
@@ -81,7 +78,7 @@ const ServiceCarousel = () => {
 
           width: {
             xs: "100%",
-            md: "900px"
+            md: "900px",
           },
 
           mx: {
@@ -100,7 +97,10 @@ const ServiceCarousel = () => {
           onClick={handlePrev}
           sx={{
             position: "absolute",
-            left: 10,
+            left: {
+  xs: 10,
+  md: 180,
+},
 
             zIndex: 20,
 
@@ -113,65 +113,70 @@ const ServiceCarousel = () => {
         {/* STACKED CARDS */}
         {carouselData.map((item, index) => {
           const offset =
-            (index - activeIndex + carouselData.length) %
-            carouselData.length;
+            (index - activeIndex + carouselData.length) % carouselData.length;
 
           return (
-          <Box
-  key={index}
-  sx={{
-    position: "absolute",
+            <Box
+              key={index}
+              sx={{
+                position: "absolute",
 
-    width: "auto",
-    height: "auto",
+                width: "auto",
+                height: "auto",
 
-    borderRadius: "36px",
+                borderRadius: "36px",
 
-    overflow: "hidden",
+                overflow: "hidden",
 
-    background: "transparent",
+                background: "transparent",
 
-    transition: "all 0.4s ease",
+                transition: "all 0.4s ease",
 
-    transform: `
+                transform: `
       translateX(${offset * 30}px)
       scale(${1 - offset * 0.06})
     `,
 
-    zIndex: carouselData.length - offset,
+                zIndex: carouselData.length - offset,
 
-    opacity: offset > 3 ? 0 : 1,
+                opacity: offset > 3 ? 0 : 1,
 
-    // boxShadow: "0px 10px 24px rgba(0,0,0,0.22)",
-  }}
->
-  <Box
-    component="img"
-    src={item.image}
-    alt={item.title}
-    sx={{
-      width: "200px",
-      height: "350px",
+                // boxShadow: "0px 10px 24px rgba(0,0,0,0.22)",
+              }}
+            >
+              <Box
+                component="img"
+                src={item.image}
+                alt={item.title}
+                sx={{
+                  width: "200px",
+                  height: "350px",
 
-      display: "block",
+                  display: "block",
 
-      objectFit: "cover",
+                  objectFit: "cover",
 
-      borderRadius: "36px",
-      marginRight:"75px"
-    }}
-  />
-</Box>
+                  borderRadius: "36px",
+                  marginRight: {
+                    xs: "75px",
+                    sm: "75px",
+                    md: "25px"
+                  },
+                }}
+              />
+            </Box>
           );
         })}
-
 
         {/* RIGHT BUTTON */}
         <IconButton
           onClick={handleNext}
           sx={{
             position: "absolute",
-            right: 10,
+            right: {
+  xs: 10,
+  md: 180,
+},
 
             zIndex: 20,
 
@@ -202,9 +207,7 @@ const ServiceCarousel = () => {
               borderRadius: "50%",
 
               background:
-                activeIndex === index
-                  ? "#1470AF"
-                  : "rgba(20,112,175,0.4)",
+                activeIndex === index ? "#1470AF" : "rgba(20,112,175,0.4)",
 
               transition: "0.3s",
             }}

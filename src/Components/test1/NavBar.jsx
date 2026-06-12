@@ -7,7 +7,6 @@ import { Avatar, Box, Button, Grid, Menu, MenuItem } from "@mui/material";
 import { trackEvent } from "../../analitics/analytics";
 import AuthModal from "../AuthModal"; // path fix
 
-
 const NavBar = ({ isOpen, toggleMenu }) => {
   const navigate = useNavigate();
   const [authOpen, setAuthOpen] = useState(false);
@@ -111,29 +110,48 @@ const NavBar = ({ isOpen, toggleMenu }) => {
                 }}
               >
                 <Button
-                  variant="outlined"
+                  variant="contained"
                   size="small"
                   sx={{
-                    // Responsive Colors: White on Mobile/Tablet (xs), Blue on Laptop/Desktop (md)
-                    color: { xs: "#fff", md: "#1976d2" },
-                    borderColor: { xs: "#fff", md: "#1976d2" },
+                    background:
+                      "linear-gradient(180deg, #2F8ACB 0%, #1E73B7 100%)",
 
-                    // Hover effect for better UX
-                    "&:hover": {
-                      borderColor: { xs: "#fff", md: "#1976d2" },
-                      backgroundColor: "rgba(25, 118, 210, 0.04)",
+                    color: "#fff",
+
+                    border: "1px solid rgba(255,255,255,0.9)",
+
+                    borderRadius: "12px",
+
+                    minWidth: "110px",
+
+                    height: "50px",
+
+                    px: 4,
+
+                    fontSize: "18px",
+
+                    fontWeight: 700,
+
+                    textTransform: "none",
+
+                    boxShadow: "0px 4px 12px rgba(0,0,0,0.18)",
+
+                    width: {
+                      xs: "100%",
+                      md: "110px",
                     },
 
-                    borderRadius: "30px",
-                    fontSize: "14px",
-                    px: 3,
-                    width: { xs: "100%", md: "auto" },
-                    textTransform: "none", // Optional: Prevents all caps
+                    "&:hover": {
+                      background:
+                        "linear-gradient(180deg, #3794D6 0%, #217CC4 100%)",
+
+                      boxShadow: "0px 6px 16px rgba(0,0,0,0.22)",
+                    },
                   }}
                   onClick={() => {
                     setAuthView("login");
                     setAuthOpen(true);
-                    trackEvent("Navigation", "Click", `Login`, true);
+                    trackEvent("Navigation", "Click", "Login", true);
                   }}
                 >
                   Login

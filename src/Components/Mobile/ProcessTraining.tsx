@@ -197,6 +197,9 @@ mx: {
                     borderRadius: "42px",
 
                     zIndex: 1,
+                    gap:{
+                      md: "40px"
+                    }
                   }}
                 />
 
@@ -289,30 +292,51 @@ mx: {
                   </Box>
 
                   {/* CONTENT */}
-                  <Box
-                    sx={{
-                      width: "58%",
+                 <Box
+  sx={{
+    width: {
+      xs: "58%",
+      md: "70%",
+    },
 
-                      pl: 1,
-                    }}
-                  >
+    pl: {
+      xs: 1,
+      md: 0,
+    },
+
+    display: "flex",
+
+    flexDirection: "column",
+
+    justifyContent: "center",
+
+    alignItems: {
+      md: "center",
+    },
+  }}
+>
                     {/* TITLE */}
-                    <Typography
-                      sx={{
-                        color: "#1470AF",
+                  <Typography
+  sx={{
+    color: "#1470AF",
 
-                        fontSize: {
-                          xs: "20px",
-                          sm: "20px",
-                        },
+    fontSize: {
+      xs: "20px",
+      sm: "20px",
+    },
 
-                        fontWeight: 700,
+    fontWeight: 700,
 
-                        lineHeight: 1.08,
+    lineHeight: 1.08,
 
-                        mb: 0.5,
-                      }}
-                    >
+    mb: 0.5,
+
+    textAlign: {
+      xs: "left",
+      md: "center",
+    },
+  }}
+>
                       {item.title}
                     </Typography>
 
@@ -330,7 +354,19 @@ mx: {
 
                         fontWeight: 400,
 
-                        maxWidth: "180px",
+                        maxWidth: {
+  xs: "180px",
+  md: "320px",
+},
+
+textAlign: {
+  xs: "left",
+  md: "center",
+},
+
+mx: {
+  md: "auto",
+},
                       }}
                     >
                       {item.description}

@@ -209,6 +209,7 @@ const HowWeWork = () => {
             fontSize: {
               xs: "13px",
               sm: "13px",
+              md: "25px"
             },
             fontWeight: 700,
                        "&:hover": {

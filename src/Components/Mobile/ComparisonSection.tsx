@@ -107,6 +107,9 @@ const ComparisonSection = () => {
           fontWeight: 500,
 
           textAlign: "center",
+          px: {
+            md: "20px",
+          },
 
           lineHeight: 1.2,
         }}
@@ -129,9 +132,8 @@ const ComparisonSection = () => {
           // width: "100%",
           width: {
             xs: "100%",
-            sm:"100%",
-            md: "40%"
-
+            sm: "100%",
+            md: "45%",
           },
           position: "relative",
           overflow: "hidden",
@@ -145,9 +147,9 @@ const ComparisonSection = () => {
           backgroundRepeat: "no-repeat",
 
           mt: "-52px",
-          mx:{
-            md: "auto"
-          }
+          mx: {
+            md: "auto",
+          },
         }}
       >
         {/* TOP SHAPE IMAGE */}
@@ -238,26 +240,37 @@ const ComparisonSection = () => {
 
               {/* ROYAL */}
               <Box
-  sx={{
-    display: "flex",
+                sx={{
+                  display: "flex",
 
-    alignItems: "center",
+                  alignItems: "center",
 
-    justifyContent: {
-      xs: "flex-start",
-      md: "center",
-    },
+                  justifyContent: {
+                    xs: "flex-start",
+                    md: "center",
+                  },
 
-    gap: 0.2,
+                  gap: 0.2,
 
-    pr: 1,
-  }}
->
+                  // pr: {
+                  //   xs: 1,
+                  //   sm: 1,
+                  //   md: 0,
+
+                  // }
+                }}
+              >
                 <Box
                   sx={{
-                    width: 90,
+                    width: {
+                      sm: 90,
+                      md: "180px",
+                    },
 
-                    height: 42,
+                    height: {
+                      sm: 68,
+                      md: "42px",
+                    },
 
                     background: "#F4F4F4",
 
@@ -296,7 +309,11 @@ const ComparisonSection = () => {
                     src={logo}
                     alt="logo"
                     sx={{
-                      width: "30%",
+                      width: {
+                        xs: "50%",
+                        sm: "50%",
+                        md: "20%",
+                      },
 
                       objectFit: "contain",
                     }}
@@ -395,23 +412,23 @@ const ComparisonSection = () => {
                   </Typography>
 
                   <Typography
-  sx={{
-    color: "#fff",
+                    sx={{
+                      color: "#fff",
 
-    fontSize: "12px",
+                      fontSize: "12px",
 
-    fontWeight: 400,
+                      fontWeight: 400,
 
-    lineHeight: 1.15,
+                      lineHeight: 1.15,
 
-    textAlign: {
-      xs: "left",
-      md: "center",
-    },
-  }}
->
-  {item.feature}
-</Typography>
+                      textAlign: {
+                        xs: "left",
+                        md: "center",
+                      },
+                    }}
+                  >
+                    {item.feature}
+                  </Typography>
                 </Box>
 
                 {/* ROYAL */}
@@ -428,6 +445,9 @@ const ComparisonSection = () => {
                     height: "100%",
 
                     position: "relative",
+                    py: {
+                      md: "20px",
+                    },
 
                     borderLeft: "1px solid #1470AF",
 

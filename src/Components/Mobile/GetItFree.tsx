@@ -308,7 +308,7 @@ const handleStepClick = async (
                 width: {
                   xs: "100%",
                   sm: "100%", 
-                  md: "30%"
+                  md: "100%"
                 },
                 minHeight: "105px",
 
