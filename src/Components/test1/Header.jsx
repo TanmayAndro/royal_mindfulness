@@ -100,7 +100,7 @@ function Header() {
         }}
       >
         <Grid container justifyContent="center" alignItems="center">
-          <Grid item xs={12} md={8}>
+          <Grid item xs={12} md={12}>
             <Box
               sx={{
                 textAlign: "center",
@@ -114,7 +114,7 @@ function Header() {
                   fontSize: {
                     xs: "2.5rem",
                     sm: "3rem",
-                    md: "4.5rem",
+                    md: "128px",
                   },
                   lineHeight: 1.1,
                   mb: 3,
@@ -129,9 +129,9 @@ function Header() {
                   color: "rgba(255,255,255,0.9)",
                   fontSize: {
                     xs: "1rem",
-                    md: "1.25rem",
+                    md: "2.25rem",
                   },
-                  maxWidth: "700px",
+                  // maxWidth: "700px",
                   mx: "auto",
                   mb: 5,
                 }}
@@ -140,13 +140,11 @@ function Header() {
               </Typography>
 
               <Stack
-                direction={{
-                  xs: "column",
-                  sm: "row",
-                }}
-                spacing={{ xs: 2, md: 3 }}
+                direction={{ xs: "row", sm: "row" }}
+                spacing={{ xs: 1.5, md: 3 }}
                 justifyContent="center"
                 alignItems="flex-start"
+                flexWrap="wrap"
               >
                 {/* BOOK CONSULTATION */}
                 <Box
@@ -161,27 +159,34 @@ function Header() {
                     variant="contained"
                     sx={{
                       width: {
-                        xs: "320px",
-                        md: "444px",
+                        xs: "46%",
+                        sm: "320px",
+                        md: "450px",
                       },
 
+                      maxWidth: "450px",
+
                       height: {
-                        xs: "72px",
+                        xs: "60px",
+                        sm: "72px",
                         md: "91px",
                       },
 
                       borderRadius: "24px",
 
                       color: "#FFFFFF",
-
                       fontSize: {
-                        xs: "20px",
-                        md: "24px",
+                        xs: "16px",
+                        sm: "20px",
+                        md: "35px",
                       },
-
                       fontWeight: 700,
 
+                      lineHeight: 1.2,
+
                       textTransform: "none",
+
+                      whiteSpace: "nowrap",
 
                       position: "relative",
 
@@ -189,10 +194,9 @@ function Header() {
 
                       border: "1px solid rgba(255,255,255,0.45)",
 
-                      background: "rgba(7, 50, 88, 0.35)",
+                      background: "rgba(7,50,88,0.45)",
 
-                      backdropFilter: "blur(20px)",
-                      WebkitBackdropFilter: "blur(20px)",
+                     
 
                       boxShadow: `
     inset 0 1px 0 rgba(255,255,255,0.25),
@@ -203,21 +207,29 @@ function Header() {
                         content: '""',
                         position: "absolute",
                         inset: 0,
-
-                        background: `
-      linear-gradient(
-        180deg,
-        rgba(255,255,255,0.15) 0%,
-        rgba(255,255,255,0.02) 100%
-      )
-    `,
-
+                        background:
+                          "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.02) 100%)",
                         pointerEvents: "none",
                       },
 
+                      "& .MuiButton-label, & span": {
+                        fontSize: {
+                          xs: "18px",
+                          sm: "20px",
+                          md: "24px",
+                        },
+                        fontWeight: 700,
+                      },
+                      "& .MuiTypography-root": {
+                        fontSize: {
+                          xs: "16px",
+                          sm: "20px",
+                          md: "64px",
+                        },
+                        fontWeight: 700,
+                      },
                       "&:hover": {
-                        background: "rgba(7,50,88,0.45)",
-
+                       background: "rgba(7,50,88,0.45)",
                         border: "1px solid rgba(255,255,255,0.6)",
                       },
                     }}
@@ -238,7 +250,7 @@ function Header() {
                       color: "#fff",
                       fontSize: {
                         xs: "14px",
-                        md: "18px",
+                        md: "24px",
                       },
                       fontWeight: 400,
                     }}
@@ -251,68 +263,82 @@ function Header() {
                 <CommonButtons
                   label="Hire A Trainer"
                   variant="contained"
-                  sx={{
-                    width: {
-                      xs: "320px",
-                      md: "444px",
-                    },
+                   sx={{
+                      width: {
+                        xs: "46%",
+                        sm: "320px",
+                        md: "320px",
+                      },
 
-                    height: {
-                      xs: "72px",
-                      md: "91px",
-                    },
+                      maxWidth: "320px",
 
-                    borderRadius: "24px",
+                      height: {
+                        xs: "60px",
+                        sm: "72px",
+                        md: "91px",
+                      },
 
-                    color: "#FFFFFF",
+                      borderRadius: "24px",
 
-                    fontSize: {
-                      xs: "20px",
-                      md: "24px",
-                    },
+                      color: "#FFFFFF",
+                      fontSize: {
+                        xs: "16px",
+                        sm: "20px",
+                        md: "35px",
+                      },
+                      fontWeight: 700,
 
-                    fontWeight: 700,
+                      lineHeight: 1.2,
 
-                    textTransform: "none",
+                      textTransform: "none",
 
-                    position: "relative",
+                      whiteSpace: "nowrap",
 
-                    overflow: "hidden",
+                      position: "relative",
 
-                    border: "1px solid rgba(255,255,255,0.45)",
+                      overflow: "hidden",
 
-                    background: "rgba(7, 50, 88, 0.35)",
+                      border: "1px solid rgba(255,255,255,0.45)",
 
-                    backdropFilter: "blur(20px)",
-                    WebkitBackdropFilter: "blur(20px)",
+                      background: "rgba(7,50,88,0.45)",
 
-                    boxShadow: `
+                     
+
+                      boxShadow: `
     inset 0 1px 0 rgba(255,255,255,0.25),
     0 8px 32px rgba(0,0,0,0.25)
   `,
 
-                    "&::before": {
-                      content: '""',
-                      position: "absolute",
-                      inset: 0,
+                      "&::before": {
+                        content: '""',
+                        position: "absolute",
+                        inset: 0,
+                        background:
+                          "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.02) 100%)",
+                        pointerEvents: "none",
+                      },
 
-                      background: `
-      linear-gradient(
-        180deg,
-        rgba(255,255,255,0.15) 0%,
-        rgba(255,255,255,0.02) 100%
-      )
-    `,
-
-                      pointerEvents: "none",
-                    },
-
-                    "&:hover": {
-                      background: "rgba(7,50,88,0.45)",
-
-                      border: "1px solid rgba(255,255,255,0.6)",
-                    },
-                  }}
+                      "& .MuiButton-label, & span": {
+                        fontSize: {
+                          xs: "18px",
+                          sm: "20px",
+                          md: "24px",
+                        },
+                        fontWeight: 700,
+                      },
+                      "& .MuiTypography-root": {
+                        fontSize: {
+                          xs: "16px",
+                          sm: "20px",
+                          md: "64px",
+                        },
+                        fontWeight: 700,
+                      },
+                      "&:hover": {
+                       background: "rgba(7,50,88,0.45)",
+                        border: "1px solid rgba(255,255,255,0.6)",
+                      },
+                    }}
                   onClick={() => {
                     trackEvent("Landing Page", "Click", "Hire Trainer", true);
                     handelConsulation("rozerpay");

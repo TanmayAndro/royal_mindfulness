@@ -149,8 +149,19 @@ const ServiceCarousel = () => {
                 src={item.image}
                 alt={item.title}
                 sx={{
-                  width: "200px",
-                  height: "350px",
+                  // width: "200px",
+
+                  width: {
+                    xs: "200px",
+                    sm: "200px",
+                    md: "310px"
+                  },
+                  height: {
+                    xs: "350px",
+                    sm: "350px",
+                    md: "310px"
+                  },
+                  // height: "350px",
 
                   display: "block",
 

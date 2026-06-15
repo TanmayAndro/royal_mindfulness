@@ -12,7 +12,7 @@ body {
 
 /* 2. Fixed Header Styling */
 .header {
-  position: fixed; 
+  position: relative; 
   top: 0;
   left: 0;
   width: 100%; 
@@ -156,7 +156,7 @@ body {
   }
 
   .header-nav {
-    position: fixed;
+    position: relative;
     right: -100%; 
     top: 0;
     width: 260px;

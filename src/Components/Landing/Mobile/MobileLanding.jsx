@@ -72,7 +72,7 @@ function MobileLanding() {
   return (
     <>
       {/* STICKY NAV */}
-      {showStickyNav && (
+      {isMobile && showStickyNav && (
         <>
           <div
             style={{
@@ -89,11 +89,13 @@ function MobileLanding() {
           </div>
 
           {/* Spacer */}
-          <div
-            style={{
-              height: "110px",
-            }}
-          />
+          {isMobile && showStickyNav && (
+  <div
+    style={{
+      height: "110px",
+    }}
+  />
+)}
         </>
       )}
 
@@ -106,15 +108,15 @@ function MobileLanding() {
       </div>
 
       {/* CHECKLIST */}
-      <div
-        ref={checklistRef}
-        style={{
-          marginTop: showStickyNav ? "110px" : "0px",
-          transition: "margin-top 0.3s ease",
-        }}
-      >
-        <Checklist />
-      </div>
+     <div
+  ref={checklistRef}
+  style={{
+    marginTop: isMobile && showStickyNav ? "110px" : "0px",
+    transition: "margin-top 0.3s ease",
+  }}
+>
+  <Checklist />
+</div>
 
       {/* BACKGROUND SECTION */}
       <div
