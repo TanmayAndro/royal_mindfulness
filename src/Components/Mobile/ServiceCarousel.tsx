@@ -6,6 +6,8 @@ import { Box, Typography, IconButton } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+
 import anxiousImg from "../../Assests/images/mobile/anxious.jpg";
 import stressedImg from "../../Assests/images/mobile/stressed.jpg";
 import burnoutImg from "../../Assests/images/mobile/burnout.jpg";
@@ -58,7 +60,7 @@ const ServiceCarousel = () => {
           fontSize: {
             xs: "27px",
             sm: "27px",
-            md: "40px"
+            md: "48px",
           },
 
           fontWeight: 700,
@@ -73,41 +75,50 @@ const ServiceCarousel = () => {
 
       {/* CAROUSEL */}
       <Box
-        sx={{
-          position: "relative",
+  sx={{
+    position: "relative",
 
-          width: {
-            xs: "100%",
-            md: "900px",
-          },
+    width: {
+      xs: "100%",
+      md: "900px",
+    },
 
-          mx: {
-            md: "auto",
-          },
+    mx: {
+      md: "auto",
+    },
 
-          height: 360,
+    height: {
+      xs: 360,
+      md: 650,
+    },
 
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  }}
+>
         {/* LEFT BUTTON */}
         <IconButton
           onClick={handlePrev}
           sx={{
             position: "absolute",
             left: {
-  xs: 10,
-  md: 180,
-},
-
+              xs: 10,
+              md: 0,
+            },
             zIndex: 20,
-
             color: "#1470AF",
+            p: 0,
           }}
         >
-          <ArrowBackIosNewIcon />
+          <PlayArrowIcon
+            sx={{
+              width: "24px",
+              height: "62px",
+              color: "#1470AF",
+              transform: "rotate(180deg)",
+            }}
+          />
         </IconButton>
 
         {/* STACKED CARDS */}
@@ -133,15 +144,11 @@ const ServiceCarousel = () => {
                 transition: "all 0.4s ease",
 
                 transform: `
-      translateX(${offset * 30}px)
-      scale(${1 - offset * 0.06})
-    `,
-
+                translateX(${offset * 30}px)
+                scale(${1 - offset * 0.06})
+              `,
                 zIndex: carouselData.length - offset,
-
                 opacity: offset > 3 ? 0 : 1,
-
-                // boxShadow: "0px 10px 24px rgba(0,0,0,0.22)",
               }}
             >
               <Box
@@ -149,29 +156,30 @@ const ServiceCarousel = () => {
                 src={item.image}
                 alt={item.title}
                 sx={{
-                  // width: "200px",
-
                   width: {
                     xs: "200px",
                     sm: "200px",
-                    md: "310px"
+                    md: "649px",
                   },
                   height: {
                     xs: "350px",
                     sm: "350px",
-                    md: "310px"
+                    md: "619px",
                   },
-                  // height: "350px",
 
                   display: "block",
 
                   objectFit: "cover",
 
-                  borderRadius: "36px",
+                  borderRadius: {
+                    xs: "36px",
+                    sm: "36px",
+                    md: "19px",
+                  },
                   marginRight: {
                     xs: "75px",
                     sm: "75px",
-                    md: "25px"
+                    md: "25px",
                   },
                 }}
               />
@@ -180,21 +188,27 @@ const ServiceCarousel = () => {
         })}
 
         {/* RIGHT BUTTON */}
+
         <IconButton
           onClick={handleNext}
           sx={{
             position: "absolute",
             right: {
-  xs: 10,
-  md: 180,
-},
-
+              xs: 10,
+              md: 0,
+            },
             zIndex: 20,
-
             color: "#1470AF",
+            p: 0,
           }}
         >
-          <ArrowForwardIosIcon />
+          <PlayArrowIcon
+            sx={{
+              width: "24px",
+              height: "62px",
+              color: "#1470AF",
+            }}
+          />
         </IconButton>
       </Box>
 
@@ -205,7 +219,10 @@ const ServiceCarousel = () => {
           justifyContent: "center",
           gap: 1.5,
 
-          mt: 3,
+          mt: {
+  xs: 3,
+  md: 5,
+},
         }}
       >
         {carouselData.map((_, index) => (
@@ -229,7 +246,10 @@ const ServiceCarousel = () => {
       {/* ACTIVE LABEL */}
       <Box
         sx={{
-          mt: 5,
+          mt: {
+  xs: 5,
+  md: 4,
+},
 
           width: 260,
           height: 60,

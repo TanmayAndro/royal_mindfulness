@@ -141,10 +141,10 @@ const Checklist = () => {
                   display: "flex",
                   alignItems: "center",
                   px: 2,
-                  backgroundColor: "#f8f8f8",
-                  boxShadow: "0px 2px 6px rgba(0,0,0,0.15)",
+                  backgroundColor: "rgba(242, 243, 245, 1)",
+                  border: "1px solid rgba(229, 231, 235, 1)",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
                   transition: "0.2s ease",
-
                   "&:hover": {
                     transform: "translateY(-1px)",
                   },

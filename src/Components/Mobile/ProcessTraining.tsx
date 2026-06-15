@@ -46,16 +46,14 @@ const ProcessTraining = () => {
     <Box
       sx={{
         width: {
-  xs: "88%",
-  sm: "88%",
-  md: "44%",
-},
+          xs: "88%",
+          sm: "88%",
+          md: "44%",
+        },
 
-mx: {
-  md: "auto"
-},
-
-    
+        mx: {
+          md: "auto",
+        },
 
         px: 3,
         pt: 5,
@@ -122,6 +120,7 @@ mx: {
               fontSize: {
                 xs: "18px",
                 sm: "22px",
+                md: "36px",
               },
 
               fontWeight: 700,
@@ -140,6 +139,7 @@ mx: {
               fontSize: {
                 xs: "20px",
                 sm: "20px",
+                md: "36px",
               },
 
               fontWeight: 700,
@@ -197,9 +197,9 @@ mx: {
                     borderRadius: "42px",
 
                     zIndex: 1,
-                    gap:{
-                      md: "40px"
-                    }
+                    gap: {
+                      md: "40px",
+                    },
                   }}
                 />
 
@@ -251,8 +251,8 @@ mx: {
                         src={item.image}
                         alt={item.title}
                         sx={{
-                          width: "50%",
-                          height: "50%",
+                          width: "80%",
+                          height: "80%",
 
                           objectFit: "contain",
                         }}
@@ -292,51 +292,52 @@ mx: {
                   </Box>
 
                   {/* CONTENT */}
-                 <Box
-  sx={{
-    width: {
-      xs: "58%",
-      md: "70%",
-    },
+                  <Box
+                    sx={{
+                      width: {
+                        xs: "58%",
+                        md: "100%",
+                      },
 
-    pl: {
-      xs: 1,
-      md: 0,
-    },
+                      pl: {
+                        xs: 1,
+                        md: 0,
+                      },
 
-    display: "flex",
+                      display: "flex",
 
-    flexDirection: "column",
+                      flexDirection: "column",
 
-    justifyContent: "center",
+                      justifyContent: "center",
 
-    alignItems: {
-      md: "center",
-    },
-  }}
->
+                      alignItems: {
+                        md: "center",
+                      },
+                    }}
+                  >
                     {/* TITLE */}
-                  <Typography
-  sx={{
-    color: "#1470AF",
+                    <Typography
+                      sx={{
+                        color: "#1470AF",
 
-    fontSize: {
-      xs: "20px",
-      sm: "20px",
-    },
+                        fontSize: {
+                          xs: "20px",
+                          sm: "20px",
+                          md: "32px",
+                        },
 
-    fontWeight: 700,
+                        fontWeight: 700,
 
-    lineHeight: 1.08,
+                        lineHeight: 1.08,
 
-    mb: 0.5,
+                        mb: 0.5,
 
-    textAlign: {
-      xs: "left",
-      md: "center",
-    },
-  }}
->
+                        textAlign: {
+                          xs: "left",
+                          md: "center",
+                        },
+                      }}
+                    >
                       {item.title}
                     </Typography>
 
@@ -348,6 +349,7 @@ mx: {
                         fontSize: {
                           xs: "14px",
                           sm: "16px",
+                          md: "20px",
                         },
 
                         lineHeight: 1.2,
@@ -355,18 +357,18 @@ mx: {
                         fontWeight: 400,
 
                         maxWidth: {
-  xs: "180px",
-  md: "320px",
-},
+                          xs: "180px",
+                          md: "320px",
+                        },
 
-textAlign: {
-  xs: "left",
-  md: "center",
-},
+                        textAlign: {
+                          xs: "left",
+                          md: "center",
+                        },
 
-mx: {
-  md: "auto",
-},
+                        mx: {
+                          md: "auto",
+                        },
                       }}
                     >
                       {item.description}

@@ -257,6 +257,7 @@ function MobileLanding() {
         width: {
           xs: "100%",
           md: "50%",
+         
         },
 
         mx: {

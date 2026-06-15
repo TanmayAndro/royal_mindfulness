@@ -16,30 +16,30 @@ const freeItems = [
   {
     id: 1,
     title: "Download Mental Fitness Checklist",
-    desc: "checklist description",
+    desc: "A checklist to evaluate your mental fitness.",
   },
   {
     id: 2,
     title: "Book a free consultation",
-    desc: "Answer a few questions online...",
+    desc: "Answer a few questions online and get expert guidance.",
     route: "/consultation_question",
     imgClass: "consultation-img",
   },
   {
     id: 3,
     title: "Download free Royal Mindfulness journal",
-    desc: "journal description",
+    desc: "A mindful journal to help you heal and grow.",
   },
   {
     id: 4,
     title: "Take Mental Wellness Quiz",
-    desc: "If your first therapist isn't a fit...",
+    desc: "If your first therapist isn’t a fit",
     route: "/quiz_questions",
   },
   {
     id: 5,
     title: "Take a Free Relaxation Session",
-    desc: "If your first therapist isn't a fit...",
+    desc: "If your first therapist isn’t a fit.",
     link_url: "https://youtu.be/y9pG051DWqc?si=SBP9wl75W1ozw9XG",
   },
 ];
@@ -190,30 +190,38 @@ const handleStepClick = async (
   };
   return (
     <Box
-      sx={{
-        width: "100%",
+  sx={{
+    width: {
+      xs: "100%",
+      md: "90%",
+    },
 
-        px: 2.5,
-        py: 6,
+    mx: "auto", // Center horizontally
 
-        boxSizing: "border-box",
+    px: 2.5,
+    py: 6,
 
-        position: "relative",
-        borderRadius: "40px",
+    boxSizing: "border-box",
 
-        overflow: "hidden",
-        borderTopLeftRadius: "40px",
-        borderTopRightRadius: "40px",
+    position: "relative",
 
-        borderBottomLeftRadius: "16px",
-        borderBottomRightRadius: "16px",
+    borderRadius: "40px",
 
-        backgroundColor: "#F5F5F5",
+    overflow: "hidden",
 
-        boxShadow: "0px 6px 10px rgba(0, 0, 0, 0.2)",
-        marginBottom: 1,
-      }}
-    >
+    borderTopLeftRadius: "40px",
+    borderTopRightRadius: "40px",
+
+    borderBottomLeftRadius: "16px",
+    borderBottomRightRadius: "16px",
+
+    backgroundColor: "#F5F5F5",
+
+    boxShadow: "0px 6px 10px rgba(0, 0, 0, 0.2)",
+
+    marginBottom: 1,
+  }}
+>
       {/* BG IMAGE */}
       <Box
         sx={{

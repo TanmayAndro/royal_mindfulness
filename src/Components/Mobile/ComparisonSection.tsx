@@ -201,7 +201,13 @@ const ComparisonSection = () => {
 
               lineHeight: 1.12,
 
-              maxWidth: "320px",
+              // maxWidth: "320px",
+
+              maxWidth: {
+                xs: "320px",
+                sm: "320px",
+                md: "420px"
+              },
 
               mx: "auto",
 
@@ -446,7 +452,7 @@ const ComparisonSection = () => {
 
                     position: "relative",
                     py: {
-                      md: "20px",
+                      md: "8px",
                     },
 
                     borderLeft: "1px solid #1470AF",

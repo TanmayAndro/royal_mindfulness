@@ -4,12 +4,13 @@ import React from "react";
 
 import { Box, Typography, Button } from "@mui/material";
 
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+// import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+// import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
+import SouthIcon from "@mui/icons-material/South";
 
 import workbg from "../../Assests/images/mobile/Group103.png";
- import { trackEvent } from "../../analitics/analytics";
-  import { useNavigate } from "react-router-dom";     
-
+import { trackEvent } from "../../analitics/analytics";
+import { useNavigate } from "react-router-dom";
 
 const workSteps = [
   {
@@ -36,11 +37,11 @@ const workSteps = [
 
 const HowWeWork = () => {
   const navigate = useNavigate();
-  
-    const handleBookFreeConsultation = () => {
-      trackEvent("Book Free Consultation Clicked");
-      navigate("/consultation_question");
-    };
+
+  const handleBookFreeConsultation = () => {
+    trackEvent("Book Free Consultation Clicked");
+    navigate("/consultation_question");
+  };
   return (
     <Box
       sx={{
@@ -71,8 +72,6 @@ const HowWeWork = () => {
         backgroundPosition: "center",
 
         backgroundRepeat: "no-repeat",
-        
-        
       }}
     >
       {/* CONTENT WRAPPER */}
@@ -92,7 +91,6 @@ const HowWeWork = () => {
               xs: "34px",
               sm: "42px",
             },
-            
 
             fontWeight: 700,
 
@@ -117,28 +115,27 @@ const HowWeWork = () => {
               {/* ICON */}
               <Box
                 sx={{
-                  width: 34,
-                  height: 34,
-
+                  width: { xs: 34, md: 54 },
+                  height: { xs: 34, md: 54 },
                   borderRadius: "50%",
-
-                  background: "#1470AF",
-
+                  backgroundColor: "#1470AF",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-
-                  mb: 2,
-
-                  boxShadow:
-                    "0px 4px 10px rgba(0,0,0,0.12)",
+                  boxShadow: "0px 4px 10px rgba(0,0,0,0.12)",
                 }}
               >
-                <ArrowDownwardIcon
+                <SouthIcon
                   sx={{
                     color: "#fff",
-                    fontSize: "24px",
-                    fontWeight: "400",
+
+                    fontSize: {
+                      xs: 24,
+                      md: 34,
+                    },
+
+                    stroke: "#fff",
+                    strokeWidth: 1.5,
                   }}
                 />
               </Box>
@@ -195,35 +192,46 @@ const HowWeWork = () => {
             alignItems: "center",
           }}
         >
+          {/* CTA BUTTON */}
+          <Button
+            variant="contained"
+            sx={{
+              mt: 2,
 
-        {/* CTA BUTTON */}
-        <Button
-          variant="contained"
-          sx={{
-            mt: 2,
-            height: "40px",
-            px: 2,
-            borderRadius: "999px",
-            background: "#1470AF",
-            textTransform: "none",
-            fontSize: {
-              xs: "13px",
-              sm: "13px",
-              md: "25px"
-            },
-            fontWeight: 700,
-                       "&:hover": {
+              height: {
+                xs: "40px",
+                md: "75px",
+              },
+              px: 2,
+
+              borderRadius: {
+                xs: "999px",
+                md: "10px",
+              },
               background: "#1470AF",
-            },
-          }}
-          onClick={handleBookFreeConsultation}
-        >
-          Book A Free Consultation
-        </Button>
-        <Typography
+              textTransform: "none",
+              fontSize: {
+                xs: "13px",
+                sm: "13px",
+                md: "25px",
+              },
+              fontWeight: 700,
+              "&:hover": {
+                background: "#1470AF",
+              },
+            }}
+            onClick={handleBookFreeConsultation}
+          >
+            Book A Free Consultation
+          </Button>
+          <Typography
             sx={{
               mt: "2px",
-              fontSize: "11px",
+              // fontSize: "11px",
+              fontSize: {
+                xs: "11px",
+                md: "18px",
+              },
               color: "#878788",
               textAlign: "center",
               lineHeight: 2,
@@ -231,7 +239,7 @@ const HowWeWork = () => {
           >
             (No Credit card required)
           </Typography>
-          </Box>
+        </Box>
       </Box>
     </Box>
   );

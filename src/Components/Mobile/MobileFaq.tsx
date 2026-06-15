@@ -83,29 +83,25 @@ const MobileFaq = () => {
 
   return (
 <>
-
-    
     
     <Box
       sx={{
         width: "100%",
-
         background: "#0B67B2",
           position: "relative",
-
         overflow: "hidden",
         borderRadius: "22px",
         borderTopLeftRadius: "22px",
         borderTopRightRadius: "22px",
-
-
-
-
         px: 3,
         py: 6,
-
         boxSizing: "border-box",
-        marginTop: "-80px"
+        
+         marginTop: {
+          xs: "-80px",
+          md: "-180px"
+         },
+
       }}
     >
 
@@ -121,9 +117,15 @@ const MobileFaq = () => {
           fontSize: {
             xs: "20px",
             sm: "20px",
+            md: "40px"
           },
 
-          mt: "50px",
+          
+
+          mt: {
+            xs: "50px",
+            md: "150px"
+          },
           fontWeight: 700,
 
           mb: 4,
