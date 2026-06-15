@@ -161,10 +161,8 @@ function Header() {
                       width: {
                         xs: "46%",
                         sm: "320px",
-                        md: "450px",
+                        md: "444px",
                       },
-
-                      maxWidth: "450px",
 
                       height: {
                         xs: "60px",
@@ -174,63 +172,49 @@ function Header() {
 
                       borderRadius: "24px",
 
-                      color: "#FFFFFF",
+                      color: "#fff",
+
                       fontSize: {
-                        xs: "16px",
+                        xs: "14px",
                         sm: "20px",
-                        md: "35px",
+                        md: "36px",
                       },
+
                       fontWeight: 700,
 
-                      lineHeight: 1.2,
+                      lineHeight: "116%",
 
                       textTransform: "none",
 
                       whiteSpace: "nowrap",
 
-                      position: "relative",
+                      border: "1px solid rgba(255,255,255,0.35)",
 
-                      overflow: "hidden",
-
-                      border: "1px solid rgba(255,255,255,0.45)",
-
-                      background: "rgba(7,50,88,0.45)",
-
-                     
+                      background: "rgba(8,61,99,0.55)",
 
                       boxShadow: `
-    inset 0 1px 0 rgba(255,255,255,0.25),
-    0 8px 32px rgba(0,0,0,0.25)
-  `,
+      inset 0 1px 0 rgba(255,255,255,0.18),
+      0 4px 12px rgba(0,0,0,0.15)
+    `,
 
                       "&::before": {
                         content: '""',
                         position: "absolute",
                         inset: 0,
                         background:
-                          "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.02) 100%)",
+                          "linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 40%, rgba(255,255,255,0) 100%)",
                         pointerEvents: "none",
                       },
-
-                      "& .MuiButton-label, & span": {
-                        fontSize: {
-                          xs: "18px",
-                          sm: "20px",
-                          md: "24px",
-                        },
-                        fontWeight: 700,
-                      },
-                      "& .MuiTypography-root": {
-                        fontSize: {
-                          xs: "16px",
-                          sm: "20px",
-                          md: "64px",
-                        },
-                        fontWeight: 700,
-                      },
                       "&:hover": {
-                       background: "rgba(7,50,88,0.45)",
-                        border: "1px solid rgba(255,255,255,0.6)",
+                        background: "rgba(8, 61, 99, 0.72) !important",
+                        boxShadow: `
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    0 4px 12px rgba(0,0,0,0.15)
+  `,
+                      },
+
+                      "&.MuiButton-contained:hover": {
+                        background: "rgba(8, 61, 99, 0.72) !important",
                       },
                     }}
                     onClick={() => {
@@ -260,85 +244,61 @@ function Header() {
                 </Box>
 
                 {/* HIRE TRAINER */}
+
                 <CommonButtons
                   label="Hire A Trainer"
                   variant="contained"
-                   sx={{
-                      width: {
-                        xs: "46%",
-                        sm: "320px",
-                        md: "320px",
-                      },
+                  sx={{
+                    width: {
+                      xs: "46%",
+                      sm: "256px",
+                      md: "257px",
+                    },
 
-                      maxWidth: "320px",
+                    height: {
+                      xs: "60px",
+                      sm: "72px",
+                      md: "91px",
+                    },
 
-                      height: {
-                        xs: "60px",
-                        sm: "72px",
-                        md: "91px",
-                      },
+                    borderRadius: "24px",
 
-                      borderRadius: "24px",
+                    color: "#fff",
 
-                      color: "#FFFFFF",
-                      fontSize: {
-                        xs: "16px",
-                        sm: "20px",
-                        md: "35px",
-                      },
-                      fontWeight: 700,
+                    fontSize: {
+                      xs: "14px",
+                      sm: "20px",
+                      md: "36px",
+                    },
 
-                      lineHeight: 1.2,
+                    fontWeight: 700,
 
-                      textTransform: "none",
+                    lineHeight: "116%",
 
-                      whiteSpace: "nowrap",
+                    textTransform: "none",
 
-                      position: "relative",
+                    whiteSpace: "nowrap",
 
-                      overflow: "hidden",
+                    border: "1px solid rgba(255,255,255,0.35)",
 
-                      border: "1px solid rgba(255,255,255,0.45)",
+                    background: "rgba(8,61,99,0.55)",
 
-                      background: "rgba(7,50,88,0.45)",
-
-                     
-
+                    boxShadow: `
+      inset 0 1px 0 rgba(255,255,255,0.18),
+      0 4px 12px rgba(0,0,0,0.15)
+    `,
+                    "&:hover": {
+                      background: "rgba(8, 61, 99, 0.72) !important",
                       boxShadow: `
-    inset 0 1px 0 rgba(255,255,255,0.25),
-    0 8px 32px rgba(0,0,0,0.25)
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    0 4px 12px rgba(0,0,0,0.15)
   `,
+                    },
 
-                      "&::before": {
-                        content: '""',
-                        position: "absolute",
-                        inset: 0,
-                        background:
-                          "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.02) 100%)",
-                        pointerEvents: "none",
-                      },
-
-                      "& .MuiButton-label, & span": {
-                        fontSize: {
-                          xs: "18px",
-                          sm: "20px",
-                          md: "24px",
-                        },
-                        fontWeight: 700,
-                      },
-                      "& .MuiTypography-root": {
-                        fontSize: {
-                          xs: "16px",
-                          sm: "20px",
-                          md: "64px",
-                        },
-                        fontWeight: 700,
-                      },
-                      "&:hover": {
-                       background: "rgba(7,50,88,0.45)",
-                        border: "1px solid rgba(255,255,255,0.6)",
-                      },
-                    }}
+                    "&.MuiButton-contained:hover": {
+                      background: "rgba(8, 61, 99, 0.72) !important",
+                    },
+                  }}
                   onClick={() => {
                     trackEvent("Landing Page", "Click", "Hire Trainer", true);
                     handelConsulation("rozerpay");
