@@ -274,12 +274,12 @@ const ComparisonSection = () => {
                   sx={{
                     width: {
                       sm: 90,
-                      md: "180px",
+                      md: "175px",
                     },
 
                     height: {
                       sm: 68,
-                      md: "42px",
+                      md: "40px",
                     },
 
                     background: "#F4F4F4",
