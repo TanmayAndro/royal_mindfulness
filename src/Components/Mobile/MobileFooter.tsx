@@ -120,6 +120,7 @@ const MobileFooter = () => {
       fontSize: {
         xs: "11px",
         sm: "11px",
+        md: "16px"
       },
 
       fontWeight: 400,

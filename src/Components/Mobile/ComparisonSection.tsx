@@ -146,7 +146,10 @@ const ComparisonSection = () => {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
 
-          mt: "-52px",
+          mt: {
+            xs: "-52px"
+          },
+
           mx: {
             md: "auto",
           },
@@ -206,7 +209,7 @@ const ComparisonSection = () => {
               maxWidth: {
                 xs: "320px",
                 sm: "320px",
-                md: "420px"
+                md: "820px"
               },
 
               mx: "auto",
@@ -421,7 +424,12 @@ const ComparisonSection = () => {
                     sx={{
                       color: "#fff",
 
-                      fontSize: "12px",
+                     
+
+                      fonSize: {
+                        xs: "12px",
+                        md: "20px"
+                      },
 
                       fontWeight: 400,
 
@@ -429,7 +437,7 @@ const ComparisonSection = () => {
 
                       textAlign: {
                         xs: "left",
-                        md: "center",
+                        md: "left",
                       },
                     }}
                   >

@@ -113,8 +113,16 @@ const ServiceCarousel = () => {
         >
           <PlayArrowIcon
             sx={{
-              width: "24px",
-              height: "62px",
+
+ width: {
+  xs: "24px",
+  md: "62px"
+ },
+ height: {
+  xs: "62px",
+  md: "130px"
+ },
+              
               color: "#1470AF",
               transform: "rotate(180deg)",
             }}
@@ -204,8 +212,15 @@ const ServiceCarousel = () => {
         >
           <PlayArrowIcon
             sx={{
-              width: "24px",
-              height: "62px",
+              
+ width: {
+  xs: "24px",
+  md: "62px"
+ },
+ height: {
+  xs: "62px",
+  md: "130px"
+ },
               color: "#1470AF",
             }}
           />

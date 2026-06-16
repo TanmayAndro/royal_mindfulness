@@ -48,10 +48,11 @@ const ProcessTraining = () => {
         width: {
           xs: "88%",
           sm: "88%",
-          md: "44%",
+          md: "54%",
         },
 
         mx: {
+          
           md: "auto",
         },
 
@@ -61,7 +62,10 @@ const ProcessTraining = () => {
 
         boxSizing: "border-box",
 
-        overflow: "hidden",
+        overflow: {
+          xs: "hidden",
+          md: "visible",
+        },
 
         position: "relative",
 
@@ -78,6 +82,11 @@ const ProcessTraining = () => {
           position: "absolute",
 
           inset: 0,
+
+          top: {
+            xs: 0,
+            md: "180px", // jitna niche chahiye
+          },
 
           backgroundImage: `url(${processbg})`,
 
@@ -101,6 +110,10 @@ const ProcessTraining = () => {
       <Box
         sx={{
           position: "relative",
+
+          my: {
+            md: "40px",
+          },
 
           zIndex: 2,
         }}
@@ -160,7 +173,17 @@ const ProcessTraining = () => {
             display: "flex",
             flexDirection: "column",
 
-            gap: 8,
+            // gap: 8,
+            gap: {
+              xs :8,
+              md: 20
+            },
+
+            mt: {
+              md: 30
+            },
+
+            
 
             position: "relative",
           }}
@@ -198,24 +221,26 @@ const ProcessTraining = () => {
 
                     zIndex: 1,
                     gap: {
-                      md: "40px",
+                      md: "240px",
                     },
                   }}
                 />
 
                 {/* CARD */}
-                <Box
-                  sx={{
-                    width: "100%",
+               <Box
+  sx={{
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
 
-                    display: "flex",
-                    alignItems: "center",
+    gap: {
+      md: "40px", // 20px, 30px, 40px try karo
+    },
 
-                    position: "relative",
-
-                    zIndex: 2,
-                  }}
-                >
+    position: "relative",
+    zIndex: 2,
+  }}
+>
                   {/* IMAGE SECTION */}
                   <Box
                     sx={{
