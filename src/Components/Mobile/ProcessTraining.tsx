@@ -242,79 +242,114 @@ const ProcessTraining = () => {
   }}
 >
                   {/* IMAGE SECTION */}
-                  <Box
-                    sx={{
-                      position: "relative",
+                 {/* IMAGE SECTION */}
+<Box
+  sx={{
+    position: "relative",
 
-                      width: "42%",
+    width: {
+      xs: "42%",
+      md: "42%",
+    },
 
-                      display: "flex",
-                      justifyContent: "center",
-                    }}
-                  >
-                    {/* IMAGE BG */}
-                    <Box
-                      sx={{
-                        width: 84,
-                        height: 84,
+    display: "flex",
+    justifyContent: "center",
+  }}
+>
+  {/* IMAGE BG */}
+  <Box
+    sx={{
+      width: {
+        xs: 84,
+        md: 120,
+      },
 
-                        borderRadius: "50%",
+      height: {
+        xs: 84,
+        md: 120,
+      },
 
-                        background:
-                          "linear-gradient(180deg,#EAF4FB 0%,#DDECF8 100%)",
+      borderRadius: "50%",
 
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
+      background:
+        "linear-gradient(180deg,#EAF4FB 0%,#DDECF8 100%)",
 
-                        boxShadow: "0px 6px 12px rgba(0,0,0,0.16)",
-                      }}
-                    >
-                      {/* IMAGE */}
-                      <Box
-                        component="img"
-                        src={item.image}
-                        alt={item.title}
-                        sx={{
-                          width: "80%",
-                          height: "80%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
 
-                          objectFit: "contain",
-                        }}
-                      />
-                    </Box>
+      boxShadow: "0px 6px 12px rgba(0,0,0,0.16)",
+    }}
+  >
+    {/* IMAGE */}
+    <Box
+      component="img"
+      src={item.image}
+      alt={item.title}
+      sx={{
+        width: {
+          xs: "80%",
+          md: "85%",
+        },
 
-                    {/* NUMBER BADGE */}
-                    <Box
-                      sx={{
-                        position: "absolute",
+        height: {
+          xs: "80%",
+          md: "85%",
+        },
 
-                        top: -6,
-                        right: 18,
+        objectFit: "contain",
+      }}
+    />
+  </Box>
 
-                        width: 31,
-                        height: 31,
+  {/* NUMBER BADGE */}
+  <Box
+    sx={{
+      position: "absolute",
 
-                        borderRadius: "50%",
+      top: {
+        xs: -6,
+        md: -8,
+      },
 
-                        background: "#1470AF",
+      right: {
+        xs: 18,
+        md: 20,
+      },
 
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
+      width: {
+        xs: 31,
+        md: 40,
+      },
 
-                        color: "#fff",
+      height: {
+        xs: 31,
+        md: 40,
+      },
 
-                        fontSize: "14px",
+      borderRadius: "50%",
 
-                        fontWeight: 700,
+      background: "#1470AF",
 
-                        boxShadow: "0px 4px 10px rgba(0,0,0,0.16)",
-                      }}
-                    >
-                      {item.id}
-                    </Box>
-                  </Box>
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+
+      color: "#fff",
+
+      fontSize: {
+        xs: "14px",
+        md: "18px",
+      },
+
+      fontWeight: 700,
+
+      boxShadow: "0px 4px 10px rgba(0,0,0,0.16)",
+    }}
+  >
+    {item.id}
+  </Box>
+</Box>
 
                   {/* CONTENT */}
                   <Box

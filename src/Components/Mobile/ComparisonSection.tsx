@@ -147,7 +147,8 @@ const ComparisonSection = () => {
           backgroundRepeat: "no-repeat",
 
           mt: {
-            xs: "-52px"
+            xs: "-52px",
+            md: "-75px"
           },
 
           mx: {
@@ -374,7 +375,10 @@ const ComparisonSection = () => {
 
                   alignItems: "center",
 
-                  // py: "3px",
+                   gap: {
+        xs: "4px",
+        md: "10px",
+      },
 
                   position: "relative",
 
@@ -459,9 +463,10 @@ const ComparisonSection = () => {
                     height: "100%",
 
                     position: "relative",
-                    py: {
-                      md: "8px",
-                    },
+                   py: {
+        xs: "4px",
+        md: "10px",
+      },
 
                     borderLeft: "1px solid #1470AF",
 
