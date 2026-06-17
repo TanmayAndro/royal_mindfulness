@@ -100,7 +100,7 @@ function Header() {
         }}
       >
         <Grid container justifyContent="center" alignItems="center">
-          <Grid item xs={12} md={12}>
+          <Grid item xs={12} md={8}>
             <Box
               sx={{
                 textAlign: "center",
@@ -114,7 +114,7 @@ function Header() {
                   fontSize: {
                     xs: "2.5rem",
                     sm: "3rem",
-                    md: "128px",
+                    md: "83px",
                   },
                   lineHeight: 1.1,
                   mb: 3,
@@ -129,10 +129,15 @@ function Header() {
                   color: "rgba(255,255,255,0.9)",
                   fontSize: {
                     xs: "1rem",
-                    md: "2.25rem",
+                    md: "32px",
                   },
                   // maxWidth: "700px",
-                  mx: "auto",
+                  // mx: "auto",
+
+                  mx: {
+                    xs: "auto",
+                    md: "0"
+                  },
                   mb: 5,
                 }}
               >
@@ -177,7 +182,7 @@ function Header() {
                       fontSize: {
                         xs: "14px",
                         sm: "20px",
-                        md: "36px",
+                        md: "32px",
                       },
 
                       fontWeight: 700,
@@ -268,7 +273,7 @@ function Header() {
                     fontSize: {
                       xs: "14px",
                       sm: "20px",
-                      md: "36px",
+                      md: "32px",
                     },
 
                     fontWeight: 700,

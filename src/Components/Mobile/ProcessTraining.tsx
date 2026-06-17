@@ -5,11 +5,13 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 
 import relaxImg from "../../Assests/images/mobile/pt1.png";
-import awarenessImg from "../../Assests/images/mobile/pt2.png";
+import awarenessImg from "../../Assests/images/mobile/Group.png";
 import responseImg from "../../Assests/images/mobile/pt3.png";
-import habitImg from "../../Assests/images/mobile/pt4.png";
+import habitImg from "../../Assests/images/mobile/Vector.png";
+
 
 import processbg from "../../Assests/images/mobile/Line_4-removebg-preview.png";
+import processbg1 from "../../Assests/images/mobile/Line_4__1_-removebg-preview.png"
 
 const processData = [
   {
@@ -17,6 +19,9 @@ const processData = [
     title: "Relaxation",
     description: "Calm your mind and body through guided relaxation",
     image: relaxImg,
+    imgWidth: "120%",
+    imgHeight: "95%",
+    imgMt: "30px",
   },
 
   {
@@ -24,6 +29,10 @@ const processData = [
     title: "Awareness",
     description: "Develop self-awareness by observing your thoughts",
     image: awarenessImg,
+    imgWidth: "70%",
+    imgHeight: "61%",
+    imgMt: "30px",
+    
   },
 
   {
@@ -31,6 +40,7 @@ const processData = [
     title: "Response Training",
     description: "Learn to pause and choose your responses",
     image: responseImg,
+    imgMt: "30px"
   },
 
   {
@@ -38,6 +48,9 @@ const processData = [
     title: "Behavioral & Habit",
     description: "Integrate practices for lasting strength",
     image: habitImg,
+    imgWidth: "50%",
+    imgHeight: "55%",
+    imgMt: "50px",
   },
 ];
 
@@ -87,13 +100,18 @@ const ProcessTraining = () => {
             md: "180px", // jitna niche chahiye
           },
 
-          backgroundImage: `url(${processbg})`,
+          // backgroundImage: `url(${processbg})`,
+
+          backgroundImage: {
+            xs: `url(${processbg})`,
+            md: `url(${processbg1})`,
+          },
 
           // backgroundSize: "91% 91%",
 
           backgroundSize: {
             xs: "91% 91 %",
-            md: "91% 93%"
+            md: "75% 100%"
           },
 
           backgroundPosition: "center",
@@ -180,11 +198,11 @@ const ProcessTraining = () => {
             // gap: 8,
             gap: {
               xs: 8,
-              md: "75px",
+              md: "50px",
             },
 
             mt: {
-              md: "212px",
+              md: "174px",
             },
 
             position: "relative",
@@ -241,9 +259,11 @@ const ProcessTraining = () => {
 
                     position: "relative",
                     zIndex: 2,
+                    pb:{
+                      md:" 30px"
+                    }
                   }}
                 >
-                  {/* IMAGE SECTION */}
                   {/* IMAGE SECTION */}
                   <Box
                     sx={{
@@ -263,12 +283,12 @@ const ProcessTraining = () => {
                       sx={{
                         width: {
                           xs: 84,
-                          md: "150px",
+                          md: "130px",
                         },
 
                         height: {
                           xs: 84,
-                          md: "170px",
+                          md: "130px",
                         },
 
                         borderRadius: "50%",
@@ -291,17 +311,17 @@ const ProcessTraining = () => {
                         sx={{
                           width: {
                             xs: "80%",
-                            md: "95%", // image bigger
+                            md: item.imgWidth, // image bigger
                           },
 
                           height: {
                             xs: "80%",
-                            md: "95%", // image bigger
+                            md: item.imgHeight, // image bigger
                           },
 
                           mt: {
                             xs: 0,
-                            md: "15px", // top se niche push
+                            md: item.imgMt, // top se niche push
                           },
 
                           objectFit: "contain",

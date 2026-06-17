@@ -151,7 +151,7 @@ const ComparisonSection = () => {
 
           mt: {
             xs: "-52px",
-            md: "5px",
+            md: "-55px",
           },
 
           mx: {

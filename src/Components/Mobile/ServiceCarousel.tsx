@@ -75,28 +75,28 @@ const ServiceCarousel = () => {
 
       {/* CAROUSEL */}
       <Box
-  sx={{
-    position: "relative",
+        sx={{
+          position: "relative",
 
-    width: {
-      xs: "100%",
-      md: "900px",
-    },
+          width: {
+            xs: "100%",
+            md: "900px",
+          },
 
-    mx: {
-      md: "auto",
-    },
+          mx: {
+            md: "auto",
+          },
 
-    height: {
-      xs: 360,
-      md: 650,
-    },
+          height: {
+            xs: 360,
+            md: 650,
+          },
 
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  }}
->
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         {/* LEFT BUTTON */}
         <IconButton
           onClick={handlePrev}
@@ -113,16 +113,15 @@ const ServiceCarousel = () => {
         >
           <PlayArrowIcon
             sx={{
+              width: {
+                xs: "24px",
+                md: "62px",
+              },
+              height: {
+                xs: "62px",
+                md: "130px",
+              },
 
- width: {
-  xs: "24px",
-  md: "62px"
- },
- height: {
-  xs: "62px",
-  md: "130px"
- },
-              
               color: "#1470AF",
               transform: "rotate(180deg)",
             }}
@@ -135,65 +134,71 @@ const ServiceCarousel = () => {
             (index - activeIndex + carouselData.length) % carouselData.length;
 
           return (
-            <Box
-              key={index}
-              sx={{
-                position: "absolute",
-
-                width: "auto",
-                height: "auto",
-
-                borderRadius: "36px",
-
-                overflow: "hidden",
-
-                background: "transparent",
-
-                transition: "all 0.4s ease",
-
-                transform: `
-                translateX(${offset * 30}px)
-                scale(${1 - offset * 0.06})
-              `,
-                zIndex: carouselData.length - offset,
-                opacity: offset > 3 ? 0 : 1,
-              }}
-            >
               <Box
-                component="img"
-                src={item.image}
-                alt={item.title}
+                key={index}
                 sx={{
-                  width: {
-                    xs: "200px",
-                    sm: "200px",
-                    md: "649px",
-                  },
-                  height: {
-                    xs: "350px",
-                    sm: "350px",
-                    md: "619px",
-                  },
+                  position: "absolute",
 
-                  display: "block",
+                  width: "auto",
+                  height: "auto",
 
-                  objectFit: "cover",
-
-                  borderRadius: {
+                  // borderRadius: "36px",
+                   borderRadius: {
                     xs: "36px",
                     sm: "36px",
-                    md: "19px",
-                  },
-                  marginRight: {
-                    xs: "75px",
-                    sm: "75px",
-                    md: "25px",
-                  },
+                    md: "19px"
+                   },
+
+                  overflow: "hidden",
+
+                  background: "transparent",
+
+                  transition: "all 0.4s ease",
+
+                  transform: {
+      xs: `translateX(${offset * 25}px) scale(${1 - offset * 0.04})`,
+      sm: `translateX(${offset * 35}px) scale(${1 - offset * 0.04})`,
+      md: `translateX(${offset * 50}px) scale(${1 - offset * 0.04})`,
+    },
+                  zIndex: carouselData.length - offset,
+                  opacity: offset > 3 ? 0 : 1,
                 }}
-              />
-            </Box>
-          );
-        })}
+              >
+                <Box
+                  component="img"
+                  src={item.image}
+                  alt={item.title}
+                  sx={{
+                    width: {
+                      xs: "200px",
+                      sm: "200px",
+                      md: "387.24px",
+                    },
+                    height: {
+                      xs: "350px",
+                      sm: "350px",
+                      md: "508px",
+                    },
+
+                    display: "block",
+
+                    objectFit: "cover",
+
+                    borderRadius: {
+                      xs: "36px",
+                      sm: "36px",
+                      md: "19px",
+                    },
+                    marginRight: {
+                      xs: "75px",
+                      sm: "75px",
+                      md: "75px",
+                    },
+                  }}
+                />
+              </Box>
+            );
+          })}
 
         {/* RIGHT BUTTON */}
 
@@ -212,15 +217,14 @@ const ServiceCarousel = () => {
         >
           <PlayArrowIcon
             sx={{
-              
- width: {
-  xs: "24px",
-  md: "62px"
- },
- height: {
-  xs: "62px",
-  md: "130px"
- },
+              width: {
+                xs: "24px",
+                md: "62px",
+              },
+              height: {
+                xs: "62px",
+                md: "130px",
+              },
               color: "#1470AF",
             }}
           />
@@ -235,9 +239,9 @@ const ServiceCarousel = () => {
           gap: 1.5,
 
           mt: {
-  xs: 3,
-  md: 5,
-},
+            xs: 3,
+            md: 5,
+          },
         }}
       >
         {carouselData.map((_, index) => (
@@ -262,9 +266,9 @@ const ServiceCarousel = () => {
       <Box
         sx={{
           mt: {
-  xs: 5,
-  md: 4,
-},
+            xs: 5,
+            md: 4,
+          },
 
           width: 260,
           height: 60,
