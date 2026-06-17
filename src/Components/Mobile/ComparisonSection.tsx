@@ -102,7 +102,10 @@ const ComparisonSection = () => {
         sx={{
           color: type === "royal" ? "#1470AF" : "#FFFFFF",
 
-          fontSize: "11px",
+          fontSize: {
+  xs: "12px",
+  md: "20px",
+},
 
           fontWeight: 500,
 
@@ -133,7 +136,7 @@ const ComparisonSection = () => {
           width: {
             xs: "100%",
             sm: "100%",
-            md: "45%",
+            md: "50%",
           },
           position: "relative",
           overflow: "hidden",
@@ -148,7 +151,7 @@ const ComparisonSection = () => {
 
           mt: {
             xs: "-52px",
-            md: "-75px"
+            md: "5px",
           },
 
           mx: {
@@ -186,7 +189,10 @@ const ComparisonSection = () => {
 
             pt: "80px",
 
-            pb: 5,
+            pb: {
+              xs: 5,
+              md: "95px",
+            },
           }}
         >
           {/* TITLE */}
@@ -210,7 +216,7 @@ const ComparisonSection = () => {
               maxWidth: {
                 xs: "320px",
                 sm: "320px",
-                md: "820px"
+                md: "820px",
               },
 
               mx: "auto",
@@ -274,12 +280,12 @@ const ComparisonSection = () => {
                   sx={{
                     width: {
                       sm: 90,
-                      md: "175px",
+                      md: "196px",
                     },
 
                     height: {
                       sm: 68,
-                      md: "40px",
+                      md: 75,
                     },
 
                     background: "#F4F4F4",
@@ -322,7 +328,7 @@ const ComparisonSection = () => {
                       width: {
                         xs: "50%",
                         sm: "50%",
-                        md: "20%",
+                        md: "35%",
                       },
 
                       objectFit: "contain",
@@ -336,7 +342,10 @@ const ComparisonSection = () => {
                 sx={{
                   color: "#fff",
 
-                  fontSize: "15px",
+                  fontSize: {
+                    xs: "15px",
+                    md: "20px",
+                  },
 
                   fontWeight: 700,
 
@@ -375,10 +384,10 @@ const ComparisonSection = () => {
 
                   alignItems: "center",
 
-                   gap: {
-        xs: "4px",
-        md: "10px",
-      },
+                  gap: {
+                    xs: "4px",
+                    md: "10px",
+                  },
 
                   position: "relative",
 
@@ -428,11 +437,14 @@ const ComparisonSection = () => {
                     sx={{
                       color: "#fff",
 
-                     
+                      py: {
+                        xs: "0px",
+                        md: "10px",
+                      },
 
-                      fonSize: {
+                      fontSize: {
                         xs: "12px",
-                        md: "20px"
+                        md: "20px",
                       },
 
                       fontWeight: 400,
@@ -463,10 +475,10 @@ const ComparisonSection = () => {
                     height: "100%",
 
                     position: "relative",
-                   py: {
-        xs: "4px",
-        md: "10px",
-      },
+                    py: {
+                      xs: "4px",
+                      md: "10px",
+                    },
 
                     borderLeft: "1px solid #1470AF",
 

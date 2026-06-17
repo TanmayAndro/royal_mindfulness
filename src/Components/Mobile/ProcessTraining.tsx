@@ -48,11 +48,10 @@ const ProcessTraining = () => {
         width: {
           xs: "88%",
           sm: "88%",
-          md: "54%",
+          md: "85%",
         },
 
         mx: {
-          
           md: "auto",
         },
 
@@ -90,7 +89,12 @@ const ProcessTraining = () => {
 
           backgroundImage: `url(${processbg})`,
 
-          backgroundSize: "91% 91%",
+          // backgroundSize: "91% 91%",
+
+          backgroundSize: {
+            xs: "91% 91 %",
+            md: "91% 93%"
+          },
 
           backgroundPosition: "center",
 
@@ -175,15 +179,13 @@ const ProcessTraining = () => {
 
             // gap: 8,
             gap: {
-              xs :8,
-              md: 20
+              xs: 8,
+              md: "75px",
             },
 
             mt: {
-              md: 30
+              md: "212px",
             },
-
-            
 
             position: "relative",
           }}
@@ -227,129 +229,134 @@ const ProcessTraining = () => {
                 />
 
                 {/* CARD */}
-               <Box
-  sx={{
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
+                <Box
+                  sx={{
+                    width: "100%",
+                    display: "flex",
+                    alignItems: "center",
 
-    gap: {
-      md: "40px", // 20px, 30px, 40px try karo
-    },
+                    gap: {
+                      md: "240px", // 20px, 30px, 40px try karo
+                    },
 
-    position: "relative",
-    zIndex: 2,
-  }}
->
+                    position: "relative",
+                    zIndex: 2,
+                  }}
+                >
                   {/* IMAGE SECTION */}
-                 {/* IMAGE SECTION */}
-<Box
-  sx={{
-    position: "relative",
+                  {/* IMAGE SECTION */}
+                  <Box
+                    sx={{
+                      position: "relative",
 
-    width: {
-      xs: "42%",
-      md: "42%",
-    },
+                      width: {
+                        xs: "42%",
+                        md: "42%",
+                      },
 
-    display: "flex",
-    justifyContent: "center",
-  }}
->
-  {/* IMAGE BG */}
-  <Box
-    sx={{
-      width: {
-        xs: 84,
-        md: 120,
-      },
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {/* IMAGE BG */}
+                    <Box
+                      sx={{
+                        width: {
+                          xs: 84,
+                          md: "150px",
+                        },
 
-      height: {
-        xs: 84,
-        md: 120,
-      },
+                        height: {
+                          xs: 84,
+                          md: "170px",
+                        },
 
-      borderRadius: "50%",
+                        borderRadius: "50%",
 
-      background:
-        "linear-gradient(180deg,#EAF4FB 0%,#DDECF8 100%)",
+                        background:
+                          "linear-gradient(180deg,#EAF4FB 0%,#DDECF8 100%)",
 
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
 
-      boxShadow: "0px 6px 12px rgba(0,0,0,0.16)",
-    }}
-  >
-    {/* IMAGE */}
-    <Box
-      component="img"
-      src={item.image}
-      alt={item.title}
-      sx={{
-        width: {
-          xs: "80%",
-          md: "85%",
-        },
+                        boxShadow: "0px 6px 12px rgba(0,0,0,0.16)",
+                      }}
+                    >
+                      {/* IMAGE */}
+                      <Box
+                        component="img"
+                        src={item.image}
+                        alt={item.title}
+                        sx={{
+                          width: {
+                            xs: "80%",
+                            md: "95%", // image bigger
+                          },
 
-        height: {
-          xs: "80%",
-          md: "85%",
-        },
+                          height: {
+                            xs: "80%",
+                            md: "95%", // image bigger
+                          },
 
-        objectFit: "contain",
-      }}
-    />
-  </Box>
+                          mt: {
+                            xs: 0,
+                            md: "15px", // top se niche push
+                          },
 
-  {/* NUMBER BADGE */}
-  <Box
-    sx={{
-      position: "absolute",
+                          objectFit: "contain",
+                        }}
+                      />
+                    </Box>
 
-      top: {
-        xs: -6,
-        md: -8,
-      },
+                    {/* NUMBER BADGE */}
+                    <Box
+                      sx={{
+                        position: "absolute",
 
-      right: {
-        xs: 18,
-        md: 20,
-      },
+                        top: {
+                          xs: -6,
+                          md: -8,
+                        },
 
-      width: {
-        xs: 31,
-        md: 40,
-      },
+                        right: {
+                          xs: 18,
+                          md: 20,
+                        },
 
-      height: {
-        xs: 31,
-        md: 40,
-      },
+                        width: {
+                          xs: 31,
+                          md: 40,
+                        },
 
-      borderRadius: "50%",
+                        height: {
+                          xs: 31,
+                          md: 40,
+                        },
 
-      background: "#1470AF",
+                        borderRadius: "50%",
 
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
+                        background: "#1470AF",
 
-      color: "#fff",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
 
-      fontSize: {
-        xs: "14px",
-        md: "18px",
-      },
+                        color: "#fff",
 
-      fontWeight: 700,
+                        fontSize: {
+                          xs: "14px",
+                          md: "18px",
+                        },
 
-      boxShadow: "0px 4px 10px rgba(0,0,0,0.16)",
-    }}
-  >
-    {item.id}
-  </Box>
-</Box>
+                        fontWeight: 700,
+
+                        boxShadow: "0px 4px 10px rgba(0,0,0,0.16)",
+                      }}
+                    >
+                      {item.id}
+                    </Box>
+                  </Box>
 
                   {/* CONTENT */}
                   <Box

@@ -218,7 +218,13 @@ function MobileLanding() {
           md: "auto",
         },
 
-        mt: "-60px",
+        
+
+        mt: {
+          xs: "-60px",
+          md: "0px",
+        },
+
 
         position: "relative",
         zIndex: 10,

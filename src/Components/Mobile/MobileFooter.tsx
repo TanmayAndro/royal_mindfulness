@@ -210,8 +210,16 @@ const MobileFooter = () => {
                 src={logo}
                 alt="Royal Mindfulness"
                 sx={{
-                  width: 45,
-                  height: "auto",
+                  
+                  width: {
+                    xs: 45,
+                    md: 62
+                  },
+                 
+                  height: {
+                    xs: "auto",
+                    md: 75
+                  },
 
                   objectFit: "contain",
 
