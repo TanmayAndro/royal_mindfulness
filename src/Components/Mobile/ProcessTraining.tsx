@@ -19,8 +19,8 @@ const processData = [
     title: "Relaxation",
     description: "Calm your mind and body through guided relaxation",
     image: relaxImg,
-    imgWidth: "120%",
-    imgHeight: "95%",
+    imgWidth: "161.29px",
+    imgHeight: "113.57px",
     imgMt: "30px",
   },
 
@@ -29,18 +29,21 @@ const processData = [
     title: "Awareness",
     description: "Develop self-awareness by observing your thoughts",
     image: awarenessImg,
-    imgWidth: "70%",
-    imgHeight: "61%",
+    imgWidth: "74.85428619384766px",
+    imgHeight: "55.46px",
     imgMt: "30px",
     
   },
+
 
   {
     id: "03",
     title: "Response Training",
     description: "Learn to pause and choose your responses",
     image: responseImg,
-    imgMt: "30px"
+    imgMt: "30px",
+    imgWidth: "114px",
+    imgHeight: "73px",
   },
 
   {
@@ -48,8 +51,8 @@ const processData = [
     title: "Behavioral & Habit",
     description: "Integrate practices for lasting strength",
     image: habitImg,
-    imgWidth: "50%",
-    imgHeight: "55%",
+    imgWidth: "75.32px",
+    imgHeight: "75.32px",
     imgMt: "50px",
   },
 ];
@@ -111,7 +114,7 @@ const ProcessTraining = () => {
 
           backgroundSize: {
             xs: "91% 91 %",
-            md: "75% 100%"
+            md: "50% 100%"
           },
 
           backgroundPosition: "center",
@@ -254,7 +257,7 @@ const ProcessTraining = () => {
                     alignItems: "center",
 
                     gap: {
-                      md: "240px", // 20px, 30px, 40px try karo
+                      md: "75px", // 20px, 30px, 40px try karo
                     },
 
                     position: "relative",
