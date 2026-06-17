@@ -9,9 +9,8 @@ import awarenessImg from "../../Assests/images/mobile/Group.png";
 import responseImg from "../../Assests/images/mobile/pt3.png";
 import habitImg from "../../Assests/images/mobile/Vector.png";
 
-
 import processbg from "../../Assests/images/mobile/Line_4-removebg-preview.png";
-import processbg1 from "../../Assests/images/mobile/Line_4__1_-removebg-preview.png"
+import processbg1 from "../../Assests/images/mobile/Line_4__1_-removebg-preview.png";
 
 const processData = [
   {
@@ -19,8 +18,8 @@ const processData = [
     title: "Relaxation",
     description: "Calm your mind and body through guided relaxation",
     image: relaxImg,
-    imgWidth: "161.29px",
-    imgHeight: "113.57px",
+    imgWidth: "127.854286px",
+    imgHeight: "74.46px",
     imgMt: "30px",
   },
 
@@ -29,10 +28,9 @@ const processData = [
     title: "Awareness",
     description: "Develop self-awareness by observing your thoughts",
     image: awarenessImg,
-    imgWidth: "74.85428619384766px",
-    imgHeight: "55.46px",
+    imgWidth: "79.854286px",
+    imgHeight: "46.46px",
     imgMt: "30px",
-    
   },
 
 
@@ -42,8 +40,8 @@ const processData = [
     description: "Learn to pause and choose your responses",
     image: responseImg,
     imgMt: "30px",
-    imgWidth: "114px",
-    imgHeight: "73px",
+    imgWidth: "74.85428619384766px",
+    imgHeight: "55.46px",
   },
 
   {
@@ -51,9 +49,9 @@ const processData = [
     title: "Behavioral & Habit",
     description: "Integrate practices for lasting strength",
     image: habitImg,
-    imgWidth: "75.32px",
-    imgHeight: "75.32px",
-    imgMt: "50px",
+    imgWidth: "74.85428619384766px",
+    imgHeight: "51.46px",
+    imgMt: "30px",
   },
 ];
 
@@ -64,6 +62,10 @@ const ProcessTraining = () => {
         width: {
           xs: "88%",
           sm: "88%",
+          md: "85%",
+        },
+
+        height: {
           md: "85%",
         },
 
@@ -100,21 +102,18 @@ const ProcessTraining = () => {
 
           top: {
             xs: 0,
-            md: "180px", // jitna niche chahiye
+            md: "168px",
           },
-
-          // backgroundImage: `url(${processbg})`,
 
           backgroundImage: {
             xs: `url(${processbg})`,
             md: `url(${processbg1})`,
           },
 
-          // backgroundSize: "91% 91%",
 
           backgroundSize: {
             xs: "91% 91 %",
-            md: "50% 100%"
+            md: "50% 100%",
           },
 
           backgroundPosition: "center",
@@ -126,8 +125,6 @@ const ProcessTraining = () => {
           /* ONLY BG IMAGE BLUE */
           filter:
             "brightness(0) saturate(100%) invert(32%) sepia(94%) saturate(1100%) hue-rotate(185deg) brightness(92%) contrast(92%)",
-
-          // opacity: 0.35,
         },
       }}
     >
@@ -135,11 +132,6 @@ const ProcessTraining = () => {
       <Box
         sx={{
           position: "relative",
-
-          my: {
-            md: "40px",
-          },
-
           zIndex: 2,
         }}
       >
@@ -201,11 +193,11 @@ const ProcessTraining = () => {
             // gap: 8,
             gap: {
               xs: 8,
-              md: "50px",
+              md: "41px",
             },
 
             mt: {
-              md: "174px",
+              md: "130px",
             },
 
             position: "relative",
@@ -229,19 +221,12 @@ const ProcessTraining = () => {
                 <Box
                   sx={{
                     position: "absolute",
-
                     top: "-20px",
-
                     left: isEven ? "20px" : "auto",
                     right: !isEven ? "20px" : "auto",
-
                     width: "100%",
                     height: "140px",
-
-                    // border: "2px dashed #A7C9E8",
-
                     borderRadius: "42px",
-
                     zIndex: 1,
                     gap: {
                       md: "240px",
@@ -262,9 +247,7 @@ const ProcessTraining = () => {
 
                     position: "relative",
                     zIndex: 2,
-                    pb:{
-                      md:" 30px"
-                    }
+                    
                   }}
                 >
                   {/* IMAGE SECTION */}
@@ -283,29 +266,33 @@ const ProcessTraining = () => {
                   >
                     {/* IMAGE BG */}
                     <Box
-                      sx={{
-                        width: {
-                          xs: 84,
-                          md: "130px",
-                        },
+  sx={{
+    width: {
+      xs: 84,
+      md: "95px",
+    },
+    height: {
+      xs: 84,
+      md: "90px",
+    },
 
-                        height: {
-                          xs: 84,
-                          md: "130px",
-                        },
+    mb: {
+      md: "5px",
+    },
 
-                        borderRadius: "50%",
+    borderRadius: "50%",
 
-                        background:
-                          "linear-gradient(180deg,#EAF4FB 0%,#DDECF8 100%)",
+    background: "rgba(20, 112, 175, 0.12)",
 
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
+    border: "1px solid rgba(20, 112, 175, 0.16)",
 
-                        boxShadow: "0px 6px 12px rgba(0,0,0,0.16)",
-                      }}
-                    >
+    boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.25)",
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  }}
+>
                       {/* IMAGE */}
                       <Box
                         component="img"
@@ -326,6 +313,8 @@ const ProcessTraining = () => {
                             xs: 0,
                             md: item.imgMt, // top se niche push
                           },
+
+                         
 
                           objectFit: "contain",
                         }}
@@ -413,7 +402,7 @@ const ProcessTraining = () => {
                         fontSize: {
                           xs: "20px",
                           sm: "20px",
-                          md: "32px",
+                          md: "25px",
                         },
 
                         fontWeight: 700,
@@ -439,7 +428,7 @@ const ProcessTraining = () => {
                         fontSize: {
                           xs: "14px",
                           sm: "16px",
-                          md: "20px",
+                          md: "16px",
                         },
 
                         lineHeight: 1.2,
