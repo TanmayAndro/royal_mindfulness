@@ -1,14 +1,10 @@
 // src/Components/mobile/HowWeWork.tsx
 
 import React from "react";
-
 import { Box, Typography, Button } from "@mui/material";
-
-// import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-// import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
 import SouthIcon from "@mui/icons-material/South";
 
-import workbg from "../../Assests/images/mobile/Group103.png";
+import workbg from "../../Assests/images/mobile/Group103.webp";
 import { trackEvent } from "../../analitics/analytics";
 import { useNavigate } from "react-router-dom";
 
@@ -53,7 +49,13 @@ const HowWeWork = () => {
 
         // mt: 6,
 
-        px: 3,
+        // px: 3,
+
+        px:{
+          xs: 0,
+          sm: 0,
+          md: 0
+        },
         pt: 6,
         pb: 10,
         mt: 10,

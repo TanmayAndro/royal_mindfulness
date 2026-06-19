@@ -15,23 +15,23 @@ import "./TestimonialsPage.css";
 import TestimonialCard from "../../../Components/test1/TestimonialCard/TestimonialCard";
 
 // import images
-import Test1 from "../../../Assests/images/download (4).jpeg";
+import Test1 from "../../../Assests/images/download (4).webp";
 import Test2 from "../../../Assests/images/image11.avif";
 import Test3 from "../../../Assests/images/image13.avif";
-import Test4 from "../../../Assests/images/images(4).jpeg"; 
-import Test5 from "../../../Assests/images/testmonilas_6.jpg";  
-import Test6 from "../../../Assests/images/testmonilas_7.jpg";  
-import Test7 from "../../../Assests/images/download(2).jpeg";   
+import Test4 from "../../../Assests/images/images(4).webp"; 
+import Test5 from "../../../Assests/images/testmonilas_6.webp";  
+import Test6 from "../../../Assests/images/testmonilas_7.webp";  
+import Test7 from "../../../Assests/images/download(2).webp";   
 import Test8 from "../../../Assests/images/image33.avif";   
-import Test9 from "../../../Assests/images/iamge32.jpg";  
-import Test10 from "../../../Assests/images/images (3).jpeg";   
-import Test11 from "../../../Assests/images/images.jpeg";   
-import Test12 from "../../../Assests/images/download (3).jpeg";   
-import Test13 from "../../../Assests/images/download (1).jpeg";   
+import Test9 from "../../../Assests/images/iamge32.webp";  
+import Test10 from "../../../Assests/images/images (3).webp";   
+import Test11 from "../../../Assests/images/images.webp";   
+import Test12 from "../../../Assests/images/download (3).webp";   
+import Test13 from "../../../Assests/images/download (1).webp";   
 import Test14 from "../../../Assests/images/image12.avif";   
-import Test15 from "../../../Assests/images/image31.jpg";   
+import Test15 from "../../../Assests/images/image31.webp";   
 
-// /home/ravi/Desktop/Tanmay_sir/royal_mindfulness/src/Assests/images/testmonilas_1.jpg
+// /home/ravi/Desktop/Tanmay_sir/royal_mindfulness/src/Assests/images/testmonilas_1.webp
 const testimonialData = [
   { id: 1, name: "James", text: "Royal Mindfulness helped me slow down my racing mind. I didn’t realize how much mental noise I was carrying until I learned how to observe it", image: Test1, bgColor: "#005e5d", textColor: "white" },
 

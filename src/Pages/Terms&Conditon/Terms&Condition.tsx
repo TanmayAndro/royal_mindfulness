@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Terms  from "../../Assests/Terms.jpg";
+import Terms  from "../../Assests/Terms.webp";
 
 const config = require("../../config");
 

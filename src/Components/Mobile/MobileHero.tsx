@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button, Typography, Paper } from "@mui/material";
-import Navgirl from "../../Assests/images/mobile/updateHEro.png";
-import herobg from "../../Assests/images/checklist_bg.jpg";
+import Navgirl from "../../Assests/images/mobile/updateHEro.webp";
+import herobg from "../../Assests/images/checklist_bg.webp";
 import MobileNav from "./MobileNav";
 import { useNavigate } from "react-router-dom";
 import { trackEvent } from "../../analitics/analytics";
@@ -66,6 +66,7 @@ function MobileHero({
               component="img"
               src={Navgirl}
               alt="girl"
+              loading="eager"
               sx={{
                 width: "100%",
                 height: 425,

@@ -1,7 +1,7 @@
 import React from 'react'
 import "./HealthMind.css"
 import { Link } from "react-router-dom";
-import bgIma from "../../Assests/images/blue-bg.jpg";
+import bgIma from "../../Assests/images/blue-bg.webp";
 import { trackEvent } from "../../analitics/analytics";
 function HealthMind() {
   return (

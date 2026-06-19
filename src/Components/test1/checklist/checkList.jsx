@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Typography, Container, Paper, Checkbox } from "@mui/material";
 
-import checklistbg from "../../../Assests/images/checklist_bg.jpg";
+import checklistbg from "../../../Assests/images/checklist_bg.webp";
 
 import ChecklistResultPanel from "./ChecklistResultPanel";
 
@@ -51,7 +51,13 @@ const Checklist = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        px: 2,
+        // px: 2,
+
+        px: {
+          xs: 0,
+          sm: 0,
+          md: 2,
+        },
         width: "100%",
 
         "&::before": {

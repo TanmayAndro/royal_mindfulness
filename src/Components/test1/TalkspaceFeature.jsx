@@ -6,11 +6,11 @@ import { useNavigate } from "react-router-dom";
 
 // import mobile images
 
-import Journal1 from "../../Assests/images/mobile_1.jpg";
-import CheckList from "../../Assests/images/mobile_2.jpg";
-import videoPlay from "../../Assests/images/mobile3.jpg";
+import Journal1 from "../../Assests/images/mobile_1.webp";
+import CheckList from "../../Assests/images/mobile_2.webp";
+import videoPlay from "../../Assests/images/mobile3.webp";
 import Image1 from "../../Assests/images/consutaion1.png";
-import Image2 from "../../Assests/images/consultation_question-Picsart-AiImageEnhancer.jpg";  
+import Image2 from "../../Assests/images/consultation_question-Picsart-AiImageEnhancer.webp";  
 import { trackEvent } from "../../analitics/analytics";
 
 const API_URL =

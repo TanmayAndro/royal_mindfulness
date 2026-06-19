@@ -1,9 +1,9 @@
 import React from 'react';
 import './RoadmapToProcess.css';
-import roadmap1 from '../../Assests/images/roadmap1.jpg';
-import roadmap2 from '../../Assests/images/roadmap2.jpg';
-import roadmap3 from '../../Assests/images/roadmap3.jpg';
-import roadmap4 from '../../Assests/images/roadmap4.jpg';
+import roadmap1 from '../../Assests/images/roadmap1.webp';
+import roadmap2 from '../../Assests/images/roadmap2.webp';
+import roadmap3 from '../../Assests/images/roadmap3.webp';
+import roadmap4 from '../../Assests/images/roadmap4.webp';
 import { Link } from "react-router-dom";
 import { trackEvent } from "../../analitics/analytics";
 import ArrowImg from "../../Assests/images/arrow1.png"

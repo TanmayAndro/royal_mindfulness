@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 
 import { Box, Typography, Paper, IconButton } from "@mui/material";
-import workbg from "../../Assests/images/mobile/Group103.png";
-import checklist from "../../Assests/images/checklist_bg.jpg";
+import workbg from "../../Assests/images/mobile/Group103.webp";
+import checklist from "../../Assests/images/checklist_bg.webp";
 import { trackEvent } from "../../analitics/analytics";
 
 import { Icon } from "@iconify/react";

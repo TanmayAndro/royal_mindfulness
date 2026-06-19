@@ -8,10 +8,10 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
-import anxiousImg from "../../Assests/images/mobile/anxious.jpg";
-import stressedImg from "../../Assests/images/mobile/stressed.jpg";
-import burnoutImg from "../../Assests/images/mobile/burnout.jpg";
-import depression from "../../Assests/images/mobile/depression.jpg";
+import anxiousImg from "../../Assests/images/mobile/anxious.webp";
+import stressedImg from "../../Assests/images/mobile/stressed.webp";
+import burnoutImg from "../../Assests/images/mobile/burnout.webp";
+import depression from "../../Assests/images/mobile/depression.webp";
 
 const carouselData = [
   {

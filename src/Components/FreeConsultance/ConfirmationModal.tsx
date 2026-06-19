@@ -1,6 +1,6 @@
 import React from "react";
 import { Dialog, DialogContent, Typography, Button, Box } from "@mui/material";
-import consulation_bg from "../../Assests/images/consulation_bg.jpg";
+import consulation_bg from "../../Assests/images/consulation_bg.webp";
 
 interface ConfirmationModalProps {
   open: boolean;

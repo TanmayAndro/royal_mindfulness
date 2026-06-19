@@ -8,11 +8,11 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
-import free_consulation_bg from "../../Assests/free_consulation_bg.jpg";
+import free_consulation_bg from "../../Assests/free_consulation_bg.webp";
 
 // Import your custom reusable confirmation modal component
 import ConfirmationModal from "../../Components/FreeConsultance/ConfirmationModal";
-import consulation_bg from "../../Assests/images/consulation_bg.jpg";
+import consulation_bg from "../../Assests/images/consulation_bg.webp";
 
 // MUI Components
 import {

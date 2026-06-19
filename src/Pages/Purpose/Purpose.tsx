@@ -11,7 +11,7 @@ import {
 import React, { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { purposeDetail, purposeHeading } from "../../config";
-import Img from "../../Assests/Purpose.jpg";
+import Img from "../../Assests/Purpose.webp";
 
 const config = require("../../config");
 

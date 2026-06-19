@@ -12,7 +12,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import leftImg from "../../../Assests/twoSectionsLeft.png";
 import rightImg2 from "../../../Assests/twoSectionsRight.png";
-import RajaYoga from "../../../Assests/RajaYoga.jpeg";
+import RajaYoga from "../../../Assests/RajaYoga.webp";
 import whatBG from "../../../Assests/whatWeOffer.png";
 import styled from "styled-components";
 import AddTaskIcon from "@mui/icons-material/AddTask";

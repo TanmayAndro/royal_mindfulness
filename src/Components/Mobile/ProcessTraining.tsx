@@ -1,15 +1,13 @@
-// src/Components/mobile/ProcessTraining.tsx
-
 import React from "react";
 
 import { Box, Typography } from "@mui/material";
 
-import relaxImg from "../../Assests/images/mobile/pt1.png";
-import awarenessImg from "../../Assests/images/mobile/Group.png";
-import responseImg from "../../Assests/images/mobile/pt3.png";
-import habitImg from "../../Assests/images/mobile/Vector.png";
+import relaxImg from "../../Assests/images/mobile/pt1.webp";
+import awarenessImg from "../../Assests/images/mobile/Group.webp";
+import responseImg from "../../Assests/images/mobile/pt3.webp";
+import habitImg from "../../Assests/images/mobile/Vector.webp";
 
-import processbg from "../../Assests/images/mobile/Line_4-removebg-preview.png";
+import processbg from "../../Assests/images/mobile/Line_4-removebg-preview.webp";
 import processbg1 from "../../Assests/images/mobile/Line_4__1_-removebg-preview.png";
 
 const processData = [
@@ -32,7 +30,6 @@ const processData = [
     imgHeight: "46.46px",
     imgMt: "30px",
   },
-
 
   {
     id: "03",
@@ -60,8 +57,8 @@ const ProcessTraining = () => {
     <Box
       sx={{
         width: {
-          xs: "88%",
-          sm: "88%",
+          xs: "93%",
+          sm: "93%",
           md: "85%",
         },
 
@@ -101,8 +98,9 @@ const ProcessTraining = () => {
           inset: 0,
 
           top: {
-            xs: 0,
-            md: "168px",
+            xs: "30px",
+            sm: "30px",
+            md: "160px",
           },
 
           backgroundImage: {
@@ -110,10 +108,9 @@ const ProcessTraining = () => {
             md: `url(${processbg1})`,
           },
 
-
           backgroundSize: {
             xs: "91% 91 %",
-            md: "50% 100%",
+            md: "44% 100%",
           },
 
           backgroundPosition: "center",
@@ -247,7 +244,6 @@ const ProcessTraining = () => {
 
                     position: "relative",
                     zIndex: 2,
-                    
                   }}
                 >
                   {/* IMAGE SECTION */}
@@ -266,33 +262,33 @@ const ProcessTraining = () => {
                   >
                     {/* IMAGE BG */}
                     <Box
-  sx={{
-    width: {
-      xs: 84,
-      md: "95px",
-    },
-    height: {
-      xs: 84,
-      md: "90px",
-    },
+                      sx={{
+                        width: {
+                          xs: 84,
+                          md: "95px",
+                        },
+                        height: {
+                          xs: 84,
+                          md: "90px",
+                        },
 
-    mb: {
-      md: "5px",
-    },
+                        mb: {
+                          md: "5px",
+                        },
 
-    borderRadius: "50%",
+                        borderRadius: "50%",
 
-    background: "rgba(20, 112, 175, 0.12)",
+                        background: "rgba(20, 112, 175, 0.12)",
 
-    border: "1px solid rgba(20, 112, 175, 0.16)",
+                        border: "1px solid rgba(20, 112, 175, 0.16)",
 
-    boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.25)",
+                        boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.25)",
 
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  }}
->
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
                       {/* IMAGE */}
                       <Box
                         component="img"
@@ -313,8 +309,6 @@ const ProcessTraining = () => {
                             xs: 0,
                             md: item.imgMt, // top se niche push
                           },
-
-                         
 
                           objectFit: "contain",
                         }}

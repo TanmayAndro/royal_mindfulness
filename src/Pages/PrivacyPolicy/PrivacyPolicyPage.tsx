@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import PrivacyImg  from "../../Assests/privacy.jpg";
+import PrivacyImg  from "../../Assests/privacy.webp";
 import { color } from "@mui/system";
 
 const config = require("../../config");

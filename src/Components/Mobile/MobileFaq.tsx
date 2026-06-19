@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import herobg from "../../Assests/images/checklist_bg.jpg";
+import herobg from "../../Assests/images/checklist_bg.webp";
 // import herobg from "../../Assests";
 // import TriangleDivider from "./TriangleDivider";
 

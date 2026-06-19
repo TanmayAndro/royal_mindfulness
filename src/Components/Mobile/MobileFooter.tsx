@@ -7,7 +7,7 @@ import { Box, Typography, Link } from "@mui/material";
 import { Icon } from "@iconify/react";
 
 import logo from "../../Assests/images/logo/logo.webp";
-import footerBg from "../../Assests/images/mobile/Rectangle36.png";
+import footerBg from "../../Assests/images/mobile/Rectangle36.webp";
 
 // import { Link } from 'react-router-dom';
 import { trackEvent } from "../../analitics/analytics";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Typography, Container, Paper, Checkbox } from "@mui/material";
 
-import checklistbg from "../../../Assests/images/checklist_bg.jpg";
+import checklistbg from "../../../Assests/images/checklist_bg.webp";
 
 const statements = [
   "I can’t stop overthinking",

@@ -11,8 +11,7 @@ import {
 } from "@mui/material";
 
 import CommonButtons from "./CommonButton";
-// import YoungImage from "../../Assests/images/young-beaut.jpg";
-import heroBg from "../../Assests/images/mobile/hero_bg.jpg";
+import heroBg from "../../Assests/images/mobile/hero_bg.webp";
 import { trackEvent } from "../../analitics/analytics";
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";

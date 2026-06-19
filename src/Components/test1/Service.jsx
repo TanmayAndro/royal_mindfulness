@@ -1,10 +1,10 @@
 import React from 'react'
 import './Service.css';
 
-import Service1 from "../../Assests/images/service1.jpg"
-import Service2 from "../../Assests/images/service2.jpg"
-import Service3 from "../../Assests/images/service3.jpg"
-import Service4 from "../../Assests/images/service4.jpg"
+import Service1 from "../../Assests/images/service1.webp"
+import Service2 from "../../Assests/images/service2.webp"
+import Service3 from "../../Assests/images/service3.webp"
+import Service4 from "../../Assests/images/service4.webp"
 
 
 

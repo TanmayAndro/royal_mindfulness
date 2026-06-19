@@ -8,10 +8,9 @@ const StatsSection = () => {
     <Box
       sx={{
         width: {
-      xs: "calc(100% - 48px)",
-      md: "900px",
-    },
-
+          xs: "calc(100% - 48px)",
+          md: "900px",
+        },
 
         mt: 6,
 
@@ -19,13 +18,19 @@ const StatsSection = () => {
 
         borderRadius: "40px",
 
-        px: 3,
+        // px: 3,
         py: 4,
 
-       mx: {
-      xs: 3,
-      md: "auto",
-    },
+        px: {
+          xs: 0,
+          sm: 3,
+          md: 3,
+        },
+
+        mx: {
+          xs: 3,
+          md: "auto",
+        },
 
         display: "flex",
         alignItems: "center",

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid, Typography, Container, Button } from "@mui/material";
-import ImgLanding from "../../../Assests/images/businessman-with-his-partner-working-office.jpg";
+import ImgLanding from "../../../Assests/images/businessman-with-his-partner-working-office.webp";
 import "./LandingPage.css"; 
 
 const LandingPage = () => {

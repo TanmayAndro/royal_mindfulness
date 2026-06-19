@@ -13,7 +13,7 @@ import ComparisonSection from "../../Mobile/ComparisonSection";
 import ProcessTraining from "../../Mobile/ProcessTraining";
 import MobileFooter from "../../Mobile/MobileFooter";
 
-import herobg from "../../../Assests/images/checklist_bg.jpg";
+import herobg from "../../../Assests/images/checklist_bg.webp";
 
 function MobileLanding() {
   const heroRef = useRef(null);
