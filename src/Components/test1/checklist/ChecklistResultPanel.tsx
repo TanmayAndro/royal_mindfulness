@@ -48,9 +48,22 @@ const ChecklistResultPanel: React.FC<ChecklistResultPanelProps> = ({
             sx={{
               textAlign: "center",
               width: "100%",
-              maxWidth: "850px",
-              mx: "auto",
-              py: { xs: 5, md: 10 },
+             
+
+              maxWidth: {
+                xs: "310px",
+                sm: "310px",
+                md: "850px"
+              },
+             
+
+              mx: {
+                xs: 0,
+                sm: 0,
+                md: "auto"
+              },
+
+              py: { xs: 0, md: 10 },
             }}
           >
             <Typography
