@@ -6,7 +6,6 @@ import relaxImg from "../../Assests/images/mobile/pt1.webp";
 import awarenessImg from "../../Assests/images/mobile/Group.webp";
 import responseImg from "../../Assests/images/mobile/pt3.webp";
 import habitImg from "../../Assests/images/mobile/Vector.webp";
-
 import processbg from "../../Assests/images/mobile/Line_4-removebg-preview.webp";
 import processbg1 from "../../Assests/images/mobile/Line_4__1_-removebg-preview.png";
 

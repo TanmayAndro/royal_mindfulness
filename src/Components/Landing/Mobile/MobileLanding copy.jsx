@@ -1,19 +1,25 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
+import { useTheme, useMediaQuery, Box } from "@mui/material";
 
 import MobileHero from "../../Mobile/MobileHero";
 import MobileNav from "../../Mobile/MobileNav";
+import Header from "../../test1/Header";
 
-import Checklist from "../../test1/checklist/checkList";
-import StatsSection from "../../Mobile/StatsCard";
-import ServiceCarousel from "../../Mobile/ServiceCarousel";
-import MobileFaq from "../../Mobile/MobileFaq";
-import HowWeWork from "../../Mobile/HowWeWork";
-import GetItFree from "../../Mobile/GetItFree";
-import ComparisonSection from "../../Mobile/ComparisonSection";
-import ProcessTraining from "../../Mobile/ProcessTraining";
-import MobileFooter from "../../Mobile/MobileFooter";
 
 import herobg from "../../../Assests/images/checklist_bg.webp";
+
+const Checklist = lazy(() =>
+  import("../../test1/checklist/checkList")
+);
+
+const StatsSection = lazy(() => import("../../Mobile/StatsCard"));
+const ServiceCarousel = lazy(() => import("../../Mobile/ServiceCarousel"));
+const MobileFaq = lazy(() => import("../../Mobile/MobileFaq"));
+const HowWeWork = lazy(() => import("../../Mobile/HowWeWork"));
+const GetItFree = lazy(() => import("../../Mobile/GetItFree"));
+const ComparisonSection = lazy(() => import("../../Mobile/ComparisonSection"));
+const ProcessTraining = lazy(() => import("../../Mobile/ProcessTraining"));
+const MobileFooter = lazy(() => import("../../Mobile/MobileFooter"));
 
 function MobileLanding() {
   const heroRef = useRef(null);
@@ -21,6 +27,9 @@ function MobileLanding() {
   const checklistRef = useRef(null);
 
   const [showStickyNav, setShowStickyNav] = useState(false);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   /* STICKY NAV LOGIC */
   useEffect(() => {
@@ -39,83 +48,81 @@ function MobileLanding() {
 
   /* AUTO SCROLL ONLY ON FIRST LOAD (MOBILE) */
   useEffect(() => {
-    // Desktop par mat chalao
     if (window.innerWidth > 768) return;
 
-    // Pehle check karo auto scroll ho chuka hai ya nahi
     const hasAutoScrolled = sessionStorage.getItem("mobileLandingAutoScrolled");
 
     if (hasAutoScrolled) return;
 
-    // const timer = setTimeout(() => {
-    //   if (checklistRef.current) {
-    //     checklistRef.current.scrollIntoView({
-    //       behavior: "smooth",
-    //       block: "start",
-    //     });
-
-    //     sessionStorage.setItem("mobileLandingAutoScrolled", "true");
-    //   }
-    // }, 3000);
-
     const timer = setTimeout(() => {
-  if (heroRef.current) {
-    const heroBottom =
-      heroRef.current.getBoundingClientRect().bottom +
-      window.pageYOffset;
+      if (!checklistRef.current) return;
 
-    console.log("Hero Bottom:", heroBottom);
+      const stickyNavHeight = 80;
 
-    window.scrollTo({
-      top: heroBottom - 30, // MobileNav ki height
-      behavior: "smooth",
-    });
+      const targetPosition = checklistRef.current.offsetTop - stickyNavHeight;
 
-    sessionStorage.setItem(
-      "mobileLandingAutoScrolled",
-      "true"
-    );
-  }
-}, 3000);
+      window.scrollTo({
+        top: Math.max(0, targetPosition),
+        behavior: "smooth",
+      });
+
+      sessionStorage.setItem("mobileLandingAutoScrolled", "true");
+    }, 3000);
+
     return () => clearTimeout(timer);
   }, []);
 
-  // console.log("sdjkfkjsdhfjksd", heroRef.current.offsetHeight);
   return (
     <>
       {/* STICKY NAV */}
-      {showStickyNav && (
-        <div
-          style={{
-            position: "fixed",
+      {isMobile && showStickyNav && (
+        <>
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              zIndex: 9999,
+              boxSizing: "border-box",
+              background: "transparent",
+            }}
+          >
+            <MobileNav isSticky={true} showMenuIcon={true} />
+          </div>
 
-            top: 0,
-            left: 0,
-
-            width: "100%",
-
-            zIndex: 9999,
-
-            boxSizing: "border-box",
-
-            background: "transparent",
-          }}
-        >
-         <MobileNav
-  isSticky={true}
-  showMenuIcon={true}
-/>
-        </div>
+          {/* Spacer */}
+          {isMobile && showStickyNav && (
+            <div
+              style={{
+                height: "110px",
+              }}
+            />
+          )}
+        </>
       )}
 
-      {/* HERO */}
       <div ref={heroRef}>
-        <MobileHero hideNav={showStickyNav} />
+        {isMobile ? (
+          <MobileHero hideNav={showStickyNav} />
+        ) : (
+          <Header hideNav={showStickyNav} />
+        )}
       </div>
 
       {/* CHECKLIST */}
-      <div ref={checklistRef}>
-        <Checklist />
+      <div
+        ref={checklistRef}
+        style={{
+          marginTop: isMobile && showStickyNav ? "110px" : "0px",
+          transition: "margin-top 0.3s ease",
+        }}
+      >
+
+        <Suspense fallback={null}>
+           <Checklist />
+        </Suspense>
+       
       </div>
 
       {/* BACKGROUND SECTION */}
@@ -157,45 +164,151 @@ function MobileLanding() {
             zIndex: 2,
           }}
         >
-          <StatsSection />
+          <Suspense fallback={null}>
+            <StatsSection />
+          </Suspense>
 
-          <ServiceCarousel />
+          <Suspense fallback={null}>
+            <ServiceCarousel />
+          </Suspense>
         </div>
       </div>
 
-      <ProcessTraining />
-
-      <div
-        style={{
+      <Box
+        sx={{
           position: "relative",
-          zIndex: 13,
+
+          "&::before": {
+            content: '""',
+
+            position: "absolute",
+
+            inset: 0,
+
+            backgroundImage: {
+              xs: "none",
+              md: `url(${herobg})`,
+            },
+
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+
+            opacity: 0.25,
+
+            zIndex: 0,
+          },
         }}
       >
-        <ComparisonSection />
-      </div>
-      <div
-        style={{
-          marginTop: "-60px",
-          position: "relative",
-          zIndex: 10,
-        }}
-      >
-        <GetItFree />
-      </div>
+        <Box
+          sx={{
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          <Suspense fallback={null}>
+            <ProcessTraining />
+          </Suspense>
 
-      <div
-        style={{
-          marginTop: "-100px",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
-        <HowWeWork />
-      </div>
+          <div
+            style={{
+              position: "relative",
+              zIndex: 13,
+            }}
+          >
+            <Suspense fallback={null}>
+              <ComparisonSection />
+            </Suspense>
+          </div>
 
-      <MobileFaq />
+          {/* GET IT FREE */}
+          <Box
+            sx={{
+              width: {
+                xs: "100%",
+                md: "50%",
+              },
 
-      <MobileFooter />
+              mx: {
+                md: "auto",
+              },
+
+              mt: {
+                xs: "-60px",
+                md: "0px",
+              },
+
+              position: "relative",
+              zIndex: 10,
+            }}
+          >
+            <Suspense fallback={null}>
+              <GetItFree />
+            </Suspense>
+          </Box>
+
+          {/* HOW WE WORK */}
+          <Box
+            sx={{
+              width: {
+                xs: "100%",
+                md: "50%",
+              },
+
+              mx: {
+                md: "auto",
+              },
+
+              mt: {
+                xs: "-100px",
+                md: "-100px",
+              },
+
+              position: "relative",
+              zIndex: 1,
+            }}
+          >
+            <Suspense fallback={null}>
+              <HowWeWork />
+            </Suspense>
+          </Box>
+
+          {/* FAQ */}
+          <Box
+            sx={{
+              width: {
+                xs: "100%",
+                md: "50%",
+              },
+
+              mx: {
+                md: "auto",
+              },
+            }}
+          >
+            <Suspense fallback={null}>
+              <MobileFaq />
+            </Suspense>
+          </Box>
+
+          <Box
+            sx={{
+              width: {
+                xs: "100%",
+                md: "50%",
+              },
+
+              mx: {
+                md: "auto",
+              },
+            }}
+          >
+            <Suspense fallback={null}>
+              <MobileFooter />
+            </Suspense>
+          </Box>
+        </Box>
+      </Box>
     </>
   );
 }

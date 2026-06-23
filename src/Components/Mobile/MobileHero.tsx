@@ -1,20 +1,22 @@
-import React from "react";
-import { Box, Button, Typography, Paper } from "@mui/material";
+import React, { useEffect, Suspense, useCallback } from "react";
+import { Box, Button, Typography } from "@mui/material";
 import Navgirl from "../../Assests/images/mobile/updateHEro.webp";
 import herobg from "../../Assests/images/checklist_bg.webp";
-import MobileNav from "./MobileNav";
+// import MobileNav from "./MobileNav";
 import { useNavigate } from "react-router-dom";
 import { trackEvent } from "../../analitics/analytics";
 
-function MobileHero({
-  hideNav = false,
-}) {
+const MobileNav = React.lazy(() => import("./MobileNav"));
+
+function MobileHero({ hideNav = false }) {
+  
+
   const navigate = useNavigate();
 
-  const handleHireTrainer = () => {
+  const handleHireTrainer = useCallback(() => {
     trackEvent("Hire Trainer Clicked");
     navigate("/book-now");
-  };
+  }, [navigate]);
 
   return (
     <Box
@@ -34,17 +36,17 @@ function MobileHero({
           position: "relative",
           boxShadow: "0px 4px 20px rgba(0,0,0,0.12)",
           /* BACKGROUND IMAGE LAYER */
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            inset: 0,
-            backgroundImage: `url(${herobg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            opacity: 0.25,
-            zIndex: 1,
-          },
+          // "&::before": {
+          //   content: '""',
+          //   position: "absolute",
+          //   inset: 0,
+          //   backgroundImage: `url(${herobg})`,
+          //   backgroundSize: "cover",
+          //   backgroundPosition: "center",
+          //   backgroundRepeat: "no-repeat",
+          //   opacity: 0.25,
+          //   zIndex: 1,
+          // },
         }}
       >
         {/* MAIN CONTENT */}
@@ -62,7 +64,24 @@ function MobileHero({
             }}
           >
             {/* IMAGE */}
+
             <Box
+              component="img"
+              src={Navgirl}
+              alt="girl"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              width="390"
+              height="425"
+              sx={{
+                width: "100%",
+                height: 425,
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+            {/* <Box
               component="img"
               src={Navgirl}
               alt="girl"
@@ -73,7 +92,7 @@ function MobileHero({
                 objectFit: "cover",
                 display: "block",
               }}
-            />
+            /> */}
           </Box>
 
           {/* CONTENT */}
@@ -151,7 +170,11 @@ function MobileHero({
             </Button>
 
             {/* BOTTOM CARD */}
-           {!hideNav && <MobileNav />}
+            {!hideNav && (
+              <Suspense fallback={null}>
+                <MobileNav />
+              </Suspense>
+            )}
           </Box>
         </Box>
       </Box>
@@ -159,4 +182,4 @@ function MobileHero({
   );
 }
 
-export default MobileHero;
+export default React.memo(MobileHero);

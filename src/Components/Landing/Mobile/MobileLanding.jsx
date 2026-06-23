@@ -1,25 +1,30 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { useTheme, useMediaQuery, Box } from "@mui/material";
 
-import MobileHero from "../../Mobile/MobileHero";
-import MobileNav from "../../Mobile/MobileNav";
-
-import Checklist from "../../test1/checklist/checkList";
-import StatsSection from "../../Mobile/StatsCard";
-import ServiceCarousel from "../../Mobile/ServiceCarousel";
-import MobileFaq from "../../Mobile/MobileFaq";
-import HowWeWork from "../../Mobile/HowWeWork";
-import GetItFree from "../../Mobile/GetItFree";
-import ComparisonSection from "../../Mobile/ComparisonSection";
-import ProcessTraining from "../../Mobile/ProcessTraining";
-import MobileFooter from "../../Mobile/MobileFooter";
-
-import Header from "../../test1/Header";
+// import MobileHero from "../../Mobile/MobileHero";
+// import MobileNav from "../../Mobile/MobileNav";
 
 import herobg from "../../../Assests/images/checklist_bg.webp";
 
+const Checklist = lazy(() => import("../../test1/checklist/checkList"));
+
+const Header = lazy(() => import("../../test1/Header"));
+
+const StatsSection = lazy(() => import("../../Mobile/StatsCard"));
+const ServiceCarousel = lazy(() => import("../../Mobile/ServiceCarousel"));
+const MobileFaq = lazy(() => import("../../Mobile/MobileFaq"));
+const HowWeWork = lazy(() => import("../../Mobile/HowWeWork"));
+const GetItFree = lazy(() => import("../../Mobile/GetItFree"));
+const ComparisonSection = lazy(() => import("../../Mobile/ComparisonSection"));
+const ProcessTraining = lazy(() => import("../../Mobile/ProcessTraining"));
+const MobileFooter = lazy(() => import("../../Mobile/MobileFooter"));
+const MobileHero = lazy(() => import("../../Mobile/MobileHero"));
+const MobileNav = lazy(() => import("../../Mobile/MobileNav"));
+
 function MobileLanding() {
   const heroRef = useRef(null);
+
+  const [loadBelowFold, setLoadBelowFold] = useState(false);
 
   const checklistRef = useRef(null);
 
@@ -38,7 +43,9 @@ function MobileLanding() {
       setShowStickyNav(window.scrollY > heroHeight - 100);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -69,6 +76,13 @@ function MobileLanding() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoadBelowFold(true);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <>
       {/* STICKY NAV */}
@@ -85,213 +99,227 @@ function MobileLanding() {
               background: "transparent",
             }}
           >
-            <MobileNav isSticky={true} showMenuIcon={true} />
+            <Suspense fallback={null}>
+              <MobileNav isSticky={true} showMenuIcon={true} />
+            </Suspense>
           </div>
 
           {/* Spacer */}
           {isMobile && showStickyNav && (
-  <div
-    style={{
-      height: "110px",
-    }}
-  />
-)}
+            <div
+              style={{
+                height: "110px",
+              }}
+            />
+          )}
         </>
       )}
 
       <div ref={heroRef}>
         {isMobile ? (
-          <MobileHero hideNav={showStickyNav} />
+          <Suspense fallback={null}>
+            {" "}
+            <MobileHero hideNav={showStickyNav} />
+          </Suspense>
         ) : (
-          <Header hideNav={showStickyNav} />
+          <Suspense fallback={null}>
+            <Header hideNav={showStickyNav} />
+          </Suspense>
         )}
       </div>
 
       {/* CHECKLIST */}
-     <div
-  ref={checklistRef}
-  style={{
-    marginTop: isMobile && showStickyNav ? "110px" : "0px",
-    transition: "margin-top 0.3s ease",
-  }}
->
-  <Checklist />
-</div>
-
-      {/* BACKGROUND SECTION */}
       <div
+        ref={checklistRef}
         style={{
-          position: "relative",
-
-          width: "100%",
-
-          overflow: "hidden",
+          marginTop: isMobile && showStickyNav ? "110px" : "0px",
+          transition: "margin-top 0.3s ease",
         }}
       >
-        {/* BACKGROUND IMAGE */}
-        <div
-          style={{
-            position: "absolute",
+        {loadBelowFold && (
+          <Suspense fallback={null}>
+            <Checklist />
+          </Suspense>
+        )}
+      </div>
 
-            inset: 0,
+      {/* BACKGROUND SECTION */}
 
-            backgroundImage: `url(${herobg})`,
-
-            backgroundSize: "cover",
-
-            backgroundPosition: "center",
-
-            backgroundRepeat: "no-repeat",
-
-            opacity: 0.25,
-
-            zIndex: 1,
-          }}
-        />
-
-        {/* CONTENT */}
+      {loadBelowFold && (
         <div
           style={{
             position: "relative",
-
-            zIndex: 2,
+            width: "100%",
+            overflow: "hidden",
           }}
         >
-          <StatsSection />
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              backgroundImage: `url(${herobg})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              opacity: 0.25,
+              zIndex: 1,
+            }}
+          />
 
-          <ServiceCarousel />
+          <div
+            style={{
+              position: "relative",
+              zIndex: 2,
+            }}
+          >
+            <Suspense fallback={null}>
+              <StatsSection />
+            </Suspense>
+
+            <Suspense fallback={null}>
+              <ServiceCarousel />
+            </Suspense>
+          </div>
         </div>
-      </div>
+      )}
 
-     <Box
-  sx={{
-    position: "relative",
-
-    "&::before": {
-      content: '""',
-
-      position: "absolute",
-
-      inset: 0,
-
-      backgroundImage: {
-        xs: "none",
-        md: `url(${herobg})`,
-      },
-
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
-
-      opacity: 0.25,
-
-      zIndex: 0,
-    },
-  }}
->
-  <Box
-    sx={{
-      position: "relative",
-      zIndex: 1,
-    }}
-  >
-    <ProcessTraining />
-
-    <div
-      style={{
-        position: "relative",
-        zIndex: 13,
-      }}
-    >
-      <ComparisonSection />
-    </div>
-
-    {/* GET IT FREE */}
-    <Box
-      sx={{
-        width: {
-          xs: "100%",
-          md: "50%",
-        },
-
-        mx: {
-          md: "auto",
-        },
-
-        
-
-        mt: {
-          xs: "-60px",
-          md: "0px",
-        },
-
-
-        position: "relative",
-        zIndex: 10,
-      }}
-    >
-      <GetItFree />
-    </Box>
-
-    {/* HOW WE WORK */}
-    <Box
-      sx={{
-        width: {
-          xs: "100%",
-          md: "50%",
-        },
-
-        mx: {
-          md: "auto",
-        },
-
-        mt: {
-          xs: "-100px",
-          md: "-100px",
-        },
-
-        position: "relative",
-        zIndex: 1,
-      }}
-    >
-      <HowWeWork />
-    </Box>
-
-    {/* FAQ */}
-    <Box
-      sx={{
-        width: {
-          xs: "100%",
-          md: "50%",
-         
-        },
-
-        mx: {
-          md: "auto",
-        },
-      }}
-    >
-      <MobileFaq />
-    </Box>
-
+      {loadBelowFold && (
         <Box
-  sx={{
-    width: {
-      xs: "100%",
-      md: "50%",
-    },
+          sx={{
+            position: "relative",
 
-    mx: {
-      md: "auto",
-    },
-  }}
->
-  <MobileFooter />
-</Box>
+            "&::before": {
+              content: '""',
 
-  </Box>
-</Box>
-      
+              position: "absolute",
+
+              inset: 0,
+
+              backgroundImage: {
+                xs: "none",
+                md: `url(${herobg})`,
+              },
+
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+
+              opacity: 0.25,
+
+              zIndex: 0,
+            },
+          }}
+        >
+          <Box
+            sx={{
+              position: "relative",
+              zIndex: 1,
+            }}
+          >
+            <Suspense fallback={null}>
+              <ProcessTraining />
+            </Suspense>
+
+            <div
+              style={{
+                position: "relative",
+                zIndex: 13,
+              }}
+            >
+              <Suspense fallback={null}>
+                <ComparisonSection />
+              </Suspense>
+            </div>
+
+            {/* GET IT FREE */}
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                  md: "50%",
+                },
+
+                mx: {
+                  md: "auto",
+                },
+
+                mt: {
+                  xs: "-60px",
+                  md: "0px",
+                },
+
+                position: "relative",
+                zIndex: 10,
+              }}
+            >
+              <Suspense fallback={null}>
+                <GetItFree />
+              </Suspense>
+            </Box>
+
+            {/* HOW WE WORK */}
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                  md: "50%",
+                },
+
+                mx: {
+                  md: "auto",
+                },
+
+                mt: {
+                  xs: "-100px",
+                  md: "-100px",
+                },
+
+                position: "relative",
+                zIndex: 1,
+              }}
+            >
+              <Suspense fallback={null}>
+                <HowWeWork />
+              </Suspense>
+            </Box>
+
+            {/* FAQ */}
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                  md: "50%",
+                },
+
+                mx: {
+                  md: "auto",
+                },
+              }}
+            >
+              <Suspense fallback={null}>
+                <MobileFaq />
+              </Suspense>
+            </Box>
+
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                  md: "50%",
+                },
+
+                mx: {
+                  md: "auto",
+                },
+              }}
+            >
+              <Suspense fallback={null}>
+                <MobileFooter />
+              </Suspense>
+            </Box>
+          </Box>
+        </Box>
+      )}
     </>
   );
 }

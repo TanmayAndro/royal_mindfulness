@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { Box, Typography, Container, Paper, Checkbox } from "@mui/material";
 
-import checklistbg from "../../../Assests/images/checklist_bg.webp";
+import checklistbg from "../../../Assests/images/checklist_bg_optimized1.webp";
 
-import ChecklistResultPanel from "./ChecklistResultPanel";
+const ChecklistResultPanel = lazy(() =>
+  import("./ChecklistResultPanel")
+);
 
 const statements = [
   "I can’t stop overthinking",
@@ -30,7 +32,11 @@ const Checklist = () => {
 
   // SHOW RESULT PANEL
   if (showPanel) {
-    return <ChecklistResultPanel />;
+    return (
+      <Suspense fallback={null}>
+        <ChecklistResultPanel />
+      </Suspense>
+    );
   }
 
   // SHOW CHECKLIST
@@ -137,7 +143,7 @@ const Checklist = () => {
             {statements.map((item, index) => (
               <Paper
                 key={index}
-                elevation={2}
+                elevation={0}
                 onClick={() => handleToggle(item)}
                 sx={{
                   height: "62px",
@@ -149,7 +155,7 @@ const Checklist = () => {
                   px: 2,
                   backgroundColor: "rgba(242, 243, 245, 1)",
                   border: "1px solid rgba(229, 231, 235, 1)",
-                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                  boxShadow: "0 1px 3px rgba(0,0,0,.08)",
                   transition: "0.2s ease",
                   "&:hover": {
                     transform: "translateY(-1px)",
@@ -195,4 +201,4 @@ const Checklist = () => {
   );
 };
 
-export default Checklist;
+export default React.memo(Checklist);

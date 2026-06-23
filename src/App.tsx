@@ -6,12 +6,11 @@ import {
 } from "react-router-dom";
 
 import React, { useEffect, lazy, Suspense } from "react";
-import Header from "./Components/Header";
+// import Header from "./Components/Header";
 
 import "./fonts.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 
 import ProtectedRoute from "./API/protectedRoute";
 
@@ -22,9 +21,12 @@ import ReactGA from "react-ga4";
 import { Box } from "@mui/material";
 import { AuthModalProvider } from "./context/AuthModalContext";
 
-import Royal from "./Pages/Test1/Royal";
+// import Royal from "./Pages/Test1/Royal";
+const Royal = lazy(() => import("./Pages/Test1/Royal"));
+
+const Header = lazy(() => import("./Components/Header"));
 // import WhatsAppButton from "./context/WhatsAppButton";
-const Footer = lazy(() => import( "./Components/test1/Footer"));
+const Footer = lazy(() => import("./Components/test1/Footer"));
 const Login = lazy(() => import("./Pages/Login/login"));
 const Register = lazy(() => import("./Pages/Register/Register"));
 
@@ -141,7 +143,11 @@ function App() {
 
       {/* Global Toast Container */}
       <ToastContainer position="top-right" autoClose={3000} />
-      <WhatsAppButton />
+     {typeof window !== "undefined" && (
+  <Suspense fallback={null}>
+    <WhatsAppButton />
+  </Suspense>
+)}
     </div>
   );
 }
@@ -164,11 +170,22 @@ const Layout = () => {
 
   return (
     <Box>
-      {!hideHeaderFooter && <Header />}
+      {!hideHeaderFooter && (
+        <Suspense fallback={null}>
+          <Header />
+        </Suspense>
+      )}
       <Suspense fallback={null}>
         <Routes>
           <Route path="/royalminfullness-test" element={<LandingPage />} />
-          <Route path="/" element={<Royal />} />
+          <Route
+  path="/"
+  element={
+    <Suspense fallback={null}>
+      <Royal />
+    </Suspense>
+  }
+/>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/quiz_questions" element={<Quiz />} />
@@ -231,7 +248,11 @@ const Layout = () => {
           <Route path="/consulation" element={<ConsultationPage />} />
         </Routes>
       </Suspense>
-      {!hideHeaderFooter && !hideFooter && <Footer />}
+      {!hideHeaderFooter && !hideFooter && (
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
+      )}
     </Box>
   );
 };
@@ -240,7 +261,7 @@ const GAListener = () => {
   const location = useLocation();
   useEffect(() => {
     ReactGA.send({ hitType: "pageview", page: location.pathname });
-    console.log("Tracking page view:", location.pathname);
+    // console.log("Tracking page view:", location.pathname);
   }, [location]);
 
   return null;

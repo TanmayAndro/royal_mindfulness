@@ -103,9 +103,9 @@ const ComparisonSection = () => {
           color: type === "royal" ? "#1470AF" : "#FFFFFF",
 
           fontSize: {
-  xs: "12px",
-  md: "20px",
-},
+            xs: "12px",
+            md: "20px",
+          },
 
           fontWeight: 500,
 
@@ -465,45 +465,28 @@ const ComparisonSection = () => {
                 <Box
                   sx={{
                     display: "flex",
-
                     justifyContent: "center",
-
                     alignItems: "center",
-
                     backgroundColor: "#F4F4F4",
-
                     height: "100%",
-
                     position: "relative",
+
                     py: {
                       xs: "4px",
                       md: "10px",
                     },
 
-                    borderLeft: "1px solid #1470AF",
+                    boxSizing: "border-box",
 
-                    borderRight: "1px solid #1470AF",
+                    borderLeft: "2px solid #1470AF",
+                    borderRight: "2px solid #1470AF",
 
                     borderBottom:
                       index === comparisonData.length - 1
-                        ? "1px solid #1470AF"
-                        : "none",
+                        ? "2px solid #1470AF"
+                        : "1px solid #1470AF",
 
-                    "&::after": {
-                      content: '""',
-
-                      position: "absolute",
-
-                      bottom: 0,
-
-                      left: 0,
-
-                      width: "100%",
-
-                      height: "1px",
-
-                      background: "#1470AF",
-                    },
+                    zIndex: 2,
                   }}
                 >
                   {renderValue(item.royal, "royal")}

@@ -6,21 +6,18 @@ import {
   Container,
   Grid,
   Stack,
-  useTheme,
-  useMediaQuery,
 } from "@mui/material";
 
 import CommonButtons from "./CommonButton";
-import heroBg from "../../Assests/images/mobile/hero_bg.webp";
+import heroBg from "../../Assests/images/mobile/hero_bg_optimized1.webp";
 import { trackEvent } from "../../analitics/analytics";
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
-import { border } from "@mui/system";
+
 
 function Header() {
   const navigate = useNavigate();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  
 
   const handelConsulation = (clickedOn) => {
     if (clickedOn === "calendly") navigate("/consultation_question");
@@ -28,6 +25,20 @@ function Header() {
   };
 
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+  const link = document.createElement("link");
+
+  link.rel = "preload";
+  link.as = "image";
+  link.href = heroBg;
+
+  document.head.appendChild(link);
+
+  return () => {
+    document.head.removeChild(link);
+  };
+}, []);
 
   useEffect(() => {
     const handleScrollLock = () => {
@@ -53,26 +64,31 @@ function Header() {
 
   return (
     <Box
-      component="header"
-      sx={{
-        position: "relative",
-        minHeight: "100vh",
-        overflow: "hidden",
-
-        backgroundImage: `url(${heroBg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          inset: 0,
-          // background: "rgba(0,0,0,0.35)",
-          zIndex: 1,
-        },
-      }}
-    >
+  component="header"
+  sx={{
+    position: "relative",
+    minHeight: "100vh",
+    overflow: "hidden",
+  }}
+>
+  <Box
+    component="img"
+    src={heroBg}
+    alt="Hero Background"
+    loading="eager"
+    fetchPriority="high"
+    decoding="async"
+    width="1920"
+    height="1080"
+    sx={{
+      position: "absolute",
+      inset: 0,
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      zIndex: 0,
+    }}
+  />
       {/* Navbar */}
       <Box
         sx={{

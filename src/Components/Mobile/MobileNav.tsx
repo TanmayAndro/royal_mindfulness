@@ -1,11 +1,10 @@
-import React,{useState} from "react";
+import React,{useState, Suspense} from "react";
 
 import {
   Paper,
   Box,
   Typography,
   Button,
-  Drawer
 } from "@mui/material";
 
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
@@ -16,7 +15,9 @@ import { useNavigate } from "react-router-dom";
 
 import { trackEvent } from "../../analitics/analytics";
 
-import Header from "../../Components/Header";
+const Header = React.lazy(() =>
+  import("../../Components/Header")
+);
 
 const MobileNav = ({
   isSticky = false,
@@ -68,7 +69,6 @@ const toggleMenu = () => {
         {showMenuIcon && (
           <MenuOpenIcon
             onClick={() => {
-              console.log("Menu Clicked");
               toggleMenu();
             }}
             sx={{
@@ -175,18 +175,17 @@ const toggleMenu = () => {
     </Paper>
 
     {/* MOBILE MENU */}
-    {isMenuOpen && (
-      <Box
-      >
-        <Header
-  isOpen={isMenuOpen}
-  toggleMenu={toggleMenu}
-  drawerOnly={true}
-/>
-      </Box>
-    )}
+   {isMenuOpen && (
+  <Suspense fallback={null}>
+    <Header
+      isOpen={isMenuOpen}
+      toggleMenu={toggleMenu}
+      drawerOnly={true}
+    />
+  </Suspense>
+)}
   </>
 );
 };
 
-export default MobileNav;
+export default React.memo(MobileNav);

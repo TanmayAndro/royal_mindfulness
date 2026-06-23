@@ -304,4 +304,4 @@ const ServiceCarousel = () => {
   );
 };
 
-export default ServiceCarousel;
+export default React.memo(ServiceCarousel);
