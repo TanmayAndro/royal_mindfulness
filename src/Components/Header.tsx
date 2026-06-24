@@ -250,9 +250,9 @@ const Header: React.FC<HeaderProps> = ({
             {/* Login / Avatar */}
             {!token ? (
               <Box sx={{ display: "flex", gap: 2 }}>
-                <a className="button_login_css">
+                <a className="">
                   <Button
-                    className="button_login_css"
+                    className=""
                     variant="contained"
                     onClick={() => {
                       setAuthView("login");
