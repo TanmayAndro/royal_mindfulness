@@ -16,14 +16,14 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 import Login_register_firstPart from "../../Components/login_register_firstPart";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { loginApi } from "../../API/ApiConfig";
 import { APPID } from "../../API/ApiConfig";
 import AlertComponent from "../../Components/alert";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import emailIcon from "../../Assests/emailIcon.png";
-import FacebookLogin from "@greatsumini/react-facebook-login";
+// import FacebookLogin from "@greatsumini/react-facebook-login";
 const config = require("../../config");
 
 interface GoogleUserData {
@@ -631,9 +631,7 @@ console.log("BASE URLsmdfds", process.env.REACT_APP_BASE_URL);
                 {config.main_heading_login}
               </Typography>
               <SecondBox style={AllStyle.secondBox}>
-                {/* <Typography style={AllStyle.smallHeading}>
-        {config.welcomeHeading}
-        </Typography> */}
+               
 
                 <Box
                   style={{

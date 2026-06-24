@@ -31,4 +31,5 @@ const ChatWindow: React.FC<Props> = ({
   );
 };
 
-export default ChatWindow;
+// export default ChatWindow;
+export default React.memo(ChatWindow);

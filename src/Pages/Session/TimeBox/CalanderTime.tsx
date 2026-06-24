@@ -260,13 +260,12 @@
 // };
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useMemo, useState } from "react";
-import { LocalizationProvider } from "@mui/x-date-pickers-pro/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
-import dayjs, { Dayjs } from "dayjs";
 import { Box, Button, Divider, Grid, Typography } from "@mui/material";
 import { DateCalendar } from "@mui/x-date-pickers-pro";
-import { Console } from "console";
+import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers-pro/LocalizationProvider";
+import dayjs, { Dayjs } from "dayjs";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const getSessionDates = (sessionDates: any) => {

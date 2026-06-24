@@ -1,18 +1,15 @@
 // src/Components/mobile/ComparisonSection.tsx
-
 import React from "react";
 
 import { Box, Typography } from "@mui/material";
 
-import CheckIcon from "@mui/icons-material/Check";
-import CloseIcon from "@mui/icons-material/Close";
 
 import logo from "../../Assests/images/logo/logo.webp";
 
 import comimage from "../../Assests/images/mobile/Rectangle16.png";
 
-import topimage from "../../Assests/images/mobile/Rectangle16(1).png";
 import { Icon } from "@iconify/react";
+import topimage from "../../Assests/images/mobile/Rectangle16(1).png";
 
 const comparisonData = [
   {
@@ -515,4 +512,7 @@ const ComparisonSection = () => {
   );
 };
 
-export default ComparisonSection;
+// export default ComparisonSection;
+
+
+export default React.memo(ComparisonSection);

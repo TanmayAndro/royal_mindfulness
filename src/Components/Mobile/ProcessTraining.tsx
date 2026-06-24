@@ -456,4 +456,5 @@ const ProcessTraining = () => {
   );
 };
 
-export default ProcessTraining;
+// export default ProcessTraining;
+export default React.memo(ProcessTraining);

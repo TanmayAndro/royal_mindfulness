@@ -1,3 +1,4 @@
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
   Accordion,
   AccordionDetails,
@@ -8,9 +9,7 @@ import {
   styled,
 } from "@mui/material";
 import React, { useState } from "react";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import PrivacyImg  from "../../Assests/privacy.webp";
-import { color } from "@mui/system";
+import PrivacyImg from "../../Assests/privacy.webp";
 
 const config = require("../../config");
 

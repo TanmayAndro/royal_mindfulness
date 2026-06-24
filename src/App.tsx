@@ -1,22 +1,22 @@
 import {
-  BrowserRouter as Router,
   Route,
+  BrowserRouter as Router,
   Routes,
   useLocation,
 } from "react-router-dom";
 
-import React, { useEffect, lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 // import Header from "./Components/Header";
 
-import "./fonts.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./fonts.css";
 
 import ProtectedRoute from "./API/protectedRoute";
 
-import ScrollToTop from "./Components/ScrollToTop";
-import { initGA, logPageView } from "./analitics/analytics";
 import ReactGA from "react-ga4";
+import ScrollToTop from "./Components/ScrollToTop";
+import { initGA } from "./analitics/analytics";
 
 import { Box } from "@mui/material";
 import { AuthModalProvider } from "./context/AuthModalContext";
@@ -116,9 +116,13 @@ const Payment = lazy(() =>
 
 function App() {
   // Initialize Google Analytics + Google Ads
-  useEffect(() => {
+useEffect(() => {
+  const timer = setTimeout(() => {
     initGA();
-  }, []);
+  }, 5000);
+
+  return () => clearTimeout(timer);
+}, []);
 
   useEffect(() => {
     const timer = setTimeout(
@@ -130,6 +134,16 @@ function App() {
 
     return () => clearTimeout(timer);
   }, []);
+
+  const [showWhatsapp, setShowWhatsapp] = useState(false);
+
+  useEffect(() => {
+  const timer = setTimeout(() => {
+    setShowWhatsapp(true);
+  }, 8000);
+
+  return () => clearTimeout(timer);
+}, []);
 
   return (
     <div style={{ overflow: "hidden" }}>
@@ -143,7 +157,7 @@ function App() {
 
       {/* Global Toast Container */}
       <ToastContainer position="top-right" autoClose={3000} />
-     {typeof window !== "undefined" && (
+     {showWhatsapp && (
   <Suspense fallback={null}>
     <WhatsAppButton />
   </Suspense>

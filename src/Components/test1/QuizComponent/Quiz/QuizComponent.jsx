@@ -155,4 +155,5 @@ const QuizComponent = () => {
 };
 
 
-export default QuizComponent
+// export default QuizComponent
+export default React.memo(QuizComponent);

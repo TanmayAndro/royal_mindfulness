@@ -92,4 +92,5 @@ function DesktopLanding() {
   );
 }
 
-export default DesktopLanding;
+// export default DesktopLanding;
+export default React.memo(DesktopLanding);

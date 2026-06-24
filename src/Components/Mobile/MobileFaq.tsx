@@ -3,15 +3,14 @@
 import React, { useState } from "react";
 
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
   Typography,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
 } from "@mui/material";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import herobg from "../../Assests/images/checklist_bg.webp";
 // import herobg from "../../Assests";
 // import TriangleDivider from "./TriangleDivider";
 
@@ -228,4 +227,5 @@ const MobileFaq = () => {
   );
 };
 
-export default MobileFaq;
+// export default MobileFaq;
+export default React.memo(MobileFaq);

@@ -33,4 +33,5 @@ const ChatSidebar: React.FC<Props> = ({users, selectedUser, onSelect}) => {
   )
 };
 
-export default ChatSidebar;
+// export default ChatSidebar;
+export default React.memo(ChatSidebar);

@@ -1,31 +1,31 @@
-import React, { useState, useEffect, useRef } from "react";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import {
-  Box,
   AppBar,
-  Toolbar,
+  Avatar,
+  Box,
+  GlobalStyles,
   IconButton,
+  Toolbar,
   Typography,
   useMediaQuery,
-  Avatar,
-  GlobalStyles,
 } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import React, { useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
+import { ChatUser, Message } from "../../types/chat";
 import ChatSidebar from "./ChatSidebar";
 import ChatWindow from "./ChatWindow";
 import MessageInput from "./MessageInput";
-import { ChatUser, Message } from "../../types/chat";
-import { toast } from "react-toastify";
 
 
 import {
-  getAssignedUsers,
+  deleteMessage,
   getAssignedTrainers,
+  getAssignedUsers,
   getMessages,
+  getOrCreateChatRoom,
+  markAsRead,
   sendMessage,
   updateMessage,
-  markAsRead,
-  getOrCreateChatRoom,
-  deleteMessage, 
 } from "../../API/chat";
 
 import { cable } from "./../../API/cable";
@@ -332,4 +332,5 @@ const handleDelete = async (id: number) => {
   );
 };
 
-export default ChatLayout;
+// export default ChatLayout;
+export default React.memo(ChatLayout);

@@ -1,34 +1,27 @@
-import { Typography, Box, IconButton, styled } from "@mui/material";
-import { useState } from "react";
-import {
-  MainGrid,
-  SecondGrid,
-  MainBox,
-  InputField,
-  ButtonStyle,
-  AllStyle,
-  SecondBox,
-} from "../Login/login";
-import { Link, useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import "react-phone-number-input/style.css";
+import { IconButton, styled, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { useState } from "react";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
-import { useTheme, useMediaQuery } from "@mui/material";
+import "react-phone-number-input/style.css";
+import { useNavigate } from "react-router-dom";
+import {
+  AllStyle,
+  ButtonStyle,
+  InputField,
+  MainBox,
+  MainGrid,
+  SecondBox,
+  SecondGrid,
+} from "../Login/login";
 
 // import metadata from "react-phone-number-input/metadata.min.json";
-import en from "react-phone-number-input/locale/en.json";
-import {
-  getCountryCallingCode,
-  getCountries,
-  getExampleNumber,
-} from "libphonenumber-js";
-import parsePhoneNumber from "libphonenumber-js";
-import { facebook_logo, google_logo } from "../../assests";
-import Login_register_firstPart from "../../Components/login_register_firstPart";
 import axios from "axios";
-import { signupApi } from "../../API/ApiConfig";
-import AlertComponent from "../../Components/alert";
-import { trackEvent } from "../../analitics/analytics";
+import {
+  getCountries,
+  getCountryCallingCode
+} from "libphonenumber-js";
+import en from "react-phone-number-input/locale/en.json";
+import Login_register_firstPart from "../../Components/login_register_firstPart";
 const config = require("../../config");
 
 interface RegisterProps {

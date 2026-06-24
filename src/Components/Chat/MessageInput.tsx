@@ -27,4 +27,5 @@ const MessageInput: React.FC<{ onSend: (msg: string) => void }> = ({ onSend }) =
   );
 };
 
-export default MessageInput;
+// export default MessageInput;
+export default React.memo(MessageInput);

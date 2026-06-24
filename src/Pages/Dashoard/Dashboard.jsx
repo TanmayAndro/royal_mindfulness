@@ -1,11 +1,7 @@
-import React from "react";
-import { Grid, Box, styled } from "@mui/material";
-import Profile from "./Profile";
-import PaymentHistory from "./PaymentHistory";
-import TopPerformers from "./TopPerformers";
-import UserBatchPerformance from "./UserBatchPerformance";
-import Header from "./Header";
+import { Box, Grid, styled } from "@mui/material";
 import Calendar from "./Calendar";
+import Header from "./Header";
+import Profile from "./Profile";
 
 
 const CalenderMain = styled(Box)({

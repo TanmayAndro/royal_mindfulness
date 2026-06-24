@@ -217,4 +217,5 @@ const StatsSection = () => {
   );
 };
 
-export default StatsSection;
+// export default StatsSection;
+export default React.memo(StatsSection);

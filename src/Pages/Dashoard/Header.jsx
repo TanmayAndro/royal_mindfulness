@@ -1,14 +1,19 @@
 
-import React, { useState } from 'react';
-import axios from 'axios';
-import {
-  Box, TextField, Typography, styled, Avatar, Button,
-  Dialog, DialogTitle, DialogContent, IconButton, Grid
-} from '@mui/material';
-import { FaRegBell } from "react-icons/fa";
-import { FaAngleDown } from "react-icons/fa6";
 import { Add, Delete } from '@mui/icons-material';
-import { profile_img } from '../../assests';
+import {
+  Avatar,
+  Box,
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Grid,
+  IconButton,
+  TextField, Typography, styled
+} from '@mui/material';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { FaRegBell } from "react-icons/fa";
 const config = require("../../config");
 
 // Styled Components

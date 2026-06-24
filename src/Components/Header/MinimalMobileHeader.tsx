@@ -67,4 +67,5 @@ const MinimalMobileHeader: React.FC = () => {
   );
 };
 
-export default MinimalMobileHeader;
+
+export default React.memo(MinimalMobileHeader);

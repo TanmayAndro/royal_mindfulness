@@ -401,4 +401,5 @@ const MobileFooter = () => {
   );
 };
 
-export default MobileFooter;
+// export default MobileFooter;
+export default React.memo(MobileFooter);

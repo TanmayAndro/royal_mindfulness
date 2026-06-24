@@ -47,4 +47,5 @@ function HealthMind() {
   )
 }
 
-export default HealthMind
+// export default HealthMind
+export default React.memo(HealthMind);

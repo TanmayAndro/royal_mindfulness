@@ -1,21 +1,12 @@
   import {
-    Grid,
-    Box,
-    Typography,
-    IconButton,
-    Drawer,
-    Button,
-    List,
-    ListItem,
-    ListItemText,
-    Divider,
-  } from "@mui/material";
-  import React, { useState } from "react";
-  import MenuIcon from "@mui/icons-material/Menu";
-  import { Link, useNavigate } from "react-router-dom";
-  import { logo } from "../assests";
-  import "../Components/common.css";
-  import { useLocation } from "react-router-dom";
+  Box,
+  Grid,
+  Typography
+} from "@mui/material";
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { logo } from "../assests";
+import "../Components/common.css";
   const config = require("../config");
 
   const Logo_part: React.FC = () => {

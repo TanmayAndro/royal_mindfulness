@@ -1,29 +1,25 @@
-import React, { useEffect, useState } from "react";
+import LogoutIcon from "@mui/icons-material/Logout";
+import MenuIcon from "@mui/icons-material/Menu";
 import {
   Avatar,
   Box,
   Button,
-  Grid,
-  Typography,
-  Menu,
-  MenuItem,
-  IconButton,
+  Divider,
   Drawer,
+  Grid,
   List,
   ListItem,
   ListItemText,
-  Divider,
+  Typography,
   useMediaQuery,
-  useTheme,
+  useTheme
 } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
-import Logo_part from "./Logo_part";
-import LogoutIcon from "@mui/icons-material/Logout";
-import MenuIcon from "@mui/icons-material/Menu";
-import { useLocation } from "react-router-dom";
 import axios from "axios";
-import AuthModal from "./AuthModal";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { trackEvent } from "../analitics/analytics";
+import AuthModal from "./AuthModal";
+import Logo_part from "./Logo_part";
 
 import MinimalMobileHeader from "../Components/Header/MinimalMobileHeader";
 const config = require("../config");

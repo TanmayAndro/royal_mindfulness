@@ -1,15 +1,14 @@
 // src/Components/mobile/GetItFree.tsx
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { Box, Typography, Paper, IconButton } from "@mui/material";
-import workbg from "../../Assests/images/mobile/Group103.webp";
+import { Box, IconButton, Paper, Typography } from "@mui/material";
 import checklist from "../../Assests/images/checklist_bg.webp";
 import { trackEvent } from "../../analitics/analytics";
 
 import { Icon } from "@iconify/react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 const freeItems = [
@@ -424,4 +423,5 @@ const handleStepClick = async (
   );
 };
 
-export default GetItFree;
+// export default GetItFree;
+export default React.memo(GetItFree);

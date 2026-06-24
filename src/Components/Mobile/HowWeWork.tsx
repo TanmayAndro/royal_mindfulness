@@ -247,4 +247,5 @@ const HowWeWork = () => {
   );
 };
 
-export default HowWeWork;
+// export default HowWeWork;
+export default React.memo(HowWeWork);
