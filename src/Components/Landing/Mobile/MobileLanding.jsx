@@ -8,7 +8,7 @@ import React, {
   memo,
 } from "react";
 import { useTheme, useMediaQuery, Box } from "@mui/material";
-import herobg from "../../../Assests/images/checklist_bg.webp";
+import herobg from "../../../Assests/images/checklist_bg_optimized1.webp";
 
 const Checklist = lazy(() => import("../../test1/checklist/checkList"));
 const Header = lazy(() => import("../../test1/Header"));
@@ -60,9 +60,7 @@ function MobileLanding() {
   useEffect(() => {
     if (window.innerWidth > 768) return;
 
-    const hasAutoScrolled = sessionStorage.getItem(
-      "mobileLandingAutoScrolled",
-    );
+    const hasAutoScrolled = sessionStorage.getItem("mobileLandingAutoScrolled");
 
     if (hasAutoScrolled) return;
 
@@ -70,8 +68,7 @@ function MobileLanding() {
       if (!checklistRef.current) return;
 
       const stickyNavHeight = 80;
-      const targetPosition =
-        checklistRef.current.offsetTop - stickyNavHeight;
+      const targetPosition = checklistRef.current.offsetTop - stickyNavHeight;
 
       window.scrollTo({
         top: Math.max(0, targetPosition),
@@ -127,9 +124,7 @@ function MobileLanding() {
         </div>
       )}
 
-      {isMobile && showStickyNav && (
-        <div style={{ height: "110px" }} />
-      )}
+      {isMobile && showStickyNav && <div style={{ height: "110px" }} />}
 
       {/* HERO */}
       <div ref={heroRef}>
@@ -190,18 +185,17 @@ function MobileLanding() {
                 <ServiceCarousel />
               </Suspense>
             </div>
+            <Box sx={{ position: "relative" }}>
+              <Suspense fallback={null}>
+                <ProcessTraining />
+                <ComparisonSection />
+                <GetItFree />
+                <HowWeWork />
+                <MobileFaq />
+                <MobileFooter />
+              </Suspense>
+            </Box>
           </div>
-
-          <Box sx={{ position: "relative" }}>
-            <Suspense fallback={null}>
-              <ProcessTraining />
-              <ComparisonSection />
-              <GetItFree />
-              <HowWeWork />
-              <MobileFaq />
-              <MobileFooter />
-            </Suspense>
-          </Box>
         </>
       )}
     </>

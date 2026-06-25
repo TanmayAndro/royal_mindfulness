@@ -1,7 +1,7 @@
 import React, { useEffect, Suspense, useCallback } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import Navgirl from "../../Assests/images/mobile/updateHEro.webp";
-import herobg from "../../Assests/images/checklist_bg.webp";
+// import herobg from "../../Assests/images/checklist_bg.webp";
 // import MobileNav from "./MobileNav";
 import { useNavigate } from "react-router-dom";
 import { trackEvent } from "../../analitics/analytics";

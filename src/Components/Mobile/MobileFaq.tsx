@@ -85,7 +85,12 @@ const MobileFaq = () => {
     
     <Box
       sx={{
-        width: "100%",
+    
+        width: {
+          xs: "100%",
+          sm:"100%",
+          md: "50%"
+        },
         background: "#0B67B2",
           position: "relative",
         overflow: "hidden",
@@ -95,6 +100,7 @@ const MobileFaq = () => {
         px: 3,
         py: 6,
         boxSizing: "border-box",
+        mx: "auto",
         
          marginTop: {
           xs: "-80px",

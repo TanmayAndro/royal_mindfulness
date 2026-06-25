@@ -46,7 +46,14 @@ const MobileFooter = () => {
   return (
     <Box
       sx={{
-        width: "100%",
+        
+        width: {
+          xs: "100%",
+          sm: "100%",
+          md: "50%"
+        },
+
+        mx: "auto",
 
         boxSizing: "border-box",
       }}

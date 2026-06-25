@@ -41,7 +41,12 @@ const HowWeWork = () => {
   return (
     <Box
       sx={{
-        width: "100%",
+        // width: "100%",
+         width: {
+          xs: "100%",
+          sm: "100%",
+          md: "50%"
+         },
 
         position: "relative",
 
@@ -50,6 +55,7 @@ const HowWeWork = () => {
         // mt: 6,
 
         // px: 3,
+        mx: "auto",
 
         px:{
           xs: 0,
@@ -58,7 +64,7 @@ const HowWeWork = () => {
         },
         pt: 6,
         pb: 10,
-        mt: 10,
+        // mt: 10,
 
         textAlign: "center",
 

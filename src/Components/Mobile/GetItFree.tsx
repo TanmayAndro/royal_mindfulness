@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 
 import { Box, IconButton, Paper, Typography } from "@mui/material";
-import checklist from "../../Assests/images/checklist_bg.webp";
+import checklist from "../../Assests/images/checklist_bg_optimized1.webp";
 import { trackEvent } from "../../analitics/analytics";
 
 import { Icon } from "@iconify/react";
@@ -192,7 +192,7 @@ const handleStepClick = async (
   sx={{
     width: {
       xs: "100%",
-      md: "90%",
+      md: "50%",
     },
 
     mx: "auto", // Center horizontally

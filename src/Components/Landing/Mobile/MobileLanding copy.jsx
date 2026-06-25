@@ -6,7 +6,7 @@ import MobileNav from "../../Mobile/MobileNav";
 import Header from "../../test1/Header";
 
 
-import herobg from "../../../Assests/images/checklist_bg.webp";
+import herobg from "../../../Assests/images/checklist_bg_optimized1.webp";
 
 const Checklist = lazy(() =>
   import("../../test1/checklist/checkList")

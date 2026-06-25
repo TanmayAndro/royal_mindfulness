@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, Button, Container } from "@mui/material";
-import checklistbg from "../../../Assests/images/checklist_bg.webp";
+import checklistbg from "../../../Assests/images/checklist_bg_optimized1.webp";
 import { useNavigate } from "react-router-dom";
 
 interface ChecklistResultPanelProps {
