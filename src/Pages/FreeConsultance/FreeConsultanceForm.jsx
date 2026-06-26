@@ -277,80 +277,7 @@ function FreeConsultanceForm() {
     setIsConfirmOpen(true);
   };
 
-  // const handleFinalApiSubmit = async () => {
-  //   const primaryUrl = process.env.REACT_APP_FREECONSULTATION_URL?.replace(
-  //     /\/$/,
-  //     "",
-  //   );
-  //   const localUrl = process.env.REACT_APP_BASE_URL?.replace(/\/$/, "");
 
-  //   if (!primaryUrl) {
-  //     setErrors((prev) => ({ ...prev, error: "Primary API URL is missing." }));
-  //     setIsConfirmOpen(false);
-  //     return;
-  //   }
-
-  //   setLoading(true);
-  //   setErrors({});
-
-  //   const digitsOnly = phoneValue.replace(/\D/g, "");
-  //   const purePhoneNo = digitsOnly.startsWith(countryCode)
-  //     ? digitsOnly.slice(countryCode.length)
-  //     : digitsOnly;
-
-  //   const payload = {
-  //     free_consultance: {
-  //       name,
-  //       email,
-  //       time_zone: getGMTOffset(selectedTimeZone),
-  //       phone_number: purePhoneNo,
-  //       country_code: `+${countryCode}`,
-  //       free_consultance_date: consultDate,
-  //       free_consultance_time: consultTime,
-  //     },
-  //   };
-
-  //   const sendRequest = (url) =>
-  //     fetch(`${url}/free_consultances`, {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(payload),
-  //     }).then((res) => (res.ok ? res.json() : Promise.reject(res)));
-
-  //   try {
-  //     const results = await Promise.allSettled([
-  //       sendRequest(primaryUrl),
-  //       localUrl ? sendRequest(localUrl) : Promise.reject("Local URL missing"),
-  //     ]);
-
-  //     const [primaryResult, localResult] = results;
-
-  //     if (primaryResult.status === "rejected") {
-  //       throw new Error(
-  //         "Primary API failed: " +
-  //           (primaryResult.reason?.message || "Connection error"),
-  //       );
-  //     }
-
-  //     if (localResult.status === "rejected") {
-  //       console.warn(
-  //         "Local server update failed, but primary succeeded:",
-  //         localResult.reason,
-  //       );
-  //     } else {
-  //       console.log("Local server updated successfully.");
-  //     }
-
-  //     setSubmitted(true);
-  //     localStorage.removeItem("freeConsultanceData");
-  //     setIsConfirmOpen(false);
-  //   } catch (err) {
-  //     setErrors((prev) => ({ ...prev, error: err.message }));
-  //     setIsConfirmOpen(false);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
 
   const handleFinalApiSubmit = async () => {
     // =========================
@@ -429,7 +356,8 @@ function FreeConsultanceForm() {
           body: JSON.stringify(payload),
         });
 
-        // console.log(`${label} STATUS:`, response.status);
+        //  console.log(`${label} STATUS:`, response.status);
+        //  console.log("API Endpoint:", `${url}/free_consultances`);
 
         const responseText = await response.text();
 
